@@ -1,0 +1,747 @@
+! Messages for structure
+
+MESSAGE GROUP = "SMP_STRUCT_"
+
+MESSAGE = "PARSE_FILE"
+TEXT    = "Parsing structure text file"
+
+MESSAGE = "CREATE_SEC"
+TEXT    = "Creating section file"
+
+MESSAGE = "OK"
+TEXT    = "Completed OK"
+
+MESSAGE = "DROP_TABLE"
+TEXT    = "Dropping Table []"
+
+MESSAGE = "DROP_VIEW"
+TEXT    = "Dropping View []"
+
+MESSAGE = "CREATE_TABLE"
+TEXT    = "Creating Table []"
+
+MESSAGE = "CREATE_VIEW"
+TEXT    = "Creating View []"
+
+MESSAGE = "ANAL_COMM"
+TEXT    = "Analyse all equivalent committed tables/views (Y/N) > "
+
+MESSAGE = "INIT_COMM"
+TEXT    = "Convert all equivalent committed tables/views (Y/N) > "
+
+MESSAGE = "DOING_COMM"
+TEXT    = "Converting all equivalent committed tables/views"
+
+MESSAGE = "ANALYSING_COMM"
+TEXT    = "Analysing all equivalent committed tables/views"
+
+MESSAGE = "ENTER_TABLE"
+TEXT    = "Enter Table Name > "
+
+MESSAGE = "EXEC_PROMPT"
+TEXT    = "Exec SQL > "
+
+MESSAGE = "CONFIRM"
+TEXT    = "Convert Table '[]' (Y/N/Q) > "
+
+MESSAGE = "NEW_CONFIRM"
+TEXT    = "Create New Version of Table '[]' (Y/N/Q) > "
+
+MESSAGE = "DESTROY_CONFIRM"
+TEXT    = "Destroy Table '[]' (Y/N/Q) > "
+
+MESSAGE = "RECOV_PROMPT"
+TEXT    = "Recover table '[]' - is data in MAIN or TEMP table (M/T) > "
+
+MESSAGE = "REC_CONFIRM"
+TEXT    = "Recover Table '[]' (Y/N/Q) > "
+
+MESSAGE = "COPY_DATA"
+TEXT    = "Copying data from [] to []"
+
+MESSAGE = "USE_ALTER"
+TEXT    = "Conversion Method - Alter Table"
+
+MESSAGE = "USE_COPY"
+TEXT    = "Conversion Method - Copy Table"
+
+MESSAGE = "USE_CREATE"
+TEXT    = "Conversion Method - Create Table"
+
+MESSAGE = "CHECK_TABLE"
+TEXT    = "Checking Table []"
+
+MESSAGE = "RENAME_TABLE"
+TEXT    = "Renaming table [] to []"
+
+MESSAGE = "ADD_MIDDLE"
+TEXT    = "One or more fields added in the middle of the table"
+
+MESSAGE = "REDUCED_TEXT"
+TEXT    = "One or more reduced size text fields in table"
+
+MESSAGE = "ADD_END"
+TEXT    = "Field [] added at the end of the table"
+
+MESSAGE = "DROP_FIELD"
+TEXT    = "Drop field []"
+
+MESSAGE = "MODIFY_FIELD"
+TEXT    = "Modify field []"
+
+MESSAGE = "DROPPING_FIELDS"
+TEXT    = "Dropping fields from table []"
+
+MESSAGE = "MODIFYING_FIELDS"
+TEXT    = "Modifying fields in table []"
+
+MESSAGE = "ADDING_FIELDS"
+TEXT    = "Adding fields to table []"
+
+MESSAGE = "DROP_ALL_INDEX"
+TEXT    = "Dropping all indexes on table []"
+                              
+MESSAGE = "CREATE_ALL_INDEX"
+TEXT    = "Creating all indexes on table []"
+                              
+MESSAGE = "NO_TABLE"
+TEXT    = "Table not in database"
+
+MESSAGE	= "CONVERT_OK"
+TEXT	= "Table converted successfully"
+
+MESSAGE	= "NEWTABLE_OK"
+TEXT	= "Table renewed successfully"
+
+MESSAGE	= "NO_CONVERT"
+TEXT	= "Table conversion not attempted"
+
+MESSAGE	= "CONVERT_RETRY_PROMPT"
+TEXT	= "Try again? (y/n) > "
+
+MESSAGE = "CHECK_VIEW"
+TEXT    = "Checking view []"
+
+MESSAGE = "VIEW_CHANGED"
+TEXT    = "View has changed"
+
+! Warnings
+                              
+MESSAGE	= "RETRY_TABLE_LOCK_IN_USE"
+TEXT	= "Table '[]' or table '[]' is in use - unable to lock"
+SEVERITY= "WARNING"
+
+MESSAGE	= "RETRY_SINGLE_TABLE_LOCK"
+TEXT	= "Table '[]' is in use - unable to lock"
+SEVERITY= "WARNING"
+
+MESSAGE	= "RETRY_SINGLE_TABLE_ALTER"
+TEXT	= "Table '[]' is in use - unable to alter"
+SEVERITY= "WARNING"
+
+MESSAGE	= "RETRY_TABLE_DROP_IN_USE"
+TEXT	= "Table '[]' is in use - unable to drop"
+SEVERITY= "WARNING"
+
+! Errors
+
+MESSAGE = "ERROR_COMMAND_LINE"
+TEXT    = "Error parsing command [] line []"
+SEVERITY= "ERROR"
+
+MESSAGE = "ERROR_TABLE_LINE"
+TEXT    = "Error parsing table [], line []"
+SEVERITY= "ERROR"
+
+MESSAGE = "ERROR_FIELD_LINE"
+TEXT    = "Error parsing field [] in table [], line []"
+SEVERITY= "ERROR"
+
+MESSAGE = "ERROR_INDEX_LINE"
+TEXT    = "Error parsing index [] on table [], line []"
+SEVERITY= "ERROR"
+
+MESSAGE = "TABLE_DEFAULT_LINE"
+TEXT    = "Error parsing table default command on line []"
+SEVERITY= "ERROR"
+
+MESSAGE = "INDEX_DEFAULT_LINE"
+TEXT    = "Error parsing index default commmad on line []"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_TABLE_PARAM"
+TEXT    = "Unknown table parameter []"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_FIELD_PARAM"
+TEXT    = "Unknown field parameter []"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_INDEX_PARAM"
+TEXT    = "Unknown index parameter []"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_TABLE_DEFAULT"
+TEXT    = "Unknown table defaults parameter []"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_INDEX_DEFAULT"
+TEXT    = "Unknown index defaults parameter []"
+SEVERITY= "ERROR"
+
+MESSAGE = "OPEN_FILE"
+TEXT    = "Error opening structure text file"
+SEVERITY= "ERROR"
+
+MESSAGE = "READ_FILE"
+TEXT    = "Error reading structure text file line []"
+SEVERITY= "ERROR"
+
+MESSAGE = "CLOSE_FILE"
+TEXT    = "Error closing structure text file"
+SEVERITY= "ERROR"
+
+MESSAGE = "REWIND_FILE"
+TEXT    = "Error rewinding structure text file"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_FIELD_TYPE"
+TEXT    = "Unknown field datatype []"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_FIELD_USAGE"
+TEXT    = "Unknown field usage []"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_LINK_SEP"
+TEXT    = "Found [] when expecting table/field separator in link definition"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_PROMPT_TYPE"
+TEXT    = "Unknown prompt type []"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULT_PROMPT_TYPE"
+TEXT    = "Multiple definition of prompt type"
+SEVERITY= "ERROR"
+
+MESSAGE = "SIZE_NOT_INT"
+TEXT    = "Expecting an integer value for field size"
+SEVERITY= "ERROR"
+
+MESSAGE = "SIZE_NO_END"
+TEXT    = "Missing ) on field size definition"
+SEVERITY= "ERROR"
+
+MESSAGE = "DISP_NOT_INT"
+TEXT    = "Expecting an integer value for display browse number"
+SEVERITY= "ERROR"
+
+MESSAGE = "DISP_NO_END"
+TEXT    = "Missing ) after display browse number"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_TEXT_FORMAT"
+TEXT    = "Format value not allowed for this prompt type"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_LOWER"
+TEXT    = "Lower limit not allowed for this prompt type"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_NUM_LOWER"
+TEXT    = "Lower limit is not a valid numeric value"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_UPPER"
+TEXT    = "Upper limit not allowed for this prompt type"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_NUM_UPPER"
+TEXT    = "Upper limit is not a valid numeric value"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_DATA_PROMPT"
+TEXT    = "Invalid data type / prompt type combination"
+SEVERITY= "ERROR"
+
+MESSAGE = "FALSE_WRONG_TYPE"
+TEXT    = "Prompt type undefined or wrong type for the FALSE_WORD keyword"
+SEVERITY= "ERROR"
+
+MESSAGE = "TRUE_WRONG_TYPE"
+TEXT    = "Prompt type undefined or wrong type for the TRUE_WORD keyword"
+SEVERITY= "ERROR"
+
+MESSAGE = "ALLOWED_WRONG_TYPE"
+TEXT    = "Prompt type undefined or wrong type for the ALLOWED_CHARACTERS keyword"
+SEVERITY= "ERROR"
+
+MESSAGE = "CHOOSE_WRONG_TYPE"
+TEXT    = "Prompt type undefined or wrong type for the CHOOSE_TYPE keyword"
+SEVERITY= "ERROR"
+
+MESSAGE = "LIBRARY_WRONG_TYPE"
+TEXT    = "Prompt type undefined or wrong type for the LIBRARY keyword"
+SEVERITY= "ERROR"
+
+MESSAGE = "ROUTINE_WRONG_TYPE"
+TEXT    = "Prompt type undefined or wrong type for the ROUTINE keyword"
+SEVERITY= "ERROR"
+
+MESSAGE = "ID_WRONG_TYPE"
+TEXT    = "Prompt type undefined or wrong type for the IDENTITIES keyword"
+SEVERITY= "ERROR"
+
+MESSAGE = "VALID_WRONG_TYPE"
+TEXT    = "Prompt type undefined or wrong type for the VALID keyword"
+SEVERITY= "ERROR"
+
+MESSAGE = "PHRASE_WRONG_TYPE"
+TEXT    = "Prompt type undefined or wrong type for the PHRASE_ID keyword"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULTI_MOD_ON"
+TEXT    = "Multiple definition of the modified on field"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULTI_MOD_BY"
+TEXT    = "Multiple definition of the modified by field"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULTI_MODIFY"
+TEXT    = "Multiple definition of the modifiable field"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULTI_REMOVE"
+TEXT    = "Multiple definition of the remove field"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULTI_SEC_ID"
+TEXT    = "Multiple definition of the security id field"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULTI_ORDER"
+TEXT    = "Multiple definition of the order field"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULTI_FULL_DESCRIP"
+TEXT    = "Multiple definition of the full_description field"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULTI_PRIMARY"
+TEXT    = "Multiple definition of the primary_browse field"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULTI_VERSION"
+TEXT    = "Multiple definition of the version field"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULTI_INSPECT"
+TEXT    = "Multiple definition of the inspection field"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULTI_APPROVE"
+TEXT    = "Multiple definition of the approval field"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_LINK_TABLE"
+TEXT    = "Link table [] does not exist"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_LINK_FIELD"
+TEXT    = "Link field [] does not exist"
+SEVERITY= "ERROR"
+
+MESSAGE = "NO_PARENT"
+TEXT    = "Parent table [] does not exist"
+SEVERITY= "ERROR"
+
+MESSAGE = "PARENT_DELETED"
+TEXT    = "Parent table [] is marked as deleted"
+SEVERITY= "ERROR"
+
+MESSAGE = "DELETE_CONFIRM"
+TEXT    = "Delete Table '[]' (Y/N/Q) > "
+
+MESSAGE = "ALREADY_DELETED"
+TEXT    = "Table does not exist in database"
+
+MESSAGE = "MULTI_PARENT"
+TEXT    = "Multiple definition of the parent table"
+SEVERITY= "ERROR"
+
+MESSAGE = "RENAME_TABLE_EXISTS"
+TEXT    = "Table [] is a valid table within STRUCTURE and cannot be renamed"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULTI_RENAME_TABLE"
+TEXT    = "Multiple definition of rename table"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULTI_TABLE"
+TEXT    = "Table or table alias name already exists"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULTI_FIELD"
+TEXT    = "Field or field alias name already exists"
+SEVERITY= "ERROR"
+
+MESSAGE = "HAD_BROWSE_NO"
+TEXT    = "Display browse number [] already specified"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_OVERRIDE"
+TEXT    = "Override flag not allowed on this prompt type"
+SEVERITY= "ERROR"
+
+MESSAGE = "INVALID_AUDIT"
+TEXT    = "Invalid audit type specified"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULTI_INDEX"
+TEXT    = "Index name already exists"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_INDEX_FIELD"
+TEXT    = "Index field [] does not exist"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_DATA_LINK"
+TEXT    = "Cannot specify data type for a link field"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_PROMPT_LINK"
+TEXT    = "Cannot specify prompt type for a link field"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_TRUE_FALSE"
+TEXT    = "True and false words must be set to different values"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_LINK_LOOP"
+TEXT    = "Link field cannot link back to itself"
+SEVERITY= "ERROR"
+
+MESSAGE = "FIELD_CHECK_ERROR"
+TEXT    = "Error validating field [] on table []"
+SEVERITY= "ERROR"
+
+MESSAGE = "NO_DATA_TYPE"
+TEXT    = "The field datatype must be defined"
+SEVERITY= "ERROR"
+
+MESSAGE = "INVALID_DEFAULT"
+TEXT    = "Default value is invalid for the field type"
+SEVERITY= "ERROR"
+
+MESSAGE = "MIN_MAX"
+TEXT    = "The upper limit must be greater than the lower limit"
+SEVERITY= "ERROR"
+
+MESSAGE = "BOOLEAN_SAME"
+TEXT    = "The true word must not be the same as the false word"
+SEVERITY= "ERROR"
+
+MESSAGE = "DEFAULT_TO_SMALL"
+TEXT    = "Default value is less than the lower limit"
+SEVERITY= "ERROR"
+
+MESSAGE = "DEFAULT_TO_BIG"
+TEXT    = "Default value is greater than the upper limit"
+SEVERITY= "ERROR"
+
+MESSAGE = "INVALID_MIN"
+TEXT    = "Lower limit is invalid for the field type"
+SEVERITY= "ERROR"
+
+MESSAGE = "INVALID_MAX"
+TEXT    = "Upper limit is invalid for the field type"
+SEVERITY= "ERROR"
+
+MESSAGE = "INVALID_DEF_DATE"
+TEXT    = "Default value for date prompt should be an interval"
+SEVERITY= "ERROR"
+
+MESSAGE = "INVALID_PACKED"
+TEXT    = "Default value specified in an invalid format for a packed decimal"
+SEVERITY= "ERROR"
+
+MESSAGE = "CREATE_FILE"
+TEXT    = "Error creating structure section file"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_KEY"
+TEXT    = "Invalid unique key field []"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_CHILD_NO"
+TEXT    = "Invalid child table number []"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_TABLE"
+TEXT    = "Invalid table []"
+SEVERITY= "ERROR"
+
+MESSAGE = "EXEC_BAD_TERM"
+TEXT    = "Missing terminator in SQL file."
+SEVERITY= "ERROR"
+
+MESSAGE = "EXEC_SQL_FILE"
+TEXT    = "Failed to open SQL file."
+SEVERITY= "ERROR"
+
+MESSAGE = "ERROR_VIEW_LINE"
+TEXT    = "Error parsing view [], line []"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_VIEW_PARAM"
+TEXT    = "Unknown view parameter []"
+SEVERITY= "ERROR"
+
+MESSAGE = "UNKNOWN_VIEW_TABLE"
+TEXT    = "Error adding table [] to view , no such table"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_VIEW_NO"
+TEXT    = "Invalid view reference number []"
+SEVERITY= "ERROR"
+
+MESSAGE = "MAP_FAILED"
+TEXT    = "Failed to map structure section file"
+SEVERITY= "ERROR"
+
+MESSAGE = "NO_LINK"
+TEXT    = "No link exists for the tables in view []"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_CREATE_TABLE"
+TEXT	= "Unable to create database table '[]'"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_CREATE_VIEW"
+TEXT	= "Unable to create database view '[]'"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_CREATE_INDEX"
+TEXT	= "Unable to create database index '[]'"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_CREATE_TEMP_TABLE"
+TEXT	= "Unable to create temporary table '[]'"
+SEVERITY= "ERROR"
+
+MESSAGE	= "TABLE_ALREADY_EXISTS"
+TEXT	= "The database table '[]' already exists"
+SEVERITY= "ERROR"
+
+MESSAGE	= "TEMP_ALREADY_EXISTS"
+TEXT	= "The temporary database table '[]' already exists"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_RENAME_TABLE"
+TEXT	= "Unable to rename database table '[]' to '[]'"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_LOCK_TWO_TABLES"
+TEXT	= "Unable to lock the tables '[]' and '[]'"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_LOCK_SINGLE_TABLE"
+TEXT	= "Unable to lock the table '[]'"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_MOVE_DATA"
+TEXT	= "Unable to move data from table '[]' to table '[]'"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_DROP_TABLE"
+TEXT	= "Unable to drop database table '[]'"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_DROP_VIEW"
+TEXT	= "Unable to drop database view '[]'"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_DROP_INDEX"
+TEXT	= "Unable to drop database index '[]'"
+SEVERITY= "ERROR"
+
+MESSAGE	= "LOCK_ON_DROP_INDEX"
+TEXT	= "Can't drop database index '[]' because table '[]' is in use"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_DROP_TEMP"
+TEXT	= "Unable to drop temporary database table '[]'"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_COMMIT"
+TEXT	= "Unable to perform commit"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_ROLLBACK"
+TEXT	= "Unable to perform rollback"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CONVERT_NEED_RECOVERY"
+TEXT	= "Recovery mode should be used on this table"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CONVERT_HALTED"
+TEXT	= "Conversion of table aborted"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_DROP_FIELD"
+TEXT	= "Unable to drop fields from table"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_MODIFY_FIELD"
+TEXT	= "Unable to modify fields in table"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_ADD_FIELD"
+TEXT	= "Unable to add fields to table"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_SET_FIELD"
+TEXT	= "Unable to update fields in table"
+SEVERITY= "ERROR"
+
+MESSAGE	= "TABLE_EXISTS"
+TEXT	= "Database table '[]' DOES exist!"
+SEVERITY= "ERROR"
+
+MESSAGE	= "BAD_CONVERT_MODE"
+TEXT	= "Valid modes are ANALYSE, COERCE, CONVERT, INDEXES, NEWTABLE, REBUILD, RECOVER"
+SEVERITY= "ERROR"
+
+MESSAGE	= "BAD_COMBO"
+TEXT	= "Cannot use 'NOCONFIRM' or 'SCRIPTFILE' options in 'RECOVER' mode"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_OPEN_ERROR"
+TEXT	= "Can't open error log file"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_OPEN_SCRIPT"
+TEXT	= "Can't open specified script file"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_WRITE_SCRIPT"
+TEXT	= "Can't write to script file"
+SEVERITY= "ERROR"
+
+MESSAGE	= "CANT_CLOSE_SCRIPT"
+TEXT	= "Can't close script file"
+SEVERITY= "ERROR"
+
+MESSAGE	= "NO_TABLE_PARSED"
+TEXT	= "No Table Parsed"
+SEVERITY= "ERROR"
+
+MESSAGE	= "NO_UNIQUE_KEY"
+TEXT	= "No unique key specified for table []"
+SEVERITY= "ERROR"
+
+MESSAGE = "FIELD_AND_PARENT"
+TEXT    = "Attempted to define a field in table [] which has a parent table, line []"
+SEVERITY= "ERROR"
+
+MESSAGE = "END_OF_FILE"
+TEXT    = "Unexpected end of structure file"
+SEVERITY= "ERROR"
+
+MESSAGE	= "ERROR_VIEW_FIELD"
+TEXT	= "Simple view field [] in the view [] does not have a link definition"
+SEVERITY= "ERROR"
+
+MESSAGE	= "ERROR_INDEX_FIELD"
+TEXT	= "Cant determine field list for index []"
+SEVERITY= "ERROR"
+
+
+! Information
+
+MESSAGE	= "RECOVERY_ONE"
+TEXT	= "Use 'convert_table' in RECOVER mode from MAIN on '[]' to fix"
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "RECOVERY_TWO"
+TEXT	= "Use 'convert_table' in RECOVER mode from TEMP on '[]' to fix"
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "USE_INDEXES"
+TEXT	= "Use 'convert_table' in INDEXES mode on '[]' to fix"
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "REPEAT_COMM"
+TEXT	= "Use 'convert_table' in same mode on '[]' to fix"
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "USE_CONVERT"
+TEXT	= "Use 'convert_table' in CONVERT mode on '[]' to fix"
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "USE_REBUILD"
+TEXT	= "Use 'convert_table' in REBUILD mode on '[]' to fix"
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "USE_COERCE"
+TEXT	= "Use 'convert_table' in COERCE mode on '[]' to fix"
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "NEWTAB_AGAIN"
+TEXT	= "Use 'convert_table' in NEWTABLE mode on '[]' to fix"
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "VIEW_NOT_THERE"
+TEXT	= "The database view '[]' does not exist"
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "CONVERT_IN_MODE"
+TEXT	= "Convert table (in '[]' mode)[][]"
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "CONVERT_NOCONFIRM"
+TEXT	= " (confirms not reqd.)"
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "CONVERT_WRITE_SCRIPT"
+TEXT	= " (sending SQL statements to file '[]')"
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "CONVERT_REVERSED"
+TEXT	= "Conversion of table reversed successfully"
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "COERCE_GENERAL"
+TEXT	= "'COERCE' mode will result in database errors if data conversion in invalid."
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "COERCE_INGRES"
+TEXT	= "'COERCE' mode with Ingres may result in unwarned truncation of data."
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "COERCE_SQLSERVER"
+TEXT	= "'COERCE' mode with SQL Server may result in unwarned truncation and loss of data."
+SEVERITY= "INFORMATION"
+
+MESSAGE	= "ERRORS_DETECTED"
+TEXT	= "Errors detected in structure file - press <return> to continue."
+
+MESSAGE = "RUN_ENTITY"
+TEXT    = "Deprecated program - Please use CreateEntityDefinition.exe instead."
+
+! Audit update messages
+
+MESSAGE GROUP = "SMP_STRUCT_AUDIT_"
+
+MESSAGE		= "UPDATING"
+TEXT		= "Updating audit settings in audits.sec"
+
+MESSAGE		= "UPDATE_OK"
+TEXT		= "Updated successfully"
+
+MESSAGE		= "UPDATE_ERROR"
+TEXT		= "audits.sec could not be updated. The Audit settings may not be correctly applied "
+SEVERITY	= "ERROR"

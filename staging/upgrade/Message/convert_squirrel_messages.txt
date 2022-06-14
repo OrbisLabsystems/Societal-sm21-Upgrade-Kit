@@ -1,0 +1,28 @@
+! Messages for the Squirrel Conversion Utility
+
+MESSAGE GROUP = "CONVERT_SQUIRREL_"
+
+MESSAGE = "FILE_PROMPT"
+TEXT    = "Squirrel File Name > "
+
+MESSAGE = "OPEN_FAIL"
+TEXT    = "Failure opening file - []"
+
+MESSAGE = "CLOSE_FAIL"
+TEXT    = "Failure closing file - []"
+
+MESSAGE = "NO_MATCH"
+TEXT    = "No files found matching the file specification - []"
+
+MESSAGE = "NO_FILE"
+TEXT    = "File not found - []"
+
+MESSAGE = "READ_ERROR"
+TEXT    = "Error reading from file - []"
+
+MESSAGE = "READ_FAIL"
+TEXT    = "Failure reading from file - [] -check this is a 2.6 Squirrel file"
+
+MESSAGE = "INVALID_SQUIRREL"
+TEXT    = "Invalid Squirrel File - [] -this file should be removed from the system"
+

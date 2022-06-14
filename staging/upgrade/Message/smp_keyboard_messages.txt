@@ -1,0 +1,9 @@
+MESSAGE GROUP "SMP_KEYBOARD_"
+
+! SEVERITY      ERROR
+
+MESSAGE =       "TERM_ENV_VAR_NOT_SET"
+TEXT =          "The TERM environment variable is not set"
+
+MESSAGE =       "UNKNOWN_CURSES_KEY"
+TEXT =          "The terminal definition file contains the unknown CURSES key []"

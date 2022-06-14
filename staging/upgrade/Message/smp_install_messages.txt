@@ -1,0 +1,1153 @@
+! Messages used during installation operations
+
+MESSAGE GROUP = "IST_"
+
+MESSAGE       = "COMPILING"
+TEXT          = "....Compiling the report"
+
+
+MESSAGE GROUP "ADDREPORT_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Add reports to SampleManager"
+
+MESSAGE         = "FOOTER"
+TEXT            = "Press DO to start or EXIT to cancel"
+
+MESSAGE         = "PROMPT_1"
+TEXT            = "Reports list file"
+
+MESSAGE         = "NO_LIST_FILE"
+TEXT            = "Error finding reports list file : "
+
+MESSAGE         = "PROMPT_2"
+TEXT            = "Log file name"
+
+MESSAGE         = "PROMPT_4"
+TEXT            = "Pause on messages"
+
+MESSAGE         = "ST_HDR_1"
+TEXT            = "************** Starting Report Addition to SampleManager ******************"
+
+MESSAGE         = "ST_HDR_2"
+TEXT            = "Reading report list from "
+
+MESSAGE         = "ST_HDR_3"
+TEXT            = "***************************************************************************"
+
+MESSAGE         = "ES_1"
+TEXT            = "Failed to open report list file - Terminating"
+
+MESSAGE         = "ES_2"
+TEXT            = "All data in file processed"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Adding Reports"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Report ID"
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "Group ID"
+
+MESSAGE         = "DISPLAY_8"
+TEXT            = "Description"
+
+MESSAGE         = "STATUS"
+TEXT            = "Processing status"
+
+MESSAGE         = "TAB_1"
+TEXT            = "Report : "
+
+MESSAGE         = "TAB_2"
+TEXT            = "Group : "
+
+MESSAGE         = "ES_3"
+TEXT            = "File does not exist for report "
+
+MESSAGE         = "ES_4"
+TEXT            = "Error creating "
+
+MESSAGE         = "ES_6"
+TEXT            = "Report Added and Update Successfully"
+
+MESSAGE         = "FIN_TEXT"
+TEXT            = "****************************** FINISHED ***********************************"
+
+
+MESSAGE  GROUP  "BARCONV_"
+
+MESSAGE         = "NUM_1"
+TEXT            = "Bad Menu Number '"
+
+MESSAGE         = "NUM_2"
+TEXT            = "' on line "
+
+MESSAGE         = "NUM_3"
+TEXT            = "Bad Option Number '"
+
+MESSAGE         = "NUM_4"
+TEXT            = "Create error : "
+
+MESSAGE         = "DISP_1"
+TEXT            = "Deleting existing barmenu record(s) for "
+
+MESSAGE         = "DISP_2"
+TEXT            = " record(s) deleted for user "
+
+MESSAGE         = "NUM_5"
+TEXT            = "Could not open file : "
+
+MESSAGE         = "DISP_3"
+TEXT            = "Adding barmenu record(s) for "
+
+MESSAGE         = "DISP_4"
+TEXT            = " record(s) added for user "
+
+MESSAGE         = "HEADER"
+TEXT            = "Bar Menu Conversion"
+
+MESSAGE         = "FOOTER"
+TEXT            = "Press DO to process or EXIT to cancel"
+
+MESSAGE         = "PROM_1"
+TEXT            = "Bar menu filename"
+
+MESSAGE         = "PROM_2"
+TEXT            = "Bar menu user"
+
+MESSAGE         = "PROM_3"
+TEXT            = "Status"
+
+MESSAGE         = "PROM_4"
+TEXT            = "Menu security source"
+
+MESSAGE         = "DISP_5"
+TEXT            = "Existing barmenu records will be deleted for "
+
+MESSAGE         = "DELETE_BAR"
+TEXT            = "Delete old database records"
+
+MESSAGE         = "DELETE_TEXT"
+TEXT            = "Deleted record number : "
+
+MESSAGE         = "CREATE_BAR"
+TEXT            = "Writing to database"
+
+MESSAGE         = "CREATE_TEXT"
+TEXT            = "Written record number : "
+
+
+MESSAGE  GROUP  "COMPILE_"
+
+MESSAGE         = "IN_26"
+TEXT            = "Compile in 2.6 mode"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Compile VGL reports"
+
+MESSAGE         = "FOOTER"
+TEXT            = "Press DO to start or EXIT to cancel"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "This will compile all the reports listed in a text file"
+
+MESSAGE         = "PROMPT_1"
+TEXT            = "Reports list file"
+
+MESSAGE         = "TAB_1"
+TEXT            = "************************ Terminate Report Compilation **************************"
+MESSAGE         = "TAB_2"
+TEXT            = "Could not find file"
+
+MESSAGE         = "PROMPT_2"
+TEXT            = "Log file name"
+
+MESSAGE         = "PROMPT_3"
+TEXT            = "Pause on messages"
+
+MESSAGE         = "TAB_3"
+TEXT            = "************************* Terminate Report Compilation *************************"
+
+MESSAGE         = "TAB_4"
+TEXT            = "************************* Starting Report Compilation **************************"
+
+MESSAGE         = "TAB_5"
+TEXT            = "Reading compile list from "
+
+MESSAGE         = "NO_LIST_FILE"
+TEXT            = "Cannot find reports list file "
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Failed to open compile list file - Terminating"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "All data in file processed"
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "Compiling Report"
+
+MESSAGE         = "STATUS"
+TEXT            = "Status"
+
+MESSAGE         = "TAB_6"
+TEXT            = "Report"
+
+MESSAGE         = "TAB_7"
+TEXT            = "Report Does Not Exist"
+
+MESSAGE         = "TAB_8"
+TEXT            = "Compilation Failed"
+
+MESSAGE         = "TAB_9"
+TEXT            = "Compiled Successfully"
+
+MESSAGE         = "TAB_10"
+TEXT            = "*****************************FINISHED**************************************"
+
+MESSAGE         = "ERROR_HEADER"
+TEXT            = "An error has occured during compilation"
+
+MESSAGE         = "NEW_ERR_1"
+TEXT            = " - file does not exist"
+
+MESSAGE         = "NEW_ERR_2"
+TEXT            = "The compilation has failed"
+
+MESSAGE         = "WORKED"
+TEXT            = "Report compiled ok"
+
+MESSAGE         = "ES_2"
+TEXT            = "All data in file processed"
+
+
+MESSAGE  GROUP  "GRANT_"
+
+MESSAGE         = "GRAT_1"
+TEXT            = "Table"
+
+MESSAGE         = "GRAT_3"
+TEXT            = "Schema"
+
+MESSAGE         = "BORDER_1"
+TEXT            = "Error"
+
+MESSAGE         = "HEADER_1"
+TEXT            = "Database Grant Tool"
+
+MESSAGE         = "FOOTER_1"
+TEXT            = "Press DO to create .sql file / EXIT to Quit"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = " Operator     : "
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = " Table/Schema : "
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = " Object List  : "
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = " Privileges   : "
+
+MESSAGE         = "BORDER_2"
+TEXT            = "Grant Successful"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = " A grant.sql file has been created in smp$sqlfiles"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = " Run smp$programs:exec_sql and enter @smp$sqlfiles:grant.sql"
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = " to perform the grant operation"
+
+MESSAGE         = "GRAT_14"
+TEXT            = "File open '"
+
+MESSAGE         = "GRAT_15"
+TEXT            = "File close '"
+
+MESSAGE         = "GRAT_16"
+TEXT            = "File write '"
+
+MESSAGE GROUP "JOURNAL_"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "Error"
+
+MESSAGE         = "MENU_1"
+TEXT            = "Choose Journaling Option"
+
+MESSAGE         = "MENU_2"
+TEXT            = "Quit"
+
+MESSAGE         = "MENU_3"
+TEXT            = "Enable Journaling"
+
+MESSAGE         = "MENU_4"
+TEXT            = "Disable Journaling"
+
+MESSAGE         = "HEAD_2"
+TEXT            = "Journal Successful"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = " A journal.sql file has been created in smp$sqlfiles."
+
+MESSAGE         = "DISPLAY_1_U"
+TEXT            = " A journal.sql file has been created in $SMP_SQLFILES."
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Run smp$programs:exec_sql and enter @smp$sqlfiles:journal.sql"
+
+MESSAGE         = "DISPLAY_2_U"
+TEXT            = "Run exec_sql and enter @smp$sqlfiles:journal.sql"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = " to perform the journal operation."
+
+MESSAGE         = "JOUR_3"
+TEXT            = "File open '"
+
+MESSAGE         = "JOUR_4"
+TEXT            = "File close '"
+
+MESSAGE         = "JOUR_5"
+TEXT            = "File write '"
+
+MESSAGE GROUP "LICE_LOAD_"
+
+MESSAGE         = "CONST_1"
+TEXT            = "Product name    :"
+
+MESSAGE         = "CONST_2"
+TEXT            = "Number of users :"
+
+MESSAGE         = "CONST_3"
+TEXT            = "System ID       :"
+
+MESSAGE         = "CONST_4"
+TEXT            = "CPU type        :"
+
+MESSAGE         = "CONST_5"
+TEXT            = "Expiry date     :"
+
+MESSAGE         = "CONST_6"
+TEXT            =  "Checksum        :"
+
+MESSAGE         = "CONST_7"
+TEXT            = "Product Licence Registration Screen"
+
+MESSAGE         = "CONST_8"
+TEXT            = "EXIT to quit"
+
+MESSAGE         = "CONST_9"
+TEXT            = "Error reserving new id :"
+
+MESSAGE         = "CONST_10"
+TEXT            = "Please specify the licensed products name"
+
+MESSAGE         = "CONST_11"
+TEXT            = "Please specify the licensed products checksum"
+
+MESSAGE         = "CONST_12"
+TEXT            = "Product Registration"
+
+MESSAGE         = "RECONNECT"
+TEXT            = "Changes will not take place until you Reconnect. Reconnect now ?"
+
+MESSAGE GROUP "RDB_NULL_"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Creating SQL script file"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Number of tables to process : "
+
+MESSAGE         = "PERCENT_BAR_NAME"
+TEXT            = "Percentage of tables processed"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "An rdb_null.sql file has been created in smp$sqlfiles."
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Run smp$programs:exec_sql and enter @smp$sqlfiles:rdb_null.sql"
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "    to run the created script."
+
+MESSAGE GROUP "RDB_SETUP_"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "Error"
+
+MESSAGE         = "HEAD_2"
+TEXT            = "Database Rdb_setup Tool"
+
+MESSAGE         = "FOOT_1"
+TEXT            = "Press DO to create .sql file / EXIT to Quit"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = " Table  : "
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Rdb_setup Successful"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = " An RDB_SETUP.SQL file has been created in SMP$SQLFILES. Run"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = " smp$programs:exec_sql and enter @smp$sqlfiles:rdb_setup.sql"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = " to perform the rdb_setup operation"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "File open '"
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "File close '"
+
+MESSAGE         = "DISPLAY_8"
+TEXT            = "File write '"
+
+MESSAGE GROUP "SETUP_"
+
+MESSAGE          = "MENU"
+TEXT             = "Setup Options"
+
+MESSAGE          = "FULL"
+TEXT             = "Full Setup of all options"
+
+MESSAGE          = "PHRASES"
+TEXT             = "Setup Phrases"
+
+MESSAGE          = "GROUP"
+TEXT             = "Add System Group"
+
+MESSAGE          = "OPERATOR"
+TEXT             = "Add System Operator"
+
+MESSAGE          = "SYNTAXES"
+TEXT             = "Add Syntaxes"
+
+MESSAGE          = "REPORTS"
+TEXT             = "Add Reports"
+
+MESSAGE          = "SIG_FIGS"
+TEXT             = "Add Sig Figs"
+
+MESSAGE          = "CAT_COMPS"
+TEXT             = "Add Component Categories"
+
+MESSAGE          = "LIST_RESULTS"
+TEXT             = "Add List Results"
+
+MESSAGE          = "LIMIT_CALCULATIONS"
+TEXT             = "Add Limit Calculations"
+
+MESSAGE          = "CALCULATIONS"
+TEXT             = "Add Calculations"
+
+MESSAGE          = "ADD_HELP"
+TEXT             = "Add Help"
+
+MESSAGE          = "ADD_MENU"
+TEXT             = "Add Menu"
+
+MESSAGE          = "CONFIG"
+TEXT             = "Add Configuration"
+
+MESSAGE          = "ADD_UNITS"
+TEXT             = "Add Units"
+
+MESSAGE          = "ADD_EXPLORER"
+TEXT             = "Add Explorer Data"
+
+MESSAGE          = "ADD_SAMPLEPLAN"
+TEXT             = "Add Sampling Plan Data"
+
+MESSAGE          = "ADD_ROLES"
+TEXT             = "Add Roles"
+
+MESSAGE          = "ADD_MASTER_MENU"
+TEXT             = "Add Master Menu Data"
+
+MESSAGE          = "COMPILE"
+TEXT             = "Compile Reports"
+
+MESSAGE          = "TEMPLATES"
+TEXT             = "Setup Templates"
+
+MESSAGE          = "TAB"
+TEXT             = "Setup TAB"
+
+MESSAGE          = "INFOMAKER"
+TEXT             = "Setup Infomaker Reports"
+
+MESSAGE          = "WEB"
+TEXT             = "Setup WEB"
+
+MESSAGE          = "ENTITIES"
+TEXT             = "Setup Entity Definitions"
+
+MESSAGE          = "FORMS"
+TEXT             = "Add Forms"
+
+MESSAGE          = "SET_PHRASES"
+TEXT             = "Adding Phrases"
+
+MESSAGE          = "SET_GROUP"
+TEXT             = "Adding System Group"
+
+MESSAGE          = "SET_HELP"
+TEXT             = "Adding Help"
+
+MESSAGE          = "SET_CONFIG"
+TEXT             = "Adding Configuration"
+
+MESSAGE          = "SET_UNITS"
+TEXT             = "Adding Unit Conversion Data"
+
+MESSAGE          = "SET_MENU"
+TEXT             = "Adding menu"
+
+MESSAGE          = "SET_OPERATOR"
+TEXT             = "Adding System Operator"
+
+MESSAGE          = "SET_REPORTS"
+TEXT             = "Adding Reports"
+
+MESSAGE          = "SET_TEMPLATES"
+TEXT             = "Adding Templates"
+
+MESSAGE          = "SET_SYNTAX"
+TEXT             = "Adding Syntaxes"
+
+MESSAGE          = "SET_SIG_FIGS"
+TEXT             = "Adding Sig Figs"
+
+MESSAGE          = "SET_CAT_COMPS"
+TEXT             = "Adding Component Categories"
+
+MESSAGE          = "SET_LIST_RESULTS"
+TEXT             = "Adding List Results"
+
+MESSAGE          = "SET_EXTRA"
+TEXT             = "Adding 4.1-2 CSV Data"
+
+MESSAGE          = "SET_EXPLORER"
+TEXT             = "Adding Explorer Data"
+
+MESSAGE          = "SET_SAMPLEPLAN"
+TEXT             = "Adding Sampling Plan Data"
+
+MESSAGE          = "SET_ROLES"
+TEXT             = "Adding Roles Data"
+
+MESSAGE          = "SET_MASTER_MENU"
+TEXT             = "Adding Master Menu Data"
+
+MESSAGE          = "SET_LIMIT_CALCULATIONS"
+TEXT             = "Adding Limit Calculations"
+
+MESSAGE          = "SET_CALCULATIONS"
+TEXT             = "Adding Calculations"
+
+MESSAGE          = "SET_TAB"
+TEXT             = "Adding TAB Data"
+
+MESSAGE          = "SET_INFOMAKER"
+TEXT             = "Adding Infomaker Reports"
+
+MESSAGE          = "SET_WEB"
+TEXT             = "Adding WEB Data"
+
+MESSAGE          = "SET_FORMS"
+TEXT             = "Adding Form Data"
+
+MESSAGE          = "EXIT"
+TEXT             = "<EXIT> to quit"
+
+MESSAGE          = "NO_REPORTS"
+TEXT             = "There are no reports in the report table"
+
+MESSAGE          = "SEARCH_REPORTS"
+TEXT             = "Searching Reports "
+
+MESSAGE          = "ALREADY_COMPILED"
+TEXT             = "Already Compiled"
+
+MESSAGE          = "COMPILING"
+TEXT             = "Compiling "
+
+MESSAGE          = "FAILED"
+TEXT             = "Failed to Compile"
+
+MESSAGE          = "WARNINGS"
+TEXT             = "Compiled with Warnings"
+
+MESSAGE          = "SUCCESS"
+TEXT             = "Compiled Successfully"
+
+MESSAGE          = "EXIST"
+TEXT             = "Doesn't Exist"
+
+MESSAGE          = "SPACE"
+TEXT             = "Press <SPACE> to continue"
+
+MESSAGE          = "HEADER_LIT"
+TEXT             = "** SAMPLEMANAGER REPORT COMPILATION **"
+
+MESSAGE          = "REPORT_LIT"
+TEXT             = "Report I.D."
+
+MESSAGE          = "COMPILE_LIT"
+TEXT             = "Compilation Message"
+
+MESSAGE          = "PAGE_TEXT"
+TEXT             = "Page : "
+
+MESSAGE          = "RUN_CHOICE"
+TEXT             = "Run"
+
+MESSAGE          = "EXIT_BUTTON"
+TEXT             = "Exit"
+
+MESSAGE GROUP "SETUPTEMP_"
+
+MESSAGE          = "ASSIGN_1"
+TEXT             = "SampleManager blank template"
+
+MESSAGE          = "ASSIGN_2"
+TEXT             = "Full Sample Screen"
+
+MESSAGE          = "ASSIGN_3"
+TEXT             = "Default job template"
+
+MESSAGE GROUP "STORE_IND_"
+
+MESSAGE          = "BORD_1"
+TEXT             = "Error"
+
+MESSAGE          = "HEAD_1"
+TEXT             = "Database Storage Index Tool"
+
+MESSAGE          = "FOOT_1"
+TEXT             = "Press DO to create .sql file / EXIT to Quit"
+
+MESSAGE          = "DISPLAY_1"
+TEXT             = " Table : "
+
+MESSAGE          = "BORD_2"
+TEXT             = "Store Index Successful"
+
+MESSAGE          = "DISPLAY_2"
+TEXT             = " A store_ind.sql file has been created in smp$sqlfiles"
+
+MESSAGE          = "DISPLAY_3"
+TEXT             = " Run smp$programs:exec_sql and enter @smp$sqlfiles:store_ind.sql"
+
+MESSAGE          = "DISPLAY_4"
+TEXT             = " to perform the store index operation"
+
+MESSAGE          = "DISPLAY_5"
+TEXT             = "File open '"
+
+MESSAGE          = "DISPLAY_6"
+TEXT             = "File close '"
+
+MESSAGE          = "DISPLAY_7"
+TEXT             = "File write '"
+
+MESSAGE GROUP "STORE_MAP_"
+
+MESSAGE          = "HEAD_1"
+TEXT             = "Error"
+
+MESSAGE          = "HEAD_2"
+TEXT             = "Database Storage Map Tool"
+
+MESSAGE          = "FOOT_1"
+TEXT             = "Press DO to create .sql file / EXIT to Quit"
+
+MESSAGE          = "DISPLAY_1"
+TEXT             = " Table : "
+
+MESSAGE          = "HEAD_3"
+TEXT             = "Store Map Successful"
+
+MESSAGE          = "DISPLAY_4"
+TEXT             = " A store_map.sql file has been created in smp$sqlfiles"
+
+MESSAGE          = "DISPLAY_5"
+TEXT             = " Run smp$programs:exec_sql and enter @smp$sqlfiles:store_map.sql"
+
+MESSAGE          = "DISPLAY_6"
+TEXT             = " to perform the store map operation"
+
+MESSAGE          = "DISPLAY_7"
+TEXT             = "File open '"
+
+MESSAGE          = "DISPLAY_8"
+TEXT             = "File close '"
+
+MESSAGE          = "DISPLAY_9"
+TEXT             = "File write '"
+
+MESSAGE GROUP "TABLE_SAVER_"
+
+MESSAGE         = "TABLE_PR"
+TEXT            = "Database table to save"
+
+MESSAGE         = "FILE_PR"
+TEXT            = "File to save data to"
+
+MESSAGE         = "SEL_FLD_PR"
+TEXT            = "Save all / select fields"
+
+MESSAGE         = "SEL_REC_PR"
+TEXT            = "Save all / select records"
+
+MESSAGE         = "SEL_FLD"
+TEXT            = "Selected fields"
+
+MESSAGE         = "ALL_FLD"
+TEXT            = "All fields"
+
+MESSAGE         = "SEL_REC"
+TEXT            = "Selected or ordered records"
+
+MESSAGE         = "ALL_REC"
+TEXT            = "All records (unordered)"
+
+MESSAGE         = "FORM_HEADER"
+TEXT            = "Save Database Table to File"
+
+MESSAGE         = "FORM_FOOTER"
+TEXT            = "<DO> to Save Table, <EXIT> to Abort"
+
+MESSAGE         = "FIELD_LIST"
+TEXT            = "List of fields for table '[]':"
+
+MESSAGE         = "LIST_HEADER"
+TEXT            = "Save Table to File"
+
+MESSAGE         = "LIST_FOOTER"
+TEXT            = "<SELECT> to toggle fields, <DO> to proceed, <EXIT> to quit"
+
+MESSAGE         = "WRITE_FILE"
+TEXT            = "Writing data from '[]' table to CSV file"
+
+MESSAGE         = "BAR_HEADER"
+TEXT            = "Writing [] records from '[]' table to file"
+
+MESSAGE         = "BAR_FOOTER"
+TEXT            = "Please Wait"
+
+MESSAGE         = "WRITE_SUCCESS"
+TEXT            = "[] records successfully written to CSV file"
+
+MESSAGE         = "BATCH"
+TEXT            = "TABLE SAVER : []"
+
+MESSAGE         = "TOO_MANY_PAR"
+TEXT            = "Only parameters are table name and CSV filename"
+
+MESSAGE         = "NO_PARS"
+TEXT            = "Need table name as parameter"
+
+MESSAGE         = "USING_DEF_CSV"
+TEXT            = "No file name given - using default value"
+
+MESSAGE         = "ILL_TBL_NAME"
+TEXT            = "Illegal table name '[]'"
+
+MESSAGE         = "ILL_FLD_NAME"
+TEXT            = "Illegal field name '[]'"
+
+MESSAGE         = "NAME_CSV"
+TEXT            = "Sending records from '[]' table to CSV file '[]'"
+
+MESSAGE         = "NO_FIELDS"
+TEXT            = "Operation aborted - no fields in table - file not written"
+
+MESSAGE         = "ABORTED"
+TEXT            = "Operation aborted - file not written"
+
+MESSAGE         = "FINISHED"
+TEXT            = "Finished"
+
+MESSAGE         = "READ_TRAN"
+TEXT            = "Send '[]' table to CSV file"
+
+MESSAGE GROUP "TABLE_LOADER_"
+
+MESSAGE         = "FILE_PR"
+TEXT            = "File to load data from"
+
+MESSAGE         = "MODE_PR"
+TEXT            = "Table writing mode"
+
+MESSAGE         = "TRANS_PR"
+TEXT            = "Transaction mode for writing"
+
+MESSAGE         = "MODE_WIPE"
+TEXT            = "Erase all table data before loading"
+
+MESSAGE         = "MODE_OVER"
+TEXT            = "Overwrite table data with file data"
+
+MESSAGE         = "MODE_IGN"
+TEXT            = "Do not overwrite table data"
+
+MESSAGE         = "MODE_UNCH"
+TEXT            = "Write data to table unchecked"
+
+MESSAGE         = "MODE_WIPE_UNCH"
+TEXT            = "Erase table data, then write unchecked"
+
+MESSAGE         = "MULTI_PR"
+TEXT            = "Multiple transactions"
+
+MESSAGE         = "SINGLE_PR"
+TEXT            = "Single transaction"
+
+MESSAGE         = "FORM_HEADER"
+TEXT            = "Load Database Table from File"
+
+MESSAGE         = "FORM_FOOTER"
+TEXT            = "<DO> to Load Table, <EXIT> to Abort"
+
+MESSAGE         = "NEW_SIZE"
+TEXT            = "Enter number of records per transaction : "
+
+MESSAGE         = "SIZE_FOOTER"
+TEXT            = "<DO> to Proceed, <EXIT> to Abort"
+
+MESSAGE         = "HEADER_CORR"
+TEXT            = "CSV file has corrupt header (line []) - Load aborted"
+
+MESSAGE         = "DATA_CORR"
+TEXT            = "CSV file has corrupt data (line []) - Load aborted"
+
+MESSAGE         = "UNEXP_EOF"
+TEXT            = "End of CSV file reached unexpectedly - Load aborted"
+
+MESSAGE         = "ILL_TBL_NAME"
+TEXT            = "Illegal table name '[]' in CSV file"
+
+MESSAGE         = "ILL_FLD_NAME"
+TEXT            = "Illegal field name '[]' for table '[]' in CSV file"
+
+MESSAGE         = "FILE_BIGGER"
+TEXT            = "Field lengths in file longer than those in table."
+
+MESSAGE         = "PROCEED"
+TEXT            = "Still go on ? "
+
+MESSAGE         = "PROC_FOOTER"
+TEXT            = "<SPACEBAR> to toggle, <DO> to choose"
+
+MESSAGE         = "RETRY_OPT"
+TEXT            = "Try again"
+
+MESSAGE         = "ABORT_OPT"
+TEXT            = "Abort load"
+
+MESSAGE         = "PROCEED_OPT"
+TEXT            = "Continue (table unlocked)"
+
+MESSAGE         = "LOCKED_HEADER"
+TEXT            = "Load Database Table from File - Cannot Lock Table"
+
+MESSAGE         = "LOCKED_PROMPT"
+TEXT            = "'[]' table is in use.  What now ? "
+
+MESSAGE         = "TABLE_IN_USE"
+TEXT            = "'[]' table still in use - Load aborted"
+
+MESSAGE         = "READ_FILE"
+TEXT            = "Reading data from CSV file to table '[]'"
+
+MESSAGE         = "WRITE_SUCCESS"
+TEXT            = "[] record(s) written to database[]"
+
+MESSAGE         = "WRITE_SUCC_OVR"
+TEXT            = "[] record(s) written to database (including [] overwrites)[]"
+
+MESSAGE         = "WRITE_SUCC_IGN"
+TEXT            = "[] record(s) written to database ([] record(s) ignored)[]"
+
+MESSAGE         = "NO_ERR"
+TEXT            = " with no errors"
+
+MESSAGE         = "ERRORS"
+TEXT            = " with [] error(s)"
+
+MESSAGE         = "MISS_KEY0"
+TEXT            = "Key0 field '[]' missing from CSV file - Load aborted"
+
+MESSAGE         = "LOAD_DATA"
+TEXT            = "Ready to write to database table '[]'"
+
+MESSAGE         = "BAR_HEADER"
+TEXT            = "Writing records to '[]' table"
+
+MESSAGE         = "BAR_FOOTER"
+TEXT            = "Please Wait"
+
+MESSAGE         = "CANT_OVER"
+TEXT            = "Unable to overwrite record"
+
+MESSAGE         = "CANT_WRITE"
+TEXT            = "Unable to write new record"
+
+MESSAGE         = "CANT_DEL"
+TEXT            = "Unable to delete records in table"
+
+MESSAGE         = "ERR_HEAD"
+TEXT            = "Error(s) occured while loading table from CSV file"
+
+MESSAGE         = "ERR_TAB"
+TEXT            = "Database table"
+
+MESSAGE         = "ERR_FIL"
+TEXT            = "CSV filename"
+
+MESSAGE         = "ERRS_HEAD"
+TEXT            = "Errors :"
+
+MESSAGE         = "ERR_ERR"
+TEXT            = "Error number"
+
+MESSAGE         = "ERR_PROB"
+TEXT            = "Problem"
+
+MESSAGE         = "ERR_REAS"
+TEXT            = "Reason"
+
+MESSAGE         = "ERR_KEY0"
+TEXT            = "Key 0 field"
+
+MESSAGE         = "ERR_LINE"
+TEXT            = "CSV file line #"
+
+MESSAGE         = "LOGEND_ERR"
+TEXT            = "A total of [] error(s) occured"
+
+MESSAGE         = "LOGEND_TXT"
+TEXT            = "[End of Error Log]"
+
+MESSAGE         = "WRITE_TRAN"
+TEXT            = "Load '[]' table from CSV file"
+
+MESSAGE         = "RECORD_NUM"
+TEXT            = "Expected [] record(s) from file, found []"
+
+MESSAGE         = "VALIDATE_ABORT"
+TEXT            = "Load aborted"
+
+MESSAGE         = "BATCH"
+TEXT            = "TABLE LOADER : []"
+
+MESSAGE         = "BATCH_WARN"
+TEXT            = "WARNING : []"
+
+MESSAGE         = "TOO_MANY_PAR"
+TEXT            = "Only parameters are CSV filename, overwrite mode and transaction size"
+
+MESSAGE         = "USING_DEF_CSV"
+TEXT            = "No file name given - using default value"
+
+MESSAGE         = "USING_DEF_MODE"
+TEXT            = "No overwrite mode given - using default value"
+
+MESSAGE         = "USING_DEF_TRANS"
+TEXT            = "No transaction size given - using default value"
+
+MESSAGE         = "INV_MODE"
+TEXT            = "Invalid overwrite mode '[]' given"
+
+MESSAGE         = "INV_FILE"
+TEXT            = "The CSV file '[]' does not exist"
+
+MESSAGE         = "INV_TRANS"
+TEXT            = "Transaction size must be numeric"
+
+MESSAGE         = "RETRY_SLEEP"
+TEXT            = "The table '[]' is in use - sleeping"
+
+MESSAGE         = "CANT_LOCK"
+TEXT            = "The table '[]' is still in use - timing out"
+
+MESSAGE         = "NAME_CSV"
+TEXT            = "Using CSV file '[]'"
+
+MESSAGE         = "USING_SINGLE_TR"
+TEXT            = "All data will be written in a single transaction"
+
+MESSAGE         = "USING_MULTI_TR"
+TEXT            = "Data will be written at [] record(s) per transaction"
+
+MESSAGE         = "ABORTED"
+TEXT            = "Operation aborted - database not altered"
+
+MESSAGE         = "FINISHED"
+TEXT            = "Finished"
+
+MESSAGE         = "CLIENT_PR"
+TEXT            = "Use client file"
+
+MESSAGE         = "UNKNOWN_TABLE"
+TEXT            = "Unknown"
+
+MESSAGE GROUP "USER_CONTROL_"
+
+MESSAGE         = "ADD_USER_HEADER"
+TEXT            = "Add User"
+
+MESSAGE         = "FOOTER"
+TEXT            = "Press <EXIT> to cancel"
+
+MESSAGE         = "ADD_ID_PROMPT"
+TEXT            = "Enter New User ID : "
+
+MESSAGE         = "ADD_PASS_PROMPT"
+TEXT            = "Enter Password    : "
+
+MESSAGE         = "ADD_VER_PROMPT"
+TEXT            = "Verify Password   : "
+
+MESSAGE         = "DELETE_USER_HEADER"
+TEXT            = "Delete User"
+
+MESSAGE         = "DELETE_PROMPT"
+TEXT            = "Enter User ID : "
+
+MESSAGE         = "CHANGE_PASS_HEADER"
+TEXT            = "Change Your Password"
+
+MESSAGE         = "CHANGE_ANY_HEADER"
+TEXT            = "Change Any Users Password"
+
+MESSAGE         = "CH_PASS_OLD"
+TEXT            = "Enter Old Password : "
+
+MESSAGE         = "CH_PASS_USER"
+TEXT            = "Enter User ID      : "
+
+MESSAGE         = "CH_PASS_NEW"
+TEXT            = "Enter New Password : "
+
+MESSAGE         = "CH_PASS_VER"
+TEXT            = "Enter Verification : "
+
+MESSAGE         = "CHANGE_FAILED"
+TEXT            = "Unable to change password"
+
+MESSAGE         = "PASS_MISMATCH"
+TEXT            = "New password and verification are different"
+
+MESSAGE         = "DEF_TEXT_HEADER"
+TEXT            = "Define Text Printer"
+
+MESSAGE         = "DEF_LABEL_HEADER"
+TEXT            = "Define Label Printer"
+
+MESSAGE         = "PRINTER_PROMPT"
+TEXT            = "Enter New Printer ID : "
+
+MESSAGE         = "AUTH_LEV_HEADER"
+TEXT            = "Change Your Access Level"
+
+MESSAGE         = "AUTH_LEV_PROMPT"
+TEXT            = "Enter New Authorisation Level : "
+
+MESSAGE         = "LEV_TOO_HIGH"
+TEXT            = "You cannot set your access level to be that high"
+
+MESSAGE         = "ERR_ENVIRONMENT"
+TEXT            = "There was an error creating the user's environment"
+
+MESSAGE GROUP "USER_ENV_"
+
+MESSAGE         = "CONFIRM_RESET_OWN"
+TEXT            = "Do you really want to reset your entire user environment?"
+
+MESSAGE         = "COPY_FROM"
+TEXT            = "Copy from"
+
+MESSAGE         = "H_COPY"
+TEXT            = "Copy User Environment"
+
+MESSAGE         = "CONFIRM_COPY_OWN"
+TEXT            = "Do you really want to copy "
+TEXT            = "'s environment to your own?"
+TEXT            = "(This will overwrite your existing environment.)"
+
+MESSAGE         = "OPERATOR_ID"
+TEXT            = "Operator Id"
+
+MESSAGE         = "H_RESET"
+TEXT            = "Reset User Environment"
+
+MESSAGE         = "CONFIRM_RESET_USER"
+TEXT            = "Reset environment to defaults for user "
+
+MESSAGE         = "COPY_TO"
+TEXT            = "Copy to"
+
+MESSAGE         = "CONFIRM_COPY_USER"
+TEXT            = "Copy "
+TEXT            = "'s environment to user "
+TEXT            = "(This will overwrite "
+TEXT            = "'s existing environment.)"
+
+MESSAGE         = "CLONE_FROM"
+TEXT            = "Clone from"
+
+MESSAGE         = "H_CLONE"
+TEXT            = "Clone Entire User Environment"
+
+MESSAGE         = "CLONE_TO"
+TEXT            = "Clone to"
+
+MESSAGE         = "CONFIRM_CLONE_USER"
+TEXT            = "Clone "
+TEXT            = "'s environment to user "
+TEXT            = "(This will overwrite "
+TEXT            = "'s existing environment with a complete copy from "
+
+MESSAGE         = "ERR_CLONE_SELF"
+TEXT            = "Cannot clone from self"
+
+MESSAGE GROUP "MENU_CONVERT_"
+
+MESSAGE         = "LOAD_HEADER"
+TEXT            = "Load menu file"
+
+MESSAGE         = "SAVE_HEADER"
+TEXT            = "Save menu sub-tree to a file"
+
+MESSAGE         = "MENU_NAME"
+TEXT            = "Menu name"
+
+MESSAGE         = "START_OPTION"
+TEXT            = "Menu save root"
+
+MESSAGE         = "FILE_NAME"
+TEXT            = "MTB file name"
+
+MESSAGE         = "CS_FILE"
+TEXT            = "Use client file"
+
+MESSAGE         = "CONVERT_HEADER"
+TEXT            = "Convert SMW menu to Menu Toolbar"
+
+MESSAGE         = "SMW_NAME"
+TEXT            = "SMW Menu Name"
+
+MESSAGE         = "MTB_NAME"
+TEXT            = "Menu Toolbar Name"
+

@@ -1,0 +1,437 @@
+MESSAGE GROUP   = "SMP_CONFIG_"
+
+MESSAGE         = "BAD_VALUE"
+TEXT            = "Value for global [] is of incorrect type."
+
+MESSAGE         = "NOT_MODIFY"
+TEXT            = "Configuration item [] is not user modifiable."
+
+MESSAGE 	= "CREATE_FAILED"
+TEXT		= "Unable to create configuration item [] for user []."
+
+MESSAGE 	= "NOT_ITEM"
+TEXT		= "No longer a configuration item"
+
+MESSAGE GROUP	= "CONFIG_EDITOR_"
+
+MESSAGE		= "GET_ID_HEADER"
+TEXT		= "Edit User Configuration"
+TEXT		= "Edit Group Configuration"
+
+MESSAGE		= "GET_ID_PROMPT"
+TEXT		= "Enter user id : "
+TEXT		= "Enter group id : "
+
+MESSAGE		= "TITLE_TEXT"
+TEXT		= "Context"
+TEXT		= "Configuration Item"
+TEXT		= "Data Type"
+TEXT		= "Prompt Library"
+TEXT		= "Prompt Routine"
+TEXT		= "Value"
+TEXT		= "Description"
+TEXT		= "User Modifiable"
+
+MESSAGE		= "HEADER_TEXT"
+TEXT		= "System Configuration Editor Screen"
+TEXT		= "Group Configuration Editor Screen - "
+TEXT		= "Current Configuration Editor Screen"
+TEXT		= "User Configuration Editor Screen - "
+
+MESSAGE		= "FOOTER_TEXT"
+TEXT		= "Press <Do> to Save, <Exit> to quit, <Select> for options"
+
+MESSAGE		= "MENU_TITLE"
+TEXT		= "Configuration Editor Options"
+
+MESSAGE		= "MENU_OPTION_1"
+TEXT		= "1"
+TEXT		= "Goto bottom of list"
+
+MESSAGE		= "MENU_OPTION_2"
+TEXT		= "2"
+TEXT		= "Goto top of list"
+
+MESSAGE		= "MENU_OPTION_3"
+TEXT		= "3"
+TEXT		= "Find configuration item"
+
+MESSAGE		= "MENU_OPTION_4"
+TEXT		= "4"
+TEXT		= "Edit full entry"
+TEXT		= "Display full entry"
+
+MESSAGE		= "MENU_OPTION_5"
+TEXT		= "5"
+TEXT		= "Exit"
+
+MESSAGE		= "TOP_BUTTON"
+TEXT		= "Top"
+
+MESSAGE		= "BOTTOM_BUTTON"
+TEXT		= "Bottom"
+
+MESSAGE		= "FIND_BUTTON"
+TEXT		= "Find"
+
+MESSAGE		= "EDIT_BUTTON"
+TEXT		= "Full entry"
+
+MESSAGE		= "CONTEXT_BUTTON"
+TEXT		= "Context"
+
+MESSAGE		= "HELP_BUTTON"
+TEXT		= "Help"
+
+MESSAGE		= "EXIT_BUTTON"
+TEXT		= "Cancel"
+
+MESSAGE		= "FIND_BOX_HEADER"
+TEXT		= "Find Configuration Item"
+
+MESSAGE		= "FIND_BOX_FOOTER"
+TEXT		= "<Exit> to quit"
+
+MESSAGE		= "FIND_BOX_PROMPT"
+TEXT		= "Identity"
+
+MESSAGE		= "LOCKED"
+TEXT		= "Configuration Lock"
+TEXT		= "Configuration for [] [] has been locked by another user"
+TEXT		= "so it cannot be edited at the moment."
+TEXT		= "A [] configuration can only be modified by one user at a time."
+TEXT		= "Press SPACE to continue"
+
+
+MESSAGE GROUP	= "CONFIG_ITEM_"
+
+MESSAGE		= "MENU_OPTION_4"
+TEXT		= "4"
+TEXT		= "Copy value"
+
+MESSAGE		= "MENU_OPTION_5"
+TEXT		= "5"
+TEXT		= "Paste value"
+
+MESSAGE		= "MENU_OPTION_6"
+TEXT		= "6"
+TEXT		= "Edit full entry"
+TEXT		= "Display full entry"
+
+MESSAGE		= "MENU_OPTION_7"
+TEXT		= "7"
+TEXT		= "Exit"
+
+MESSAGE         = "HEADER_TEXT"
+TEXT		= "Group Configuration Item Editor Screen - "
+TEXT		= "User Configuration Item Editor Screen - "
+
+MESSAGE		= "FOOTER_TEXT"
+TEXT		= "Press <Do> to Save, <Exit> to quit, <Select> for options"
+
+MESSAGE		= "GET_ID_HEADER"
+TEXT		= "Edit Configuration Item for All Users"
+TEXT		= "Edit Configuration Item for All Groups"
+
+MESSAGE		= "GET_ITEM_PROMPT"
+TEXT		= "Enter configuration item : "
+
+MESSAGE         = "INSERT_PROMPT"
+TEXT		= "Enter group id : "
+TEXT		= "Enter user id : "
+
+MESSAGE		= "INSERT_FOOTER"
+TEXT		= "Press <Exit> to quit"
+
+MESSAGE		= "INSERT_HEADER"
+TEXT    	= "Insert group"
+TEXT		= "Insert user"
+
+MESSAGE		= "ITEM_DEFINED"
+TEXT		= "Item already defined for "
+
+MESSAGE		= "COPY_BUTTON"
+TEXT		= "Copy"
+
+MESSAGE		= "PASTE_BUTTON"
+TEXT		= "Paste"
+
+MESSAGE		= "TO_FIND"
+TEXT		= "to find"
+
+
+MESSAGE GROUP	= "CONFIG_MAIN_"
+
+MESSAGE         = "MENU_HEADER"
+TEXT		= "Configuration Options"
+
+MESSAGE		= "MENU_OPTION"
+TEXT		= "Edit Current Configuration"
+TEXT		= "Edit User Configuration"
+TEXT		= "Edit Group Configuration"
+TEXT		= "Edit System Configuration"
+TEXT            = "Edit Configuration Item for All Users"
+TEXT            = "Edit Configuration Item for All Groups"
+TEXT            = "Exit"
+
+MESSAGE		= "NO_GLOBALS"
+TEXT		= "No globals are available to edit"
+
+
+MESSAGE GROUP	= "CONFIG_PROMPT_"
+
+MESSAGE		= "EDITOR_EDT"
+TEXT		= "EDT"
+
+MESSAGE		= "EDITOR_TPU"
+TEXT		= "TPU"
+
+MESSAGE		= "GROUP_OWN"
+TEXT		= "Own Group"
+
+MESSAGE		= "GROUP_LIST"
+TEXT		= "Any in List"
+
+MESSAGE		= "GROUP_ANY"
+TEXT		= "No Check"
+
+MESSAGE		= "STATUS_COMP_AUTH"
+TEXT		= "Completed and Authorised"
+
+MESSAGE		= "STATUS_ONLY_AUTH"
+TEXT		= "Authorised"
+
+MESSAGE		= "STATUS_ANY"
+TEXT		= "Any Status"
+
+MESSAGE		= "OPEN_IN_SPEC"
+TEXT		= "IN_SPEC"
+
+MESSAGE		= "OPEN_OUT_SPEC"
+TEXT		= "OUT_SPEC"
+
+MESSAGE		= "SORT_JOB"
+TEXT		= "Job Name"
+
+MESSAGE		= "SORT_DATE"
+TEXT		= "Date Results Required"
+
+MESSAGE		= "SORT_TIME"
+TEXT		= "Time in System"
+
+MESSAGE		= "SORT_A_P_D"
+TEXT		= "Ascending Priority and Date Results Required"
+
+MESSAGE		= "SORT_D_P_D"
+TEXT		= "Descending Priority and Date Results Required"
+
+MESSAGE		= "SORT_A_P_T"
+TEXT		= "Ascending Priority and Time in System"
+
+MESSAGE		= "SORT_D_P_T"
+TEXT		= "Descending Priority and Time in System"
+
+MESSAGE		= "SORT_A_PRI"
+TEXT		= "Ascending Sample Priority"
+
+MESSAGE		= "SORT_D_PRI"
+TEXT		= "Descending Sample Priority"
+
+MESSAGE		= "SORT_A_P_TST"
+TEXT		= "Ascending Sample Priority and Test Priority"
+
+MESSAGE		= "SORT_D_P_TST"
+TEXT		= "Descending Sample Priority and Test Priority"
+
+MESSAGE		= "SORT_A_TEST"
+TEXT		= "Ascending Test Priority"
+
+MESSAGE		= "SORT_D_TEST"
+TEXT		= "Descending Test Priority"
+
+MESSAGE		= "ENABLE"
+TEXT		= "Enable"
+
+MESSAGE		= "DISABLE"
+TEXT		= "Disable"
+
+MESSAGE		= "NUMERIC"
+TEXT		= "Numeric"
+
+MESSAGE		= "TEXTUAL"
+TEXT		= "Textual"
+
+MESSAGE		= "ASSIGN"
+TEXT		= "Assign"
+
+MESSAGE		= "DONTASS"
+TEXT		= "Do Not Assign"
+
+MESSAGE		= "ALLOW"
+TEXT		= "Allow"
+
+MESSAGE		= "DISALLOW"
+TEXT		= "Disallow"
+
+MESSAGE		= "SHRINK"
+TEXT		= "Shrink"
+
+MESSAGE		= "NORMAL"
+TEXT		= "Normal"
+
+MESSAGE		= "NO_REPEAT"
+TEXT		= "No Repeat"
+
+MESSAGE		= "REPEAT"
+TEXT		= "Repeat"
+
+MESSAGE		= "ON"
+TEXT		= "On"
+
+MESSAGE		= "OFF"
+TEXT		= "Off"
+
+MESSAGE		= "ALL_TYPES"
+TEXT		= "All Types"
+
+MESSAGE		= "NUMERICS"
+TEXT		= "Numerics"
+
+MESSAGE		= "AVAIL"
+TEXT		= "Available"
+
+MESSAGE		= "UNAVAIL"
+TEXT		= "Not Available"
+
+MESSAGE		= "ZAP"
+TEXT		= "Clear contents on first keypress"
+
+MESSAGE		= "NO_ZAP"
+TEXT		= "Allow immediate entry"
+
+MESSAGE		= "PROMPT"
+TEXT		= "Prompt user to confirm"
+
+MESSAGE		= "NO_PROMPT"
+TEXT		= "Restart without confirmation"
+
+MESSAGE		= "ANALYSIS_SORT"
+TEXT		= "Alphabetical analysis name"
+
+MESSAGE		= "ORDER_NUM_SORT"
+TEXT		= "Test assignment order"
+
+MESSAGE		= "ASC_SAMPLE_SORT"
+TEXT		= "Ascending sample number"
+
+MESSAGE		= "DES_SAMPLE_SORT"
+TEXT		= "Descending sample number"
+
+MESSAGE		= "ASC_TEST_SORT"
+TEXT		= "Ascending test number"
+
+MESSAGE		= "DES_TEST_SORT"
+TEXT		= "Descending test number"
+
+MESSAGE		= "KEYBOARD_INSERT"
+TEXT		= "Insert"
+
+MESSAGE		= "KEYBOARD_OVERSTRIKE"
+TEXT		= "Overstrike"
+
+MESSAGE         = "RES_TOOLBOX"
+TEXT            = "Use toolbox"
+TEXT            = "Use buttons"
+
+MESSAGE         = "UNIT_MODE"
+TEXT		= "None"
+TEXT		= "Validate"
+TEXT		= "Check"
+TEXT		= "Convert"
+
+MESSAGE         = "ACCESS_MODE"
+TEXT		= "Full Access Logging"
+TEXT		= "Failure Logging"
+TEXT		= "No Access Logging"
+
+MESSAGE         = "IGNORE"
+TEXT		= "Ignore XR"
+
+MESSAGE         = "INCLUDE"
+TEXT		= "Include XR"
+
+MESSAGE GROUP	= "CONFIG_READ_"
+
+MESSAGE		= "MENU_TITLE"
+TEXT		= "Configuration Conversion"
+
+MESSAGE		= "MENU_OPT_1"
+TEXT		= "1"
+TEXT		= "1 Create System Configuration"
+
+MESSAGE		= "MENU_OPT_2"
+TEXT		= "2"
+TEXT		= "2 Create User Configuration"
+
+MESSAGE		= "MENU_OPT_3"
+TEXT		= "3"
+TEXT		= "3 Quit"
+
+MESSAGE		= "OPTION_ALL"
+TEXT		= "All"
+
+MESSAGE		= "OPTION_ONE"
+TEXT		= "One"
+
+MESSAGE		= "OPTION_SEVERAL"
+TEXT		= "Several"
+
+MESSAGE		= "HEADER"
+TEXT		= "Create configuration utility"
+
+MESSAGE		= "FOOTER"
+TEXT		= "Press <Do> when complete or <Exit> to quit"
+
+MESSAGE		= "FILE_PROMPT"
+TEXT		= "Which user files do you want        >"
+
+MESSAGE		= "CON_FILE_PR"
+TEXT		= "Enter user configuration filename   >"
+
+MESSAGE		= "OVER_PROMPT"
+TEXT		= "Overwrite existing values           >"
+
+MESSAGE		= "BAR_HEADER"
+TEXT		= "Reading smp.global_cnf file"
+
+MESSAGE		= "BAR_COUNTER"
+TEXT		= "Globals processed :"
+
+MESSAGE		= "CANT_OPEN"
+TEXT		= "Cannot open []"
+
+MESSAGE		= "BAR_HEADER_2"
+TEXT		= "Reading [] file"
+
+MESSAGE		= "BAR_HEADER_3"
+TEXT		= "Writing globals to database"
+
+MESSAGE		= "GRID_HEADER"
+TEXT		= "Users' Files"
+
+MESSAGE		= "FORM_HEADER"
+TEXT		= "List of Users' Configuration Files"
+
+MESSAGE		= "FORM_FOOTER"
+TEXT		= "<Select> add/remove user,<Do> complete,<Exit> quit"
+
+MESSAGE GROUP	= "CONFIG_EXPLORE_"
+
+MESSAGE		= "RESET_HEAD"
+TEXT		= "Remove Configuration Item Override"
+
+MESSAGE		= "RESET_OK"
+TEXT		= " Override(s) removed from user "
+
+MESSAGE		= "RESET_ERROR"
+TEXT		= "Error removing override from user "

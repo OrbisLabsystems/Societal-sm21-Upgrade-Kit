@@ -1,0 +1,431 @@
+
+  10*             1            "SampleManager Main Menu"
+  10  360 DAY     1            "Daily Operations"
+  10   70 LTM     6            "Laboratory Tables"
+  10  160 SLM     4            "Sample Login"
+  10  200 STM     4            "Sample Tracking"
+  10  220 WGM     6            "Worksheets"
+  10  810 BLM     4            "Batch Login"
+  10  150 RMM     4            "Results Management"
+  10  280 REP     4            "Reporting"
+  10  130 SPM     4            "Sample Processing"
+  10  320 JPM     6            "Job Processing"
+  10  410 TPM     6            "Test Processing"
+  10  370 WDT     4            "Background Operations"
+  10  330 ADA     4            "Additional Applications"
+  10   54 EX      1            "Exit SampleManager"
+
+ 360*             1            "Daily Operations"
+ 360  144 STT     4            "Selected Sample Status" $STT
+ 360  141 WSR     4            "Write Sample Report" $genreslis
+ 360   56 GRL     4            "Generate Report"  $GENCOMP GENERATE_REPORT
+ 360   47 DSE     4            "Display Sample Entry" $SAMP_JOB  displaysampleentry
+
+ 330*             1            "Additional Applications Menu"
+ 330  350 CNM     4            "Configuration Options"
+ 330 15007 GRF    6            "Graphics Demo" $GRAFIX
+ 330  339 NCA     4            "Numeric calculator" $CALCULATOR
+
+  70*             1            "Laboratory Table Setup Menu"
+  70  460 LET     1            "Laboratory Environment Tables"
+  70  470 LST     1            "Login Setup Tables"
+  70  480 SYT     1            "System Setup Tables"
+
+ 460*             1            "Laboratory Environment Tables"
+ 460   60 IML     4            "Instruments"
+ 460   90 AML     4            "Analyses"
+ 460  580 UML     4            "Units"
+ 460   30 CML     4            "Customers"
+ 460   50 HML     4            "Hazards and Disposal Methods"
+ 460   80 LML     4            "Locations"
+ 460  120 PML     4            "Preparations"
+ 460  300 SPL     4            "Sample Points"
+ 460  340 PJL     4            "Projects"
+ 460  780 WPM     4            "Work Profile"
+ 460  530 LVL     4            "MLP Levels"
+ 460  550 MLP     4            "Multi-Level Product Specifications"
+ 460  590 LPM     4            "Limit Phrases"
+ 460  730 LCM     4            "Limit Calculations"
+ 460  420 CGL     4            "Charges (Costs)"
+ 460  690 ISP     4            "Inspection Plans"
+
+ 470*             1            "Login Setup Tables"
+ 470  380 JTL     4            "Job Templates"
+ 470  190 TML     4            "Sample Templates"
+ 470  780 WPM     4            "Work Profile"
+ 470  170 TSL     4            "Test Schedules"
+ 470  800 BTM     4            "Batch Templates"
+ 470  270 SXL     4            "Syntax Definitions"
+ 470  310 LSC     4            "Login Schedules"
+
+ 480*             1            "System Setup Tables"
+ 480  140 RML     4            "Report Formats"
+ 480  110 OML     4            "Laboratory Personnel (Operators)"
+ 480  560 OAL     4            "Operator Approval"
+ 480  430 PHR     4            "Standard Phrases"
+ 480  390 IDG     4            "Identifier Groups"
+ 480  440 PDL     4            "Printer Definition Menu"
+ 480  450 HLP     4            "Help Menu"
+ 480  570 CRT     4            "Column Definition Menu"
+ 480  830 RHM     4            "Saved Criteria Menu"
+ 480  860 CGI     4            "CGI Script Menu"
+ 
+  30*             1            "Customer Definition Menu"
+  30   37 DCL     4            "Display Customer" $LTE_CUS   DISPLAYOPTION
+  30   97 PCL     4            "Print Customer" $LTE_CUS   PRINTOPTION
+  30   58 LCL     4            "List Customers" $LTE_CUS   LISTOPTION
+
+  50*             1            "Hazard and Sample Disposal Definition Menu"
+  50  135 DHL     4            "Display Hazard" $LTE_HAZ   DISPLAYOPTION
+  50   99 PHL     4            "Print Hazard" $LTE_HAZ   PRINTOPTION
+  50   62 LHL     4            "List Hazards" $LTE_HAZ   LISTOPTION
+
+  60*             1            "Instrument Definition Menu"
+  60   41 DIL     4            "Display Instrument" $LTE_INST DISPLAYOPTION
+  60  132 PIL     4            "Print Instrument" $LTE_INST PRINTOPTION
+  60   63 LIL     4            "List Instruments" $LTE_INST LISTOPTION
+
+  80*             1            "Location Definition Menu"
+  80   43 DLL     4            "Display Location" $LTE_LOC   DISPLAYOPTION
+  80  103 PLL     4            "Print Location" $LTE_LOC   PRINTOPTION
+  80   64 LLL     4            "List Locations" $LTE_LOC   LISTOPTION
+
+  90*              1            "Analysis Definition Menu"
+  90    36 DAL     4            "Display Analysis" $LTE_ANAL  DISPLAYOPTION
+  90    59 LAL     4            "List Analyses" $LTE_ANAL  LISTOPTION
+  90    95 PAL     4            "Print Analysis" $LTE_ANAL  PRINTOPTION
+  90   400 CFM     4            "Calculation Formats Menu"
+  90   630 SFM     4            "Significant Figure Filters Menu"
+  90   680 LRM     4            "List Result Menu"
+
+ 580*             1            "Units Definition Menu"
+ 580  584 DUL     4            "Display Units" $LTE_UNIT  DISPLAYOPTION
+ 580  585 LUL     4            "List Units" $LTE_UNIT  LISTOPTION
+ 580  586 PUL     4            "Print Units" $LTE_UNIT  PRINTOPTION
+
+ 590*             1            "Limit Phrase Definition Menu"
+ 590  594 DLT     4            "Display Limit Phrase" $LTE_LIMIT_PHRASE  DISPLAYOPTION
+ 590  595 LLT     4            "List Limit Phrase" $LTE_LIMIT_PHRASE  LISTOPTION
+ 590  596 PLT     4            "Print Limit Phrase" $LTE_LIMIT_PHRASE  PRINTOPTION
+
+ 730*             1            "Limit Calculation Definition Menu"
+ 730  734 DLC     4            "Display Limit Calculation" $LTE_LIMIT_CALC  DISPLAYOPTION
+ 730  735 LLC     4            "List Limit Calculation" $LTE_LIMIT_CALC  LISTOPTION
+ 730  736 PLC     4            "Print Limit Calculation" $LTE_LIMIT_CALC  PRINTOPTION
+
+ 120*             1            "Preparation Definition Menu"
+ 120   45 DPL     4            "Display Preparation" $LTE_PREP  DISPLAYOPTION
+ 120  106 PPL     4            "Print Preparation" $LTE_PREP  PRINTOPTION
+ 120   69 LPL     4            "List Preparations" $LTE_PREP  LISTOPTION
+
+ 340*             1            "Project Definition Menu"
+ 340  343 DPR     6            "Display Project" $LTE_PROJ DISPLAYOPTION
+ 340  344 PPR     6            "Print Project" $LTE_PROJ PRINTOPTION
+ 340  345 LPR     6            "List Projects" $LTE_PROJ LISTOPTION
+
+ 300*             4            "Sample Point Menu"
+ 300  238 DPT     4            "Display Sample Point" $LTE_SAMP  DISPLAYOPTION
+ 300  236 PPT     4            "Print Sample Point" $LTE_SAMP  PRINTOPTION
+ 300  237 LPT     4            "List Sample Points" $LTE_SAMP  LISTOPTION
+
+ 400*             1            "Calculation Formats Definition Menu"
+ 400  256 DCF     4            "Display Calculation Format" $LTE_CALC  displayoption
+ 400  254 PCF     4            "Print Calculation Format" $LTE_CALC  printoption
+ 400  255 LCF     4            "List Calculation Formats" $LTE_CALC  listoption
+
+ 680*             1            "List Result Menu"
+ 680  684 DLR     4            "Display List Result" $LTE_LIST_RES  displayoption
+ 680  685 PLR     4            "Print List Result" $LTE_LIST_RES  printoption
+ 680  686 LLR     4            "List List Result" $LTE_LIST_RES  listoption
+
+ 690*             1            "Inspection Plan Menu"
+ 690  696 DIP     4            "Display Inspection Plan" $LTE_INSPECT displayoption
+ 690  697 PIP     4            "Print Inspection Plan" $LTE_INSPECT printoption
+ 690  698 LIP     4            "List Inspection Plan" $LTE_INSPECT listoption
+
+ 490*             1            "Standards Menu"
+ 490  496 DSN     4            "Display Standard" $LTE_STDS  DISPLAYOPTION
+ 490  497 PSN     4            "Print Standard" $LTE_STDS  PRINTOPTION
+ 490  498 LSN     4            "List Standards" $LTE_STDS  LISTOPTION
+ 490 15019 VSV    4            "View Standard Versions" $STD_VERS VIEW_VERSIONS
+ 490 15021 DSV    4            "Display Standard Version" $LTE_STD_VERS  DISPLAYOPTION
+                                                                              
+ 530*             1            "MLP Level Definition Menu"
+ 530  534 DLE     4            "Display MLP Level" $LTE_LVLS  DISPLAYOPTION
+ 530  536 PLE     4            "Print MLP Level" $LTE_LVLS  PRINTOPTION
+ 530  535 LLE     4            "List MLP Levels" $LTE_LVLS  LISTOPTION
+
+ 550*             1            "MLP Definition Menu"
+ 550  557 DMP     4            "Display MLP" $LTE_MLP DISPLAYOPTION
+ 550  558 PMP     4            "Print MLP" $LTE_MLP PRINTOPTION
+ 550  559 LMP     4            "List MLP" $LTE_MLP LISTOPTION
+
+ 420*             1            "Charges Menu"
+ 420  422 DCE     6            "Display Charges" $LTE_CHARG DISPLAYOPTION
+ 420  423 PCE     6            "Print Charges" $LTE_CHARG PRINTOPTION
+ 420  424 LCE     6            "List Charges" $LTE_CHARG LISTOPTION
+
+ 170*             1            "Test Schedule Definition Menu"
+ 170   48 DTL     4            "Display Test Schedule" $LTE_TSTSC DISPLAYOPTION
+ 170  112 PTL     4            "Print Test Schedule" $LTE_TSTSC PRINTOPTION
+ 170   71 LTL     6            "List Test Schedules" $LTE_TSTSC LISTOPTION
+
+ 190*             1            "Sample Template Definition Menu"
+ 190   49 DTM     4            "Display Template" $LTE_TEMPL DISPLAYOPTION
+ 190  113 PTM     4            "Print Template" $LTE_TEMPL PRINTOPTION
+ 190   72 LTS     4            "List Templates" $LTE_TEMPL LISTOPTION
+
+ 380*             1            "Job Template Definition Menu"
+ 380  384 DJT     4            "Display Job Template" $LTE_JOBT  displayoption
+ 380  385 PJT     4            "Print Job Template" $LTE_JOBT  printoption
+ 380  386 LJT     4            "List Job Templates" $LTE_JOBT  listoption
+
+ 310*             1            "Login Schedule Definition Menu"
+ 310  264 DSP     4            "Display Login Schedule" $LTE_LSCH  DISPLAYOPTION
+ 310  312 PSB     4            "Print Login Schedule" $LTE_LSCH  PRINTOPTION
+ 310  313 LSB     4            "List Login Schedules" $LTE_LSCH  LISTOPTION
+
+ 270*             1            "Syntax Definition Menu"
+ 270  136 DXS     4            "Display Syntax Definition" $LTE_SYNT  DISPLAYOPTION
+ 270  201 PXS     4            "Print Syntax Definition" $LTE_SYNT  PRINTOPTION
+ 270  202 LXS     4            "List Syntax Definitions" $LTE_SYNT  LISTOPTION
+
+ 430*             1            "Phrases Menu"
+ 430  438 DPH     4            "Display Phrases" $LTE_PHRSE DISPLAYOPTION
+ 430  439 PPH     4            "Print Phrase" $LTE_PHRSE PRINTOPTION
+ 430  279 LPH     4            "List Phrases" $LTE_PHRSE LISTOPTION
+
+ 110*             1            "Personnel Definition Menu"
+ 110   44 DOL     4            "Display Operator" $LTE_PERS  DISPLAYOPTION
+ 110  105 POL     4            "Print Operator" $LTE_PERS  PRINTOPTION
+ 110   68 LOL     4            "List Operators" $LTE_PERS  LISTOPTION
+
+ 140*             1            "Report Format Menu"
+ 140   38 DFL     4            "Display Report Format" $LTE_REP   DISPLAYOPTION
+ 140   98 PFL     4            "Print Report Format" $LTE_REP   PRINTOPTION
+ 140   61 LFL     4            "List Report Formats" $LTE_REP   LISTOPTION
+ 140 15031 PCT    1            "Performance and Coverage Tool" $PERFORM
+ 140 15032 TPA    1            "Transaction Performance Analyser" $SQL_PERF
+
+ 390*             1            "Identifier Groups"
+ 390  354 DGP     4            "Display Identifier Group" $LTE_GROUP DISPLAYOPTION
+ 390  355 PGP     4            "Print Identifier Group" $LTE_GROUP PRINTOPTION
+ 390  356 LGP     4            "List Identifier Groups" $LTE_GROUP LISTOPTION
+ 390   67 SGL     4            "Set Default Group" $GROUPLINK set_default_groups
+
+ 440*             1            "Printer Definitions Menu"
+ 440  448 DPD     4            "Display Printer " $LTE_PRINT DISPLAYOPTION
+ 440  446 PPD     4            "Print a Printer Definition" $LTE_PRINT PRINTOPTION
+ 440  447 LPD     4            "List Printer Definitions" $LTE_PRINT LISTOPTION
+ 440  444 RPD     8            "Remove a Printer Definition" $LTE_PRINT REMOVEOPTION
+
+ 450*             1            "Help Menu"
+ 450  670 HTP     4            "Help Topic Setup Menu"
+ 450  451 HCH     4            "Help Chapter Setup" $HELP_CHAPTERS
+
+ 670*             1            "Help Topic Setup Menu"
+ 670  678 DHP     4            "Display Help Topic" $LTE_HELP DISPLAYOPTION
+ 670  676 PHP     4            "Print a Help Topic" $LTE_HELP PRINTOPTION
+ 670  677 LHP     4            "List Help Topics" $LTE_HELP LISTOPTION
+
+ 570*             1            "Column Definition Setup Menu"
+ 570  574 DCH     4            "Display Column Definition" $CRITERIA_LTE DISPLAYOPTION
+ 570  575 PCH     4            "Print Column Definition" $CRITERIA_LTE PRINTOPTION
+ 570  576 LCH     4            "List Column Definitions" $CRITERIA_LTE LISTOPTION
+
+ 160*             1            "Sample Login Menu"
+ 160   47 DSE     4            "Display Sample Entry" $SAMP_JOB  displaysampleentry
+ 160 10007 DFS    4            "Display Full Sample" $SAMP_JOB  displayfullsample
+ 160  724 SEV     4            "Sample Entry View" $SAMP_JOB viewsampleentry
+ 160  111 RCP     4            "Print Sample Receipt" $RECEIPT
+ 160   19 LBP     4            "Print Sample Label" $SAMPLABEL
+
+ 220*             1            "Worksheet Menu"
+ 220  500 TWS     6            "Test Worksheet Menu"
+ 220  510 SWS     6            "Sample Worksheet Menu"
+ 220  520 PWS     6            "Preparation Worksheet Menu"
+ 220  540 UWS     6            "Definable Worksheet Menu"
+ 220 15013 BLG    6            "Backlog Report" $BACKLOG
+ 220 15014 NOW    6            "Sample Not On Worksheet" $NOTONWSHT
+ 220 15015 WSM    6            "Worksheet Summary" $WSACTIVE
+ 220  490 STN     4            "Standards Menu"
+ 220  600 TMP     6            "Enhanced Worksheets Menu"
+
+ 500*             1            "Test Worksheet Menu"
+ 500  466 PAW     6            "Print Analysis Worksheet" $PRANALWKS
+ 500  484 DAW     4            "Result Display by Analysis Worksheet" $res_entry call_daw
+
+ 540*             1            "Definable Worksheet Menu"
+ 540  479 PUD     6            "Print Definable Worksheet" $PRUDWSHT
+ 540  712 DUW     4            "Result Display by Definable Worksheet" $res_entry call_duw
+ 540  713 AUW     4            "Result Authorise by Definable Worksheet" $res_entry call_auw
+
+ 510*             1            "Sample Worksheet Menu"
+ 510  465 PSW     6            "Print Sample Worksheet" $PRSAMPWS
+ 510  511 DSW     4            "Result Display by Sample Worksheet" $res_entry call_dsw
+
+ 520*             1            "Preparation Worksheet Menu"
+ 520  467 PTW     6            "Print Test Preparation Worksheet" $PRTWKS
+ 520  468 PPW     6            "Print Sample Preparation Worksheet" $PRPWKS
+
+ 600*             1            "Worksheet Generation by Template Menu"
+ 600  610 WTM     4            "Worksheet Template Data Entry Menu"
+ 600  666 DRT     4            "Display Results By Template Worksheet" $RBT RESDISPLAY
+ 600  602 PRW     6            "Print Template Worksheet" $WORK_PRNT PRINTTEMPLATEWORKSHEET
+
+ 610*             1            "Worksheet Template Data Entry Menu"
+ 610  614 DWT     4            "Display Template" $LTE_WORKT DISPLAYOPTION
+ 610  616 PWT     4            "Print Template" $LTE_WORKT PRINTOPTION
+ 610  617 LWT     4            "List Templates" $LTE_WORKT LISTOPTION
+
+ 150*              1            "Results Management Menu"
+ 150   249 DSR     4            "Display Results by Sample" $res_entry call_dsr
+ 150   242 DTR     4            "Display Results by Test"   $res_entry call_dtr
+ 150   391 DWR     4            "Spread Sheet Result Display by Test" $res_entry call_dwr
+ 150 15042 DCR     4            "Spread Sheet Result Display by Criteria" $lib_re_criteria disp_by_criteria
+ 150   141 WSR     4            "Write Sample Report" $genreslis
+
+ 280*             4            "Reporting Menu"
+ 280  241 TAB     4            "SuperTAB - Ad Hoc Tabular Report" $DBTAB AD_HOC_TAB
+ 280  246 GTR     4            "SuperTAB - Generate Saved Tabular Report"$DBTAB       GENERATE_TAB
+ 280  265 MTR     6            "SuperTAB - Modify Saved Tabular Report" $DBTAB      MODIFY_TAB
+ 280  266 BTR     4            "SuperTAB - Generate Saved Report In Background" $DBTAB     CALL_TAB_BACKGROUND
+ 280 15023 TAJ    4            "JobTAB - Ad Hoc Tabular Report" $DBTAB AD_HOC_TAB_JOB
+ 280 15025 GTJ    4            "JobTAB - Generate Saved Tabular Report "$DBTAB       GENERATE_TAB_JOB
+ 280 15026 MTJ    6            "JobTAB - Modify Saved Tabular Report" $DBTAB      MODIFY_TAB_JOB
+ 280 15024 BTJ    4            "JobTAB - Generate Saved Report In Background" $DBTAB     CALL_TAB_BACK_JOB
+ 280   56 GRL     4            "Generate Report"  $GENCOMP GENERATE_REPORT
+ 280  141 WSR     4            "Write Sample Report" $GENRESLIS
+ 280 15001 TRE    4            "Data Tree" $DATATREE  datatree
+ 280 15002 TRS    4            "Sample Data Tree" $DATATREE  sampletree
+ 280  418 EVE     4            "Call current editor" $EVE eve_menu_option
+ 280  203 AGR     6            "Background Report Generation" $bsmp_rept bsmpreptgeneration
+ 280  204 LTQ     6            "List Timer Queue Entries" $bsmp_rept bsmpreptdisplay
+ 280 15017 AUD    8            "Audit Reporting" $AUDIT_REP
+ 280 15044 AUV    8            "Audit Viewer" $AUDIT
+
+ 320*             1            "Job Processing Menu"
+ 320  259 DJS     4            "Display Job Header and Samples" $SAMP_JOB  displayjobheader
+ 320  324 PJH     6            "Print Job Header" $SAMP_JOB  printjobentry
+ 320  326 PJS     4            "Print Job Header and Samples" $JOBSUM
+ 320  325 LJH     6            "List Job Headers" $JOBLIST
+
+ 130*             1            "Sample Processing Menu"
+ 130 15011 CSM    8            "Compare Sample with MLP" $CSMLP
+
+ 410*             1            "Test Processing Menu"
+ 410  419 DTP     6            "Display tests" $TEST_ASSN displaytests
+
+ 200*             1            "Sample Track and Status Menu"
+ 200    13 AST    4            "Summary of All Active Samples" $ACTIVE
+ 200   144 STT    4            "Selected Sample Status" $STT
+ 200   142 SST    4            "Samples Suspended" $SUSPEND
+ 200   133 SIT    4            "Samples Assigned to Instrument" $INSTASSN
+ 200   131 SCT    4            "Samples for Specified Customer" $CUSTOMER
+ 200   134 SLT    4            "Samples at Specified Location" $LOCATE
+ 200    93 OST    4            "Overdue Samples" $OVERDUE
+ 200 15045 AUS    8            "Sample Audit Viewer" $AUDIT_SAMPLE
+
+ 370*             1            "Watch Dog Timer Functions Menu"
+ 370  204 LTQ     6            "List timer Queue Entries" $bsmp_rept bsmpreptdisplay
+ 370  850 DSM     8            "Timer Schedule Menu"
+
+ 350*             1            "Customisation Options"
+ 350   210 USM    1            "User Setup Menu"
+ 350   180 SSM    6            "System Setup Menu"
+ 350 15048 EAR    6            "Explore Audit Records"      $AUDIT_EXPLORER
+
+ 180*             1            "System Setup Menu"
+ 180 9991 NMC     1            "Change to New Menu File"    $NMC CHANGE_MENU
+ 180  230 ECI    10            "Configuration Items Menu"
+
+ 230*             4            "Configuration Items Menu"
+ 230  374 DCI     4            "Display Configuration Item" $LTE_CONFIG DISPLAY_OPTION
+ 230  375 PCI     4            "Print Configuration Item"   $LTE_CONFIG PRINT_OPTION
+ 230  376 LCI     4            "List Configuration Items"   $LTE_CONFIG LIST_OPTION
+
+ 210*             1            "User Setup Menu"
+ 210  179 DPX     4            "Define Text Printer"        $USER_CONTROL DEFINE_TEXT_PRINTER
+ 210  163 DLX     4            "Define Label Printer"       $USER_CONTROL DEFINE_LABEL_PRINTER
+ 210   22 CAU     1            "Change Your Access Level"   $USER_CONTROL CHANGE_ACCESS_LEVEL
+ 210 10871 ECC    1            "Edit Current Configuration" $CONFIG PROCESS_CONFIG
+
+ 560*             8            "Operator Approval Menu"
+ 560  702 DAP     8            "Display Operator Approval Data" $APPROVAL display_option
+ 560  704 PAP     8            "Print Operator Approval Data" $APPROVAL print_option
+ 560  703 LAP     8            "List Operator Approval Data" $APPROVAL list_option
+
+ 630*             1            "Significant Figure Filter Menu"
+ 630  636 DSF     4            "Display Significant Figure Filter" $LTE_SFIGS DISPLAYOPTION
+ 630  638 PSF     4            "Print Significant Figure Filter" $LTE_SFIGS PRINTOPTION
+ 630  637 LSF     4            "List Significant Figure Filter" $LTE_SFIGS LISTOPTION
+
+ 780*             1            "Work Profile Menu"
+ 780  784 DWP     4            "Display Work Profile" $LTE_WORK_PROFILE  DISPLAYOPTION
+ 780  785 LWP     4            "List Work Profile" $LTE_WORK_PROFILE  LISTOPTION
+ 780  786 PWP     4            "Print Work Profile" $LTE_WORK_PROFILE  PRINTOPTION
+
+ 800*             1            "Batch Template Definition Menu"
+ 800  804 DBT     4            "Display Batch Template" $LTE_BATCH  DISPLAYOPTION
+ 800  805 LBT     4            "List Batch Template" $LTE_BATCH  LISTOPTION
+ 800  806 PBT     4            "Print Batch Template" $LTE_BATCH  PRINTOPTION
+ 800  840 BQC     6            "Batch Control Charts Menu"
+
+ 810*             1            "Batch Login Menu"
+ 810  813 BDP     4            "Batch Display"      $BATCH    BATCHDISPLAY
+ 810  821 BPW     4            "Batch Worksheet"     $BATCH     BATCHWORKSHEET
+ 810  822 BPR     4            "Batch Report"        $BATCH     BATCHREPORT
+ 810  823 BPJ     4            "Batch Job Report"    $BATCH     BATCHJOBREPORT
+ 810  825 BCQ     4            "Batch Control Chart" $BATCH_SQC BATCHSQCCHART 
+
+ 830*             1            "Saved Criteria Menu"
+ 830  834 DRH     4            "Display Saved Criteria" $LTE_CRITERIA_SAVED  DISPLAYOPTION
+ 830  835 LRH     4            "List Saved Criteria" $LTE_CRITERIA_SAVED  LISTOPTION
+ 830  836 PRH     4            "Print Saved Criteria" $LTE_CRITERIA_SAVED  PRINTOPTION
+
+ 840*             1            "Control Chart Definition Menu"
+ 840  844 DQC     4            "Display Control Chart" $LTE_BATCH_SQC DISPLAYOPTION
+ 840  845 PQC     4            "Print Control Chart"   $LTE_BATCH_SQC PRINTOPTION
+ 840  846 LQC     4            "List Control Chart"    $LTE_BATCH_SQC LISTOPTION
+
+ 850*             1            "Timer Schedule Definition Menu"
+ 850   854 DDS    8            "Display Timer Schedule" $LTE_TIMER_SCHEDULE DISPLAYOPTION
+ 850   855 PDS    8            "Print Timer Schedule"   $LTE_TIMER_SCHEDULE PRINTOPTION
+ 850   856 LDS    8            "List Timer Schedule"    $LTE_TIMER_SCHEDULE LISTOPTION
+
+ 860*             1            "CGI Script Definition Menu"
+ 860   865 DCGI   4            "Display CGI Script" $LTE_CGI_SCRIPT DISPLAYOPTION
+ 860   866 PCGI   4            "Print CGI Script"   $LTE_CGI_SCRIPT PRINTOPTION
+ 860   867 LCGI   4            "List CGI Scripts"   $LTE_CGI_SCRIPT LISTOPTION
+ 
+9980*             1            "Options only from $xxx commands"
+9980  435 LAB     6            "Experimental Laboratory Tables Menu" $LAB
+9980  188 VMS     4            "Execute DCL commands" $VMS vms_menu_option
+9980  188 UNX     4            "Execute DCL commands" $VMS vms_menu_option
+9980  191 ULI     1            "User login"
+9980  123 COM     4            "Toggle Active/Committed mode" $COM
+9980  124 SEC     4            "Change Global Table Set" $SETCOM
+9980  999 MX      1            "Exit from SampleManager"
+
+9990*             1            "Non-existent menu for demonstration/debug options"
+9990     56 @     4            "Generate Report"  $GENCOMP GENERATE_REPORT
+9990    159 WRL   4            "Generate Report"  $GENCOMP GENERATE_REPORT
+9990    239 VSN   1            "Display version date and time" $VSN vsn_menu_option
+9990    997 SPY  10            "Debug next report"
+9990    508 COW   1            "Display memory statistics" $COW
+9990  15036 AHR   1            "Ad-Hoc Reporter" $REPORTER
+9990  15039 AHT   1            "Ad-Hoc Reporter Templates" $REPORTER_TMPL
+9990    998 TID  10            "Terminate Increment Daemon"
+
+10000*            1            "Welcome To Hot Keys"
+10000 10001 1     1            "1 Calculator"
+10000 10004 4     4            "2 Sample Status"
+10000 10005 5     4            "3 Current Configuration"
+10000 10006 6     10           "4 Debug Next Report"
+
+10850*            1            "Comparison Menu"
+10850 10851 1     4            "Examine Offspec"
+10850 10852 2     4            "Display Comparison"
+10850 10853 3     4            "Display Results"
+10850 10854 4     4            "Specify product info"
+10850 10857 7     4            "Print comparison"

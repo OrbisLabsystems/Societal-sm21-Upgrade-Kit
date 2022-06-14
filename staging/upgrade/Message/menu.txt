@@ -1,0 +1,784 @@
+
+  10*             1            "SampleManager Main Menu"
+  10  360 DAY     1            "Daily Operations"
+  10   70 LTM     6            "Laboratory Tables"
+  10  160 SLM     4            "Sample Login"
+  10  200 STM     4            "Sample Tracking"
+  10  220 WGM     6            "Worksheets"
+  10  810 BLM     4            "Batch Login"
+  10  150 RMM     4            "Results Management"
+  10  280 REP     4            "Reporting"
+  10  130 SPM     4            "Sample Processing"
+  10  320 JPM     6            "Job Processing"
+  10  410 TPM     6            "Test Processing"
+  10  370 WDT     4            "Background Operations"
+  10  330 ADA     4            "Additional Applications"
+  10   54 EX      1            "Exit SampleManager"
+
+ 360*             1            "Daily Operations"
+ 360   12 NJL     4            "Login Samples - New Job"  $SAMP_JOB  loginsamplenewjob
+ 360  144 STT     4            "Selected Sample Status" $STT
+ 360  247 TSR     4            "Tabular Result Entry by Sample" $RES_ENTRY call_tsr
+ 360  141 WSR     4            "Write Sample Report" $genreslis
+ 360   56 GRL     4            "Generate Report"  $GENCOMP GENERATE_REPORT
+ 360   57 ETP     6            "Enter/Edit Tests" $TEST_ASSN edittests
+ 360   47 DSE     4            "Display Sample Entry" $SAMP_JOB  displaysampleentry
+
+ 330*             1            "Additional Applications Menu"
+ 330   350 CNM    1            "Configuration Options"
+ 330 15007 GRF    6            "Graphics Demo" $GRAFIX
+ 330   339 NCA    4            "Numeric calculator" $CALCULATOR
+
+  70*             1            "Laboratory Table Setup Menu"
+  70  460 LET     1            "Laboratory Environment Tables"
+  70  470 LST     1            "Login Setup Tables"
+  70  480 SYT     1            "System Setup Tables"
+
+ 460*             1            "Laboratory Environment Tables"
+ 460   60 IML     4            "Instruments"
+ 460   90 AML     4            "Analyses"
+ 460  580 UML     4            "Units"
+ 460   30 CML     4            "Customers"
+ 460   50 HML     4            "Hazards and Disposal Methods"
+ 460   80 LML     4            "Locations"
+ 460  120 PML     4            "Preparations"
+ 460  300 SPL     4            "Sample Points"
+ 460  340 PJL     4            "Projects"
+ 460  780 WPM     4            "Work Profile"
+ 460  530 LVL     4            "MLP Levels"
+ 460  550 MLP     4            "Multi-Level Product Specifications"
+ 460  590 LPM     4            "Limit Phrases"
+ 460  730 LCM     4            "Limit Calculations"
+ 460  420 CGL     4            "Charges (Costs)"
+ 460  690 ISP     4            "Inspection Plans"
+
+ 470*             1            "Login Setup Tables"
+ 470  380 JTL     4            "Job Templates"
+ 470  190 TML     4            "Sample Templates"
+ 470  780 WPM     4            "Work Profile"
+ 470  170 TSL     4            "Test Schedules"
+ 470  800 BTM     4            "Batch Templates"
+ 470  270 SXL     4            "Syntax Definitions"
+ 470  310 LSC     4            "Login Schedules"
+ 470  471 MTF    10            "Master Template Fields" $MT_FIELDS
+
+ 480*             1            "System Setup Tables"
+ 480  140 RML     4            "Report Formats"
+ 480  110 OML     4            "Laboratory Personnel (Operators)"
+ 480  560 OAL     4            "Operator Approval"
+ 480  430 PHR     4            "Standard Phrases"
+ 480  390 IDG     4            "Identifier Groups"
+ 480  440 PDL     4            "Printer Definition Menu"
+ 480  450 HLP     4            "Help Menu"
+ 480  570 CRT     4            "Column Definition Menu"
+ 480  830 RHM     4            "Saved Criteria Menu"
+ 480  860 CGI     4            "CGI Script Menu"
+
+  30*             1            "Customer Definition Menu"
+  30    2 ACL     4            "Add Customer" $LTE_CUS   ADDOPTION
+  30   24 CCL     4            "Copy Customer" $LTE_CUS   COPYOPTION
+  30   74 MCL     6            "Modify Customer" $LTE_CUS   MODIFYOPTION
+  30   37 DCL     4            "Display Customer" $LTE_CUS   DISPLAYOPTION
+  30   97 PCL     4            "Print Customer" $LTE_CUS   PRINTOPTION
+  30   58 LCL     4            "List Customers" $LTE_CUS   LISTOPTION
+  30  116 RCL     8            "Remove Customer" $LTE_CUS   REMOVEOPTION
+  30  147 UCL     8            "Restore Customer" $LTE_CUS   RESTOREOPTION
+
+  50*             1            "Hazard and Sample Disposal Definition Menu"
+  50    4 AHL     4            "Add Hazard" $LTE_HAZ   ADDOPTION
+  50   26 CHL     4            "Copy Hazard" $LTE_HAZ   COPYOPTION
+  50   76 MHL     6            "Modify Hazard" $LTE_HAZ   MODIFYOPTION
+  50  135 DHL     4            "Display Hazard" $LTE_HAZ   DISPLAYOPTION
+  50   99 PHL     4            "Print Hazard" $LTE_HAZ   PRINTOPTION
+  50   62 LHL     4            "List Hazards" $LTE_HAZ   LISTOPTION
+  50  119 RHL     8            "Remove Hazard" $LTE_HAZ   REMOVEOPTION
+  50  149 UHL     8            "Restore Hazard" $LTE_HAZ   RESTOREOPTION
+
+  60*             1            "Instrument Definition Menu"
+  60    5 AIL     4            "Add Instrument" $LTE_INST ADDOPTION
+  60   28 CIL     4            "Copy Instrument" $LTE_INST COPYOPTION
+  60   77 MIL     6            "Modify Instrument" $LTE_INST MODIFYOPTION
+  60   41 DIL     4            "Display Instrument" $LTE_INST DISPLAYOPTION
+  60  132 PIL     4            "Print Instrument" $LTE_INST PRINTOPTION
+  60   63 LIL     4            "List Instruments" $LTE_INST LISTOPTION
+  60  104 RIL     8            "Remove Instrument" $LTE_INST REMOVEOPTION
+  60  125 UIL     8            "Restore Instrument" $LTE_INST RESTOREOPTION
+
+  80*             1            "Location Definition Menu"
+  80    6 ALL     4            "Add Location" $LTE_LOC   ADDOPTION
+  80   29 CLL     4            "Copy Location" $LTE_LOC   COPYOPTION
+  80   78 MLL     6            "Modify Location" $LTE_LOC   MODIFYOPTION
+  80   43 DLL     4            "Display Location" $LTE_LOC   DISPLAYOPTION
+  80  103 PLL     4            "Print Location" $LTE_LOC   PRINTOPTION
+  80   64 LLL     4            "List Locations" $LTE_LOC   LISTOPTION
+  80  122 RLL     8            "Remove Location" $LTE_LOC   REMOVEOPTION
+  80  151 ULL     8            "Restore Location" $LTE_LOC   RESTOREOPTION
+
+  90*              1            "Analysis Definition Menu"
+  90     1 AAL     4            "Add Analysis" $LTE_ANAL  ADDOPTION
+  90    21 CAL     4            "Copy Analysis" $LTE_ANAL  COPYOPTION
+  90 15035 VAL     6            "New Version of Analysis" $LTE_ANAL  NEWVERSIONOPTION
+  90    73 MAL     6            "Modify Analysis" $LTE_ANAL  MODIFYOPTION
+  90    36 DAL     4            "Display Analysis" $LTE_ANAL  DISPLAYOPTION
+  90    59 LAL     4            "List Analyses" $LTE_ANAL  LISTOPTION
+  90    95 PAL     4            "Print Analysis" $LTE_ANAL  PRINTOPTION
+  90   115 RAL     8            "Remove Analysis" $LTE_ANAL  REMOVEOPTION
+  90   146 UAL     8            "Restore Analysis" $LTE_ANAL  RESTOREOPTION
+  90   400 CFM     4            "Calculation Formats Menu"
+  90   630 SFM     4            "Significant Figure Filters Menu"
+  90   680 LRM     4            "List Result Menu"
+  90 15038 FTS     6            "Formula Test" $FORMULA_TEST formulatestmain
+  90 15046 FVS     6            "Formula Verification" $FORMULA_TEST formulatestverification
+
+ 580*             1            "Units Definition Menu"
+ 580  581 AUL     4            "Add Units" $LTE_UNIT  ADDOPTION
+ 580  582 CUL     4            "Copy Units" $LTE_UNIT  COPYOPTION
+ 580  583 MUL     6            "Modify Units" $LTE_UNIT  MODIFYOPTION
+ 580  584 DUL     4            "Display Units" $LTE_UNIT  DISPLAYOPTION
+ 580  585 LUL     4            "List Units" $LTE_UNIT  LISTOPTION
+ 580  586 PUL     4            "Print Units" $LTE_UNIT  PRINTOPTION
+ 580  587 RUL     8            "Remove Units" $LTE_UNIT  REMOVEOPTION
+ 580  588 UUL     8            "Restore Units" $LTE_UNIT  RESTOREOPTION
+
+ 590*             1            "Limit Phrase Definition Menu"
+ 590  591 ALT     4            "Add Limit Phrase" $LTE_LIMIT_PHRASE  ADDOPTION
+ 590  592 CLT     4            "Copy Limit Phrase" $LTE_LIMIT_PHRASE  COPYOPTION
+ 590  593 MLT     6            "Modify Limit Phrase" $LTE_LIMIT_PHRASE  MODIFYOPTION
+ 590  594 DLT     4            "Display Limit Phrase" $LTE_LIMIT_PHRASE  DISPLAYOPTION
+ 590  595 LLT     4            "List Limit Phrase" $LTE_LIMIT_PHRASE  LISTOPTION
+ 590  596 PLT     4            "Print Limit Phrase" $LTE_LIMIT_PHRASE  PRINTOPTION
+ 590  597 RLT     8            "Remove Limit Phrase" $LTE_LIMIT_PHRASE  REMOVEOPTION
+ 590  598 ULT     8            "Restore Limit Phrase" $LTE_LIMIT_PHRASE  RESTOREOPTION
+ 590  599 CPRL    4            "Create Limit Phrase from Phrase" $LIMIT_PHRASE LIMIT_PHRASE_CONVERT
+
+ 730*             1            "Limit Calculation Definition Menu"
+ 730  731 ALC     4            "Add Limit Calculation" $LTE_LIMIT_CALC  ADDOPTION
+ 730  732 CLC     4            "Copy Limit Calculation" $LTE_LIMIT_CALC  COPYOPTION
+ 730  733 MLC     6            "Modify Limit Calculation" $LTE_LIMIT_CALC  MODIFYOPTION
+ 730  734 DLC     4            "Display Limit Calculation" $LTE_LIMIT_CALC  DISPLAYOPTION
+ 730  735 LLC     4            "List Limit Calculation" $LTE_LIMIT_CALC  LISTOPTION
+ 730  736 PLC     4            "Print Limit Calculation" $LTE_LIMIT_CALC  PRINTOPTION
+ 730  737 RLC     8            "Remove Limit Calculation" $LTE_LIMIT_CALC  REMOVEOPTION
+ 730  738 ULC     8            "Restore Limit Calculation" $LTE_LIMIT_CALC  RESTOREOPTION
+ 730  739 TLC     4            "Test Limit Calculation" $MLPS_CALC MLPS_CALC_MAIN
+
+ 120*             1            "Preparation Definition Menu"
+ 120  121 APL     4            "Add Preparation" $LTE_PREP  ADDOPTION
+ 120   32 CPL     4            "Copy Preparation" $LTE_PREP  COPYOPTION
+ 120   82 MPL     6            "Modify Preparation" $LTE_PREP  MODIFYOPTION
+ 120   45 DPL     4            "Display Preparation" $LTE_PREP  DISPLAYOPTION
+ 120  106 PPL     4            "Print Preparation" $LTE_PREP  PRINTOPTION
+ 120   69 LPL     4            "List Preparations" $LTE_PREP  LISTOPTION
+ 120  127 RPL     8            "Remove Preparation" $LTE_PREP  REMOVEOPTION
+ 120  155 UPL     8            "Restore Preparation" $LTE_PREP  RESTOREOPTION
+
+ 340*             1            "Project Definition Menu"
+ 340  341 APR     6            "Add Project" $LTE_PROJ ADDOPTION
+ 340  342 CPR     6            "Copy Project" $LTE_PROJ COPYOPTION
+ 340  352 MPR     6            "Modify Project" $LTE_PROJ MODIFYOPTION
+ 340  343 DPR     6            "Display Project" $LTE_PROJ DISPLAYOPTION
+ 340  344 PPR     6            "Print Project" $LTE_PROJ PRINTOPTION
+ 340  345 LPR     6            "List Projects" $LTE_PROJ LISTOPTION
+ 340  348 RPR     6            "Remove Project" $LTE_PROJ REMOVEOPTION
+ 340  351 UPR     6            "Restore Project" $LTE_PROJ RESTOREOPTION
+
+ 300*             4            "Sample Point Menu"
+ 300  231 APT     4            "Add Sample Point" $LTE_SAMP  ADDOPTION
+ 300  232 CPT     4            "Copy Sample Point" $LTE_SAMP  COPYOPTION
+ 300  233 MPT     6            "Modify Sample Point" $LTE_SAMP  MODIFYOPTION
+ 300  238 DPT     4            "Display Sample Point" $LTE_SAMP  DISPLAYOPTION
+ 300  236 PPT     4            "Print Sample Point" $LTE_SAMP  PRINTOPTION
+ 300  237 LPT     4            "List Sample Points" $LTE_SAMP  LISTOPTION
+ 300  234 RPT     8            "Remove Sample Point" $LTE_SAMP  REMOVEOPTION
+ 300  235 UPT     8            "Restore Sample Point" $LTE_SAMP  RESTOREOPTION
+
+ 400*             1            "Calculation Formats Definition Menu"
+ 400  251 ACF     4            "Add Calculation Format" $LTE_CALC  addoption
+ 400  252 CCF     6            "Copy Calculation Format" $LTE_CALC  copyoption
+ 400  253 MCF     6            "Modify Calculation Format" $LTE_CALC  modifyoption
+ 400  256 DCF     4            "Display Calculation Format" $LTE_CALC  displayoption
+ 400  254 PCF     4            "Print Calculation Format" $LTE_CALC  printoption
+ 400  255 LCF     4            "List Calculation Formats" $LTE_CALC  listoption
+ 400  401 RCF     8            "Remove Calculation Formats" $LTE_CALC  removeoption
+ 400  402 UCF     8            "Restore Calculation Formats" $LTE_CALC  restoreoption
+ 400  227 TCF     6            "Test Calculation Format"  $CALCSYNT test_calculation
+ 400  207 DBC     6            "Debug Calculation Format" $CALCSYNT debug_calculation
+
+ 680*             1            "List Result Menu"
+ 680  681 ALR     4            "Add List Result" $LTE_LIST_RES  addoption
+ 680  682 CLR     6            "Copy List Result" $LTE_LIST_RES  copyoption
+ 680  683 MLR     6            "Modify List Result" $LTE_LIST_RES  modifyoption
+ 680  684 DLR     4            "Display List Result" $LTE_LIST_RES  displayoption
+ 680  685 PLR     4            "Print List Result" $LTE_LIST_RES  printoption
+ 680  686 LLR     4            "List List Result" $LTE_LIST_RES  listoption
+ 680  687 RLR     8            "Remove List Result" $LTE_LIST_RES  removeoption
+ 680  688 ULR     8            "Restore List Result" $LTE_LIST_RES  restoreoption
+ 680  689 TLR     6            "Test List Result"  $LR_DEBUG_TEST lr_debug_test_test
+ 680  691 DBL     6            "Debug List Result" $LR_DEBUG_TEST lr_debug_test_debug
+
+ 690*             1            "Inspection Plan Menu"
+ 690  693 AIP     4            "Add Inspection Plan" $LTE_INSPECT addoption
+ 690  694 CIP     6            "Copy Inspection Plan" $LTE_INSPECT copyoption
+ 690  695 MIP     6            "Modify Inspection Plan" $LTE_INSPECT modifyoption
+ 690  696 DIP     4            "Display Inspection Plan" $LTE_INSPECT displayoption
+ 690  697 PIP     4            "Print Inspection Plan" $LTE_INSPECT printoption
+ 690  698 LIP     4            "List Inspection Plan" $LTE_INSPECT listoption
+ 690  699 RIP     8            "Remove Inspection Plan" $LTE_INSPECT removeoption
+ 690  721 UIP     8            "Restore Inspection Plan" $LTE_INSPECT restoreoption
+
+ 490*             1            "Standards Menu"
+ 490  491 ASN     4            "Add Standard" $LTE_STDS  ADDOPTION
+ 490  492 CSN     4            "Copy Standard" $LTE_STDS  COPYOPTION
+ 490  493 MSN     6            "Modify Standard" $LTE_STDS  MODIFYOPTION
+ 490  496 DSN     4            "Display Standard" $LTE_STDS  DISPLAYOPTION
+ 490  497 PSN     4            "Print Standard" $LTE_STDS  PRINTOPTION
+ 490  498 LSN     4            "List Standards" $LTE_STDS  LISTOPTION
+ 490  494 RSN     8            "Remove Standard" $LTE_STDS  REMOVEOPTION
+ 490  495 USN     8            "Restore Standard" $LTE_STDS  RESTOREOPTION
+ 490  499 EXP     6            "Expire Standard Version" $STD_VERS  EXPIRESTANDARD
+ 490 15018 CNV    6            "Create Standard Version" $LTE_STD_VERS  NEWVERSIONOPTION
+ 490 15019 VSV    4            "View Standard Versions" $STD_VERS VIEW_VERSIONS
+ 490 15027 MSV    6            "Modify Standard Version" $LTE_STD_VERS  MODIFYOPTION
+ 490 15021 DSV    4            "Display Standard Version" $LTE_STD_VERS  DISPLAYOPTION
+
+ 530*             1            "MLP Level Definition Menu"
+ 530  531 ALE     4            "Add MLP Level" $LTE_LVLS  ADDOPTION
+ 530  532 CLE     4            "Copy MLP Level" $LTE_LVLS  COPYOPTION
+ 530  533 MLE     6            "Modify MLP Level" $LTE_LVLS  MODIFYOPTION
+ 530  534 DLE     4            "Display MLP Level" $LTE_LVLS  DISPLAYOPTION
+ 530  536 PLE     4            "Print MLP Level" $LTE_LVLS  PRINTOPTION
+ 530  535 LLE     4            "List MLP Levels" $LTE_LVLS  LISTOPTION
+
+ 550*             1            "MLP Definition Menu"
+ 550  551 AMP     6            "Add MLP" $LTE_MLP ADDOPTION
+ 550  553 CMP     6            "Copy MLP" $LTE_MLP COPYOPTION
+ 550  554 MMP     8            "Modify MLP" $LTE_MLP MODIFYOPTION
+ 550  557 DMP     4            "Display MLP" $LTE_MLP DISPLAYOPTION
+ 550  558 PMP     4            "Print MLP" $LTE_MLP PRINTOPTION
+ 550  559 LMP     4            "List MLP" $LTE_MLP LISTOPTION
+ 550  552 MLTS    6            "Create Test schedule from MLP" $MLP_TO_TEST
+
+ 420*             1            "Charges Menu"
+ 420  425 ACE     6            "Add Charges" $LTE_CHARG ADDOPTION
+ 420  426 CCE     6            "Copy Charges" $LTE_CHARG COPYOPTION
+ 420  421 MCE     6            "Modify Charges" $LTE_CHARG MODIFYOPTION
+ 420  422 DCE     6            "Display Charges" $LTE_CHARG DISPLAYOPTION
+ 420  423 PCE     6            "Print Charges" $LTE_CHARG PRINTOPTION
+ 420  424 LCE     6            "List Charges" $LTE_CHARG LISTOPTION
+ 420  428 RCE     6            "Remove Charges" $LTE_CHARG REMOVEOPTION
+ 420  427 UCE     6            "Restore Charges" $LTE_CHARG RESTOREOPTION
+
+ 170*             1            "Test Schedule Definition Menu"
+ 170   14 ATL     6            "Add Test Schedule" $LTE_TSTSC ADDOPTION
+ 170  243 CTL     6            "Copy Test Schedule" $LTE_TSTSC COPYOPTION
+ 170   87 MTL     8            "Modify Test Schedule" $LTE_TSTSC MODIFYOPTION
+ 170   48 DTL     4            "Display Test Schedule" $LTE_TSTSC DISPLAYOPTION
+ 170  112 PTL     4            "Print Test Schedule" $LTE_TSTSC PRINTOPTION
+ 170   71 LTL     6            "List Test Schedules" $LTE_TSTSC LISTOPTION
+ 170  129 RTL     8            "Remove Test Schedule" $LTE_TSTSC REMOVEOPTION
+ 170  208 UTL     8            "Restore Test Schedule" $LTE_TSTSC RESTOREOPTION
+
+ 190*             1            "Sample Template Definition Menu"
+ 190   15 ATM     4            "Add Template" $LTE_TEMPL ADDOPTION
+ 190  206 CTM     4            "Copy Template" $LTE_TEMPL COPYOPTION
+ 190   88 MTM     6            "Modify Template" $LTE_TEMPL MODIFYOPTION
+ 190   49 DTM     4            "Display Template" $LTE_TEMPL DISPLAYOPTION
+ 190  113 PTM     4            "Print Template" $LTE_TEMPL PRINTOPTION
+ 190   72 LTS     4            "List Templates" $LTE_TEMPL LISTOPTION
+ 190  224 RTM     8            "Remove Template" $LTE_TEMPL REMOVEOPTION
+ 190  225 UTM     8            "Restore Template" $LTE_TEMPL RESTOREOPTION
+
+ 380*             1            "Job Template Definition Menu"
+ 380  381 AJT     4            "Add Job Template" $LTE_JOBT  addoption
+ 380  382 CJT     4            "Copy Job Template" $LTE_JOBT  copyoption
+ 380  383 MJT     6            "Modify Job Template" $LTE_JOBT  modifyoption
+ 380  384 DJT     4            "Display Job Template" $LTE_JOBT  displayoption
+ 380  385 PJT     4            "Print Job Template" $LTE_JOBT  printoption
+ 380  386 LJT     4            "List Job Templates" $LTE_JOBT  listoption
+ 380  387 RJT     8            "Remove Job Template" $LTE_JOBT  removeoption
+ 380  388 UJT     8            "Restore Job Template" $LTE_JOBT  restoreoption
+
+ 310*             1            "Login Schedule Definition Menu"
+ 310  244 ASB     4            "Add Login Schedule" $LTE_LSCH  ADDOPTION
+ 310  311 CSB     4            "Copy Login Schedule" $LTE_LSCH  COPYOPTION
+ 310  245 MSB     4            "Modify Login Schedule" $LTE_LSCH  MODIFYOPTION
+ 310  264 DSP     4            "Display Login Schedule" $LTE_LSCH  DISPLAYOPTION
+ 310  312 PSB     4            "Print Login Schedule" $LTE_LSCH  PRINTOPTION
+ 310  313 LSB     4            "List Login Schedules" $LTE_LSCH  LISTOPTION
+ 310  314 RSB     4            "Remove Login Schedule" $LTE_LSCH  REMOVEOPTION
+ 310  315 USB     4            "Restore Login Schedule" $LTE_LSCH  RESTOREOPTION
+
+ 270*             1            "Syntax Definition Menu"
+ 270  195 AXS     4            "Add Syntax Definition" $LTE_SYNT  ADDOPTION
+ 270  196 CXS     4            "Copy Syntax Definition" $LTE_SYNT  COPYOPTION
+ 270  197 MXS     6            "Modify Syntax Definition" $LTE_SYNT  MODIFYOPTION
+ 270  136 DXS     4            "Display Syntax Definition" $LTE_SYNT  DISPLAYOPTION
+ 270  201 PXS     4            "Print Syntax Definition" $LTE_SYNT  PRINTOPTION
+ 270  202 LXS     4            "List Syntax Definitions" $LTE_SYNT  LISTOPTION
+ 270  198 RXS     8            "Remove Syntax Definition" $LTE_SYNT  REMOVEOPTION
+ 270  199 UXS     8            "Restore Syntax Definition" $LTE_SYNT  RESTOREOPTION
+ 270  271 TXF     6            "Test Syntax Format" $CALCSYNT test_syntax
+ 270  272 TXD     6            "Debug Syntax Format" $CALCSYNT debug_syntax
+
+ 430*             1            "Phrases Menu"
+ 430  449 APH     4            "Add Phrases" $LTE_PHRSE ADDOPTION
+ 430  219 CPH     4            "Copy Phrases" $LTE_PHRSE COPYOPTION
+ 430  437 MPH     6            "Modify Phrases" $LTE_PHRSE MODIFYOPTION
+ 430  438 DPH     4            "Display Phrases" $LTE_PHRSE DISPLAYOPTION
+ 430  439 PPH     4            "Print Phrase" $LTE_PHRSE PRINTOPTION
+ 430  279 LPH     4            "List Phrases" $LTE_PHRSE LISTOPTION
+ 430  278 RPH     8            "Remove Phrases" $LTE_PHRSE REMOVEOPTION
+ 430  277 UPH     8            "Restore Phrases" $LTE_PHRSE RESTOREOPTION
+
+ 110*             1            "Personnel Definition Menu"
+ 110    9 AOL     4            "Add Operator" $LTE_PERS  ADDOPTION
+ 110   31 COL     4            "Copy Operator" $LTE_PERS  COPYOPTION
+ 110   81 MOL     6            "Modify Operator" $LTE_PERS  MODIFYOPTION
+ 110   44 DOL     4            "Display Operator" $LTE_PERS  DISPLAYOPTION
+ 110  105 POL     4            "Print Operator" $LTE_PERS  PRINTOPTION
+ 110   68 LOL     4            "List Operators" $LTE_PERS  LISTOPTION
+ 110  126 ROL     8            "Remove Operator" $LTE_PERS  REMOVEOPTION
+ 110  154 UOL     8            "Restore Operator" $LTE_PERS  RESTOREOPTION
+
+ 140*             1            "Report Format Menu"
+ 140    3 AFL     6            "Add Report Format" $LTE_REP   ADDOPTION
+ 140   25 CFL     6            "Copy Report Format" $LTE_REP   COPYOPTION
+ 140   75 MFL     8            "Modify Report Format" $LTE_REP   MODIFYOPTION
+ 140   38 DFL     4            "Display Report Format" $LTE_REP   DISPLAYOPTION
+ 140   98 PFL     4            "Print Report Format" $LTE_REP   PRINTOPTION
+ 140   61 LFL     4            "List Report Formats" $LTE_REP   LISTOPTION
+ 140  118 RFL     8            "Remove Report Format" $LTE_REP   REMOVEOPTION
+ 140  148 UFL     8            "Restore Report Format" $LTE_REP   RESTOREOPTION
+ 140 15012 DEV    8            "Report Development" $DEVELOP
+ 140  166 TFL     6            "Translate Report Format" $GENCOMP COMPILE_REPORT
+ 140  436 DFE     6            "Display Translation Errors" $GENCOMP DISPLAY_ERRORS
+ 140   56 GRL     4            "Generate Report" $GENCOMP GENERATE_REPORT
+ 140   55 DBG     6            "Debug Report" $GENCOMP DEBUG_REPORT
+ 140 15031 PCT    1            "Performance and Coverage Tool" $PERFORM
+ 140 15032 TPA    1            "Transaction Performance Analyser" $SQL_PERF
+
+ 390*             1            "Identifier Groups"
+ 390  161 AGP     4            "Add Identifier Group" $LTE_GROUP ADDOPTION
+ 390  353 CGP     4            "Copy Identifier Group" $LTE_GROUP COPYOPTION
+ 390  192 MGP     6            "Modify Identifier Group" $LTE_GROUP MODIFYOPTION
+ 390  354 DGP     4            "Display Identifier Group" $LTE_GROUP DISPLAYOPTION
+ 390  355 PGP     4            "Print Identifier Group" $LTE_GROUP PRINTOPTION
+ 390  356 LGP     4            "List Identifier Groups" $LTE_GROUP LISTOPTION
+ 390  357 RGP     8            "Remove Identifier Group" $LTE_GROUP REMOVEOPTION
+ 390  358 UGP     8            "Restore Identifier Group" $LTE_GROUP RESTOREOPTION
+ 390  394 GTP     4            "Assign Groups To Personnel" $GROUPLINK
+ 390   67 SGL     4            "Set Default Group" $GROUPLINK set_default_groups
+
+ 440*             1            "Printer Definitions Menu"
+ 440  441 APD     6            "Add Printer Definition" $LTE_PRINT ADDOPTION
+ 440  442 CPD     6            "Copy Printer Definition" $LTE_PRINT COPYOPTION
+ 440  443 MPD     6            "Modify Printer Definition" $LTE_PRINT MODIFYOPTION
+ 440  448 DPD     4            "Display Printer " $LTE_PRINT DISPLAYOPTION
+ 440  446 PPD     4            "Print a Printer Definition" $LTE_PRINT PRINTOPTION
+ 440  447 LPD     4            "List Printer Definitions" $LTE_PRINT LISTOPTION
+ 440  444 RPD     8            "Remove a Printer Definition" $LTE_PRINT REMOVEOPTION
+ 440  445 UPD     8            "Restore a Printer Definition" $LTE_PRINT RESTOREOPTION
+
+ 450*             1            "Help Menu"
+ 450  670 HTP     4            "Help Topic Setup Menu"
+ 450  451 HCH     4            "Help Chapter Setup" $HELP_CHAPTERS
+
+ 670*             1            "Help Topic Setup Menu"
+ 670  671 AHP     6            "Add Help Topic" $LTE_HELP ADDOPTION
+ 670  672 CHP     6            "Copy Help Topic" $LTE_HELP COPYOPTION
+ 670  673 MHP     6            "Modify Help Topic" $LTE_HELP MODIFYOPTION
+ 670  678 DHP     4            "Display Help Topic" $LTE_HELP DISPLAYOPTION
+ 670  676 PHP     4            "Print a Help Topic" $LTE_HELP PRINTOPTION
+ 670  677 LHP     4            "List Help Topics" $LTE_HELP LISTOPTION
+ 670  674 RHP     8            "Remove a Help Topic" $LTE_HELP REMOVEOPTION
+ 670  675 UHP     8            "Restore a Help Topic" $LTE_HELP RESTOREOPTION
+
+ 570*             1            "Column Definition Setup Menu"
+ 570  571 ACH     6            "Add Column Definition" $CRITERIA_LTE ADDOPTION
+ 570  572 CCH     6            "Copy Column Definition" $CRITERIA_LTE COPYOPTION
+ 570  573 MCH     6            "Modify Column Definition" $CRITERIA_LTE MODIFYOPTION
+ 570  574 DCH     4            "Display Column Definition" $CRITERIA_LTE DISPLAYOPTION
+ 570  575 PCH     4            "Print Column Definition" $CRITERIA_LTE PRINTOPTION
+ 570  576 LCH     4            "List Column Definitions" $CRITERIA_LTE LISTOPTION
+ 570  577 RCH     8            "Remove Column Definition" $CRITERIA_LTE REMOVEOPTION
+ 570  578 UCH     8            "Restore Column Definition" $CRITERIA_LTE RESTOREOPTION
+
+ 160*             1            "Sample Login Menu"
+ 160  167 LSS     4            "Login Samples" $SAMP_JOB  loginsamplewithoutte
+ 160  168 TLS     4            "Login Samples using Template" $SAMP_JOB  loginsamplefortempla
+ 160   12 NJL     4            "Login Samples - New Job" $SAMP_JOB  loginsamplenewjob
+ 160  114 OJL     4            "Login Samples - Add to Old Job" $SAMP_JOB  loginsampleoldjob
+ 160   47 DSE     4            "Display Sample Entry" $SAMP_JOB  displaysampleentry
+ 160 10007 DFS    4            "Display Full Sample" $SAMP_JOB  displayfullsample
+ 160   86 MSE     8            "Modify Sample Entry" $SAMP_JOB  modifysampleentry
+ 160  361 MFS     8            "Modify Full Sample" $SAMP_JOB  modifyfullsample
+ 160  724 SEV     4            "Sample Entry View" $SAMP_JOB viewsampleentry
+ 160   57 ETP     6            "Enter/Edit Tests" $TEST_ASSN edittests
+ 160  111 RCP     4            "Print Sample Receipt" $RECEIPT
+ 160   19 LBP     4            "Print Sample Label" $SAMPLABEL
+
+ 220*             1            "Worksheet Menu"
+ 220  500 TWS     6            "Test Worksheet Menu"
+ 220  510 SWS     6            "Sample Worksheet Menu"
+ 220  520 PWS     6            "Preparation Worksheet Menu"
+ 220  540 UWS     6            "Definable Worksheet Menu"
+ 220 15013 BLG    6            "Backlog Report" $BACKLOG
+ 220 15014 NOW    6            "Sample Not On Worksheet" $NOTONWSHT
+ 220 15015 WSM    6            "Worksheet Summary" $WSACTIVE
+ 220  490 STN     4            "Standards Menu"
+ 220  600 TMP     6            "Enhanced Worksheets Menu"
+
+ 500*             1            "Test Worksheet Menu"
+ 500  462 GAW     6            "Generate Analysis Worksheet" $WORKSHEET analysisworksheet
+ 500  466 PAW     6            "Print Analysis Worksheet" $PRANALWKS
+ 500  472 CAW     6            "Complete Analysis Worksheet" $WORKSHEET completeworksheet
+ 500  501 MWS     6            "Modify Analysis Worksheet" $MODWSHT   analyentry
+ 500  475 RAW     4            "Result Entry by Analysis Worksheet" $res_entry call_raw
+ 500  484 DAW     4            "Result Display by Analysis Worksheet" $res_entry call_daw
+ 500  485 AAW     4            "Result Authorise by Analysis Worksheet" $res_entry call_aaw
+ 500  477 RSF     6            "Multichrom RSF from Analysis Worksheet" $WORKSHEET create_mc_rsf
+ 500  486 XCA     6            "XChrom Analysis from Analysis Worksheet" $XCL_RSF xcl_generate_rsf
+
+ 540*             1            "Definable Worksheet Menu"
+ 540  478 UDW     6            "Generate Definable Worksheet" $UDWSHT
+ 540  479 PUD     6            "Print Definable Worksheet" $PRUDWSHT
+ 540  481 CUD     6            "Complete Definable Worksheet" $WORKSHEET completeudwworksheet
+ 540  502 MUD     6            "Modify Definable Worksheet" $MODWSHT udwentry
+ 540  711 RUW     4            "Result Entry by Definable Worksheet" $res_entry call_ruw
+ 540  712 DUW     4            "Result Display by Definable Worksheet" $res_entry call_duw
+ 540  713 AUW     4            "Result Authorise by Definable Worksheet" $res_entry call_auw
+ 540  15022 RSD   6            "Multichrom RSF from Defined Worksheet" $WORKSHEET defined_mc_rsf
+
+ 510*             1            "Sample Worksheet Menu"
+ 510  461 GSW     6            "Generate Sample Worksheet" $SAMPWSHT
+ 510  465 PSW     6            "Print Sample Worksheet" $PRSAMPWS
+ 510  513 CSW     6            "Complete Sample Worksheet" $WORKSHEET completesmpworksheet
+ 510  476 RSW     4            "Result Entry by Sample Worksheet" $res_entry call_rsw
+ 510  511 DSW     4            "Result Display by Sample Worksheet" $res_entry call_dsw
+ 510  512 ASW     4            "Result Authorise by Sample Worksheet" $res_entry call_asw
+ 510  517 RGW     6            "Regenerate Sample Worksheet" $WORKSHEET regen_smp_worksheet
+ 510  516 SWJ     6            "Generate Sample Worksheets for a Job" $JOBWRKSHT
+
+ 520*             1            "Preparation Worksheet Menu"
+ 520  463 GTW     6            "Generate Test Preparation Worksheet" $WORKSHEET testprepworksheet
+ 520  467 PTW     6            "Print Test Preparation Worksheet" $PRTWKS
+ 520  473 CTW     6            "Complete Test Preparation Worksheet" $WORKSHEET completetprepworkshe
+ 520  464 GPW     6            "Generate Sample Preparation Worksheet" $WORKSHEET sampprepworksheet
+ 520  468 PPW     6            "Print Sample Preparation Worksheet" $PRPWKS
+ 520  474 CPW     6            "Complete Sample Preparation Worksheet" $WORKSHEET completepprepworkshe
+
+ 600*             1            "Worksheet Generation by Template Menu"
+ 600  610 WTM     4            "Worksheet Template Data Entry Menu"
+ 600  601 GWT     6            "Generate Worksheet from Template" $WORKT_GEN TEMPLATE_WORKSHEET
+ 600  539 RET     6            "Enter Results By Template Worksheet" $RBT RESENTER
+ 600  666 DRT     4            "Display Results By Template Worksheet" $RBT RESDISPLAY
+ 600  602 PRW     6            "Print Template Worksheet" $WORK_PRNT PRINTTEMPLATEWORKSHEET
+ 600  604 CEW     6            "Complete Template Worksheet" $WKS_MAINT COMPLETE_WORKSHEET
+ 600  603 RTW     6            "Review Template Worksheet" $WORKREV
+ 600  667 ART     6            "Authorise Results By Template Worksheet" $RBT RESAUTH
+ 600  606 GWB     6            "Generate Worksheet on Background" $WKS_maint BACK_GEN_WKS
+ 600  607 RSE     6            "Multichrom RSF for Template Worksheet" $WKS_MAINT MCRSF_GENERATE
+ 600  605 PUR     6            "Commit Template Worksheet" $WKS_MAINT PURGE_WORKSHEETS
+ 600  620 MNT     4            "Template Worksheet Maintenance Menu"
+
+ 610*             1            "Worksheet Template Data Entry Menu"
+ 610  611 AWT     4            "Add Template" $LTE_WORKT ADDOPTION
+ 610  612 CWT     4            "Copy Template" $LTE_WORKT COPYOPTION
+ 610  613 MWT     6            "Modify Template" $LTE_WORKT MODIFYOPTION
+ 610  614 DWT     4            "Display Template" $LTE_WORKT DISPLAYOPTION
+ 610  615 APP     4            "Approve Template" $WORK_TEMP APPROVE_TEMPLATE
+ 610  668 CNW     4            "Delete Template" $WORK_TEMP CANCEL_TEMPLATE
+ 610  616 PWT     4            "Print Template" $LTE_WORKT PRINTOPTION
+ 610  617 LWT     4            "List Templates" $LTE_WORKT LISTOPTION
+ 610  618 RWT     8            "Remove Template" $LTE_WORKT REMOVEOPTION
+ 610  619 UWT     8            "Restore Template" $LTE_WORKT RESTOREOPTION
+
+ 620*             1            "Template Worksheet Maintenance Menu"
+ 620  624 CAN     6            "Cancel Template Worksheet" $WKS_MAINT CANCEL_WORKSHEET
+ 620  629 MOD     6            "Modify Template Worksheet" $WORK_MOD MODIFY_WORKSHEET
+ 620  625 TWT     6            "Reset Template Worksheet" $WKS_MAINT RESET_WORKSHEET
+ 620  623 WTR     6            "Reject Template Worksheet" $WKS_MAINT REJECT_WORKSHEET
+ 620  626 SWT     6            "Suspend Template Worksheet" $WKS_MAINT SUSPEND_WORKSHEET
+ 620  627 UTW     6            "Unsuspend Template Worksheet" $WKS_MAINT UNSUSPEND_WORKSHEET
+ 620  632 RBD     6            "Rebuild Template Worksheet" $WKS_REBLD BUILD_FROM_ID
+ 620  633 RBA     6            "Rebuild Template Worksheet from Test" $WKS_REBLD BUILD_FROM_TEST
+ 620  628 OWT     6            "Reassign Template Worksheet Operator" $WKS_MAINT REASSIGN_WORKSHEET
+
+ 150*              1            "Results Management Menu"
+ 150   247 TSR     4            "Tabular Result Entry by Sample" $res_entry call_tsr
+ 150   249 DSR     4            "Display Results by Sample" $res_entry call_dsr
+ 150   514 ASR     6            "Authorise Results by Sample" $res_entry call_asr
+ 150   248 TTR     6            "Tabular Result Entry by Test" $res_entry call_ttr
+ 150   242 DTR     4            "Display Results by Test"   $res_entry call_dtr
+ 150   515 ATR     6            "Authorise Results by Test"   $res_entry call_atr
+ 150   389 TWR     4            "Spread Sheet Result Entry by Test" $res_entry call_twr
+ 150   391 DWR     4            "Spread Sheet Result Display by Test" $res_entry call_dwr
+ 150   392 AWR     6            "Spread Sheet Result Authorise by Test" $res_entry call_awr
+ 150 15041 TCR     4            "Spread Sheet Result Entry by Criteria" $lib_re_criteria mod_by_criteria
+ 150 15042 DCR     4            "Spread Sheet Result Display by Criteria" $lib_re_criteria disp_by_criteria
+ 150 15043 ACR     6            "Spread Sheet Result Authorise by Criteria" $lib_re_criteria auth_by_criteria
+ 150   141 WSR     4            "Write Sample Report" $genreslis
+ 150   393 MRL     8            "Modify Result List" $lib_re_list lib_re_list_sample
+
+ 280*             4            "Reporting Menu"
+ 280  241 TAB     4            "SuperTAB - Ad Hoc Tabular Report" $DBTAB AD_HOC_TAB
+ 280  246 GTR     4            "SuperTAB - Generate Saved Tabular Report"$DBTAB       GENERATE_TAB
+ 280  265 MTR     6            "SuperTAB - Modify Saved Tabular Report" $DBTAB      MODIFY_TAB
+ 280  266 BTR     4            "SuperTAB - Generate Saved Report In Background" $DBTAB     CALL_TAB_BACKGROUND
+ 280 15023 TAJ    4            "JobTAB - Ad Hoc Tabular Report" $DBTAB AD_HOC_TAB_JOB
+ 280 15025 GTJ    4            "JobTAB - Generate Saved Tabular Report "$DBTAB       GENERATE_TAB_JOB
+ 280 15026 MTJ    6            "JobTAB - Modify Saved Tabular Report" $DBTAB      MODIFY_TAB_JOB
+ 280 15024 BTJ    4            "JobTAB - Generate Saved Report In Background" $DBTAB     CALL_TAB_BACK_JOB
+ 280   56 GRL     4            "Generate Report"  $GENCOMP GENERATE_REPORT
+ 280  141 WSR     4            "Write Sample Report" $GENRESLIS
+ 280 15001 TRE    4            "Data Tree" $DATATREE  datatree
+ 280 15002 TRS    4            "Sample Data Tree" $DATATREE  sampletree
+ 280  418 EVE     4            "Call current editor" $EVE eve_menu_option
+ 280  203 AGR     6            "Background Report Generation" $bsmp_rept bsmpreptgeneration
+ 280  204 LTQ     6            "List Timer Queue Entries" $bsmp_rept bsmpreptdisplay
+ 280 15017 AUD    8            "Audit Reporting" $AUDIT_REP
+ 280 15044 AUV    8            "Audit Viewer" $AUDIT
+
+ 320*             1            "Job Processing Menu"
+ 320  259 DJS     4            "Display Job Header and Samples" $SAMP_JOB  displayjobheader
+ 320  323 MJH     6            "Modify Job Header" $SAMP_JOB  modifyjobheader
+ 320  324 PJH     6            "Print Job Header" $SAMP_JOB  printjobentry
+ 320  326 PJS     4            "Print Job Header and Samples" $JOBSUM
+ 320  325 LJH     6            "List Job Headers" $JOBLIST
+ 320  328 FJH     6            "Complete Job" $AUX_FJH
+ 320  349 AJH     6            "Authorise Job and Samples" $AUX_AJH
+ 320  329 CRP     8            "Commit Job and Samples" $LIB_COMM COMMIT_JOB
+ 320  347 RAJ     6            "Reactivate Authorised Job" $AUX_RAJ
+ 320  322 XJH     6            "Cancel Job"                $AUX_XJH
+ 320  319 SJH     6            "Suspend Job" $AUX_SJH
+ 320  318 UJH     6            "Release Job from Suspension" $AUX_UJH
+ 320 15034 DCJ    8            "Deconsign Job and Samples" $LIB_COMM DECONSIGN_JOB
+ 320  692 ARC    10            "Job and Sample Archive Utility" $ARCHIVE
+
+ 130*             1            "Sample Processing Menu"
+ 130 15009 CPS    6            "Change Sample Priority" $AUX_CPS
+ 130  182 RVP     4            "Receive Sample" $AUX_RVP
+ 130  261 RLS     8            "Release Sample from HOLD" $AUX_RLS
+ 130   85 MSP     4            "Move Sample to New Location" $AUX_MSP
+ 130   33 CPP     4            "Report Completion of Sample Preparation" $AUX_CPP
+ 130 15011 CSM    8            "Compare Sample with MLP" $CSMLP
+ 130   11 ASP     8            "Authorise Sample" $AUX_ASP
+ 130   35 CMS     8            "Commit Sample" $LIB_COMM COMMIT_SAMPLE
+ 130  186 XSP     8            "Cancel Sample" $AUX_XSP
+ 130  185 URP     8            "Reactivate Authorised Sample" $AUX_URP
+ 130  262 SUP     8            "Suspend Sample" $AUX_SUP
+ 130  263 USP     8            "Release Sample from Suspension" $AUX_USP
+ 130  137 RQR     6            "Request Resample" $RQR
+ 130  138 CSP     8            "Complete Sample" $AUX_CSP
+ 130 15033 DCS    8            "Deconsign Sample" $LIB_COMM DECONSIGN_SAMPLE
+ 130  692 ARC    10            "Job and Sample Archive Utility" $ARCHIVE
+ 130  139 SIN     8            "Sample Inspection" $SAMP_INSPECT
+ 130 15037 SIH    8            "Sample Inspection History" $INSPECTION_HISTORY
+
+ 410*             1            "Test Processing Menu"
+ 410   57 ETP     6            "Enter/Edit tests" $TEST_ASSN edittests
+ 410  419 DTP     6            "Display tests" $TEST_ASSN displaytests
+ 410  411 CTP     6            "Report Early Completion of Test" $AUX_CTP
+ 410  412 ATP     6            "Authorise Test" $AUX_ATP
+ 410  413 XTP     6            "Cancel Test" $AUX_XTP
+ 410  414 STP     6            "Suspend Test" $AUX_STP
+ 410  417 RTP     6            "Reactivate Authorised Test" $AUX_RTP
+ 410  415 UTP     6            "Reactivate Test (Unsuspend)" $AUX_UTP
+ 410  416 PTP     6            "Report Completion of Test Preparation" $AUX_PTP
+
+ 200*             1            "Sample Track and Status Menu"
+ 200    13 AST    4            "Summary of All Active Samples" $ACTIVE
+ 200   144 STT    4            "Selected Sample Status" $STT
+ 200   142 SST    4            "Samples Suspended" $SUSPEND
+ 200   133 SIT    4            "Samples Assigned to Instrument" $INSTASSN
+ 200   131 SCT    4            "Samples for Specified Customer" $CUSTOMER
+ 200   134 SLT    4            "Samples at Specified Location" $LOCATE
+ 200    93 OST    4            "Overdue Samples" $OVERDUE
+ 200 15045 AUS    8            "Sample Audit Viewer" $AUDIT_SAMPLE
+
+ 370*             1            "Watch Dog Timer Functions Menu"
+ 370  257 ABL     4            "Activate Login Schedule" $bsmp_lsch bsmplschsubmit
+ 370  258 SBL     4            "Deactivate Login Schedule" $bsmp_lsch bsmplschstop
+ 370  203 AGR     6            "Background Report Generation" $bsmp_rept bsmpreptgeneration
+ 370  229 DGR     6            "Delete Background Report Entry" $bsmp_rept bsmpreptdelete
+ 370  204 LTQ     6            "List timer Queue Entries" $bsmp_rept bsmpreptdisplay
+ 370  205 TSM     8            "Terminate background SMP" $bsmp_rept bsmpreptstop
+ 370  861 MTQ     8            "Background Mass Change" $bsmp_rept bsmpreptmasschange
+ 370  850 DSM     8            "Timer Schedule Menu"
+
+ 350*             1            "Customisation Options"
+ 350   210 USM    1            "User Setup Menu"
+ 350   180 SSM    6            "System Setup Menu"
+ 350 15047 MAB   10            "Modify Audit Behaviour"                 $AUDIT_CONFIG
+ 350 15048 EAR    6            "Explore Audit Records"                  $AUDIT_EXPLORER
+ 350 15049 TBL    8            "Table Loader"                           $TABLE_LOADER
+ 350 15051 TBS    8            "Table Saver"                            $TABLE_SAVER
+ 350 15052 EFM   10            "EFM Installer"                          $EFM_INSTALL
+
+ 180*             1            "System Setup Menu"
+ 180  226 SCA    10            "Change Any Users Password"              $USER_CONTROL CHANGE_ANY_PASSWORD
+ 180 9991 NMC     1            "Change to New Menu File"                $NMC CHANGE_MENU
+ 180   16 AUU     8            "Add User"                               $USER_CONTROL ADD_USER
+ 180  209 DUU    10            "Delete User"                            $USER_CONTROL DELETE_USER
+ 180  230 ECI    10            "Configuration Items Menu"
+ 180 10861 EUC   10            "Edit Any Users Configuration"           $CONFIG ANYCONFIG
+ 180 10863 EGC   10            "Edit Group Configuration"               $CONFIG GROUP_CONFIG
+ 180 10865 ESC   10            "Edit System Configuration"              $CONFIG SYSTEM_CONFIG
+ 180 10866 EUI   10            "Edit Configuration Item for All Users"  $CONFIG USER_CONFIG_ITEM
+ 180 10867 EGI	 10            "Edit Configuration Item for All Groups" $CONFIG GROUP_CONFIG_ITEM
+ 180 15054 ESG   10            "ESig setup"                             $ESIG_SETUP
+
+ 230*             4            "Configuration Items Menu"
+ 230  371 ACI     4            "Add Configuration Item"     $LTE_CONFIG ADD_OPTION
+ 230  372 CCI     4            "Copy Configuration Item"    $LTE_CONFIG COPY_OPTION
+ 230  373 MCI     4            "Modify Configuration Item"  $LTE_CONFIG MODIFY_OPTION
+ 230  374 DCI     4            "Display Configuration Item" $LTE_CONFIG DISPLAY_OPTION
+ 230  375 PCI     4            "Print Configuration Item"   $LTE_CONFIG PRINT_OPTION
+ 230  376 LCI     4            "List Configuration Items"   $LTE_CONFIG LIST_OPTION
+ 230  377 RCI     4            "Remove Configuration Item"  $LTE_CONFIG REMOVE_OPTION
+ 230  378 UCI     4            "Restore Configuration Item" $LTE_CONFIG RESTORE_OPTION
+
+ 210*             1            "User Setup Menu"
+ 210  179 DPX     4            "Define Text Printer"        $USER_CONTROL DEFINE_TEXT_PRINTER
+ 210  163 DLX     4            "Define Label Printer"       $USER_CONTROL DEFINE_LABEL_PRINTER
+ 210   34 CPU     1            "Change Your Password"       $USER_CONTROL CHANGE_PASSWORD
+ 210   22 CAU     1            "Change Your Access Level"   $USER_CONTROL CHANGE_ACCESS_LEVEL
+ 210 10869 EYC    1            "Edit Your Configuration"    $CONFIG USER_CONFIG
+ 210 10871 ECC    1            "Edit Current Configuration" $CONFIG PROCESS_CONFIG
+
+ 560*             8            "Operator Approval Menu"
+ 560  701 MAP     8            "Add/Modify/Remove Operator Approval Data" $APPROVAL modify_option
+ 560  702 DAP     8            "Display Operator Approval Data" $APPROVAL display_option
+ 560  704 PAP     8            "Print Operator Approval Data" $APPROVAL print_option
+ 560  703 LAP     8            "List Operator Approval Data" $APPROVAL list_option
+
+ 630*             1            "Significant Figure Filter Menu"
+ 630  631 ASF     4            "Add Significant Figure Filter" $LTE_SFIGS ADDOPTION
+ 630  634 CSF     4            "Copy Significant Figure Filter" $LTE_SFIGS COPYOPTION
+ 630  635 MSF     6            "Modify Significant Figure Filter" $LTE_SFIGS MODIFYOPTION
+ 630  636 DSF     4            "Display Significant Figure Filter" $LTE_SFIGS DISPLAYOPTION
+ 630  638 PSF     4            "Print Significant Figure Filter" $LTE_SFIGS PRINTOPTION
+ 630  637 LSF     4            "List Significant Figure Filter" $LTE_SFIGS LISTOPTION
+ 630  639 XSF     8            "Remove Significant Figure Filter" $LTE_SFIGS REMOVEOPTION
+ 630  641 USF     8            "Restore Significant Figure Filter" $LTE_SFIGS RESTOREOPTION
+ 630  705 TSF     6            "Compile/Test Significant Figure Filter" $SF_TEST test_sf_rtn
+ 630  643 ESF     6            "Display Sig Figs Compilation Errors" $SF_TEST display_comp_errors
+ 630  706 DBF     6            "Debug Significant Figure Filter" $SF_TEST debug_sf_rtn
+
+ 780*             1            "Work Profile Menu"
+ 780  781 AWP     6            "Add Work Profile" $LTE_WORK_PROFILE  ADDOPTION
+ 780  782 CWP     6            "Copy Work Profile" $LTE_WORK_PROFILE  COPYOPTION
+ 780  783 MWP     6            "Modify Work Profile" $LTE_WORK_PROFILE  MODIFYOPTION
+ 780  784 DWP     4            "Display Work Profile" $LTE_WORK_PROFILE  DISPLAYOPTION
+ 780  785 LWP     4            "List Work Profile" $LTE_WORK_PROFILE  LISTOPTION
+ 780  786 PWP     4            "Print Work Profile" $LTE_WORK_PROFILE  PRINTOPTION
+ 780  787 RWP     6            "Remove Work Profile" $LTE_WORK_PROFILE  REMOVEOPTION
+ 780  788 UWP     6            "Restore Work Profile" $LTE_WORK_PROFILE  RESTOREOPTION
+
+ 800*             1            "Batch Template Definition Menu"
+ 800  801 ABT     6            "Add Batch Template" $LTE_BATCH  ADDOPTION
+ 800  802 CBT     6            "Copy Batch Template" $LTE_BATCH  COPYOPTION
+ 800  803 MBT     6            "Modify Batch Template" $LTE_BATCH  MODIFYOPTION
+ 800  804 DBT     4            "Display Batch Template" $LTE_BATCH  DISPLAYOPTION
+ 800  805 LBT     4            "List Batch Template" $LTE_BATCH  LISTOPTION
+ 800  806 PBT     4            "Print Batch Template" $LTE_BATCH  PRINTOPTION
+ 800  807 RBT     8            "Remove Batch Template" $LTE_BATCH  REMOVEOPTION
+ 800  808 UBT     8            "Restore Batch Template" $LTE_BATCH  RESTOREOPTION
+ 800  840 BQC     6            "Batch Control Charts Menu"
+
+ 810*             1            "Batch Login Menu"
+ 810  811 BCT     4            "Batch Create"       $BATCH    BATCHCREATE
+ 810  812 BMD     4            "Batch Modify"       $BATCH    BATCHMODIFY
+ 810  813 BDP     4            "Batch Display"      $BATCH    BATCHDISPLAY
+ 810  814 BRE     4            "Batch Result Entry" $BATCH_RE BATCHREMENU
+ 810  826 BIN     4            "Batch Inspect"      $BATCH    BATCHINSPECT
+ 810  815 BAT     4            "Batch Authorise"    $BATCH    BATCHAUTHORISE
+ 810  816 BCN     4            "Batch Cancel"       $BATCH    BATCHCANCEL
+ 810  817 BRA     4            "Batch Reactivate"   $BATCH    BATCHREACTIVATE
+ 810  820 BCS     4            "Chromatography Link"
+ 810  821 BPW     4            "Batch Worksheet"     $BATCH     BATCHWORKSHEET
+ 810  822 BPR     4            "Batch Report"        $BATCH     BATCHREPORT
+ 810  823 BPJ     4            "Batch Job Report"    $BATCH     BATCHJOBREPORT
+ 810  825 BCQ     4            "Batch Control Chart" $BATCH_SQC BATCHSQCCHART
+ 810  827 BCO     8            "Batch Commit"        $BATCH     BATCHCOMMIT
+
+ 820*             1            "Batch/Chromatography Link Menu"
+ 820  818 BDL     4            "Batch Download"     $BATCH         BATCHDOWNLOAD
+ 820  819 BUP     4            "Batch Upload"       $BATCH         BATCHUPLOAD
+ 820  824 BUX     4            "Update Chrom Data" $BATCH_XCHROM  UPDATEXCHROMPHRASES
+
+ 830*             1            "Saved Criteria Menu"
+ 830  831 ARH     6            "Add Saved Criteria" $LTE_CRITERIA_SAVED  ADDOPTION
+ 830  832 CRH     6            "Copy Saved Criteria" $LTE_CRITERIA_SAVED  COPYOPTION
+ 830  833 MRH     6            "Modify Saved Criteria" $LTE_CRITERIA_SAVED  MODIFYOPTION
+ 830  834 DRH     4            "Display Saved Criteria" $LTE_CRITERIA_SAVED  DISPLAYOPTION
+ 830  835 LRH     4            "List Saved Criteria" $LTE_CRITERIA_SAVED  LISTOPTION
+ 830  836 PRH     4            "Print Saved Criteria" $LTE_CRITERIA_SAVED  PRINTOPTION
+ 830  837 RRH     6            "Remove Saved Criteria" $LTE_CRITERIA_SAVED  REMOVEOPTION
+ 830  838 URH     6            "Restore Saved Criteria" $LTE_CRITERIA_SAVED  RESTOREOPTION
+
+ 840*             1            "Control Chart Definition Menu"
+ 840  841 AQC     6            "Add Control Chart"     $LTE_BATCH_SQC ADDOPTION
+ 840  842 CQC     6            "Copy Control Chart"    $LTE_BATCH_SQC COPYOPTION
+ 840  843 MQC     6            "Modify Control Chart"  $LTE_BATCH_SQC MODIFYOPTION
+ 840  844 DQC     4            "Display Control Chart" $LTE_BATCH_SQC DISPLAYOPTION
+ 840  845 PQC     4            "Print Control Chart"   $LTE_BATCH_SQC PRINTOPTION
+ 840  846 LQC     4            "List Control Chart"    $LTE_BATCH_SQC LISTOPTION
+ 840  847 RQC     6            "Remove Control Chart"  $LTE_BATCH_SQC REMOVEOPTION
+ 840  848 UQC     6            "Restore Control Chart" $LTE_BATCH_SQC RESTOREOPTION
+
+ 850*             1            "Timer Schedule Definition Menu"
+ 850   851 ADS    8            "Add Timer Schedule"     $LTE_TIMER_SCHEDULE ADDOPTION
+ 850   852 CDS    8            "Copy Timer Schedule"    $LTE_TIMER_SCHEDULE COPYOPTION
+ 850   853 MDS    8            "Modify Timer Schedule"  $LTE_TIMER_SCHEDULE MODIFYOPTION
+ 850   854 DDS    8            "Display Timer Schedule" $LTE_TIMER_SCHEDULE DISPLAYOPTION
+ 850   855 PDS    8            "Print Timer Schedule"   $LTE_TIMER_SCHEDULE PRINTOPTION
+ 850   856 LDS    8            "List Timer Schedule"    $LTE_TIMER_SCHEDULE LISTOPTION
+ 850   857 RDS    8            "Remove Timer Schedule"  $LTE_TIMER_SCHEDULE REMOVEOPTION
+ 850   858 UDS    8            "Restore Timer Schedule" $LTE_TIMER_SCHEDULE RESTOREOPTION
+ 850   859 TDS    8            "Test Timer Schedule"    $BSMP_TIMER_SCHEDULE BSMPTIMERSCHEDULETEST
+
+ 860*             1            "CGI Script Definition Menu"
+ 860   862 ACGI   4            "Add CGI Script"     $LTE_CGI_SCRIPT ADDOPTION
+ 860   863 CCGI   4            "Copy CGI Script"    $LTE_CGI_SCRIPT COPYOPTION
+ 860   864 MCGI   6            "Modify CGI Script"  $LTE_CGI_SCRIPT MODIFYOPTION
+ 860   865 DCGI   4            "Display CGI Script" $LTE_CGI_SCRIPT DISPLAYOPTION
+ 860   866 PCGI   4            "Print CGI Script"   $LTE_CGI_SCRIPT PRINTOPTION
+ 860   867 LCGI   4            "List CGI Scripts"   $LTE_CGI_SCRIPT LISTOPTION
+ 860   868 RCGI   8            "Remove CGI Script"  $LTE_CGI_SCRIPT REMOVEOPTION
+ 860   869 UCGI   8            "Restore CGI Script" $LTE_CGI_SCRIPT RESTOREOPTION
+
+9980*               1            "Options only from $xxx commands"
+9980    435 LAB     6            "Experimental Laboratory Tables Menu" $LAB
+9980    188 VMS     4            "Execute DCL commands"                $VMS vms_menu_option
+9980    188 UNX     4            "Execute DCL commands"                $VMS vms_menu_option
+9980    191 ULI     1            "User login"
+9980    123 COM     4            "Toggle Active/Committed mode"        $COM
+9980    124 SEC     4            "Change Global Table Set"             $SETCOM
+9980  15053 XPR     4            "Explorer"                            $EXPLORER
+9980    999 MX      1            "Exit from SampleManager"
+
+9990*             1            "Non-existent menu for demonstration/debug options"
+9990     56 @     4            "Generate Report"  $GENCOMP GENERATE_REPORT
+9990    159 WRL   4            "Generate Report"  $GENCOMP GENERATE_REPORT
+9990    239 VSN   1            "Display version date and time" $VSN vsn_menu_option
+9990    997 SPY  10            "Debug next report"
+9990    508 COW   1            "Display memory statistics" $COW
+9990  15036 AHR   1            "Ad-Hoc Reporter" $REPORTER
+9990  15039 AHT   1            "Ad-Hoc Reporter Templates" $REPORTER_TMPL
+9990    998 TID  10            "Terminate Increment Daemon"
+
+10000*            1            "Welcome To Hot Keys"
+10000 10001 1     1            "1 Calculator"
+10000 10004 2     4            "2 Sample Status"
+10000 10005 3     4            "3 Current Configuration"
+10000 10006 4     10           "4 Debug Next Report"
+
+10850*            1            "Comparison Menu"
+10850 10851 1     4            "Examine Offspec"
+10850 10852 2     4            "Display Comparison"
+10850 10853 3     4            "Display Results"
+10850 10854 4     4            "Specify product info"
+10850 10855 5     6            "Update sample"
+10850 10856 6     6            "Authorise sample"
+10850 10857 7     4            "Print comparison"

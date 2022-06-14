@@ -1,0 +1,111 @@
+MESSAGE GROUP "DAEMON_CHECKER_"
+
+! SEVERITY      INFORMATION
+
+MESSAGE =	"INTRO"
+TEXT	=	"Checking daemon configuration"
+
+MESSAGE =	"NODE"
+TEXT	=	"Node name is []"
+
+MESSAGE =	"NODE_UNKNOWN"
+TEXT	=	"Cannot determine node name"
+
+MESSAGE =	"MAIN_NODE"
+TEXT	=	"Lock and increment daemons will run on remote node []"
+
+MESSAGE =	"NO_MAIN_NODE"
+TEXT	=	"$SMP_MAIN_NODE undefined"
+TEXT	=	"Lock and increment daemons will run on this node"
+
+MESSAGE =	"NODES_DIFF"
+TEXT	=	"$SMP_MAIN_NODE ([]) and node name ([]) are different"
+
+MESSAGE =	"CHECKING_FILE"
+TEXT	=	"Checking file []"
+
+MESSAGE =	"CANNOT_ACCESS"
+TEXT	=	"File does not exist"
+
+MESSAGE =	"CANNOT_READ"
+TEXT	=	"File exists but is not readable"
+
+MESSAGE =	"CAN_READ"
+TEXT	=	"File exists and is readable"
+
+MESSAGE =	"CHECKING_SERVICE"
+TEXT	=	"Checking service []"
+
+MESSAGE =	"NO_SERVICE"
+TEXT	=	"Service [] is not defined in /etc/services"
+
+MESSAGE =	"HAVE_SERVICE"
+TEXT	=	"Service [] is defined in /etc/services"
+TEXT	=	"Official name : []"
+TEXT	=	"Port number   : []"
+TEXT	=	"Protocol      : []"
+
+MESSAGE =	"SERVICE_ALIASES"
+TEXT	=	"Alias         : []"
+
+MESSAGE =	"INSTANCE"
+TEXT	=	"Checking GLOBAL ( INSTANCE )"
+
+MESSAGE =	"INSTANCE_IS"
+TEXT	=	"INSTANCE is '[]'"
+
+MESSAGE =	"INETD"
+TEXT	=	"Checking /etc/inetd.conf file for service []"
+
+MESSAGE =	"NO_INETD"
+TEXT	=	"/etc/inetd.conf contains no entry for service []"
+
+MESSAGE =	"INETD_NOUSER"
+TEXT	=	"User '[]' does not exist in /etc/passwd"
+
+MESSAGE =	"INETD_USER"
+TEXT	=	"User '[] (uid=[],gid=[])' exists in /etc/passwd"
+
+MESSAGE =	"INETD_EXE"
+TEXT	=	"File [] is executable by the specified user"
+
+MESSAGE =	"INETD_NOEXE"
+TEXT	=	"File [] is NOT executable by the specified user []"
+
+MESSAGE =	"INETD_NOPROGRAM"
+TEXT	=	"File [] is NOT accessible, reason: []"
+
+MESSAGE =	"INETD_SERVICE"
+TEXT	=	"[] is defined in /etc/inetd.conf"
+
+MESSAGE =	"INETD_SOCKTYPE"
+TEXT	=	"Socket type is defined as '[]' - it should be 'stream'"
+
+MESSAGE =	"INETD_PROTOCOL"
+TEXT	=	"Protocol is defined as '[]' - it should be 'tcp'"
+
+MESSAGE =	"INETD_WAITSTATE"
+TEXT	=	"Wait-state is defined as '[]' - it should be 'nowait'"
+
+MESSAGE =	"SUMMARY"
+TEXT	=	"Summary"
+
+MESSAGE =	"SUMMARY_NONE"
+TEXT	=	"No errors were found"
+
+MESSAGE =	"SUMMARY_1"
+TEXT	=	"1 error was found"
+
+MESSAGE =	"SUMMARY_MORE"
+TEXT	=	"[] errors were found"
+
+MESSAGE =	"NO_ARG"
+TEXT	=	"Entry requires an argument after the name of the executable"
+
+MESSAGE =	"ARG"
+TEXT	=	"The daemon will be run under the name '[]' (see ps(1))"
+
+MESSAGE =	"NOT_LOCAL"
+TEXT	=	"The service [] will be run on remote node []"
+TEXT	=	"Ensure that the service is correctly defined on that node,"
+TEXT	=	"and that the port number ([]) is the same on both nodes."

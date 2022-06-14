@@ -1,0 +1,1246 @@
+! Messages for the prompt classes.
+
+MESSAGE GROUP = "SMP_PROMPT_"
+
+! Error messages for prompt
+
+MESSAGE = "CONFIRM_OVERRIDE"
+TEXT    = "Value is outside limits - please confirm"
+
+MESSAGE = "CALLBACK"
+TEXT    = "Callback routine for property '[]' must be defined."
+
+MESSAGE = "PHRASE"
+TEXT    = "Phrase [] does not exist."
+
+MESSAGE = "NO_FIELD"
+TEXT    = "Browse type [] does not allow [] qualifier."
+
+MESSAGE = "NEED_FIELD"
+TEXT    = "Browse type [] requires additional information."
+
+MESSAGE = "FORMAT_ILLEGAL"
+TEXT    = "Browse type [] cannot be used for FORMAT prompts."
+
+MESSAGE = "IDINVCHAR"
+TEXT    = "[] is not a valid character for an identity."
+
+MESSAGE = "NOSTARTWAIT"
+TEXT    = "Prompt has not been started. Invoke START_PROMPT before WAIT_PROMPT."
+
+MESSAGE = "NOSTARTEND"
+TEXT    = "Prompt has not been started. Invoke START_PROMPT before END_PROMPT."
+
+! Browse messages for text classes.
+
+MESSAGE = "BROWSE_MINIMUM"
+TEXT    = "Minimum"
+
+MESSAGE = "BROWSE_MAXIMUM"
+TEXT    = "Maximum"
+
+MESSAGE = "BROWSE_TODAY"
+TEXT    = "Today"
+
+MESSAGE = "BROWSE_TOMORROW"
+TEXT    = "Tomorrow"
+
+MESSAGE = "BROWSE_YESTERDAY"
+TEXT    = "Yesterday"
+
+MESSAGE = "BROWSE_ZERO_INTERVAL"
+TEXT    = "Zero Interval"
+
+MESSAGE = "BROWSE_ONE_SECOND"
+TEXT    = "One Second"
+
+MESSAGE = "BROWSE_ONE_MINUTE"
+TEXT    = "One Minute"
+
+MESSAGE = "BROWSE_ONE_HOUR"
+TEXT    = "One Hour"
+
+MESSAGE = "BROWSE_ONE_DAY"
+TEXT    = "One Day"
+
+MESSAGE = "BROWSE_ARRAY_HEADER"
+TEXT    = "Browse on allowed values"
+
+! Boolean TRUE/FALSE messages
+
+MESSAGE = "BOOLEAN_TRUE"
+TEXT    = "Yes"
+
+MESSAGE = "BOOLEAN_FALSE"
+TEXT    = "No"
+
+! Error messages for forms
+
+MESSAGE = "FORM_NO_PROMPT"
+TEXT    = "Prompt number [] does not exist in form."
+
+! Error messages for base grid class.
+
+MESSAGE = "TOO_NARROW"
+TEXT    = "Error - The grid is too narrow for the columns specified."
+TEXT    = "Check the WIDTH, fixed column and title column properties."
+
+MESSAGE = "TOO_SHORT"
+TEXT    = "Error - The grid is too short for the rows specified."
+TEXT    = "Check the HEIGHT, fixed row and title row properties."
+
+MESSAGE = "PROPERTY"
+TEXT    = "Error - Grid property [] is invalid."
+
+MESSAGE = "SEPARATOR"
+TEXT    = "Error - Separator value [] from property [] is invalid."
+
+MESSAGE = "SEPARATOR_ARRAY"
+TEXT    = "Error - Separator value [] from property [] [ [] ] is invalid."
+
+MESSAGE = "SIZE"
+TEXT    = "Error - Size value [] from property [] is invalid."
+
+MESSAGE = "SIZE_ARRAY"
+TEXT    = "Error - Size value [] from property [] [ [] ] is invalid."
+
+MESSAGE = "COLUMN"
+TEXT    = "Error - Column [] is outside grid."
+
+MESSAGE = "ROW"
+TEXT    = "Error - Row [] is outside grid."
+
+MESSAGE = "INSERT_FIXED"
+TEXT    = "Cannot insert into fixed area."
+
+MESSAGE = "REMOVE_FIXED"
+TEXT    = "Cannot remove from fixed area."
+
+MESSAGE = "NOT_STARTED"
+TEXT    = "Grid utility action called before start_prompt invoked."
+
+! Status line text
+
+MESSAGE = "STATUS_TEXT"
+TEXT    = "Free format text, [] characters"
+
+MESSAGE = "STATUS_IDENTITY"
+TEXT    = "Identity text, [] characters"
+
+MESSAGE = "STATUS_CHOOSE"
+TEXT    = "Choose value from list"
+
+MESSAGE = "STATUS_DATE"
+TEXT    = "Date value"
+
+MESSAGE = "STATUS_DATE_INTERVAL"
+TEXT    = "Date or Interval value"
+
+MESSAGE = "STATUS_INTERVAL"
+TEXT    = "Interval value"
+
+MESSAGE = "STATUS_INTEGER"
+TEXT    = "Integer value. Minimum [], maximum []"
+
+MESSAGE = "STATUS_REAL"
+TEXT    = "Real value. Minimum [], maximum []"
+
+MESSAGE = "STATUS_PHRASE"
+TEXT    = "Text value based on phrase []"
+
+MESSAGE = "STATUS_FIELD"
+TEXT    = "Value from table [], field []"
+
+MESSAGE = "STATUS_BOOLEAN"
+TEXT    = "Boolean value"
+
+! Button text
+
+MESSAGE = "BUTTON_OK"
+TEXT    = "OK"
+
+MESSAGE = "BUTTON_CANCEL"
+TEXT    = "Cancel"
+
+MESSAGE = "BUTTON_CLOSE"
+TEXT    = "Close"
+
+MESSAGE = "BUTTON_HELP"
+TEXT    = "Help"
+
+MESSAGE = "BUTTON_INSERT"
+TEXT    = "Insert"
+
+MESSAGE = "BUTTON_INSERT_DOTS"
+TEXT    = "Insert..."
+
+MESSAGE = "BUTTON_REMOVE"
+TEXT    = "Remove"
+
+MESSAGE = "BUTTON_REMOVE_DOTS"
+TEXT    = "Remove..."
+
+MESSAGE = "BUTTON_CRITERIA"
+TEXT    = "Criteria..."
+
+MESSAGE = "BUTTON_BUILD"
+TEXT    = "View..."
+
+MESSAGE = "BUTTON_SELECT"
+TEXT    = "Select"
+
+MESSAGE = "BUTTON_OPTIONS"
+TEXT    = "Options..."
+                 
+MESSAGE = "BUTTON_NEXT"
+TEXT    = "Next" 
+                 
+MESSAGE = "BUTTON_NEXT_SYMBOL"
+TEXT    = " > "  
+                     
+MESSAGE = "BUTTON_PREVIOUS"
+TEXT    = "Previous" 
+
+
+MESSAGE = "BUTTON_PREVIOUS_SYMBOL"
+TEXT    = " < " 
+
+MESSAGE = "BUTTON_FIRST"
+TEXT    = "First"
+
+MESSAGE = "BUTTON_LAST"
+TEXT    = "Last"
+
+MESSAGE = "BUTTON_MORE"
+TEXT    = "More"
+
+MESSAGE = "BUTTON_TOP"
+TEXT    = "Top"
+
+MESSAGE = "BUTTON_DESC"
+TEXT    = "Description"
+
+MESSAGE = "BUTTON_DETAILS"
+TEXT    = "Details"
+
+MESSAGE = "BUTTON_RESULTS"
+TEXT    = "Results..."
+
+! Browse messages for VGL
+
+MESSAGE = "BROWSE_NO_IDS"
+TEXT    = "Browse search found no id's"
+
+MESSAGE = "PHRASE_TITLE"
+TEXT    = "Browse on phrase []"
+
+MESSAGE = "BROWSE_TITLE"
+TEXT    = "Browse on []"
+
+MESSAGE = "BROWSE_CRITERIA_TITLE"
+TEXT    = "Browse on [] with criteria"
+
+MESSAGE = "SAMPLE_TESTS"
+TEXT    = "Browse on tests for sample []"
+
+MESSAGE = "BROWSE_RESTART"
+TEXT    = "End of browse list reached."
+TEXT    = "Restart ?"
+HELP    = "$BROWSE_FORM_RESTART"
+
+MESSAGE = "INVALID_START"
+TEXT    = "End position of prompt before start position"
+
+
+! Messages for field browse
+
+MESSAGE GROUP = "$BROWSE_FIELD_"
+
+MESSAGE = "CRITERIA_HEADER"
+TEXT    = "Selection criteria"
+
+MESSAGE = "NO_CRITERIA"
+TEXT    = "No selection criteria used for browse"
+
+MESSAGE = "INSERT_HEADER"
+TEXT    = "Display additional information"
+
+MESSAGE = "INSERT_FOOTER"
+TEXT    = "Press EXIT to cancel, FIND for browse"
+
+MESSAGE = "INSERT_PROMPT"
+TEXT    = "Enter field name :"
+
+MESSAGE = "REMOVE"
+TEXT    = "Remove field from browse screen"
+HELP    = "$BROWSE_FIELD_REMOVE"
+
+! Messages for criteria screens
+
+MESSAGE GROUP = "$CRITERIA_LIB_PROMPT_"
+
+MESSAGE = "HEADER"
+TEXT    = "Criteria Parameters"
+
+! Messages for criteria screens
+
+MESSAGE GROUP = "$CRITERIA_LIB_ARRAY_SELECT_"
+
+MESSAGE = "EQ"
+TEXT    = "="
+
+MESSAGE = "GE"
+TEXT    = ">="
+
+MESSAGE = "LE"
+TEXT    = "<="
+
+MESSAGE = "NE"
+TEXT    = "<>"
+
+MESSAGE = "LT"
+TEXT    = "<"
+
+MESSAGE = "GT"
+TEXT    = ">"
+
+MESSAGE = "NOT"
+TEXT    = "NOT"
+
+MESSAGE = "AND"
+TEXT    = "AND"
+
+MESSAGE = "OR"
+TEXT    = "OR"
+
+MESSAGE = "LIKE"
+TEXT    = "LIKE"
+
+MESSAGE = "NOTLIKE"
+TEXT    = "NOT LIKE"
+
+MESSAGE = "BETWEEN"
+TEXT    = "BETWEEN"
+
+MESSAGE = "IN"
+TEXT    = "IN"
+
+MESSAGE = "PRED_VALUE"
+TEXT    = "PRED_VALUE"
+
+MESSAGE = "ORDER"
+TEXT    = "Order by"
+
+MESSAGE = "PUSH"
+TEXT    = "("
+
+MESSAGE = "POP"
+TEXT    = ")"
+
+MESSAGE = "ASCENDING"
+TEXT    = "Ascending"
+
+MESSAGE = "DESCENDING"
+TEXT    = "Descending"
+
+
+MESSAGE GROUP = "$CRITERIA_LIB_TOO_MANY_"
+
+MESSAGE = "PUSH"
+TEXT    = "Insufficient )'s"
+
+MESSAGE = "POP"
+TEXT    = "Too many )'s"
+
+
+MESSAGE GROUP = "$CRITERIA_EDIT_"
+
+MESSAGE = "HEADER"
+TEXT    = "Selection criteria for []"
+
+MESSAGE = "FOOTER"
+TEXT    = "TAB between criteria/order, SELECT for menu, DO to use, EXIT to quit"
+
+MESSAGE = "FOOTER_NO_ORDER"
+TEXT    = "SELECT for menu, DO to use, EXIT to quit"
+
+MESSAGE = "CRITERIA_TITLE"
+TEXT    = "Criteria field"
+TEXT    = "Operator"
+TEXT    = "Value"
+
+MESSAGE = "ORDER_TITLE"
+TEXT    = "Order"
+TEXT    = "Field"
+
+MESSAGE = "NOT_VALID"
+TEXT    = "Selection criteria is not valid. Please correct before attempting to save."
+
+MESSAGE = "MANDATORY"
+TEXT    = "Mandatory selection criteria"
+
+MESSAGE = "NO_MANDATORY"
+TEXT    = "No mandatory selection criteria specified"
+
+MESSAGE = "NO_SELECT"
+TEXT    = "No selection criteria to save"
+
+MESSAGE = "CLEAR"
+TEXT    = "Clear selection criteria ?"
+HELP    = "$CRITERIA_EDIT_CLEAR"
+
+MESSAGE = "LOAD_DEFAULT"
+TEXT    = "Load user's default criteria ?"
+HELP    = "$CRITERIA_EDIT_LOAD_DEFAULT"
+
+MESSAGE = "DISPLAY_HEADER"
+TEXT    = "Display Selection Criteria Details"
+
+MESSAGE = "NO_CRITERIA"
+TEXT    = "This Selection Criteria has no criteria/order details defined"
+
+MESSAGE = "DISPLAY_FOOTER"
+TEXT    = "TAB between criteria/order, SELECT for menu, EXIT to quit"
+
+MESSAGE = "NO_CRIT"
+TEXT    = "No Criteria"
+
+MESSAGE = "DEF_CRIT"
+TEXT    = "Default Criteria"
+
+MESSAGE = "CURR_CRIT"
+TEXT    = "Current Criteria"
+
+MESSAGE = "EXIST_CRIT"
+TEXT    = "Choose Existing Criteria"
+
+MESSAGE = "BUTT_EDIT"
+TEXT    = "Edit..."
+
+MESSAGE = "BUTT_SAVE_AS"
+TEXT    = "Save As..."
+
+MESSAGE = "BUTT_SET_DEF"
+TEXT    = "Set As Default"
+
+MESSAGE = "HEAD_PREFIX"
+TEXT    = "Choose Criteria for "
+
+MESSAGE = "CRIT_DESC_PREFIX"
+TEXT    = "Select All Records from "
+
+MESSAGE = "CRIT_DESC_WHERE"
+TEXT    = "Where "
+
+MESSAGE GROUP = "$CRITERIA_EDIT_LIST_GRID_"
+
+MESSAGE = "HEADER"
+TEXT    = "Criteria Editor"
+
+MESSAGE = "FOOTER"
+TEXT    = "DO/RETURN to use criteria, SELECT for menu, EXIT to quit"
+
+MESSAGE = "TITLE"
+TEXT    = "Saved Criteria"
+
+MESSAGE = "FRAME"
+TEXT    = "Description"
+
+MESSAGE = "PROMPT"
+TEXT    = "Description :"
+
+MESSAGE = "ID"
+TEXT    = "<Current>"
+TEXT    = "<Default>"
+TEXT    = "<No Criteria>"
+
+MESSAGE = "DESC"
+TEXT    = "View Temporary Criteria"
+TEXT    = "Use Default Criteria"
+TEXT    = "Clear Criteria"
+
+MESSAGE = "BUTTON"
+TEXT    = "OK"
+TEXT    = "Make Current"
+TEXT    = "New..."
+TEXT    = "Modify..."
+TEXT    = "Save As Default"
+TEXT    = "Load Default"
+TEXT    = "View Mandatory"
+TEXT    = "Help"
+TEXT    = "Cancel"
+TEXT    = "No Criteria"
+TEXT    = "View"
+
+MESSAGE GROUP = "$CRITERIA_EDIT_CHOOSE_MENU_"
+
+MESSAGE = "TITLE"
+TEXT    = "Criteria Details"
+
+MESSAGE = "ABBREV"
+TEXT    = "C"
+TEXT    = "N"
+TEXT    = "M"
+TEXT    = "S"
+TEXT    = "L"
+TEXT    = "o"
+TEXT    = "V"
+TEXT    = "i"
+
+MESSAGE = "TEXT"
+TEXT    = "Make Current"
+TEXT    = "New Saved Criteria"
+TEXT    = "Modify Saved Criteria"
+TEXT    = "Save As Default Criteria"
+TEXT    = "Load Default Criteria"
+TEXT    = "No Criteria"
+TEXT    = "View Mandatory Criteria"
+TEXT    = "View Criteria"
+
+MESSAGE GROUP = "$CRITERIA_SAVED_LTE_"
+
+MESSAGE = "HEADER"
+TEXT    = "Saved Criteria Entry Screen"
+
+MESSAGE = "FOOTER"
+TEXT    = "Press DO to Save / SELECT for criteria details / EXIT to Quit"
+
+MESSAGE = "DISPLAY"
+TEXT    = "SELECT for criteria details / EXIT to Quit"
+
+MESSAGE = "NAME"
+TEXT    = "Saved Criteria"
+
+MESSAGE = "INPUT"
+TEXT    = "Enter Saved Criteria ID"
+
+MESSAGE = "TABLENAME"
+TEXT    = "Table Name"
+
+MESSAGE = "VALID"
+TEXT    = "Must be a valid table name"
+
+MESSAGE = "DETAILS"
+TEXT    = "Criteria"
+
+MESSAGE GROUP = "$CRITERIA_EDIT_SELECT_MENU_"
+
+MESSAGE = "TITLE"
+TEXT    = "Save/Load Criteria"
+
+MESSAGE = "TEXT"
+TEXT    = "Save criteria"
+TEXT    = "Load criteria"
+TEXT    = "Save as default criteria"
+TEXT    = "Load default criteria"
+TEXT    = "Clear criteria"
+TEXT    = "View mandatory criteria"
+
+MESSAGE = "ABBREV"
+TEXT    = "S"
+TEXT    = "L"
+TEXT    = "a"
+TEXT    = "o"
+TEXT    = "C"
+TEXT    = "m"
+
+
+MESSAGE GROUP = "$CRITERIA_SAVED_"
+
+MESSAGE = "SAVE_FAIL"
+TEXT    = "Failed to save criteria - []"
+
+MESSAGE = "LOAD_FAIL"
+TEXT    = "Failed to load criteria - []"
+
+MESSAGE = "RESERVE"
+TEXT    = "Failed to create saved criteria record - []"
+
+MESSAGE = "OVERWRITE"
+TEXT    = "Overwrite existing criteria ?"
+HELP    = "$CRITERIA_SAVED_OVERWRITE"
+
+MESSAGE = "SAVE_HEADER"
+TEXT    = "Enter name to save criteria"
+
+MESSAGE = "SAVE_FOOTER"
+TEXT    = "Press DO to save, or Exit to cancel"
+
+MESSAGE = "SAVE_PROMPT"
+TEXT    = "Criteria Name"
+TEXT    = "Description"
+
+MESSAGE = "LOAD_HEADER"
+TEXT    = "Enter name to load criteria"
+
+MESSAGE = "LOAD_FOOTER"
+TEXT    = "Press DO to load, or Exit to cancel"
+
+MESSAGE = "LOAD_PROMPT"
+TEXT    = "Criteria Name"
+
+MESSAGE = "LOAD_DATABASE_FAIL_1"
+TEXT    = "Error loading criteria [] [] from the database table."
+
+MESSAGE = "LOAD_DATABASE_FAIL_2"
+TEXT	= "Invalid operator []."
+
+MESSAGE = "LOAD_DATABASE_FAIL_3"
+TEXT	= "Invalid field [] in criteria."
+
+MESSAGE = "LOAD_DATABASE_FAIL_4"
+TEXT	= "Invalid variable type []."
+
+MESSAGE = "DEFAULT_DESCRIPTION"
+TEXT    = "Default criteria for user []"
+
+
+MESSAGE GROUP = "$CRITERIA_LTE_"
+
+MESSAGE = "HEADER"
+TEXT    = "Column definition data entry screen"
+
+MESSAGE = "FOOTER"
+TEXT    = "SELECT to edit tables, DO to Save, EXIT to Quit"
+
+MESSAGE = "FOOTER_D"
+TEXT    = "SELECT to view tables, DO or EXIT to Quit"
+
+MESSAGE = "DESCRIPTION"
+USE     = "STAND_DESCRIPTION"
+
+MESSAGE = "MODIFIABLE"
+USE     = "STAND_MODIFIABLE"
+
+MESSAGE = "GROUP_ID"
+USE     = "STAND_GROUP_ID"
+
+MESSAGE = "NAME"
+TEXT    = "Column definition"
+
+MESSAGE = "INPUT"
+TEXT    = "Enter Column Definition identity"
+
+MESSAGE = "MENU_TEXT"
+TEXT    = "Tables..."
+
+
+MESSAGE GROUP = "$CRITERIA_LTE_PAGE2_"
+
+MESSAGE = "NO_TABLES"
+TEXT    = "No tables associated with column definition"
+
+MESSAGE = "TABLE"
+TEXT    = "Table"
+
+MESSAGE = "DESC"
+TEXT    = "Description"
+
+MESSAGE = "HEADER"
+TEXT    = "Tables for column definition []"
+
+MESSAGE = "FOOTER"
+TEXT    = "SELECT for fields, DO to Save, EXIT to Cancel"
+
+MESSAGE = "DISP_FOOTER"
+TEXT    = "SELECT for fields, DO/EXIT to quit"
+
+MESSAGE = "TITLE"
+TEXT    = "Table Name"
+TEXT    = "Description"
+
+MESSAGE = "IN_LIST"
+TEXT    = "Table already appears in list"
+
+MESSAGE = "TABLE_HEADER"
+TEXT    = "Add table to column definition"
+
+MESSAGE = "TABLE_FOOTER"
+TEXT    = "EXIT to cancel"
+
+MESSAGE = "TABLE_PROMPT"
+TEXT    = "Table name"
+
+MESSAGE = "BUTTON_FIELDS"
+TEXT	= "Fields..."
+
+
+MESSAGE GROUP = "$CRITERIA_LTE_PAGE3_"
+
+MESSAGE = "HEADER"
+TEXT    = "Fields for table [] in column definition []"
+
+MESSAGE = "FOOTER"
+TEXT    = "SELECT to Add all fields, DO to Save, EXIT to Cancel"
+
+MESSAGE = "DISP_FOOTER"
+TEXT    = "DO/EXIT to quit"
+
+MESSAGE = "TITLE"
+TEXT    = "Field Name"
+TEXT    = "Description"
+TEXT    = "Width"
+
+MESSAGE = "IN_LIST"
+TEXT    = "Field already appears in list"
+
+MESSAGE = "FIELD_HEADER"
+TEXT    = "Add field to column definition"
+
+MESSAGE = "FIELD_FOOTER"
+TEXT    = "EXIT to cancel"
+
+MESSAGE = "FIELD_PROMPT"
+TEXT    = "Field name"
+
+MESSAGE = "SELECT_CONFIRM"
+TEXT    = "Do you wish to add all fields for this table ?"
+
+MESSAGE = "BUTTON_ALL"
+TEXT	= "All Fields"
+
+MESSAGE = "ALL_FIELDS"
+TEXT    = "All fields included"
+
+MESSAGE = "FIELD"
+TEXT    = "Field"
+
+MESSAGE = "DESC"
+TEXT    = "Description"
+
+
+! Messages for $CONVERT_SELECT upgrade tool
+
+MESSAGE GROUP = "$CONVERT_SELECT_"
+
+MESSAGE = "FILE_PROMPT"
+TEXT    = "All"
+TEXT    = "One"
+TEXT    = "Several"
+
+MESSAGE = "HEADER"
+TEXT    = "Convert Selection Criteria (.SSC and .SJC) Files"
+
+MESSAGE = "FOOTER"
+TEXT    = "Press <Do> when complete or <Exit> to quit"
+
+MESSAGE = "NO_FILES"
+TEXT    = "Number of files : "
+
+MESSAGE = "ENTER_FILE"
+TEXT    = "Enter file name : "
+
+MESSAGE = "LIST_BOX_HEADER"
+TEXT    = "Convert Selection Criteria Files"
+
+MESSAGE = "LIST_BOX_FOOTER"
+TEXT    = "SSC and SJC files in smp$messages :"
+
+MESSAGE = "FILE_CONVERTED"
+TEXT    = "The file [] has been converted and is now stored in []"
+
+
+! Messages for $PROMPT_WINDOW library
+
+MESSAGE GROUP = "$PROMPT_WINDOW_"
+
+MESSAGE = "NO_RECORD"
+TEXT    = "This record does not exist"
+
+
+! Messages for $LIB_PROMPT library
+
+MESSAGE GROUP = "$LIB_PROMPT_"
+                            
+MESSAGE = "NOT_FOUND"
+TEXT    = "The ID [] you specified is not allowable at this prompt because "
+
+MESSAGE = "WRONG_STATUS"
+TEXT    = "it is at the wrong status [], it should be one of []"
+           
+MESSAGE = "WRONG_GROUP"
+TEXT    = "you do not have Group access to this record"
+
+MESSAGE = "REMOVED"
+TEXT    = "the record has been removed"
+
+MESSAGE = "NOT_REMOVED"
+TEXT    = "the record has not been removed"
+                              
+MESSAGE = "NOT_IN_SELECTION"
+TEXT    = "the record does not match your selection criteria"
+
+MESSAGE = "NOT_COMMITTED"
+TEXT    = "the record has not been committed"
+
+MESSAGE = "COMMITTED"
+TEXT    = "the record has been committed (to tableset [])"
+
+! Messages for $LIB_DYNAMIC_SQL library
+
+MESSAGE GROUP = "$LIB_DYNAMIC_SQL_"
+                            
+MESSAGE = "NOT_FOUND"
+TEXT    = "The ID [] you specified is not allowable at this prompt because the record does not match your selection criteria"
+
+! Messages for Browse
+
+MESSAGE GROUP = "BROWSER_"
+
+MESSAGE = "TT_REFRESH"
+TEXT    = "Refresh"
+
+MESSAGE = "TT_RESTART"
+TEXT    = "Restart from Top"
+
+MESSAGE = "TT_MORE"
+TEXT    = "Display the next "
+TEXT      " Rows"
+
+MESSAGE = "TT_ALL"
+TEXT    = "Display All Rows"
+
+MESSAGE = "TT_CHANGE_SETTINGS"
+TEXT    = "Change browse settings"
+
+MESSAGE = "TT_DISP_CRITERIA"
+TEXT    = "Display Criteria"
+
+MESSAGE = "TT_EDIT_CRITERIA"
+TEXT    = "Edit Criteria"
+
+MESSAGE = "TT_VIEW_LARGE"
+TEXT    = "View Large Icons"
+
+MESSAGE = "TT_VIEW_SMALL"
+TEXT    = "View Small Icons"
+
+MESSAGE = "TT_VIEW_LIST"
+TEXT    = "View List"
+
+MESSAGE = "TT_VIEW_DETAILS"
+TEXT    = "View Details"
+
+MESSAGE = "TT_HELP"
+TEXT    = "Help"
+
+MESSAGE = "TT_PROPERTIES"
+TEXT    = "Properties"
+
+MESSAGE = "LIKE"
+TEXT    = "Like"
+
+MESSAGE = "ASC_FROM"
+TEXT    = "Starting at"
+
+MESSAGE = "DESC_FROM"
+TEXT    = "Descending from"
+
+MESSAGE = "MULTI_SELECT_TITLE"
+TEXT    = "Multiple select from []"
+
+MESSAGE = "MULTI_SELECT"
+TEXT    = "Double click items to build selection list:"
+
+MESSAGE = "SELECT_REMOVE"
+TEXT    = "Deselect"
+
+MESSAGE = "SELECT_ADD"
+TEXT    = "Select"
+
+MESSAGE = "SETTING_MORE_AMOUNT"
+TEXT    = "Number of records to fetch at a time (For this table):"
+
+MESSAGE = "SETTING_SHOW_LOCATION"
+TEXT    = "Show location toolbar?"
+
+MESSAGE = "SETTING_AUTOLOAD_LIST"
+TEXT    = "Autoload list with records?"
+
+MESSAGE = "MU_SELECT"
+TEXT    = "Select"
+
+MESSAGE = "CRITERIA_NONE"
+TEXT    = "None"
+
+MESSAGE = "CRITERIA_TEMP"
+TEXT    = "Temporary"
+
+MESSAGE = "SELECTION"
+TEXT    = "Selection :"
+
+MESSAGE = "TT_RESYNC"
+TEXT    = "Synchronizes the list with the current value"
+
+MESSAGE = "PROMPT_CHOOSER"
+TEXT    = "Record Filter"
+
+MESSAGE = "MAND_CRIT_BUTTON"
+TEXT    = "Display Mandatory Criteria"
+
+MESSAGE = "CHANGE_WARN"
+TEXT    = "Some changes will not take place until the browser is restarted"
+
+MESSAGE = "NO_ITEMS"
+TEXT    = "There are no items to show in this view"
+
+MESSAGE = "NO_RECENT"
+TEXT    = "You have no recently-used items to display"
+
+MESSAGE = "NO_FAVOURITE"
+TEXT    = "You have no favourite items to display"
+
+MESSAGE = "TT_VIEW_STD"
+TEXT    = "Shows records allowed by current criteria"
+
+MESSAGE = "VIEW_STD"
+TEXT    = "Standard Browse View"
+
+MESSAGE = "TT_VIEW_REC"
+TEXT    = "Shows recently-used records"
+
+MESSAGE = "VIEW_REC"
+TEXT    = "Recent Items"
+
+MESSAGE = "TT_VIEW_FAV"
+TEXT    = "Shows records you've added to your favourites list"
+
+MESSAGE = "VIEW_FAV"
+TEXT    = "Favourite Items"
+
+MESSAGE = "ERROR"
+TEXT    = "Error: "
+
+MESSAGE = "SETTING_HEADER"
+TEXT    = "Modify Browse Settings"
+
+MESSAGE GROUP = "MRU_LIST_"
+
+MESSAGE = "BROWSE"
+TEXT    = "Browse..."
+
+MESSAGE = "WARN_CLEAR"
+TEXT    = "Reducing the list size will clear all current values. Continue?"
+
+MESSAGE = "COMMAND_HEAD"
+TEXT    = "Recent Commands"
+
+MESSAGE = "ITEMS_HEAD"
+TEXT    = "Recent Items"
+
+MESSAGE GROUP = "CRITERIA_BUILD_"
+
+MESSAGE = "HELP_MAIN"
+TEXT    = "The criteria builder will help you filter records from the "
+TEXT    = " table."
+TEXT    = " Choose from the fields on the left to use in your filter."
+
+MESSAGE = "HELP_C_GRID"
+TEXT    = "The criteria grid is where fields and values are combined to filter records."
+TEXT    = " Fields can be added from the field tree on the left."
+
+MESSAGE = "HELP_O_GRID"
+TEXT    = "The order grid is used to specify the order in which your results are returned. The order can be based on any number of fields."
+
+MESSAGE = "HELP_FIELDS"
+TEXT    = "The field tree shows all fields that can be combined to create your criteria. You can expand fields that link to other tables."
+
+MESSAGE = "HELP_VARIABLE"
+TEXT    = "The variable list shows dynamic values you can add to your criteria (For example 'Current Date' ). To add new variables use the right-mouse."
+
+MESSAGE = "HELP_RESULTS"
+TEXT    = "This shows the query results. You can copy its contents by selecting rows and using Ctrl+C. The right-mouse menu has additional options."
+
+MESSAGE = "NOT_VALID"
+TEXT    = "The current criteria is not valid"
+
+MESSAGE = "NAME_DEFAULT"
+TEXT    = "(Default Criteria)"
+
+MESSAGE = "NAME_CURRENT"
+TEXT    = "(Current Criteria)"
+
+MESSAGE = "CHANGES_MADE"
+TEXT    = " - Modified"
+
+MESSAGE = "HEADER_PROMPT"
+TEXT    = "Criteria Builder"
+
+MESSAGE = "ERROR_LOAD"
+TEXT    = "Error Loading: "
+
+MESSAGE = "ERROR_IMPORT"
+TEXT    = "Error Importing: "
+
+MESSAGE = "ERROR_SAVE"
+TEXT    = "Error Saving: "
+
+MESSAGE = "PROMPT_CLEAR"
+TEXT    = "Clear criteria?"
+
+MESSAGE = "PROMPT_NEW"
+TEXT    = "This Criteria has been modified."
+TEXT    = "Do you want to save changes?"
+
+MESSAGE = "INFO_VAR_NOT_DELETED"
+TEXT    = "Not all variables were deleted as some are in use"
+
+MESSAGE = "MU_OPEN"
+TEXT    = "Open..."
+
+MESSAGE = "MU_OPEN_DEFAULT"
+TEXT    = "Open Default"
+
+MESSAGE = "MU_IMPORT"
+TEXT    = "Import..."
+
+MESSAGE = "MU_IMPORT_DEFAULT"
+TEXT    = "Import Default"
+
+MESSAGE = "MU_SAVE"
+TEXT    = "Save"
+
+MESSAGE = "MU_SAVE_AS"
+TEXT    = "Save As..."
+
+MESSAGE = "MU_SAVE_DEFAULT"
+TEXT    = "Save As Default"
+
+MESSAGE = "MU_ADD_CRIT"
+TEXT    = "Add to Criteria Row"
+
+MESSAGE = "MU_ADD_ORD"
+TEXT    = "Add to Order Row"
+
+MESSAGE = "MU_ADD_VAR"
+TEXT    = "Add to Criteria Row"
+
+MESSAGE = "MU_EDIT_VAR"
+TEXT    = "Edit Variable..."
+
+MESSAGE = "MU_DELETE_VAR"
+TEXT    = "Delete"
+
+MESSAGE = "MU_NEW_VAR"
+TEXT    = "Add Variable"
+
+MESSAGE = "MU_ENV_VAR"
+TEXT    = "Environment Variable..."
+
+MESSAGE = "MU_PROMPT_VAR"
+TEXT    = "Prompt Variable..."
+
+MESSAGE = "MU_PARAM_VAR"
+TEXT    = "Parameter..."
+
+MESSAGE = "MU_RE_EXEC"
+TEXT    = "Re-Execute Criteria"
+
+MESSAGE = "MU_ROW_INS"
+TEXT    = "Insert Row"
+
+MESSAGE = "MU_ROW_REM"
+TEXT    = "Remove Row(s)"
+
+MESSAGE = "MU_GROUP"
+TEXT    = "Group >>"
+
+MESSAGE = "MU_UNGROUP"
+TEXT    = "Ungroup <<"
+
+MESSAGE = "MU_RESET_VAL"
+TEXT    = "Reset Value"
+
+MESSAGE = "MU_MOVE_UP"
+TEXT    = "Move Row Up"
+
+MESSAGE = "MU_MOVE_DOWN"
+TEXT    = "Move Row Down"
+
+MESSAGE = "TITLE_CRIT"
+TEXT    = "Criteria"
+
+MESSAGE = "TITLE_ORD"
+TEXT    = "Order"
+
+MESSAGE = "TITLE_FIELDS"
+TEXT    = "Fields"
+
+MESSAGE = "TITLE_VARS"
+TEXT    = "Variables"
+
+MESSAGE = "TT_ADD_CRIT"
+TEXT    = "Adds the selected field to the bottom of the criteria grid"
+
+MESSAGE = "TT_ADD_ORD"
+TEXT    = "Adds the selected field to the bottom of the order grid"
+
+MESSAGE = "TT_ADD_VAR"
+TEXT    = "Adds the selected variable to the current criteria row"
+
+MESSAGE = "TT_INS_ROW"
+TEXT    = "Insert Row(F5)"
+
+MESSAGE = "TT_REM_ROW"
+TEXT    = "Remove Row (F6)"
+
+MESSAGE = "TT_UP_ROW"
+TEXT    = "Move Row Up"
+
+MESSAGE = "TT_DN_ROW"
+TEXT    = "Move Row Down"
+
+MESSAGE = "TT_NEW"
+TEXT    = "New Criteria"
+
+MESSAGE = "TT_OPEN"
+TEXT    = "Open Criteria"
+
+MESSAGE = "TT_SAVE"
+TEXT    = "Save Criteria"
+
+MESSAGE = "TT_UNDO"
+TEXT    = "Undo Last Action"
+
+MESSAGE = "TT_DISP"
+TEXT    = "Describe Criteria"
+
+MESSAGE = "TT_RUN"
+TEXT    = "Execute Query"
+
+MESSAGE = "TT_UPDATE"
+TEXT    = "Updates the changes and closes the screen"
+
+MESSAGE = "TT_CANCEL"
+TEXT    = "Loses the changes made and closes"
+
+MESSAGE = "TT_CLEAR"
+TEXT    = "Clear Criteria"
+
+MESSAGE = "TT_IMPORT"
+TEXT    = "Import Criteria"
+
+MESSAGE = "TT_PROPERTIES"
+TEXT    = "Criteria Properties"
+
+MESSAGE = "BUTT_ADD_CRIT"
+TEXT    = "Criteria >"
+
+MESSAGE = "BUTT_ADD_ORD"
+TEXT    = "Order >"
+
+MESSAGE = "BUTT_ADD_VAR"
+TEXT    = "Criteria >"
+
+MESSAGE = "BUTT_RUN"
+TEXT    = "Run Query"
+
+MESSAGE = "BUTT_UPDATE"
+TEXT    = "Update"
+
+MESSAGE = "BUTT_CANCEL"
+TEXT    = "Cancel"
+
+MESSAGE = "COL_VAR"
+TEXT    = "Variable"
+
+MESSAGE = "COL_DESC"
+TEXT    = "Description"
+
+MESSAGE = "VAR_ID_PREFIX"
+TEXT    = "Variable "
+
+MESSAGE = "INFO_NO_ROW"
+TEXT    = "No records were found that match your criteria"
+
+MESSAGE = "WARN_REMOVE_ROWS"
+TEXT    = "This will delete all selected rows. Continue?"
+
+MESSAGE = "EMPTY"
+TEXT    = "<Empty>"
+
+
+MESSAGE GROUP = "CRITERIA_FIELDS_"
+
+MESSAGE = "HEADER"
+TEXT    = "Browse"
+
+MESSAGE = "OPTION_FIELD"
+TEXT    = "Select Field"
+
+MESSAGE = "OPTION_SYMBOL"
+TEXT    = "Select Symbol"
+
+
+MESSAGE GROUP = "CRITERIA_VALUE_"
+
+MESSAGE = "DESC_PROMPT"
+TEXT    = "Prompt user for value"
+
+MESSAGE = "DESC_PROMPT_USING"
+TEXT    = "Prompt using "
+
+MESSAGE = "DESC_ENV"
+TEXT    = "Environment variable: "
+
+MESSAGE = "DESC_ENV_USING"
+TEXT    = "Obtain value from routine "
+
+MESSAGE = "HEAD_PARAM"
+TEXT    = "Parameter Variable"
+
+MESSAGE = "HEAD_ENV"
+TEXT    = "Environment Variable"
+
+MESSAGE = "HEAD_PROMPT"
+TEXT    = "Prompt Variable"
+
+MESSAGE = "HELP_PARAM"
+TEXT    = "A Parameter Variable will be filled in prior to query execution. They act as a placeholder for easy substitution."
+
+MESSAGE = "HELP_ENV"
+TEXT    = "Environment Variables obtain their value from attributes of the current session. E.g. Current user or the current date."
+
+MESSAGE = "HELP_PROMPT"
+TEXT    = "A Prompt Variable will obtain its value from the user when the criteria is executed. You can use the default prompt method or specify your own."
+
+MESSAGE = "PARAM_NAME"
+TEXT    = "Parameter Name"
+
+MESSAGE = "VAR_NAME"
+TEXT    = "Variable Name"
+
+MESSAGE = "DEFAULT_PROMPT"
+TEXT    = "Default Prompt"
+
+MESSAGE = "DEFAULT_VAL"
+TEXT    = "Default Value"
+
+MESSAGE = "VAL_SOURCE"
+TEXT    = "Value Source"
+
+MESSAGE = "LIBRARY"
+TEXT    = "Library"
+
+MESSAGE = "ROUTINE"
+TEXT    = "Routine"
+
+MESSAGE = "PROMPT_TYPE"
+TEXT    = "Prompt Type"
+
+MESSAGE = "OPTION_ENV"
+TEXT    = "Environment Variable"
+
+MESSAGE = "OPTION_ROUT"
+TEXT    = "User Routine Value"
+
+MESSAGE = "OPTION_USER_PROMPT"
+TEXT    = "User Prompt"
+
+MESSAGE = "ERR_BLANK_NAME"
+TEXT    = "The Variable Name cannot be blank"
+
+MESSAGE GROUP = "RECORD_BROWSE_"
+
+MESSAGE = "INVALID_SELECTION"
+TEXT    = " is not a valid selection"

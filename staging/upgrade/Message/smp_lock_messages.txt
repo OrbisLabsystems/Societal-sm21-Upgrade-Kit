@@ -1,0 +1,28 @@
+! Messages for the lock system
+
+MESSAGE GROUP = "SMP_LOCK_"
+
+MESSAGE = "HANDLE_FAIL"
+TEXT    = "Invalid key return from lock handle file"
+
+MESSAGE = "CREATE_FAIL"
+TEXT    = "The lock system failed to create shared memory"
+
+MESSAGE = "SHARE_FAIL"
+TEXT    = "The lock system failed to find shared memory"
+
+MESSAGE = "DELETE_FAIL"
+TEXT    = "The lock system failed to delete shared memory"
+
+MESSAGE = "NO_HANDLE"
+TEXT    = "Could not find lock handle file []"
+
+MESSAGE = "NO_HEADER"
+TEXT    = "The lock system ran out of lock headers"
+
+MESSAGE = "NO_PROCESS"
+TEXT    = "The lock system ran out of process entries"
+
+MESSAGE = "NO_LOCK"
+TEXT    = "The lock system ran out of locks"
+

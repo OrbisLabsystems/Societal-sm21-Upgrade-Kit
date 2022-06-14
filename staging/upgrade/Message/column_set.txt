@@ -1,0 +1,45 @@
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "COLUMN_SET_"
+
+MESSAGE        = "DESCRIPTION"
+TEXT           = "Automatically Created for Sampling Plan on "
+
+MESSAGE        = "FIELD_TITLE"
+TEXT           = "Field"
+
+MESSAGE        = "FIND_HEAD"
+TEXT           = "Enter find values"
+
+MESSAGE        = "NO_MATCHES"
+TEXT           = "No matches found. Create New?"
+
+MESSAGE        = "TRANSACTION_CREATE"
+TEXT           = "Create Sample Definition"
+
+MESSAGE        = "VALUE_TITLE"
+TEXT           = "Value"
+
+MESSAGE GROUP "COLUMN_SET_ENTRY_"
+
+MESSAGE        = "DUPLICATES"
+TEXT           = "Duplicate field defined"
+
+MESSAGE        = "FIELD_ID"
+TEXT           = "Identity"
+
+MESSAGE        = "FIELD_NAME"
+TEXT           = "Field Name"
+
+MESSAGE        = "FIELD_TYPE"
+TEXT           = "Field Type"
+
+MESSAGE        = "HEADER"
+TEXT           = "Column Set"
+
+MESSAGE        = "NOT_ALL_ENTERED"
+TEXT           = "All field names must be entered"
+
+MESSAGE        = "TITLE"
+TEXT           = "Field Type            Field Name           "

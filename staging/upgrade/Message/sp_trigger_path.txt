@@ -1,0 +1,59 @@
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "SP_TRIGGER_PATH_"
+
+MESSAGE        = "ERROR"
+TEXT           = "Error in Trigger Path Format"
+
+MESSAGE        = "FILE"
+TEXT           = "Job login file:"
+
+MESSAGE        = "HEAD"
+TEXT           = "Display Trigger Path"
+
+MESSAGE        = "ID"
+TEXT           = "Select Job Header : "
+
+MESSAGE        = "TITLE"
+TEXT           = "Sample Plan Login Trigger Path For Job "
+
+MESSAGE        = "NODES"
+TEXT           = "Details of nodes and rules involved in login"
+
+MESSAGE        = "DISCLAIMER"
+TEXT           = "Bracketed items marked with an asterisk contain data as it is now and will"
+TEXT           = "not necessarily reflect the data as it was at login time"
+
+MESSAGE        = "NONE"
+TEXT           = "This job has not been used as the input to sample plan login. The trigger path is therefore not applicable"
+
+MESSAGE        = "RULE"
+TEXT           = "triggered by "
+
+MESSAGE        = "ANALYSIS"
+TEXT           = "Analysis "
+
+MESSAGE        = "TEST_NUM"
+TEXT           = "Test No "
+
+MESSAGE        = "USER_RULE"
+TEXT           = "User Interaction"
+
+MESSAGE        = "NODE_OVERVIEW"
+TEXT           = "Overview of nodes involved in login:"
+
+MESSAGE        = "F_ANALYSIS"
+TEXT           = "Analysis"
+
+MESSAGE        = "F_ANAL_VERSION"
+TEXT           = "Analysis Version"
+
+MESSAGE        = "F_TEMPLATE"
+TEXT           = "Sample Template"
+
+MESSAGE        = "F_DESCRIPTION"
+TEXT           = "Description"
+
+MESSAGE        = "ENTRY_RECORD"
+TEXT           = "Sample plan entry record:"

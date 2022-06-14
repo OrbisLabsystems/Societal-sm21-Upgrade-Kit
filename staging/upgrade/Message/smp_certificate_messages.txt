@@ -1,0 +1,363 @@
+! Messages for the certificate screens.
+
+
+MESSAGE GROUP = "LTE_CERT_"
+
+MESSAGE       = "SECTION_ID"
+TEXT          = "Identity"
+
+MESSAGE       = "SECTION_DESC"
+TEXT          = "Description"
+
+MESSAGE       = "SECTION_TYPE"
+TEXT          = "Type"
+
+MESSAGE       = "SECTION_PROMPT_FOR"
+TEXT          = "Prompt for"
+
+MESSAGE       = "SECTION_HEADER"
+TEXT          = "Certificate Section List"
+
+MESSAGE       = "SECTION_TOOL_BUILD"
+TEXT          = "Build Section"
+
+MESSAGE       = "RESULT_HEAD_TYP"
+TEXT          = "Type"
+
+MESSAGE       = "RESULT_HEAD_PROD"
+TEXT          = "Product"
+
+MESSAGE       = "RESULT_HEAD_PROD_VER"
+TEXT          = "Version"
+
+MESSAGE       = "RESULT_HEAD_ANAL"
+TEXT          = "Analysis"
+
+MESSAGE       = "RESULT_HEAD_ANAL_VER"
+TEXT          = "Version"
+
+MESSAGE       = "RESULT_HEAD_COMP"
+TEXT          = "Components"
+
+MESSAGE       = "RESULT_HEAD_LVL"
+TEXT          = "Level"
+
+MESSAGE       = "RESULT_HEAD_DP"
+TEXT          = "DP"
+
+MESSAGE       = "RESULT_HEAD_ROUND"
+TEXT          = "Rnd."
+
+MESSAGE       = "RESULT_HEAD_SIG"
+TEXT          = "SF"
+
+MESSAGE       = "RESULT_HEAD_FILTER"
+TEXT          = "Routine"
+
+MESSAGE       = "RESULT_HEAD_UNIT"
+TEXT          = "Units"
+
+MESSAGE       = "RESULT_HEAD_INC"
+TEXT          = "Include?"
+
+MESSAGE       = "RESULT_HEADER"
+TEXT          = "Certificate Result Section"
+
+MESSAGE       = "DATA_HEADER"
+TEXT          = "Certificate Data Section"
+
+
+MESSAGE GROUP = "LTE_COA_SECTION_"
+
+MESSAGE       = "LIST_TOP_LINE"
+TEXT          = "CoA Section Entries Editor"
+
+MESSAGE       = "LIST_BOT_LINE"
+TEXT          = "Use UP/DOWN, REMOVE/INSERT, NEXT/PREVIOUS SCREEN and DO/EXIT"
+
+MESSAGE       = "LIST_TOOL_BUILD"
+TEXT          = "Define the CoA Sections"
+TEXT          = "Define Section"
+TEXT          = "Edit Section"
+
+MESSAGE	      = "UP_BUTTON" 
+TEXT	      = "Promote Section in List"
+
+MESSAGE	      = "DOWN_BUTTON" 
+TEXT	      = "Demote Section in List"
+
+MESSAGE	      = "RIGHT_BUTTON" 
+TEXT	      = "Display Section as Child"
+
+MESSAGE	      = "LEFT_BUTTON" 
+TEXT	      = "Display Section as Parent"
+
+MESSAGE GROUP "COA_SECTION_"
+
+MESSAGE       = "FIELD_1"
+TEXT          = "Section ID"
+
+MESSAGE       = "FIELD_2"
+TEXT          = "Description"
+
+MESSAGE       = "FIELD_3"
+TEXT          = "Section Type"
+
+MESSAGE       = "FIELD_4"
+TEXT          = "Modifiable"
+
+MESSAGE       = "DATA_TYPE"
+TEXT          = "DATA"
+
+MESSAGE       = "PROMPT_TYPE"
+TEXT          = "PROMPT"
+
+MESSAGE       = "RESULT_TYPE"
+TEXT          = "RESULT"
+
+
+MESSAGE GROUP = "LTE_COA_DESTINATION_"
+
+MESSAGE       = "LIST_TOP_LINE"
+TEXT          = "CoA Report Entries Editor"
+
+MESSAGE       = "LIST_BOT_LINE"
+TEXT          = "Use UP/DOWN, REMOVE/INSERT, NEXT/PREVIOUS SCREEN and DO/EXIT"
+
+
+MESSAGE GROUP "COA_DESTINATION_"
+
+MESSAGE       = "FIELD_1"
+TEXT          = "Report ID"
+
+MESSAGE       = "FIELD_2"
+TEXT          = "Description"
+
+MESSAGE       = "FIELD_3"
+TEXT          = "Type"
+
+MESSAGE       = "FIELD_4"
+TEXT          = "LIMS Reporter Report"
+
+
+MESSAGE GROUP = "LTE_COA_DATA_"
+
+MESSAGE       = "LIST_TOP_LINE"
+TEXT          = "CoA Data Entries Editor"
+
+MESSAGE       = "LIST_BOT_LINE"
+TEXT          = "Use UP/DOWN, REMOVE/INSERT, NEXT/PREVIOUS SCREEN and DO/EXIT"
+
+MESSAGE GROUP "COA_RESULT_"
+
+MESSAGE       = "SOURCE"
+TEXT          = "STANDARD"
+
+MESSAGE       = "LATEST"
+TEXT          = "Latest"
+
+MESSAGE       = "COMP_ERROR"
+TEXT          = "Component names need to be entered on rows with product, analysis or levels."
+
+MESSAGE       = "PROD_ERROR"
+TEXT          = "Product identity has not been entered."
+TEXT          = "Only columns from the test or result tables will contain values in your CoA report. Continue?"
+
+MESSAGE       = "TYPE_ERROR"
+TEXT          = "No result type has been selected."
+
+MESSAGE       = "COL_ERROR"
+TEXT          = "No columns have been selected, no results will be shown on your CoA report. Continue?"
+
+!Do not alter the order of the columns
+
+MESSAGE       = "COLUMN_NAME"
+TEXT          = "Product"		!1
+TEXT          = "Analysis"		!2
+TEXT          = "Component"		!3
+TEXT          = "Entered Value"		!4
+TEXT          = "Processed Value"	!5
+TEXT          = "Level"			!6
+TEXT          = "Min"			!7
+TEXT          = "Max"			!8
+TEXT          = "On Spec?"		!9
+TEXT          = "Units"			!10
+TEXT          = "Decimal Places"	!11
+TEXT          = "Rounding"		!12
+TEXT          = "Sig Figs"		!13
+
+MESSAGE       = "HEADER"
+TEXT          = "Certificate Result Section"
+
+MESSAGE       = "ANAL_INSERT"
+TEXT          = "Analysis Components"
+
+MESSAGE       = "PROD_INSERT"
+TEXT          = "Product Components"
+
+MESSAGE       = "BLANK_INSERT"
+TEXT          = "Blank Row"
+
+MESSAGE GROUP "COA_DATA_"
+
+MESSAGE       = "HEADER"
+TEXT          = "CoA Data Entries Editor"
+
+MESSAGE       = "FRAME_ONE"
+TEXT          = "Data Filter"
+
+MESSAGE       = "FRAME_TWO"
+TEXT          = "Section Properties"
+
+MESSAGE       = "FRAME_THREE"
+TEXT          = "Display Fields"
+
+MESSAGE       = "FRAME_FOUR"
+TEXT          = "Select fields from table"
+
+MESSAGE       = "TABLE_TEXT"
+TEXT          = "This is a Sample Table Data Section"
+TEXT          = "This is a Job Table Data Section"
+TEXT          = "This is a Lot Table Data Section"
+TEXT          = "This is a Dynamic Table Data Section"
+TEXT          = "This is a Static Linked Table Data Section"
+TEXT          = "This is a Static Non Linked Data Section"
+
+MESSAGE       = "DEFAULT"
+TEXT          = "Default Record"
+TEXT          = "Override Record"
+
+MESSAGE       = "MODIFY"
+TEXT          = "Prompt for at Certificate Generation"
+
+MESSAGE       = "FILTER_RADIO_ONE"
+TEXT          = "Filter by Criteria"
+
+MESSAGE       = "FILTER_LIB"
+TEXT          = "VGL Library"
+
+MESSAGE       = "FILTER_ROUTINE"
+TEXT          = "Routine"
+
+MESSAGE       = "FILTER_RADIO_TWO"
+TEXT          = "Filter by Routine"
+
+MESSAGE       = "FILTER_CRIT"
+TEXT          = "Edit Criteria"
+
+MESSAGE GROUP "COA_GENERATE_"
+
+MESSAGE       = "REPORT_REMOVED"
+TEXT          = "CoA Report does not exist in database or has been removed."
+
+MESSAGE       = "LTE_INFO_REPORT"
+TEXT          = "CoA Report"
+
+MESSAGE       = "REP_TO_RUN"
+TEXT          = "CoA To Run"
+
+MESSAGE       = "FIRST_LINE_TEXT"
+TEXT          = "CoA Template"
+
+MESSAGE       = "SECOND_LINE_TEXT"
+TEXT          = "Template Description"
+
+MESSAGE       = "CERTIFICATE_LABEL"
+TEXT          = "Certificate"
+
+MESSAGE       = "REPORT_LABEL"
+TEXT          = "LIMS Reporter Report"
+
+MESSAGE       = "PROMPTS_LABEL"
+TEXT          = "Enter additional information here"
+MESSAGE       = "TITLE"
+TEXT          = "Generate CoA"
+
+MESSAGE       = "BUTTONS"
+TEXT          = "Preview"
+TEXT          = "Compare MLP"
+TEXT          = "Help"
+TEXT          = "Cancel"
+
+MESSAGE       = "ENITY_LINK"
+TEXT          = "The [](s) you have selected have a certificate associated with them. Do you still want to create and assign the new certificate?"
+
+MESSAGE GROUP "COA_PROMPT_"
+
+MESSAGE        = "FRAME_ONE"
+TEXT           = "Section Properties"
+
+MESSAGE        = "FRAME_TWO"
+TEXT           = "Select Prompt Type"
+
+MESSAGE        = "FRAME_THREE"
+TEXT           = "Prompt Text"
+
+MESSAGE        = "TYPE_TITLE"
+TEXT           = "Prompt Text"
+
+MESSAGE        = "TYPE_PHRASE"
+TEXT           = "Phrase"
+
+MESSAGE        = "TYPE_ENVIRON"
+TEXT           = "Environment"
+
+MESSAGE        = "TYPE_FORMAT"
+TEXT           = "Format"
+
+MESSAGE        = "TYPE_ROUTINE"
+TEXT           = "Routine"
+
+MESSAGE        = "TYPE_DEFAULT"
+TEXT           = "Default Value"
+
+MESSAGE        = "TYPE_MODIFIABLE"
+TEXT           = "Modifiable"
+
+MESSAGE        = "PROMPT_LENGTH"
+TEXT           = "Length"
+
+MESSAGE        = "PROMPT_TYPE"
+TEXT           = "Type"
+
+MESSAGE        = "PROMPT_VGL"
+TEXT           = "Vgl Library"
+
+MESSAGE        = "PROMPT_PHRASE"
+TEXT           = "Phrase Id"
+
+MESSAGE        = "PROMPT_ENVIRON"
+TEXT           = "Variable"
+
+MESSAGE        = "PROMPT_TITLE"
+TEXT           = "Enter Text"
+
+MESSAGE        = "PROMPT_ROUTINE"
+TEXT           = "Routine"
+
+MESSAGE        = "PROMPT_MODIFIABLE"
+TEXT           = "Prompt for at Certificate Generation"
+
+MESSAGE        = "PROMPT_DEFAULT"
+TEXT           = "Default Value"
+
+MESSAGE        = "HEADER_BUILD_PROMPT"
+TEXT           = "Define Certificate Additional Information Section"
+
+MESSAGE        = "FOOTER_BUILD_PROMPT"
+TEXT           = "The returned value will be placed in Certificate Entry Text1"
+
+MESSAGE GROUP "COA_ERROR_"
+
+MESSAGE        = "DEST_COUNT"
+TEXT           = "No Destination specified within template."
+
+MESSAGE        = "PROMPT_LABEL"
+TEXT           = "Please enter text for Prompt Label."
+
+MESSAGE        = "NON_LINKED_DATA"
+TEXT           = "Please choose a default record or prompt for a value at Certificate Generation."
+
+MESSAGE        = "DELETE_CRITERIA"
+TEXT           = "Failed to delete criteria - []"
+

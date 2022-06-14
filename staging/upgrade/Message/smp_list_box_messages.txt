@@ -1,0 +1,13 @@
+MESSAGE GROUP 	= "LIST_BOX_"
+
+MESSAGE		= "HEADER"
+TEXT		= "List Items"
+
+MESSAGE		= "FOOTER"
+TEXT		= "SELECT Select/Deselect, DO complete, EXIT quit"
+
+MESSAGE		= "DISPLAY_FOOTER"
+TEXT		= "DO/EXIT to quit"
+
+MESSAGE		= "TITLE"
+TEXT		= "Choose List"

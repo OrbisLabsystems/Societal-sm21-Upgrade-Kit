@@ -1,0 +1,141 @@
+MESSAGE GROUP = "WORD_OLE_"
+
+MESSAGE = "FILE_NEW_DEFAULT"
+TEXT	= "FileNewDefault"
+
+MESSAGE = "FILE_OPEN"
+TEXT	= "FileOpen"
+
+MESSAGE = "FILE_NEW"
+TEXT	= "FileNew"
+
+MESSAGE = "START_OF_DOCUMENT"
+TEXT	= "StartOfDocument"
+
+MESSAGE = "END_OF_DOCUMENT"
+TEXT	= "EndOfDocument"
+
+MESSAGE = "EDIT_GO_TO"
+TEXT	= "EditGoTo"
+
+MESSAGE = "EDIT_BOOK_MARK"
+TEXT	= "EditBookMark"
+
+MESSAGE = "BORDER_LINE_STYLE"
+TEXT	= "BorderLineStyle"
+
+MESSAGE = "BORDER_INSIDE"
+TEXT	= "BorderInside"
+
+MESSAGE = "BORDER_OUTSIDE"
+TEXT	= "BorderOutside"
+
+MESSAGE = "BORDER_BOTTOM"
+TEXT	= "BorderBottom"
+
+MESSAGE = "BORDER_TOP"
+TEXT	= "BorderTop"
+
+MESSAGE = "VIEW_HEADER"
+TEXT	= "ViewHeader"
+
+MESSAGE = "VIEW_FOOTER"
+TEXT	= "ViewFooter"
+
+MESSAGE = "CLOSE_VIEW_HEADER_FOOTER"
+TEXT	= "CloseViewHeaderFooter"
+
+MESSAGE = "INSERT_CHART"
+TEXT	= "InsertChart"
+
+MESSAGE = "BOLD"
+TEXT	= "Bold"
+
+MESSAGE = "ITALIC"
+TEXT	= "Italic"
+
+MESSAGE = "UNDERLINE"
+TEXT	= "Underline"
+
+MESSAGE = "RIGHT_PARA"
+TEXT	= "RightPara"
+
+MESSAGE = "LEFT_PARA"
+TEXT	= "LeftPara"
+
+MESSAGE = "CENTER_PARA"
+TEXT	= "CenterPara"
+
+MESSAGE = "JUSTIFY_PARA"
+TEXT	= "JustifyPara"
+
+MESSAGE = "FONT"
+TEXT	= "Font"
+
+MESSAGE = "INSERT"
+TEXT	= "Insert"
+
+MESSAGE = "INSERT_PARA"
+TEXT	= "InsertPara"
+
+MESSAGE = "PARA_UP"
+TEXT	= "ParaUp"
+
+MESSAGE = "PARA_DOWN"
+TEXT	= "ParaDown"
+
+MESSAGE = "LINE_UP"
+TEXT	= "LineUp"
+
+MESSAGE = "LINE_DOWN"
+TEXT	= "LineDown"
+
+MESSAGE = "CHAR_LEFT"
+TEXT	= "CharLeft"
+
+MESSAGE = "CHAR_RIGHT"
+TEXT	= "CharRight"
+
+MESSAGE = "FORMAT_TABS"
+TEXT	= "FormatTabs"
+
+MESSAGE = "TABLE_INSERT_TABLE"
+TEXT	= "TableInsertTable"
+
+MESSAGE = "TABLE_COLUMN_WIDTH"
+TEXT	= "TableColumnWidth"
+
+MESSAGE = "PREV_CELL"
+TEXT	= "PrevCell"
+
+MESSAGE = "NEXT_CELL"
+TEXT	= "NextCell"
+
+MESSAGE = "TOOLS_MACRO"
+TEXT	= "ToolsMacro"
+
+MESSAGE = "APP_SHOW"
+TEXT	= "AppShow"
+
+MESSAGE = "INSERT_FIELD"
+TEXT	= "InsertField"
+
+MESSAGE = "FILENAME_FIELD"
+TEXT	= "Filename \p"
+
+MESSAGE = "DATE_FIELD"
+TEXT	= "Date"
+
+MESSAGE = "PAGE_FIELD"
+TEXT	= "Page"
+
+MESSAGE = "NUMPAGES_FIELD"
+TEXT	= "NumPages"
+
+MESSAGE GROUP = "EXCEL_OLE_"
+
+MESSAGE = "ROW_PREFIX"
+TEXT	= "R"
+
+MESSAGE = "COL_PREFIX"
+TEXT	= "C"

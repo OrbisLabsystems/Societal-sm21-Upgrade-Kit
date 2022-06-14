@@ -1,0 +1,195 @@
+! Messages for incident management.
+
+MESSAGE GROUP "INC_BACK_LOGIN_"
+
+MESSAGE        = "FAILED"
+TEXT           = "Incident Login Failed - A Template Must Be Specified"
+
+MESSAGE        = "FORM_HDR"
+TEXT           = "Mandatory Incident Login Screen"
+
+MESSAGE GROUP "INCIDENT_"
+
+MESSAGE        = "FILE_NOT_FOUND"
+TEXT           = "Selected Template Does Not Exist"
+
+MESSAGE        = "MISSING_TABLE"
+TEXT           = "A table was not specified for the current template"
+
+MESSAGE        = "MISSING_VALUES"
+TEXT           = "Fields showing '>' must have a value"
+
+MESSAGE        = "TEMPLATE_CHANGED"
+TEXT           = "Do you wish to save changes to the incident record?"
+
+MESSAGE        = "WRITE"
+TEXT           = "Update incidents"
+
+MESSAGE        = "NO_SUBJECT"
+TEXT           = "Please enter a valid subject Id before saving"
+
+MESSAGE        = "TO_BE_CREATED"
+TEXT           = "<To Be Created>"
+
+MESSAGE        = "NEW_ID"
+TEXT           = "Incident [] has been created"
+
+MESSAGE        = "NOT_CREATED"
+TEXT           = "Incident has not been created"
+
+MESSAGE        = "NOT_AVAILABLE"
+TEXT           = "The selected incident template is not available (locked or deleted)."
+
+MESSAGE        = "CANT_REM_RES"
+TEXT           = "You can only remove ad-hoc actions."
+
+MESSAGE        = "NOT_INSPECTED"
+TEXT           = "Not all inspctions have been performed on this incident"
+
+MESSAGE        = "NOT_SELECTED"
+TEXT           = "Please enter a valid record for the [] table in the Subject Field"
+
+MESSAGE GROUP "INC_BUTTONS_"
+
+MESSAGE        = "ACCEPT_CAPTION"
+TEXT           = "Accept"
+
+MESSAGE        = "AUTHORISE_CAPTION"
+TEXT           = "Authorise"
+
+MESSAGE        = "CANCEL_CAPTION"
+TEXT           = "Cancel"
+
+MESSAGE        = "CHECKLIST_CAPTION"
+TEXT           = "Checklist"
+
+MESSAGE        = "COMPLETE_CAPTION"
+TEXT           = "Complete"
+
+MESSAGE        = "DISQUALIFY_CAPTION"
+TEXT           = "Disqualify"
+
+MESSAGE        = "LOGIN_CAPTION"
+TEXT           = "Login"
+
+MESSAGE        = "MODIFY_CAPTION"
+TEXT           = "Modify"
+
+MESSAGE        = "OK_CAPTION"
+TEXT           = "OK"
+
+MESSAGE        = "REJECT_CAPTION"
+TEXT           = "Reject"
+
+MESSAGE        = "SUBMIT_CAPTION"
+TEXT           = "Submit"
+
+MESSAGE GROUP "INC_FORMS_"
+
+MESSAGE        = "CANCEL_HEADER"
+TEXT           = "Cancel Inspect Screen"
+
+MESSAGE        = "CHLIST_AE_HEADER"
+TEXT           = "Checklist Action Entry Screen"
+
+MESSAGE        = "CHLIST_RE_HEADER"
+TEXT           = "Checklist Results Entry Screen"
+
+MESSAGE        = "COMPLET_HEADER"
+TEXT           = "Incident Completion Screen"
+
+MESSAGE        = "DISPLAY_HEADER"
+TEXT           = "Incidents Display Screen"
+
+MESSAGE        = "GET_KEY_HEADER_1"
+TEXT           = "Identity "
+
+MESSAGE        = "GET_KEY_HEADER_2"
+TEXT           = "Get "
+
+MESSAGE        = "GET_KEY_HEADER_3"
+TEXT           = " Table's Identity"
+
+MESSAGE        = "INSPECT_HEADER"
+TEXT           = "Incident Inspect Screen"
+
+MESSAGE        = "INSPEC_SUB_HEADER"
+TEXT           = "Incident Submit For Inspection Screen"
+
+MESSAGE        = "LOGIN_HEADER"
+TEXT           = "Incident Login Screen"
+
+MESSAGE        = "MODIFY_HEADER"
+TEXT           = "Incident Modification Screen"
+
+MESSAGE        = "RELEASE_HEADER"
+TEXT           = "Incident Submit For Release Screen"
+
+MESSAGE        = "REVIEW_HEADER"
+TEXT           = "Incident Review Screen"
+
+MESSAGE        = "GRID_HEADER"
+TEXT           = "Action Taken                                     Type                             Results"
+
+MESSAGE        = "CHLIST_GRID_HEADER"
+TEXT           = "Action Decription                                  Action Type"
+
+MESSAGE        = "CHLIST_PRINT"
+TEXT           = "Action Taken"
+TEXT           = "Action Type"
+
+MESSAGE GROUP "INC_FORMS_PROMPTS_"
+
+MESSAGE        = "INCIDENT_IDENT"
+TEXT           = "Incident Id      "
+
+MESSAGE        = "INC_TEMPLATE"
+TEXT           = "Incident Template"
+
+MESSAGE        = "STATUS"
+TEXT           = "Status           "
+
+MESSAGE        = "SUBJECT_KEY"
+TEXT           = "Subject Field    "
+
+MESSAGE        = "SUBJECT_TABLE"
+TEXT           = "Subject Table    "
+
+MESSAGE GROUP "INC_TEMPLATE_"
+
+MESSAGE        = "HDR_TXT"
+TEXT           = "Incident Template Editor"
+
+MESSAGE        = "PROMPTS"
+TEXT           = "Group Name"
+TEXT           = "Description"
+TEXT           = "Status"
+TEXT           = "Subject Table"
+TEXT           = "Incident Syntax"
+
+MESSAGE        = "DISP_TABLE"
+TEXT           = "Incident Template"
+
+MESSAGE        = "ID_PROMPT"
+TEXT           = "Identity"
+
+MESSAGE        = "NO_TABLE"
+TEXT           = "Please select a Subject Table"
+
+MESSAGE        = "NO_SYNTAX"
+TEXT           = "Please select an Incident Syntax"
+
+MESSAGE GROUP "INC_CHECKLIST_"
+
+MESSAGE        = "HDR_TXT"
+TEXT           = "Incident Checklist Editor"
+
+MESSAGE        = "PROMPTS"
+TEXT           = "Group Id"
+TEXT           = "Description"
+
+MESSAGE        = "DISP_TABLE"
+TEXT           = "Incident Checklist"
+
+MESSAGE        = "ID_PROMPT"
+TEXT           = "Checklist Id"

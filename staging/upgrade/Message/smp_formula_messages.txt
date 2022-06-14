@@ -1,0 +1,396 @@
+! Messages for the formula code.
+
+MESSAGE GROUP = "FORMULA_PRINT_"
+
+MESSAGE       = "TITLE"
+TEXT          = "Formula Run Time Printout"
+
+MESSAGE       = "TITLE_SAMPLE"
+TEXT          = "Sample  : "
+
+MESSAGE       = "TITLE_TEST"
+TEXT          = "Test    : "
+
+MESSAGE       = "TITLE_RESULT"
+TEXT          = "Result  : "
+
+MESSAGE       = "RUNTIME_ERROR"
+TEXT          = "Error detected during execution of Formula "
+
+MESSAGE       = "TYPE_RESULT"
+TEXT          = "Result    >"
+
+MESSAGE       = "TYPE_FIELD"
+TEXT          = "Field     >"
+
+MESSAGE       = "TYPE_STANDARD"
+TEXT          = "Standard  >"
+
+MESSAGE       = "NOT_FOUND"
+TEXT          = "Not Found"
+
+MESSAGE       = "ANSWER"
+TEXT          = "Answer = "
+
+MESSAGE       = "FILE_ERROR"
+TEXT          = "Problem with formula print file : "
+
+MESSAGE       = "TYPE_INST_PARAM"
+TEXT          = "Inst Param >"
+
+MESSAGE       = "TYPE_STOCK_PARAM"
+TEXT          = "Stock Param >"
+
+MESSAGE       = "STOCK_BATCH_NOT_FOUND"
+TEXT          = "Unable to find batch of stock [] used for current test"
+
+MESSAGE       = "STOCK_PARAM_NOT_FOUND"
+TEXT          = "Unable to find stock parameter [] for stock batch []"
+
+
+MESSAGE GROUP = "FORMULA_PARSE_"
+
+MESSAGE       = "EXPECTED_A"
+TEXT          = "Expected to find the character ([])"
+
+MESSAGE       = "INVALID_NUMBER"
+TEXT          = "Invalid Number Format"
+
+MESSAGE       = "UNKNOWN_FUNCTION"
+TEXT          = "Unknown Function ID found ([])"
+
+MESSAGE       = "UNEXPECTED_ELEMENT"
+TEXT          = "Unexpected element found in expression ([])"
+
+MESSAGE       = "EXTRA_END"
+TEXT          = "Extra characters found at end of string - []"
+
+MESSAGE       = "NAME_NOT_FOUND"
+TEXT          = "Warning Component [] not found on Analysis"
+
+MESSAGE GROUP = "FORMULA_RUNTIME_"
+
+MESSAGE       = "BADTEST"
+TEXT          = "Invalid Test Number ([]) Specified"
+
+MESSAGE       = "RESULT_NOTFOUND"
+TEXT          = "Result [] not found or not entered"
+
+MESSAGE       = "TEST_NOTFOUND"
+TEXT          = "Test [] not found"
+
+MESSAGE       = "RESULT_NOTNUMERIC"
+TEXT          = "Result [] is not numeric"
+
+MESSAGE       = "INCORRECT_PARAMS"
+TEXT          = "The wrong number [] of parameters passed to the [] function "
+
+MESSAGE       = "ERROR_UNITS"
+TEXT          = "Units conversion error []"
+
+MESSAGE       = "ERROR_UNITS_TRIG"
+TEXT          = "Units conversion error during Trig Function []"
+
+MESSAGE       = "ERROR_UNITS_PLUS"
+TEXT          = "Units conversion error during addition []"
+
+MESSAGE       = "ERROR_UNITS_SUB"
+TEXT          = "Units conversion error during subtraction []"
+
+MESSAGE       = "ERROR_UNITS_FINAL"
+TEXT          = "Could not convert formula units to result units []"
+
+MESSAGE       = "MISMATCH_EQUALS_PLUS"
+TEXT          = "Illegal combination of inequalities [] , [] for addition"
+
+MESSAGE       = "MISMATCH_EQUALS_SUB"
+TEXT          = "Illegal combination of inequalities [] , [] for subtraction"
+
+MESSAGE       = "MISMATCH_EQUALS_MULT"
+TEXT          = "Illegal combination of inequalities [] , [] for multiplication"
+
+MESSAGE       = "MISMATCH_EQUALS_DIV"
+TEXT          = "Illegal combination of inequalities [] , [] for division"
+
+MESSAGE       = "MISMATCH_EQUALS_AVG"
+TEXT          = "Illegal combination of inequalities in Average function"
+
+MESSAGE       = "MISMATCH_EQUALS_MIN"
+TEXT          = "Illegal combination of inequalities in Minimum function"
+
+MESSAGE       = "MISMATCH_EQUALS_MAX"
+TEXT          = "Illegal combination of inequalities in Maximum function"
+
+MESSAGE       = "MISMATCH_EQUALS_SUM"
+TEXT          = "Illegal combination of inequalities in Sum function"
+
+MESSAGE       = "NO_STAND_COMP"
+TEXT          = "Component [] has not been found on standard version []"
+
+MESSAGE       = "NOT_A_STANDARD"
+TEXT          = "Sample not a standard"
+
+MESSAGE       = "NO_STANDARD"
+TEXT          = "No active version has been found for standard []"
+
+
+MESSAGE       = "EXPECT_NUMERIC"
+TEXT          = "Expected a numeric argument found [] instead"
+
+MESSAGE       = "EXPECT_TEXT"
+TEXT          = "Expected a textual argument found [] instead"
+
+MESSAGE       = "FUNC_DIVISION_ZERO"
+TEXT          = "Division by Zero attempted in function []"
+
+MESSAGE       = "DIVISION_ZERO"
+TEXT          = "Division by Zero attempted"
+
+MESSAGE       = "INV_RESULTFIELD"
+TEXT          = "Invalid Field [] in Result Table"
+
+MESSAGE       = "INV_TESTFIELD"
+TEXT          = "Invalid Field [] in Test Table"
+
+MESSAGE       = "INV_SAMPLEFIELD"
+TEXT          = "Invalid Field [] in Sample Table"
+
+MESSAGE       = "FINAL_NOT_NUMBER"
+TEXT          = "Could not convert formula value [] to number"
+
+MESSAGE	      = "GET_PI_VALUE"
+TEXT          = "[]"
+
+MESSAGE       = "INDETERMINATE_RESULT"
+TEXT          = "Indeterminate result passed to [] function."
+
+MESSAGE       = "INCORRECT_PARAM_TYPE"
+TEXT          = "Incorrect parameter type passed to [] function."
+
+MESSAGE       = "NO_ANAL_COMP_RES"
+TEXT          = "Can't find a result for analysis [] and compnent []."
+
+MESSAGE       = "NO_RESULT_SET"
+TEXT          = "Could not find a result set for criteria []."
+
+MESSAGE       = "CRITERIA_INCORRECT_PARAMS"
+TEXT          = "Incorrect number of parameters for criteria []"
+
+MESSAGE       = "NO_CRITERIA"
+TEXT          = "Parameter [] is not a valid criteria id. ( function [] )"
+
+MESSAGE       = "FUNCTION_ERROR"
+TEXT          = "Error in function []."
+
+
+MESSAGE       = "TOO_FEW_PARAMS"
+TEXT          = "Insufficent parameters supplied to function []"
+
+MESSAGE       = "TOO_MANY_PARAMS"
+TEXT          = "Too many parameters supplied to funtion []"
+
+MESSAGE       = "NO_FUNCTION_RESULT"
+TEXT          = "Function [] did not return a result"
+
+MESSAGE       = "NO_PARAM"
+TEXT          = "Could not resolve parameter [] in function []"
+
+MESSAGE       = "INVALID_TABLE"
+TEXT          = "Function [] was passed an invalid table name, '[]'"
+
+MESSAGE       = "INVALID_TABLE_FIELD"
+TEXT          = "Function [] was passed an invalid table/field name combination, '[]'"
+
+MESSAGE       = "TABLE_NOT_SELECTED"
+TEXT          = "Error in function []; No record is currently selected in table []"
+
+MESSAGE       = "NON_NUMERIC_FUNCTION"
+TEXT          = "The function [] returned a non-numeric answer inappropriately"
+
+MESSAGE       = "EMPTY_DATA_SET"
+TEXT          = "Result set contains no usable data for function []"
+
+MESSAGE       = "INST_PARAM_NOT_FOUND"
+TEXT          = "Instrument paramater [] not found for instrument []"
+
+MESSAGE       = "STOCK_PARAM_NOT_FOUND"
+TEXT          = "Stock Batch paramater [] not found for stock batch []"
+
+MESSAGE       = "STOCK_BATCH_NOT_FOUND"
+TEXT          = "Stock Batch [] not found for stock []"
+
+MESSAGE GROUP = "FORMULA_TEST_"
+
+MESSAGE       = "HEADER"
+TEXT          = "Formula Test Screen"
+
+MESSAGE       = "FOOTER"
+TEXT          = "Press DO to save/SELECT for runtime/REMOVE to delete from script"
+
+MESSAGE       = "ANALYSIS"
+TEXT          = "Analysis"
+
+MESSAGE       = "COMPONENT"
+TEXT          = "Component"
+
+MESSAGE       = "SAMPLE"
+TEXT          = "Sample"
+
+MESSAGE       = "FORMULA"
+TEXT          = "Formula"
+
+MESSAGE       = "ANSWER"
+TEXT          = "Answer"
+
+MESSAGE       = "SAVE_SCRIPT"
+TEXT          = "Save to Script"
+
+MESSAGE       = "NAME"
+TEXT          = "Name"
+
+MESSAGE       = "TYPE"
+TEXT          = "Type"
+
+MESSAGE       = "VALUE"
+TEXT          = "Value"
+
+MESSAGE       = "Units"
+TEXT          = "Units"
+
+MESSAGE       = "STATUS"
+TEXT          = "Status"
+
+MESSAGE       = "NO_COMPONENT"
+TEXT          = "Component [] has not been found on the given test"
+
+MESSAGE       = "WRONG_VERSION"
+TEXT          = "This test is from an old version of the analysis"
+
+MESSAGE       = "TEST_BUTTON"
+TEXT          = "Test"
+
+MESSAGE       = "PRINT_BUTTON"
+TEXT          = "Print"
+
+MESSAGE       = "WANT_TO_SAVE"
+TEXT          = "Do you want to save any changes to the formula"
+
+MESSAGE       = "FAILED_TO_SAVE"
+TEXT          = "Failed to save changes to the formula"
+
+MESSAGE       = "NO_RESULT"
+TEXT          = "No Result has been specified or found"
+
+MESSAGE       = "NO_TEST"
+TEXT          = "No Test has been specified"
+
+MESSAGE       = "ANALYSIS_CHANGED"
+TEXT          = "The analysis has been altered by another user - do you wish to continue"
+
+MESSAGE       = "COMPONENT_CHANGED"
+TEXT          = "The component has been altered by another user - do you wish to continue"
+
+MESSAGE       = "TRANSACTION"
+TEXT          = "Formula Test Update"
+
+MESSAGE       = "CONFIRM_DELETE"
+TEXT          = "Do you want to delete all test scripts for component []"
+
+MESSAGE       = "SCRIPT_SAVED"
+TEXT          = "Test saved to script file successfully"
+                                             
+MESSAGE GROUP = "FORMULA_VALIDATION_"
+
+MESSAGE       = "DIFF_COMP"
+TEXT          = "Script component [] different from required component []"
+
+MESSAGE       = "COMP_GONE"
+TEXT          = "Component [] has been removed from the analysis"
+
+MESSAGE       = "INCOMP_UNITS"
+TEXT          = "Script Units [] are not compatable with component units []"
+
+MESSAGE       = "STAN_GONE"
+TEXT          = "Standard [] has been removed or deleted"
+
+MESSAGE       = "STAN_COMP_GONE"
+TEXT          = "Component [] has been deleted from Standard []"
+
+MESSAGE       = "INCOMP_STAN_UNITS"
+TEXT          = "Script Units [] are not compatable with standard units []"
+
+MESSAGE       = "TABLE_WRONG"
+TEXT          = "Expected to read table [] found table [] instead"
+
+MESSAGE       = "FIELD_WRONG"
+TEXT          = "Expected to read field [] found field [] instead"
+
+
+MESSAGE       = "SCRIPT_WRONG"
+TEXT          = "Type [] found in Script expecting Type []"
+
+MESSAGE       = "ERROR"
+TEXT          = "Error"
+
+MESSAGE       = "FORM_DIFF"
+TEXT          = "Test Script Formula is different "
+
+MESSAGE       = "ANS_DIFF"
+TEXT          = "The returned answer was different from the expected answer"
+
+MESSAGE       = "NO_SCRIPT"
+TEXT          = "No Formula Script file for analysis [] found"
+
+MESSAGE       = "NO_FORM_SCRIPT"
+TEXT          = "No scripts found for component []"
+
+
+
+
+MESSAGE GROUP = "FORMULA_SCRIPT_"
+
+MESSAGE       = "ANALYSIS"
+TEXT          = "Analysis ID"
+
+MESSAGE       = "TITLE"
+TEXT          = "Formula Verification Screen" 
+
+MESSAGE       = "SCRIPT_FAIL"
+TEXT          = "The formula test scripts for analysis [] failed"
+
+MESSAGE       = "SCRIPT_PASS"
+TEXT          = "The formula test scripts for analysis [] passed"
+
+MESSAGE       = "HEADER"
+TEXT          = "Formula Scripts for"
+
+MESSAGE       = "Number"
+TEXT          = "Script #"
+
+MESSAGE       = "PASS"
+TEXT          = "Pass"
+
+MESSAGE       = "WHO"
+TEXT          = "Created By"
+
+MESSAGE       = "WHEN"
+TEXT          = "Created On"
+
+MESSAGE       = "FORMULA"
+TEXT          = "Formula"
+
+MESSAGE       = "EXPECTED"
+TEXT          = "Expected Answer"
+
+MESSAGE       = "RETURNED"
+TEXT          = "Returned Answer"
+                                                 
+MESSAGE       = "TYPE"
+TEXT          = "Type"   
+
+
+MESSAGE       = "Name"
+TEXT          = "Name"
+                     
+MESSAGE       = "VALUE"
+TEXT          = "value"

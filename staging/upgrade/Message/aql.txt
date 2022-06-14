@@ -1,0 +1,10 @@
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "AQL_"
+
+MESSAGE        = "TRANSACTION"
+TEXT           = "Add Statistical Sampling info"
+
+MESSAGE        = "UPDATE_ERROR"
+TEXT           = "Record not updated successfully"

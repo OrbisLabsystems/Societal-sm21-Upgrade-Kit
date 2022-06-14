@@ -1,0 +1,47 @@
+
+MESSAGE GROUP "MENU_ROLE_ASSIGN_"
+
+MESSAGE = "ADD_ITEM"
+TEXT    = "Add Item(s) to Role "
+
+MESSAGE = "ERROR"
+TEXT    = "You need Role Modification Privileges"
+
+MESSAGE = "ADD"
+TEXT    = "Add"
+
+MESSAGE = "ADD_ENTRY"
+TEXT    = "Add Role Entries"
+
+MESSAGE = "ENTRY_ADDED"
+TEXT    = "Entries Added."
+
+MESSAGE = "SAVING"
+TEXT    = "Saving Changes. Please Wait."
+
+MESSAGE = "DELETE_ENTRY"
+TEXT    = "Delete Role Entry"
+
+MESSAGE = "MENU_PROC"
+TEXT    = "Menu Procedure"
+
+!MESSAGE = "REMOVE_PROC"
+!TEXT    = "Remove Procedure from Role"
+
+MESSAGE = "ROLE_IDEN"
+TEXT    = "Role Identity"
+
+MESSAGE = "NOT_LOCK"
+TEXT    = "Could Not Lock Record."
+
+MESSAGE = "CHANGES_ABANDONED"
+TEXT    = "Changes Abandoned"
+
+MESSAGE = "PROC_REMOVE"
+TEXT    = "Procedure Removed from Role"
+
+MESSAGE = "REMOVE_PROCEDURE"
+TEXT    = "Remove Procedure "
+
+MESSAGE = "FROM_ROLE"
+TEXT    = "from Role "

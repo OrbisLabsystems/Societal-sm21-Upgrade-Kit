@@ -1,0 +1,167 @@
+MESSAGE GROUP "LIMSML_ERROR_"
+
+MESSAGE  = "PROCESSOR_LAYER"
+TEXT     = "SMP Processor"
+
+MESSAGE  = "BUSINESS_LAYER"
+TEXT     = "SMP Business"
+
+
+MESSAGE  = "ACTION_SUPPORT"
+TEXT     = "INCORRECTACTIONS"
+TEXT     = "Only one action per entity is supported."
+
+
+MESSAGE  = "ENTITY"
+TEXT     = "NOENTITY"
+TEXT     = "Invalid Entity [] specified within request."
+TEXT	 = " The entity may need to be included in table LIMSML_ENTITY_ACTION."
+
+
+MESSAGE  = "ACTION"
+TEXT     = "NOACTION" 
+TEXT     = "Invalid Action [] specified on Entity [] within request."
+TEXT	 = " The action may need to be included in table LIMSML_ENTITY_ACTION."
+
+MESSAGE  = "XML"
+TEXT     = "INVALID_XML"
+
+MESSAGE  = "PARAMETER"
+TEXT     = "MANDATORYPARAMETER"
+TEXT     = "Mandatory Parameter not found:"
+TEXT	 = "INVALIDPARAMETER"
+TEXT	 = "Invalid Parameter within request:"
+TEXT	 = ". The Parameter may need to be included in table LIMSML_ENTITY_PARAM."
+
+
+MESSAGE  = "MENU"
+TEXT     = "NOMENU" 
+TEXT     = "A menu does not exist for the given Entity [] and Action []."
+TEXT     = " Add a master menu record, with its Type set to LIMSML. Include the valid Entity and Action."
+
+MESSAGE  = "USERACCESS"
+TEXT     = "USERNOACCESS" 
+TEXT     = "Current user does not have access to menu procedure []."
+
+MESSAGE  = "TRANSACTION"
+TEXT     = "SMPTRANSACTION"
+TEXT     = "Errors have been raised with transaction []. Check child errors for further details."
+TEXT     = "(TRANSACTION ID NOT DEFINED)"
+
+MESSAGE  = "HANDLE"
+TEXT     = "HANDLEROUTINE_"
+
+
+MESSAGE  = "SEVERITY"
+TEXT     = "1"
+TEXT     = "2"
+TEXT     = "3"
+TEXT     = "4"
+TEXT     = "5"
+
+MESSAGE  = "RESPONSE_TYPE"
+TEXT     = "INVALIDRESPONSETYPE"
+TEXT     = "Invalid Response Type within request:"
+
+MESSAGE  = "RESPONSE_INTER"
+TEXT     = "INCORRECTRESPONSETYPE"
+TEXT     = "The response type within the request [], does not match the entity interface []."
+TEXT     = " Check the Return Type field corresponds to the incoming request."
+
+MESSAGE  = "STACK"
+TEXT     = "Stack Calls:"
+
+MESSAGE  = "VGLCRASH"
+TEXT     = "VGLCRASH" 
+TEXT     = "Unable to add file to xml:"
+
+MESSAGE GROUP "LIMSML_"
+
+MESSAGE  = "PARAM_BUTTON"
+TEXT     = "Parameters"
+
+MESSAGE  = "ENTITY"
+TEXT     = "GENERIC"
+
+MESSAGE  = "RESPONSE"
+TEXT     = "BOTH"
+
+
+MESSAGE GROUP "LIMSML_RE_ERROR_"
+
+MESSAGE  = "NO_SAMPLE"
+TEXT     = "No Sample"
+TEXT 	 = "Unable to Identify a Sample, please specify a valid ID_TEXT or ID_NUMERIC. Sample Entity []"
+TEXT     = "NOSAMPLE"
+SEVERITY = "ERROR"
+
+MESSAGE  = "NO_TEST"
+TEXT     = "No Test"
+TEXT 	 = "An appropriate test could not be found on Sample '[]'. Test Entity []"
+TEXT     = "NOTEST"
+SEVERITY = "ERROR"
+
+MESSAGE  = "PTR"
+TEXT     = "Result Entry Error"
+TEXT 	 = "Result entry failed with error '[]'. Test Entity [], Result Entity []"
+TEXT     = "PTRERROR"
+SEVERITY = "ERROR"
+
+MESSAGE  = "PT"
+TEXT     = "Result Entry Error"
+TEXT 	 = "Result entry failed with error '[]'. Test Entity []."
+TEXT     = "PTERROR"
+SEVERITY = "ERROR"
+
+MESSAGE  = "VALUE_FIELD"
+TEXT     = "Value Field Used"
+TEXT 	 = "Value field is being used. Use 'Text' field to set result value. Test Entity [], Result Entity []"
+TEXT     = "VALUEFIELD"
+SEVERITY = "ERROR"
+
+MESSAGE  = "RE_ERROR"
+TEXT     = "Result Entry Error"
+TEXT 	 = "Result entry failed with error '[]'."
+TEXT     = "Result Entry Helper: process result"
+SEVERITY = "ERROR"
+
+
+MESSAGE GROUP "LIMSML_TESTER_"
+
+MESSAGE  = "HEADER"
+TEXT     = "LIMSML Tester"
+TEXT     = "Select LIMSML to process"
+TEXT     = "Request "
+TEXT     = "Response "
+TEXT     = "Errors "
+
+MESSAGE  = "CHECK_RP"
+TEXT     = "Show Response"
+
+MESSAGE  = "CHECK_RQ"
+TEXT     = "Show Request"
+
+MESSAGE  = "CHECK_DB"
+TEXT     = "Debug Request"
+
+MESSAGE  = "CHECK_TR"
+TEXT     = "Transaction file"
+
+MESSAGE  = "POPUP_BROWSE"
+TEXT     = "Browse for xml file..."
+
+MESSAGE  = "BUTTON_SINGLE"
+TEXT     = "Select Test"
+
+MESSAGE  = "BUTTON_ALL"
+TEXT     = "Test All"
+
+MESSAGE  = "LABEL_FILE"
+TEXT     = "Xml file:"
+
+MESSAGE GROUP "LIMSML_EXPLORER_AUX_"
+
+MESSAGE  = "EXECUTE"
+TEXT     = "Error Executing LIMSML Explorer Aux Request"
+TEXT 	 = "[] - []"
+SEVERITY = "ERROR"

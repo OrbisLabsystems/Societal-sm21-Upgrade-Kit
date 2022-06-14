@@ -1,0 +1,17 @@
+MESSAGE GROUP "DESKTOP_"
+
+MESSAGE = "HOME_CHANGED"
+TEXT    = "Your active desktop home page has been successfully modified to "
+TEXT    = ". You must reconnect before this will be effective"
+
+MESSAGE = "HOME_CHANGE_ERROR"
+TEXT    = "An error prevented your home page from being modified. Please try again later"
+
+MESSAGE = "SET_HOME_HEADER"
+TEXT    = "Change Active Desktop Home Page"
+
+MESSAGE = "SET_URL_HEADER"
+TEXT    = "Set Active Desktop Location"
+
+MESSAGE = "SET_URL_PROMPT"
+TEXT    = "Enter address of web page or local file:"

@@ -1,0 +1,34 @@
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "LTE_COL_SET_HEAD_"
+
+MESSAGE        = "ACTION_COL"
+TEXT           = "1 Columns"
+
+MESSAGE        = "ACTION_TEXT"
+TEXT           = "2 Text File"
+
+MESSAGE        = "FIELD_DESC"
+TEXT           = "Description"
+
+MESSAGE        = "FIELD_GROUP"
+TEXT           = "Group Name"
+
+MESSAGE        = "FIELD_MOD"
+TEXT           = "Modifiable Entry"
+
+MESSAGE        = "FOOT"
+TEXT           = "Press DO to Save / EXIT to Quit"
+
+MESSAGE        = "FOOT_DISP"
+TEXT           = "Press EXIT to Quit"
+
+MESSAGE        = "HEAD"
+TEXT           = "Column Set Header Entry Screen"
+
+MESSAGE        = "ID"
+TEXT           = "Enter Column Set Header ID : "
+
+MESSAGE        = "TABLE_NAME"
+TEXT           = "Column Set Header"

@@ -1,0 +1,7 @@
+MESSAGE GROUP "CAL_K_"
+
+MESSAGE = 	"RESULTVAL"
+TEXT = 		"Calculated value was []"
+
+MESSAGE = 	"INVSAMPANAL"
+TEXT = 		"Invalid sample/analysis combination specified"

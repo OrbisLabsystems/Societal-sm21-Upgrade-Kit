@@ -1,0 +1,7 @@
+MESSAGE GROUP "SMP_PI_"
+
+MESSAGE = "ERROR_API_LOAD"
+TEXT    = "Unable to load PI-API function"
+
+MESSAGE = "ERROR_API_DECODE"
+TEXT    = "Unable to decode PI-API error code"

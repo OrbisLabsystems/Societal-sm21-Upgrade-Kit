@@ -1,0 +1,260 @@
+MESSAGE GROUP "DATE_"
+
+MESSAGE = "DAY_1"
+TEXT 	= "MON"
+
+MESSAGE = "DAY_2"
+TEXT 	= "TUE"
+
+MESSAGE = "DAY_3"
+TEXT 	= "WED"
+
+MESSAGE = "DAY_4"
+TEXT 	= "THU"
+
+MESSAGE = "DAY_5"
+TEXT 	= "FRI"
+
+MESSAGE = "DAY_6"
+TEXT 	= "SAT"
+
+MESSAGE = "DAY_7"
+TEXT 	= "SUN"
+
+MESSAGE = "DAY_NAMES"
+TEXT    = "Monday"
+TEXT	= "Tuesday"
+TEXT	= "Wednesday"
+TEXT	= "Thursday"
+TEXT	= "Friday"
+TEXT	= "Saturday"
+TEXT	= "Sunday"
+
+MESSAGE = "MONTH_1"
+TEXT 	= "JAN"
+
+MESSAGE = "MONTH_2"
+TEXT 	= "FEB"
+
+MESSAGE = "MONTH_3"
+TEXT 	= "MAR"
+
+MESSAGE = "MONTH_4"
+TEXT 	= "APR"
+
+MESSAGE = "MONTH_5"
+TEXT 	= "MAY"
+
+MESSAGE = "MONTH_6"
+TEXT 	= "JUN"
+
+MESSAGE = "MONTH_7"
+TEXT 	= "JUL"
+
+MESSAGE = "MONTH_8"
+TEXT 	= "AUG"
+
+MESSAGE = "MONTH_9"
+TEXT 	= "SEP"
+
+MESSAGE = "MONTH_10"
+TEXT 	= "OCT"
+
+MESSAGE = "MONTH_11"
+TEXT 	= "NOV"
+
+MESSAGE = "MONTH_12"
+TEXT 	= "DEC"
+
+MESSAGE = "MONTH_LIST"
+TEXT 	= "JANFEBMARAPRMAYJUNJULAUGSEPOCTNOVDEC"
+
+MESSAGE = "MONTH_TEXT_1"
+TEXT	= "January"
+
+MESSAGE = "MONTH_TEXT_2"
+TEXT	= "February"
+
+MESSAGE = "MONTH_TEXT_3"
+TEXT	= "March"
+
+MESSAGE = "MONTH_TEXT_4"
+TEXT	= "April"
+
+MESSAGE = "MONTH_TEXT_5"
+TEXT	= "May"
+
+MESSAGE = "MONTH_TEXT_6"
+TEXT	= "June"
+
+MESSAGE = "MONTH_TEXT_7"
+TEXT	= "July"
+
+MESSAGE = "MONTH_TEXT_8"
+TEXT	= "August"
+
+MESSAGE = "MONTH_TEXT_9"
+TEXT	= "September"
+
+MESSAGE = "MONTH_TEXT_10"
+TEXT	= "October"
+
+MESSAGE = "MONTH_TEXT_11"
+TEXT	= "November"
+
+MESSAGE = "MONTH_TEXT_12"
+TEXT	= "December"
+
+MESSAGE = "AM"
+TEXT 	= "AM"
+
+MESSAGE = "PM"
+TEXT 	= "PM"
+
+MESSAGE = "INVALID_MONTH"
+TEXT    = "Invalid month number in date value ([])"
+
+MESSAGE = "INVALID_FORMAT"
+TEXT    = "Invalid date format []"
+
+MESSAGE = "INVALID_DEFAULT"
+TEXT    = "Invalid date format - using default"
+
+MESSAGE = "INTERVAL_OVERFLOW"
+TEXT    = "Interval overflow error"
+
+MESSAGE = "DATE_OVERFLOW"
+TEXT    = "Date overflow error"
+
+MESSAGE GROUP "DATE_BROWSE_"
+
+MESSAGE	= "DAY"
+TEXT	= "Day"
+
+MESSAGE	= "MONTH"
+TEXT	= "Month"
+
+MESSAGE = "YEAR"
+TEXT	= "Year"
+
+MESSAGE = "HOUR"
+TEXT	= "Hour"
+
+MESSAGE = "MIN"
+TEXT	= "Minutes"
+
+MESSAGE = "SEC"
+TEXT	= "Seconds"
+
+MESSAGE = "FOOTER"
+TEXT    = "DO to save / EXIT to quit"
+
+MESSAGE = "HEADER"
+TEXT    = "Browse on Date"
+
+MESSAGE = "TIME_HEADER"
+TEXT	= "Browse on Date and Time"
+
+MESSAGE = "INVALID_DATE"
+TEXT    = "Invalid date specified"
+
+MESSAGE = "INVALID_LIMIT_DATE"
+TEXT    = "Invalid date specified, resetting to previous date"
+
+MESSAGE = "INVALID_INTERVAL"
+TEXT    = "Invalid interval specified"
+
+MESSAGE = "TODAY"
+TEXT    = "Today"
+
+MESSAGE = "ZERO"
+TEXT    = "Zero"
+
+MESSAGE = "NOW"
+TEXT    = "Now"
+
+MESSAGE = "CHOOSE_DATE"
+TEXT    = "Choose Date"
+
+MESSAGE = "CHOOSE_INTERVAL"
+TEXT    = "Choose Interval"
+
+MESSAGE GROUP "INTERVAL_BROWSE_"
+
+MESSAGE	= "DAYS"
+TEXT	= "Days"
+
+MESSAGE = "HOURS"
+TEXT	= "Hours"
+
+MESSAGE = "MINS"
+TEXT	= "Minutes"
+
+MESSAGE = "SECS"
+TEXT	= "Seconds"
+
+MESSAGE = "NEG_INTV"
+TEXT	= "Negative"
+
+MESSAGE = "HEADER"
+TEXT    = "Browse on Interval"
+
+MESSAGE GROUP "CALENDAR_SETUP_"
+
+MESSAGE = "OK"
+TEXT    = "OK"
+
+MESSAGE = "CANCEL"
+TEXT    = "Cancel"
+
+MESSAGE = "HELP"
+TEXT    = "Help"
+
+MESSAGE = "CURRENT_DATE"
+TEXT    = "Current Date:"
+
+MESSAGE = "DESC"
+TEXT    = "Description:"
+
+MESSAGE = "HEADER_1"
+TEXT    = "Non Working period details for "
+
+MESSAGE = "HEADER_2"
+TEXT    = " Calendar."
+
+MESSAGE = "NON_WORK"
+TEXT    = "Non-working days"
+
+MESSAGE = "YEAR"
+TEXT    = "Year:"
+
+MESSAGE = "YR_DATE"
+TEXT    = "Year and Date"
+
+MESSAGE GROUP "CALENDAR_SETUP_PR_"
+
+MESSAGE = "DESC"
+TEXT    = "Description : "
+
+MESSAGE = "END"
+TEXT    = "End Date    : "
+
+MESSAGE = "START"
+TEXT    = "Start Date  : "
+
+MESSAGE GROUP "CALENDAR_SETUP_RMB_"
+
+MESSAGE = "ALL_NON_WORK"
+TEXT    = "Make all days WORKING days"
+
+MESSAGE = "ALL_WORK"
+TEXT    = "Make all days NON-WORKING days"
+
+MESSAGE = "NON_WORK"
+TEXT    = "Make NON-WORKING day"
+
+MESSAGE = "TOGGLE"
+TEXT    = "Toggle all days"
+
+MESSAGE = "WORK"
+TEXT    = "Make WORKING day"

@@ -1,0 +1,28 @@
+MESSAGE GROUP "LEX_"
+
+! SEVERITY      ERROR
+
+MESSAGE = 	"EOF"
+TEXT = 		"End of file detected"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"NOTPOS"
+TEXT = 		"Index must be positive number"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"TOOSMALL"
+TEXT = 		"Input line is too small for given format"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"ILLCHAR"
+TEXT =		"Illegal character in this context '[]'"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"EOLBEFQUO"
+TEXT =		"End of line detected before end of quoted string"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"NOTNUMBER"
+TEXT =		"Unable to convert [] into valid number"
+SEVERITY = 	"ERROR"
+

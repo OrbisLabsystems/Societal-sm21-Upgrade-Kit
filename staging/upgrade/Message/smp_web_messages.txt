@@ -1,0 +1,43 @@
+MESSAGE GROUP "WEB_LINK_"
+
+MESSAGE = "CONTEXT"
+TEXT    = "Context"
+
+MESSAGE = "CREATETRANS"
+TEXT    = "Create Menu Item"
+
+MESSAGE = "EXISTS"
+TEXT    = "Web Menu Already Exists"
+
+MESSAGE = "LINK"
+TEXT    = "Web Link"
+
+MESSAGE = "CREATEMENU"
+TEXT    = "Create Menu Item"
+
+MESSAGE = "DESC"
+TEXT    = "Choose Option"
+
+MESSAGE = "HEAD"
+TEXT    = "Open Link"
+
+MESSAGE GROUP "WEB_MENU_"
+
+MESSAGE = "NONAME"
+TEXT    = "Please Specify a Section Name"
+
+MESSAGE = "NOITEMS"
+TEXT    = "Please Specify at least one Menu Item for this Section"
+
+MESSAGE = "NOPROC"
+TEXT    = "Please Specify a Valid Menu Procedure Number"
+
+MESSAGE = "INTRODUCTION"
+TEXT    = "Web Menu Section Introduction"
+
+MESSAGE = "SUMMARY"
+TEXT    = "Web Menu Section Summary"
+
+MESSAGE = "IMAGE"
+TEXT    = "~/images/retro/ls21501.jpg"
+

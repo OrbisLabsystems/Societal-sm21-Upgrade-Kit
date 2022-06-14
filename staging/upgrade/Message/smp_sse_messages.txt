@@ -1,0 +1,97 @@
+MESSAGE GROUP "SSE_"
+
+MESSAGE = "SETUP"
+TEXT	= "S.S.E / "
+TEXT	= "Enter Report ID : "
+TEXT	= "Enter SSE Report ID"
+TEXT	= "Create New Report"
+TEXT	= "Alter Old Report"
+TEXT	= "Edit Report"
+TEXT	= "Update Report"
+TEXT	= "Display Errors"
+TEXT	= "Test Report"
+TEXT	= "Spreadsheet Report Setup"
+TEXT	= "<do> | <exit> | <help>"
+TEXT	= "Create New Template"
+TEXT	= "Failed to Create Report File"
+TEXT	= " was NOT modified"
+TEXT	= "SSE Report Failed to compile"
+TEXT	= "SSE Report compiled with warnings"
+TEXT	= "SSE Report template values validated with warnings"
+
+MESSAGE = "HEADER_TXT"
+TEXT	= "SpreadSheet Editor"
+
+MESSAGE = "FOOTER_TXT"
+TEXT	= "DO saves / EXIT quits / SELECT for options"
+
+MESSAGE = "SUCCESS_TXT"
+TEXT	= "Records updated"
+
+MESSAGE = "ABORT_TXT"
+TEXT	= "Modifications Aborted"
+
+MESSAGE = "INSERT_HEADER_TXT"
+TEXT	= "Add new record"
+
+MESSAGE = "INSERT_ERROR"
+TEXT	= "Error inserting record into spreadsheet"
+TEXT    = "This record does not exist"
+TEXT	= "This record already exists in the spreadsheet"
+
+MESSAGE = "INSERT_FOOTER_TXT"
+TEXT	= "DO to add / EXIT quits"
+
+MESSAGE = "SELECT_PRESSED"
+TEXT	= "Field Routine"
+TEXT	= "Record Routine"
+TEXT	= "Propagate"
+TEXT	= "Options"
+TEXT	= "View Selection Criteria"
+
+MESSAGE = "VIEW_SELECT"
+TEXT	= "Selection Criteria"
+
+MESSAGE = "NO_VIEW_SELECT"
+TEXT	= "No selection criteria"
+
+MESSAGE = "MATCHES_FOUND_TXT"
+TEXT	= "Matches found = "
+
+MESSAGE = "SEARCHING_TXT"
+TEXT	= "Searching database .."
+
+MESSAGE = "SEARCH_HEADER"
+TEXT    = "Selecting Records"
+
+MESSAGE = "SEARCH_FOOTER"
+TEXT    = "DO to continue / EXIT quits"
+
+MESSAGE = "BLOCK_ROW_ERROR"
+TEXT 	= "Error selecting records from database"
+
+MESSAGE = "INVALID_STATUS_CHANGE"
+TEXT	= "Invalid status change"
+
+MESSAGE = "VALIDATE_ERROR"
+TEXT	= " in template file is invalid."
+TEXT	= " in template file is not a boolean."
+TEXT	= " in template file is not a numeric."
+TEXT	= " in mandatory array is not valid field."
+TEXT	= " in select array is not valid field."
+TEXT	= " in prompt_details array is not valid field."
+TEXT	= " in prompt_details array is not same as specified table."
+TEXT	= " is greater than the size of the prompt_details array."
+
+MESSAGE = "INVALID_FIELD_VALUE"
+TEXT	= "[] is not a valid value in field []"
+
+MESSAGE GROUP "SSE_RVP_"
+
+MESSAGE = "HEADER_TXT"
+TEXT	= "Receive Samples for a Job"
+
+MESSAGE = "SELECT_PRESSED"
+TEXT	= "Display Location"
+TEXT	= "Display Sample Entry"
+

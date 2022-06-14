@@ -1,0 +1,141 @@
+MESSAGE GROUP = "WORD_OLE_"
+
+MESSAGE = "FILE_NEW_DEFAULT"
+TEXT	= "ArchivoNuevoPredeter"
+
+MESSAGE = "FILE_OPEN"
+TEXT	= "ArchivoAbrir"
+
+MESSAGE = "FILE_NEW"
+TEXT	= "ArchivoNuevo"
+
+MESSAGE = "START_OF_DOCUMENT"
+TEXT	= "PrincipioDeDocumento"
+
+MESSAGE = "END_OF_DOCUMENT"
+TEXT	= "FinDeDocumento"
+
+MESSAGE = "EDIT_GO_TO"
+TEXT	= "EdiciónIrA"
+
+MESSAGE = "EDIT_BOOK_MARK"
+TEXT	= "EdiciónMarcador"
+
+MESSAGE = "BORDER_LINE_STYLE"
+TEXT	= "BordeEstiloDeLínea"
+
+MESSAGE = "BORDER_INSIDE"
+TEXT	= "BordeInterior"
+
+MESSAGE = "BORDER_OUTSIDE"
+TEXT	= "BordeExterior"
+
+MESSAGE = "BORDER_BOTTOM"
+TEXT	= "BordeInferior"
+
+MESSAGE = "BORDER_TOP"
+TEXT	= "BordeSuperior"
+
+MESSAGE = "VIEW_HEADER"
+TEXT	= "VerEncabezado"
+
+MESSAGE = "VIEW_FOOTER"
+TEXT	= "VerPieDePágina"
+
+MESSAGE = "CLOSE_VIEW_HEADER_FOOTER"
+TEXT	= "CerrarVerEncabPie"
+
+MESSAGE = "INSERT_CHART"
+TEXT	= "InsertarGráfico"
+
+MESSAGE = "BOLD"
+TEXT	= "Negrita"
+
+MESSAGE = "ITALIC"
+TEXT	= "Cursiva"
+
+MESSAGE = "UNDERLINE"
+TEXT	= "Subrayar"
+
+MESSAGE = "RIGHT_PARA"
+TEXT	= "PárrafoDerecha"
+
+MESSAGE = "LEFT_PARA"
+TEXT	= "PárrafoIzquierda"
+
+MESSAGE = "CENTER_PARA"
+TEXT	= "CentrarPárrafo"
+
+MESSAGE = "JUSTIFY_PARA"
+TEXT	= "PárrafoJustificado"
+
+MESSAGE = "FONT"
+TEXT	= "Fuente"
+
+MESSAGE = "INSERT"
+TEXT	= "Insertar"
+
+MESSAGE = "INSERT_PARA"
+TEXT	= "InsertarPárra"
+
+MESSAGE = "PARA_UP"
+TEXT	= "PárrafoArriba"
+
+MESSAGE = "PARA_DOWN"
+TEXT	= "PárrafoAbajo"
+
+MESSAGE = "LINE_UP"
+TEXT	= "LíneaArriba"
+
+MESSAGE = "LINE_DOWN"
+TEXT	= "LíneaAbajo"
+
+MESSAGE = "CHAR_LEFT"
+TEXT	= "CarácterIzquierda"
+
+MESSAGE = "CHAR_RIGHT"
+TEXT	= "CarácterDerecha"
+
+MESSAGE = "FORMAT_TABS"
+TEXT	= "FormatoTabulaciones"
+
+MESSAGE = "TABLE_INSERT_TABLE"
+TEXT	= "TablaInsertarTabla"
+
+MESSAGE = "TABLE_COLUMN_WIDTH"
+TEXT	= "TablaAnchoColumna"
+
+MESSAGE = "PREV_CELL"
+TEXT	= "CeldaAnterior"
+
+MESSAGE = "NEXT_CELL"
+TEXT	= "CeldaSiguiente"
+
+MESSAGE = "TOOLS_MACRO"
+TEXT	= "HerramMacro"
+
+MESSAGE = "APP_SHOW"
+TEXT	= "ApMostrar"
+
+MESSAGE = "INSERT_FIELD"
+TEXT	= "InsertarCampo"
+
+MESSAGE = "FILENAME_FIELD"
+TEXT	= "NombreArchivo \p"
+
+MESSAGE = "DATE_FIELD"
+TEXT	= "Fecha"
+
+MESSAGE = "PAGE_FIELD"
+TEXT	= "Página"
+
+MESSAGE = "NUMPAGES_FIELD"
+TEXT	= "NúmPáginas"
+
+MESSAGE GROUP = "EXCEL_OLE_"
+
+MESSAGE = "ROW_PREFIX"
+TEXT	= "L"
+
+MESSAGE = "COL_PREFIX"
+TEXT	= "C"

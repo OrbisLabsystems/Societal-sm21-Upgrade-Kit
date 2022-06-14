@@ -1,0 +1,57 @@
+! Error messages for arrays
+
+MESSAGE GROUP = "SMP_ARRAY_"
+
+MESSAGE = "NOT_ARRAY"
+TEXT    = "Variable is not an array."
+
+MESSAGE = "DIMENSION"
+TEXT    = "Maximum number of dimensions ([]) exceeded."
+
+MESSAGE = "INITIAL"
+TEXT    = "Initial allocation size not allowed for fixed size array."
+
+MESSAGE = "EXTEND"
+TEXT    = "Extend percentage not allowed for fixed size array."
+
+MESSAGE = "INVALID"
+TEXT    = "Invalid array reference."
+
+MESSAGE = "INVALID_SIZE"
+TEXT    = "Invalid size [] for array dimension"
+
+MESSAGE = "DYNAFIX"
+TEXT    = "Cannot embed fixed array within dynamic."
+
+MESSAGE = "FIXED_DESCRIPTION"
+TEXT    = "Fixed size array [ [] ]"
+
+MESSAGE = "EXPAND_DESCRIPTION"
+TEXT    = "Expandable array [ [] ]"
+
+MESSAGE = "DYNAMIC_DESCRIPTION"
+TEXT    = "Dynamic array"
+
+MESSAGE = "EXTEND_DESCRIPTION"
+TEXT    = "Percentage increase - []"
+
+MESSAGE = "DEFAULT_DESCRIPTION"
+TEXT    = "Default value       - []"
+
+MESSAGE = "HIGHEST_INDEX"
+TEXT    = "Highest used index  - []"
+
+MESSAGE = "INVALID_NUM_IND"
+TEXT    = "Invalid number of dimensions used in index - expected [] - found []"
+
+MESSAGE = "INVALID_IND_TYPE"
+TEXT    = "Invalid type found in index array, integer expected"
+
+MESSAGE = "INVALID_IND_ARRAY"
+TEXT    = "Index array cannot be dynamic, please use a fixed array"
+
+MESSAGE = "SORT_COMP_DYN"
+TEXT    = "Attempt to use dynamic array for complex sort disallowed"
+
+MESSAGE = "NO_FIXED"
+TEXT    = "Attempt to use fixed array disallowed"

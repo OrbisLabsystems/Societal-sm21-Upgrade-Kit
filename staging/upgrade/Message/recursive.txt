@@ -1,0 +1,60 @@
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "RECURSIVE_PERFORM_"
+
+MESSAGE        = "CANNOT_COPY"
+TEXT           = "Could not copy record ( Copy Id = '"
+
+MESSAGE        = "CANNOT_COPY_ID"
+TEXT           = "', Id = '"
+
+MESSAGE        = "CANNOT_CREATE"
+TEXT           = "Could not create new record ( Id = '"
+
+MESSAGE        = "CANNOT_SET_POS"
+TEXT           = "Error setting parent and ordering in new record"
+
+MESSAGE        = "CANNOT_VERSION"
+TEXT           = "Could not create new version ( Old Version = '"
+
+MESSAGE        = "CANNOT_VERSION_ID"
+TEXT           = "', New version = '"
+
+MESSAGE        = "ERROR_MOVE_LOOP"
+TEXT           = "Cannot move to own sub-record - this would result in a loop"
+
+MESSAGE        = "ERROR_COPY_LOOP"
+TEXT           = "Cannot perform deep copy to own sub-record."
+
+MESSAGE        = "NO_PRE_INSERT"
+TEXT           = "Pre-insert node routine required"
+
+MESSAGE        = "TRANS_COPY"
+TEXT           = "Recursive Perform Copy Node"
+
+MESSAGE        = "TRANS_DEEPCOPY"
+TEXT           = "Recursive Perform Deep Copy Node"
+
+MESSAGE        = "TRANS_DELETE"
+TEXT           = "Recursive Perform Delete Node"
+
+MESSAGE        = "TRANS_NEW"
+TEXT           = "Recursive Perform New Node"
+
+MESSAGE        = "TRANS_REMOVE"
+TEXT           = "Recursive Perform Remove Node"
+
+MESSAGE        = "TRANS_VERSION"
+TEXT           = "Recursion Perform New Node Version"
+
+MESSAGE        = "TRANS_MOVE"
+TEXT           = "Recursion Perform Move Node"
+
+MESSAGE        = "UNKNOWN_LINK"
+TEXT           = "Cannot set parent because 'select_array_rest' has ambiguous child-parent link"
+
+MESSAGE GROUP "RECURSIVE_TREE_"
+
+MESSAGE        = "PLEASE_WAIT"
+TEXT           = "Please wait..."

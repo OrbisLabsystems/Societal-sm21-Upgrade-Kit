@@ -1,0 +1,137 @@
+MESSAGE GROUP = "SMP_TCPIP_"
+
+MESSAGE =       "IOCTL_TREAD"
+TEXT =          "Network TCP Error, ioctl in read_max_chars - []"
+
+MESSAGE =       "SELECT_TREAD"
+TEXT =          "Network TCP Error, select in read_max_chars - []"
+
+MESSAGE =       "RECV_READT_L"
+TEXT =          "Network TCP Error, recv in read_text length - []"
+
+MESSAGE =       "RECV_READT_M"
+TEXT =          "Network TCP Error, recv in read_text message - []"
+
+MESSAGE =       "SIGACTION_CHANGE"
+TEXT =          "Network TCP Error, sigaction in change_signals - []"
+
+MESSAGE =       "SIGACTION_RESTORE"
+TEXT =          "Network TCP Error, sigaction in restore_signals - []"
+
+MESSAGE =       "SEND_RESET"
+TEXT =          "Socket Error when sending - Connection is in its reset sequence and cannot accept data"
+
+MESSAGE =       "SEND_EPIPE"
+TEXT =          "Socket Error when sending - Connection has been closed"
+
+MESSAGE =       "SEND_WB"
+TEXT =          "Network TCP Error, send in write_buffer - []"
+
+MESSAGE =       "SELECT_WB"
+TEXT =          "Network TCP Error, select in write_buffer - []"
+
+MESSAGE =       "GETSERVBYNAME"
+TEXT =          "Network TCP Error, getservbyname in get_service_port - []"
+
+MESSAGE =       "SOCKET"
+TEXT =          "Network TCP Error, socket in get_initial_connect - []"
+
+MESSAGE =       "LISTENER"
+TEXT =          "Network TCP Error, socket in do_listen (for IP []) - []"
+
+MESSAGE =       "KEEPALIVE"
+TEXT =          "Network TCP Error, setsockopt keepalive in do_listen (for IP []) - []"
+
+MESSAGE =       "REUSEADDR"
+TEXT =          "Network TCP Error, setsockopt reuseaddr in do_listen (for IP []) - []"
+
+MESSAGE =       "GETHOSTNAME"
+TEXT =          "Network TCP Error, gethostname in do_listen - []"
+
+MESSAGE =       "GETHOSTBYNAME"
+TEXT =          "Network TCP Error, gethostbyname in do_listen - host '[]' - []"
+
+MESSAGE =       "BIND"
+TEXT =          "Network TCP Error, bind in do_listen (for IP []) - []"
+
+MESSAGE =       "LISTEN"
+TEXT =          "Network TCP Error, listen in do_listen (for IP []) - []"
+
+MESSAGE =       "ACCEPT"
+TEXT =          "Network TCP Error, accept in do_accept - []"
+
+MESSAGE =       "SELECT_TIMEOUT"
+TEXT =          "Network TCP Error, select in do_accept - []"
+
+MESSAGE =       "SELECT_GET_REQ"
+TEXT =          "Network TCP Error, select in get_request - []"
+
+MESSAGE =       "SOCKET_TRY_CON"
+TEXT =          "Network TCP Error, socket in try_connect - []"
+
+MESSAGE =       "SETSOCK_TRY_CON"
+TEXT =          "Network TCP Error, setsockopt keepalive in try_connect - []"
+
+MESSAGE =       "GETHOST_TRY_CON_L"
+TEXT =          "Network TCP Error, local gethostbyname in try_connect - host '[]' - []"
+
+MESSAGE =       "GETHOST_TRY_CON_R"
+TEXT =          "Network TCP Error, remote gethostbyname in try_connect - host '[]' - []"
+
+MESSAGE =       "CONNECT_TRY_CON"
+TEXT =          "Network TCP Error, connect in try_connect - []"
+
+MESSAGE =       "SOCK_ID_IN_USE"
+TEXT =          "Socket Error - Socket ID [] is already in use."
+
+MESSAGE =       "SOCK_ID_INVLD"
+TEXT =          "Socket Error - Socket ID [] does not exist."
+
+MESSAGE =       "LIST_ID_IN_USE"
+TEXT =          "Socket Error - Listener ID [] is already in use."
+
+MESSAGE =       "LIST_ID_INVLD"
+TEXT =          "Socket Error - Listener ID [] does not exist."
+
+MESSAGE =       "PORT_BUSY"
+TEXT =          "Socket Error - Port [] is already busy."
+
+MESSAGE =       "OPEN_FAILED"
+TEXT =          "Socket Error - Could not open socket with []:[]"
+
+MESSAGE =       "WRITE_ERR"
+TEXT =          "Socket Error - Error writing buffer"
+
+MESSAGE =       "ACCEPT_FAILED"
+TEXT =          "Socket Error - Could not accept communication socket from the listener []"
+
+MESSAGE =       "READ_ERR"
+TEXT =          "Socket Error - Error reading buffer"
+
+MESSAGE =       "STD_IN_ERR"
+TEXT =          "Socket Error - Could not connect to socket zero"
+
+MESSAGE =       "CREATE_FAILED"
+TEXT =          "Socket Error - Could not create listener on port []"
+
+MESSAGE =       "SIGACTION_IGNORE_SIGPIPE"
+TEXT =          "Network TCP Error, sigaction in trap_sigpipe - []"
+
+MESSAGE =       "SIGACTION_RESTORE_SIGPIPE"
+TEXT =          "Network TCP Error, sigaction in restore_sigpipe - []"
+
+MESSAGE =       "GETSOCKNAME"
+TEXT =          "Network TCP Error, getsockname in do_listen - []"
+
+MESSAGE =       "GETSOCKNAME_GET"
+TEXT =          "Network TCP Error, getsockname in get_network_and_port - []"
+
+MESSAGE =       "HEARTBEAT_TIMEOUT"
+TEXT =          "No heartbeat from client - server is terminating"
+
+MESSAGE =       "RECV_TREAD"
+TEXT =          "Network TCP Error, recv in read_max_chars - []"
+
+MESSAGE =       "SELECT_AND_IOCTL_TREAD"
+TEXT =          "Network TCP Error, select contradicts ioctl in read_max_chars - []"
+

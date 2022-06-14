@@ -1,0 +1,45 @@
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "SP_LOGIN_"
+
+MESSAGE        = "ERROR"
+TEXT           = "Batch Login Could not be completed due to a locked rule count record"
+
+MESSAGE        = "ERROR_DYN_MLP"
+TEXT           = "Could not create dynamic mlp"
+
+MESSAGE        = "MLP_DESC"
+TEXT           = "Automatically Created for Sampling Plan on "
+
+MESSAGE        = "NO_PLAN"
+TEXT           = "Sample Plan Tree does not exist or the root node requires approval"
+
+MESSAGE        = "TRANS_DYN_MMLP"
+TEXT           = "Create MLP Definition"
+
+MESSAGE        = "TRANS_LOGIN"
+TEXT           = "Batch Login: Login Samples and test assign"
+
+MESSAGE GROUP "SP_LOGIN_JOB_"
+
+MESSAGE        = "COPY_HEAD"
+TEXT           = "Job Login: Selective Copy"
+
+MESSAGE        = "COPY_ID"
+TEXT           = "Job to copy"
+
+MESSAGE        = "COPY_TEMP"
+TEXT           = "Job Template For new job"
+
+MESSAGE        = "EDIT_HEAD"
+TEXT           = "Job Login: Pre-Login entity Selection"
+
+MESSAGE        = "EDIT_ID"
+TEXT           = "Template to use"
+
+MESSAGE        = "HEAD"
+TEXT           = "Job Login"
+
+MESSAGE        = "ID"
+TEXT           = "Template to use"

@@ -1,0 +1,82 @@
+MESSAGE GROUP	= "HELP_LTE_"
+
+MESSAGE		= "TITLE"
+TEXT		= "Help Data Entry Screen"
+
+MESSAGE		= "FOOTER"
+TEXT		= "Press SELECT to edit full entry / DO to Save / EXIT to Quit"
+TEXT		= "Press SELECT to view full entry / EXIT to Quit"
+
+MESSAGE		= "PROMPT"
+TEXT		= "Keyword"
+TEXT		= "Title"
+TEXT		= "Mnemonic"
+
+MESSAGE		= "DISPLAY_TABLE"
+TEXT		= "Help"
+
+MESSAGE		= "PROMPT_IDENTIFIER"
+TEXT		= "Enter Help Topic : "
+
+MESSAGE GROUP	= "HELP_CONTENTS_"
+
+MESSAGE		= "CHAPTER_TITLE"
+TEXT		= "Chapter ID"
+TEXT		= "Title"
+
+MESSAGE		= "CONTEXT_TITLE"
+TEXT		= "Help Topic"
+TEXT 		= "Description"
+
+MESSAGE		= "FORM_TITLE"
+TEXT		= "Contents Page Layout"
+TEXT		= "Press SELECT for Help Topics / DO saves / EXIT quits"
+TEXT		= "Press SELECT to edit text file / DO saves / EXIT quits"
+
+MESSAGE GROUP 	= "HELP_DISPLAY_"
+
+MESSAGE		= "MENU"
+TEXT		= "I"
+TEXT		= "Index"
+TEXT		= "C"
+TEXT		= "Contents"
+TEXT		= "B"
+TEXT		= "Back"
+TEXT		= "H"
+TEXT		= "History"
+TEXT		= "P"
+TEXT		= "Print"
+TEXT		= "E"
+TEXT		= "Exit"
+TEXT		= "Help Options"
+
+MESSAGE GROUP	= "HELP_HEADER_"
+
+MESSAGE		= "CONTENTS"
+TEXT		= "Help Contents"
+
+MESSAGE		= "INDEX"
+TEXT		= "Help Index"
+
+MESSAGE GROUP   = "HELP_FOOTER_"
+
+MESSAGE		= "HELP_SCREEN"
+TEXT		= "Press NEXT SCREEN / PREV SCREEN to scroll page / SELECT for options"
+
+MESSAGE GROUP   = "HELP_ERROR_"
+
+MESSAGE		= "READ"
+TEXT 		= "Error in reading help text file "
+TEXT		= "Error in help topic "
+TEXT		= "Error reading from message file for help topic <"
+TEXT		= "Help topic <"
+TEXT		= "> not found in database."
+
+MESSAGE		= "DUP"
+TEXT		= "This chapter ID already exists"
+TEXT		= "This help topic already exists in this chapter"
+
+MESSAGE		= "NO_CONTEXT"
+TEXT		= "Help Error"
+TEXT		= "Press HELP for help / EXIT quits"
+TEXT		= "No help context exists for current screen"

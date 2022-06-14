@@ -1,0 +1,83 @@
+MESSAGE GROUP "CHSTAT_K_"
+
+MESSAGE = 	"ALREADYSET"
+TEXT = 		"Required status already set as []"
+SEVERITY = 	"WARNING"
+
+MESSAGE = 	"AUTHTOINSP"
+TEXT = 		"Unable to authorise. Inspection required - status set to I"
+SEVERITY = 	"WARNING"
+
+! SEVERITY      ERROR
+
+MESSAGE = 	"INVALIDRESULT"
+TEXT = 		"Invalid result status change [] to []"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"INVALIDTEST"
+TEXT = 		"Invalid test status change [] to []"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"INVALIDSAMP"
+TEXT = 		"Invalid sample status change [] to []"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"INVALIDJOB"
+TEXT = 		"Invalid job status change [] to []"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"TESTSUSP"
+TEXT = 		"Cannot change result status for suspended test"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"BADTEST"
+TEXT = 		"Cannot add result to a test that has not been started"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"BADSAMP"
+TEXT = 		"Cannot change test status due to current sample status"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"NOTESTRESUME"
+TEXT = 		"Attempt to resume test to wrong status"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"NOSAMPRESUME"
+TEXT = 		"Attempt to resume sample to wrong status"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"OPERPREP"
+TEXT = 		"Not approved to complete preparation"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"INSPBLOCK"
+TEXT = 		"Cannot authorise due to pending inspections"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"NOTESTPREP"
+TEXT = 		"Unable to find preparation [] for analysis []"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"NOSAMPPREP"
+TEXT = 		"Unable to find preparation [] for sample []"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"NOOWNRESULT"
+TEXT = 		"You are not allowed to Authorise or Reject results that you entered"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"OPERTRAIN"
+TEXT = 		"Not trained to complete preparation"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"INSPUSERNOTYET"
+TEXT = 		"Current users specific inspection not required yet"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"INSPUSERALREADY"
+TEXT = 		"Current user has already performed an inspection"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"MULTIUSERNOTALLOWED"
+TEXT = 		"The user [] is required to perform multiple specific inspections on this record. This is not allowed by the configuration item APPROVAL_UNIQUE_APPROVER. Please reject and use a different inspection plan."
+SEVERITY = 	"ERROR"

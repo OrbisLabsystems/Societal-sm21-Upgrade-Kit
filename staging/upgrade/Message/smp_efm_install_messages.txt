@@ -1,0 +1,312 @@
+MESSAGE GROUP "EFM_INSTALL_"
+
+MESSAGE = "MENU_1"
+TEXT	= "EFM Installation Utility"
+
+MESSAGE = "MENU_2"
+TEXT	= "I"
+TEXT	= "Install an EFM"
+
+MESSAGE = "MENU_3"
+TEXT	= "R"
+TEXT	= "Restore a Config"
+
+MESSAGE = "MENU_4"
+TEXT	= "S"
+TEXT	= "Save Current Config"
+
+MESSAGE = "MENU_5"
+TEXT	= "D"
+TEXT	= "Delete a Config"
+
+MESSAGE = "INST_FORM_HEADER"
+TEXT	= "SampleManager - EFM Installation"
+
+MESSAGE = "BACKUP_PREFIX"
+TEXT	= "Prefix of backup files"
+
+MESSAGE = "CHOOSE_EFM"
+TEXT	= " Name of EFM to install... "
+
+MESSAGE = "BACKUP_OPTIONS"
+TEXT	= " Backup Options "
+
+MESSAGE = "INST_OPTIONS"
+TEXT	= " Installation Options "
+
+MESSAGE = "MAKE_BACKUPS"
+TEXT	= "Make backups of message , menu and structure files"
+
+MESSAGE = "TYPICAL"
+TEXT	= "Typical"
+
+MESSAGE = "CUSTOM"
+TEXT	= "Custom"
+
+MESSAGE = "QUIT"
+TEXT	= "Quit"
+
+MESSAGE = "CUSTOM_FORM_HEADER"
+TEXT	= "EFM Installation - Custom Installation"
+
+MESSAGE = "INST_OPTS_FOR"
+TEXT	= " Installation Options for "
+
+MESSAGE = "CUSTOM_OPTIONS"
+TEXT	= "Select users when modifying the menu files"
+TEXT	= "Select users when modifying the windows menu files"
+TEXT	= "Prompt before alterations to STRUCTURE.TXT"
+TEXT	= "Select users when modifying the .LAB files"
+
+MESSAGE= "CONFIRM"
+TEXT	= "You are about to install "
+TEXT	= "The installation process alters your menu , message and"
+TEXT	= "structure.txt files"
+TEXT	= "Backups will be created with the prefix "
+TEXT	= "Proceed with the installation process ?"
+
+MESSAGE = "PROGRESS_HEADER"
+TEXT	= "Installing "
+
+MESSAGE = "PROGRESS_LINES"
+TEXT	= "Make Backups"
+TEXT	= "Copy Reports to server"
+TEXT	= "Modify the Menu"
+TEXT	= "Modify the Windows Menu"
+TEXT	= "Modify the Messages"
+TEXT	= "Update .LAB Files"
+TEXT	= "Modify Database Structure" 
+TEXT	= "Updating table entries"
+TEXT	= "Compiling Reports"
+
+MESSAGE = "COMPLETE"
+TEXT	= "The installation of []"
+TEXT	= " is now complete."
+TEXT	= "Please refer to the user manual for details on how"
+TEXT	= "to use this EFM."
+
+MESSAGE = "IS_ACTIVE"
+TEXT	= "Continue with the installation of "
+
+MESSAGE = "NOT_EXIST"
+TEXT	= " does not exist!!"
+
+MESSAGE = "NO_ADD_LINE"
+TEXT	= "No ADD_LINE statement found in the file"
+
+MESSAGE = "NO_MENU"
+TEXT	= "No menu with that identifier"
+
+MESSAGE = "NOT_END"
+TEXT	= "The menu with that identifier doesn't end !!"
+
+MESSAGE = "NO_APPEND_LINES"
+TEXT	= "No APPEND_LINES statement found in the file"
+
+MESSAGE = "STRUCT_KEYWORDS"
+TEXT	= "{"
+TEXT	= "}"
+TEXT	= "SELECT_CLAUSE"
+TEXT	= "TABLE"
+TEXT	= "FIELD"
+TEXT	= "VIEW"
+TEXT	= "INDEX"
+
+MESSAGE = "STRUCT_INSTRUCTIONS"
+TEXT	= "ADD_TO"
+TEXT	= "REPLACE_IN"
+TEXT	= "ADD_TABLE"
+TEXT	= "REPLACE_TABLE"
+TEXT	= "ALTER_VIEW"
+
+MESSAGE = "ABOUT_TO_MODIFY"
+TEXT	= "About to modify STRUCTURE.TXT"
+
+MESSAGE = "ERROR_CLOSING"
+TEXT	= "Error closing structure.txt file"
+
+MESSAGE = "ERROR_OPENING"
+TEXT	= "Error opening structure.txt file"
+
+MESSAGE = "ALTER_STRUCT"
+TEXT	= " Alter STRUCTURE.TXT? "
+
+MESSAGE = "REPLACE_TABLE"
+TEXT	= "You are about to replace the table"
+
+MESSAGE = "REPLACE_FIELD"
+TEXT	= "You are about to replace the field"
+
+MESSAGE = "IN_THE_TABLE"
+TEXT	= "In the table"
+
+MESSAGE = "ADD_FIELD"
+TEXT	= "You are about to add the field"
+
+MESSAGE = "PROCEED_WITH_MOD"
+TEXT	= "Proceed with this modification?"
+
+MESSAGE = "TABLE_VIEW"
+TEXT	= "Table / View "
+
+MESSAGE = "CARRY_ON"
+TEXT	= "Carry on confirming alterations?"
+
+MESSAGE = "CONFIGURE"
+TEXT	= "Configure SampleManager to files with prefix "
+
+MESSAGE = "ERR_CLOSE"
+TEXT	= "Error closing "
+
+MESSAGE = "ERR_OPEN"
+TEXT	= "Error opening "
+
+MESSAGE	= "EXIT"
+TEXT	= "Exit"
+
+MESSAGE	= "INST_DETAILS"
+TEXT	= " Installation Details "
+
+MESSAGE = "INST_OF"
+TEXT	= "Installation of "
+
+MESSAGE = "NO_EFMS"
+TEXT	= "No EFM's to uninstall!"
+
+MESSAGE = "START"
+TEXT	= "Start"
+
+MESSAGE = "UNINST_PROG"
+TEXT	= "Uninstallation in progress"
+
+MESSAGE = "VIEW_LOG"
+TEXT	= "View Log"
+
+MESSAGE = "MORE_USERS"
+TEXT	= "There are other users logged in to this server."
+TEXT	= "Some changes may not take effect until all users have"
+TEXT	= "logged out and logged back in. Continue anyway?"
+
+MESSAGE ="SAVE"
+TEXT	= "Please enter the prefix you would like to"
+TEXT	= "save your current configuration with ..."
+
+MESSAGE ="SAVE_HEADER"
+TEXT	= "Save current config"
+
+MESSAGE = "CONFIG_SAVED"
+TEXT	= "Config saved with prefix "
+
+MESSAGE = "DELETE"
+TEXT	= "Delete files with prefix "
+TEXT	= "Files with prefix "
+TEXT	= " deleted."
+
+MESSAGE = "CONF_ADD"
+TEXT	= "Add the following lines to "
+
+MESSAGE = "CONF_ADD_TAB"
+TEXT	= "Add the table "
+
+MESSAGE = "CONF_REP"
+TEXT	= "Replace the following lines in "
+
+MESSAGE = "CONF_REP_TAB"
+TEXT	= "Replace the table "
+
+MESSAGE GROUP "EFM_INSTALL_NOT_GUI_"
+
+MESSAGE = "HEADER"
+TEXT	= "EFM Installer"
+
+MESSAGE = "FOOTER"
+TEXT	= "Press any key to exit"
+
+MESSAGE = "MESSAGE"
+TEXT	= "EFM Installer is only designed to operate"
+TEXT	= "in a Windows environment"
+
+MESSAGE GROUP "EFM_INSTALL_LOG_"
+
+MESSAGE = "ADD"
+TEXT	= "added to "
+
+MESSAGE = "ADD_CSV"
+TEXT	= "Add CSV Table Entries"
+
+MESSAGE = "ADD_MSG"
+TEXT	= "Adding messages"
+
+MESSAGE = "APP"
+TEXT	= "appended to "
+
+MESSAGE = "CMP_MSG"
+TEXT	= "Compiling the Message Files"
+
+MESSAGE = "CMP_REP"
+TEXT	= "Compiling Reports"
+
+MESSAGE = "CPY_SERV"
+TEXT	= "Copy reports to server"
+
+MESSAGE = "FAILED"
+TEXT	= "Failed "
+
+MESSAGE = "LAB"
+TEXT	= "Updating DEFAULT.LAB"
+
+MESSAGE = "LAB_NO"
+TEXT	= "Labfiles do not require modification"
+
+MESSAGE = "MEN"
+TEXT	= "Modify the menu files"
+
+MESSAGE = "STRUCT"
+TEXT	= "Update Database Structure File"
+
+MESSAGE = "WIN"
+TEXT	= "Modifying the windows menu files"
+
+MESSAGE = "ADDED"
+TEXT	= "Added "
+
+MESSAGE = "BACKUP"
+TEXT	= "Backup Selected , copying files ..."
+
+MESSAGE = "COMP"
+TEXT	= "Compiled "
+
+MESSAGE = "FAIL_COMP"
+TEXT	= "Failed to compile "
+
+MESSAGE = "NEW"
+TEXT	= "New file added"
+
+MESSAGE = "NO_AMMEND"
+TEXT	= "No structure ammendments found"
+
+MESSAGE = "NO_MODS"
+TEXT	= "No modifications made."
+
+MESSAGE = "OVER"
+TEXT	= "Overwrote existing file"
+
+MESSAGE = "ADD_TAB_VIEW"
+TEXT	= "Added Table ( or View ) "
+
+MESSAGE = "ERR_COM"
+TEXT	= "Error in Command : "
+
+MESSAGE = "NO_ADD"
+TEXT	= "Could not add "
+
+MESSAGE = "REP_TAB_VIEW"
+TEXT	= "Replaced Table ( or View ) "
+
+MESSAGE = "TAB_EXIST"
+TEXT	= " - Table ( or View ) already existed."
+
+MESSAGE = "SMW_MENU_FAIL"
+TEXT	= "Failed to install EFM windows menu"
+
+

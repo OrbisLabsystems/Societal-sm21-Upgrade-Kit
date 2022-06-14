@@ -1,0 +1,1317 @@
+! Messages relating to the background operation of SampleManager
+
+MESSAGE  GROUP  "BACKCOMM_"
+
+MESSAGE         = "TAB_1"
+TEXT            = "Committing Sample"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Committing Request"
+
+
+MESSAGE  GROUP  "BACKTEST_"
+
+MESSAGE         = "WINDOW_HEADER"
+TEXT            = "Background Test Assignment Process"
+
+MESSAGE         = "WINDOW_FOOTER"
+TEXT            = "Press CONTROL-C to exit"
+
+MESSAGE         = "PROCESS_RUNNING"
+TEXT            = "Running background test assignment process"
+
+MESSAGE         = "CREATING_PIPE"
+TEXT            = "Creating pipe"
+
+MESSAGE         = "CREATED_PIPE"
+TEXT            = "Created pipe [] ok"
+
+MESSAGE         = "PROCESS_STOPPED"
+TEXT            = "Background test assignment shut down complete"
+
+MESSAGE         = "PROCESS_STOPPING"
+TEXT            = "Beginning shut down"
+
+MESSAGE         = "PIPE_MESSAGE"
+TEXT            = "Pipe message read : []"
+
+MESSAGE         = "ADD_SAMPLE"
+TEXT            = "Sample [] added to list to process"
+
+MESSAGE         = "LOGGING_TESTS"
+TEXT            = "Logging in tests for sample : []"
+
+MESSAGE         = "EMPTY_LIST"
+TEXT            = "No samples to process, so program sleeping"
+
+MESSAGE         = "PIPE_CLOSED"
+TEXT            = "Closed pipe []"
+
+MESSAGE         = "SAMPLE_LOCKED"
+TEXT            = "Sample [] is currently locked.  It will be tried again later"
+
+MESSAGE         = "BAD_STATUS"
+TEXT            = "Error : Cannot assign tests to sample [] with status "
+
+MESSAGE         = "BAD_TEMPLATE"
+TEXT            = "Error reading sample [] template fields for template []"
+
+MESSAGE         = "LOGGED_TESTS"
+TEXT            = "Logged in tests for sample : []"
+
+MESSAGE         = "NO_SAMPLE"
+TEXT            = "Sample [] not found in the database"
+
+MESSAGE         = "SIZE_OF_LIST"
+TEXT            = "Number of samples still to be processed : []"
+
+MESSAGE         = "TEST_TITLE"
+TEXT            = "BACKTEST sample message"
+
+MESSAGE         = "TEST_PROMPT"
+TEXT            = "Enter sample number to send to BACKTEST : "
+
+MESSAGE         = "MENU_TITLE"
+TEXT            = "Select BACKTEST option"
+
+MESSAGE         = "MENU"
+TEXT            = "R"
+TEXT            = "Run Background Test Assignment on terminal"
+TEXT            = "S"
+TEXT            = "Shutdown Background Test Assignment"
+TEXT            = "T"
+TEXT            = "Test Background Test Assignment"
+
+MESSAGE         = "NO_PROCESS"
+TEXT            = "BACKTEST process not running"
+
+MESSAGE         = "SHUTDOWN"
+TEXT            = "Send shutdown message to BACKTEST"
+
+MESSAGE         = "PIPE_ERROR"
+TEXT            = "Error from BACKTEST pipe connection : "
+
+
+MESSAGE  GROUP  "BSMPLOGIN_"
+
+MESSAGE         = "NO_SCHED_HEAD"
+TEXT            = "Failed to locate header entry for login schedule "
+
+MESSAGE         = "NO_JOB_LOGIN"
+TEXT            = "Failed to login job for login schedule "
+
+MESSAGE         = "JOB_CREATED"
+TEXT            = "Job successfully created, job name "
+
+MESSAGE         = "NO_SAMP_LOGIN"
+TEXT            = "Failed to login sample from template "
+
+MESSAGE         = "SAMP_CREATED"
+TEXT            = "Sample successfully created, sample ID "
+
+
+MESSAGE  GROUP  "BSMP_LIB_"
+
+MESSAGE         = "CONST_1"
+TEXT            = "Background entry submitted successfully"
+
+MESSAGE         = "CONST_2"
+TEXT            = "Background entry submitted although background not executing"
+
+MESSAGE         = "CONST_3"
+TEXT            = "Background termination request submitted successfully"
+
+MESSAGE         = "CONST_4"
+TEXT            = "Error submitting Background termination request"
+
+MESSAGE         = "CONST_5"
+TEXT            = "Background entry deleted successfully"
+
+MESSAGE         = "CONST_6"
+TEXT            = "An error was detected during timerqueue selection"
+
+MESSAGE         = "CONST_7"
+TEXT            = "ABORTING - locked record encountered during entry deletion"
+
+MESSAGE         = "CONST_8"
+TEXT            = "Login Schedule has not been activated, so it can not be deactivated"
+
+
+MESSAGE  GROUP  "BSMP_LSCH_"
+
+MESSAGE         = "MESS_1"
+TEXT            = "DO to save / EXIT to quit"
+
+MESSAGE         = "MESS_2"
+TEXT            = "Login Schedule Submission Screen"
+
+MESSAGE         = "MESS_3"
+TEXT            = "Login Schedule  :"
+
+MESSAGE         = "MESS_4"
+TEXT            = "Activation Time :"
+
+MESSAGE         = "MESS_5"
+TEXT            = "Repeat interval :"
+
+MESSAGE         = "CONST_3"
+TEXT            = "Please specify the ID of the Login Schedule to execute"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Invalid login schedule"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Deactivate Login Schedule"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Press DO to confirm or EXIT to quit"
+
+MESSAGE         = "PROMPT_TXT"
+TEXT            = "Login Schedule ID  "
+
+MESSAGE         = "DUPLICATE_HDR"
+TEXT            = "Duplicate Login Schedule"
+
+MESSAGE         = "DUPLICATE_1"
+TEXT            = "Warning : Login Schedule [] has already been activated."
+
+MESSAGE         = "DUPLICATE_2"
+TEXT            = "It has a run time of []"
+
+MESSAGE         = "DUPLICATE_3"
+TEXT            = "with no repeat interval set."
+
+MESSAGE         = "DUPLICATE_4"
+TEXT            = "with a repeat interval of []"
+
+MESSAGE         = "DUPLICATE_5"
+TEXT            = "Please confirm that the Login Schedule should be activated again."
+
+MESSAGE         = "DUPLICATE_FTR"
+TEXT            = "Press DO to confirm or EXIT to quit"
+
+MESSAGE         = "MESS_6"
+TEXT            = "Timer Schedule  :"
+
+MESSAGE         = "DUPLICATE_6"
+TEXT            = "With a Timer Schedule of []"
+
+MESSAGE  GROUP  "BSMP_REPT_"
+
+MESSAGE         = "MESS_1"
+TEXT            = "DO to save changes EXIT to quit"
+
+MESSAGE         = "MESS_2"
+TEXT            = "NEXT SCREEN for next entry, EXIT to quit"
+
+MESSAGE         = "MESS_3"
+TEXT            = "DO to delete entry, NEXT SCREEN for next, EXIT to quit"
+
+MESSAGE         = "MESS_4"
+TEXT            = "Background Report Submission Screen"
+
+MESSAGE         = "MESS_5"
+TEXT            = "Background Report Display Screen"
+
+MESSAGE         = "MESS_6"
+TEXT            = "Background Report Deletion Screen"
+
+MESSAGE         = "MESS_7"
+TEXT            = "Report name    "
+
+MESSAGE         = "MESS_8"
+TEXT            = "Routine name   "
+
+MESSAGE         = "MESS_9"
+TEXT            = "Printer        "
+
+MESSAGE         = "MESS_10"
+TEXT            = "Time           "
+
+MESSAGE         = "MESS_11"
+TEXT            = "Repeat interval"
+
+MESSAGE         = "MESS_12"
+TEXT            = "Parameter      "
+
+MESSAGE         = "MESS_16"
+TEXT            = "User name      "
+
+MESSAGE         = "MESS_13"
+TEXT            = "Background SampleManager Termination Screen"
+
+MESSAGE         = "MESS_14"
+TEXT            = "Do you want to stop the background SampleManager ?"
+
+MESSAGE         = "MESS_15"
+TEXT            = "Background SampleManager NOT terminated"
+
+MESSAGE         = "CONST_1"
+TEXT            = "No entries found for display"
+
+MESSAGE         = "CONST_2"
+TEXT            = "Please specify the ID of the report to execute"
+
+MESSAGE         = "MESS_17"
+TEXT            = "Timer Schedule "
+
+MESSAGE         = "MESS_18"
+TEXT            = "Run Window     "
+
+MESSAGE         = "MESS_19"
+TEXT            = "Suspended      "
+
+MESSAGE         = "MESS_20"
+TEXT            = "Task name      "
+
+MESSAGE         = "MESS_21"
+TEXT            = "Task Parameters"
+
+
+
+MESSAGE  GROUP "JOBWKSHBK_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Error opening pipe "
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Error opening file "
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Sample list from job : "
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "List created by      : "
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = " on "
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Generating worksheet for sample "
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = " assigned to user "
+
+MESSAGE         = "DISPLAY_8"
+TEXT            = "......Failed"
+
+MESSAGE         = "DISPLAY_9"
+TEXT            = "Errors during generation."
+
+MESSAGE         = "DISPLAY_10"
+TEXT            = "Reporting to log "
+
+MESSAGE         = "DISPLAY_11"
+TEXT            = "Generated by "
+
+MESSAGE         = "DISPLAY_12"
+TEXT            = " on "
+
+MESSAGE         = "DISPLAY_13"
+TEXT            = " from job "
+
+MESSAGE         = "DISPLAY_14"
+TEXT            = "Worksheets were not generated for the following samples: "
+
+MESSAGE         = "DISPLAY_15"
+TEXT            = "Listening to the pipe"
+
+MESSAGE         = "LOG_1"
+TEXT            = "Pipe creation error : "
+
+
+MESSAGE GROUP "LOG_SCHED_"
+
+MESSAGE         = "FIEL_1"
+TEXT            = "Template ID"
+
+MESSAGE         = "FIEL_2"
+TEXT            = "Repeat Interval"
+
+MESSAGE         = "ADD_1"
+TEXT            = "Login Schedule Entry Editor"
+
+MESSAGE         = "ADD_2"
+TEXT            = "  Template         Offset"
+
+MESSAGE         = "ADD_3"
+TEXT            = "DO to save, EXIT to quit"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "Templates for Login Schedule : "
+
+
+MESSAGE GROUP "RESTXT_DL_"
+
+MESSAGE         = "WHICH_1"
+TEXT            = "Text File Result Entry Log Operation"
+
+MESSAGE         = "WHICH_2"
+TEXT            = "M"
+TEXT            = "M Create New Message Log"
+
+MESSAGE         = "WHICH_3"
+TEXT            = "P"
+TEXT            = "P Purge Message Logs"
+
+MESSAGE         = "WHICH_4"
+TEXT            = "E"
+TEXT            = "E Delete ALL Error Logs"
+
+MESSAGE         = "WHICH_5"
+TEXT            = "R"
+TEXT            = "R Delete ALL Renamed Files"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Create New Message Log?"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Error Creating New Message Log "
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "New Message Log Successfully Created"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Delete ALL Renamed Files?"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Delete ALL Error Logs?"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Purge Message Logs?"
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "Unable to delete renamed files"
+
+MESSAGE         = "DISPLAY_8"
+TEXT            = "Unable to delete error log files"
+
+
+MESSAGE GROUP "RESTXT_V2_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Display Result Information : "
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Result File Name : "
+
+MESSAGE         = "ERR_1"
+TEXT            = "Error Opening "
+
+MESSAGE         = "DISPLAY_27"
+TEXT            = "Renamed File to "
+
+MESSAGE         = "DISPLAY_28"
+TEXT            = "Rename File : "
+
+MESSAGE         = "ERR_2"
+TEXT            = "File Renamed To : "
+
+MESSAGE         = "BORD_1"
+TEXT            = "Test Details"
+
+MESSAGE         = "BORD_2"
+TEXT            = "Result Details"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Sample ID      : "
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Analysis ID    : "
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Replicate      : "
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Date Started   : "
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "Status         : "
+
+MESSAGE         = "DISPLAY_8"
+TEXT            = "Instrument     : "
+
+MESSAGE         = "DISPLAY_9"
+TEXT            = "Operator       : "
+
+MESSAGE         = "DISPLAY_10"
+TEXT            = "Result Name    : "
+
+MESSAGE         = "DISPLAY_11"
+TEXT            = "Result Type    : "
+
+MESSAGE         = "DISPLAY_12"
+TEXT            = "Result Text    : "
+
+MESSAGE         = "DISPLAY_13"
+TEXT            = "Result Units   : "
+
+MESSAGE         = "ERR_3"
+TEXT            = "Result Filename   : "
+
+MESSAGE         = "ERR_4"
+TEXT            = "Error Log Created : "
+
+MESSAGE         = "ERR_5"
+TEXT            = "Operator          : "
+
+MESSAGE         = "ERR_6"
+TEXT            = "Analyst Name : "
+
+MESSAGE         = "ERR_7"
+TEXT            = "Test Number       : "
+
+MESSAGE         = "ERR_9"
+TEXT            = "Analysis ID  : "
+
+MESSAGE         = "ERR_10"
+TEXT            = "Replicate Number  : "
+
+MESSAGE         = "DISPLAY_14"
+TEXT            = "Storage Terminated by Control C."
+
+MESSAGE         = "DISPLAY_15"
+TEXT            = "Storage Complete"
+
+MESSAGE         = "ERR_11"
+TEXT            = "There are no results in the data file"
+
+MESSAGE         = "DISPLAY_16"
+TEXT            = "Delete Result File : "
+
+MESSAGE         = "DISPLAY_17"
+TEXT            = "Deleted "
+
+MESSAGE         = "DISPLAY_18"
+TEXT            = "Field SAMPLE."
+
+MESSAGE         = "DISPLAY_19"
+TEXT            = " updated to : "
+
+MESSAGE         = "ERR_12"
+TEXT            = "Error changing status:"
+
+MESSAGE         = "DISPLAY_20"
+TEXT            = "Field TEST."
+
+MESSAGE         = "ERR_13"
+TEXT            = "Test Count        : "
+
+MESSAGE         = "ERR_14"
+TEXT            = "Cannot Find Test Number"
+
+MESSAGE         = "ERR_15"
+TEXT            = "Test Status "
+
+MESSAGE         = "ERR_16"
+TEXT            = " Is Invalid"
+
+MESSAGE         = "ERR_17"
+TEXT            = "Test Status Should Be V : Available , P : In Progress  or  C: Completed"
+
+MESSAGE         = "ERR_18"
+TEXT            = "Unknown Sample ID"
+
+MESSAGE         = "ERR_19"
+TEXT            = "Unknown Analysis ID"
+
+MESSAGE         = "ERR_20"
+TEXT            = "Cannot Find Analysis"
+
+MESSAGE         = "DISPLAY_21"
+TEXT            = "NEW SAMPLE CREATED"
+
+MESSAGE         = "ERR_21"
+TEXT            = "Cannot Find Sample"
+
+MESSAGE         = "ERR_22"
+TEXT            = "Sample Status Is Neither C : Completed nor V : Available"
+
+MESSAGE         = "ERR_23"
+TEXT            = "Failed to create New Test.  Result Entry Terminated"
+
+MESSAGE         = "ERR_24"
+TEXT            = "Cannot Find Test"
+
+MESSAGE         = "ERR_25"
+TEXT            = "Test Status "
+
+MESSAGE         = "ERR_26"
+TEXT            = " Is Invalid"
+
+MESSAGE         = "ERR_27"
+TEXT            = "Test Status Should Be V : Available , P : In Progress  or  C: Completed"
+
+MESSAGE         = "DISPLAY_22"
+TEXT            = "Latest or New"
+
+MESSAGE         = "DISPLAY_23"
+TEXT            = "Authorised"
+
+MESSAGE         = "DISPLAY_24"
+TEXT            = "Completed"
+
+MESSAGE         = "DISPLAY_25"
+TEXT            = "Unrecognised assignment : "
+
+MESSAGE         = "DIP"
+TEXT            = "TEXTFILE RESULT ENTRY"
+
+MESSAGE         = "LOG_TST"
+TEXT            = "Test = "
+
+MESSAGE         = "LOG_T_1"
+TEXT            = "Tst:"
+
+MESSAGE         = "LOG_T_2"
+TEXT            = "Rep:"
+
+
+MESSAGE GROUP "RESTXT_VW_"
+
+MESSAGE         = "WHICH_1"
+TEXT            = "Text File Result Entry Logs"
+
+MESSAGE         = "WHICH_2"
+TEXT            = "M"
+TEXT            = "M View Conversion Message Log"
+
+MESSAGE         = "WHICH_3"
+TEXT            = "I"
+TEXT            = "I View Message Log Information"
+
+MESSAGE         = "WHICH_4"
+TEXT            = "E"
+TEXT            = "E View Conversion Error Logs"
+
+MESSAGE         = "WHICH_5"
+TEXT            = "R"
+TEXT            = "R View Renamed Data Files"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "P - Program Status              C - Created Sample  (no error)"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "                                E - Error      (see error log)"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "                                Q - Quitted    (not confirmed)"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "                                T - Terminated  (by control C)"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "                                X - Created Sample (and error)"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "S - SMP Test and Result Status  A - Authorised"
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "                                C - Completed"
+
+MESSAGE         = "DISPLAY_8"
+TEXT            = "                                V - Available"
+
+MESSAGE         = "DISPLAY_9"
+TEXT            = "F - Data File Status            D - Deleted"
+
+MESSAGE         = "DISPLAY_10"
+TEXT            = "                                R - Renamed"
+
+MESSAGE         = "DISPLAY_11"
+TEXT            = "Replct - Tst - Find old test of status <> A, C or W"
+
+MESSAGE         = "DISPLAY_12"
+TEXT            = "             - or Create new test"
+
+MESSAGE         = "DISPLAY_13"
+TEXT            = "         Rep - Find test"
+
+MESSAGE         = "DISPLAY_14"
+TEXT            = "Replct - Tst - Create new test"
+
+MESSAGE         = "DISPLAY_15"
+TEXT            = "         Rep - Find test"
+
+MESSAGE         = "PAUSE_1"
+TEXT            = "Cannot Find Log File"
+
+MESSAGE         = "INDIV_1"
+TEXT            = "Cannot Delete Log File"
+
+MESSAGE         = "PAUSE_2"
+TEXT            = "Cannot Find Any Error Files"
+
+MESSAGE         = "INDIV_2"
+TEXT            = "Cannot Delete Error File"
+
+MESSAGE         = "PAUSE_3"
+TEXT            = "Cannot find any renamed files"
+
+MESSAGE         = "INDIV_3"
+TEXT            = "Cannot Delete Renamed File"
+
+MESSAGE         = "FIND_SYN"
+TEXT            = "Cannot understand file name"
+
+
+MESSAGE GROUP "SMP_BACKGROUND_"
+
+MESSAGE         = "DELETE_ENTRY"
+TEXT            = "Deleting entry number : "
+
+MESSAGE         = "CALL_REPORT"
+TEXT            = "Calling report [] as user []"
+
+MESSAGE         = "CALL_ROUTINE"
+TEXT            = "Calling routine [] in report [] as user []"
+
+MESSAGE         = "REMOVE_INVALID"
+TEXT            = "Removing invalid background jobs"
+
+MESSAGE         = "REMOVE_STOP"
+TEXT            = "Removing stop timer entries"
+
+MESSAGE         = "HIBERNATE_INDEFINITE"
+TEXT            = "HIBERNATING - until next wakeup request issued"
+
+MESSAGE         = "HIBERNATE_UNTIL"
+TEXT            = "HIBERNATING - wakeup time set at []."
+
+MESSAGE         = "SHUTDOWN"
+TEXT            = "Responding to shut down request"
+
+MESSAGE         = "BAD_DESTINATION"
+TEXT            = "Invalid output destination for non-interactive report."
+TEXT            = "File output to - []."
+
+MESSAGE         = "SUSPENDED_REPORT"
+TEXT            = "Suspended report [] as user []"
+
+MESSAGE         = "SUSPENDED_ROUTINE"
+TEXT            = "Suspended routine [] in report [] as user []"
+
+MESSAGE         = "EXCEEDED_REPORT"
+TEXT            = "Report exceeded run window [] as user []"
+
+MESSAGE         = "EXCEEDED_ROUTINE"
+TEXT            = "Routine exceeded run window [] in report [] as user []"
+
+MESSAGE         = "ERROR_SCHEDULE"
+TEXT            = "Schedule [] returned an error [] "
+
+MESSAGE         = "SCHEDULE_NORETURN"
+TEXT            = "Invalid return from Timer Schedule Routine"
+
+MESSAGE         = "NO_COMMAND"
+TEXT            = "Command Line not specified. Please add the CommandLine registry entry."
+
+
+MESSAGE  GROUP  "BACKCSMLP_"
+
+MESSAGE         = "WINDOW_HEADER"
+TEXT            = "Background MLP Comparison Process"
+
+MESSAGE         = "WINDOW_FOOTER"
+TEXT            = "Press CONTROL-C to exit"
+
+MESSAGE         = "PROCESS_RUNNING"
+TEXT            = "Running background MLP comparison process"
+
+MESSAGE         = "CREATING_PIPE"
+TEXT            = "Creating pipe"
+
+MESSAGE         = "CREATED_PIPE"
+TEXT            = "Created pipe [] ok"
+
+MESSAGE         = "PROCESS_STOPPED"
+TEXT            = "Background MLP comparison shut down complete"
+
+MESSAGE         = "PROCESS_STOPPING"
+TEXT            = "Beginning shut down"
+
+MESSAGE         = "PIPE_MESSAGE"
+TEXT            = "Pipe message read : []"
+
+MESSAGE         = "ADD_ITEM"
+TEXT            = "Id [] added to list to process"
+
+MESSAGE         = "COMPING_SAMPLE"
+TEXT            = "Comparing sample [] to MLP []"
+
+MESSAGE         = "COMPED_SAMPLE"
+TEXT            = "Compared sample [] to MLP []"
+
+MESSAGE         = "AUTHING_SAMPLE"
+TEXT            = "Authorising sample []"
+
+MESSAGE         = "AUTHED_SAMPLE"
+TEXT            = "Authorised sample []"
+
+MESSAGE         = "COMPING_TEST"
+TEXT            = "Comparing test number [] to MLP []"
+
+MESSAGE         = "COMPED_TEST"
+TEXT            = "Compared test number [] to MLP []"
+
+MESSAGE         = "EMPTY_LIST"
+TEXT            = "No messages to process, so program sleeping"
+
+MESSAGE         = "PIPE_CLOSED"
+TEXT            = "Closed pipe []"
+
+MESSAGE         = "LOGGED_TESTS"
+TEXT            = "Logged in tests for sample : []"
+
+MESSAGE         = "NO_SAMPLE"
+TEXT            = "Sample [] not found in the database"
+
+MESSAGE         = "SIZE_OF_LIST"
+TEXT            = "Number of messages still to be processed : []"
+
+MESSAGE         = "TEST_TITLE"
+TEXT            = "$BACK_CSMLP test message"
+
+MESSAGE         = "TEST_PROMPT"
+TEXT            = "Enter test number to send to BACK_CSMLP : "
+
+MESSAGE         = "TEST_ERROR"
+TEXT            = "Error sending message.  Test message not sent"
+
+MESSAGE         = "SAMPLE_TITLE"
+TEXT            = "$BACK_CSMLP sample message"
+
+MESSAGE         = "SAMPLE_PROMPT"
+TEXT            = "Enter sample number to send to BACK_CSMLP : "
+
+MESSAGE         = "SAMPLE_ERROR"
+TEXT            = "Error sending message.  Sample message not sent"
+
+MESSAGE         = "MENU_TITLE"
+TEXT            = "Select BACK_CSMLP option"
+
+MESSAGE         = "MENU"
+TEXT            = "R"
+TEXT            = "Run Background MLP Comparison on terminal"
+TEXT            = "S"
+TEXT            = "Shutdown Background MLP Comparison"
+TEXT            = "T"
+TEXT            = "Test Background MLP Comparison with Sample"
+TEXT            = "T"
+TEXT            = "Test Background MLP Comparison with Test"
+
+MESSAGE  GROUP  "LTE_TIMER_SCHEDULE_"
+
+MESSAGE         = "HEADER_MESS"
+TEXT            = "Timer Schedule Entry Screen"
+
+MESSAGE         = "FOOTER_MESS"
+TEXT            = "Press SELECT to modify dates/DO to Save/Exit to Quit"
+
+MESSAGE         = "DISPLAY_FOOTER_MESS"
+TEXT            = "Press SELECT to view dates/Exit to Quit"
+
+MESSAGE         = "DISPLAY_NAME"
+TEXT            = "Timer Schedule"
+
+MESSAGE         = "INPUT_MESS"
+TEXT            = "Enter Timer Schedule ID"
+
+MESSAGE         = "OPTION1"
+TEXT            = "1"
+TEXT            = "1 Dates"
+
+MESSAGE         = "NO_REPORT"
+TEXT            = "You must specify a Library ID"
+
+MESSAGE         = "NO_ROUTINE"
+TEXT            = "You must specify a Routine name"
+
+MESSAGE         = "INVALID_ROUTINE"
+TEXT            = "Warning - the routine you specified does not exist in the given report"
+
+
+MESSAGE  GROUP  "BSMP_TIMER_SCHEDULE_"
+
+MESSAGE         = "NO_RETURN"
+TEXT            = "Warning - No value returned from Timer Schedule - entry will be suspended"
+
+MESSAGE         = "BAD_DATE"
+TEXT            = "Warning - Value returned from Schedule is not a date - entry will be suspended"
+
+MESSAGE         = "NO_SCHEDULE"
+TEXT            = "Warning Schedule does not exist - entry will be suspended "
+
+
+MESSAGE         = "TEST_HEADER"
+TEXT            = "Timer Schedule Test Screen"
+
+MESSAGE         = "TEST_FOOTER"
+TEXT            = "Press SELECT to see returned dates"
+
+MESSAGE         = "TEST_IDENTITY"
+TEXT            = "Identity"
+
+MESSAGE         = "TEST_DATE"
+TEXT            = "Start Date"
+
+MESSAGE         = "TEST_SHOW"
+TEXT            = "Number to Show"
+
+MESSAGE         = "TEST_NO_DATES"
+TEXT            = "No dates have been returned"
+
+MESSAGE         = "TEST_TEST"
+TEXT            = "Test"
+
+MESSAGE         = "TEST_CLOSE"
+TEXT            = "Close"
+
+MESSAGE  GROUP  "BSMP_REPT_MASS_"
+
+MESSAGE         = "TRANS_UPDATE"
+TEXT            = "Mass Timerqueue Update"
+
+MESSAGE         = "WHAT_HEADER"
+TEXT            = "TimerQueue Selection Criteria"
+
+MESSAGE         = "WHAT_FOOTER"
+TEXT            = "Press DO to select data/Select for more criteria"
+
+MESSAGE         = "WHAT_REPORT"
+TEXT            = "Report Name"
+
+MESSAGE         = "WHAT_DATE"
+TEXT            = "Run Date   "
+
+MESSAGE         = "WHAT_PRINTER"
+TEXT            = "Printer    "
+
+MESSAGE         = "WHAT_CRITERIA"
+TEXT            = "More Criteria"
+
+MESSAGE         = "CHANGE_HEADER"
+TEXT            = "Change all times"
+
+MESSAGE         = "CHANGE_INTERVAL"
+TEXT            = "Change Interval"
+
+MESSAGE         = "CHANGE_TIME_BUTTON"
+TEXT            = "Change Times"
+
+MESSAGE         = "RESCHEDULE_BUTTON"
+TEXT            = "Re Schedule"
+
+MESSAGE         = "RESCHEDULE_CONFIRM"
+TEXT            = "Confirm that you wish to update all entries to the next Timer Schedule date"
+
+MESSAGE         = "HEADER"
+TEXT            = "Mass Change of Timerqueue entries"
+
+MESSAGE         = "FOOTER"
+TEXT            = "Press DO to save/Exit to quit/Select for Options/Remove to delete"
+
+MESSAGE         = "RUN_TIME"
+TEXT            = "Run Time"
+
+MESSAGE         = "SUSPENDED"
+TEXT            = "Suspended"
+
+MESSAGE         = "REPORT"
+TEXT            = "Report"
+
+MESSAGE         = "ROUTINE"
+TEXT            = "Routine"
+
+MESSAGE         = "PARAMETER"
+TEXT            = "Parameter"
+
+MESSAGE         = "PRINTER"
+TEXT            = "Printer"
+
+MESSAGE         = "REPEAT_INTERVAL"
+TEXT            = "Repeat Interval"
+
+MESSAGE         = "TIMER_SCHEDULE"
+TEXT            = "Timer Schedule"
+
+MESSAGE         = "RUN_WINDOW"
+TEXT            = "Run Window"
+
+MESSAGE         = "ENTRY_ID"
+TEXT            = "Entry ID"
+
+MESSAGE GROUP "SCHED_MANAGER_"
+
+MESSAGE = "INTERVAL_TEXT"
+TEXT    = "0 minutes"
+TEXT    = "5 minutes"
+TEXT    = "10 minutes"
+TEXT    = "15 minutes"
+TEXT    = "30 minutes"
+TEXT    = "1 hour"
+TEXT    = "2 hours"
+TEXT    = "3 hours"
+TEXT    = "4 hours"
+TEXT    = "5 hours"
+TEXT    = "6 hours"
+TEXT    = "7 hours"
+TEXT    = "8 hours"
+TEXT    = "9 hours"
+TEXT    = "10 hours"
+TEXT    = "11 hours"
+TEXT    = "0.5 days"
+TEXT    = "1 day"
+TEXT    = "2 days"
+
+MESSAGE = "INTERVAL_VALUES"
+TEXT    = "0 00:00:00.00"
+TEXT    = "0 00:05:00.00"
+TEXT    = "0 00:10:00.00"
+TEXT    = "0 00:15:00.00"
+TEXT    = "0 00:30:00.00"
+TEXT    = "0 01:00:00.00"
+TEXT    = "0 02:00:00.00"
+TEXT    = "0 03:00:00.00"
+TEXT    = "0 04:00:00.00"
+TEXT    = "0 05:00:00.00"
+TEXT    = "0 06:00:00.00"
+TEXT    = "0 07:00:00.00"
+TEXT    = "0 08:00:00.00"
+TEXT    = "0 09:00:00.00"
+TEXT    = "0 10:00:00.00"
+TEXT    = "0 11:00:00.00"
+TEXT    = "0 12:00:00.00"
+TEXT    = "1 00:00:00.00"
+TEXT    = "2 00:00:00.00"
+
+MESSAGE = "DAY_TYPE"
+TEXT    = "Day"
+TEXT    = "Weekday"
+TEXT    = "Weekend Day"
+
+MESSAGE = "WEEK"
+TEXT    = "First"
+TEXT    = "Second"
+TEXT    = "Third"
+TEXT    = "Fourth"
+TEXT    = "Last"
+
+MESSAGE = "FORM_HEADER"
+TEXT    = "Background Schedule Manager"
+
+MESSAGE = "ENTRY_FORM_HEADER"
+TEXT    = "Background Schedule Entry"
+
+MESSAGE = "LIST_COLUMN"
+TEXT    = "Entry Number"
+TEXT    = "Type"
+TEXT    = "Schedule"
+TEXT    = "Run Time"
+TEXT    = "Status"
+
+MESSAGE = "BACK_SCHEDULES"
+TEXT    = "Background Schedules"
+
+MESSAGE = "BUTTON_CAPTION"
+TEXT    = "New Report"
+TEXT    = "New Login"
+TEXT    = "Edit"
+TEXT    = "Remove"
+TEXT    = "Help"
+TEXT    = "Close"
+
+MESSAGE = "POPUP_MENU"
+TEXT    = "Edit"
+TEXT    = "Remove"
+TEXT    = ""
+TEXT    = "Change Status"
+TEXT    = ""
+TEXT    = "Refresh"
+
+MESSAGE = "DEL_EXP"
+TEXT    = "Delete Expired Schedules"
+
+MESSAGE = "SUSP_EXP"
+TEXT    = "Suspend Expired Schedules"
+
+MESSAGE = "NO_SELECTION"
+TEXT    = "No item selected"
+
+MESSAGE = "CONFIRM_REMOVE"
+TEXT    = "Remove this schedule?"
+TEXT    = "Remove these schedules?"
+
+MESSAGE = "ACTIVE"
+TEXT    = "Active"
+
+MESSAGE = "SUSPENDED"
+TEXT    = "Suspended"
+
+! Task Scheduler Messages
+
+MESSAGE = "FRAME_DETAILS"
+TEXT    = "Report Details"
+TEXT    = "Login Schedule Details"
+
+MESSAGE = "ID_NAME"
+TEXT    = "Report Name"
+TEXT    = "Login Schedule"
+
+MESSAGE = "ROUTINE_NAME"
+TEXT    = "Routine Name"
+TEXT    = ""
+
+MESSAGE = "PARAMETER"
+TEXT    = "Parameter"
+TEXT    = ""
+
+MESSAGE = "PRINTER"
+TEXT    = "Printer"
+
+MESSAGE = "TASK"
+TEXT    = "Task Name"
+
+MESSAGE = "TASK_PARAMS"
+TEXT    = "Task Parameters"
+
+MESSAGE = "CURRENT_STATUS"
+TEXT    = "Current Status"
+
+MESSAGE = "USER_NAME"
+TEXT    = "User Name"
+
+MESSAGE = "REC_PATTERN"
+TEXT    = "Recurrence Pattern"
+
+MESSAGE = "REC_RANGE"
+TEXT    = "Range of Recurrence"
+
+MESSAGE = "START"
+TEXT    = "Start"
+
+MESSAGE = "NO_END_DATE"
+TEXT    = "No End Date"
+
+MESSAGE = "END_AFTER"
+TEXT    = "End After"
+
+MESSAGE = "OCCURENCES"
+TEXT    = "Occurences"
+
+MESSAGE = "END_BY"
+TEXT    = "End on"
+
+MESSAGE = "RUN_WIN"
+TEXT    = "Use a run window of"
+
+MESSAGE = "SPECIFY_TIMES"
+TEXT    = "Specify Times"
+
+MESSAGE = "CANCEL"
+TEXT    = "Cancel"
+
+MESSAGE = "OK"
+TEXT    = "OK"
+
+MESSAGE = "INVALID_ROUTINE"
+TEXT    = " does not exist in "
+
+MESSAGE = "NOT_VALID"
+TEXT    = "The schedule is not valid."
+
+MESSAGE = "INVALID_START"
+TEXT    = "Please specify a valid start date."
+
+MESSAGE = "RADIO_REPORT"
+TEXT    = "Report"
+
+MESSAGE = "RADIO_TASK"
+TEXT    = "Task"
+
+! Daily Tab
+
+MESSAGE = "DAILY_HEADER"
+TEXT    = "Daily"
+
+MESSAGE = "DAILY_EVERY"
+TEXT    = "Every"
+
+MESSAGE = "DAILY_DAYS"
+TEXT    = "day(s)"
+
+MESSAGE = "DAILY_WEEKDAY"
+TEXT    = "Every Weekday"
+
+! Weekly Tab
+
+MESSAGE = "WEEKLY_HEADER"
+TEXT    = "Weekly"
+
+MESSAGE = "WEEKLY_EVERY"
+TEXT    = "Recur every"
+
+MESSAGE = "WEEKLY_WEEKS"
+TEXT    = "week(s) on"
+
+MESSAGE = "NO_DAYS"
+TEXT    = "You have not selected any days!"
+
+! Monthly Tab
+
+MESSAGE = "MONTHLY_HEADER"
+TEXT    = "Monthly"
+
+MESSAGE = "MONTHLY_DAY"
+TEXT    = "Day"
+
+MESSAGE = "MONTHLY_EVERY"
+TEXT    = "of every"
+
+MESSAGE = "MONTHLY_MONTHS"
+TEXT    = "month(s)"
+
+MESSAGE = "MONTHLY_THE"
+TEXT    = "The"
+
+MESSAGE = "MORE_28"
+TEXT    = "Some months are shorter than the value specified."
+TEXT    = "Set this schedule to occur on the last day of the month?"
+
+! Yearly Tab
+
+MESSAGE = "YEARLY_HEADER"
+TEXT    = "Yearly"
+
+MESSAGE = "YEARLY_EVERY"
+TEXT    = "Every"
+
+MESSAGE = "YEARLY_THE"
+TEXT    = "The"
+
+MESSAGE = "YEARLY_OF"
+TEXT    = "of"
+
+! Frequency Tab
+
+MESSAGE = "FREQUENCY_HEADER"
+TEXT    = "Frequency"
+
+MESSAGE = "FREQUENCY_RECURR"
+TEXT    = "Recur with interval"
+
+MESSAGE = "FREQUENCY_TIM_SCHED"
+TEXT    = "Use the timer schedule"
+
+MESSAGE = "MAINTAIN"
+TEXT    = "Maintain Timer Schedules"
+
+MESSAGE = "TIM_MENU"
+TEXT    = "Add Timer Schedule"
+TEXT    = "Copy Timer Schedule"
+TEXT    = "Modify Timer Schedule"
+TEXT    = "Display Timer Schedule"
+TEXT    = ""
+TEXT    = "Print Timer Schedule"
+TEXT    = "List Timer Schedule"
+TEXT    = ""
+TEXT    = "Remove Timer Schedule"
+TEXT    = "Restore Timer Schedule"
+TEXT    = ""
+TEXT    = "Test Timer Schedule"
+
+MESSAGE = "DELETE_LOGIN_SCHED"
+TEXT    = "Would you like to remove all samples and jobs scheduled by the login schedule []?"
+
+MESSAGE = "PAST_DATE"
+TEXT    = "Start time is in the past. Would you like to start the schedule from this historical activation time."
+
+MESSAGE GROUP "LIT_BACKGROUND_"
+
+MESSAGE        = "APPLICATION_EXAMPLE"
+TEXT           = "Example Of Use"
+
+MESSAGE        = "HEADER_TEXT"
+TEXT           = "Background Status"
+
+MESSAGE        = "INVALID_PIPE_NAME"
+TEXT           = "Invalid Pipe Name"
+
+MESSAGE        = "INVALID_LIBRARY"
+TEXT           = "Invalid Library Name"
+
+MESSAGE        = "PROCESSING_TEXT"
+TEXT           = "Processing Message : "
+
+MESSAGE        = "ADD_MESS_TEXT1"
+TEXT           = "Add Message : "
+
+MESSAGE        = "PROC_MESS_TEXT1"
+TEXT           = "Processing "
+
+MESSAGE        = "PROC_ENTRY_TEXT1"
+TEXT           = "Processing Entry "
+
+MESSAGE        = "SET_UP_PIPE"
+TEXT           = "Setting up Pipe : "
+
+MESSAGE        = "PROCESSING_DO"
+TEXT           = "Doing the Processing....."
+
+MESSAGE        = "PROCESSING_DONE"
+TEXT           = "Done the Processing....."
+
+MESSAGE        = "TERMINATE_TEXT2"
+TEXT           = " Terminated."
+
+MESSAGE        = "HIBERNATING_TEXT"
+TEXT           = "Hibernating.... Until "
+
+MESSAGE        = "PROC_MESS_TEXT2"
+TEXT           = " Messages in the Queue"
+
+MESSAGE        = "ADD_MESS_TEXT2"
+TEXT           = " to the Queue "
+
+MESSAGE        = "TERMINATE_TEXT1"
+TEXT           = "Terminate Message Received"
+
+MESSAGE        = "PIPE_EXISTS"
+TEXT           = "Pipe Already Exists"
+
+MESSAGE        = "INVALID_ROUTINE"
+TEXT           = "Invalid Routine Name"
+
+MESSAGE        = "STARTING_TEXT"
+TEXT           = "Starting "
+
+MESSAGE        = "APPLICATION_NAME"
+TEXT           = "Background Process"
+
+MESSAGE        = "UNOPENED_PIPE2"
+TEXT           = "This may be because the process is not running."
+
+MESSAGE        = "UNOPENED_PIPE1"
+TEXT           = "The Pipe to the Background Process could not be Opened."
+
+MESSAGE        = "DUPLICATE"
+TEXT           = "Duplicate Message Ignored. "
+
+MESSAGE        = "SEPARATE"
+TEXT           = "Example, Terminate from Seperate Process"
+
+MESSAGE GROUP "BACKGROUND_IMPRINT_"
+
+MESSAGE        = "NO_PRINTER_NAME"
+TEXT           = "Could not find logical name for printer id: []"
+
+MESSAGE        = "NO_PRINTER_PORT"
+TEXT           = "Could not find port details for printer id: []"
+
+MESSAGE GROUP "TASK_TQ_"
+
+MESSAGE        = "LOCKED"
+TEXT           = "Timerqueue record [] is locked by another user"
+
+MESSAGE        = "NOTFOUND"
+TEXT           = "Unable to locate Timerqueue record []"

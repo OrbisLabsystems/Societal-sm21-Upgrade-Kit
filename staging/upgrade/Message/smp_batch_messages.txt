@@ -1,0 +1,1196 @@
+! Messages for the batch screens.
+
+
+MESSAGE GROUP = "LTE_BATCH_"
+
+MESSAGE       = "HEADER_MESS"
+TEXT          = "Batch Template Header Screen"
+
+MESSAGE       = "FOOTER_MESS"
+TEXT          = "Press SELECT to modify details"
+
+MESSAGE       = "DISPLAY_FOOTER_MESS"
+TEXT          = "Press SELECT to view details"
+
+MESSAGE       = "DISPLAYED_NAME"
+TEXT          = "Batch Template"
+
+MESSAGE       = "INPUT_MESS"
+TEXT          = "Enter Batch Template"
+
+MESSAGE       = "OPTION_TITLES"
+TEXT          = "Batch Template Options"
+
+MESSAGE       = "OPTION1"
+TEXT          = "1"
+TEXT          = "1 Parameters"
+
+MESSAGE       = "OPTION2"
+TEXT          = "2"
+TEXT          = "2 List"
+
+MESSAGE       = "OPTION3"
+TEXT          = "3"
+TEXT          = "3 Results"
+
+MESSAGE       = "OPTION4"
+TEXT          = "4"
+TEXT          = "4 Fields"
+
+MESSAGE       = "OPTION5"
+TEXT          = "5"
+TEXT          = "5 Criteria"
+
+MESSAGE       = "OPTION6"
+TEXT          = "6"
+TEXT          = "6 SQC Charts"
+
+MESSAGE       = "ANAL_USER"
+TEXT          = "Must specify an Analysis on the batch template"
+
+MESSAGE GROUP = "BATCH_TEMP_ENT_"
+
+MESSAGE       = "START"
+TEXT          = "Start"
+
+MESSAGE       = "REPEAT"
+TEXT          = "Repeat"
+
+MESSAGE       = "TRAIL"
+TEXT          = "Trail"
+
+MESSAGE       = "SAMPLE"
+TEXT          = "Sample"
+
+MESSAGE       = "CONTROL"
+TEXT          = "Control"
+
+MESSAGE       = "STANDARD"
+TEXT          = "Standard"
+
+MESSAGE       = "WASH"
+TEXT          = "Wash"
+
+MESSAGE       = "MS"
+TEXT          = "MS"
+
+MESSAGE       = "MSD"
+TEXT          = "MSD"
+
+MESSAGE       = "BLANK"
+TEXT          = "Blank"
+
+MESSAGE       = "CAL_STD"
+TEXT          = "Cal Std"
+
+MESSAGE       = "CAL_BLANK"
+TEXT          = "Cal Blank"
+
+MESSAGE       = "BLANK_CHK"
+TEXT          = "Blank Chk"
+
+MESSAGE       = "METH_BLANK"
+TEXT          = "Meth Blank"
+
+MESSAGE       = "CAL_CHK"
+TEXT          = "Cal Chk"
+
+MESSAGE       = "INDEP_CHK"
+TEXT          = "Indep Chk"
+
+MESSAGE       = "INIT_CHK"
+TEXT          = "Init Chk"
+
+MESSAGE       = "INTERF_CHK"
+TEXT          = "Interf Chk"
+
+MESSAGE       = "DUPLICATE"
+TEXT          = "Duplicate"
+
+
+MESSAGE       = "NO_STANDARD"
+TEXT          = "Must supply a Standard ID" 
+
+MESSAGE       = "NO_PARENT"
+TEXT          = "Must supply a Parent value" 
+
+
+
+MESSAGE GROUP = "BATCH_"
+
+MESSAGE       = "ENTER_TEMPLATE"
+TEXT          = "Enter Template"
+
+MESSAGE       = "TEMPLATE_HEADER"
+TEXT          = "Batch Create"
+
+MESSAGE       = "BUTTON_CREATE"
+TEXT          = "Create"
+
+MESSAGE       = "CREATE_HEADER"
+TEXT          = "Create Batch"
+
+MESSAGE       = "CREATE_FOOTER"
+TEXT          = "Press TAB to change screen/DO to Create Batch/Exit to QUIT"
+
+MESSAGE       = "MODIFY_HEADER"
+TEXT          = "Modify Batch"
+
+MESSAGE       = "MODIFY_FOOTER"
+TEXT          = "Press TAB to change screen/DO to Save Changes/Exit to quit"
+                    
+MESSAGE       = "DISPLAY_HEADER"
+TEXT          = "Display Batch"
+
+MESSAGE       = "DISPLAY_FOOTER"
+TEXT          = "Press TAB to change screen/DO to Close"
+
+MESSAGE       = "INSPECT_HEADER"
+TEXT          = "Inspect Batch"
+
+MESSAGE       = "INSPECT_FOOTER"
+TEXT          = "Press TAB to change screen/DO to Inspect/Exit to quit"
+
+MESSAGE       = "AUTHORISE_HEADER"
+TEXT          = "Authorise Batch"
+
+MESSAGE       = "AUTHORISE_FOOTER"
+TEXT          = "Press TAB to change screen/DO to Authorise/Exit to quit"
+
+MESSAGE       = "CANCEL_HEADER"
+TEXT          = "Cancel Batch"
+
+MESSAGE       = "CANCEL_FOOTER"
+TEXT          = "Press TAB to change screen/DO to Cancel/Exit to quit"
+
+MESSAGE       = "REACTIVATE_HEADER"
+TEXT          = "Reactivate Batch"
+
+MESSAGE       = "REACTIVATE_FOOTER"
+TEXT          = "Press TAB to change screen/DO to Reactivate/Exit to quit"
+
+MESSAGE       = "UPLOAD_HEADER_CHROM"
+TEXT          = "Upload Batch from Multichrom"
+
+MESSAGE       = "UPLOAD_HEADER_XCHROM"
+TEXT          = "Upload Batch from XChrom"
+
+MESSAGE       = "UPLOAD_HEADER_ATLAS"
+TEXT          = "Upload Batch from Atlas"
+
+MESSAGE       = "UPLOAD_FOOTER"
+TEXT          = "Press TAB to change screen/DO to Save/Exit to quit"
+
+MESSAGE       = "ENTER_DOWNLOAD"
+TEXT          = "Enter Batch"
+
+MESSAGE       = "DOWNLOAD_HEADER_CHROM"
+TEXT          = "Batch - Multichrom Download"
+
+MESSAGE       = "DOWNLOAD_HEADER_XCHROM"
+TEXT          = "Batch - XChrom Download"
+
+MESSAGE       = "DOWNLOAD_HEADER_ATLAS"
+TEXT          = "Batch - Atlas Download"
+
+MESSAGE       = "ENTER_COMMIT"
+TEXT          = "Enter Batch"
+
+MESSAGE       = "COMMIT_HEADER"
+TEXT          = "Batch Commit"
+
+MESSAGE       = "NO_INSPECT"
+TEXT          = "Batch Inspection is not required"
+
+
+MESSAGE GROUP = "BATCH_TYPE_"
+
+MESSAGE       = "BASE"
+TEXT          = ""
+
+MESSAGE       = "INSTRUMENT"
+TEXT          = "Instrument"
+
+MESSAGE       = "PREPARATION"
+TEXT          = "Preparation"
+                    
+MESSAGE       = "SOIL"
+TEXT          = "Soil Preparation"
+
+MESSAGE       = "LIQUID"
+TEXT          = "Liquid Preparation"
+
+
+MESSAGE GROUP = "BATCH_TEMPLATE_HEAD_"
+
+MESSAGE       = "SYNTAX"
+TEXT          = "Syntax"
+
+MESSAGE       = "EDIT_LIST"
+TEXT          = "Edit List"
+
+MESSAGE       = "EDIT_CRITERIA"
+TEXT          = "Edit Criteria"
+
+MESSAGE       = "AUTO_SELECT"
+TEXT          = "Automatic Select"
+
+MESSAGE       = "MIN_SAMPLES"
+TEXT          = "Minimum # Samples"
+
+MESSAGE       = "MAX_SAMPLES"
+TEXT          = "Maximum # Samples"
+                    
+MESSAGE       = "COMPRESSION"
+TEXT          = "Compression"
+
+MESSAGE       = "RAND_CONTROL"
+TEXT          = "Random Control"
+
+MESSAGE       = "RAND_EVERY"
+TEXT          = "Random every n Samples"
+
+MESSAGE       = "AUTO_PRINT"
+TEXT          = "Automatic Print"
+
+MESSAGE       = "PRINTER"
+TEXT          = "Printer"
+
+MESSAGE       = "HEADER"
+TEXT          = "Batch Template Details for"
+
+MESSAGE       = "FOOTER"
+TEXT          = "Press DO/EXIT to close form"
+
+MESSAGE       = "MIN_ERROR"
+TEXT          = "Minimum number of samples must be less than the maximum samples"
+
+MESSAGE GROUP = "BATCH_TEMPLATE_LIST_"
+
+MESSAGE       = "TYPE_TITLE"
+TEXT          = "Type"
+TEXT          = "Type      : "
+
+MESSAGE       = "REPEAT_TITLE"
+TEXT          = "Repeat"
+
+MESSAGE       = "PARENT_TITLE"
+TEXT          = "Parent"
+
+MESSAGE       = "STANDARD_TITLE"
+TEXT          = "Standard"
+TEXT          = "Standard  : "
+
+MESSAGE       = "LIMIT_TITLE"
+TEXT          = "Limit"
+TEXT          = "Limit     : "
+
+MESSAGE       = "COMP_LIST_TITLE"
+TEXT          = "Comp List"
+TEXT          = "Comp List : "
+
+MESSAGE       = "DISPLAY_HEADER"
+TEXT          = "Display Batch List for"
+
+MESSAGE       = "DISPLAY_FOOTER"
+TEXT          = "Press DO/Exit to close screen"
+
+MESSAGE       = "MODIFY_HEADER"
+TEXT          = "Modify Batch List for"
+
+MESSAGE       = "MODIFY_FOOTER"
+TEXT          = "Insert/Remove to change list DO/Exit to close screen"
+
+MESSAGE       = "SINGLE_HEADER"
+TEXT          = "Insert New Batch Entry"
+
+MESSAGE       = "SINGLE_FOOTER"
+TEXT          = "Select Type and Details /Press DO to add"
+
+       
+MESSAGE GROUP = "BATCH_ENTRY_"
+
+MESSAGE       = "NO_ACTIVE_STANDARD"
+TEXT          = "No Active version found for standard []"
+
+MESSAGE       = "ERROR_ENTRY_RESERVE"
+TEXT          = "Error Reserving Batch Entry - "
+
+MESSAGE       = "NO_PARENT"
+TEXT          = "Parent is not on the batch"
+
+MESSAGE       = "ERROR_SAMPLE_SELECT"
+TEXT          = "Error Selecting Sample"
+
+MESSAGE       = "SAMPLE_NAME"
+TEXT          = "Sample"
+                    
+MESSAGE       = "STANDARD_NAME"
+TEXT          = "Standard"
+
+MESSAGE       = "CONTROL_NAME"
+TEXT          = "Control"
+
+MESSAGE       = "BLANK_NAME"
+TEXT          = "Blank"
+
+MESSAGE       = "WASH_NAME"
+TEXT          = "Wash"
+
+MESSAGE       = "MS_NAME"
+TEXT          = "MS"
+
+MESSAGE       = "MSD_NAME"
+TEXT          = "MSD"
+
+MESSAGE       = "CAL_STD_NAME"
+TEXT          = "Cal Std"
+
+MESSAGE       = "CAL_BLANK_NAME"
+TEXT          = "Cal Blank"
+
+MESSAGE       = "BLANK_CHK_NAME"
+TEXT          = "Blank Chk"
+                    
+MESSAGE       = "METH_BLANK_NAME"
+TEXT          = "Meth Blank"
+
+MESSAGE       = "CAL_CHK_NAME"
+TEXT          = "Cal Chk"
+
+MESSAGE       = "INDEP_CHK_NAME"
+TEXT          = "Indep Chk"
+
+MESSAGE       = "INIT_CHK_NAME"
+TEXT          = "Init Chk"
+
+MESSAGE       = "INTERF_CHK_NAME"
+TEXT          = "Interf Chk"
+
+MESSAGE       = "DUPLICATE_NAME"
+TEXT          = "Duplicate"
+
+MESSAGE GROUP = "BATCH_HEADER_"
+
+MESSAGE       = "CREATION_TRANSACTION"
+TEXT          = "Batch Creation"
+
+MESSAGE       = "UPDATE_TRANSACTION"
+TEXT          = "Batch Update"
+
+MESSAGE       = "STATUS_TRANSACTION"
+TEXT          = "Batch Status"
+
+MESSAGE       = "TOO_FEW_SAMPLES"
+TEXT          = "Must have at least [] samples on the batch, found []"
+
+MESSAGE       = "TOO_MANY_SAMPLES"
+TEXT          = "Can only have [] samples on the batch, found []"
+
+MESSAGE       = "INVALID_TEST"
+TEXT          = "Invalid Test for batch [] ( Sample = [] )"
+
+MESSAGE       = "INVALID_SAMPLE"
+TEXT          = "Invalid Sample for batch []"
+
+MESSAGE       = "UNKNOWN_STATUS"
+TEXT          = "Unknown Batch Status ([])"
+
+MESSAGE       = "COMMIT_TRANS"
+TEXT          = "Commit Batch"
+
+MESSAGE       = "CREATE_NO_NAME"
+TEXT          = "Must specify a name for a new batch"
+
+
+MESSAGE GROUP = "BATCH_PRINT_"
+
+MESSAGE       = "MESS_1"
+TEXT          = "Batch" 
+
+MESSAGE       = "MESS_2"
+TEXT          = "Status" 
+
+MESSAGE       = "MESS_3"
+TEXT          = "Description" 
+
+MESSAGE       = "MESS_4"
+TEXT          = "Printed On" 
+                        
+MESSAGE       = "MESS_5"
+TEXT          = "Printed By" 
+
+MESSAGE       = "MESS_6"
+TEXT          = "Comment" 
+
+MESSAGE       = "ENTER_BATCH"
+TEXT          = "Enter Batch"
+
+MESSAGE       = "ENTER_TITLE"
+TEXT          = "Batch Print"
+
+MESSAGE       = "ENTER_JOB"
+TEXT          = "Enter Job"
+
+MESSAGE       = "ENTER_JOB_TITLE"
+TEXT          = "Print Job QA Report"
+
+MESSAGE       = "REPORT_RESULT"
+TEXT          = "Name"
+TEXT          = "S"
+TEXT          = "Value"
+TEXT          = "Units"
+TEXT          = "P/F"
+TEXT          = "Level"
+TEXT          = "Lower"
+TEXT          = "Upper"
+
+
+MESSAGE GROUP = "BATCH_SCREEN_"
+
+MESSAGE       = "REVIEW_SAMPLE_ID"
+TEXT          = "Sample ID"
+
+MESSAGE       = "REVIEW_BATCH_TYPE"
+TEXT          = "Batch Type"
+                        
+MESSAGE       = "REVIEW_NO_RESULTS"
+TEXT          = "There are no results for this sample"
+
+MESSAGE       = "TYPE_TITLE"
+TEXT          = "Type"
+
+MESSAGE       = "SAMPLE_TITLE"
+TEXT          = "Sample"
+
+MESSAGE       = "REVIEW_TITLE"
+TEXT          = "Review"
+
+MESSAGE       = "INCLUDE_TITLE"
+TEXT          = "Batch"
+
+MESSAGE       = "DATE_CREATED_TITLE"
+TEXT          = "Date Created"
+
+MESSAGE       = "CREATOR_TITLE"
+TEXT          = "Creator"
+
+MESSAGE       = "DATE_COMPLETED_TITLE"
+TEXT          = "Date Completed"
+
+MESSAGE       = "COMPLETER_TITLE"
+TEXT          = "Completer"
+
+MESSAGE       = "DATE_INSPECTED_TITLE"
+TEXT          = "Date Inspected"
+
+MESSAGE       = "INSPECTED_TITLE"
+TEXT          = "Inspector"
+
+MESSAGE       = "DATE_AUTHORISED_TITLE"
+TEXT          = "Date Authorised"
+
+MESSAGE       = "AUTHORISER_TITLE"
+TEXT          = "Authoriser"
+
+MESSAGE       = "DATE_CANCELLED_TITLE"
+TEXT          = "Date Cancelled"
+
+MESSAGE       = "CANCELLER_TITLE"
+TEXT          = "Canceller"
+
+MESSAGE       = "TEMPLATE_TITLE"
+TEXT          = "Template"
+
+MESSAGE       = "BATCH_CLASS_TITLE"
+TEXT          = "Batch Class"
+
+MESSAGE       = "COMPONENT_TITLE"
+TEXT          = "Component"
+
+MESSAGE       = "VALUE_TITLE"
+TEXT          = "Value"
+
+MESSAGE       = "UNITS_TITLE"
+TEXT          = "Units"
+
+MESSAGE       = "LEVEL_TITLE"
+TEXT          = "Level"
+
+MESSAGE       = "LOWER_TITLE"
+TEXT          = "Lower"
+
+MESSAGE       = "UPPER_TITLE"
+TEXT          = "Upper"
+
+MESSAGE       = "FIELDS_TITLE"
+TEXT          = "Fields to Show"
+
+MESSAGE       = "FIELDS_HEADER"
+TEXT          = "Modify Fields Screen"
+
+MESSAGE       = "BATCH_NAME_PROMPT"
+TEXT          = "Batch Name   "
+
+MESSAGE       = "STATUS_PROMPT"
+TEXT          = "Status       "
+
+MESSAGE       = "REVIEW_PROMPT"
+TEXT          = "Review       "
+
+MESSAGE       = "LIST_BUTTON"
+TEXT          = "List..."
+
+MESSAGE       = "INSERT_BUTTON"
+TEXT          = "Insert"
+
+MESSAGE       = "REMOVE_BUTTON"
+TEXT          = "Remove"
+
+MESSAGE       = "CONFIGURE_BUTTON"
+TEXT          = "Configure"
+
+MESSAGE       = "RESULTS_BUTTON"
+TEXT          = "Results..."
+
+MESSAGE       = "UPLOAD_BUTTON"
+TEXT          = "Upload..."
+
+MESSAGE       = "ACCEPT_BUTTON"
+TEXT          = "Accept"
+
+MESSAGE       = "HEADER_BUTTON"
+TEXT          = "Header..."
+
+MESSAGE       = "DETAILS_BUTTON"
+TEXT          = "Details..."
+
+MESSAGE       = "CHART_BUTTON"
+TEXT          = "Charts..."
+
+MESSAGE       = "MLP_BUTTON"
+TEXT          = "MLP Off"
+TEXT          = "MLP On"
+
+MESSAGE       = "INTERNAL_HEADER"
+TEXT          = "Internal Batch Fields"
+
+MESSAGE       = "INTERNAL_FOOTER"
+TEXT          = "Press DO/EXIT to close screen"
+
+MESSAGE       = "AUTH_FIELD"
+TEXT          = "Authorisation Notes"
+
+MESSAGE       = "NO_FIELDS"
+TEXT          = "No Fields specified"
+
+MESSAGE       = "CREATED_BATCH"
+TEXT          = "Created Batch  []"
+
+MESSAGE       = "UPLOAD"
+TEXT          = "Uploading Results Please Wait"
+
+MESSAGE       = "UPLOAD_CHECK"
+TEXT          = "Checking Batch Please Wait"
+
+MESSAGE       = "UPLOAD_REBUILD"
+TEXT          = "Rebuilding Batch Please Wait"
+
+MESSAGE       = "UPLOAD_FORMAT"
+TEXT          = "Reformatting results and checking Limits"
+
+MESSAGE       = "LESS_DETECT"
+TEXT          = "<Detect"
+
+MESSAGE       = "SUCCEED_V"
+TEXT          = "Batch Made Available Successfully"
+
+MESSAGE       = "SUCCEED_C"
+TEXT          = "Batch Completed Successfully"
+
+MESSAGE       = "SUCCEED_I"
+TEXT          = "Batch Inspected Successfully"
+
+MESSAGE       = "SUCCEED_A"
+TEXT          = "Batch Authorised Successfully"
+
+MESSAGE       = "SUCCEED_X"
+TEXT          = "Batch Cancelled Successfully"
+
+MESSAGE       = "FAIL_ERROR"
+TEXT          = "Record lookup failure prevents completion of operation"
+
+MESSAGE       = "FAIL_LOCKED"
+TEXT          = "Locked record prevents completion of operation"
+
+MESSAGE GROUP = "BATCH_RESULT_"
+
+MESSAGE       = "PROMPT"
+TEXT          = "Enter Batch"
+TEXT          = "Batch Result Entry"
+
+MESSAGE       = "NO_COMP"
+TEXT          = "The Batch Template [] has no components set for Result Entry"
+
+MESSAGE       = "NO_TESTS"
+TEXT          = "There are no tests available for results entry"
+
+MESSAGE       = "HEADER"
+TEXT          = "Batch Result Entry Screen"
+
+MESSAGE       = "FOOTER"
+TEXT          = "Press DO for Results Entry, Select for failure report"
+
+MESSAGE       = "BATCH_TITLE"
+TEXT          = "Batch ID"
+
+MESSAGE       = "CALCULATED_TITLE"
+TEXT          = "Include Calculated"
+
+MESSAGE       = "COMPLETED_TITLE"
+TEXT          = "Include Completed"
+
+MESSAGE       = "FAILURE_BUTTON"
+TEXT          = "Failures"
+
+MESSAGE       = "INSPECT_BUTTON"
+TEXT          = "Inspect"
+
+MESSAGE       = "RESULTS_BUTTON"
+TEXT          = "Results"
+
+MESSAGE       = "CHART_BUTTON"
+TEXT          = "Charts..."
+
+MESSAGE       = "CLOSE_BUTTON"
+TEXT          = "Close"
+
+
+MESSAGE GROUP = "STD_MULTICHROM_"
+
+MESSAGE       = "CONNECT_FAILED"
+TEXT          = "Failed to connect to Multichrom ([])"
+
+MESSAGE       = "CREATE_RSF_FAILED"
+TEXT          = "Multichrom Create Run Sequence Failed ([])"
+
+MESSAGE       = "PUT_RSF_HEAD_FAILED"
+TEXT          = "Multichrom Put RSF Header Failed ([])"
+
+MESSAGE       = "SET_ANAL_FAILED"
+TEXT          = "Multichrom Set Analysis Failed ([])"
+
+MESSAGE       = "STATUS_UNDEFINED" 
+TEXT          = "Status Undefined"  
+
+MESSAGE       = "STATUS_OK" 
+TEXT          = "Status Ok"  
+
+MESSAGE       = "ANALYSIS_ERROR" 
+TEXT          = "Cannot find Analysis file"  
+
+MESSAGE       = "INVALID_CHANNEL" 
+TEXT          = "Invalid Channel number"  
+
+MESSAGE       = "ANALYSIS_NOT_SET" 
+TEXT          = "There has been no previous call to SET_ANALYSIS"  
+
+MESSAGE       = "SAMPLE_ERROR" 
+TEXT          = "Cannot find current Injection of current sample"  
+
+MESSAGE       = "INJECTION_OUT_RANGE" 
+TEXT          = "Injection number out of permissible range"  
+
+MESSAGE       = "SAMPLE_OUT_RANGE" 
+TEXT          = "Sample number out of permissable range"  
+
+MESSAGE       = "SAMPLE_NOT_SET" 
+TEXT          = "There has been no previous call to SET_SAMPLE"  
+
+MESSAGE       = "NO_PEAK_DATA" 
+TEXT          = "Data not peak processed"  
+
+MESSAGE       = "NO_AMOUNT_DATA" 
+TEXT          = "Data not quantified"  
+
+MESSAGE       = "RAW_OPEN_ERROR" 
+TEXT          = "Error opening Raw Data file"  
+
+MESSAGE       = "ALREADY OPEN" 
+TEXT          = "File already open"  
+
+MESSAGE       = "NOT_OPEN" 
+TEXT          = "File not open"  
+
+MESSAGE       = "BAD_RT" 
+TEXT          = "Invalid Retention Time"  
+
+MESSAGE       = "PEAK_OPEN_ERROR" 
+TEXT          = "Error opening peak file"  
+
+MESSAGE       = "INVALID_PEAK" 
+TEXT          = "Invalid Peak Number"  
+
+MESSAGE       = "GET_PEAK_ERROR" 
+TEXT          = "Error reading peak data"  
+
+MESSAGE       = "USERNAME_UNDEFINED" 
+TEXT          = "MC_USER_NAME symbol undefined"  
+
+MESSAGE       = "PROJECT_UNDEFINED" 
+TEXT          = "MC_PROJECT_NAME symbol Undefined"  
+
+MESSAGE       = "INJECTION_NOT_SET" 
+TEXT          = "MC_INJECT_NUMBER symbol undefined"  
+
+MESSAGE       = "CHANNEL_NOT_SET" 
+TEXT          = "MC_CHANNEL_NUMBER symbol undefined"  
+
+MESSAGE       = "PROJECT_ERROR" 
+TEXT          = "Error reading project"  
+
+MESSAGE       = "NO_PEAKS_FOUND" 
+TEXT          = "No Peaks in Peak Data file"  
+
+MESSAGE       = "INVALID_LEVEL" 
+TEXT          = "Calibration level not in range 1 to 20"  
+
+MESSAGE       = "NOT_ISTD_PEAK" 
+TEXT          = "Peak is not an internal standard"  
+
+MESSAGE       = "CALIBRATION_ERROR" 
+TEXT          = "Error accessing Calibration file"  
+
+MESSAGE       = "CALIBRATION_NOT_SET" 
+TEXT          = "Calibration not set"  
+
+MESSAGE       = "GPC_NOT_OPEN" 
+TEXT          = "GPC data file has not been opened"  
+
+MESSAGE       = "GPC_ALREADY_OPEN" 
+TEXT          = "GPC data file already open"  
+
+MESSAGE       = "NO_GPC_PEAK_DATA" 
+TEXT          = "Data has not been GPC processed"  
+
+MESSAGE       = "GPC_PEAK_OPEN_ERROR" 
+TEXT          = "Error opening GPC data file"  
+
+MESSAGE       = "INVALID_SLICE" 
+TEXT          = "Invalid slice number"  
+
+MESSAGE       = "GET_SLICE_ERROR" 
+TEXT          = "Error reading slice data"  
+
+MESSAGE       = "INVALID_COMPOSITE_PEAK" 
+TEXT          = "Invalid Composite Peak nu,ber"  
+
+MESSAGE       = "GET_COMPOSITE_PEAK_ERROR" 
+TEXT          = "Error reading composite peak"  
+
+MESSAGE       = "PRINTER_NOT_SET" 
+TEXT          = "MC_PRINTER_NODE symbol undefined"  
+
+MESSAGE       = "NODE_UNDEFINED" 
+TEXT          = "MC_PRINTER_NODE symbol Undefined"  
+
+MESSAGE       = "QUEUE_UNDEFINED" 
+TEXT          = "MC_PRINTER_QUEUE symbol Undefined"  
+
+MESSAGE       = "PEAK_NOT_SET" 
+TEXT          = "There has been no previous call to GET_CAL_PEAK"  
+
+MESSAGE       = "PUT_PEAK_ERROR" 
+TEXT          = "Put Peak Error"  
+
+MESSAGE       = "METHOD_NOT_SET" 
+TEXT          = "Method Not Set"  
+
+MESSAGE       = "PUT_METHOD_ERROR" 
+TEXT          = "Put Method Error"  
+
+MESSAGE       = "METHOD_ERROR" 
+TEXT          = "Method file has not been set"  
+
+MESSAGE       = "RUN_SEQUENCE_ERROR" 
+TEXT          = "Error accessing Run Sequence file"  
+
+MESSAGE       = "RUN_SEQUENCE_NOT_SET" 
+TEXT          = "Run Sequence file not set"  
+
+MESSAGE       = "GET_SAMPLE_ERROR" 
+TEXT          = "Error reading sample data and information"  
+
+MESSAGE       = "PUT_SAMPLE_ERROR" 
+TEXT          = "Error writing to sample page"  
+
+MESSAGE       = "INVALID_SAMPLE" 
+TEXT          = "Invalid Sample number"  
+
+MESSAGE       = "PUT_RSF_HEADER_ERROR" 
+TEXT          = "Error writing to Rsf Header file"  
+
+MESSAGE       = "ALREADY_EXISTS" 
+TEXT          = "File Already Exists"  
+
+MESSAGE       = "ACCESS_ERROR" 
+TEXT          = "Error accesing file"  
+
+MESSAGE       = "TEMPLATE_ERROR" 
+TEXT          = "Template Error"  
+
+MESSAGE       = "CREATE_ERROR" 
+TEXT          = "Error opening template"  
+
+MESSAGE       = "SIMDIS_NOT_OPEN" 
+TEXT          = "SIMDIS data file has not been opened"  
+
+MESSAGE       = "SIMDIS_ALREADY_OPEN" 
+TEXT          = "SIMDIS data file is already open"  
+
+MESSAGE       = "NO_SIMDIS_PEAK_DATA" 
+TEXT          = "Data has not been SIMDIS processed"  
+
+MESSAGE       = "SIMDIS_PEAK_OPEN_ERROR" 
+TEXT          = "Error opening SIMDIS data file"  
+
+MESSAGE       = "GET_CUT_ERROR" 
+TEXT          = "Error reading cut data"  
+
+MESSAGE       = "INVALID_CUT" 
+TEXT          = "Cut Number is not valid"  
+
+MESSAGE       = "INVALID_CUT_RECORD" 
+TEXT          = "Invalid Cut Record"  
+
+MESSAGE       = "INVALID_SLICE_RECORD" 
+TEXT          = "Invalid Slice Record"  
+
+MESSAGE       = "DATA_POINTER_UNDEFINED" 
+TEXT          = "Get data value has not been called"  
+
+MESSAGE       = "SLAVE_ERROR" 
+TEXT          = "Command not allowed on slave channels"  
+
+MESSAGE       = "QUEUE_OPEN_ERROR" 
+TEXT          = "Could not open or createbackground queue"  
+
+MESSAGE       = "NO_RUN_SEQUENCE" 
+TEXT          = "Run Sequence file does not exist"  
+
+MESSAGE       = "ANALYSIS_ALREADY_EXISTS" 
+TEXT          = "Analysis specified in Run Sequence file already exists"  
+
+MESSAGE       = "QUEUE_FULL" 
+TEXT          = "Run control queue full"  
+
+MESSAGE       = "ALREADY_IN_QUEUE" 
+TEXT          = "Run Sequence file specified already in queue"  
+
+MESSAGE       = "START_RUN_ERROR" 
+TEXT          = "Cannot start the run"  
+
+MESSAGE       = "INVALID_ENTRY" 
+TEXT          = "Invalid run control queue entry number"  
+
+MESSAGE       = "RUN_CONTROL_ERROR" 
+TEXT          = "Error accessing run control queue"  
+
+MESSAGE       = "DELETE_RUN_ERROR" 
+TEXT          = "Cannot delete entry in run control queue"  
+
+MESSAGE       = "QUEUE_EMPTY" 
+TEXT          = "No entries in run control queue"  
+
+MESSAGE       = "QUIT_ERROR" 
+TEXT          = "Cannot issue quit command"  
+
+MESSAGE       = "NOT_BATCHED" 
+TEXT          = "Current acquisation is not batched"  
+                                         
+MESSAGE       = "NOT_ACQUIRING" 
+TEXT          = "Channel is not aquiring data"  
+
+MESSAGE       = "ENTRY_NOT_INSERTED" 
+TEXT          = "Entry not submitted to queue"  
+
+MESSAGE       = "ILLEGAL_COMMAND_MNEMONIC" 
+TEXT          = "Illegal Command Mnemonic"  
+
+MESSAGE       = "QUEUE_NOT_OPENED" 
+TEXT          = "Could not open or create background queue"  
+
+MESSAGE       = "NO_ANALYSIS" 
+TEXT          = "Specified Analysis does not exist"  
+
+MESSAGE       = "NO_INJECTION" 
+TEXT          = "Specified Sample or Injection does not exist"  
+
+MESSAGE       = "NO_COMMON_ACCESS" 
+TEXT          = "Cannot map to common regions"  
+
+MESSAGE       = "NO_USER_NAME" 
+TEXT          = "Could not create valid Multichrom user name"
+
+MESSAGE       = "UPDATE_NOT_SUPPORTED"  
+TEXT          = "This functionality is not supported for Multichrom"
+
+MESSAGE GROUP = "STD_XCHROM_"
+
+MESSAGE       = "NO_DATA"
+TEXT          = "No [] data to Upload"
+
+MESSAGE       = "FAILED_LOCATE"
+TEXT          = "Failed to locate []"
+
+MESSAGE       = "MUST_SPECIFY"
+TEXT          = "Must specify Valid Project, Instrument and Analysis for [] download"
+
+MESSAGE       = "MUST_SPECIFY_TMPL"
+TEXT          = "Must specify a Template Method name for [] download"
+
+MESSAGE       = "EXE_XCHROM"
+TEXT          = "Run [] now?"
+
+MESSAGE       = "UPDATE_DATA"
+TEXT          = "Updating from [] : "
+                     
+MESSAGE       = "XCMODANA"
+TEXT          = "XCmodana : "
+
+MESSAGE       = "ATT_XCMODANA"
+TEXT          = "Attempting XCmodana : "
+
+MESSAGE       = "XCHROM"
+TEXT          = "XChrom : "
+TEXT          = "XChrom"
+
+MESSAGE       = "ATT_XCHROM"
+TEXT          = "Attempting XChrom : "
+
+MESSAGE       = "LIMSMODANA"
+TEXT          = "Limsmodana : "
+
+MESSAGE       = "ATT_LIMSMODANA"
+TEXT          = "Attempting Limsmodana : "
+
+MESSAGE       = "ATLAS"
+TEXT          = "Atlas : "
+TEXT          = "Atlas"
+
+MESSAGE       = "ATT_ATLAS"
+TEXT          = "Attempting Atlas : "
+
+MESSAGE       = "FAIL_SMW"
+TEXT          = "Failed to obtain location of SMW"
+
+MESSAGE       = "FAIL_TEMP"
+TEXT          = "Failed to create temporary file on client machine"
+
+MESSAGE       = "FAIL_TMPL"
+TEXT          = "Error copying template method file : "
+
+MESSAGE       = "XCSM_FAIL"
+TEXT          = "Failed to execute xcsmload.exe"
+
+MESSAGE       = "NO_HEAD"
+TEXT          = "Failed to locate chromatography phrase headers"
+
+MESSAGE       = "ATT_XCGETINJ"
+TEXT          = "Attempting XCgetinj : "
+
+MESSAGE       = "ATT_LIMSGETINJ"
+TEXT          = "Attempting Limsgetinj : "
+
+MESSAGE       = "UPDATE_SUCCESS"
+TEXT          = "Successfully updated [] data"
+
+MESSAGE       = "DOWN_SUCCESS"
+TEXT          = "Batch Downloaded Successfully"
+
+MESSAGE       = "NO_TEST"
+TEXT          = "Cannot upload unassigned sample(s) read from XChrom, please check XChrom analysis"
+
+MESSAGE GROUP = "LTE_BATCH_SQC_"
+
+MESSAGE       = "HEADER_MESS"
+TEXT          = "Batch SQC Template Header Screen"
+
+MESSAGE       = "FOOTER_MESS"
+TEXT          = "Press DO to Save/Select for batches/Exit to Quit"
+
+MESSAGE       = "DISPLAY_FOOTER_MESS"
+TEXT          = "Select for batches/Press EXIT to Quit"
+
+MESSAGE       = "DISPLAYED_NAME"
+TEXT          = "Batch SQC Template"
+
+MESSAGE       = "INPUT_MESS"
+TEXT          = "Enter Batch SQC Template"
+
+MESSAGE       = "OPTION_TITLES"
+TEXT          = "Batch Template Options"
+
+MESSAGE       = "OPTION1"
+TEXT          = "1"
+TEXT          = "1 Batches"
+
+MESSAGE       = "NO_ANAL"
+TEXT          = "Must define an Analysis"
+
+MESSAGE       = "NO_COMP"
+TEXT          = "Must specify a valid component name to produce a chart. Continue saving ?"
+
+
+MESSAGE GROUP = "BATCH_TMPL_SQC_"
+
+MESSAGE       = "CHART"
+TEXT          = "Chart"
+
+MESSAGE       = "BATCH"
+TEXT          = "Batch"
+
+MESSAGE       = "DESCRIPTION"
+TEXT          = "Description"
+
+MESSAGE       = "SELECT_ALL"
+TEXT          = "Select All"
+
+MESSAGE       = "REMOVE_ALL"
+TEXT          = "Remove All"
+
+MESSAGE       = "FORM_HEADER"
+TEXT          = "Batch Templates"
+
+MESSAGE       = "PRINT1"
+TEXT          = "Batch Template              Description"
+TEXT          = "--------------              -----------"
+
+MESSAGE       = "LIST_HEADER"
+TEXT          = "Charts for Batch Template"
+
+MESSAGE       = "LIST_TITLE"
+TEXT          = "Identity     Description"
+
+
+MESSAGE GROUP = "BATCH_SQC_"
+
+MESSAGE       = "BATCH_HEADER"
+TEXT          = "Charts for a batch"
+
+MESSAGE       = "BATCH_FOOTER"
+TEXT          = "Press SELECT for options/Exit to Quit"
+
+MESSAGE       = "BATCH_IDENTITY"
+TEXT          = "Identity  "
+
+MESSAGE       = "BATCH_CLOSE"
+TEXT          = "Close"
+
+MESSAGE       = "BATCH_VIEW"
+TEXT          = "View"
+
+MESSAGE       = "BATCH_PRINTER"
+TEXT          = "Printer   "
+
+MESSAGE       = "BATCH_PRINT"
+TEXT          = "Print"
+
+MESSAGE       = "BATCH_TITLE1"
+TEXT          = "SQC identity"
+
+MESSAGE       = "BATCH_TITLE2"
+TEXT          = "Points"
+
+MESSAGE       = "BATCH_TITLE3"
+TEXT          = "Title"
+
+MESSAGE       = "BATCH_PRINT_ALL"
+TEXT          = "Print All"
+
+MESSAGE       = "TEMPLATE_HEADER"
+TEXT          = "Charts for a template"
+
+MESSAGE       = "TEMPLATE_FOOTER"
+TEXT          = "Press SELECT for options/Exit to Quit"
+
+MESSAGE       = "TEMPLATE_IDENTITY"
+TEXT          = "Identity  "
+
+MESSAGE       = "TEMPLATE_CLOSE"
+TEXT          = "Close"
+
+MESSAGE       = "TEMPLATE_VIEW"
+TEXT          = "View"
+
+MESSAGE       = "TEMPLATE_PRINTER"
+TEXT          = "Printer   "
+
+MESSAGE       = "TEMPLATE_POINTS"
+TEXT          = "Points    "
+
+MESSAGE       = "TEMPLATE_PRINT"
+TEXT          = "Print"
+
+MESSAGE       = "TEMPLATE_PRINT_ALL"
+TEXT          = "Print All"
+
+MESSAGE       = "NO_CHARTS_BATCH"
+TEXT          = "There are no control charts for this batch "
+
+MESSAGE       = "CONFIRM_PRINT_ALL"
+TEXT          = "Confirm that you wish to print all the charts"
+
+MESSAGE       = "POINT_HEADER"
+TEXT          = "Point Information"
+
+MESSAGE       = "POINT_BATCH"
+TEXT          = "Batch     "
+
+MESSAGE       = "POINT_SAMPLE"
+TEXT          = "Sample    "
+
+MESSAGE       = "POINT_NAME"
+TEXT          = "Component "
+
+MESSAGE       = "POINT_RESULT"
+TEXT          = "Result    "
+
+MESSAGE       = "POINT_LOWER"
+TEXT          = "Lower     "
+
+MESSAGE       = "POINT_UPPER"
+TEXT          = "Upper     "
+
+MESSAGE       = "POINT_VIEW_BATCH"
+TEXT          = "Batch..."
+
+MESSAGE       = "POINT_VIEW_SAMPLE"
+TEXT          = "Sample..."
+
+MESSAGE       = "POINT_VIEW_RESULT"
+TEXT          = "Results..."
+
+MESSAGE       = "CHART_HEADER"
+TEXT          = "SQC Chart"
+
+MESSAGE       = "NO_POINTS"
+TEXT          = "No points found to plot"
+
+MESSAGE       = "TEMPLATE_SELECT_HEADER"
+TEXT          = "Chart Options"
+
+MESSAGE       = "TEMPLATE_SELECT1"
+TEXT          = "1"
+TEXT          = "1 View"
+
+MESSAGE       = "TEMPLATE_SELECT2"
+TEXT          = "2"
+TEXT          = "2 Print"
+
+MESSAGE       = "TEMPLATE_SELECT3"
+TEXT          = "3"
+TEXT          = "3 Print All Charts"
+
+
+

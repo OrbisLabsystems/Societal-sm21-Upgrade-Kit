@@ -1,0 +1,56 @@
+MESSAGE GROUP "SMP_IO_"
+
+! SEVERITY      INFORMATION
+
+MESSAGE = 	"PRINT_IDLE"
+TEXT =		"Idle"
+
+MESSAGE = 	"PRINT_EXEC"
+TEXT =		"Executing"
+
+MESSAGE = 	"PRINT_STOP"
+TEXT =		"Stopped"
+
+MESSAGE = 	"PRINT_UNAV"
+TEXT =		"Printer queue is unavailable and will not accept new print jobs"
+
+MESSAGE = 	"DEST_PAGES"
+TEXT =		"Pages : "
+
+MESSAGE = 	"DEST_TITLE"
+TEXT =		"Select Output Destination"
+
+MESSAGE = 	"INVALID_DEST"
+TEXT =		"Invalid output destination specified in set name"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"INVALID_PRINTER"
+TEXT =		"Invalid printer id"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"OPEN_LITERAL_FILE"
+TEXT =		"Failed to open literal output file"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"WRITE_LITERAL_FILE"
+TEXT =		"LITERAL report attempted to use literal text"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"LITERAL_FATAL"
+TEXT =		"Unrecoverable error in literal output - check dump file"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"FILE_NOT_EXISTS"
+TEXT =		"Failed to print file [].  File does not exist."
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"UNIX_CANNOT_PRINT"
+TEXT =		"Unable to print - cannot locate command file $smp_comfiles/vgsm_print"
+SEVERITY = 	"ERROR"
+
+MESSAGE = 	"MAIL_FROM"
+TEXT =		"Produced by SampleManager user []"
+
+MESSAGE = 	"SELECT_PRINTER"
+TEXT =		"Select Printer"
+

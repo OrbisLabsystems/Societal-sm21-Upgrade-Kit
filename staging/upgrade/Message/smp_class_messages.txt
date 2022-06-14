@@ -1,0 +1,108 @@
+! Error messages for class and object
+
+MESSAGE GROUP = "SMP_CLASS_"
+
+MESSAGE = "REDEFINE"
+TEXT    = "Class [] is not redefinable."
+SEVERITY= "ERROR"
+
+MESSAGE = "DEFINE"
+TEXT    = "Already defining class []."
+SEVERITY= "ERROR"
+
+MESSAGE = "NODEFINE"
+TEXT    = "Not currently defining a class."
+SEVERITY= "ERROR"
+
+MESSAGE = "CLASS"
+TEXT    = "Class [] does not exist."
+SEVERITY= "ERROR"
+
+MESSAGE = "DUP_TABLE"
+TEXT    = "Duplicate table [] in class definition."
+SEVERITY= "ERROR"
+
+MESSAGE = "INV_TABLE"
+TEXT    = "Invalid table [] in class definition."
+SEVERITY= "ERROR"
+
+MESSAGE = "DUP_PROPERTY"
+TEXT    = "Duplicate property [] in class definition."
+SEVERITY= "ERROR"
+
+MESSAGE = "DUP_ACTION"
+TEXT    = "Duplicate action [] in class definition."
+SEVERITY= "ERROR"
+
+MESSAGE = "PROPERTY"
+TEXT    = "Property [] not defined for class []."
+SEVERITY= "ERROR"
+
+MESSAGE = "ACTION"
+TEXT    = "Action [] not defined for class []."
+SEVERITY= "ERROR"
+
+MESSAGE = "OBJECT_TABLE"
+TEXT    = "Object does not contain table []."
+SEVERITY= "ERROR"
+
+MESSAGE = "OBJECT_DUP_TABLE"
+TEXT    = "Object already contains table []."
+SEVERITY= "ERROR"
+
+MESSAGE = "CLASS_INCOMPLETE"
+TEXT    = "Cannot create object when class [] has not been activated."
+SEVERITY= "ERROR"
+
+MESSAGE = "DESC_OBJECT"
+TEXT    = "Object - class []"
+
+MESSAGE = "DESC_PROPERTY"
+TEXT    = "Property [] - []"
+
+MESSAGE = "DESC_ACTION"
+TEXT    = "Action [] - Library [] Routine []"
+
+MESSAGE = "DESC_INTERNAL"
+TEXT    = "Action [] - Internal"
+
+MESSAGE = "DESC_TABLE"
+TEXT    = "Table []"
+
+MESSAGE = "DESC_NOTABLES"
+TEXT    = "No tables"
+
+MESSAGE = "DESC_LOCKS"
+TEXT    = "Separate locks"
+
+MESSAGE = "DESC_NOLOCKS"
+TEXT    = "No locks"
+
+MESSAGE = "DESC_NOINIT"
+TEXT    = "Initialisation routine - None"
+
+MESSAGE = "DESC_INIT_INTERNAL"
+TEXT    = "Initialisation routine - Internal"
+
+MESSAGE = "DESC_INIT"
+TEXT    = "Initialisation routine - Library [] Routine []"
+
+MESSAGE = "NOT_OBJECT"
+TEXT    = "Variable is not an object."
+SEVERITY= "ERROR"
+
+MESSAGE = "PARSE"
+TEXT    = "Error parsing DEFINE CLASS command."
+SEVERITY= "ERROR"
+
+MESSAGE = "NOT_COLLECTION"
+TEXT    = "Variable is not a collection."
+SEVERITY= "ERROR"
+
+MESSAGE = "COLLECTION_INDEX"
+TEXT    = "Index [] does not exist on collection."
+SEVERITY= "ERROR"
+
+MESSAGE = "COLLECTION_INDEX_UNASSIGNED"
+TEXT    = "Index [] contains an unassigned value"
+SEVERITY= "ERROR"

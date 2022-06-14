@@ -1,0 +1,21 @@
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "BACK_VALIDATE_"
+
+MESSAGE        = "AUTO_AUTHORISED"
+TEXT           = "Automatically authorised"
+
+MESSAGE        = "AUTO_VALIDATED"
+TEXT           = "Automatically validated"
+
+
+MESSAGE GROUP "LIB_SAMP_VALIDATE_"
+
+MESSAGE        = "AUTO_AUTHORISED"
+TEXT           = "Automatically authorised"
+
+
+MESSAGE GROUP "LIB_JOB_VALIDATE_"
+
+MESSAGE        = "AUTO_AUTORISED"
+TEXT           = "Automatically authorised"

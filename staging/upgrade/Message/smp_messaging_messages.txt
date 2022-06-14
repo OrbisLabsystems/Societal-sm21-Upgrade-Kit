@@ -1,0 +1,142 @@
+! Messages for Messaging subsystem
+
+MESSAGE GROUP = "SMP_MESSAGING_"
+
+MESSAGE = "MAIN_FORM_HEADER"
+TEXT    = "SampleManager Messaging"
+
+MESSAGE = "TOOLBAR_HEADER"
+TEXT    = "Messaging"
+
+MESSAGE = "MAIN_TOOLBUTTON_TEXT"
+TEXT    = "New"
+TEXT    = "Read"
+TEXT    = "Remove"
+TEXT    = "Reply"
+TEXT    = "Forward"
+TEXT    = "Refresh"
+TEXT    = "Categorize"
+
+MESSAGE = "MAIN_TOOLBUTTON_TIPS"
+TEXT    = "New"
+TEXT    = "Read"
+TEXT    = "Remove"
+TEXT    = "Reply"
+TEXT    = "Forward"
+TEXT    = "Refresh"
+TEXT    = "Categorize"
+
+MESSAGE = "READ_TOOLBUTTON_TEXT"
+TEXT    = "Save"
+TEXT    = "Remove"
+TEXT    = "Reply"
+TEXT    = "Forward"
+TEXT    = "Previous"
+TEXT    = "Next"
+
+MESSAGE = "READ_TOOLBUTTON_TIPS"
+TEXT    = "Save"
+TEXT    = "Remove"
+TEXT    = "Reply"
+TEXT    = "Forward"
+TEXT    = "Previous"
+TEXT    = "Next"
+
+MESSAGE = "NEW_TOOLBUTTON_TEXT"
+TEXT    = "Send"
+TEXT    = "Low"
+TEXT    = "High"
+
+MESSAGE = "NEW_TOOLBUTTON_TIPS"
+TEXT    = "Send"
+TEXT    = "Low"
+TEXT    = "High"
+
+MESSAGE = "LISTS"
+TEXT    = "New Messages"
+TEXT    = "Old Messages"
+
+MESSAGE = "SEND_MESSAGE_FORM_HEADER"
+TEXT    = "Send Message"
+
+MESSAGE = "READ_MESSAGE_FORM_HEADER"
+TEXT    = "Read Message"
+
+MESSAGE = "MESSAGE_FORM_READ_FIELDS"
+TEXT    = "Sender"
+TEXT    = "Date Sent"
+TEXT    = "Date Read"
+TEXT    = "Category"
+TEXT    = "Subject"
+TEXT    = "Message"
+
+MESSAGE = "MESSAGE_FORM_SEND_FIELDS"
+TEXT    = "Recipient(s)"
+TEXT    = "Category"
+TEXT    = "Subject"
+TEXT    = "Message"
+
+MESSAGE = "ADD_MESSAGE_ERROR"
+TEXT    = "Error Sending Message"
+
+MESSAGE = "CONFIRM_DEL_MESSAGE"
+TEXT    = "Confirm to remove message"
+
+MESSAGE = "CONFIRM_DEL_PERM_MESSAGE"
+TEXT    = "Confirm to delete message permanently"
+
+MESSAGE = "CONFIRM_DEL_ALL_MESSAGE"
+TEXT    = "Confirm to remove all selected messages"
+
+MESSAGE = "CONFIRM_DEL_PERM_ALL_MESSAGE"
+TEXT    = "Confirm to delete all selected messages"
+
+MESSAGE = "CONFIRM_SAVE_MESSAGE"
+TEXT    = "Do you want to save changes"
+
+MESSAGE = "CONFIRM_SEND_MESSAGE"
+TEXT    = "Do you want to send this message"
+
+MESSAGE = "CONFIRM_CANCEL_MESSAGE"
+TEXT    = "No recipient has been specified.  Do you want to cancel this message"
+
+MESSAGE = "NO_MESSAGES_SELECTED"
+TEXT    = "No messages have been selected"
+
+MESSAGE = "TRANSACTION"
+TEXT    = "Add messaging transaction"
+TEXT    = "Update messaging transaction"
+TEXT    = "Delete messaging transaction"
+
+MESSAGE = "TRANSACTION_ERROR"
+TEXT    = "Error Creating Message"
+TEXT    = "Error Updating Message"
+TEXT    = "Error Deleting Message"
+
+MESSAGE = "SENDER_HEADER"
+TEXT    = "Multiple Sender Selector"
+
+MESSAGE = "REPLY_DIVIDER"
+TEXT    = ""
+TEXT    = "Original Message -- "
+
+MESSAGE = "FORWARD_DIVIDER"
+TEXT    = ""
+TEXT    = "Original Message -- "
+
+MESSAGE = "MESSAGE_ID"
+TEXT    = "Message ID"
+
+MESSAGE = "MESSAGE_PRIORITY"
+TEXT    = "Low importance"
+TEXT    = ""
+TEXT    = "High importance"
+
+MESSAGE = "LOAD_ERROR"
+TEXT    = "Error loading message"
+
+MESSAGE GROUP = "SMP_MESSAGING_CATEGORY"
+
+MESSAGE = "_HEADER"
+TEXT    = "Category"
+

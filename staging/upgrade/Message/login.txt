@@ -1,0 +1,52 @@
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "LOGIN_"
+
+MESSAGE        = "COPY_OF"
+TEXT           = "Copy of "
+
+MESSAGE        = "DISP_INC"
+TEXT           = "Include in login"
+
+MESSAGE        = "DISP_REP"
+TEXT           = "Replicate number"
+
+MESSAGE        = "MU_DEC_REP"
+TEXT           = "- Replicates"
+
+MESSAGE        = "MU_EXCLUDE"
+TEXT           = "Exclude"
+
+MESSAGE        = "MU_INCLUDE"
+TEXT           = "Include"
+
+MESSAGE        = "MU_INC_REP"
+TEXT           = "+ Replicates"
+
+MESSAGE        = "MU_VIEW_ANAL"
+TEXT           = "View Analysis"
+
+MESSAGE        = "MU_VIEW_JOB_TMP"
+TEXT           = "View Job Template"
+
+MESSAGE        = "MU_VIEW_SMP_TMP"
+TEXT           = "View Sample Template"
+
+MESSAGE        = "PRE_LOGIN_HEAD"
+TEXT           = "Pre-Login Editor"
+
+MESSAGE        = "TITLE_FIELD"
+TEXT           = "Field"
+
+MESSAGE        = "TITLE_VALUE"
+TEXT           = "Value"
+
+MESSAGE        = "TRANS_JOBCOPY"
+TEXT           = "Job Copy"
+
+MESSAGE        = "TRANS_LOGIN"
+TEXT           = "Login entity"
+
+MESSAGE        = "TRANS_RESAMP"
+TEXT           = "Re-sample"

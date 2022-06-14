@@ -1,0 +1,133 @@
+MESSAGE GROUP "VGL_UNIT_TEST_"
+
+MESSAGE = "TEST_RESULTS"
+TEXT    = "Test Results: "
+
+MESSAGE = "SERVER_DETAILS"
+TEXT    = "Server details:"
+
+MESSAGE = "USER_NAME"
+TEXT    = "User Name: "
+
+MESSAGE = "DOMAIN_NAME"
+TEXT    = "Domain Name: "
+
+MESSAGE = "COMPUTER_NAME"
+TEXT    = "Computer name: "
+ 
+MESSAGE = "OPERATING_SYSTEM"
+TEXT    = "Operating System: "
+
+MESSAGE = "OS_VERSION"
+TEXT    = "OS Version: "
+ 
+MESSAGE = "CLIENT_DETAILS"
+TEXT    = "Client details:"
+
+MESSAGE = "PASS"
+TEXT    = "  PASS"
+
+MESSAGE = "FAIL"
+TEXT    = "  FAIL:"
+
+MESSAGE = "EXPECTED_OUTCOME"
+TEXT    = "    Expected outcome: "
+TEXT    = "Expected outcome: "
+
+MESSAGE = "ACTUAL_OUTCOME"
+TEXT    = "    Actual outcome  : "
+TEXT    = "Actual outcome: "
+
+MESSAGE = "FAILED"
+TEXT    = "FAILED"
+TEXT    = "Failed."
+
+MESSAGE = "PASSED"
+TEXT    = "PASSED"
+
+MESSAGE = "DATE"
+TEXT    = "Date: "
+
+MESSAGE = "RESULT"
+TEXT    = "Result: "
+
+MESSAGE = "TESTS_RUN"
+TEXT    = " Tests Run, "
+
+MESSAGE = "FAILURES_RECORDED"
+TEXT    = " failures recorded"
+
+MESSAGE = "SAMPLEMANAGER"
+TEXT    = "SampleManager"
+
+MESSAGE = "SUITE_ID"
+TEXT    = "Suite Id: "
+
+MESSAGE = "SUITE_NAME"
+TEXT    = "Suite Name: "
+
+MESSAGE = "SUITE_RESULT"
+TEXT    = "Suite Result: "
+
+MESSAGE = "SUCCESS"
+TEXT    = "Success!"
+
+MESSAGE = "OUT_OF"
+TEXT    = " out of "
+
+MESSAGE = "TESTS_PASSED"
+TEXT    = " tests passed"
+
+MESSAGE = "TESTS_FAILED"
+TEXT    = "The following tests failed: "
+
+MESSAGE = "REASON"
+TEXT    = "Reason: "
+
+MESSAGE = "OK"
+TEXT    = "OK. "
+
+MESSAGE = "TESTED"
+TEXT    = " tested. "
+
+MESSAGE = "NOT_OK"
+TEXT    = "Not OK. "
+
+MESSAGE = "PASSED_OUT_OF"
+TEXT    = " passed out of "
+
+MESSAGE = "MOST_RECENT_TEST"
+TEXT    = "Most Recent Test= "
+
+MESSAGE = "LOCATION"
+TEXT    = "Location "
+
+MESSAGE = "DOES_NOT_EXIST"
+TEXT    = " does not exist"
+
+MESSAGE = "BENCHMARK_LOCATION"
+TEXT    = "Benchmark location"
+
+MESSAGE = "BENCHMARK_DIRECTORY_LOCATION"
+TEXT    = "Please enter the directory where the benchmark files are located."
+
+MESSAGE = "BENCHMARK_FILE"
+TEXT    = "Benchmark file: "
+
+MESSAGE = "START_UNIT_TEST_ERROR"
+TEXT    = "Unable to access the current unit test. This is normally caused by not calling the action 'start_unit_test'."
+
+MESSAGE = "START_TEST_ERROR"
+TEXT    = "Unable to access the current test. This is normally caused by not calling the action 'start_test'."
+
+MESSAGE = "PREVIOUS_UNIT_TEST_ID"
+TEXT    = "The previous unit test id is: "
+
+MESSAGE = "FIRST_UNIT_TEST"
+TEXT    = "This is the first unit test."
+
+MESSAGE = "UNIT_TEST_ID"
+TEXT    = "Unit test identity: "
+
+MESSAGE = "FIRST_TEST"
+TEXT    = "This is the first test."

@@ -1,0 +1,7 @@
+MESSAGE GROUP = "SMP_NETWORK_"
+
+MESSAGE = "BADPROTOCOL"
+TEXT    = "Unknown protocol '[]'"
+
+MESSAGE = "CONNECT_FAIL"
+TEXT    = "Failed to connect to '[]' on '[]' using '[]'"

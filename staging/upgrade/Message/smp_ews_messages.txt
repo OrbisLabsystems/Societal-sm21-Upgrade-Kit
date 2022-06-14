@@ -1,0 +1,1489 @@
+MESSAGE GROUP = "WORK_LIB_"
+
+MESSAGE   = "USED_REMOVED"
+TEXT      = "Removed Template ID specified"
+
+MESSAGE   = "CANT_DO_IN_COM"
+TEXT      = "Committed Database is Set, Cannot update any Records"
+
+MESSAGE   = "INVALID_STATUS"
+TEXT      = "Invalid Worksheet Status for Modification"
+
+MESSAGE   = "NO_FOUND_WORKSHEET"
+TEXT      = "Invalid Worksheet ID Specified"
+
+MESSAGE   = "NO_AUTH_TO_ACT"
+TEXT      = "Unable to process worksheet, insufficient authority"
+
+MESSAGE   = "NO_CLOSE_FILE"
+TEXT      = "Error in Closing File : "
+
+MESSAGE   = "JOB_BOX_HEAD"
+TEXT      = "   Select Samples from Specified Job Name    "
+
+MESSAGE   = "JOB_BOX_MESS"
+TEXT      = "Job Name for Search : "
+
+MESSAGE   = "JOB_BOX_FOOT"
+TEXT      = " Job Name for search or press DO for all jobs "
+
+MESSAGE   = "GEN_WKS_MESS"
+TEXT      = " Generate Worksheet From Template "
+
+MESSAGE   = "GEN_WKS_EXIT_MESS"
+TEXT      = "        Press EXIT to Quit        "
+
+MESSAGE   = "GEN_WKS_ENTER_MESS"
+TEXT      = "Enter Template ID : "
+
+MESSAGE   = "ID_NOT_FOUND"
+TEXT      = "Invalid ID"
+
+MESSAGE   = "INCORRECT_STATUSU"
+TEXT      = "This Template has not been approved "
+
+MESSAGE   = "INCORRECT_STATUSC"
+TEXT      = "This Template has been Deleted "
+
+MESSAGE GROUP = "EWS_SETUP_"
+
+MESSAGE   = "READING_FILE"
+TEXT      = "Reading File : "
+
+MESSAGE   = "FLASH_HEAD"
+TEXT      = "              SampleManager EWS Setup Report              "
+
+MESSAGE   = "FLASH_FOOT"
+TEXT      = "                                                          "
+
+MESSAGE   = "CREATING_PHRASE"
+TEXT      = "Creating Phrase ID   : "
+
+MESSAGE   = "ERROR_CREATING_PHRASE"
+TEXT      = "Error - Could not create Phrase ID "
+
+MESSAGE   = "CREATING_HEADER"
+TEXT      = "Creating Phrase Type : "
+
+MESSAGE   = "ERROR_CREATING_HEADER"
+TEXT      = "Error - Could not create phrase type "
+
+MESSAGE   = "HEADER_EXISTS"
+TEXT      = "Phrase Type Already Exists"
+
+MESSAGE   = "ID_EXISTS"
+TEXT      = "Phrase ID Already Exists"
+
+MESSAGE   = "CREATING_REPORT"
+TEXT      = "Report ID Could not be found : "
+
+MESSAGE   = "CREATED_REPORT"
+TEXT      = "Adding Report ID : "
+
+MESSAGE   = "NO_CREATE_REPORT"
+TEXT      = "Error - Could not add the Report "
+
+MESSAGE   = "TEST_ALL"
+TEXT      = "Test all replicates each time"
+
+MESSAGE   = "TEST_ONE"
+TEXT      = "Test 1 replicate each time"
+
+MESSAGE   = "SAMP_1"
+TEXT      = "Job Name"
+
+MESSAGE   = "SAMP_2"
+TEXT      = "Ascending Priority"
+
+MESSAGE   = "SAMP_3"
+TEXT      = "Descending Priority"
+
+MESSAGE   = "SAMP_4"
+TEXT      = "Date Results Required"
+
+MESSAGE   = "SAMP_5"
+TEXT      = "Time in System"
+
+MESSAGE   = "SAMP_6"
+TEXT      = "Ascending Priority and Date Required"
+
+MESSAGE   = "SAMP_7"
+TEXT      = "Descending Priority and Date Required"
+
+MESSAGE   = "SAMP_8"
+TEXT      = "Ascending Priority and Time in System"
+
+MESSAGE   = "SAMP_9"
+TEXT      = "Descending Priority and Time in System"
+
+MESSAGE   = "TEMP_1"
+TEXT      = "Unapproved"
+
+MESSAGE   = "TEMP_2"
+TEXT      = "Approved"
+
+MESSAGE   = "TEMP_3"
+TEXT      = "Suspended"
+
+MESSAGE   = "SOUR_1"
+TEXT      = "Search for Samples"
+
+MESSAGE   = "SOUR_2"
+TEXT      = "Enter Samples Manually"
+
+MESSAGE   = "SOUR_3"
+TEXT      = "Enter Tests Manually"
+
+MESSAGE   = "MENU_TITLE"
+TEXT      = "Setup Options"
+
+MESSAGE   = "MENU_1"
+TEXT      = "Full Setup of all options"
+
+MESSAGE   = "MENU_2"
+TEXT      = "Setup Phrases"
+
+MESSAGE   = "MENU_3"
+TEXT      = "Add Reports"
+
+MESSAGE   = "MENU_4"
+TEXT      = "Compile Reports"
+
+MESSAGE   = "COMP_REP"
+TEXT      = "Component Replicate Phrases"
+
+MESSAGE   = "SAMP_SORT"
+TEXT      = "Enhanced Worksheets Sort Phrases"
+
+MESSAGE   = "TEMP_STAT"
+TEXT      = "Enhanced Worksheets Template Status"
+
+MESSAGE   = "SAMP_SOUR"
+TEXT      = "Enhanced Worksheets Sample Source"
+
+MESSAGE   = "REPORT_TITLE"
+TEXT      = "Add Standard Reports to Database"
+
+MESSAGE GROUP = "LTE_WORKT_"
+
+MESSAGE   = "HEADER_MESS"
+TEXT      = "Worksheet Template Data Entry Screen"
+
+MESSAGE   = "FOOTER_MESS"
+TEXT      = "DO to Save / EXIT to Quit / SELECT for more options"
+
+MESSAGE   = "DISP_FOOTER_MESS"
+TEXT      = "DO to Save / EXIT to Quit / SELECT for more options"
+
+MESSAGE   = "PROMPT_DETAILS"
+TEXT      = "Description"
+TEXT      = "Search Analysis ID"
+TEXT      = "Minimum Number Samples"
+TEXT      = "Sample List Source"
+TEXT      = "Sample Sort Criteria"
+TEXT      = "Edit Sample List"
+TEXT      = "Prompt for Operator"
+TEXT      = "Default Operator"
+TEXT      = "Number Test Sessions"
+TEXT      = "Random Controls"
+TEXT      = "Random Control ID"
+TEXT      = "Number Random Controls"
+TEXT      = "Modifiable"
+TEXT      = "Group ID"
+TEXT      = "Review Worksheet"
+TEXT      = "Review Controls"
+TEXT      = "Review Calibrations"
+TEXT      = "Print Barcodes"
+TEXT      = "Leave Space for Results"
+TEXT      = "Automatic Printing"
+TEXT      = "Printer ID"
+TEXT      = "Component Replicates"
+
+MESSAGE   = "WSHT_TEMP"
+TEXT      = "Worksheet Template"
+
+MESSAGE   = "INPUT_MESS"
+TEXT      = "Enter Template ID : "
+
+MESSAGE   = "OPTIONS_TITLE"
+TEXT      = "Worksheet Template Options"
+
+MESSAGE   = "OPTIONS"
+TEXT      = "1. Session Definition "
+TEXT      = "2. Sequence Definition "
+TEXT      = "3. Sample Search Fields "
+TEXT      = "4. Edit Text File"
+
+MESSAGE   = "SEARCH_ERROR"
+TEXT      = "A Search Analysis must be specified for the Template"
+
+MESSAGE   = "OPERATOR_ERROR"
+TEXT      = "The default operator is not approved for the Search Analysis"
+
+MESSAGE GROUP = "WORK_SESS_"
+
+MESSAGE   = "DUP_COMP"
+TEXT      = "This Component has already been Assigned to this Session"
+
+MESSAGE   = "DUP_SES"
+TEXT      = "This Session Name has already been assigned"
+
+MESSAGE   = "ERROR_IN_FILE"
+TEXT      = "Text File Error : "
+
+MESSAGE   = "MAX_SESS_ASSIGNED"
+TEXT      = "The Maximum Number of Sessions has been assigned"
+
+MESSAGE   = "DONE_OK"
+TEXT      = "The Session Definitions have been Saved"
+
+MESSAGE   = "NOT_DONE_OK"
+TEXT      = "The Session Definitions have Not been Saved"
+
+MESSAGE   = "COMP_HEADER"
+TEXT      = "Components for Analysis "
+
+MESSAGE   = "NOT_A_COMP"
+TEXT      = "Invalid Component Name"
+
+MESSAGE   = "NO_ANAL_FOR_SESS"
+TEXT      = "Session does not have an analysis defined"
+
+MESSAGE   = "ILLEGAL_REPLICATES"
+TEXT      = "Illegal Definition, Different replicate factors defined for the same analysis"
+
+MESSAGE   = "ILLEGAL_STRUCTURE"
+TEXT      = "Illegal Definition, Session Analysis may only be defined consecutively"
+
+MESSAGE   = "NOT_SEARCH_ANAL"
+TEXT      = "Illegal Definition, Last Session must use the Search Analysis"
+
+MESSAGE   = "COMP_BOX_FOOT1"
+TEXT      = "     REMOVE/INSERT entry ; DO/EXIT - Sessions     "
+
+MESSAGE   = "COMP_BOX_FOOT2"
+TEXT      = "        Press SELECT for X-Axis Components        "
+
+MESSAGE   = "DUP_PARAM"
+TEXT      = "THIS Parameter has already been Defined"
+
+MESSAGE   = "TEST_SESS"
+TEXT      = "                           Test Sessions                            "
+
+MESSAGE   = "TEST_TITLE"
+TEXT      = " Number   Name                                   Analysis  Rep"
+
+MESSAGE   = "TEMP_SESS"
+TEXT      = " Template :            Session : "
+
+MESSAGE   = "COMP_CALIB"
+TEXT      = " Component                           Contrl Calib "
+
+MESSAGE   = "CALIB_GRAPH"
+TEXT      = "       Calibration Graph Components        "
+
+MESSAGE   = "COMP_TYPE"
+TEXT      = "Component                                Type"
+
+MESSAGE   = "REM_INS"
+TEXT      = "         REMOVE/INSERT sessions ; SELECT - for more options         "
+
+MESSAGE   = "OPTION_TITLE"
+TEXT      = "Test Session Options"
+
+MESSAGE   = "OPTIONS"
+TEXT      = "1. Session Components"
+TEXT      = "2. Start/End Session Parameters"
+
+MESSAGE   = "WORK_TEMP"
+TEXT      = "   Worksheet Template Sessions   "
+
+MESSAGE   = "ENTER_TEMP"
+TEXT      = "Enter Template ID : "
+
+MESSAGE   = "EXIT"
+TEXT      = "        Press EXIT to Quit       "
+
+MESSAGE   = "MENU_TITLE"
+TEXT      = "Session Options"
+
+MESSAGE   = "MENU"
+TEXT      = "Modify Session List"
+TEXT      = "Display Session List"
+
+MESSAGE   = "PAR_SESS"
+TEXT      = " Parameters Session : "
+
+MESSAGE   = "START_SESS"
+TEXT      = "Start of Session      Type   "
+
+MESSAGE   = "END_SESS"
+TEXT      = "End of Session        Type   "
+
+MESSAGE   = "BLANK_SESS"
+TEXT      = "                                      "
+
+MESSAGE   = "DO_EXIT"
+TEXT      = "  Press DO or EXIT to Return  "
+
+MESSAGE   = "SESSION"
+TEXT      = "Session "
+
+MESSAGE   = "COMPNTS"
+TEXT      = "Components"
+
+MESSAGE   = "PAR_PRE_POST"
+TEXT      = "Parameters     :  Pre Session                 Post Session"
+
+MESSAGE GROUP = "WORK_TEMP_"
+
+MESSAGE   = "PAT_MESS"
+TEXT      = "      PATTERN SEQUENCE      "
+
+MESSAGE   = "REP_MESS"
+TEXT      = "       REPEAT SEQUENCE      "
+
+MESSAGE   = "TRAIL_MESS"
+TEXT      = "     TRAIL SEQUENCE      "
+
+MESSAGE   = "HEAD_MESS1"
+TEXT      = "Type       Entry      Rep    "
+
+MESSAGE   = "HEAD_MESS"
+TEXT      = "Type       Entry      Rep  SN"
+
+MESSAGE   = "UPDATED_OK"
+TEXT      = "The Sequence Definitions have been Updated"
+
+MESSAGE   = "NOT_UPDATE"
+TEXT      = "The Sequence Definitions have Not been Updated"
+
+MESSAGE   = "INVALID_ID"
+TEXT      = "The ID you entered does not exist"
+
+MESSAGE   = "TEMP_APPROVED"
+TEXT      = "The Template has been Approved"
+
+MESSAGE   = "TEMP_NOTAPPROVED"
+TEXT      = "The Template has NOT been Approved"
+
+MESSAGE   = "TEMP_CANCELLED"
+TEXT      = "The Template has been Deleted  "
+
+MESSAGE   = "TEMP_NOTCANCELLED"
+TEXT      = "The Template has NOT been Deleted  "
+
+MESSAGE   = "NOT_FOUND_REC"
+TEXT      = "Could Not find record for "
+
+MESSAGE   = "INCORRECT_STAN"
+TEXT      = "Incorrect Standard Type for this entry"
+
+MESSAGE   = "USED_REMOVED"
+TEXT      = "Removed Template ID specified"
+
+MESSAGE   = "ERROR_IN_FILE"
+TEXT      = "Text File Error : "
+
+MESSAGE   = "DFOOT_TITLE"
+TEXT      = " INSERT/REMOVE an Entry; SPACEBAR to Choose entry type; SELECT for REPEAT entry "
+
+MESSAGE   = "DFOOT_REP"
+TEXT      = "             Enter the Number of Replicates required for the Samples            "
+TEXT      = "            Enter the Number of Replicates required for the Standard            "
+
+MESSAGE   = "ENTER"
+TEXT      = "                   Enter how many Samples to add at this point                  "
+TEXT      = "                  Enter the Control Standard to add at this point               "
+TEXT      = "              Enter the Calibration Standard to add at this point               "
+TEXT      = "                 Enter the Blank Standard to add at this point                  "
+TEXT      = "                 Enter number of times to insert Repeat Sequence                "
+TEXT      = "                            Enter the Session Number                            "
+
+MESSAGE   = "DFOOT_INS"
+TEXT      = "            INSERT an Entry ;  SELECT - Enter Trail Sequence Window             "
+
+MESSAGE   = "DFOOT_REM"
+TEXT      = " INSERT/REMOVE Entry ; SPACEBAR - Entry type ; DO - Return to Pattern Sequence  "
+
+MESSAGE   = "WKS_TEMP"
+TEXT      = "       Worksheet Templates       "
+
+MESSAGE   = "PRESS_EXIT"
+TEXT      = "       Press EXIT to Quit        "
+
+MESSAGE   = "ENTER_PAT"
+TEXT      = "Enter Pattern ID : "
+
+MESSAGE   = "MENU_TITLE"
+TEXT      = "Template Options"
+
+MESSAGE   = "MENU"
+TEXT      = "1. Modify Template"
+TEXT      = "2. Display Template"
+TEXT      = "3. Print Template"
+
+MESSAGE   = "APPR_TEMP"
+TEXT      = "       Approve Template Option        "
+
+MESSAGE   = "ENTER_TEMP"
+TEXT      = "Enter Template ID : "
+
+MESSAGE   = "EXIT_QUIT"
+TEXT      = "          Press EXIT to Quit          "
+
+MESSAGE   = "DEL_TEMP"
+TEXT      = "        Delete Template Option        "
+
+MESSAGE   = "SEQ_TEMP"
+TEXT      = "The Sequences for the template are as follows"
+
+MESSAGE   = "MAIN_PAT"
+TEXT      = "Main Pattern"
+
+MESSAGE   = "TYPE_ENTRY"
+TEXT      = "Type       Entry      Rep  SN"
+
+MESSAGE   = "REP_SEQ"
+TEXT      = "Repeat Sequence"
+
+MESSAGE   = "TRAIL_SEQ"
+TEXT      = "Trail Sequence"
+
+MESSAGE   = "TOP_MESS"
+TEXT      = "Worksheet Template : "
+TEXT      = "     Analysis : "
+
+MESSAGE   = "PUT_FOOT"
+TEXT      = "        DO or EXIT to Quit ; SELECT to View Repeat or Trail Sequence                                                                     "
+
+MESSAGE GROUP = "WORK_FLD_"
+
+MESSAGE   = "THE_TOP_LINE"
+TEXT      = "Worksheet Templates - Sample Search Criteria"
+
+MESSAGE   = "LIST_BOT_LINE"
+TEXT      = "Use UP/DOWN, REMOVE/INSERT, NEXT/PREVIOUS SCREEN and DO/EXIT"
+
+MESSAGE   = "THE_LIST_HEADER"
+TEXT      = "       Prompt Text                    Default Value"
+
+MESSAGE   = "WSH_TEMP"
+TEXT      = "       Worksheet Templates       "
+
+MESSAGE   = "EXIT_QUIT"
+TEXT      = "       Press EXIT to Quit        "
+
+MESSAGE   = "ENTER_PAT"
+TEXT      = "Enter Pattern ID : "
+
+MESSAGE   = "MENU_TITLE"
+TEXT      = "Template Options"
+
+MESSAGE   = "MENU"
+TEXT      = "1. Modify Template"
+TEXT      = "2. Display Template"
+TEXT      = "3. Print Template"
+
+MESSAGE   = "BOX_HEADER"
+TEXT      = "Insert Field Into Template"
+
+MESSAGE   = "ENTER_NAME"
+TEXT      = "Enter Field Name : "
+
+MESSAGE   = "ERROR_CLOSE"
+TEXT      = "Error closing file "
+
+MESSAGE   = "ERROR_CREATE"
+TEXT      = "Error creating file "
+
+MESSAGE   = "ERROR_WRITE"
+TEXT      = "Error writing file "
+
+MESSAGE   = "ERROR_DEL"
+TEXT      = "Error deleting file "
+
+MESSAGE   = "SEL_CRIT"
+TEXT      = "The following sample fields have been defined as selection criteria"
+
+MESSAGE   = "SAMP_FLD"
+TEXT      = "Sample field"
+
+MESSAGE   = "VAL"
+TEXT      = "Value"
+
+MESSAGE   = "NO_SAMP"
+TEXT      = "No sample fields were defined for selection criteria"
+
+MESSAGE   = "ENTRY_EXISTS"
+TEXT      = "This entry already exists"
+
+MESSAGE GROUP = "WORKT_GEN_"
+
+MESSAGE   = "NO_SEQUENCES"
+TEXT      = "No Sequence Definitions have been made for this Template"
+
+MESSAGE   = "NO_SESSIONS_DEFINED"
+TEXT      = "No Sessions have been defined for this Template"
+
+MESSAGE   = "NO_GEN_WORK"
+TEXT      = "Worksheet Has not Been Successfully Created"
+
+MESSAGE   = "LOGGED_STANDARD"
+TEXT      = "Created New Standard : "
+
+MESSAGE   = "NO_CREATE_RECORD"
+TEXT      = "Error in Creating Worksheet Record :"
+
+MESSAGE   = "INVALID_OPERATOR"
+TEXT      = "This Operator has Not Been Approved for Analysis "
+
+MESSAGE   = "NOT_ENOUGH_SAMPLES"
+TEXT      = "There are not enough Samples to Generate the Worksheet"
+
+MESSAGE   = "INCORRECT_STATUSU"
+TEXT      = "This Template has not been approved "
+
+MESSAGE   = "INCORRECT_STATUSC"
+TEXT      = "This Template has been Deleted "
+
+MESSAGE   = "DNO_IN_LIST"
+TEXT      = "Number in List : "
+
+MESSAGE   = "COMPILE_MESS"
+TEXT      = "Compiling List of Samples for Worksheet - Press EXIT to Interrupt"
+
+MESSAGE   = "READ_MESS"
+TEXT      = "Reading List of Samples for Worksheet  "
+
+MESSAGE   = "TEMPLATE_NOT_APPROVED"
+TEXT      = "The Template Specified Has Not Been Approved "
+
+MESSAGE   = "MOD_LIST_FOOT"
+TEXT      = "     SELECT/FIND/REMOVE/INSERT-Screen Editing Keys / DO-Save / EXIT-Quit    "
+
+MESSAGE   = "INSERT_SING_HEAD"
+TEXT      = "               Removed Tests                    "
+
+MESSAGE   = "INSERT_SING_FOOT"
+TEXT      = "     Press Do to Insert Test / EXIT to Quit     "
+
+MESSAGE   = "BLOCK_MODE"
+TEXT      = " Block Removal Mode Selected  "
+
+MESSAGE   = "STOP_BLOCK_MODE"
+TEXT      = " Block Removal Mode Cancelled "
+
+MESSAGE   = "GEN_ENHANCED_WKS"
+TEXT      = "                            Generate Analysis Worksheet                          "
+
+MESSAGE   = "WKS_SEARCH_ID"
+TEXT      = "Analysis ID : "
+
+MESSAGE   = "CREATE_WORKS"
+TEXT      = "Creating Worksheet : "
+
+MESSAGE   = "USED_REMOVED"
+TEXT      = "Removed Template ID specified"
+
+MESSAGE   = "ID_NOT_FOUND"
+TEXT      = "Invalid ID"
+
+MESSAGE   = "FILE_ERROR"
+TEXT      = "Text File Error - "
+
+MESSAGE   = "FILE_NOT_FOUND"
+TEXT      = "Error Could Not Find The File :"
+
+MESSAGE   = "RECORD_NOT_FOUND"
+TEXT      = "Error Could Not Find Record for "
+
+MESSAGE   = "OP_ASSIGN1"
+TEXT      = "       Operator Assignment       "
+
+MESSAGE   = "OP_ASSIGN2"
+TEXT      = "Enter Operator ID : "
+
+MESSAGE   = "BAD_TEST"
+TEXT      = "Error assigning test to "
+
+MESSAGE   = "BT_TO"
+TEXT      = " to "
+
+MESSAGE   = "SAMPS_SELECTED"
+TEXT      = "    Samples Selected    "
+
+MESSAGE   = "SELECTED_TEST"
+TEXT      = " No Found  :            "
+
+MESSAGE   = "SELECTED_SAMPLE"
+TEXT      = " Sample ID :            "
+
+MESSAGE   = "CONST_WORK"
+TEXT      = " Constructing Worksheet - Please Wait "
+
+MESSAGE   = "FILE_STORE"
+TEXT      = "Generic Analysis id "
+TEXT      = "Number of Sessions "
+TEXT      = "Number of Test Lists "
+TEXT      = "No of Samples in List "
+TEXT      = "Sample List "
+TEXT      = "ID text, id_numeric, sample_status, start_session,sample_type,replicates"
+TEXT      = "Session "
+TEXT      = " Information "
+TEXT      = " Number, Test List and Name"
+TEXT      = "Replicate order flag and Number of Components in session "
+TEXT      = "Start Prompt Info"
+TEXT      = "End Prompt Info"
+TEXT      = "Test Replicate factor (Number of Replicates)"
+TEXT      = "Session no, Analysis ID and Component Names"
+TEXT      = "List of Samples and Standards same as generic"
+TEXT      = "List of Samples and Standards same previous session "
+TEXT      = "Test Status, sample number, test_number, replicate and component replicates "
+
+MESSAGE   = "CONST_WKS"
+TEXT      = " Constructing Worksheet - Please Wait "
+
+MESSAGE GROUP = "WORK_PRNT_"
+
+MESSAGE   = "NO_FOUND_WKS"
+TEXT      = "Error reading Worksheet record - Default Setting Used"
+
+MESSAGE   = "NO_FOUND_WKS_EXIT"
+TEXT      = "Cannot find Worksheet record"
+
+MESSAGE   = "NO_FOUND_TEMP"
+TEXT      = "Error reading Template record - Default Setting Used"
+
+MESSAGE   = "NO_RES_MESS"
+TEXT      = "No Result Required"
+
+MESSAGE   = "NO_CLOSE_FILE"
+TEXT      = "Error in Closing File : "
+
+MESSAGE   = "NO_OPEN_FILE"
+TEXT      = "Error in Opening File : "
+
+MESSAGE   = "NO_WKS_FILE"
+TEXT      = "Could not find Worksheet File : "
+
+MESSAGE   = "PRT_TEMP"
+TEXT      = "       Print Template Worksheet       "
+
+MESSAGE   = "EXIT_QUIT"
+TEXT      = "          Press EXIT to Quit          "
+
+MESSAGE   = "ENTER_ID"
+TEXT      = "Enter Worksheet ID : "
+
+MESSAGE   = "PRT_CALC"
+TEXT      = "Print Calculations : No "
+
+MESSAGE   = "SPC_RES"
+TEXT      = "Space For Results  : Yes"
+
+MESSAGE   = "DISP_BAR"
+TEXT      = "Display Bar Codes  : No "
+
+MESSAGE   = "NO"
+TEXT      = "No "
+
+MESSAGE   = "HEADER_1"
+TEXT      = " Worksheet : []   Date:[]                    Page ## "
+
+MESSAGE   = "HEADER_2"
+TEXT      = " Worksheet : []            Date:[]                    Page ## "
+
+MESSAGE   = "NO_SAMP"
+TEXT      = "  No samples are on this worksheet"
+
+MESSAGE   = "DATE_GENER"
+TEXT      = "  Date Generated   : "
+
+MESSAGE   = "GEN_ID"
+TEXT      = "  Generator ID     : "
+
+MESSAGE   = "USER_ID"
+TEXT      = "  User ID          : "
+
+MESSAGE   = "SEARCH_ANAL"
+TEXT      = "  Search Analysis  : "
+
+MESSAGE   = "FOOTER"
+TEXT      = "End of Worksheet "
+
+MESSAGE   = "SESS"
+TEXT      = " Sample ID/Rep                    Session 1"
+TEXT      = " Sample ID/Rep                    Session 1      Session 2"
+TEXT      = " Sample ID/Rep                    Session 1      Session 2      Session 3"
+
+
+MESSAGE   = "SESSION"
+TEXT      = "       Session     : "
+
+MESSAGE   = "NAME"
+TEXT      = "       Name        : "
+
+MESSAGE   = "ANAL_ID"
+TEXT      = "        Analysis ID : "
+
+MESSAGE   = "SAMP_REP"
+TEXT      = "     Sample Name / Replicates    "
+
+MESSAGE   = "SESS_NO"
+TEXT      = " Session No : "
+
+MESSAGE   = "SESS_NO_1"
+TEXT      = "Session No "
+
+MESSAGE   = "SESS_COMP"
+TEXT      = " Session Components               "
+
+MESSAGE   = "RES"
+TEXT      = "   Results                "
+
+MESSAGE   = "SESS_NAME"
+TEXT      = " Session : []  Name : []"
+
+MESSAGE   = "PRE_SESS"
+TEXT      = "                     Pre-Session                   "
+
+MESSAGE   = "POST_SESS"
+TEXT      = "                   Post-Session                    "
+
+MESSAGE GROUP = "WORKREV_"
+
+MESSAGE   = "HELP_KEY"
+TEXT      = "|HELP|"
+
+MESSAGE   = "MARK_BAD"
+TEXT      = "SELECT - Indicate BAD/GOOD Samples, FIND - Call Menu options"
+
+MESSAGE   = "NO_MARK_BAD"
+TEXT      = "FIND - Call Menu options"
+
+MESSAGE   = "NO_FIND"
+TEXT      = "Could not Find the file : "
+
+MESSAGE   = "NO_OPEN"
+TEXT      = "Could not Open the file : "
+
+MESSAGE   = "NO_CLOSE"
+TEXT      = "Could Not Close the file : "
+
+MESSAGE   = "NO_CNTRL_STAND"
+TEXT      = "Worksheet Contains No Control Standards"
+
+MESSAGE   = "NO_CALIB_STAND"
+TEXT      = "Worksheet Contains No Calibration Standards"
+
+MESSAGE   = "DIV_BY_ZERO"
+TEXT      = "Division by Zero - No Linefit Possible"
+
+MESSAGE   = "NO_CALIB_GRAPH"
+TEXT      = "No Calibration Graphs have been defined"
+
+MESSAGE   = "NO_CNTRL_GRAPH"
+TEXT      = "No Control Plots have been defined"
+
+MESSAGE   = "AUTH_WORKS"
+TEXT      = "Authorising Worksheet"
+
+MESSAGE   = "AUTH_RES"
+TEXT      = " Authorising Results "
+
+MESSAGE   = "REJ_RES"
+TEXT      = "  Rejecting Results  "
+
+MESSAGE   = "AUTH_TES"
+TEXT      = "  Authorising Tests  "
+
+MESSAGE   = "REJ_TES"
+TEXT      = "   Rejecting Tests   "
+
+MESSAGE   = "AUTH_GRAPH"
+TEXT      = "  Authorising Graphs "
+
+MESSAGE   = "STN"
+TEXT      = "The Standard"
+
+MESSAGE   = "NO_MLP"
+TEXT      = "Contains no value for the component"
+
+MESSAGE   = "NO_POINTS"
+TEXT      = "There are no points that can be plotted for this chart"
+
+MESSAGE   = "NO_CNTRLPOINTS"
+TEXT      = "No limits have been defined for this Control Standard"
+
+MESSAGE   = "SAVED_OK"
+TEXT      = "The Graph Parameters have been Saved"
+
+MESSAGE   = "CALIB_HEAD"
+TEXT      = "Calibration Worksheet Review for "
+
+MESSAGE   = "CONTRL_HEAD"
+TEXT      = "Control Worksheet Review for "
+
+MESSAGE   = "TOP_HEAD1"
+TEXT      = "SampleManager Worksheet Review"
+
+MESSAGE   = "TOP_HEAD"
+TEXT      = "SampleManager Worksheet Review for "
+
+MESSAGE   = "CALIB_TB"
+TEXT      = "Pn  X-Value    Y-Value  Bad"
+
+MESSAGE   = "CONTRL_TB"
+TEXT      = " Posn       Y-Value    Bad "
+
+MESSAGE   = "CALIB_INFO"
+TEXT      = "         Calibration Graph Parameters          "
+
+MESSAGE   = "WORK_REV"
+TEXT      = "               Worksheet Review                  "
+
+MESSAGE   = "PRESS_EXIT"
+TEXT      = "              Press EXIT to Quit                 "
+
+MESSAGE   = "ENTER_WKS"
+TEXT      = "Enter Worksheet ID : "
+
+MESSAGE   = "CNTRL_SPEC"
+TEXT      = "       Control Plots Specified        "
+
+MESSAGE   = "DSESS_COMP"
+TEXT      = "Sess  Component                       "
+
+MESSAGE   = "CALIBS"
+TEXT      = "                      Calibration  Graphs                      "
+
+MESSAGE   = "CHCALIB"
+TEXT      = "Ses Y-Comp                     X-Comp                      Type"
+
+MESSAGE   = "CONTS"
+TEXT      = " Controls "
+
+MESSAGE   = "STANID"
+TEXT      = " Sample ID / Test Replicate "
+
+MESSAGE   = "MEAN_MESS"
+TEXT      = " Mean : "
+
+MESSAGE   = "SD_MESS"
+TEXT      = " SD   : "
+
+MESSAGE   = "UCL_MESS"
+TEXT      = "UCL  :"
+
+MESSAGE   = "LCL_MESS"
+TEXT      = "LCL  :"
+
+MESSAGE   = "VS_MESS"
+TEXT      = " vs "
+
+MESSAGE   = "GRAD_MESS"
+TEXT      = "Gradient : "
+
+MESSAGE   = "INTER_MESS"
+TEXT      = "Intercept : "
+
+MESSAGE   = "WKS_IS_LOCKED"
+TEXT      = "This Worksheet is locked - Exiting Review"
+
+MESSAGE   = "NO_FIND_WKS"
+TEXT      = "Could not find record for Worksheet - Exiting Review"
+
+MESSAGE   = "YOU_CANT_SEE_THIS"
+TEXT      = "This Worksheet is assigned to user "
+
+MESSAGE   = "DREAD_MESS"
+TEXT      = "Reading Worksheet - Please Wait"
+
+MESSAGE   = "READ_RESULTS"
+TEXT      = "Reading Results for Graph - Please Wait"
+
+MESSAGE   = "ALREADY_AUTH"
+TEXT      = "Worksheet is already Authorised"
+
+MESSAGE   = "CANNOT_REJ"
+TEXT      = "This Worksheet has Previously been Authorised"
+
+MESSAGE   = "WKS_IS_REJ"
+TEXT      = "This Worksheet has been Rejected"
+
+MESSAGE   = "NOT_FINISHED"
+TEXT      = "The Worksheet Must be Completed before this Option Can be Selected"
+
+MESSAGE   = "WORKS_POS"
+TEXT      = "Position"
+
+MESSAGE   = "CNTRL_CHART_MESS"
+TEXT      = "Standard Control Results"
+
+MESSAGE   = "NO_FIND_TEMPLATE"
+TEXT      = "Could not find Template Record - Using Default Values"
+
+MESSAGE   = "REVIEW_NOT_ENABLED"
+TEXT      = "Review has Not been Enabled for this Worksheet"
+
+MESSAGE   = "INVALID_PLOTTER"
+TEXT      = "Unknown plotter device specified"
+
+MESSAGE   = "INVALID_ID"
+TEXT      = "The ID you entered does not exist"
+
+MESSAGE   = "NOT_FOR_COMP"
+TEXT      = "Error - Worksheet cannot be completed, is at status "
+
+MESSAGE   = "REVIEW_TITLE"
+TEXT      = "Select Review Status"
+
+MESSAGE   = "REVIEW"
+TEXT      = "Available Worksheets"
+TEXT      = "In-Progress Worksheets"
+TEXT      = "Completed Worksheets"
+TEXT      = "Authorised Worksheets"
+TEXT      = "Suspended Worksheets"
+TEXT      = "All Worksheets"
+
+MESSAGE   = "CHART_TITLE"
+TEXT      = "Worksheet Review"
+
+MESSAGE   = "CHART"
+TEXT      = "Review Controls"
+TEXT      = "Review Calibration "
+TEXT      = "Review Samples"
+TEXT      = "Complete Worksheet"
+TEXT      = "Authorise Worksheet"
+TEXT      = "Reject Worksheet"
+
+MESSAGE   = "CALIB_TITLE"
+TEXT      = "Options Available"
+
+MESSAGE   = "CALIB"
+TEXT      = "Redraw graph"
+TEXT      = "DataTree for Standard"
+TEXT      = "Save Calibration Graph"
+TEXT      = "Print Calibration Graph"
+
+MESSAGE   = "CNTRL_TITLE"
+TEXT      = "Options Available"
+
+MESSAGE   = "CNTRL"
+TEXT      = "Redraw Control Graph"
+TEXT      = "DataTree for Standard"
+TEXT      = "Print Control Chart"
+TEXT      = "Save Mean and S.D."
+
+MESSAGE   = "SELECT_DEST"
+TEXT      = "Select Output Destination : "
+
+MESSAGE   = "REJECT_TITLE"
+TEXT      = "Select Rejection Method"
+
+MESSAGE   = "REJECT"
+TEXT      = "Reset Worksheet to Previous Session"
+TEXT      = "Release Samples and Cancel Standards and Worksheet"
+
+MESSAGE   = "HEADER_1"
+TEXT      = "Worksheet Review for [] Generated on []     Page ##"
+
+MESSAGE   = "VG_WORK"
+TEXT      = "SampleManager Worksheet Review"
+
+MESSAGE   = "WORK_ID"
+TEXT      = "       Worksheet ID : "
+
+MESSAGE   = "CALIB_PLOT"
+TEXT      = "       Calibration Plot for "
+
+MESSAGE   = "GRAPH_PAR"
+TEXT      = "Graph Parameters"
+
+MESSAGE   = "GRAD_INT"
+TEXT      = "               Gradient : []       Intercept : []"
+
+
+MESSAGE   = "X_Y"
+TEXT      = "       |            Standard             |   X Axis   |   Y Axis   | Bad |"
+
+MESSAGE   = "CONTROL_CHART"
+TEXT      = "        Control Chart for []"
+
+MESSAGE   = "CHART_PAR"
+TEXT      = "Chart Parameters"
+
+MESSAGE   = "MEAN_UCL"
+TEXT      = "                 Mean : []            UCL : []"
+
+MESSAGE   = "SD_LCL"
+TEXT      = "                 SD   : []            LCL : []"
+
+MESSAGE   = "POS_VAL"
+TEXT      = "       |            Standard             |  Position  |    Value   | Bad |"
+
+MESSAGE GROUP = "WORK_MOD_"
+
+MESSAGE   = "REPLACE_REMOVED"
+TEXT      = "This sample has already been removed from the list, Confirm replacement"
+
+MESSAGE   = "MOD_HEAD_INFO1"
+TEXT      = "Modifying "
+
+MESSAGE   = "MOD_HEAD_INFO2"
+TEXT      = "Empty "
+
+MESSAGE   = "MOD_HEAD_INFO3"
+TEXT      = "Worksheet "
+
+MESSAGE   = "MOD_HEAD_INFO4"
+TEXT      = "Cancelling Tests for "
+
+MESSAGE   = "BLANK_OUT"
+TEXT      = "                                                                    "
+
+MESSAGE   = "INVALID_SAMP"
+TEXT      = "Cound Not find the record for this sample"
+
+MESSAGE   = "ALREADY_IN_WKS"
+TEXT      = "This Sample is already assigned to the worksheet"
+
+MESSAGE   = "CANT_INSERT_HERE"
+TEXT      = "Samples can only be inserted in the first empty space"
+
+MESSAGE   = "MOD_FOOT_INFO"
+TEXT      = " DO-Save, EXIT-Quit, INSERT HERE-Add Sample, REMOVE-Remove sample   "
+
+MESSAGE   = "MOD_TITLE"
+TEXT      = "ID Numeric            ID Text              Status Session Type Repl "
+
+MESSAGE   = "CANC_FOOT_INFO"
+TEXT      = "    DO-Save, EXIT-Quit, SELECT-Mark Sample Tests for Cancellation   "
+
+MESSAGE   = "MODY_MESS"
+TEXT      = "       Modify Template Worksheet      "
+
+MESSAGE   = "FOOT_MESS"
+TEXT      = "          Press Exit to Quit          "
+
+MESSAGE   = "ENT_WKS_ID"
+TEXT      = "Worksheet ID : "
+
+MESSAGE   = "SAMP_MESS"
+TEXT      = "        Insert Sample in Worksheet        "
+
+MESSAGE   = "SAMP_FOOT_MESS"
+TEXT      = "            Press Exit to Quit            "
+
+MESSAGE   = "SAMP_ENT_ID"
+TEXT      = "Sample ID : "
+
+MESSAGE   = "NEED_MORE_TESTS"
+TEXT      = "Insufficient tests were found to add the sample, Confirm assign more tests "
+
+MESSAGE   = "GET_REP_NO"
+TEXT      = "No of Replicates : "
+
+MESSAGE   = "IS_STANDARD"
+TEXT      = "The ID entered belongs to a Standard"
+
+MESSAGE   = "WKS_USED_CANCEL_ONLY"
+TEXT      = "Worksheet has been used beyond first session,Samples may only be cancelled"
+
+MESSAGE   = "ADDING_TEST"
+TEXT      = "Adding Test : "
+
+MESSAGE   = "SAVING_WORKSHEET"
+TEXT      = "Saving Worksheet Definitions - Please Wait"
+
+MESSAGE   = "TEST_ASSN"
+TEXT      = "  Worksheet Test Assignment  "
+
+MESSAGE   = "REPLACE_ORIG"
+TEXT      = "Insert Removed Tests"
+
+MESSAGE   = "CREATE_NEW"
+TEXT      = "  Assign New Tests  "
+
+MESSAGE   = "TEST_EXIT"
+TEXT      = "Press EXIT to Quit Assignment"
+
+MESSAGE   = "ALREADY_EMPTY"
+TEXT      = "This Space is already empty"
+
+MESSAGE   = "NO_SAMPLES_HERE"
+TEXT      = "No samples are in this Worksheet"
+
+MESSAGE   = "NO_CLOSE_FILE"
+TEXT      = "Error in Closing File : "
+
+MESSAGE   = "NO_OPEN_FILE"
+TEXT      = "Error in Opening File : "
+
+MESSAGE   = "NO_WKS_FILE"
+TEXT      = "Could not find Worksheet File : "
+
+MESSAGE   = "FILE_ERROR"
+TEXT      = "Text File Error - "
+
+MESSAGE GROUP = "WKS_MAINT_"
+
+MESSAGE   = "NO_FOUND_TEST"
+TEXT      = "Error Could Not Find Test Record for "
+
+MESSAGE   = "SUS_REC"
+TEXT      = "The Worksheet has been Suspended"
+
+MESSAGE   = "UNSUS_REC"
+TEXT      = "The Worksheet has been Unsuspended"
+
+MESSAGE   = "NO_SUS_REC"
+TEXT      = "Suspension has not been performed"
+
+MESSAGE   = "NO_UNSUS_REC"
+TEXT      = "Unsuspension has not been performed"
+
+MESSAGE   = "COMP_WKS"
+TEXT      = "The Worksheet has been Completed"
+
+MESSAGE   = "NO_COMP_WKS"
+TEXT      = "Completion has not been performed"
+
+MESSAGE   = "CANC_WKS"
+TEXT      = "The Worksheet has been Cancelled"
+
+MESSAGE   = "NO_CANC_WKS"
+TEXT      = "Cancellation has NOT been performed"
+
+MESSAGE   = "REAS_WKS"
+TEXT      = "The Worksheet has been Reassigned"
+
+MESSAGE   = "NO_REAS_WKS"
+TEXT      = "Reassignment has NOT been performed"
+
+MESSAGE   = "RESET_WKS"
+TEXT      = "The Worksheet has been Reset to Session "
+
+MESSAGE   = "NO_RESET_WKS"
+TEXT      = "Resetting has NOT been performed"
+
+MESSAGE   = "REJECT_WKS"
+TEXT      = "The Worksheet has been Rejected"
+
+MESSAGE   = "NO_REJECT_WKS"
+TEXT      = "Rejection has NOT been performed"
+
+MESSAGE   = "NO_WKS_FILE"
+TEXT      = "Could not find Worksheet File : "
+
+MESSAGE   = "NO_OPEN_FILE"
+TEXT      = "Error in Opening File : "
+
+MESSAGE   = "NO_CLOSE_FILE"
+TEXT      = "Error in Closing File : "
+
+MESSAGE   = "NO_CREATE_FILE"
+TEXT      = "Error in Creating File : "
+
+MESSAGE   = "PURGING_WKS"
+TEXT      = "Deleting Worksheet : "
+
+MESSAGE   = "CANNOT_PROCEED_RES"
+TEXT      = "Result record locked cannot proceed"
+
+MESSAGE   = "CANNOT_PROCEED_TEST"
+TEXT      = "Test record locked cannot proceed"
+
+MESSAGE   = "CANNOT_PROCEED_SAMP"
+TEXT      = "Sample record locked cannot proceed"
+
+MESSAGE   = "COMMIT_WKS"
+TEXT      = "The Worksheet has been Committed"
+
+MESSAGE   = "NO_COMMIT_WKS"
+TEXT      =  "Committing has NOT been Performed"
+
+MESSAGE   = "SUSP_HEAD"
+TEXT      = "          Suspend Worksheet           "
+
+MESSAGE   = "UNSUS_HEAD"
+TEXT      = "         Unsuspend Worksheet          "
+
+MESSAGE   = "COMP_MESS"
+TEXT      = "          Complete Worksheet          "
+
+MESSAGE   = "CANC_MESS"
+TEXT      = "           Cancel Worksheet           "
+
+MESSAGE   = "COMMIT_MESS"
+TEXT      = "           Commit Worksheet           "
+
+MESSAGE   = "RSF_MESS"
+TEXT      = "  Multichrom RSF file from Worksheet  "
+
+MESSAGE   = "REAS_MESS"
+TEXT      = "          Reassign Worksheet          "
+
+MESSAGE   = "RESET_MESS"
+TEXT      = "           Reset Worksheet            "
+
+MESSAGE   = "REJECT_MESS"
+TEXT      = "           Reject Worksheet           "
+
+MESSAGE   = "COMPLETE_WKS"
+TEXT      = "Complete Worksheet"
+
+MESSAGE   = "CANCEL_WKS"
+TEXT      = " Cancel Worksheet "
+
+MESSAGE   = "REJECT_WKST"
+TEXT      = " Reject Worksheet "
+
+MESSAGE   = "RESET_WKST"
+TEXT      = "  Reset Worksheet "
+
+MESSAGE   = "COMMIT_WKST"
+TEXT      = " Commit Worksheet "
+
+MESSAGE   = "IS_COMP"
+TEXT      = "    Completing    "
+
+MESSAGE   = "IS_CANC"
+TEXT      = "    Cancelling    "
+
+MESSAGE   = "IS_CLEARED"
+TEXT      = "     Clearing     "
+
+MESSAGE   = "CANC_WKS_RES"
+TEXT      = " Worksheet Result "
+
+MESSAGE   = "PURGE_MESS"
+TEXT      = "          Commit Authorised Worksheets          "
+
+MESSAGE   = "PURGE_FOOT"
+TEXT      = "               Press EXIT to Quit               "
+
+MESSAGE   = "PURGE_TO"
+TEXT      = "Enter Date to Commit to : "
+
+MESSAGE   = "CONFM_PURGE"
+TEXT      = "Confirm when Committing Worksheet : "
+
+MESSAGE   = "NOT_FOR_SUSP"
+TEXT      = "Error - Worksheet cannot be suspended, is at status "
+
+MESSAGE   = "NOT_FOR_COMP"
+TEXT      = "Error - Worksheet cannot be completed, is at status "
+
+MESSAGE   = "NOT_FOR_REJECT"
+TEXT      = "Error - Worksheet must be Completed before Rejection, is at "
+
+MESSAGE   = "NOT_FOR_CANC"
+TEXT      = "Error - Worksheet cannot be cancelled, is at status "
+
+MESSAGE   = "NOT_SUSP"
+TEXT      = "This worksheet is not suspended"
+
+MESSAGE   = "NOT_FOR_RESET"
+TEXT      = "Error - Authorised Worksheets cannot be reset"
+
+MESSAGE   = "NOT_FOR_REASSIGN"
+TEXT      = "Error - Authorised and Suspended Worksheets cannot be Reassigned"
+
+MESSAGE   = "NOT_FOR_RESET_S"
+TEXT      = "Error - Suspended Worksheets cannot be reset"
+
+MESSAGE   = "NOT_FOR_COMMIT"
+TEXT      = "Error - Only Authorised Worksheets may be commited"
+
+MESSAGE   = "NOT_VALID_FOR_COMMIT"
+TEXT      = "Error - Samples at wrong status for commit"
+
+MESSAGE   = "OP_ASSIGN1"
+TEXT      = "       Operator Assignment       "
+
+MESSAGE   = "OP_ASSIGN2"
+TEXT      = "Enter Operator ID : "
+
+MESSAGE   = "OP_NOT_APPROVED"
+TEXT      = "Operator is Not approved for the Search Analysis "
+
+MESSAGE   = "RESET_SESSION_H"
+TEXT      = "     Worksheet Session Reset     "
+
+MESSAGE   = "CURR_SESSN"
+TEXT      = "Current Session     : "
+
+MESSAGE   = "TO_SESS"
+TEXT      = "Session to Reset to : "
+
+MESSAGE   = "EXIT_TO_QUIT"
+TEXT      = "  Press DO to save,EXIT to quit  "
+
+MESSAGE   = "ILLEGAL_RESET"
+TEXT      = "Error - Reset must be to a previous session"
+
+MESSAGE   = "OK_FOR_CANCEL"
+TEXT      = "Confirm Cancel Standard Test  : "
+
+MESSAGE   = "OK_FOR_CLEAR"
+TEXT      = "Confirm Clear Test for Sample : "
+
+MESSAGE   = "OK_FOR_COMPL"
+TEXT      = "Confirm Remove Test from Worksheet : "
+
+MESSAGE   = "COMM_TITLE"
+TEXT      = "Commit Options"
+
+MESSAGE   = "COMM_ALL_WORKSHEETS_MENU"
+TEXT      = "Commit All Worksheets up to a specified date"
+
+MESSAGE   = "COMM_WORKSHEET_MENU"
+TEXT      = "Commit Worksheet"
+
+MESSAGE   = "ASK_FOR_ANALYSIS"
+TEXT      = "Select Test List for RSF"
+
+MESSAGE   = "ENTERED_AS"
+TEXT      = "Request succesfully queued as timer entry "
+
+MESSAGE   = "STATUS_SUPPRESS_ERROR"
+TEXT      = "This operation requires ALLOW_STATUS_SUPPRESSION to be globally configured"
+
+MESSAGE   = "NO_SESSION_TESTS"
+TEXT      = "There are no tests for this session"
+
+MESSAGE   = "FOOT_MESS"
+TEXT      = "          Press Exit to Quit          "
+
+MESSAGE   = "ENT_WKS_ID"
+TEXT      = "Worksheet ID : "
+
+MESSAGE GROUP = "WKS_REBLD_"
+
+MESSAGE   = "TEST_HEAD"
+TEXT      = "   Rebuild Worksheet from Sample/Test   "
+
+MESSAGE   = "TEST_FOOT"
+TEXT      = "   Enter Sample/Test or Exit to Quit    "
+
+MESSAGE   = "INPUT1"
+TEXT      = "Sample ID   : "
+
+MESSAGE   = "INPUT2"
+TEXT      = "Analysis ID : "
+
+MESSAGE   = "WKS_HEAD"
+TEXT      = "        Rebuild Worksheet from ID       "
+
+MESSAGE   = "WKS_FOOT"
+TEXT      = "   Enter Worksheet ID  or Exit to Quit  "
+
+MESSAGE   = "INPUT3"
+TEXT      = "Worksheet ID : "
+
+MESSAGE   = "NO_WKS_ID"
+TEXT      = "This test is not assigned to a worksheet"
+
+MESSAGE   = "WKS_ALREADY_THERE"
+TEXT      = "This test is on existing worksheet : "
+
+MESSAGE   = "WKS_HEADER_THERE"
+TEXT      = "This test was on deleted worksheet : "
+
+MESSAGE   = "WKS_IS_OK"
+TEXT      = "This worksheet is already present"
+
+MESSAGE   = "NO_TRACE_FOUND"
+TEXT      = "Could not find header information, will rebuild using new worksheet id"
+
+MESSAGE   = "NO_TEMPLATE_FOUND"
+TEXT      = "Could not find a suitable Template, No rebuild is possible"
+
+MESSAGE   = "FILE_ERROR"
+TEXT      = "Error Reading File "
+
+MESSAGE   = "NO_CREATE_RECORD"
+TEXT      = "Unable to create new worksheet header"
+
+MESSAGE   = "REBUILD_MESS"
+TEXT      = "Rebuilding Analysis Worksheet : "
+
+MESSAGE   = "FILE_INFO"
+TEXT      = "Generic Analysis id "
+TEXT      = "Number of Sessions "
+TEXT      = "Number of Test Lists "
+TEXT      = "No of Samples in List "
+TEXT      = "Sample List "
+TEXT      = "ID text, id_numeric, sample_status, start_session,sample_type,replicates"
+TEXT      = "Session "
+TEXT      = " Information "
+TEXT      = " Number, Test List and Name"
+TEXT      = "Replicate order flag and Number of Components in session "
+TEXT      = " Start Prompt Info"
+TEXT      = " End Prompt Info"
+TEXT      = "Test Replicate factor (Number of Replicates)"
+TEXT      = "Session no, Analysis ID and Component Names"
+TEXT      = "List of Samples and Standards same as generic"
+TEXT      = " List of Samples and Standards same as previous session "
+TEXT      = "Test Status, sample number, test_number, replicate and component replicates "
+
+MESSAGE GROUP = "RBT_"
+
+MESSAGE   = "ENTER"
+TEXT      = "Worksheet :  "
+
+MESSAGE   = "ENTRY_HEAD"
+TEXT      = "Result Entry by Template Worksheet"
+
+MESSAGE   = "ENTRY_FOOT"
+TEXT      = "Exit to Abort"
+
+MESSAGE GROUP = "LIB_RE_EWS_"
+
+MESSAGE   = "EOF"
+TEXT      = "Reached the end of Enhanced Worksheet File"
+
+MESSAGE   = "SESSION_MENU"
+TEXT      = " Session Selection Menu "
+
+MESSAGE   = "NO_SESSIONS"
+TEXT      = "Selected Worksheet contains No Sessions"
+
+MESSAGE   = "PARAMETERS"
+TEXT      = "Worksheet Parameters"
+
+MESSAGE   = "DO_EXIT"
+TEXT      = "DO / EXIT"
+
+MESSAGE   = "ILLEGAL_ANALYSIS"
+TEXT      = "Illegal Analysis in Component List"
+
+MESSAGE   = "NO_COMPONENTS"
+TEXT      = "No Components Defined"
+
+MESSAGE   = "NEXT_TEST_LIST"
+TEXT      = "Reached next Test List"
+
+MESSAGE   = "SAMPLE_LIST_FAIL"
+TEXT      = "Failed to Read Sample List"
+
+MESSAGE   = "ENTER_SAMPLE"
+TEXT      = "Enter Sample ID : "
+
+MESSAGE   = "UNKNOWN_SAMPLE_SCREEN"
+TEXT      = "Unknown Sample Selection Screen"
+
+MESSAGE   = "TESTS_NOT_FOUND"
+TEXT      = "Required Tests Not Found"
+
+MESSAGE   = "CREATE_TESTS"
+TEXT      = "Create New Tests : "
+
+MESSAGE   = "SESSION_SCREEN"
+TEXT      = "Session Completion"
+
+MESSAGE   = "COMPLETE_SESSION"
+TEXT      = "Complete Session ?"
+

@@ -1,0 +1,526 @@
+! Messages for the demonstration reports.
+
+MESSAGE  GROUP  "HANGMAN_"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = ".... please  wait ...."
+
+MESSAGE         = "WORD_1"
+TEXT            = "turbulent"
+
+MESSAGE         = "CLUE_1"
+TEXT            = "troubled waters are this"
+
+MESSAGE         = "WORD_2"
+TEXT            = "formaldehyde"
+
+MESSAGE         = "CLUE_2"
+TEXT            = "Sleepy vapours from this"
+
+MESSAGE         = "WORD_3"
+TEXT            = "frazzle"
+
+MESSAGE         = "CLUE_3"
+TEXT            = "Maybe to a crisp"
+
+MESSAGE         = "WORD_4"
+TEXT            = "freudianism"
+
+MESSAGE         = "CLUE_4"
+TEXT            = "A system by Clement??!"
+
+MESSAGE         = "WORD_5"
+TEXT            = "mawkishness"
+
+MESSAGE         = "CLUE_5"
+TEXT            = "To sulk and be unhappy"
+
+MESSAGE         = "WORD_6"
+TEXT            = "mineralogical"
+
+MESSAGE         = "CLUE_6"
+TEXT            = "To do with fizzy drinks?"
+
+MESSAGE         = "WORD_7"
+TEXT            = "minglement"
+
+MESSAGE         = "CLUE_7"
+TEXT            = "The act of getting confused"
+
+MESSAGE         = "WORD_8"
+TEXT            = "mistranslation"
+
+MESSAGE         = "CLUE_8"
+TEXT            = "To turn from one to another"
+
+MESSAGE         = "WORD_9"
+TEXT            = "interspersion"
+
+MESSAGE         = "CLUE_9"
+TEXT            = "The act of spreading within"
+
+MESSAGE         = "WORD_10"
+TEXT            = "tempestuousness"
+
+MESSAGE         = "CLUE_10"
+TEXT            = "The quality of a bad storm"
+
+MESSAGE         = "WORD_11"
+TEXT            = "renounce"
+
+MESSAGE         = "CLUE_11"
+TEXT            = "To deny"
+
+MESSAGE         = "WORD_12"
+TEXT            = "remunerative"
+
+MESSAGE         = "CLUE_12"
+TEXT            = "Something that is paying"
+
+MESSAGE         = "WORD_13"
+TEXT            = "prepossessed"
+
+MESSAGE         = "CLUE_13"
+TEXT            = "obsessed; prejudiced"
+
+MESSAGE         = "WORD_14"
+TEXT            = "reprimand"
+
+MESSAGE         = "CLUE_14"
+TEXT            = "Criticise sharply"
+
+MESSAGE         = "WORD_15"
+TEXT            = "igloo"
+
+MESSAGE         = "CLUE_15"
+TEXT            = "An Eskimo dwelling"
+
+MESSAGE         = "WORD_16"
+TEXT            = "pulverize"
+
+MESSAGE         = "CLUE_16"
+TEXT            = "To reduce to small particles"
+
+MESSAGE         = "WORD_17"
+TEXT            = "vinaigrette"
+
+MESSAGE         = "CLUE_17"
+TEXT            = "Sauce of oil and vinegar"
+
+MESSAGE         = "WORD_18"
+TEXT            = "escutcheon"
+
+MESSAGE         = "CLUE_18"
+TEXT            = "An ornamental shield"
+
+MESSAGE         = "WORD_19"
+TEXT            = "machiavellian"
+
+MESSAGE         = "CLUE_19"
+TEXT            = "Cunning and deceitful"
+
+MESSAGE         = "WORD_20"
+TEXT            = "brainchild"
+
+MESSAGE         = "CLUE_20"
+TEXT            = "Thoughtful offspring?"
+
+MESSAGE         = "DIS_1"
+TEXT            = ".... please  wait ...."
+
+MESSAGE         = "WORD_21"
+TEXT            = "*END*"
+
+MESSAGE         = "DIS_2"
+TEXT            = "HELLO "
+
+MESSAGE         = "DIS_3"
+TEXT            = "I can't  recall  you playing  the Hangman  game before, so I'll  explain the"
+
+MESSAGE         = "DIS_4"
+TEXT            = "rules to you. It's really simple!"
+
+MESSAGE         = "DIS_5"
+TEXT            = "I'll think of a word, and then display a number of dashes, one dash for each"
+
+MESSAGE         = "DIS_6"
+TEXT            = "letter of the word. You press a letter on the keyboard and if this letter is"
+
+MESSAGE         = "DIS_7"
+TEXT            = "in the word I'll replace each corresponding dash with that letter. Easy, eh?"
+
+MESSAGE         = "DIS_8"
+TEXT            = "BUT....  for each letter you guess that isn't in the word I'll build part of"
+
+MESSAGE         = "DIS_9"
+TEXT            = "a hangman's  scaffold. After six wrong guesses the scaffold will be complete"
+
+MESSAGE         = "DIS_10"
+TEXT            = "and Harry will be hanged."
+
+MESSAGE         = "DIS_11"
+TEXT            = "You'll see a clue to the word displayed at the bottom of the screen!"
+
+MESSAGE         = "DIS_12"
+TEXT            = "Press any key for more instructions......"
+
+MESSAGE         = "DIS_13"
+TEXT            = "I know a limited number of words, but I can learn.   You can enter new words"
+
+MESSAGE         = "DIS_14"
+TEXT            = "into my memory by selecting the appropriate option when the program starts."
+
+MESSAGE         = "DIS_15"
+TEXT            = "For each word you enter you have to think of a clue, which is displayed at"
+
+MESSAGE         = "DIS_16"
+TEXT            = "the bottom of the screen when the game is being played."
+
+MESSAGE         = "DIS_17"
+TEXT            = "Anyway, enough of this, let's get on with the game. Good luck!"
+
+MESSAGE         = "DIS_18"
+TEXT            = "Press any key to start the game......"
+
+MESSAGE         = "DIS_19"
+TEXT            = "Guess > <"
+
+MESSAGE         = "DIS_21"
+TEXT            = "Already had "
+
+MESSAGE         = "DIS_22"
+TEXT            = " is not in the word"
+
+MESSAGE         = "DIS_23"
+TEXT            = "The word was"
+
+MESSAGE         = "DIS_24"
+TEXT            = "Congratulations..."
+
+MESSAGE         = "DIS_25"
+TEXT            = "Again (Y/N) ?"
+
+MESSAGE         = "DIS_26"
+TEXT            = "Please wait a moment...."
+
+MESSAGE         = "DIS_27"
+TEXT            = "I'm saving the position that you've reached."
+
+MESSAGE         = "DIS_29"
+TEXT            = " Please wait a moment, I'm just checking my memory..."
+
+MESSAGE         = "DIS_30"
+TEXT            = "   WORD              |  CLUE"
+
+MESSAGE         = "DIS_31"
+TEXT            = "<exit> pressed... this word was not entered"
+
+MESSAGE         = "DIS_32"
+TEXT            = "Press <do> to add "
+TEXT            = " into my memory, or <exit> not to add it"
+
+MESSAGE         = "DIS_33"
+TEXT            = " has been added into my memory."
+
+MESSAGE         = "INF_1"
+TEXT            = " There are currently "
+
+MESSAGE         = "INF_2"
+TEXT            = " words in my memory, of which "
+
+MESSAGE         = "INF_3"
+TEXT            = " was entered by you. "
+
+MESSAGE         = "INF_4"
+TEXT            = " were entered by you. "
+
+MESSAGE         = "DIS_34"
+TEXT            = " was NOT added into my memory."
+
+MESSAGE         = "DIS_35"
+TEXT            = "Please wait a moment.... I'm saving these new words."
+
+MESSAGE         = "DIS_36"
+TEXT            = "    Press <do> to play the game, or press <insert> to teach me new words"
+
+MESSAGE GROUP "HANOI_"
+
+MESSAGE         = "PROMPT_1"
+TEXT            = "Number of disks [1-9]: "
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Move number: "
+
+MESSAGE GROUP "MINE_"
+
+MESSAGE         = "USER_1"
+TEXT            = "  1. Play the game (size "
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "SELECT/expose cell, INSERT HERE/position flag,FIND/progress, EXIT/die"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Time spent in the MINFIELD : "
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = " Please wait, creating the MINEFIELD "
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "You have no more flags to spare"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Percentage covered         : "
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = " Oh dear, you're dead.  What words would you like on your tombstone ?"
+
+MESSAGE         = "DISPLAY_8"
+TEXT            = "Number of mines            : "
+
+MESSAGE         = "DISPLAY_9"
+TEXT            = "Number of flags used       : "
+
+MESSAGE         = "DISPLAY_10"
+TEXT            = "M I N E F I E L D"
+
+MESSAGE         = "DISPLAY_11"
+TEXT            = "  1. Play the game (size 1)"
+
+MESSAGE         = "DISPLAY_12"
+TEXT            = "  2. Setup"
+
+MESSAGE         = "DISPLAY_13"
+TEXT            = "  3. Quit"
+
+MESSAGE         = "DISPLAY_14"
+TEXT            = "Setup MineField"
+
+MESSAGE         = "DISPLAY_15"
+TEXT            = "Minefield size      : "
+
+MESSAGE         = "DISPLAY_16"
+TEXT            = "Press any key to start"
+
+MESSAGE GROUP "PRTCODDEM_"
+
+MESSAGE         = "HEADER_1"
+TEXT            = "SET PRINTERCODES Demonstration"
+
+MESSAGE         = "TAB_1"
+TEXT            = "!B!UINTRODUCTION!B!U"
+
+MESSAGE         = "TAB_2"
+TEXT            = "This is a quick example on how to use the SET PRINTERCODES command within a"
+
+MESSAGE         = "TAB_3"
+TEXT            = "VGL program.  Please print out this program,"
+
+MESSAGE         = "TAB_4"
+TEXT            = "so you can compare it with this printed report."
+
+MESSAGE         = "TAB_5"
+TEXT            = "These printer codes are embedded commands within a LITERAL statement that allow"
+
+MESSAGE         = "TAB_6"
+TEXT            = "the user to make use of certain printer features, without having to worry"
+
+MESSAGE         = "TAB_7"
+TEXT            = "about what type of printer you will print the report on - the SET PRINTERCODES"
+
+MESSAGE         = "TAB_8"
+TEXT            = "command does any required conversion for you."
+
+MESSAGE         = "TAB_9"
+TEXT            = "Just as all variables within a LITERAL statement are preceded with a $ sign,"
+
+MESSAGE         = "TAB_10"
+TEXT            = "all printer code commands are preceded by a !! character."
+
+MESSAGE         = "TAB_11"
+TEXT            = "!B!UPRINTER CODE COMMANDS!B!U"
+
+MESSAGE         = "TAB_12"
+TEXT            = "There are basically two types of commands: character attribute and line drawing"
+
+MESSAGE         = "TAB_13"
+TEXT            = "commands.  Some printers may not have full line drawing capability."
+
+MESSAGE         = "TAB_14"
+TEXT            = "!uCharacter Attribute Commands!u"
+
+MESSAGE         = "TAB_15"
+TEXT            = "!!U - toggle underscore"
+
+MESSAGE         = "TAB_16"
+TEXT            = "!!B - toggle bold"
+
+MESSAGE         = "TAB_17"
+TEXT            = "!!R - toggle reverse"
+
+MESSAGE         = "TAB_18"
+TEXT            = "!!N - Toggle narrow text !N(this is an example of narrow text)!N"
+
+MESSAGE         = "TAB_19"
+TEXT            = "!!!! - output an exclamation mark"
+
+MESSAGE         = "TAB_20"
+TEXT            = "!uLine Drawing Commands!u"
+
+MESSAGE         = "TAB_21"
+TEXT            = "!!L - enter/exit line drawing mode"
+
+MESSAGE         = "TAB_22"
+TEXT            = "Whilst in line drawing mode, all spaces and new lines are ignored until you"
+
+MESSAGE         = "TAB_23"
+TEXT            = "exit line drawing mode - so position the starting !!L command at the correct"
+
+MESSAGE         = "TAB_24"
+TEXT            = "column."
+
+MESSAGE         = "TAB_25"
+TEXT            = "Line drawing commands do not require a !! before them, but, of course, you"
+
+MESSAGE         = "TAB_26"
+TEXT            = "must be in line drawing mode first.  Valid line drawing commands are:"
+
+MESSAGE         = "TAB_27"
+TEXT            = "UR - !uU!upper !uR!uight corner         CC - !uC!uentre !uC!uross"
+
+MESSAGE         = "TAB_28"
+TEXT            = "UL - !uU!upper !uL!ueft corner          RT - !uR!uight !uT!u"
+
+MESSAGE         = "TAB_29"
+TEXT            = "LR - !uL!uower !uR!uight corner         LT - !uL!ueft !uT!u"
+
+MESSAGE         = "TAB_30"
+TEXT            = "LL - !uL!uower !uL!ueft corner          TT - !uT!uop !uT!u"
+
+MESSAGE         = "TAB_31"
+TEXT            = "HO - !uHO!urizontal line            BT - !uB!uottom !uT!u"
+
+MESSAGE         = "TAB_32"
+TEXT            = "VE - !uVE!urtical line"
+
+MESSAGE         = "TAB_33"
+TEXT            = "All of these commands can be preceded by an optional repeat count, the"
+
+MESSAGE         = "TAB_34"
+TEXT            = "default is 1."
+
+MESSAGE GROUP "ZOMBIE_"
+
+MESSAGE          = "DIR_1"
+TEXT             = "South West"
+
+MESSAGE          = "DIR_2"
+TEXT             = "South"
+
+MESSAGE          = "DIR_3"
+TEXT             = "South East"
+
+MESSAGE          = "DIR_4"
+TEXT             = "West"
+
+MESSAGE          = "DIR_5"
+TEXT             = "Crouch down & hide"
+
+MESSAGE          = "DIR_6"
+TEXT             = "East"
+
+MESSAGE          = "DIR_7"
+TEXT             = "North West"
+
+MESSAGE          = "DIR_8"
+TEXT             = "North"
+
+MESSAGE          = "DIR_9"
+TEXT             = "North East"
+
+MESSAGE          = "DISPLAY_1"
+TEXT             = "   Zombie Island   "
+
+MESSAGE          = "DISPLAY_2"
+TEXT             = "You have just landed on Zombie Island."
+
+MESSAGE          = "DISPLAY_3"
+TEXT             = "Your only way of surviving, is to lure"
+
+MESSAGE          = "DISPLAY_4"
+TEXT             = "all the Zombies '"
+
+MESSAGE          = "DISPLAY_5"
+TEXT             = "' into Pot Holes '"
+
+MESSAGE          = "DISPLAY_6"
+TEXT             = "You control your movement with the"
+
+MESSAGE          = "DISPLAY_7"
+TEXT             = "numbers 1 to 9"
+
+MESSAGE          = "DISPLAY_8"
+TEXT             = "   NW   North   NE   "
+
+MESSAGE          = "DISPLAY_9"
+TEXT             = "West 4    5    6 East"
+
+MESSAGE          = "DISPLAY_10"
+TEXT             = "   SW   South   SE   "
+
+MESSAGE          = "DISPLAY_11"
+TEXT             = "You are the '#'"
+
+MESSAGE          = "DISPLAY_12"
+TEXT             = "Pressing '5' leaves you where you are."
+
+MESSAGE          = "DISPLAY_13"
+TEXT             = "Press <EXIT> to end the game"
+
+MESSAGE          = "DISPLAY_14"
+TEXT             = "    Setting up 'Zombie Island'     "
+
+MESSAGE          = "DISPLAY_15"
+TEXT             = "Your Move :- "
+
+MESSAGE          = "DISPLAY_16"
+TEXT             = "Straight into the zombies mouth"
+
+MESSAGE          = "DISPLAY_17"
+TEXT             = "Aghhh! Head first into a pit"
+
+MESSAGE          = "DISPLAY_18"
+TEXT             = "Splash! into the sea & drowned"
+
+MESSAGE          = "DISPLAY_19"
+TEXT             = "Please use a number from 1 to 9"
+
+MESSAGE          = "DISPLAY_20"
+TEXT             = "You Won !!!"
+
+MESSAGE          = "DISPLAY_21"
+TEXT             = "You disposed of "
+
+MESSAGE          = "DISPLAY_22"
+TEXT             = " Zombies."
+
+MESSAGE          = "DISPLAY_23"
+TEXT             = "You Lost"
+
+MESSAGE          = "DISPLAY_24"
+TEXT             = "You only managed to dispose of "
+
+MESSAGE          = "DISPLAY_25"
+TEXT             = "out of "
+
+MESSAGE          = "DISPLAY_26"
+TEXT             = "Splash goes a Zombie"
+
+MESSAGE          = "DISPLAY_27"
+TEXT             = "You are EATEN by a Zombie"
+
+MESSAGE          = "DISPLAY_28"
+TEXT             = "Here come the Zombies"
+

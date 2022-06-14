@@ -1,0 +1,16 @@
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "LIB_TEXT_"
+
+MESSAGE        = "EMPTY"
+TEXT           = "<Empty>"
+
+MESSAGE        = "ERROR"
+TEXT           = "<Error>"
+
+MESSAGE        = "LOCKED"
+TEXT           = "<Locked>"
+
+MESSAGE        = "NULL"
+TEXT           = "<Null>"

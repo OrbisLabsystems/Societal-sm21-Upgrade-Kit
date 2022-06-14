@@ -1,0 +1,278 @@
+MESSAGE GROUP   = "SMP_CREATEMENU_"
+
+MESSAGE         = "CANNOT_UPDATE_BLOCK_ROW"
+TEXT            = "Cannot delete menu records"
+
+MESSAGE		= "MENU_TITLE"
+TEXT		= "Menu tools"
+
+MESSAGE		= "MENU_OPTION_1"
+TEXT		= "C"
+TEXT		= "Create menu"
+
+MESSAGE		= "MENU_OPTION_2"
+TEXT		= "M"
+TEXT		= "Merge menus"
+
+MESSAGE		= "MENU_OPTION_3"
+TEXT		= "Q"
+TEXT		= "Quit"
+
+MESSAGE		= "CANNOT_OPEN_FILE"
+TEXT 		= "Could not open menu file "
+
+MESSAGE		= "PARSE_MENU_HEADER"
+TEXT		= "Parsing menu file"
+
+MESSAGE		= "PARSE_MENU_COUNTER_MESSAGE"
+TEXT		= "Reading line number : "
+
+MESSAGE		= "INSERT_MENU_HEADER"
+TEXT		= "Writing to database"
+
+MESSAGE		= "FORM_FOOTER"
+TEXT		= "Press <Do> when complete or <Exit> to quit"
+
+MESSAGE		= "FORM_HEADER"
+TEXT		= "Create menu utility"
+TEXT		= "Merge menu utility"
+
+MESSAGE		= "CREATE_PROMPT_TEXT"
+TEXT		= "Enter menu text filename"
+TEXT		= "Enter menu identity"
+TEXT		= "Enter menu filename to add"
+TEXT		= "Enter menu to append"
+
+MESSAGE		= "STATUS"
+TEXT		= "Status"
+
+MESSAGE		= "ERRORS_IN_MENU_FILE"
+TEXT		= "Errors found in menu file "
+
+MESSAGE		= "ERROR_REPORT_LINE_NO"
+TEXT		= "Line no   : "
+
+MESSAGE		= "ERROR_REPORT_MENU_TEXT"
+TEXT		= "Text      : "
+
+MESSAGE		= "DUPLICATE"
+TEXT		= "Duplicate Menus"
+TEXT		= "Line [] of the menu file []"
+TEXT		= "uses the menu number []."
+TEXT		= "This menu number has already been used for the [] menu."
+TEXT		= "Different menus cannot use the same menu number. Edit []"
+TEXT		= "Press SPACE to continue"
+
+! Error messages for invalid menu header lines
+
+MESSAGE		= "NO_MENU_NUMBER"
+TEXT		= "Error     : Unable to locate menu number field"
+
+MESSAGE		= "LONG_MENU_NUMBER"
+TEXT		= "Error     : Menu number contains more than 10 characters"
+
+MESSAGE		= "NOT_MENU_NUMBER"
+TEXT		= "Error     : Menu number is not numeric"
+
+MESSAGE		= "NO_SEC_LEVEL"
+TEXT		= "Error     : Unable to locate security level field"
+
+MESSAGE		= "NOT_SEC_LEVEL"
+TEXT		= "Error     : Security level is not numeric"
+
+MESSAGE		= "RANGE_SEC_LEVEL"
+TEXT		= "Error     : Security level is out of range 1 .. 10"
+
+MESSAGE		= "NO_DESC"
+TEXT		= "Error     : Unable to locate description field"
+
+MESSAGE		= "LONG_DESC"
+TEXT		= "Error     : Description field is longer than 80 characters"
+
+! Additional error messages for invalid menu entry lines
+
+MESSAGE		= "NO_PROC_NUMBER"
+TEXT		= "Error     : Unable to locate procedure number field"
+
+MESSAGE		= "LONG_PROC_NUMBER"
+TEXT		= "Error     : Procedure number contains more than 10 characters"
+
+MESSAGE		= "NOT_PROC_NUMBER"
+TEXT		= "Error     : Procedure number is not numeric"
+
+MESSAGE		= "NO_MNEMONIC"
+TEXT		= "Error     : Unable to locate mnemonic field"
+
+MESSAGE		= "LONG_MNEMONIC"
+TEXT		= "Error     : Mnemonic contains more than 4 characters"
+
+MESSAGE		= "CALL_TO_MENU"
+TEXT		= "Error     : Procedure number divisible by 10 cannot define a library call"
+
+MESSAGE		= "LOCKED"
+TEXT		= "Menu data locked"
+TEXT		= "Menu data for [] is locked."
+TEXT		= "This menu is being created or modified by another user."
+TEXT		= "The menu data for [] can only be changed by one user at a time."
+TEXT		= "Press SPACE to continue"
+
+MESSAGE GROUP   = "SMP_EDIT_MENU_"
+
+MESSAGE         = "PLEASE_WAIT"
+TEXT            = "Restoring Pre-edit Backup. Please Wait..."
+
+MESSAGE         = "REBUILD"
+TEXT            = "Rebuild"
+
+MESSAGE         = "SEP_BEL"
+TEXT            = "New Separator Below"
+
+MESSAGE         = "GROUP"
+TEXT            = "New Group"
+
+MESSAGE         = "FIRST_CHILD_G"
+TEXT            = "New First Child"
+
+MESSAGE         = "LAST_CHILD_G"
+TEXT            = "New Last Child"
+
+MESSAGE         = "ABOVE_G"
+TEXT            = "New Above"
+
+MESSAGE         = "BELOW_G"
+TEXT            = "New Below"
+
+MESSAGE         = "OPTION"
+TEXT            = "New Option"
+
+MESSAGE         = "FIRST_CHILD"
+TEXT            = "New First Child..."
+
+MESSAGE         = "LAST_CHILD"
+TEXT            = "New Last Child..."
+
+MESSAGE         = "ABOVE"
+TEXT            = "New Above..."
+
+MESSAGE         = "BELOW"
+TEXT            = "New Below..."
+
+MESSAGE         = "CUT"
+TEXT            = "Cut"
+
+MESSAGE         = "COPY"
+TEXT            = "Copy"
+
+MESSAGE         = "PASTE"
+TEXT            = "Paste"
+
+MESSAGE         = "PASTE_FIRST"
+TEXT            = "Paste as first child..."
+
+MESSAGE         = "PASTE_LAST"
+TEXT            = "Paste as last child..."
+
+MESSAGE         = "PASTE_ABOVE"
+TEXT            = "Paste above..."
+
+MESSAGE         = "PASTE_BELOW"
+TEXT            = "Paste below..."
+
+MESSAGE         = "DELETE"
+TEXT            = "Delete"
+
+MESSAGE         = "EXECUTE"
+TEXT            = "Execute"
+
+MESSAGE         = "RENAME"
+TEXT            = "Rename"
+
+MESSAGE         = "IMPORT"
+TEXT            = "Import"
+
+MESSAGE         = "EXPORT"
+TEXT            = "Export"
+
+MESSAGE         = "MENU_HDR"
+TEXT            = "Create Menu"
+
+MESSAGE         = "NEW_MENU"
+TEXT            = "New Menu Name"
+
+MESSAGE         = "COPY_MENU_HDR"
+TEXT            = "Copy Menu"
+
+MESSAGE         = "COPY_MENU"
+TEXT            = "Menu to Copy"
+
+MESSAGE         = "NEW_MENU_HDR"
+TEXT            = "New Menu Id"
+
+MESSAGE         = "MENU_NAME"
+TEXT            = "Menu Name"
+
+MESSAGE         = "MOD_MENU_HDR"
+TEXT            = "Modify Menu"
+
+MESSAGE         = "DISP_MENU_HDR"
+TEXT            = "Display Menu"
+
+MESSAGE         = "DEL_MENU_HDR"
+TEXT            = "Delete Menu"
+
+MESSAGE         = "CONF_DEL"
+TEXT            = "This will permanently delete this SMW menu []. Continue?"
+
+MESSAGE         = "DEL_STATUS"
+TEXT            = "Deleting Menu []. Please Wait... ( []% )"
+
+MESSAGE         = "DEL_MENU_NODE"
+TEXT            = "This will permanently delete the menu node []. Continue?"
+
+MESSAGE         = "DEL_MENU_ITEM"
+TEXT            = "This will permanently delete the menu item []. Continue?"
+
+MESSAGE         = "TREE_FORM_HDR"
+TEXT            = "Menu - "
+
+MESSAGE         = "RENAME_HDR"
+TEXT            = "Rename"
+
+MESSAGE         = "NEW_NAME"
+TEXT            = "New Name"
+
+MESSAGE         = "NEW_ITEM_HDR"
+TEXT            = "New Menu Item"
+
+MESSAGE         = "PROC_NUM"
+TEXT            = "Procedure Number"
+
+MESSAGE         = "MENU_FILES_HDR"
+TEXT            = "Select Menu Files"
+
+MESSAGE         = "MASTER_MENU"
+TEXT            = "Menu File Name"
+
+MESSAGE         = "DOING_WRITE"
+TEXT            = "There is an existing write transaction. Please save or abandon changes before importing a menu."
+
+MESSAGE         = "ROLE_ID_HEADER"
+TEXT            = "Role ID for new Master Menu entries"
+
+MESSAGE         = "ROLE_ID"
+TEXT            = "Enter Role ID"
+
+
+MESSAGE GROUP   = "SMP_MENU_LIB_"
+
+MESSAGE         = "CONTEXT_HDR"
+TEXT            = "Menu Context"
+
+MESSAGE         = "CONTEXT_TXT"
+TEXT            = "Select Context"
+
+MESSAGE         = "IMPORTING"
+TEXT            = "Importing Menu"
+
+MESSAGE         = "ROLE_DESC"
+TEXT            = "Role created [] from []"

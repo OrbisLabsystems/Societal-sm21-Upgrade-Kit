@@ -1,0 +1,39 @@
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "RULE_COUNT_"
+
+MESSAGE        = "TRANS_RULE_COUNT"
+TEXT           = "Update Rule Counter"
+
+MESSAGE GROUP "RULE_COUNT_LTE_"
+
+MESSAGE        = "HEAD"
+TEXT           = "Rule Count"
+
+MESSAGE        = "ID_RULE"
+TEXT           = "Rule ID"
+
+MESSAGE        = "ID_BASE"
+TEXT           = "Counter ID"
+
+MESSAGE        = "FIELD_USAGE"
+TEXT           = "Usage Count"
+
+MESSAGE        = "FIELD_FULLCOUNT"
+TEXT           = "Fulltest Count"
+
+MESSAGE        = "FIELD_FULLDATE"
+TEXT           = "Fulltest Date"
+
+MESSAGE        = "FIELD_STARTDATE"
+TEXT           = "Start Date"
+
+MESSAGE        = "INPUT"
+TEXT           = "Counter ID"
+
+MESSAGE        = "BUTT_RESET"
+TEXT           = "Reset"
+
+MESSAGE        = "BAD_VALUES"
+TEXT           = "Invalid Counter Settings."

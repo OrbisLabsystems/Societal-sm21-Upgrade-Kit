@@ -1,0 +1,21 @@
+! Messages for Message handling in generator
+
+MESSAGE GROUP = "SMP_MESSAGE_"
+
+MESSAGE = "DESC_MESSAGE"
+TEXT    = "Message  - '[]'"
+
+MESSAGE = "DESC_LINES"
+TEXT    = "Lines    - []"
+
+MESSAGE = "DESC_SEVERITY"
+TEXT    = "Severity - '[]'"
+
+MESSAGE = "DESC_HELP"
+TEXT    = "Help     - '[]'"
+
+MESSAGE = "DESC_TEXT"
+TEXT    = "Line [  ]  - '[]'"
+
+MESSAGE = "NOT_MESSAGE"
+TEXT    = "Variable is not a message."

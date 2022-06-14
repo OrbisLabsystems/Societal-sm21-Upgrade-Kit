@@ -1,0 +1,529 @@
+MESSAGE GROUP "XCL_"
+
+MESSAGE = "HEAD_MESS"
+TEXT    = " XChrom Link Analysis Template Data Entry Screen "
+
+MESSAGE = "SAVE"
+TEXT    = "<DO> To Save, <EXIT> To Quit"
+
+MESSAGE = "DISP_MESS"
+TEXT    = "<EXIT> To Quit"
+
+MESSAGE = "DISP_NAME"
+TEXT    = ""
+
+MESSAGE = "GROUP_ID"
+TEXT    =  "Group Name"
+
+MESSAGE = "DESCRIPTION"
+TEXT    = "Description"
+
+MESSAGE = "MODIFIABLE"
+TEXT    = "Modifiable Entry"
+
+MESSAGE = "PROJECT"
+TEXT    = "Prompt for Project"
+
+MESSAGE = "PROJECT_NAME"
+TEXT    =  "Default Project Name"
+
+MESSAGE = "INSTRUMENT_NAME"
+TEXT    = "Default Instrument Name"
+
+MESSAGE = "COMMENT_P"
+TEXT    =  "Prompt for Comment"
+
+MESSAGE = "ANAL_DESC_IN_COMMENT"
+TEXT    =  "Analysis Description in comment"
+
+MESSAGE  = "COMMENTS"
+TEXT    =  "Default Comment"
+
+MESSAGE = "ANALYSIS_P"
+TEXT    = "Prompt For Analysis Name"
+
+MESSAGE = "ANALYSIS_CTRL"
+TEXT    = "Source of Analysis Name"
+
+MESSAGE = "ANALYSIS_NAME"
+TEXT    = "Default Analysis Name"
+
+MESSAGE = "METHOD_P"
+TEXT    =  "Prompt For Method Name"
+
+MESSAGE = "METHOD_FROM_ANALYSIS"
+TEXT    =  "Source of Method Name"
+
+MESSAGE = "METHOD_NAME"
+TEXT    =  "Default Method Name"
+
+MESSAGE = "MESS_1"
+TEXT    = "XChrom Analysis Template"
+
+MESSAGE = "MESS_2"
+TEXT    = "Enter XChrom Analysis Template ID"
+
+
+
+
+
+
+MESSAGE GROUP "XCL_ANAL_TEMP_"
+
+MESSAGE = "PROM_1"
+TEXT    = "Analysis ID : "
+
+MESSAGE = "PAUSE_1"
+TEXT    = "Terminated by Control C"
+
+MESSAGE = "TOP_1"
+TEXT    = "XChrom Analysis Details for Analysis : "
+
+MESSAGE = "PAUSE_2"
+TEXT    = "No Tests found for Analysis - "
+
+MESSAGE = "DISP_1"
+TEXT    = "Test Number : "
+
+MESSAGE = "DISP_2"
+TEXT    = "Searching for Tests"
+
+MESSAGE = "WIN_1"
+TEXT    = "Sample"
+
+MESSAGE = "WIN_2"
+TEXT    = " of Test "
+
+MESSAGE = "WIN_3"
+TEXT    = " Does Not Exist"
+
+MESSAGE = "WIN_4"
+TEXT    = "Status of Authorised is not Allowed"
+
+MESSAGE = "WIN_5"
+TEXT    = "XChrom Analysis Not Created - No Valid Tests Found"
+
+
+
+
+
+
+MESSAGE GROUP "XCL_ANAL_WSA_"
+
+MESSAGE = "TOP_1"
+TEXT    = "XChrom Analysis Details for Worksheet "
+
+MESSAGE = "DISP_1"
+TEXT    = "Worksheet ID"
+
+MESSAGE = "DISP_3"
+TEXT    = "Analysis Worksheet for XChrom Analysis Data"
+
+MESSAGE = "DISP_4"
+TEXT    = "DO or RETURN for Fields  EXIT to QUIT"
+
+MESSAGE = "DISP_5"
+TEXT    = "DO to accept  EXIT to QUIT"
+
+MESSAGE = "DISP_6"
+TEXT    = "Numeric Sample ID : "
+
+MESSAGE = "DISP_7"
+TEXT    = "Textual Sample ID : "
+
+MESSAGE = "DISP_8"
+TEXT    = "Number Injections : "
+
+MESSAGE = "DISP_9"
+TEXT    = "Sample Type       : "
+
+MESSAGE = "DISP_10"
+TEXT    = "Sample Amount     : "
+
+MESSAGE = "DISP_11"
+TEXT    = "Creating XChrom Analysis File "
+
+MESSAGE = "DISP_12"
+TEXT    = "Shared"
+
+MESSAGE = "DISP_13"
+TEXT    = "Group"
+
+MESSAGE = "DISP_14"
+TEXT    = "Average"
+
+MESSAGE = "DISP_15"
+TEXT    = "Initialise"
+
+MESSAGE = "DISP_16"
+TEXT    = "Timed"
+
+MESSAGE = "DISP_17"
+TEXT    = "Sequential"
+
+MESSAGE = "PAUSE_1"
+TEXT    = "No Tests found in Worksheet - "
+
+MESSAGE = "PAUSE_2"
+TEXT    = "Not Found Worksheet File "
+
+MESSAGE = "PAUSE_3"
+TEXT    = "No Tests Found - XChrom Analysis Not Created"
+
+MESSAGE = "PAUSE_4"
+TEXT    = "Error Creating XChrom Analysis File - Too Many Tests For Text File"
+
+MESSAGE = "PAUSE_5"
+TEXT    = "Maximum Number of Tests : "
+
+MESSAGE = "PAUSE_6"
+TEXT    = "Error Opening Interim file "
+
+MESSAGE = "PAUSE_7"
+TEXT    = "Error Writing to file : "
+
+MESSAGE = "PAUSE_8"
+TEXT    = "Error creating XChrom Analysis file : "
+
+MESSAGE = "PAUSE_10"
+TEXT    = "XChrom Analysis File "
+
+MESSAGE = "PAUSE_11"
+TEXT    = " Created"
+
+MESSAGE = "PAUSE_13"
+TEXT    = "Error Closing Interim File : "
+
+MESSAGE = "PAUSE_14"
+TEXT    = "INSTALLATION ERROR-No logical translation for SMP$XCL_FILES"
+
+MESSAGE = "PAUSE_15"
+TEXT    = "SMP$COMFILES:CREATE_XCL.COM does not EXIST"
+
+MESSAGE = "PAUSE_16"
+TEXT    = "Cannot find "
+
+MESSAGE = "WHICH_1"
+TEXT    = "Append XChrom Analysis Name"
+
+MESSAGE = "WHICH_2"
+TEXT    = " Samples Only"
+
+MESSAGE = "PROM_1"
+TEXT    = "View Sample Info"
+
+MESSAGE = "PROM_2"
+TEXT    = "XChrom Analysis Name Control : "
+
+MESSAGE = "PROM_3"
+TEXT    = "XChrom Analysis Name         : "
+
+MESSAGE = "PROM_4"
+TEXT    = "View Sample Info"
+
+MESSAGE = "PROM_5"
+TEXT    = "XChrom Analysis Template ID"
+
+MESSAGE = "SET_1"
+TEXT    = "Project Name"
+
+MESSAGE = "SET_2"
+TEXT    = "Channel Number"
+
+MESSAGE = "SET_3"
+TEXT    = "Instrument ID"
+
+MESSAGE = "SET_4"
+TEXT    = "XChrom Analysis File Name"
+
+MESSAGE = "SET_5"
+TEXT    = "Comment"
+
+MESSAGE = "SET_6"
+TEXT    = "comments"
+
+MESSAGE = "SET_7"
+TEXT    = "XChrom Analysis Template Name"
+
+MESSAGE = "SET_8"
+TEXT    = "Analysis Name"
+
+MESSAGE = "SET_9"
+TEXT    = "Method Name"
+
+MESSAGE = "SET_10"
+TEXT    = "Control Name"
+
+MESSAGE = "SET_11"
+TEXT    = "Calibration Name"
+
+MESSAGE = "SET_12"
+TEXT    = "Calibration Sequence"
+
+MESSAGE = "SET_13"
+TEXT    = "Subtract Name"
+
+MESSAGE = "SET_14"
+TEXT    = "Subtract Sample Number"
+
+MESSAGE = "SET_15"
+TEXT    = "Subtract Injection No."
+
+MESSAGE = "SET_16"
+TEXT    = "RVS Calibration Name"
+
+MESSAGE = "SET_17"
+TEXT    = "Samp Field for Smp Amnt"
+
+MESSAGE = "SET_18"
+TEXT    = "Analysis for Samp Amnt"
+
+MESSAGE = "SET_19"
+TEXT    = "Component for Samp Amnt"
+
+MESSAGE = "SET_20"
+TEXT    = "Unused"
+
+MESSAGE = "CSA_1"
+TEXT    = "Sequential"
+
+MESSAGE = "CSA_2"
+TEXT    = "Shared"
+
+MESSAGE = "CSA_3"
+TEXT    = "Group"
+
+MESSAGE = "CSA_4"
+TEXT    = "Average"
+
+MESSAGE = "CSA_5"
+TEXT    = "Initialise"
+
+MESSAGE = "CSA_6"
+TEXT    = "Timed"
+
+MESSAGE = "PARAM_1"
+TEXT    = "Channel Number of less than one is Not Allowed"
+
+MESSAGE = "PARAM_2"
+TEXT    = "Blank Run Sequence File Name is Not Allowed"
+
+MESSAGE = "PARAM_3"
+TEXT    = "Blank Project Name is Not Allowed"
+
+MESSAGE = "PARAM_4"
+TEXT    = "Sample Field Does Not Exist"
+
+MESSAGE = "PARAM_5"
+TEXT    = "Sample Field must be Numeric or Textual"
+
+MESSAGE = "PARAM_6"
+TEXT    = "Invalid Component for Analysis"
+
+
+MESSAGE GROUP "XCL_ACQ_"
+
+MESSAGE         = "TOP_LINE"
+TEXT            = "XCHROM LINK TEXTFILE RESULT ENTRY"
+
+MESSAGE         = "Error_1"
+TEXT            = "Call to PUT_TEST_RESULTS() generated an ERROR status"
+
+MESSAGE         = "Error_2"
+TEXT            = "Call to PUT_TEST_RESULTS() generated an non-EMPTY status"
+
+MESSAGE         = "BORD_1"
+TEXT            = "Test Details"
+
+MESSAGE         = "BORD_2"
+TEXT            = "Result Details"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Display Result Information : "
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Result File Name : "
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Sample ID      : "
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Analysis ID    : "
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Replicate      : "
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Date Started   : "
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "Status         : "
+
+MESSAGE         = "DISPLAY_8"
+TEXT            = "Instrument     : "
+
+MESSAGE         = "DISPLAY_9"
+TEXT            = "Operator       : "
+
+MESSAGE         = "DISPLAY_10"
+TEXT            = "Result Name    : "
+
+MESSAGE         = "DISPLAY_11"
+TEXT            = "Result Type    : "
+
+MESSAGE         = "DISPLAY_12"
+TEXT            = "Result Text    : "
+
+MESSAGE         = "DISPLAY_13"
+TEXT            = "Result Units   : "
+
+MESSAGE         = "DISPLAY_14"
+TEXT            = "Storage Terminated by Control C."
+
+MESSAGE         = "DISPLAY_15"
+TEXT            = "Storage Complete"
+
+MESSAGE         = "DISPLAY_16"
+TEXT            = "Delete Result File : "
+
+MESSAGE         = "DISPLAY_17"
+TEXT            = "Deleted "
+
+MESSAGE         = "DISPLAY_18"
+TEXT            = "Field SAMPLE."
+
+MESSAGE         = "DISPLAY_19"
+TEXT            = " updated to : "
+
+MESSAGE         = "DISPLAY_20"
+TEXT            = "Field TEST."
+
+MESSAGE         = "DISPLAY_21"
+TEXT            = "NEW SAMPLE CREATED"
+
+MESSAGE         = "DISPLAY_22"
+TEXT            = "Latest or New"
+
+MESSAGE         = "DISPLAY_23"
+TEXT            = "Authorised"
+
+MESSAGE         = "DISPLAY_24"
+TEXT            = "Completed"
+
+MESSAGE         = "DISPLAY_25"
+TEXT            = "Unrecognised assignment : "
+
+MESSAGE         = "DISPLAY_27"
+TEXT            = "Renamed File to "
+
+MESSAGE         = "DISPLAY_28"
+TEXT            = "Rename File : "
+
+MESSAGE         = "BLANK_PEAK"
+TEXT            = "No peak name supplied"
+
+MESSAGE         = "LOG_TST"
+TEXT            = "Test = "
+
+MESSAGE         = "LOG_T_1"
+TEXT            = "Tst:"
+
+MESSAGE         = "LOG_T_2"
+TEXT            = "Rep:"
+
+MESSAGE         = "ERR_1"
+TEXT            = "Error Opening "
+
+MESSAGE         = "ERROR_RENAME"
+TEXT            = "Error Renameing "
+
+MESSAGE         = "ERR_3"
+TEXT            = "Result Filename   : "
+
+MESSAGE         = "ERR_4"
+TEXT            = "Error Log Created : "
+
+MESSAGE         = "ERR_5"
+TEXT            = "Operator          : "
+
+MESSAGE         = "ERR_6"
+TEXT            = "Analyst Name : "
+
+MESSAGE         = "ERR_7"
+TEXT            = "Test Number       : "
+
+MESSAGE         = "ERR_8"
+TEXT            = "Sample ID         : "
+
+MESSAGE         = "ERR_9"
+TEXT            = "Analysis ID  : "
+
+MESSAGE         = "ERR_10"
+TEXT            = "Replicate Number  : "
+
+MESSAGE         = "ERR_11"
+TEXT            = "There are no results in the data file"
+
+MESSAGE         = "ERR_12"
+TEXT            = "Error in change sample status : "
+
+MESSAGE         = "ERR_14"
+TEXT            = "Cannot Find Test Number"
+
+MESSAGE         = "ERR_15"
+TEXT            = "Test Status "
+
+MESSAGE         = "ERR_16"
+TEXT            = " Is Invalid"
+
+MESSAGE         = "ERR_17"
+TEXT            = "Test Status Should Be V : Available , P : In Progress  or  C: Completed"
+
+MESSAGE         = "ERR_18"
+TEXT            = "Unknown Sample ID"
+
+MESSAGE         = "ERR_19"
+TEXT            = "Unknown Analysis ID"
+
+MESSAGE         = "ERR_20"
+TEXT            = "Cannot Find Analysis"
+
+MESSAGE         = "ERR_21"
+TEXT            = "Cannot Find Sample"
+
+MESSAGE         = "ERR_22"
+TEXT            = "Sample Status Is Neither C : Completed nor V : Available"
+
+MESSAGE         = "ERR_23"
+TEXT            = "Failed to create New Test.  Result Entry Terminated"
+
+MESSAGE         = "ERR_24"
+TEXT            = "Cannot Find Test"
+
+MESSAGE GROUP "XCL_CLIENT_"
+
+MESSAGE		= "FORM"
+TEXT		= "Xchrom Data Acquisition"
+TEXT		= "Processing File "
+TEXT		= "Error processing file "
+
+MESSAGE GROUP "XCL_RSF_"
+
+MESSAGE		= "FORM"
+TEXT		= "Generate Xchrom Analysis"
+TEXT		= "Press <EXIT> to Exit"
+TEXT		= "Worksheet ID          "
+TEXT		= "Project ID            "
+TEXT		= "Instrument ID         "
+TEXT		= "Run Sequence File Name"
+TEXT		= "Analysis Name         "
+TEXT		= "Method Name           "
+TEXT		= "Control Name          "
+TEXT            = "Calibration Name      "
+TEXT		= "Calibration Sequence  "
+TEXT		= "Subtract Name          "
+TEXT		= "Subtract Sample Number"
+TEXT		= "Subtract Injection Number"
+
+MESSAGE         = "ERROR"
+TEXT		= "Xchrom not installed"

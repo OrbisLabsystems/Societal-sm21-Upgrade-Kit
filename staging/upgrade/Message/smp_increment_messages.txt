@@ -1,0 +1,33 @@
+! Messages for the increment system
+
+MESSAGE GROUP = "SMP_INCREMENT_"
+
+MESSAGE = "HANDLE_FAIL"
+TEXT    = "Invalid key return from increment handle file"
+
+MESSAGE = "CREATE_FAIL"
+TEXT    = "The increment system failed to create shared memory"
+
+MESSAGE = "SHARE_FAIL"
+TEXT    = "The increment system failed to find shared memory"
+
+MESSAGE = "DELETE_FAIL"
+TEXT    = "The increment system failed to delete shared memory"
+
+MESSAGE = "STORE_FAIL"
+TEXT    = "The increment system failed to store a value correctly"
+
+MESSAGE = "NO_HANDLE"
+TEXT    = "Could not find increment handle file []"
+
+MESSAGE = "NO_INCREMENT"
+TEXT    = "The increment system ran out of increments"
+
+MESSAGE = "DBM_FAIL"
+TEXT    = "The increment system could not open the dbm database"
+
+MESSAGE = "DAT_FAIL"
+TEXT    = "Failed to open file SMP$DATAFILES:INCREMENT.DAT"
+
+MESSAGE = "DIRECTORY_UNDEFINED"
+TEXT	= "Environment variable 'SMP_DATAFILES' is undefined"

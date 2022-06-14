@@ -1,0 +1,40 @@
+MESSAGE GROUP = "SMP_GRAPH_"
+
+! Graphics messages to be used in SampleManager
+
+MESSAGE       = "BAD_AREA"
+TEXT          = "Unknown graphics area []"
+SEVERITY      = "ERROR"
+
+MESSAGE       = "BAD_AXIS_ATTRIBUTE"
+TEXT          = "Unknown graphics axis attribute []"
+SEVERITY      = "ERROR"
+
+MESSAGE       = "BAD_CURVE_ATTRIBUTE"
+TEXT          = "Unknown graphics curve attribute []"
+SEVERITY      = "ERROR"
+
+MESSAGE       = "BAD_POINTS_ATTRIBUTE"
+TEXT          = "Unknown graphics points attribute []"
+SEVERITY      = "ERROR"
+
+MESSAGE       = "BAD_ANNOTATION_ATTRIBUTE"
+TEXT          = "Unknown graphics annotation attribute []"
+SEVERITY      = "ERROR"
+
+MESSAGE       = "BAD_GRADUATION_ATTRIBUTE"
+TEXT          = "Unknown graphics graduation attribute []"
+SEVERITY      = "ERROR"
+
+MESSAGE       = "BAD_LIBRARY_ATTRIBUTE"
+TEXT          = "Unknown graphics library attribute []"
+SEVERITY      = "ERROR"
+
+MESSAGE       = "BAD_GRAPH_ATTRIBUTE"
+TEXT          = "Unknown graphics graph attribute []"
+SEVERITY      = "ERROR"
+
+MESSAGE       = "BAD_GRAPH_COMMAND"
+TEXT          = "This command is invalid on a graphics window"
+SEVERITY      = "ERROR"
+

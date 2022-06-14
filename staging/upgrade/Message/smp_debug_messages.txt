@@ -1,0 +1,305 @@
+! Messages for the VGL debugger
+
+MESSAGE GROUP = "SMP_DEBUG_"
+
+MESSAGE = "MESSAGE_TITLE"
+TEXT    = "Messages"
+
+MESSAGE = "PROMPT_TITLE"
+TEXT    = "Prompt"
+
+MESSAGE = "PROMPT"
+TEXT    = "DBG > "
+
+MESSAGE = "BADSTEP"
+TEXT    = "Unknown step option '[]'"
+
+MESSAGE = "BADLINE"
+TEXT    = "Line [] is not valid."
+
+MESSAGE = "BADROUT"
+TEXT    = "Unknown routine '[]'"
+
+MESSAGE = "NONUMBER"
+TEXT    = "Expected a number - found '[]'"
+
+MESSAGE = "NOSLASH"
+TEXT    = "Expected '/' - found '[]'"
+
+MESSAGE = "BADBREAKROUT"
+TEXT    = "Expected '%' or routine name - found '[]'"
+
+MESSAGE = "BADVAR"
+TEXT    = "Unknown variable '[]'"
+
+MESSAGE = "BADCOMMAND"
+TEXT    = "Unknown command '[]'"
+
+MESSAGE = "BADGLOBAL"
+TEXT    = "Unknown VGL Global '[]'"
+
+MESSAGE = "BADEXAMINE"
+TEXT    = "Unknown examine option '[]'"
+
+MESSAGE = "NOIDENT"
+TEXT    = "Missing identifier."
+
+MESSAGE = "EXTRA"
+TEXT    = "Unexpected text '[]'"
+
+MESSAGE = "BADTABLE"
+TEXT    = "Illegal table '[]'"
+
+MESSAGE = "BADFIELD"
+TEXT    = "Unknown field '[]' in table '[]'"
+
+MESSAGE = "NOTABLE"
+TEXT    = "Missing table name."
+
+MESSAGE = "NOPOINT"
+TEXT    = "Missing '.'"
+
+MESSAGE = "LOCKED"
+TEXT    = "'[]' - locked"
+
+MESSAGE = "EMPTY"
+TEXT    = "'[]' - empty"
+
+MESSAGE = "NOTOBJECT"
+TEXT    = "'[]' is not an object."
+
+MESSAGE = "NOTARRAY"
+TEXT    = "'[]' is not an array."
+
+MESSAGE = "BADPROPERTY"
+TEXT    = "'[]' does not have property '[]'."
+
+MESSAGE = "NOPROPERTY"
+TEXT    = "Missing property name."
+
+MESSAGE = "NOCOMMA"
+TEXT    = "Expected ',' - found '[]'"
+
+MESSAGE = "MAXDIM"
+TEXT    = "Too many array indices."
+
+MESSAGE = "NOTINT"
+TEXT    = "Index must be integer not real number."
+
+MESSAGE = "BADELEMENT"
+TEXT    = "Array element '[]' does not exist."
+
+MESSAGE = "NO_WATCHES"
+TEXT    = "No watches are currently set."
+
+MESSAGE = "NO_BREAKS"
+TEXT    = "No breaks are currently set."
+
+MESSAGE = "NO_VARIABLES"
+TEXT    = "There are no variables in this report."
+
+MESSAGE = "NO_CONSTANTS"
+TEXT    = "There are no constants in this report."
+
+MESSAGE = "NO_ROUTINES"
+TEXT    = "There are no routines in this report."
+
+MESSAGE = "SETWATCH"
+TEXT    = "'[]' - watch set."
+
+MESSAGE = "CANCELWATCH"
+TEXT    = "'[]' - watch cancelled."
+
+MESSAGE = "NOWATCH"
+TEXT    = "'[]' does not have a watch set."
+
+MESSAGE = "WATCHCHANGE"
+TEXT    = "[] has changed -"
+TEXT    = "    Old value : []"
+TEXT    = "    New value : []"
+
+MESSAGE = "BADLIB"
+TEXT    = "Unknown library '[]'"
+
+MESSAGE = "LOSESCOPE"
+TEXT    = "Watch disabled - variable '[]' no longer exists."
+
+MESSAGE = "NOALL"
+TEXT    = "The ALL qualifier cannot be used with this command."
+
+MESSAGE = "WATCHTIDY"
+TEXT    = "Deleted outstanding watch on variable '[]'."
+
+MESSAGE = "BADQUAL"
+TEXT    = "Unknown command qualifier '[]'"
+
+MESSAGE = "ALRWATCH"
+TEXT    = "Variable '[]' already has a watch defined."
+
+MESSAGE = "SHOWWATCH"
+TEXT    = "Variable '[]' is watched."
+
+MESSAGE = "SHOWBREAK"
+TEXT    = "Break defined at '[]'."
+
+MESSAGE = "UNRCOERCE"
+TEXT    = "'[]' is not a recognised variable type."
+
+MESSAGE = "MSGVTYPE"
+TEXT    = "A valid variable type must be supplied."
+
+MESSAGE = "ILLCOERCE"
+TEXT    = "Variable cannot be coerced to '[]'."
+
+MESSAGE = "MSGVALUE"
+TEXT    = "A value to be deposited has not been supplied."
+
+MESSAGE = "NOEQUALS"
+TEXT    = "Expected '='"
+
+MESSAGE = "UNEXEOL"
+TEXT    = "Unexpected end of line."
+
+MESSAGE = "NOPIPES"
+TEXT    = "No pipes have been opened."
+
+MESSAGE = "NOFILES"
+TEXT    = "No files have been opened."
+
+MESSAGE = "NOGLOBALS"
+TEXT    = "No globals exist."
+
+MESSAGE = "SHGLORO"
+TEXT    = "Read only  '[]'"
+
+MESSAGE = "SHGLORW"
+TEXT    = "Read/Write '[]'"
+
+MESSAGE = "SHFILNO"
+TEXT    = "'[]' closed"
+
+MESSAGE = "SHFILRO"
+TEXT    = "'[]' open for read only access"
+
+MESSAGE = "SHFILRW"
+TEXT    = "'[]' open for read/write access"
+
+MESSAGE = "SHFILAP"
+TEXT    = "'[]' open for extend"
+
+MESSAGE = "SHPIPL"
+TEXT    = "Local pipe  '[]'"
+
+MESSAGE = "SHPIPR"
+TEXT    = "Remote pipe '[]'"
+
+MESSAGE = "BADGOTOROUT"
+TEXT    = "Expected '%' or routine name - found '[]'."
+
+MESSAGE = "NONEWPAGE"
+TEXT    = "There is no 'ON NEW PAGE' in this report."
+
+MESSAGE = "NOCTRLC"
+TEXT    = "There is no 'ON CONTROL C' in this report."
+
+MESSAGE = "USINGFILE"
+TEXT    = "Messages are already being spooled."
+
+MESSAGE = "APPENDFILE"
+TEXT    = "Messages will be appended to existing spoolfile."
+
+MESSAGE = "STARTFILE"
+TEXT    = "Messages spooling has been started."
+
+MESSAGE = "DISSPOOL"
+TEXT    = "Message spooling has been disabled."
+
+MESSAGE = "WASINACTIVE"
+TEXT    = "Message spooling was already disabled."
+
+MESSAGE = "NOTACTIVE"
+TEXT    = "Message spooling is not active."
+
+MESSAGE = "SETBREAK"
+TEXT    = "Breakpoint set at '[]'"
+
+MESSAGE = "CANBREAK"
+TEXT    = "Breakpoint cancelled at '[]'"
+
+MESSAGE = "MATCHBREAK"
+TEXT    = "No such breakpoint"
+
+MESSAGE = "SHLIB"
+TEXT    = "Library '[]' has been joined."
+
+MESSAGE = "NOLIBRARIES"
+TEXT    = "No libraries have been joined."
+
+MESSAGE = "NOTABLES"
+TEXT    = "No tables are active."
+
+MESSAGE = "SHTABE"
+TEXT    = "Table '[]' has an empty row."
+
+MESSAGE = "SHTABL"
+TEXT    = "Table '[]' has a row locked by another user."
+
+MESSAGE = "SHTABC"
+TEXT    = "Table '[]' has a created row."
+
+MESSAGE = "SHTABRR"
+TEXT    = "Table '[]' has row '[]' reserved for read access."
+
+MESSAGE = "SHTABRW"
+TEXT    = "Table '[]' has row '[]' reserved for write access."
+
+MESSAGE = "SHTABN"
+TEXT    = "Table '[]' has selected row '[]'."
+
+MESSAGE = "SHTABNR"
+TEXT    = "Table '[]' has selected row '[]' for read access."
+
+MESSAGE = "SHTABNW"
+TEXT    = "Table '[]' has selected row '[]' for write access."
+
+MESSAGE = "SHTABQ"
+TEXT    = "Table '[]' has a row in an unrecognised state."
+
+MESSAGE = "BALSET"
+TEXT    = "Breakpoint was already set."
+
+MESSAGE = "BNOTSET"
+TEXT    = "No breakset existed"
+
+MESSAGE = "CONST_NOT_FOUND"
+TEXT    = "Unable to find constant '[]'"
+
+MESSAGE = "VAR_NOT_FOUND"
+TEXT    = "Unable to find variable '[]'"
+
+MESSAGE = "ROUT_NOT_FOUND"
+TEXT    = "Unable to find routine '[]'"
+
+MESSAGE = "FILE_NOT_FOUND"
+TEXT    = "Unable to find file '[]'"
+
+MESSAGE = "GLOBAL_NOT_FOUND"
+TEXT    = "Unable to find global '[]'"
+
+MESSAGE = "LIB_NOT_FOUND"
+TEXT    = "Unable to find library '[]'"
+
+MESSAGE = "TAB_NOT_FOUND"
+TEXT    = "Unable to find table '[]'"
+
+MESSAGE = "PIPE_NOT_FOUND"
+TEXT    = "Unable to find pipe '[]'"
+
+MESSAGE = "RECURSION_SET"
+TEXT    = "Recursion detection has been set."
+
+MESSAGE = "RECURSION_CAN"
+TEXT    = "Recursion detection has been cancelled."
+
+MESSAGE = "RECURSIVE_VARIABLE"
+TEXT    = "Recursive Variable Contents"

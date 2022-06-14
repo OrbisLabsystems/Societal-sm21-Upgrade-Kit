@@ -1,0 +1,1356 @@
+! Explorer Messages
+
+MESSAGE GROUP "EXP_LIB_"
+
+MESSAGE        = "ALLDEL"
+TEXT           = "All Entries Deleted."
+
+MESSAGE        = "BADROUT"
+TEXT           = "Invalid Routine []/[]"
+
+MESSAGE        = "BADTAB"
+TEXT           = "Invalid Table []"
+
+MESSAGE        = "BDESC"
+TEXT           = "Browse Description"
+
+MESSAGE        = "BFIELD"
+TEXT           = "Browse Field"
+
+MESSAGE        = "BLANK"
+TEXT           = "Blank Form"
+
+MESSAGE        = "CHILD"
+TEXT           = "Child"
+
+MESSAGE        = "CONTENTS"
+TEXT           = "Contents"
+
+MESSAGE        = "DELALL"
+TEXT           = "Delete All Entries?"
+
+MESSAGE        = "DELTD"
+TEXT           = "[] Entries Deleted."
+
+MESSAGE        = "DESC"
+TEXT           = "Description"
+
+MESSAGE        = "D_DEL"
+TEXT           = "Deleted"
+
+MESSAGE        = "D_FOLD"
+TEXT           = "Folder"
+
+MESSAGE        = "D_NAME"
+TEXT           = "Name"
+
+MESSAGE        = "D_NUM"
+TEXT           = "Number"
+
+MESSAGE        = "D_PAR"
+TEXT           = "Parent_Node"
+
+MESSAGE        = "D_POS"
+TEXT           = "Position"
+
+MESSAGE        = "D_TEXT"
+TEXT           = "Text"
+
+MESSAGE        = "D_TYPE"
+TEXT           = "Type"
+
+MESSAGE        = "D_VIRT"
+TEXT           = "Virtual"
+
+MESSAGE        = "FIELDS"
+TEXT           = "Fields"
+
+MESSAGE        = "FINALISE"
+TEXT           = "Finalising Plug In : []"
+
+MESSAGE        = "FULL"
+TEXT           = "Full Description"
+
+MESSAGE        = "GRP"
+TEXT           = "Group Field"
+
+MESSAGE        = "INITIALISE"
+TEXT           = "Initialising Plug In : []"
+
+MESSAGE        = "KEY"
+TEXT           = "Key0 Field"
+
+MESSAGE        = "LOAD_TAB"
+TEXT           = "Loading Table Collection..."
+
+MESSAGE        = "MODA"
+TEXT           = "Modifiable"
+
+MESSAGE        = "MODB"
+TEXT           = "Modified By"
+
+MESSAGE        = "MODO"
+TEXT           = "Modified On"
+
+MESSAGE        = "NA"
+TEXT           = "N/a"
+
+MESSAGE        = "NO_ACTION"
+TEXT           = "[] Does not have Action []"
+
+MESSAGE        = "NO_PLUGINS"
+TEXT           = "Explorer Cannot run without Plug Ins!"
+
+MESSAGE        = "ORDER"
+TEXT           = "Order Field"
+
+MESSAGE        = "PARENT"
+TEXT           = "Parent"
+
+MESSAGE        = "PDESC"
+TEXT           = "Prompt Description"
+
+MESSAGE        = "RAW"
+TEXT           = "Raw Table Data"
+
+MESSAGE        = "READ"
+TEXT           = "Read Only"
+
+MESSAGE        = "REMOVE"
+TEXT           = "Remove Field"
+
+MESSAGE        = "SAVE"
+TEXT           = "Save Changes ( [] )?"
+
+MESSAGE        = "SAVEC"
+TEXT           = "Save Changes?"
+
+MESSAGE        = "SET"
+TEXT           = "Tableset"
+
+MESSAGE        = "SHORTCUTS"
+TEXT           = "Loading Shortcuts..."
+
+MESSAGE        = "SHORTS"
+TEXT           = "[] Shortcut(s)"
+
+MESSAGE        = "SIZE"
+TEXT           = "[] Table(s)"
+
+MESSAGE        = "SNAME"
+TEXT           = "Name"
+
+MESSAGE        = "TRANS_ALL"
+TEXT           = "Delete ALL Entries"
+
+MESSAGE        = "TRANS_DEL"
+TEXT           = "Explorer Delete Items"
+
+MESSAGE        = "VERSION"
+TEXT           = "Version Field"
+
+MESSAGE        = "VIEW"
+TEXT           = "View"
+
+MESSAGE GROUP "SHEET_"
+
+MESSAGE        = "DETAILS"
+TEXT           = "Details []"
+
+MESSAGE        = "EXAMPLE"
+TEXT           = "Property Sheet Example"
+
+MESSAGE        = "FREE"
+TEXT           = "Free Format"
+
+MESSAGE        = "HEADER"
+TEXT           = "Property Sheet"
+
+MESSAGE        = "NOPAGE"
+TEXT           = "You need to define at least one page"
+
+MESSAGE        = "NOTIMP"
+TEXT           = "Not Implemented"
+
+MESSAGE        = "SAMPLE"
+TEXT           = "Sample : "
+
+MESSAGE        = "H_BROWSE"
+TEXT           = "Browse Fields"
+
+MESSAGE        = "H_TEMPLATE"
+TEXT           = "Template"
+
+MESSAGE        = "H_INTERNAL"
+TEXT           = "Internal Fields"
+
+MESSAGE        = "H_DETAILS"
+TEXT           = "Details"
+
+MESSAGE        = "ERR_NO_ODB"
+TEXT           = "Container property must contain object database"
+
+MESSAGE        = "RECORDS"
+TEXT           = " Records "
+
+MESSAGE        = "H_GENERAL"
+TEXT           = "General"
+
+MESSAGE        = "B_OPTIONS"
+TEXT           = "Options..."
+
+MESSAGE        = "TYPE"
+TEXT           = "Entity Type"
+
+MESSAGE        = "H_ESIGS"
+TEXT           = "Esigs"
+
+MESSAGE        = "H_AUDITS"
+TEXT           = "Audits"
+
+MESSAGE GROUP "POPUP_LIB_"
+
+MESSAGE        = "BAD_ROUT"
+TEXT           = "Invalid Process Routine : []"
+
+MESSAGE GROUP "POPUP_"
+
+MESSAGE        = "DISP"
+TEXT           = "Display Criteria	F8"
+
+MESSAGE        = "EDIT"
+TEXT           = "Edit Criteria"
+
+MESSAGE        = "LAB"
+TEXT           = "Lab Table"
+
+MESSAGE        = "LARGE"
+TEXT           = "Large Icons"
+
+MESSAGE        = "LIST"
+TEXT           = "List"
+
+MESSAGE        = "MORE"
+TEXT           = "More	F6"
+
+MESSAGE        = "MORE_TO_END"
+TEXT           = "Display All"
+
+MESSAGE        = "DETAILS"
+TEXT           = "Details"
+
+MESSAGE        = "PROP"
+TEXT           = "Properties	F3"
+
+MESSAGE        = "SMALL"
+TEXT           = "Small Icons"
+
+MESSAGE        = "VIEW"
+TEXT           = "View"
+
+MESSAGE        = "CHOOSECOL"
+TEXT           = "Choose Columns"
+
+MESSAGE        = "EDITCOL"
+TEXT           = "Edit Column..."
+
+MESSAGE        = "FIELD"
+TEXT           = "Field Name"
+
+MESSAGE        = "HIDE"
+TEXT           = "Hide Removed"
+
+MESSAGE        = "INSERT"
+TEXT           = "Insert Column"
+
+MESSAGE        = "MOVEL"
+TEXT           = "Move Left"
+
+MESSAGE        = "MOVER"
+TEXT           = "Move Right"
+
+MESSAGE        = "REFRESH"
+TEXT           = "Refresh	F5"
+
+MESSAGE        = "REMOVE"
+TEXT           = "Remove Column"
+
+MESSAGE        = "REMOVED"
+TEXT           = "Show Removed"
+
+MESSAGE        = "AUTOFILTER"
+TEXT           = "Filter By Selection"
+
+MESSAGE        = "CLEARFILTER"
+TEXT           = "Clear"
+
+MESSAGE        = "WHERE"
+TEXT           = "Where "
+
+MESSAGE        = "AUTOFILTER_CONTAINS"
+TEXT           = " contains..."
+
+MESSAGE        = "REVERT"
+TEXT           = "Revert to default"
+
+MESSAGE GROUP "LIST_"
+
+MESSAGE        = "ABAND"
+TEXT           = "Changes Abandoned"
+
+MESSAGE        = "BADCALL"
+TEXT           = "Invalid Callback : []"
+
+MESSAGE        = "BADCRIT"
+TEXT           = "Could Not Build Criteria"
+
+MESSAGE        = "BADROUT"
+TEXT           = "Invalid Routine : []"
+
+MESSAGE        = "BADTAB"
+TEXT           = "Invalid Table Name"
+
+MESSAGE        = "DETAILS"
+TEXT           = "Details"
+
+MESSAGE        = "DONE"
+TEXT           = "Changes written to the Database"
+
+MESSAGE        = "EXAM_HEAD"
+TEXT           = "Example Table Contents"
+
+MESSAGE        = "EXAM_ITEM"
+TEXT           = "Example"
+
+MESSAGE        = "EXAM_SHOW"
+TEXT           = "Record "
+
+MESSAGE        = "FOOTER"
+TEXT           = "Press DO to Confirm / EXIT to Quit"
+
+MESSAGE        = "HEADER"
+TEXT           = "List Viewer"
+
+MESSAGE        = "LOAD"
+TEXT           = "Please wait... Loading Data into List."
+
+MESSAGE        = "LOADED"
+TEXT           = " Object(s) Loaded"
+
+MESSAGE        = "LOAD_LAB"
+TEXT           = "Loading Lab Table Information"
+
+MESSAGE        = "NAME"
+TEXT           = "Table Name "
+
+MESSAGE        = "PROPS"
+TEXT           = " Properties"
+
+MESSAGE        = "TRAN_UPDATE"
+TEXT           = "Explorer Changes"
+
+MESSAGE        = "VIEW"
+TEXT           = "View Table Contents"
+
+MESSAGE        = "WAIT"
+TEXT           = "Please wait... Selecting Data."
+
+MESSAGE        = "CANCEL"
+TEXT           = "Cancel"
+
+MESSAGE        = "COLUMN"
+TEXT           = "Column Definition"
+
+MESSAGE        = "FIELD"
+TEXT           = "Field Name"
+
+MESSAGE        = "DISPNAME"
+TEXT           = "Displayed Name"
+
+MESSAGE        = "NOCRITERIA"
+TEXT           = "No Criteria Specified"
+
+MESSAGE        = "OK"
+TEXT           = "Ok"
+
+MESSAGE        = "ONECOL"
+TEXT           = "You have to have at least one column."
+
+MESSAGE        = "WIDTH"
+TEXT           = "Width"
+
+MESSAGE        = "MORE_AVAIL"
+TEXT           = "More Available"
+
+MESSAGE        = "CLICK_MORE"
+TEXT           = "[Click For More.]"
+
+MESSAGE        = "CLICK_MORE_AMOUNT"
+TEXT           = "[Click For More. []]"
+
+MESSAGE        = "AUTOFILTER_CONTAINS_HEAD"
+TEXT           = "Filter List Based On "
+
+MESSAGE        = "AUTOFILTER_CONTAINS_TEXT"
+TEXT           = "Only show records where "
+TEXT           = " contains :"
+
+MESSAGE        = "MAXIMUM_ROWS_REACHED"
+TEXT           = "Row Limit Reached, Unable to Display Any More Records"
+SEVERITY       = "INFORMATION"
+
+MESSAGE GROUP "LIST_LOG_"
+
+MESSAGE        = "STATUS"
+TEXT           = "Status"
+
+MESSAGE        = "HEAD"
+TEXT           = "Report record locking log"
+
+MESSAGE        = "ERR_LOCK"
+TEXT           = "Could not lock record"
+
+MESSAGE GROUP "EXPLORER_SETUP_"
+
+MESSAGE        = "ADVANCED"
+TEXT           = "Advanced"
+
+MESSAGE        = "ALL"
+TEXT           = "Include all Columns for the Table."
+
+MESSAGE        = "AUTH"
+TEXT           = "Authority Level"
+
+MESSAGE        = "AUTOLAB"
+TEXT           = "Auto LabTable"
+
+MESSAGE        = "AUTOSIZE"
+TEXT           = "Autosize Columns"
+
+MESSAGE        = "BADFOLDER"
+TEXT           = "Unable to Load Folder Information"
+
+MESSAGE        = "BROWSE"
+TEXT           = "Include Columns Which You Normally Browse Upon."
+
+MESSAGE        = "CALLBACKS"
+TEXT           = "Callbacks"
+
+MESSAGE        = "CANCEL"
+TEXT           = "Cancel"
+
+MESSAGE        = "CLEAR_CRITERIA"
+TEXT           = "Current Criteria Cleared"
+
+MESSAGE        = "CLOSE"
+TEXT           = "Close"
+
+MESSAGE        = "COLFRAME"
+TEXT           = "Column Definitions"
+
+MESSAGE        = "COPY"
+TEXT           = "Copy Folder"
+
+MESSAGE        = "COPY_TRANS"
+TEXT           = "Copy Explorer Folder"
+
+MESSAGE        = "CRITERIACB"
+TEXT           = "Criteria"
+
+MESSAGE        = "CRITER_FRAME"
+TEXT           = "Criteria Fields"
+
+MESSAGE        = "DATAICON"
+TEXT           = "Data Icon"
+
+MESSAGE        = "DEFINABLE"
+TEXT           = "Allow User Definable Columns."
+
+MESSAGE        = "DELETEB"
+TEXT           = "Delete"
+
+MESSAGE        = "DELETE_TRANS"
+TEXT           = "Delete Explorer Folder"
+
+MESSAGE        = "DELSETTINGS"
+TEXT           = "Changing Table Name will Delete Settings. Proceed?"
+
+MESSAGE        = "DESCRIPTION"
+TEXT           = "Description"
+
+MESSAGE        = "DISPFRAME"
+TEXT           = "Display"
+
+MESSAGE        = "DRILLDOWN"
+TEXT           = "Hierarchy"
+
+MESSAGE        = "EXCLUSIVE"
+TEXT           = "Group Exclusive"
+
+MESSAGE        = "FORMCB"
+TEXT           = "Custom Form"
+
+MESSAGE        = "GENERAL"
+TEXT           = "General"
+
+MESSAGE        = "GROUP"
+TEXT           = "Group ID"
+
+MESSAGE        = "HIERARCHY"
+TEXT           = "Hierarchy Folder"
+
+MESSAGE        = "ICONCB"
+TEXT           = "Data Icons"
+
+MESSAGE        = "ICONFRAME"
+TEXT           = "Icons"
+
+MESSAGE        = "INSERTB"
+TEXT           = "Insert"
+
+MESSAGE        = "LEAVECB"
+TEXT           = "Leave Form"
+
+MESSAGE        = "MAINT_TRANS"
+TEXT           = "Maintain Explorer Folders"
+
+MESSAGE        = "MISC"
+TEXT           = "Miscellaneous"
+
+MESSAGE        = "MODIFY"
+TEXT           = "Modify Folder"
+
+MESSAGE        = "NAME"
+TEXT           = "Name"
+
+MESSAGE        = "NEW"
+TEXT           = "New Folder"
+
+MESSAGE        = "NOCRITERIA"
+TEXT           = "No Selection Criteria Specified. All Records will be Selected. Continue?" 
+
+MESSAGE        = "NORMAL"
+TEXT           = "Normal Icon"
+
+MESSAGE        = "OK"
+TEXT           = "OK"
+
+MESSAGE        = "OPTIONB"
+TEXT           = "Options"
+
+MESSAGE        = "ORDER_FRAME"
+TEXT           = "Ordering"
+
+MESSAGE        = "RMB_INSERT"
+TEXT           = "Insert"
+
+MESSAGE        = "RMB_NEWROW"
+TEXT           = "New Row"
+
+MESSAGE        = "RMB_OPTIONS"
+TEXT           = "Options"
+
+MESSAGE        = "RMB_REMOVE"
+TEXT           = "Remove"
+
+MESSAGE        = "ROWCB"
+TEXT           = "Data Rows"
+
+MESSAGE        = "SECURITY"
+TEXT           = "Security"
+
+MESSAGE        = "SELECTED"
+TEXT           = "Selected Icon"
+
+MESSAGE        = "SOURCE"
+TEXT           = "Data Source"
+
+MESSAGE        = "TABLE"
+TEXT           = "Table Name"
+
+MESSAGE        = "TREECB"
+TEXT           = "Tree Icons"
+
+MESSAGE        = "USERLIB"
+TEXT           = "User Library"
+
+MESSAGE GROUP "EXPLORER_AUX_"
+
+MESSAGE        = "ABORT"
+TEXT           = "Action Aborted"
+
+MESSAGE        = "BADDATA"
+TEXT           = "Data property should be an Object Database"
+
+MESSAGE        = "BADTEMP"
+TEXT           = "Use Load_Details to initialise the object."
+
+MESSAGE        = "BUILDING"
+TEXT           = "Building Details Screen"
+
+MESSAGE        = "CANCEL"
+TEXT           = "Cancel"
+
+MESSAGE        = "CLOSE"
+TEXT           = "Close"
+
+MESSAGE        = "CONTINUE"
+TEXT           = "Continue Saving Data?"
+
+MESSAGE        = "DETAILS"
+TEXT           = "Details >>"
+
+MESSAGE        = "ERRMSG"
+TEXT           = "Error Message"
+
+MESSAGE        = "ERROR"
+TEXT           = "Errors Occurred whilst saving data, view log?"
+
+MESSAGE        = "LOCKED"
+TEXT           = "Unable to Lock Record"
+
+MESSAGE        = "LOGHEAD"
+TEXT           = "Error Details"
+
+MESSAGE        = "NODETAILS"
+TEXT           = "No Details"
+
+MESSAGE        = "OK"
+TEXT           = "OK"
+
+MESSAGE        = "RECORD"
+TEXT           = "Record ID"
+
+MESSAGE        = "SAVING"
+TEXT           = "Saving Changes... Please Wait.."
+
+MESSAGE        = "INCORRECT_STATUS"
+TEXT           = "Invalid status change - Record has status of [] should be one of []"
+
+MESSAGE GROUP "EXPLORER_"
+
+MESSAGE        = "CABINET"
+TEXT           = "Cabinet"
+
+MESSAGE        = "CAB_PRMT"
+TEXT           = "Cabinet : "
+
+MESSAGE        = "COLS_TRANS"
+TEXT           = "Update Columns"
+
+MESSAGE        = "COPYHEAD"
+TEXT           = "Copy From..."
+
+MESSAGE        = "COPYRMB"
+TEXT           = "Copy From..."
+
+MESSAGE        = "CREATE"
+TEXT           = "Create Personal Folders"
+
+MESSAGE        = "CUSTOMISE"
+TEXT           = "Customise"
+
+MESSAGE        = "DELETE"
+TEXT           = "Delete the '[]' Folder?"
+
+MESSAGE        = "EXPLORE"
+TEXT           = "Explore Cabinet"
+
+MESSAGE        = "FOLDER"
+TEXT           = "Folder"
+
+MESSAGE        = "GROUP_DESC"
+TEXT           = "Private Group Cabinet"
+
+MESSAGE        = "GROUP_TITLE"
+TEXT           = "Group Folders"
+
+MESSAGE        = "HEADER"
+TEXT           = "SampleManager Explorer"
+
+MESSAGE        = "LABTABLE_DESC"
+TEXT           = "Laboratory Tables Cabinet"
+
+MESSAGE        = "LABTABLE_TITLE"
+TEXT           = "Laboratory Tables"
+
+MESSAGE        = "LABTABLE_ITEM"
+TEXT           = "List of items held in the [] Table"
+
+MESSAGE        = "LABTABLE_WAIT"
+TEXT           = "Please Wait, Building Laboratory Table List..."
+
+MESSAGE        = "LASTWEEK"
+TEXT           = "Last Week"
+
+MESSAGE        = "NEXTWEEK"
+TEXT           = "Next Week"
+
+MESSAGE        = "LOADING"
+TEXT           = "Please Wait... Loading Group Elements"
+
+MESSAGE        = "NAME"
+TEXT           = "Explorer Cabinet"
+
+MESSAGE        = "NOACCESS"
+TEXT           = "You do not have access to any Explorer Folders"
+
+MESSAGE        = "REBUILD_RMB"
+TEXT           = "Rebuild"
+
+MESSAGE        = "TODAY"
+TEXT           = "Today"
+
+MESSAGE        = "UNASS"
+TEXT           = "Unassigned"
+
+MESSAGE        = "USER_DESC"
+TEXT           = "Private User Cabinet"
+
+MESSAGE        = "USER_TITLE"
+TEXT           = "Personal Folders"
+
+MESSAGE        = "BADCAB"
+TEXT           = "Due to Custom Routine Failure, Automatically Created Cabinets will NOT be saved"
+
+MESSAGE        = "ONLYONE"
+TEXT           = "Only One Explorer Allowed"
+
+MESSAGE        = "TT_UP_LEVEL"
+TEXT           = "Up One Level"
+
+MESSAGE        = "TT_NEW_FOLDER"
+TEXT           = "Create New Folder"
+
+MESSAGE        = "TT_CFG_FOLDER"
+TEXT           = "Configure Folder"
+
+MESSAGE        = "GROUP_ITEMS"
+TEXT           = "items"
+
+
+MESSAGE GROUP "EXP_AUX_LTE_"
+
+MESSAGE        = "POST_COMMIT"
+TEXT           = "Post Commit Routine"
+
+MESSAGE        = "ACTION"
+TEXT           = "Action Routine"
+
+MESSAGE        = "AUTH"
+TEXT           = "Authority"
+
+MESSAGE        = "CONFIRM"
+TEXT           = "Confirm Required"
+
+MESSAGE        = "DEFAULT"
+TEXT           = "Default Value"
+
+MESSAGE        = "DESC"
+TEXT           = "Description"
+
+MESSAGE        = "DISP"
+TEXT           = "Press EXIT to Quit"
+
+MESSAGE        = "DISPTITLE"
+TEXT           = "Aux Functions"
+
+MESSAGE        = "DNAME"
+TEXT           = "Displayed Name"
+
+MESSAGE        = "ENTER"
+TEXT           = "Enter Aux ID : "
+
+MESSAGE        = "FIELD"
+TEXT           = "Field Name"
+
+MESSAGE        = "FIELDS"
+TEXT           = "1 Fields"
+
+MESSAGE        = "FOOR"
+TEXT           = "Press DO to Save / EXIT to Quit"
+
+MESSAGE        = "FROM_STATUS"
+TEXT           = "From Status"
+
+MESSAGE        = "GROUP"
+TEXT           = "Group Name"
+
+MESSAGE        = "HEAD"
+TEXT           = "Explorer Auxiliary Reports"
+
+MESSAGE        = "LISTHEAD"
+TEXT           = "Field Definitions"
+
+MESSAGE        = "MOD"
+TEXT           = "Modifiable Entry"
+
+MESSAGE        = "STATUS"
+TEXT           = "Change to Status"
+
+MESSAGE        = "TABNAME"
+TEXT           = "Table Name"
+
+MESSAGE        = "TITLE"
+TEXT           = "Title"
+
+MESSAGE        = "TYPE"
+TEXT           = "Type"
+
+MESSAGE        = "USERLIB"
+TEXT           = "User Library"
+
+MESSAGE        = "VALID"
+TEXT           = "Validation Routine"
+
+MESSAGE        = "VALUE"
+TEXT           = "Value"
+
+MESSAGE        = "VISIBLE"
+TEXT           = "Visible"
+
+MESSAGE        = "ROUTINES_FOUND"
+TEXT           = "Please make sure field with routines are valid for the specified user library before saving"
+
+MESSAGE GROUP "EXPLORER_CAB_LTE_"
+
+MESSAGE        = "AUTH"
+TEXT           = "Authority"
+
+MESSAGE        = "CREATE"
+TEXT           = "Creation Routine"
+
+MESSAGE        = "DESC"
+TEXT           = "Description"
+
+MESSAGE        = "DISP"
+TEXT           = "Press EXIT to Quit"
+
+MESSAGE        = "DISPNAME"
+TEXT           = "Cabinets"
+
+MESSAGE        = "ENTER"
+TEXT           = "Enter Cabinet ID : "
+
+MESSAGE        = "EXPAND"
+TEXT           = "Expanded"
+
+MESSAGE        = "FOOR"
+TEXT           = "Press DO to Save / EXIT to Quit"
+
+MESSAGE        = "GROUP"
+TEXT           = "Group Name"
+
+MESSAGE        = "HEAD"
+TEXT           = "Explorer Cabinets"
+
+MESSAGE        = "ICON1"
+TEXT           = "Icon 1"
+
+MESSAGE        = "ICON2"
+TEXT           = "Icon 2"
+
+MESSAGE        = "MOD"
+TEXT           = "Modifable Entry"
+
+MESSAGE        = "NAME"
+TEXT           = "Name"
+
+MESSAGE        = "USERLIB"
+TEXT           = "User Library"
+
+MESSAGE        = "SBN"
+TEXT           = "Sort by Name"
+
+MESSAGE GROUP "EXPLORER_EDIT_TREE_"
+
+MESSAGE        = "EDIT_TRANS"
+TEXT           = "Edit Tree"
+
+MESSAGE        = "NORUN"
+TEXT           = "This Report May Not Be Run Directly"
+
+MESSAGE        = "POS0"
+TEXT           = "Position 0 Specified"
+
+MESSAGE        = "REFORMAT"
+TEXT           = "Please Wait Reformatting Tree"
+
+MESSAGE GROUP "EXP_RMB_ITEM_"
+
+MESSAGE        = "COPY"
+TEXT           = "Copy"
+
+MESSAGE        = "CUT"
+TEXT           = "Cut"
+
+MESSAGE        = "DELETE"
+TEXT           = "Delete"
+
+MESSAGE        = "DUPE"
+TEXT           = "Duplicate"
+
+MESSAGE        = "LEVELDN"
+TEXT           = "Level Down"
+
+MESSAGE        = "LEVELUP"
+TEXT           = "Level Up"
+
+MESSAGE        = "MODIFY"
+TEXT           = "Modify Item"
+
+MESSAGE        = "MOVEDN"
+TEXT           = "Move Down"
+
+MESSAGE        = "MOVEUP"
+TEXT           = "Move Up"
+
+MESSAGE        = "NEW"
+TEXT           = "New Item"
+
+MESSAGE        = "PASTE"
+TEXT           = "Paste"
+
+MESSAGE        = "GROUP"
+TEXT           = "Group"
+
+MESSAGE        = "ITEM"
+TEXT           = "Item"
+
+MESSAGE        = "NEWONE"
+TEXT           = "New"
+
+MESSAGE        = "PREVIEW"
+TEXT           = "Preview"
+
+MESSAGE        = "SEPAR"
+TEXT           = "Separator"
+
+MESSAGE GROUP "EXPLORER_GROUP_"
+
+MESSAGE        = "AUTO"
+TEXT           = "Configure Automatic Generation of Folders based on Data Groups"
+
+MESSAGE        = "DESCR"
+TEXT           = "Description"
+
+MESSAGE        = "FIELD"
+TEXT           = "Field Name"
+
+MESSAGE        = "FOLDER"
+TEXT           = "Folder Name"
+
+MESSAGE        = "HEAD"
+TEXT           = "Grouping"
+
+MESSAGE        = "INCOMP"
+TEXT           = "Incomplete Data, Please Correct"
+
+MESSAGE        = "LOAD"
+TEXT           = "Loading Data"
+
+MESSAGE        = "NONE"
+TEXT           = "<None>"
+
+MESSAGE        = "NORMAL"
+TEXT           = "Normal Icon"
+
+MESSAGE        = "PHRASE"
+TEXT           = "Phrase Desc"
+
+MESSAGE        = "SELECT"
+TEXT           = "Selected Icon"
+
+MESSAGE GROUP "EXPLORER_RMB_"
+
+MESSAGE        = "ACTFOOT"
+TEXT           = "Choose the appropriate RMB Action type."
+
+MESSAGE        = "ACTION"
+TEXT           = "Action"
+
+MESSAGE        = "ACTIONLIB"
+TEXT           = "Action Library"
+
+MESSAGE        = "ACTIONRT"
+TEXT           = "Action Routine"
+
+MESSAGE        = "ADVANCED"
+TEXT           = "Advanced"
+
+MESSAGE        = "ADVFOOT"
+TEXT           = "Advanced Configuration"
+
+MESSAGE        = "AUTH"
+TEXT           = "Authority Level"
+
+MESSAGE        = "AUXFRAME"
+TEXT           = "      Auxiliary Action"
+
+MESSAGE        = "BADBOOL"
+TEXT           = "Invalid Context Operator"
+
+MESSAGE        = "BADCONTEXT"
+TEXT           = "Invalid RMB Context Routine []/[]"
+
+MESSAGE        = "BADFIELD"
+TEXT           = "Context Information is incomplete and will be ignored"
+
+MESSAGE        = "BADLIBRARY"
+TEXT           = "Please specify the Context Routine and library"
+
+MESSAGE        = "BADTYPE"
+TEXT           = "Please specify Context Operator Type"
+
+MESSAGE        = "BADVALUE"
+TEXT           = "Please specify a Boolean Value"
+
+MESSAGE        = "CALLRFRAME"
+TEXT           = "Call Routine"
+
+MESSAGE        = "CALLMFRAME"
+TEXT           = "Call Menu Item"
+
+MESSAGE        = "CHOOSE"
+TEXT           = "Choose Values"
+
+MESSAGE        = "CONTEXT"
+TEXT           = "Context"
+
+MESSAGE        = "CONTFOOT"
+TEXT           = "Context Sensitivity"
+
+MESSAGE        = "CONTINUE"
+TEXT           = "Continue with Action?"
+
+MESSAGE        = "DO"
+TEXT           = "OK"
+
+MESSAGE        = "DUPL"
+TEXT           = "Duplicate Item : [] "
+
+MESSAGE        = "ERROR"
+TEXT           = "Unable to lock data, view log?"
+
+MESSAGE        = "EXIT"
+TEXT           = "Cancel"
+
+MESSAGE        = "FIELD"
+TEXT           = "Field"
+
+MESSAGE        = "GENERAL"
+TEXT           = "General"
+
+MESSAGE        = "GENFOOT"
+TEXT           = "General Configuration. Use the Right Mouse Button to Add."
+
+MESSAGE        = "GROUP"
+TEXT           = "Group"
+
+MESSAGE        = "GROUPSEC"
+TEXT           = "Group Security and Applicable Roles"
+
+MESSAGE        = "HEADING"
+TEXT           = "Right Mouse Button"
+
+MESSAGE        = "IDENT"
+TEXT           = "Identity"
+
+MESSAGE        = "IN"
+TEXT           = "IN  "
+
+MESSAGE        = "LIB"
+TEXT           = "Library"
+
+MESSAGE        = "LOADING"
+TEXT           = "Loading RMB Information"
+
+MESSAGE        = "LOCK"
+TEXT           = "Lock Data"
+
+MESSAGE        = "LOCKED"
+TEXT           = "Unable to Lock Record"
+
+MESSAGE        = "MENUPROC"
+TEXT           = "Menu Procedure"
+
+MESSAGE        = "MNEM"
+TEXT           = "Mnemonic"
+
+MESSAGE        = "MULTI"
+TEXT           = "Allow Multiple"
+
+MESSAGE        = "NAME"
+TEXT           = "Name"
+
+MESSAGE        = "NEWGRP"
+TEXT           = "New Group []"
+
+MESSAGE        = "NEWITEM"
+TEXT           = "New Item []"
+
+MESSAGE        = "NOACTS"
+TEXT           = "No Action Specified For Item : []"
+
+MESSAGE        = "NOACTION"
+TEXT           = "No Action Defined"
+
+MESSAGE        = "NONAME"
+TEXT           = "Each RMB item must have a Name"
+
+MESSAGE        = "OPERATOR"
+TEXT           = "Operator"
+
+MESSAGE        = "REFRESH"
+TEXT           = "Refresh"
+
+MESSAGE        = "ROUT"
+TEXT           = "Routine"
+
+MESSAGE        = "ROWFRAME"
+TEXT           = "Use Row Values"
+
+MESSAGE        = "SEARCH"
+TEXT           = "Search"
+
+MESSAGE        = "SEPAR"
+TEXT           = "<Separator>"
+
+MESSAGE        = "TOOMANY"
+TEXT           = "Too Many Parameters"
+
+MESSAGE        = "TRANS"
+TEXT           = "Explorer RMB Action"
+
+MESSAGE        = "TREE"
+TEXT           = "Show on Tree"
+
+MESSAGE        = "TYPE"
+TEXT           = "Item Type"
+
+MESSAGE        = "USE"
+TEXT           = "Using"
+
+MESSAGE        = "USEFRAME"
+TEXT           = "Options"
+
+MESSAGE        = "USEHEAD"
+TEXT           = "Set Using Parameters"
+
+MESSAGE        = "USING"
+TEXT           = "Using"
+
+MESSAGE        = "VALUE"
+TEXT           = "Value"
+
+MESSAGE        = "WAIT"
+TEXT           = "Please wait, loading menu information.."
+
+MESSAGE        = "NAVBAR"
+TEXT           = "Show on Navbar"
+
+MESSAGE        = "GRID"
+TEXT           = "Show on Grid"
+
+MESSAGE GROUP "CHOOSER_"
+
+MESSAGE        = "CLOSE"
+TEXT           = "Close"
+
+MESSAGE        = "DESELECT"
+TEXT           = "Deselect All"
+
+MESSAGE        = "HEADER"
+TEXT           = "List Chooser"
+
+MESSAGE        = "INVERT"
+TEXT           = "Invert Selection"
+
+MESSAGE        = "LOAD"
+TEXT           = "Please Wait... Setting the Appropriate Values"
+
+MESSAGE        = "SELECT"
+TEXT           = "Select All"
+
+MESSAGE        = "WAIT"
+TEXT           = "Please Wait.... Building Choose List from Database"
+
+MESSAGE        = "VALUE"
+TEXT           = "Value"
+
+MESSAGE        = "DESCRIPTION"
+TEXT           = "Description"
+
+MESSAGE GROUP "LTE_ICON_"
+
+MESSAGE        = "DESC"
+TEXT           = "Description"
+
+MESSAGE        = "DNAME"
+TEXT           = "Icon"
+
+MESSAGE        = "ENTER"
+TEXT           = "Enter Icon ID : "
+
+MESSAGE        = "FOOR"
+TEXT           = "Press EXIT to Quit"
+
+MESSAGE        = "GROUP"
+TEXT           = "Group Name"
+
+MESSAGE        = "HEAD"
+TEXT           = "Icon"
+
+MESSAGE        = "ICON"
+TEXT           = "Icon Location"
+
+MESSAGE        = "SOURCE"
+TEXT           = "Icon Source"
+
+MESSAGE        = "VAL_LOCATION"
+TEXT           = "The icon's location must be entered."
+
+MESSAGE GROUP "PROMPT_ICON_"
+
+MESSAGE        = "HEADER"
+TEXT           = "Icons"
+
+MESSAGE GROUP "EXPLORER_ROLE_"
+
+MESSAGE        = "APPLIC"
+TEXT           = "Applicable Roles"
+
+MESSAGE        = "CABINET"
+TEXT           = "Cabinet Role Security : []"
+
+MESSAGE        = "CLOSE"
+TEXT           = "Close"
+
+MESSAGE        = "GROUP"
+TEXT           = "Group ID"
+
+MESSAGE        = "HEAD"
+TEXT           = "Security"
+
+MESSAGE        = "ID"
+TEXT           = "Role Identity"
+
+MESSAGE        = "MENU"
+TEXT           = "Menu Security : []"
+
+MESSAGE        = "ROLES"
+TEXT           = "Roles"
+
+MESSAGE        = "ESIG"
+TEXT           = "Esig"
+
+MESSAGE        = "ESIG_SETTING"
+TEXT           = "Esig Level"
+
+MESSAGE        = "ESIG_REASON"
+TEXT           = "Reason"
+
+MESSAGE        = "MASTER_MENU_EDIT"
+TEXT           = "Edit Master Menu"
+
+MESSAGE GROUP "EXPLORER_LTE_"
+
+MESSAGE        = "ROLES"
+TEXT           = "1 Roles"
+
+MESSAGE        = "OPTIONS"
+TEXT           = "Options"
+
+MESSAGE GROUP "ENTITY_LINKS_"
+
+MESSAGE        = "H"
+TEXT           = "Entity Links"
+
+MESSAGE        = "HINT"
+TEXT           = "Select to find entities that link to the selected "
+TEXT           = " record"
+TEXT           = " records"
+
+MESSAGE        = "SORT_NAME"
+TEXT           = "Sort By Name"
+
+MESSAGE        = "SORT_DB"
+TEXT           = "Sort By Database Order"
+
+MESSAGE        = "REBUILD"
+TEXT           = "Rebuild"
+
+MESSAGE        = "FIELDS"
+TEXT           = " link fields"
+
+MESSAGE GROUP "DATE_"
+
+MESSAGE        = "ORDINAL"
+TEXT           = "st"
+TEXT           = "nd"
+TEXT           = "rd"
+
+MESSAGE        = "DEFAULT_ORDINAL"
+TEXT           = "th"
+
+MESSAGE GROUP "EXPLORER_MIGRATE_"
+
+MESSAGE        = "DELETE"
+TEXT           = "Delete Specified Folders?"
+
+MESSAGE        = "SOURCE"
+TEXT           = "Source Cabinet"
+
+MESSAGE        = "OVERWRITE"
+TEXT           = "Overwrite Folder : "
+
+MESSAGE        = "TARGET"
+TEXT           = "Target Cabinet"
+
+MESSAGE        = "MIGRATE"
+TEXT           = "Migrate Folder Information"
+
+MESSAGE        = "MOVE"
+TEXT           = "Move Folder Information"
+
+MESSAGE        = "COPY"
+TEXT           = "Copy Folder Information"
+
+MESSAGE        = "TABLE_DUPE"
+TEXT           = "You can not have the same table twice in TABLE DETAIL"
+
+MESSAGE GROUP "EXPLORER_MENU_"
+
+MESSAGE       = "FOLDER"
+TEXT          = "Folder"
+
+MESSAGE       = "EXISTS"
+TEXT          = "Menu Item Already Exists"
+
+MESSAGE       = "CREATETRANS"
+TEXT          = "Create Menu Item"
+
+MESSAGE       = "CONTEXT"
+TEXT          = "Context"
+
+MESSAGE       = "CABINET"
+TEXT          = "Cabinet"
+
+MESSAGE       = "CREATE"
+TEXT          = "Create Menu Item"
+
+MESSAGE       = "DESC"
+TEXT          = "Choose Option"
+
+MESSAGE       = "HEAD"
+TEXT          = "Open Folder"
+
+MESSAGE GROUP "EXPLORER_HEIR_"
+
+MESSAGE       = "INVALID_TABLE"
+TEXT          = "Please specify a valid table name"
+SEVERITY      = "ERROR"
+
+MESSAGE       = "CHANGE_TABLE"
+TEXT          = "If you change the table name the Levels will not be copied. Continue?"
+SEVERITY      = "WARNING"

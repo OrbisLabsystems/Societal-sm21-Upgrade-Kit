@@ -1,0 +1,97 @@
+
+MESSAGE GROUP "WEB_SERVER_"
+
+MESSAGE = "CGI_NOT_FOUND"
+TEXT    = "CGI Script not found : "
+
+MESSAGE = "CHARS_READ"
+TEXT    = "Characters read = "
+
+MESSAGE = "CONTENT_LENGTH"
+TEXT    = "Content Length  = "
+
+MESSAGE = "ENTITY_BODY"
+TEXT    = "Entity Body     = "
+
+MESSAGE = "FILE_NOT_FOUND"
+TEXT    = "Original File not found : "
+
+MESSAGE = "HTML_FILE_NOT_FOUND"
+TEXT    = ".html File not found : "
+
+MESSAGE = "HTM_FILE_NOT_FOUND"
+TEXT    = ".htm File not found : "
+
+MESSAGE = "NOT_A_MEMBER"
+TEXT    = "User is not a member of the group "
+
+MESSAGE = "READ_FAILED"
+TEXT    = "Read Request Failed : "
+
+MESSAGE = "READ_PART"
+TEXT    = "Read part of request but failed to read all"
+
+MESSAGE = "READ_SO_FAR"
+TEXT    = "Message read so far = "
+
+MESSAGE = "REMOTE_REQUEST"
+TEXT    = "Remote request to shut down VGL Web Server"
+
+MESSAGE = "REQUEST_LENGTH"
+TEXT    = "Request Length  = "
+
+MESSAGE = "START"
+TEXT    = "Start of the VGL Web Server"
+
+MESSAGE = "USER_PRIVILEGE"
+TEXT    = "User does not have privilege to access this page. "
+
+MESSAGE = "USER_SHUT_DOWN"
+TEXT    = "Interactive User request to shut down VGL Web Server"
+
+MESSAGE = "USER_NO_WEB_ACCESS"
+TEXT    = "User does not have the Web Access Privilege "
+
+MESSAGE = "FAILED_LOG_IN"
+TEXT    = "Failed to log in User "
+
+MESSAGE = "HEADER"
+TEXT    = "SampleManager VGL Web Server"
+
+MESSAGE = "DIGEST_AUTH"
+TEXT    = "Digest Authorisation = "
+
+MESSAGE = "FAILED_CALL"
+TEXT    = "Failed when calling script "
+TEXT    = ". Status => "
+
+MESSAGE = "FAILED_WRITE"
+TEXT    = "Failed to write output file. Status => "
+
+MESSAGE = "FAILED_TO_SEND"
+TEXT    = "Failed to send ("
+TEXT    = ") Web Error Page  : "
+
+MESSAGE = "HTML_ERROR"
+TEXT    = "SampleManager Web Server Error"
+TEXT    = "Error "
+TEXT    = "The VGL Web Server has detected an error"
+TEXT    = "Message header was : "
+TEXT    = "This error occured at : "
+
+MESSAGE = "DEFAULT_PAGE"
+TEXT    = "SampleManager VGL Web Server Default Page"
+TEXT    = "The VGL Web Server has automatically generated this page"
+TEXT    = "Message header was : "
+TEXT    = "This Page was generated at : "
+
+MESSAGE = "ERROR_TEXT"
+TEXT    = "Bad Request"
+TEXT    = "Unauthorised"
+TEXT    = "Forbidden"
+TEXT    = "Not Found "
+TEXT    = "Internal Server Error"
+TEXT    = "Not Implemented"
+TEXT    = "Bad Gateway"
+TEXT    = "Service Unavailable"
+TEXT    = "Unknown Error"

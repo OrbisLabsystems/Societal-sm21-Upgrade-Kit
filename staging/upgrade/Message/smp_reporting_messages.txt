@@ -1,0 +1,3330 @@
+! Messages used by the various reporting tools in sample manager
+
+MESSAGE  GROUP  "DATATREE_"
+
+MESSAGE       = "DISPLAY_1"
+TEXT          = "Constructing Tree"
+
+MESSAGE       = "DISPLAY_2"
+TEXT          = "Creating Tree - Please Wait"
+
+MESSAGE       = "DISPLAY_3"
+TEXT          = "Could not find Text File  : "
+
+MESSAGE       = "DISPLAY_4"
+TEXT          = "          Sample DataTree              "
+
+MESSAGE       = "DISPLAY_5"
+TEXT          = "Enter Sample ID :  "
+
+MESSAGE       = "DISPLAY_6"
+TEXT          = "            Press EXIT to QUIT           "
+
+MESSAGE       = "DISPLAY_7"
+TEXT          = "       Template Worksheet DataTree       "
+
+MESSAGE       = "DISPLAY_8"
+TEXT          = "Enter Worksheet ID  :  "
+
+MESSAGE       = "H_NEW_1"
+TEXT          = "Data Tree for Sample : "
+
+MESSAGE       = "WKS_1"
+TEXT          = "Sample Worksheet"
+
+MESSAGE       = "DISPLAY_9"
+TEXT          = "No Samples :"
+
+MESSAGE       = "DISPLAY_10"
+TEXT          ="The Passed Text File contained no valid samples for the tree"
+
+MESSAGE       = "DISPLAY_11"
+TEXT          ="The Passed Array contained no valid samples for the tree"
+
+MESSAGE       = "DISPLAY_12"
+TEXT          = "Invalid Sample ID Passed : "
+
+MESSAGE       = "DISPLAY_13"
+TEXT          = "Invalid Test Number Passed : "
+
+MESSAGE       = "DISPLAY_14"
+TEXT          = " Error : "
+
+MESSAGE       = "DISPLAY_15"
+TEXT          = "File does not exist"
+
+MESSAGE       = "DISPLAY_16"
+TEXT          = "sample "
+
+MESSAGE       = "DISPLAY_17"
+TEXT          = "No Result"
+
+MESSAGE       = "WKS_5"
+TEXT          = "Test Worksheet"
+
+MESSAGE       = "WKS_6"
+TEXT          = "Sample Worksheet"
+
+MESSAGE       = "WKS_7"
+TEXT          = "Defined Worksheets"
+
+MESSAGE       = "WKS_8"
+TEXT          = "Select The Type of Worksheet "
+
+MESSAGE       = "BORDER_1"
+TEXT          = "| Full Result |"
+
+MESSAGE       = "BORDER_2"
+TEXT          = "| Sample Information Page 1 |"
+
+MESSAGE       = "BORDER_3"
+TEXT          = "| Sample Information Page 2 |"
+
+MESSAGE       = "BORDER_4"
+TEXT          = "| ADI fields |"
+
+MESSAGE       = "BORDER_5"
+TEXT          = "| Analysis Information |"
+
+MESSAGE       = "BORDER_6"
+TEXT          = "| DATATREE |"
+
+
+
+MESSAGE       = "H_SAMP"
+TEXT          = "Data Tree for Sample : "
+
+MESSAGE       = "H_JOB"
+TEXT          = "Data Tree for Job : "
+
+MESSAGE       = "NEW_3"
+TEXT          = " Status : "
+
+MESSAGE       = "H_SP"
+TEXT          = "Data Tree for Sample Point : "
+
+MESSAGE       = "H_PROJ"
+TEXT          = "Data Tree for Project : "
+
+MESSAGE       = "H_PROD"
+TEXT          = "Data Tree for Product : "
+
+MESSAGE       = "H_TYPE"
+TEXT          = "Data Tree for Sample Type : "
+
+MESSAGE       = "H_CUST"
+TEXT          = "Data Tree for Customer : "
+
+MESSAGE       = "H_LOC"
+TEXT          = "Data Tree for Location : "
+
+MESSAGE       = "H_PREP"
+TEXT          = "Data Tree for Preparation : "
+
+MESSAGE       = "H_CRIT"
+TEXT          = "Tree Criteria Selection"
+
+MESSAGE       = "H_JREV"
+TEXT          = "Job Review"
+
+MESSAGE       = "H_SREV"
+TEXT          = "Sample Review"
+
+MESSAGE       = "WKS_2"
+TEXT          = "Test Worksheet"
+
+MESSAGE       = "WKS_3"
+TEXT          = "Defined Worksheet"
+
+MESSAGE       = "WKS_4"
+TEXT          = "Sample Worksheet"
+
+MESSAGE       = "H_WKS"
+TEXT          = "Data Tree for Worksheet : "
+
+MESSAGE       = "H_STAN"
+TEXT          = "Data Tree for Standard : "
+
+MESSAGE       = "P_JOB"
+TEXT          = "Select Job ID"
+
+MESSAGE       = "P_SAMP"
+TEXT          = "Select Sample ID"
+
+MESSAGE       = "P_SP"
+TEXT          = "Select Sampling Point"
+
+MESSAGE       = "P_PROJ"
+TEXT          = "Select Project"
+
+MESSAGE       = "P_PROD"
+TEXT          = "Select Product Specification"
+
+MESSAGE       = "P_TYPE"
+TEXT          = "Select Sample Type"
+
+MESSAGE       = "P_CUST"
+TEXT          = "Select Customer ID"
+
+MESSAGE       = "P_LOC"
+TEXT          = "Select Sample Location"
+
+MESSAGE       = "P_PREP"
+TEXT          = "Select Sample Preparation"
+
+MESSAGE       = "P_STAN"
+TEXT          = "Select Standard ID"
+
+MESSAGE       = "P_WKS"
+TEXT          = "Select Worksheet ID "
+
+MESSAGE       = "MESS_1"
+TEXT          = "Searching Database - Please Wait. Press EXIT to interrupt search"
+
+MESSAGE       = "MESS_2"
+TEXT          = "No Samples are available"
+
+MESSAGE       = "MESS_3"
+TEXT          = "Data Tree Report"
+
+MESSAGE         = "MESS_4"
+TEXT            = "Please select the sample collection method"
+
+MESSAGE         = "MESS_5"
+TEXT            = "Samples with common"
+
+MESSAGE         = "MESS_6"
+TEXT            = "selected"
+
+MESSAGE         = "MESS_7"
+TEXT            = "Press SELECT for next page, EXIT to quit"
+
+MESSAGE         = "MESS_8"
+TEXT            = "Invalid Standard record cannot construct tree"
+
+MESSAGE         = "MESS_9"
+TEXT            ="Constructing Tree -Please Wait.Press EXIT to stop construction"
+
+MESSAGE         = "ANAL_1"
+TEXT            = "Worksheet ID. . : "
+
+MESSAGE         = "ANAL_2"
+TEXT            = "Preparation ID. : "
+
+MESSAGE         = "ANAL_3"
+TEXT            = "Instrument ID . : "
+
+MESSAGE         = "ANAL_4"
+TEXT            = "Analysis Type . : "
+
+MESSAGE         = "ANAL_5"
+TEXT            = "Date started. . : "
+
+MESSAGE         = "ANAL_6"
+TEXT            = "Date completed. : "
+
+MESSAGE         = "ANAL_7"
+TEXT            = "Operator ID . . : "
+
+MESSAGE         = "ANAL_8"
+TEXT            = "Date Authorised : "
+
+MESSAGE         = "ANAL_9"
+TEXT            = "Authoriser ID . : "
+
+MESSAGE         = "AMESS_1"
+TEXT            = "Job header"
+
+MESSAGE         = "AMESS_2"
+TEXT            = "Sampling Point"
+
+MESSAGE         = "AMESS_3"
+TEXT            = "Project ID"
+
+MESSAGE         = "AMESS_4"
+TEXT            = "Product Name"
+
+MESSAGE         = "AMESS_5"
+TEXT            = "Sample Type"
+
+MESSAGE         = "AMESS_6"
+TEXT            = "Customer ID"
+
+MESSAGE         = "AMESS_7"
+TEXT            = "Location ID"
+
+MESSAGE         = "AMESS_8"
+TEXT            = "Preparation ID"
+
+MESSAGE         = "AMESS_9"
+TEXT            = "Worksheet ID"
+
+MESSAGE         = "AMESS_10"
+TEXT            = "Standard ID"
+
+MESSAGE         = "AMESS_11"
+TEXT            = " for search "
+
+MESSAGE         = "OPT_1"
+TEXT            = "DataTree - Select Tree Type"
+
+MESSAGE         = "OPT_2"
+TEXT            = "J"
+
+MESSAGE         = "OPT_3"
+TEXT            = "Job"
+
+MESSAGE         = "OPT_4"
+TEXT            = "S"
+
+MESSAGE         = "OPT_5"
+TEXT            = "Sample Point"
+
+MESSAGE         = "OPT_6"
+TEXT            = "o"
+
+MESSAGE         = "OPT_7"
+TEXT            = "Project"
+
+MESSAGE         = "OPT_8"
+TEXT            = "P"
+
+MESSAGE         = "OPT_9"
+TEXT            = "Product Name"
+
+MESSAGE         = "OPT_10"
+TEXT            = "T"
+
+MESSAGE         = "OPT_11"
+TEXT            = "Sample Type"
+
+MESSAGE         = "OPT_12"
+TEXT            = "C"
+
+MESSAGE         = "OPT_13"
+TEXT            = "Customer"
+
+MESSAGE         = "OPT_14"
+TEXT            = "L"
+
+MESSAGE         = "OPT_15"
+TEXT            = "Location"
+
+MESSAGE         = "OPT_16"
+TEXT            = "r"
+
+MESSAGE         = "OPT_17"
+TEXT            = "Preparation"
+
+MESSAGE         = "OPT_18"
+TEXT            = "W"
+
+MESSAGE         = "OPT_19"
+TEXT            = "Worksheet"
+
+MESSAGE         = "OPT_20"
+TEXT            = "d"
+
+MESSAGE         = "OPT_21"
+TEXT            = "Standards"
+
+MESSAGE         = "TREE_1"
+TEXT            = "Tree Commands"
+
+MESSAGE         = "TREE_2"
+TEXT            = "Samples"
+
+MESSAGE         = "TREE_3"
+TEXT            = "Samples and Tests"
+
+MESSAGE         = "TREE_4"
+TEXT            = "Samples, Tests and Results"
+
+MESSAGE         = "TREE_5"
+TEXT            = "Hard copy"
+
+MESSAGE         = "TREE_6"
+TEXT            = "Tree For "
+
+MESSAGE         = "NEW_15"
+TEXT            = "Data Tree for Component : "
+
+MESSAGE         = "NEW_16"
+TEXT            = "          No Samples : "
+
+MESSAGE         = "HEADER_1"
+TEXT            = "Date Printed :"
+
+MESSAGE         = "HEADER_2"
+TEXT            = "  By operator "
+
+MESSAGE         = "HEADER_3"
+TEXT            = "              Page ##"
+
+MESSAGE         = "TAB_1"
+TEXT            = "Data Tree for Component"
+
+MESSAGE         = "TAB_2"
+TEXT            = "No Samples"
+
+MESSAGE         = "NO_SAMP_1"
+TEXT            = "No Samples"
+
+MESSAGE GROUP "AUDIT_"
+
+MESSAGE         = "FORM_BUTTONS"
+TEXT            = "Details..."
+TEXT            = "Tests..."
+TEXT            = "Results..."
+
+MESSAGE         = "MESS_1"
+TEXT            = "Select Table"
+
+MESSAGE         = "MESS_2"
+TEXT            = "Press EXIT to Exit"
+
+MESSAGE         = "MESS_3"
+TEXT            = "Table Name"
+
+MESSAGE         = "MESS_4"
+TEXT            = "Audit - Event Selector"
+
+MESSAGE         = "MESS_5"
+TEXT            = "Table"
+
+MESSAGE         = "MESS_6"
+TEXT            = "ID"
+
+MESSAGE         = "MESS_7"
+TEXT            = "Event"
+
+MESSAGE         = "MESS_8"
+TEXT            = "Transaction"
+TEXT            = "Date"
+
+MESSAGE         = "MESS_9"
+TEXT            = "Action"
+
+MESSAGE         = "MESS_10"
+TEXT            = "Reason"
+
+MESSAGE         = "MESS_11"
+TEXT            = "Audit - Data"
+
+MESSAGE         = "MESS_12"
+TEXT            = "Field"
+
+MESSAGE         = "MESS_13"
+TEXT            = "Value"
+
+MESSAGE         = "MESS_14"
+TEXT            = "Sample Audit - Event Selector"
+
+MESSAGE         = "MESS_15"
+TEXT            = "SELECT an Event or Press EXIT to Exit"
+
+MESSAGE         = "MESS_16"
+TEXT            = "SAMPLE  "
+
+MESSAGE         = "MESS_17"
+TEXT            = "Sample Audit - Data"
+
+MESSAGE         = "MESS_18"
+TEXT            = "Press SELECT to Choose a Test"
+
+MESSAGE         = "MESS_19"
+TEXT            = "Sample Audit - Associated Tests"
+
+MESSAGE         = "MESS_20"
+TEXT            = "Press SELECT to View Results"
+
+MESSAGE         = "MESS_21"
+TEXT            = "Sample ID"
+
+MESSAGE         = "MESS_22"
+TEXT            = "Status"
+
+MESSAGE         = "MESS_23"
+TEXT            = "Analysis ID"
+
+MESSAGE         = "MESS_24"
+TEXT            = "Count"
+
+MESSAGE         = "MESS_25"
+TEXT            = "Operator"
+
+MESSAGE         = "MESS_26"
+TEXT            = "Sample Audit - Associated Results"
+
+MESSAGE         = "MESS_27"
+TEXT            = "Status"
+
+MESSAGE         = "MESS_28"
+TEXT            = "Component"
+
+MESSAGE         = "MESS_29"
+TEXT            = "Type"
+
+MESSAGE         = "MESS_30"
+TEXT            = "Value"
+
+MESSAGE         = "MESS_31"
+TEXT            = "Units"
+
+MESSAGE GROUP "ACTIVE_"
+
+MESSAGE         = "HEADER"
+TEXT            = "                                                            page ##"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Active Samples Report"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Press any key to interrupt"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Number of samples to process : "
+
+MESSAGE         = "WAIT"
+TEXT            = "Please wait for the report to be completed"
+
+MESSAGE         = "PERCENT_BAR_NAME"
+TEXT            = "Percent of samples processed"
+
+MESSAGE         = "NO_SAMPS"
+TEXT            = "There are no samples in the active database"
+
+MESSAGE         = "NOTE_LINE1"
+TEXT            = "Notes (continued)"
+
+MESSAGE         = "NOTE_LINE2"
+TEXT            = "Notes:"
+
+MESSAGE         = "STAT_VALUE"
+TEXT            = "The status values (s) are translated as follows:"
+TEXT            = "H = samples are on hold"
+TEXT            = "U = Samples are unavailable"
+TEXT            = "W = Samples are aWaiting preparation"
+TEXT            = "V = Samples are available for testing"
+TEXT            = "P = Samples have results Present"
+TEXT            = "C = Samples are Completed"
+TEXT            = "A = Samples are Authorised"
+TEXT            = "S = Samples are Suspended"
+TEXT            = "X = Samples are cancelled"
+TEXT            = "I = Samples are being Inspected"
+
+MESSAGE         = "FOOTER"
+TEXT            = "End of Report"
+
+MESSAGE         = "HEADING"
+TEXT            = "ACTIVE SAMPLE LIST"
+
+MESSAGE         = "FOLLOW_TEXT"
+TEXT            = "The following is a list of all the samples on the active database"
+TEXT            = "as at "
+
+MESSAGE         = "TAB_TEXT1"
+TEXT            = "|           |                               | Date Results|    |               |"
+
+MESSAGE         = "TAB_TEXT2"
+TEXT            = "|Numeric ID |           Text ID             |   Required  | S  |    Job ID     |"
+
+MESSAGE  GROUP "AUDIT_REP_"
+
+MESSAGE         = "NO_PREV_TRA"
+TEXT            = "No previous transactions were found"
+
+MESSAGE         = "NO_MORE_TRA"
+TEXT            = "No more transactions were found"
+
+MESSAGE         = "NO_PREV_EVT"
+TEXT            = "No previous events were found"
+
+MESSAGE         = "NO_MORE_EVT"
+TEXT            = "No more events were found"
+
+MESSAGE         = "NO_PREV_DTA"
+TEXT            = "No previous event data was found"
+
+MESSAGE         = "NO_MORE_DTA"
+TEXT            = "No more event data was found"
+
+MESSAGE         = "NO_TRANS"
+TEXT            = "No Transaction Records were found"
+
+MESSAGE         = "NO_EVENTS"
+TEXT            = "No Event Records were found"
+
+MESSAGE         = "NO_DATA"
+TEXT            = "No Data Records were found"
+
+MESSAGE         = "TRAN_1"
+TEXT            = "No audits have been found for given operator"
+
+MESSAGE         = "TRAN_2"
+TEXT            = "SELECT for Events, PREV or NEXT for other Transactions, DO to Print"
+
+MESSAGE         = "EV_FOOT_1"
+TEXT            = "SELECT for Data, PREV or NEXT for other Events, DO to Print"
+
+MESSAGE         = "EV_FOOT_2"
+TEXT            = "SELECT for Data,FIND for Trans,PREV & NEXT for other Events,DO to Print"
+
+MESSAGE         = "DAT_FOOT"
+TEXT            = "PREV or NEXT for other Data, DO to Print"
+
+MESSAGE         = "MENU_1"
+TEXT            = "Audit Report Options"
+
+MESSAGE         = "MENU_3"
+TEXT            = "Audit Transactions"
+
+MESSAGE         = "MENU_7"
+TEXT            = "Sample Audits"
+
+MESSAGE         = "MENU_11"
+TEXT            = "Operator Audits"
+
+MESSAGE         = "MENU_15"
+TEXT            = "Print All Audits for a Sample"
+
+MESSAGE         = "MENU_19"
+TEXT            = "Print all Audits for an Operator"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "Transaction Window"
+
+MESSAGE         = "HEAD_2"
+TEXT            = "Data Window"
+
+MESSAGE         = "HEAD_3"
+TEXT            = "Event Window"
+
+MESSAGE         = "HEAD_4"
+TEXT            = "Sample Audit Report"
+
+MESSAGE         = "HEAD_5"
+TEXT            = ", Produced on :"
+
+MESSAGE         = "HEAD_6"
+TEXT            = "          Page ##"
+
+MESSAGE         = "HEAD_7"
+TEXT            = "Audit User Report"
+
+MESSAGE         = "HEAD_8"
+TEXT            = "Audit Transaction Report"
+
+MESSAGE         = "HEAD_9"
+TEXT            = "Audit Report"
+
+MESSAGE         = "HEAD_10"
+TEXT            = "Audit Event Report"
+
+MESSAGE         = "DISP_1"
+TEXT            = "Transaction"
+
+MESSAGE         = "DISP_2"
+TEXT            = "System PID"
+
+MESSAGE         = "DISP_3"
+TEXT            = "User ID"
+
+MESSAGE         = "DISP_4"
+TEXT            = "Name"
+
+MESSAGE         = "DISP_5"
+TEXT            = "Date"
+
+MESSAGE         = "DISP_6"
+TEXT            = "Event"
+
+MESSAGE         = "DISP_8"
+TEXT            = "Table ID"
+
+MESSAGE         = "DISP_9"
+TEXT            = "Record key0"
+
+MESSAGE         = "DISP_10"
+TEXT            = "Action"
+
+MESSAGE         = "DISP_11"
+TEXT            = "Reason"
+
+MESSAGE         = "DISP_12"
+TEXT            = "Data"
+
+MESSAGE         = "DISP_13"
+TEXT            = "Event"
+
+MESSAGE         = "DISP_14"
+TEXT            = "Field ID"
+
+MESSAGE         = "DISP_15"
+TEXT            = "Reason"
+
+MESSAGE         = "DISP_16"
+TEXT            = "Value Before"
+
+MESSAGE         = "DISP_17"
+TEXT            = "Value After"
+
+MESSAGE         = "TAB_1"
+TEXT            = "Table ID"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Record key0"
+
+MESSAGE         = "TAB_3"
+TEXT            = "Action"
+
+MESSAGE         = "TAB_4"
+TEXT            = "Reason"
+
+MESSAGE         = "TAB_5"
+TEXT            = "Field  ID              Value Before             Value After"
+
+MESSAGE         = "TAB_6"
+TEXT            = "ID Numeric"
+
+MESSAGE         = "TAB_7"
+TEXT            = "Textual ID"
+
+MESSAGE         = "TAB_8"
+TEXT            = "Audit Transaction Number"
+
+MESSAGE         = "TAB_9"
+TEXT            = "User ID"
+
+MESSAGE         = "TAB_10"
+TEXT            = "Name"
+
+MESSAGE         = "TAB_11"
+TEXT            = "Date"
+
+MESSAGE         = "TAB_12"
+TEXT            = "SAMPLE AUDIT REPORT"
+
+MESSAGE         = "TAB_13"
+TEXT            = "Audit Transaction Report for Sample"
+
+MESSAGE         = "TAB_14"
+TEXT            = "Audit Transactions for operator"
+
+MESSAGE         = "TAB_15"
+TEXT            = "Transaction Number"
+
+MESSAGE         = "TAB_16"
+TEXT            = "AUDIT TRANSACTION REPORT"
+
+MESSAGE         = "TAB_17"
+TEXT            = "Audits for tests"
+
+MESSAGE         = "TAB_18"
+TEXT            = "AUDIT USER REPORT"
+
+MESSAGE         = "TAB_19"
+TEXT            = "Field  ID"
+
+MESSAGE         = "TAB_20"
+TEXT            = "Value Before : "
+
+MESSAGE         = "TAB_21"
+TEXT            = "Value After  : "
+
+MESSAGE         = "TAB_22"
+TEXT            = "Reason       : "
+
+MESSAGE         = "TAB_23"
+TEXT            = "AUDIT EVENT REPORT"
+
+MESSAGE         = "TAB_24"
+TEXT            = "AUDIT TABLE EVENT REPORT"
+
+MESSAGE         = "PROM_2"
+TEXT            = "Enter Transaction : "
+
+MESSAGE         = "PROM_3"
+TEXT            = "Audit Transaction Report"
+
+MESSAGE         = "PROM_5"
+TEXT            = "Enter Sample ID : "
+
+MESSAGE         = "PROM_7"
+TEXT            = "Enter Operator ID : "
+
+MESSAGE         = "PROM_8"
+TEXT            = "Operator Audit Report"
+
+MESSAGE         = "NOSAMPAUDITS"
+TEXT            = "No audits have been found for given sample"
+
+MESSAGE         = "TRA_SELECT_BUTTON"
+TEXT            = "Events"
+
+MESSAGE         = "EVT_SELECT_BUTTON"
+TEXT            = "Data"
+
+MESSAGE         = "EVT_FIND_BUTTON"
+TEXT            = "Trans"
+
+MESSAGE         = "NEXT_BUTTON"
+TEXT            = "Next"
+
+MESSAGE         = "PREV_BUTTON"
+TEXT            = "Previous"
+
+MESSAGE         = "DO_BUTTON"
+TEXT            = "Print"
+
+MESSAGE         = "HELP_BUTTON"
+TEXT            = "Help"
+
+MESSAGE         = "EXIT_BUTTON"
+TEXT            = "Exit"
+
+MESSAGE     = "MENU_SESSION"
+TEXT        = "Session Audits"
+
+MESSAGE     = "PROMPT_SESSION"
+TEXT        = "Enter Session Number : "
+
+MESSAGE     = "HEADER_SESSION"
+TEXT        = "Session Audits Report"
+
+
+MESSAGE GROUP "BACKLOG_"
+
+MESSAGE         = "GROUP_1"
+TEXT            = "Blank group ID specified"
+
+MESSAGE         = "GROUP_2"
+TEXT            = "No group assigned"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "No tests have been found for this group"
+
+MESSAGE         = "ANAL_1"
+TEXT            = "Analyses Group Summary"
+
+MESSAGE         = "ANAL_2"
+TEXT            = "Analysis ID    Description                                  Num Tests   Num Wks"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Printing Group"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "      Analysis:"
+
+MESSAGE         = "TAB_1"
+TEXT            = "Outstanding Tests for Group"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Group Description"
+
+MESSAGE         = "TAB_3"
+TEXT            = "Analysis ID"
+
+MESSAGE         = "VERSION"
+TEXT            = "Analysis Version"
+
+MESSAGE         = "TAB_4"
+TEXT            = "Analysis Description"
+
+MESSAGE         = "TAB_5"
+TEXT            = "Total Number of Tests"
+
+MESSAGE         = "TAB_6"
+TEXT            = "Total on Worksheet"
+
+MESSAGE         = "SAM_1"
+TEXT            = "Sample Textual ID              Job Name              Pri Wks  Age  Dat Res Req"
+
+MESSAGE         = "MESS_1"
+TEXT            = "Group Name  : "
+
+MESSAGE         = "MESS_2"
+TEXT            = "Description : "
+
+MESSAGE         = "MESS_3"
+TEXT            = "No of tests"
+
+MESSAGE         = "MESS_4"
+TEXT            = "No on Wks"
+
+MESSAGE         = "MESS_5"
+TEXT            = "Analysis ID"
+
+MESSAGE         = "MESS_6"
+TEXT            = "Analysis Description"
+
+MESSAGE         = "MESS_7"
+TEXT            = "Sample ID"
+
+MESSAGE         = "MESS_8"
+TEXT            = "Job Name"
+
+MESSAGE         = "MESS_9"
+TEXT            = "Priority"
+
+MESSAGE         = "MESS_10"
+TEXT            = "On Worksheet"
+
+MESSAGE         = "MESS_11"
+TEXT            = "     Please Enter a Group ID : "
+
+MESSAGE         = "MESS_12"
+TEXT            = "Press any key to interrupt"
+
+MESSAGE         = "MESS_13"
+TEXT            = "Display Samples for analysis : "
+
+MESSAGE         = "MESS_14"
+TEXT            = "Textual ID"
+
+MESSAGE         = "MESS_15"
+TEXT            = "Press EXIT to Leave the report"
+
+MESSAGE         = "MESS_16"
+TEXT            = "Backlog report Options"
+
+MESSAGE         = "MESS_17"
+TEXT            = "Enter a specific analysis ID : "
+
+MESSAGE         = "MESS_18"
+TEXT            = "No tests found for group "
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "       Backlog Report Search Options        "
+
+MESSAGE         = "HEAD"
+TEXT            = "                Backlog Report"
+TEXT            = "                          Page ##"
+
+MESSAGE         = "OPT_1"
+TEXT            = "Backlog Report Options"
+
+MESSAGE         = "OPT_2"
+TEXT            = "Backlog for Single group"
+
+MESSAGE         = "OPT_3"
+TEXT            = "Backlog for All groups"
+
+MESSAGE         = "CHOOSE_1"
+TEXT            = "Yes"
+
+MESSAGE         = "CHOOSE_2"
+TEXT            = "No"
+
+MESSAGE  GROUP  "CHARGE_"
+
+MESSAGE         = "HEAD"
+TEXT            = "Charges for : "
+
+MESSAGE         = "FIEL_1"
+TEXT            = "Entry ID"
+
+MESSAGE         = "FIEL_2"
+TEXT            = "Rate"
+
+MESSAGE         = "FIEL_3"
+TEXT            = "Quantity 1"
+
+MESSAGE         = "FIEL_4"
+TEXT            = "Discount 1"
+
+MESSAGE         = "FIEL_5"
+TEXT            = "Quantity 2"
+
+MESSAGE         = "FIEL_6"
+TEXT            = "Discount 2"
+
+
+MESSAGE  GROUP  "CSMLP_"
+
+MESSAGE         = "ERR_TXT_1"
+TEXT            = "Pipe Create:"
+
+MESSAGE         = "ERR_TXT_2"
+TEXT            = "Pipe Read"
+
+MESSAGE         = "ERR_TXT_3"
+TEXT            = "Pipe close"
+
+MESSAGE         = "FORM_HEADER"
+TEXT            = "Compare Sample With MLP"
+
+MESSAGE         = "MSG_4"
+TEXT            = "Sample ID"
+
+MESSAGE         = "MSG_5"
+TEXT            = "Sample Text"
+
+MESSAGE         = "MSG_6"
+TEXT            = "Job ID"
+
+MESSAGE         = "MSG_7"
+TEXT            = "Product ID"
+
+MESSAGE         = "MSG_8"
+TEXT            = "Level ID"
+
+MESSAGE         = "MSG_9"
+TEXT            = "Product name"
+
+MESSAGE         = "MSG_10"
+TEXT            = "Status"
+
+MESSAGE         = "MSG_11"
+TEXT            = "Batch"
+
+MESSAGE         = "MSG_12"
+TEXT            = "Date sampled"
+
+MESSAGE         = "MSG_13"
+TEXT            = "Version number"
+
+MESSAGE         = "MSG_14"
+TEXT            = "Sample desc"
+
+MESSAGE         = "MSG_15"
+TEXT            = "Sample name"
+
+MESSAGE         = "MSG_16"
+TEXT            = "Not an MLP"
+
+MESSAGE         = "MSG_17"
+TEXT            = "Must specify at least Sample ID, Product ID and Level ID"
+
+MESSAGE         = "MSG_18"
+TEXT            = "Invalid version for MLP"
+
+MESSAGE         = "MSG_19"
+TEXT            = "Check Dynamic MLP"
+
+MESSAGE         = "MSG_20"
+TEXT            = "Dynamic MLP ID"
+
+MESSAGE         = "MSG_21"
+TEXT            = "Dynamic MLP Name"
+
+MESSAGE         = "ALL_LEVELS"
+TEXT            = "ALL LEVELS"
+
+MESSAGE         = "ALL_LEVELS_DESC"
+TEXT            = "All levels defined for "
+
+MESSAGE         = "FORM_FOOTER"
+TEXT            = "Press DO to compare, SELECT for options, or EXIT to quit"
+
+MESSAGE         = "BLANK_SAMPLE"
+TEXT            = "Sample Id cannot be left blank"
+
+MESSAGE         = "COMPARE_BUTTON"
+TEXT            = "Compare"
+
+MESSAGE         = "RESULTS_BUTTON"
+TEXT            = "Results"
+
+MESSAGE         = "UPDATE_BUTTON"
+TEXT            = "Update"
+
+MESSAGE         = "AUTHORISE_BUTTON"
+TEXT            = "Authorise"
+
+MESSAGE         = "SUMMARY_REP_BUTTON"
+TEXT            = "Summary"
+
+MESSAGE         = "FULL_REP_BUTTON"
+TEXT            = "Full report"
+
+MESSAGE         = "HELP_BUTTON"
+TEXT            = "Help"
+
+MESSAGE         = "CLOSE_BUTTON"
+TEXT            = "Close"
+
+MESSAGE         = "NO_MENU_YET"
+TEXT            = "All fields must be filled in before the options can be accessed"
+
+MESSAGE         = "MENU_TITLE"
+TEXT            = "CSMLP options"
+
+MESSAGE         = "MENU"
+TEXT            = "F"
+TEXT            = "Create Full report"
+TEXT            = "S"
+TEXT            = "Create Summary report"
+TEXT            = "R"
+TEXT            = "Display Results"
+TEXT            = "U"
+TEXT            = "Update Sample record"
+TEXT            = "A"
+TEXT            = "Authorise sample"
+
+MESSAGE GROUP "CSMLP_LOG_"
+
+MESSAGE         = "OPT_1"
+TEXT            = "CSMLP Log"
+
+MESSAGE         = "OPT_2"
+TEXT            = "1. Create a New Log file"
+
+MESSAGE         = "OPT_3"
+TEXT            = "2. View the Log File"
+
+
+MESSAGE GROUP "CSM_USER_"
+
+MESSAGE         = "RES_TXT_1"
+TEXT            = "passed"
+
+MESSAGE         = "RES_TXT_2"
+TEXT            = "failed"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "The comparison "
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Press any key to continue "
+
+
+MESSAGE  GROUP  "CUSTOMER_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Listing of all Samples for a Given Customer"
+
+MESSAGE         = "FOOTER_1"
+TEXT            = "Press EXIT to abort"
+
+MESSAGE         = "FOOTER_2"
+TEXT            = "Press any key to halt report"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "                                                            Page #"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Enter Customer Identity"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Customer Description"
+
+MESSAGE         = "NUM_SAMPLES"
+TEXT            = "Number of samples to process"
+
+MESSAGE         = "PERCENT_BAR"
+TEXT            = "Percent of samples processed"
+
+MESSAGE         = "TAB_1"
+TEXT            = "Listing of Samples for Selected Customer"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Customer ID : "
+
+MESSAGE         = "TAB_3"
+TEXT            = "Description : "
+
+MESSAGE         = "TAB_4"
+TEXT            = "| Sample ID |      Sample Name              |  Status |        Job ID             |   "
+
+MESSAGE         = "TAB_5"
+TEXT            = "No Samples are currently assigned to this customer"
+
+MESSAGE         = "NOT_1"
+TEXT            = "!UNotes (continued):!U"
+
+MESSAGE         = "NOT_2"
+TEXT            = "!UNotes:!U"
+
+MESSAGE         = "NOT_3"
+TEXT            = "The status values are translated as follows :"
+TEXT            = "H = Samples are on Hold"
+TEXT            = "U = Samples are Unavailable"
+TEXT            = "W = Samples are aWaiting preparation"
+TEXT            = "V = Samples are aVailable for testing"
+TEXT            = "P = Samples have results Present"
+TEXT            = "C = Samples are Completed"
+TEXT            = "A = Samples are Authorised"
+TEXT            = "S = Samples are Suspended"
+TEXT            = "X = Samples are cancelled."
+
+MESSAGE         = "FOOTER"
+TEXT            = "End of Report"
+
+MESSAGE         = "WAIT"
+TEXT            = "Please wait for the report to be completed"
+
+
+MESSAGE  GROUP  "GENRESLIS_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            =  "General Report of Results on Sample"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Press EXIT to abort run "
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Enter the Sample ID"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Checking test"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Component name"
+
+MESSAGE         = "HEADER_1"
+TEXT            = "Result list for sample no. "
+
+MESSAGE         = "HEADER_2"
+TEXT            = "Page ##"
+
+MESSAGE         = "FOOTER_1"
+TEXT            = "                                 cont'd...."
+
+MESSAGE         = "TECH_1"
+TEXT            = "General result list report"
+
+MESSAGE         = "TOP_1"
+TEXT            = "List of all results entered or expected for sample "
+
+MESSAGE         = "TOP_2"
+TEXT            = ", on "
+
+MESSAGE         = "TOP_3"
+TEXT            = " at "
+
+MESSAGE         = "NO_TESTS"
+TEXT            = "This sample does not have any tests defined."
+
+MESSAGE         = "INFO_1"
+TEXT            = "These results are subject to verification and approval."
+
+MESSAGE         = "NO_COMPS"
+TEXT            = "No test components"
+
+MESSAGE         = "THIS_5"
+TEXT            = "|   Test      |R |       Component name             |        Result        |St |"
+
+MESSAGE         = "TAB_1"
+TEXT            = "Notes:"
+
+MESSAGE         = "TAB_2"
+TEXT            = "All entered results have their current status displayed"
+
+MESSAGE         = "TAB_3"
+TEXT            = "status A is authorised"
+
+MESSAGE         = "TAB_4"
+TEXT            = "R is rejected"
+
+MESSAGE         = "TAB_5"
+TEXT            = "M is result entered and modified"
+
+MESSAGE         = "TAB_6"
+TEXT            = "E is result entered"
+
+MESSAGE         = "TAB_7"
+TEXT            = "X is cancelled"
+
+MESSAGE         = "TAB_8"
+TEXT            = "I is being inspected"
+
+MESSAGE         = "TAB_9"
+TEXT            = "U is unavailable"
+
+MESSAGE         = "FOOTER_2"
+TEXT            = "                                  GENRESLIST"
+
+MESSAGE         = "INVALID_SAMPLE"
+TEXT            = "Sample ID [] is invalid."
+
+MESSAGE  GROUP "INSTASSN_"
+
+MESSAGE         = "HEADER_1"
+TEXT            = "Listing of Tests assigned to Instrument"
+
+MESSAGE         = "FOOTER_1"
+TEXT            = "Press EXIT to cancel"
+
+MESSAGE         = "FOOTER_2"
+TEXT            = "Press any key to halt report"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "                                                             Page ##"
+
+MESSAGE         = "NUM_TESTS"
+TEXT            = "Number of tests to process"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Enter Instrument Identity"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Instrument description"
+
+MESSAGE         = "TAB_1"
+TEXT            = "Sample Tracking Options - Tests assigned to a given instrument"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Instrument ID : "
+
+MESSAGE         = "TAB_3"
+TEXT            = "Description   : "
+
+MESSAGE         = "TAB_4"
+TEXT            = "| Sample ID |    Sample Name               | Analysis |    Test Status         |"
+
+MESSAGE         = "THEN_1"
+TEXT            = "Awaiting result entry"
+
+MESSAGE         = "THEN_2"
+TEXT            = "Result entry has started"
+
+MESSAGE         = "THEN_3"
+TEXT            = "Awaiting preparation"
+
+MESSAGE         = "THEN_4"
+TEXT            = "Result entry complete"
+
+MESSAGE         = "TAB_5"
+TEXT            = "No test are currently assigned to that instrument.  "
+
+MESSAGE         = "PERCENT_BAR"
+TEXT            = "Percent of samples processed"
+
+MESSAGE         = "FOOT"
+TEXT            = "End of Report"
+
+MESSAGE         = "WAIT"
+TEXT            = "Please wait for the report to be completed"
+
+
+MESSAGE  GROUP "JOBHEADER_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "                        JOB HEADER REPORT GENERATION                          "
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Press EXIT to end"
+
+MESSAGE         = "PROM_1"
+TEXT            = "Please enter the Job name :  "
+
+MESSAGE         = "JOB_1"
+TEXT            = "Job has been Authorised"
+
+MESSAGE         = "JOB_2"
+TEXT            = "Job has been completed"
+
+MESSAGE         = "JOB_3"
+TEXT            = "Job is currently in progress"
+
+MESSAGE         = "TAB_1"
+TEXT            = "JOB HEADER REPORT "
+
+MESSAGE         = "TAB_2"
+TEXT            = " Name of Job :"
+
+MESSAGE         = "TAB_3"
+TEXT            = " Description :"
+
+MESSAGE         = "TAB_4"
+TEXT            = "DATES:"
+
+MESSAGE         = "TAB_5"
+TEXT            = "Started   :"
+
+MESSAGE         = "TAB_6"
+TEXT            = "Completed  :"
+
+MESSAGE         = "TAB_7"
+TEXT            = "JOB STATUS:"
+
+MESSAGE         = "TAB_8"
+TEXT            = "ADDITIONAL JOB INFORMATION "
+
+MESSAGE         = "TAB_9"
+TEXT            = "FIELD         |            VALUE                            "
+
+
+MESSAGE  GROUP "JOBLIST_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Job List Report"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Press any key to interrupt"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "                            LISTING OF JOBS                             Page ##"
+
+MESSAGE         = "TAB_1"
+TEXT            = "The following is a list of all the jobs currently on Sample Manager."
+
+MESSAGE         = "TAB_2"
+TEXT            = "!LVE!L                 !LVE!L                            !LVE!L   !LVE!L  Date       !LVE!L  Date       !LVE!L"
+
+MESSAGE         = "TAB_3"
+TEXT            = "!LVE!L  Job Name       !LVE!L      Job Description       !LVE!L S !LVE!L  Started    !LVE!L  Completed  !LVE!L"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Current Job Name"
+
+MESSAGE         = "FOOT"
+TEXT            = "End of Report"
+
+MESSAGE         = "NOTES"
+TEXT            = "Notes:"
+
+MESSAGE         = "NOTES_UNDERLINE"
+TEXT            = "-----"
+
+MESSAGE         = "STATUS_KEY"
+TEXT            = "S = status of job"
+
+
+MESSAGE  GROUP "JOBSUM_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Print Job Header and Samples"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Press EXIT to Quit"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Enter Job Name"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Invalid Job ID"
+
+MESSAGE         = "JOB_1"
+TEXT            = "Job is active"
+
+MESSAGE         = "JOB_2"
+TEXT            = "Job has been Completed"
+
+MESSAGE         = "JOB_3"
+TEXT            = "Job is Authorised"
+
+MESSAGE         = "JOB_4"
+TEXT            = "Job is Suspended"
+
+MESSAGE         = "JOB_5"
+TEXT            = "Job is Cancelled"
+
+MESSAGE         = "JOB_6"
+TEXT            = "Job in progress"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "   Sample Tracking for Job : "
+
+MESSAGE         = "HEAD_2"
+TEXT            = "      Page ##"
+
+MESSAGE         = "TAB_1"
+TEXT            = "!B!USample Tracking Options - List by Selected job!U!B"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Job ID. . . . . .  :"
+
+MESSAGE         = "TAB_3"
+TEXT            = "Job status  . . .  :"
+
+MESSAGE         = "TAB_4"
+TEXT            = "Description . . .  :"
+
+MESSAGE         = "TAB_5"
+TEXT            = "!LVE!L Sample ID!LVE!L         Sample Name          !LVE!L              Status                !LVE!L"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Sample ID"
+
+MESSAGE         = "FOOT"
+TEXT            = "End of Report "
+
+MESSAGE         = "STAT_1"
+TEXT            = "Sample on Hold"
+
+MESSAGE         = "STAT_2"
+TEXT            = "Unavailable - (Sample not Received)"
+
+MESSAGE         = "STAT_3"
+TEXT            = "Waiting for Preparation"
+
+MESSAGE         = "STAT_4"
+TEXT            = "Available for Testing"
+
+MESSAGE         = "STAT_5"
+TEXT            = "Sample testing in Progress"
+
+MESSAGE         = "STAT_6"
+TEXT            = "Sample has been Completed"
+
+MESSAGE         = "STAT_7"
+TEXT            = "Sample has been Authorised"
+
+MESSAGE         = "STAT_8"
+TEXT            = "Sample has been Suspended"
+
+MESSAGE         = "STAT_9"
+TEXT            = "Sample has been Cancelled"
+
+MESSAGE         = "TAB_6"
+TEXT            = "!BNo active samples are currently assigned to this job.!B"
+
+
+MESSAGE GROUP "LOCATE_"
+
+MESSAGE         = "HEADER_1"
+TEXT            = "Listing of all Samples at Given Location"
+
+MESSAGE         = "FOOTER_1"
+TEXT            = "Press EXIT to abort"
+
+MESSAGE         = "FOOTER_2"
+TEXT            = "Press any key to halt report"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "                                                            Page #"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Enter Location Identity"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Location Description"
+
+MESSAGE         = "TAB_1"
+TEXT            = "Listing of Samples by Selected Location"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Location    : "
+
+MESSAGE         = "TAB_3"
+TEXT            = "Description : "
+
+MESSAGE         = "NUM_SAMPLES"
+TEXT            = "Number of samples to process"
+
+MESSAGE         = "PERCENT_BAR"
+TEXT            = "Percent of samples processed"
+
+MESSAGE         = "TAB_4"
+TEXT            = "| Sample ID |      Sample Name             |  Status   |       Job ID         |"
+
+MESSAGE         = "TAB_5"
+TEXT            = "No Samples are currently assigned to this location"
+
+MESSAGE         = "NOT_1"
+TEXT            = "!UNotes (continued):!U"
+
+MESSAGE         = "NOT_2"
+TEXT            = "!UNotes:!U"
+
+MESSAGE         = "NOT_3"
+TEXT            = "The status values are translated as follows :"
+TEXT            = "H = Samples are on Hold"
+TEXT            = "U = Samples are Unavailable"
+TEXT            = "W = Samples are aWaiting preparation"
+TEXT            = "V = Samples are Available for testing"
+TEXT            = "P = Samples have results Present"
+TEXT            = "C = Samples are Completed"
+TEXT            = "A = Samples are Authorised"
+TEXT            = "S = Samples are Suspended"
+TEXT            = "X = Samples are cancelled."
+
+MESSAGE         = "FOOTER"
+TEXT            = "End of Report"
+
+MESSAGE         = "WAIT"
+TEXT            = "Please wait for the report to be completed"
+
+
+MESSAGE GROUP "NOTONWSHT_"
+
+MESSAGE         = "HEAD_1"
+TEXT            =  " Samples not on worksheet on "
+
+MESSAGE         = "HEAD_2"
+TEXT            = "                           Page ##"
+
+MESSAGE         = "TAB_1"
+TEXT            = " UNASSIGNED TESTS REPORT"
+
+MESSAGE         = "TAB_2"
+TEXT            = "The following Available Tests were not Assigned to a Worksheet on "
+
+MESSAGE         = "TAB_3"
+TEXT            = "|               |                          | Date Results |             |     |"
+
+MESSAGE         = "TAB_4"
+TEXT            = "| Sample ID /Rep|         ID Text          |  Required    | Analysis ID |Prio |"
+
+MESSAGE         = "DIS_3"
+TEXT            = "Tests not Assigned To a Worksheet"
+
+MESSAGE         = "DIS_4"
+TEXT            = "Press any key to interrupt"
+
+MESSAGE         = "NUM_TESTS"
+TEXT            = "Number of tests to process : "
+
+MESSAGE         = "PERCENT_BAR_NAME"
+TEXT            = "Percent of tests processed"
+
+MESSAGE         = "WAIT"
+TEXT            = "Please wait for the report to be completed"
+
+
+MESSAGE GROUP "OUTSTANDG_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "                           Outstanding Sample Report                          "
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Press any key to interrupt"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Compiling List of Outstanding Samples"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "There are no Outstanding Samples"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "                                                        page ## "
+
+MESSAGE         = "TAB_1"
+TEXT            = "SampleManager"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Outstanding Sample Report"
+
+MESSAGE         = "TAB_3"
+TEXT            = "The following report is a summary of the samples received in the"
+
+MESSAGE         = "TAG_1"
+TEXT            = "laboratory before "
+
+MESSAGE         = "TAB_4"
+TEXT            = "|  Sample  |          Sample          |  Date Sample |     Summary of          | "
+
+MESSAGE         = "TAB_5"
+TEXT            = "|  Number  |       Description        |  Received    |     Tests Assigned      | "
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Sample Found  : "
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Test Schedule : "
+
+MESSAGE         = "FOOT_1"
+TEXT            = "End of Report"
+
+
+MESSAGE GROUP "OVERDUE_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Summary of all Overdue Samples"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Press any key to interrupt"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Number of samples to process : "
+
+MESSAGE         = "HEAD_1"
+TEXT            = "                                                                        Page ##"
+
+MESSAGE         = "TAB_1"
+TEXT            = "Sample Tracking Options - List overdue samples"
+
+MESSAGE         = "TAB_2"
+TEXT            = "| Sample ID |     Customer   |       Job ID       |  Date Required |"
+
+MESSAGE         = "TAB_3"
+TEXT            = "There are currently no overdue samples"
+
+MESSAGE         = "PERCENT_BAR"
+TEXT             = "Percent of samples processed"
+
+MESSAGE         = "FOOTER"
+TEXT            = "End of Report"
+
+MESSAGE         = "WAIT"
+TEXT            = "Please wait for the report to be completed"
+
+
+MESSAGE GROUP "STATUS_"
+
+MESSAGE          = "DISPLAY_1"
+TEXT             = "SAMPLE STATUS REPORT"
+
+MESSAGE          = "DISPLAY_2"
+TEXT             = "Press EXIT to end"
+
+MESSAGE          = "DISPLAY_3"
+TEXT             = "Enter the Sample ID : "
+
+MESSAGE          = "DISPLAY_4"
+TEXT             = "That sample does not exist"
+
+MESSAGE          = "DISPLAY_5"
+TEXT             = "Compiling report for sample number : "
+
+MESSAGE          = "TAB_1"
+TEXT             = " Sample Tracking Options - List by Selected Status"
+
+MESSAGE          = "TAB_2"
+TEXT             = "Sample ID  . .  :"
+
+MESSAGE          = "TAB_3"
+TEXT             = "Sample Name  . .  :"
+
+MESSAGE          = "TAB_4"
+TEXT             = "Sample Type. .  :"
+
+MESSAGE          = "TAB_5"
+TEXT             = "Priority . . . .  :"
+
+MESSAGE          = "TAB_6"
+TEXT             = "Customer ID. .  :"
+
+MESSAGE          = "TAB_7"
+TEXT             = "Job Name . . . .  :"
+
+MESSAGE          = "TAB_8"
+TEXT             = "Sample Status.  :"
+
+MESSAGE          = "TAB_9"
+TEXT             = "Date Logged In .  :"
+
+MESSAGE          = "TAB_10"
+TEXT             = " Tests assigned to sample"
+
+MESSAGE          = "TAB_11"
+TEXT             = "Test schedule  . . . .  :"
+
+MESSAGE          = "TAB_NO_SCHED"
+TEXT             = "*** No test schedule for this sample ***"
+
+MESSAGE          = "TAB_NO_TESTS"
+TEXT             = "No tests assigned to this sample"
+
+MESSAGE          = "TAB_12"
+TEXT             = " Test number   Instrument   Analysis  Status   Description"
+
+
+MESSAGE GROUP "SUSPEND_"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "                                                                        Page ##"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Suspended Samples Report"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Press any key to interrupt"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Number of samples to process : "
+
+MESSAGE         = "TAB_1"
+TEXT            = "Listing of all Suspended Samples"
+
+MESSAGE         = "TAB_2"
+TEXT            = "| Sample ID |         Sample Name          |        Job ID      |"
+
+MESSAGE         = "TAB_3"
+TEXT            = "No Samples are currently suspended"
+
+MESSAGE         = "PERCENT_BAR"
+TEXT            = "Percent of samples processed"
+
+MESSAGE         = "FOOTER"
+TEXT            = "End of Report"
+
+MESSAGE         = "WAIT"
+TEXT            = "Please wait for the report to be completed"
+
+
+MESSAGE GROUP "UNCOMPLTD_"
+
+MESSAGE          = "HEAD_1"
+TEXT             = "                                                                 Page ##"
+
+MESSAGE          = "DISPLAY_1"
+TEXT             = "Uncompleted Samples Report"
+
+MESSAGE          = "DISPLAY_2"
+TEXT             = "Press any key to interrupt"
+
+MESSAGE          = "TAB_1"
+TEXT             = "SampleManager"
+
+MESSAGE          = "TAB_2"
+TEXT             = "Uncompleted Samples List"
+
+MESSAGE          = "DATE_HEAD"
+TEXT             = "Date :"
+
+MESSAGE          = "TAB_3"
+TEXT             = "| Lab. Ref. | Date Sample | Sample Point |     Sample Point     |    Test     |                                                   |"
+
+MESSAGE          = "TAB_4"
+TEXT             = "|  Number   |  Received   |      Code    |     Description      |    Count    |               Determinand Codes                   |"
+
+MESSAGE          = "DISPLAY_3"
+TEXT             = "Number of samples to check : "
+
+MESSAGE          = "PERCENT_BAR"
+TEXT             = "Percent of samples processed"
+
+MESSAGE          = "FOOTER"
+TEXT             = "End of Report"
+
+MESSAGE         = "WAIT"
+TEXT            = "Please wait for the report to be completed"
+
+
+MESSAGE GROUP "WAITAUTH_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Samples Awaiting Authorisation"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Press any key to interrupt"
+
+MESSAGE         = "TAB_1"
+TEXT            = "Listing of Samples awaiting Authorisation"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Number of samples to process: "
+
+MESSAGE         = "PERCENT_BAR"
+TEXT            = "Percent of samples processed"
+
+MESSAGE         = "TAB_2"
+TEXT            = "| Sample ID |            Sample Name         |       Job ID        |"
+
+MESSAGE         = "TAB_3"
+TEXT            = "No Samples are currently awaiting authorisation"
+
+MESSAGE         = "FOOTER_1"
+TEXT            = "Page ##"
+
+MESSAGE         = "FOOTER_2"
+TEXT            = "End of Report"
+
+MESSAGE         = "WAIT"
+TEXT            = "Please wait for the report to be completed"
+
+
+MESSAGE GROUP "WEEKLYRPT_"
+
+MESSAGE          = "HEADER"
+TEXT             = "Samples Logged in given time period"
+
+MESSAGE          = "DISPLAY_2"
+TEXT             = "Start Date"
+
+MESSAGE          = "DISPLAY_3"
+TEXT             = "End Date"
+
+MESSAGE          = "DATES"
+TEXT             = "Error : The Start Date must be before the End Date"
+
+MESSAGE          = "FOOTER_1"
+TEXT             = "Press DO to print or EXIT to cancel"
+
+MESSAGE          = "FOOTER_2"
+TEXT             = "Press any key to interrupt"
+
+MESSAGE          = "DISPLAY_4"
+TEXT             = "Processing ..."
+
+MESSAGE          = "DISPLAY_5"
+TEXT             = "Sample Login Summary    Date Range : "
+
+MESSAGE          = "DISPLAY_6"
+TEXT             = " Page ##"
+
+MESSAGE          = "TAB_1"
+TEXT             = "************ Aborted By Operator*********************************************"
+
+MESSAGE          = "TAB_2"
+TEXT             = "Samples Logged in during specified time period"
+
+MESSAGE          = "TAB_3"
+TEXT             = "Generated On :"
+
+MESSAGE          = "TAB_4"
+TEXT             = "Generated By :"
+
+MESSAGE          = "TAB_5"
+TEXT             = "|  Sample                |          Sample          |   Sample  |  Date Sample |"
+
+MESSAGE          = "TAB_6"
+TEXT             = "|  ID                    |       Description        |   Status  |  Logged      |"
+
+MESSAGE          = "DISPLAY_7"
+TEXT             = "End of Report"
+
+
+MESSAGE GROUP "WSACTIVE_"
+
+MESSAGE         = "HEADER"
+TEXT            = "                                                                        Page ## "
+
+MESSAGE         = "FOOTER"
+TEXT            = "End of report"
+
+MESSAGE         = "NO_WKS"
+TEXT            = "No worksheets of that type were found"
+
+MESSAGE         = "PERCENT_BAR"
+TEXT            = "Percent of worksheets processed"
+
+MESSAGE         = "MESS_1"
+TEXT            = "Active Worksheet Report"
+
+MESSAGE         = "WAIT"
+TEXT            = "Please wait for the report to be completed"
+
+MESSAGE         = "MESS_2"
+TEXT            = "Number of worksheets to process : "
+
+MESSAGE         = "MESS_3"
+TEXT            = "Press any key to halt report"
+
+MESSAGE         = "MESS_6"
+TEXT            = "Cannot Open file :"
+
+MESSAGE         = "CHOICE_HEAD"
+TEXT            = "Please select a worksheet type"
+
+MESSAGE         = "CHOICE_1"
+TEXT            = "A"
+TEXT            = "Analysis Worksheets"
+
+MESSAGE         = "CHOICE_2"
+TEXT            = "S"
+TEXT            = "Sample Worksheets"
+
+MESSAGE         = "CHOICE_3"
+TEXT            = "T"
+TEXT            = "Test Preparation Worksheets"
+
+MESSAGE         = "CHOICE_4"
+TEXT            = "P"
+TEXT            = "Sample Preparation Worksheets"
+
+MESSAGE         = "CHOICE_5"
+TEXT            = "D"
+TEXT            = "Active Definable Worksheets"
+
+MESSAGE         = "CHOICE_6"
+TEXT            = "W"
+TEXT            = "Summary of All Active Worksheets"
+
+MESSAGE         = "WS_TYPE"
+TEXT            = "Analysis   "
+TEXT            = "Sample     "
+TEXT            = "Test Prep  "
+TEXT            = "Sample Prep"
+TEXT            = "Defined    "
+
+MESSAGE         = "TAB_1"
+TEXT            = "ACTIVE ANALYSIS WORKSHEETS REPORT"
+TEXT            = "ACTIVE SAMPLE WORKSHEETS REPORT"
+TEXT            = "ACTIVE TEST PREPARATION WORKSHEETS REPORT"
+TEXT            = "ACTIVE SAMPLE PREPARATION WORKSHEETS REPORT"
+TEXT            = "ACTIVE DEFINED WORKSHEETS"
+TEXT            = "SUMMARY OF ALL ACTIVE WORKSHEETS"
+
+MESSAGE         = "TAB_2"
+TEXT            = "The following Analysis Worksheets were still active on:"
+TEXT            = "The following Sample Worksheets were still active on:"
+TEXT            = "The following Test Preparation Worksheets were still active on:"
+TEXT            = "The following Sample Preparation Worksheets  were still active on:"
+TEXT            = "The following Defined Worksheets were still active on:"
+TEXT            = "The following Worksheets were still active on:"
+
+MESSAGE         = "TAB_3"
+TEXT            = "|   Worksheet Name   |  Analysis   | Date Generated |     Operator        |"
+TEXT            = "| Worksheet Name |     Sample Name       | Date Generated |     Operator      |"
+TEXT            = "|   Worksheet Name   | Preparation | Date Generated |      Operator       |"
+TEXT            = "|   Worksheet Name   | Preparation | Date Generated |      Operator       |"
+TEXT            = "|   Worksheet Name   | Date Generated |       Operator       |"
+TEXT            = "|   Worksheet Name   |    Type     | Date Generated |       Operator       |"
+
+
+MESSAGE GROUP "LIB_CSMLP_"
+
+MESSAGE       = "ERR_1"
+TEXT          = "The test number is EMPTY or Textual"
+
+MESSAGE       = "ERR_2"
+TEXT          = "The test number is invalid: "
+
+MESSAGE       = "ERR_3"
+TEXT          = "No MLP components were found for this test: "
+
+MESSAGE       = "ERR_4"
+TEXT          = " MLP: "
+
+MESSAGE       = "ERR_5"
+TEXT          =  " Analysis: "
+
+MESSAGE       = "ERR_6"
+TEXT          = "No analyses were found for this MLP: "
+
+MESSAGE       = "ERR_7"
+TEXT          = "CSMLP:Pipe Write:"
+
+MESSAGE       = "ERR_8"
+TEXT          = "CSMLP:Pipe Close:"
+
+MESSAGE       = "ERR_9"
+TEXT          = "CSMLP:Pipe Open:"
+
+MESSAGE       = "ERR_10"
+TEXT          = "The level "
+
+MESSAGE       = "ERR_11"
+TEXT          = " is not on the MLP "
+
+MESSAGE       = "ERR_12"
+TEXT          = "The component "
+
+MESSAGE       = "ERR_13"
+TEXT          = " for Analysis "
+
+MESSAGE       = "ERR_14"
+TEXT          = "There are no level limits for "
+
+MESSAGE       = "ERR_15"
+TEXT          = " on the MLP "
+
+MESSAGE       = "ERR_16"
+TEXT          = ", Level id: "
+
+MESSAGE       = "DISPLAY_1"
+TEXT          = "No Result"
+
+MESSAGE       = "DISPLAY_2"
+TEXT          = "Rejected"
+
+MESSAGE       = "DISPLAY_3"
+TEXT          = "  Level : "
+
+MESSAGE       = "MESS_1"
+TEXT          = "Comparison Information"
+
+MESSAGE       = "MESS_2"
+TEXT          = "Reading MLP and test data - please wait"
+
+MESSAGE       = "MESS_3"
+TEXT          = "The sample has not been tested therefore a report will not be produced"
+
+MESSAGE       = "MESS_4"
+TEXT          = "Comparison Report"
+
+MESSAGE       = "MESS_5"
+TEXT          = "Status"
+
+MESSAGE       = "MESS_6"
+TEXT          = "Sample ID"
+
+MESSAGE       = "MESS_7"
+TEXT          = "Page"
+
+MESSAGE       = "MESS_8"
+TEXT          = "Product Details:"
+
+MESSAGE       = "MESS_9"
+TEXT          = "   Version:"
+
+MESSAGE       = "MESS_10"
+TEXT          = "Sample Details:"
+
+MESSAGE       = "MESS_11"
+TEXT          = " Sample ID: "
+
+MESSAGE       = "MESS_12"
+TEXT          = "Test Details: "
+
+MESSAGE       = "MESS_13"
+TEXT          = " Test ID: "
+
+MESSAGE       = "MESS_14"
+TEXT          = " Sample product: "
+
+MESSAGE       = "MESS_15"
+TEXT          = "No Typical"
+
+MESSAGE       = "MESS_16"
+TEXT          = "Sample conforms to level limits"
+
+MESSAGE       = "MESS_17"
+TEXT          = "Sample does NOT conform to level limits"
+
+MESSAGE       = "MESS_18"
+TEXT          = "Test conforms to level limits"
+
+MESSAGE       = "MESS_19"
+TEXT          = "Test does NOT conform to level limits"
+
+MESSAGE       = "MESS_20"
+TEXT          = "Failed because result(s) are missing"
+
+MESSAGE       = "MESS_21"
+TEXT          = "Failed because test(s) in MLP not assigned"
+
+MESSAGE       = "MESS_22"
+TEXT          = "MLP and sample had no matching components"
+
+MESSAGE       = "MESS_23"
+TEXT          = " components tested out of "
+
+MESSAGE       = "MESS_24"
+TEXT          = "Authorisation Details"
+
+MESSAGE       = "MESS_25"
+TEXT          = "Authoriser"
+
+MESSAGE       = "MESS_26"
+TEXT          = "Authorisation date"
+
+MESSAGE       = "MESS_27"
+TEXT          = "Authorisation notes"
+
+MESSAGE       = "MESS_28"
+TEXT          = "No changes can occur because sample has status "
+
+MESSAGE       = "MESS_29"
+TEXT          = "Must re-generate report first"
+
+MESSAGE       = "MESS_30"
+TEXT          = "The sample may NOT be authorised"
+
+MESSAGE       = "MESS_31"
+TEXT          = "Try to lock the database record again ? "
+
+MESSAGE       = "MESS_33"
+TEXT          = "Updating sample, test and result information"
+
+MESSAGE       = "MESS_34"
+TEXT          = "Authorising sample, tests and results"
+
+MESSAGE       = "FOOT_1"
+TEXT          = "Press SPACE to continue"
+
+MESSAGE       = "FOOT_2"
+TEXT          = "Press DO to confirm, or EXIT to quit"
+
+MESSAGE       = "FOOT_3"
+TEXT          = "Scroll using arrow keys. Press EXIT to quit"
+
+MESSAGE       = "ERR_17"
+TEXT          = "File Error:"
+
+MESSAGE       = "LEV_1"
+TEXT          = "All levels"
+
+MESSAGE       = "PASS_1"
+TEXT          = "passed"
+
+MESSAGE       = "PASS_2"
+TEXT          = "failed"
+
+MESSAGE       = "PASS_3"
+TEXT          = "authorised"
+
+MESSAGE       = "PASS_4"
+TEXT          = "authorisation denied"
+
+MESSAGE       = "OUTCOME_1"
+TEXT          = "Test "
+
+MESSAGE       = "OUTCOME_2"
+TEXT          = "Sample "
+
+MESSAGE       = "OUTCOME_3"
+TEXT          = ",product "
+
+MESSAGE       = "OUTCOME_4"
+TEXT          = ",level "
+
+MESSAGE       = "ERR_18"
+TEXT          = "File Write:"
+
+MESSAGE       = "ERR_19"
+TEXT          = "File Close:"
+
+MESSAGE       = "DISPLAY_4"
+TEXT          = "Please confirm Update of Sample to continue"
+
+MESSAGE       = "DISPLAY_5"
+TEXT          = "The Sample is not ready for Completion "
+
+MESSAGE       = "DISPLAY_6"
+TEXT          = "The Sample is not ready for Authorisation "
+
+MESSAGE       = "DISPLAY_7"
+TEXT          = "Sample has status "
+
+MESSAGE       = "DISPLAY_8"
+TEXT          = " please confirm to continue"
+
+MESSAGE       = "NOT"
+TEXT          = "Automated Authorisation done by Background Comparison"
+
+MESSAGE       = "REP_1"
+TEXT          = "Full"
+
+MESSAGE       = "REP_2"
+TEXT          = "Summary"
+
+MESSAGE       = "PROM_1"
+TEXT          = "Type of report ? "
+
+MESSAGE       = "TAB_1"
+TEXT          = "!UAnalysis!U  !U/Rep!U !UComponent name!U                    !UResult!U                !UOutcome!U "
+
+MESSAGE       = "DISPLAY_9"
+TEXT          = "No Result"
+
+MESSAGE       = "DISPLAY_10"
+TEXT          = "Pass"
+
+MESSAGE       = "DISPLAY_11"
+TEXT          = "Fail"
+
+MESSAGE       = "DISPLAY_12"
+TEXT          = "Typical : "
+
+MESSAGE       = "MAX_ONLY"
+TEXT          = "No min to "
+
+MESSAGE       = "MIN_ONLY"
+TEXT          = " to no max"
+
+MESSAGE       = "MIN_AND_MAX"
+TEXT          = " to "
+
+MESSAGE       = "DISPLAY_14"
+TEXT          = "No limits"
+
+MESSAGE       = "DISPLAY_15"
+TEXT          = "No specification"
+
+MESSAGE       = "HEAD_1"
+TEXT          = " Sample Product Comparison: "
+
+MESSAGE       = "HEAD_2"
+TEXT          = " Test Product Comparison: "
+
+MESSAGE       = "DISPLAY_16"
+TEXT          = "There is no MLP associated with this sample"
+
+MESSAGE       = "DISPLAY_17"
+TEXT          = " Analysis ID: "
+
+MESSAGE       = "DISPLAY_18"
+TEXT          = " Test Replicate No: "
+
+MESSAGE       = "DISPLAY_19"
+TEXT          = " Operator : "
+
+MESSAGE       = "TAB_2"
+TEXT          = " !UAnalysis!U   !UComponent!U              !UUnits!U     !UTypical!U    !UMin!U        !UMax!U"
+
+MESSAGE       = "INFO_HEADER"
+TEXT          = "CSMLP information"
+
+
+MESSAGE GROUP "LIST_SELECT_"
+
+MESSAGE       = "FOOTER"
+TEXT          = "SELECT - toggle, INSERT - select all, REMOVE - deselect all"
+
+MESSAGE       = "BUTTON_1"
+TEXT          = "OK"
+
+MESSAGE       = "BUTTON_2"
+TEXT          = "Select All"
+
+MESSAGE       = "BUTTON_3"
+TEXT          = "DeSelect All"
+
+MESSAGE       = "BUTTON_4"
+TEXT          = "Invert"
+
+MESSAGE       = "BUTTON_5"
+TEXT          = "Help"
+
+MESSAGE       = "BUTTON_6"
+TEXT          = "Cancel"
+
+MESSAGE       = "MUST_SELECT"
+TEXT          = "You must choose at least one entry"
+
+
+MESSAGE GROUP "ARCHIVE_"
+
+MESSAGE       = "MENU_HEADER"
+TEXT          = "Data Archive Utility Main Menu"
+
+MESSAGE       = "MENU_1"
+TEXT          = "1  Archive data to CSV file"
+
+MESSAGE       = "MENU_2"
+TEXT          = "2  Restore data from CSV file to tables"
+
+MESSAGE       = "MENU_3"
+TEXT          = "3  Delete ALL data from archive tables"
+
+MESSAGE       = "DO_ARCHIVE"
+TEXT          = "Do you want to archive the specified data ?"
+
+MESSAGE       = "DO_DELETE"
+TEXT          = "This option will delete ALL data from the archive table set."
+TEXT          = "Do you want to proceed ?"
+HELP          = "$ARCHIVE_DELETE_CONFIRM"
+
+MESSAGE       = "CRITERIA_CONFIRM"
+TEXT          = "This criteria defines [] records. Do you want to proceed ?"
+
+MESSAGE       = "ARCHIVE_TABLESET_HEADER"
+TEXT          = "Define archive tableset"
+
+MESSAGE       = "ARCHIVE_TABLESET_FOOTER"
+TEXT          = "DO - define archive tableset, EXIT - quit archiver"
+
+MESSAGE       = "ARCHIVE_TABLESET_PROMPT"
+TEXT          = "Enter tableset to archive from"
+
+MESSAGE       = "CONSIGN_HEADER"
+TEXT          = "Archive Table Set - Current Status"
+
+MESSAGE       = "CONSIGN_FOOTER"
+TEXT          = "SELECT - add data to archive, DO - archive data, EXIT - quit"
+
+MESSAGE       = "CONSIGN_PROMPT_1"
+TEXT          = "Archive table set"
+
+MESSAGE       = "CONSIGN_PROMPT_2"
+TEXT          = "Enter table to consign from"
+
+MESSAGE       = "CONSIGN_PROMPT_3"
+TEXT          = "Enter tableset to consign from"
+
+MESSAGE       = "CONSIGN_PROMPT_4"
+TEXT          = "Consign All OR Use Criteria"
+
+MESSAGE       = "CONSIGN_SUMMARY"
+TEXT          = "Summary: Processed [] records; [] succeeded, [] failed"
+
+MESSAGE       = "CONSIGN_ALL"
+TEXT          = "All Records"
+
+MESSAGE       = "CONSIGN_CRI"
+TEXT          = "Use Criteria"
+
+MESSAGE       = "NO_RECORDS_CRI"
+TEXT          = "No records defined by this criteria"
+
+MESSAGE       = "NO_RECORDS_NO_CRI"
+TEXT          = "No records in specified table"
+
+MESSAGE       = "INFO_HEADER"
+TEXT          = "Consign Information"
+
+MESSAGE       = "INFO_DETAILS"
+TEXT          = "Consigning [] records from '[]' to '[]'"
+
+MESSAGE       = "DEL_BAR_HEADER_1"
+TEXT          = "Selecting [] records from '[]'"
+
+MESSAGE       = "DEL_BAR_HEADER_2"
+TEXT          = "Deleting [] records from '[]'"
+
+MESSAGE       = "BAR_HEADER_1"
+TEXT          = "Selecting [] records from '[]'"
+
+MESSAGE       = "BAR_HEADER_2"
+TEXT          = "Consigning [] records from '[]'"
+
+MESSAGE       = "BAR_FOOTER"
+TEXT          = "Please Wait"
+
+MESSAGE       = "FILES_HEADER"
+TEXT          = "Define files to archive data to"
+
+MESSAGE       = "FILES_FOOTER"
+TEXT          = "DO - archive data, EXIT - quit without archiving"
+
+MESSAGE       = "TOP_1"
+TEXT          = "Table"
+
+MESSAGE       = "TOP_2"
+TEXT          = "Archive To"
+
+MESSAGE       = "RESTORE_HEADER"
+TEXT          = "Define data restore details"
+
+MESSAGE       = "RESTORE_FOOTER"
+TEXT          = "DO - restore data, EXIT - quit without restoring"
+
+MESSAGE       = "RESTORE_PROMPT_1"
+TEXT          = "File to restore data from"
+
+MESSAGE       = "RESTORE_PROMPT_2"
+TEXT          = "Restore mode"
+
+MESSAGE       = "RESTORE_PROMPT_3"
+TEXT          = "Transaction mode for writing"
+
+MESSAGE       = "PROMPT_TRANS_SIZE"
+TEXT          = "Records per transaction"
+
+MESSAGE       = "MAIN_HEADER"
+TEXT          = "Data Archive Utility"
+
+MESSAGE       = "MAIN_FOOTER"
+TEXT          = "DO - restore data, EXIT - quit without restoring"
+
+MESSAGE       = "MAIN_BUTTON_1"
+TEXT          = "Archive"
+
+MESSAGE       = "MAIN_BUTTON_2"
+TEXT          = "Restore"
+
+MESSAGE       = "MAIN_BUTTON_3"
+TEXT          = "Delete"
+
+MESSAGE       = "MAIN_BUTTON_4"
+TEXT          = "Help"
+
+MESSAGE       = "MAIN_BUTTON_5"
+TEXT          = "Close"
+
+MESSAGE       = "ARCHIVE_TABLE_SET"
+TEXT          = "Archive table set"
+
+MESSAGE       = "COUNT_FRAME_LABEL"
+TEXT          = "Archive Table Set Records"
+
+MESSAGE       = "ARCHIVE_BUTTON_1"
+TEXT          = "Add ..."
+
+MESSAGE       = "ARCHIVE_BUTTON_2"
+TEXT          = "Archive"
+
+MESSAGE       = "CONSIGN_DATA_HEADER"
+TEXT          = "Define data to add to archive"
+
+MESSAGE       = "CONSIGN_DATA_FOOTER"
+TEXT          = "DO - add data to archive, EXIT - quit"
+
+MESSAGE       = "CONSIGN_BUTTON_1"
+TEXT          = "Add"
+
+MESSAGE       = "BUTTON_HELP"
+TEXT          = "Help"
+
+MESSAGE       = "BUTTON_CANCEL"
+TEXT          = "Cancel"
+
+MESSAGE       = "DELETE_HEADER"
+TEXT          = "Define transaction handling for delete operation"
+
+MESSAGE       = "DELETE_FOOTER"
+TEXT          = "DO - start deleting, EXIT - quit without deleting"
+
+MESSAGE       = "DELETE_METHOD"
+TEXT          = "Transaction mode for deleting"
+
+MESSAGE       = "FILE_LIST_HEADER"
+TEXT          = "Highlight CSV files to process"
+
+MESSAGE       = "NO_ARCHIVE_TABLES"
+TEXT          = "There are no archive tables defined in structure"
+
+MESSAGE       = "NO_FILES_TO_LIST"
+TEXT          = "There are no archive files available to choose from"
+
+MESSAGE       = "ERRORCONTINUE"
+TEXT          = "[]. Continue ?"
+
+MESSAGE  GROUP  "BLOB_"
+
+MESSAGE       = "MAIN_HEADER"
+TEXT          = "Labtable Text File to BLOB Conversion Utility"
+
+MESSAGE       = "MAIN_FOOTER"
+TEXT          = "DO - begin conversion, EXIT - Quit"
+
+MESSAGE       = "MAIN_PROMPT_1"
+TEXT          = "Convert Single Record or All Records"
+
+MESSAGE       = "MAIN_ONE_TABLE"
+TEXT          = "Single Table"
+
+MESSAGE       = "MAIN_ALL_TABLE"
+TEXT          = "All Tables"
+
+MESSAGE       = "MAIN_ONE_RECORD"
+TEXT          = "Single Record"
+
+MESSAGE       = "MAIN_ALL_RECORD"
+TEXT          = "All Records"
+
+MESSAGE       = "GRIDCOL1"
+TEXT          = "Table"
+
+MESSAGE       = "GRIDCOL2"
+TEXT          = "Directory"
+
+MESSAGE       = "GRIDCOL3"
+TEXT          = "Extn"
+
+MESSAGE       = "BUTT"
+TEXT          = "OK"
+TEXT          = "Insert"
+TEXT          = "Remove"
+TEXT          = "Cancel"
+
+MESSAGE       = "NOFULLDESCRIPTION"
+TEXT          = "Structure defines no FULL_DESCRIPTION field for table '[]'"
+
+MESSAGE GROUP   = "SMP_AUDIT_CFG_"
+
+MESSAGE         = "TITLE"
+TEXT            = "Audit Configuration"
+
+MESSAGE         = "B_PRINT"
+TEXT            = "Print"
+
+MESSAGE         = "B_APPLY"
+TEXT            = "Apply"
+
+MESSAGE         = "B_CLOSE"
+TEXT            = "Close"
+
+MESSAGE         = "B_HELP"
+TEXT            = "Help"
+
+MESSAGE         = "INSERT"
+TEXT            = "Insert"
+
+MESSAGE         = "MODIFY"
+TEXT            = "Modify"
+
+MESSAGE         = "DELETE"
+TEXT            = "Delete"
+
+MESSAGE         = "AUDIT_TYPE"
+TEXT            = "Audit Type"
+
+MESSAGE         = "PROMPT_ONCE"
+TEXT            = "Prompt once for data reason on this table"
+
+MESSAGE         = "TRANS_PROMPT_ONCE"
+TEXT            = "Prompt once for event reason within transaction"
+
+MESSAGE         = "AUDIT_FIELDS"
+TEXT            = "Audit Fields"
+
+MESSAGE         = "FIELD"
+TEXT            = "Field"
+
+MESSAGE         = "CONDITION"
+TEXT            = "Audit Condition"
+
+MESSAGE         = "SET_OFF"
+TEXT            = "False"
+
+MESSAGE         = "SET_ON"
+TEXT            = "True"
+
+MESSAGE         = "SET_CHANGE"
+TEXT            = "Value Changes"
+
+MESSAGE         = "STATUS_OFF"
+TEXT            = "False"
+
+MESSAGE         = "STATUS_ON"
+TEXT            = "True"
+
+MESSAGE         = "STATUS_CHANGE"
+TEXT            = "Value Changes"
+
+MESSAGE         = "NONE"
+TEXT            = "No Audit"
+
+MESSAGE         = "SILENT"
+TEXT            = "Silent Audit"
+
+MESSAGE         = "PROMPT"
+TEXT            = "Prompt Audit"
+
+MESSAGE         = "NO_LICENCE"
+TEXT            = "There is no licence for auditor"
+
+MESSAGE         = "NO_AUTHORITY"
+TEXT            = "You do not have the authority to run this report"
+
+MESSAGE         = "IMPORTED_SETTINGS"
+TEXT            = "Existing audit settings have been successfully imported. All audit configuration must now be done through this program. Changing audit settings within 'structure.txt' will have no effect."
+
+MESSAGE         = "APPLY_TO_ALL_OPS"
+TEXT            = "This will apply "
+TEXT            = " to the insert, modify and delete operations on this table. Continue?"
+TEXT            = " to the modify and delete operations on this table. Continue?"
+
+MESSAGE         = "H_NO_EVENTS"
+TEXT            = "No audit events will occur"
+
+MESSAGE         = "H_SILENT_EVENT"
+TEXT            = "A silent audit event will occur"
+
+MESSAGE         = "H_PROMPT_EVENT"
+TEXT            = "A prompted audit event will occur"
+
+MESSAGE         = "H_TRIGGER_FIELDS"
+TEXT            = "Trigger fields will determine what audit events will occur"
+
+MESSAGE         = "H_INSERT_OPERATION"
+TEXT            = "an insertion"
+
+MESSAGE         = "H_MODIFY_OPERATION"
+TEXT            = "a modification"
+
+MESSAGE         = "H_DELETE_OPERATION"
+TEXT            = "a deletion"
+
+MESSAGE         = "H_FIELD_SETTINGS"
+TEXT            = "There are also field settings."
+
+MESSAGE         = "H_TABLE_NO_AUDITS"
+TEXT            = "No audit events will occur when table '[]' undergoes any operation."
+
+MESSAGE         = "H_TABLE_HAS_AUDITS"
+TEXT            = "There are audits set on table '[]'."
+
+MESSAGE         = "H_RESTRICTED"
+TEXT            = "Audit settings may not be applied to this operation."
+
+MESSAGE         = "H_OPERATION_STATUS"
+TEXT            = "[] when table '[]' undergoes []. []"
+
+MESSAGE         = "H_FIELD_STATUS"
+TEXT            = "[] when field '[]' in table '[]' is modified."
+
+MESSAGE         = "P_HEAD"
+TEXT            = "Audit Configuration Report"
+
+MESSAGE         = "P_HEAD_ON"
+TEXT            = ", Produced on :"
+
+MESSAGE         = "P_HEAD_PAGE"
+TEXT            = "          Page ##"
+
+MESSAGE         = "P_TITLE"
+TEXT            = "Audit Configuration"
+
+MESSAGE         = "P_NONE"
+TEXT            = ""
+
+MESSAGE         = "P_SILENT"
+TEXT            = "s"
+
+MESSAGE         = "P_PROMPT"
+TEXT            = "?"
+
+MESSAGE         = "P_FIELDS"
+TEXT            = ""
+
+MESSAGE         = "P_TRUE"
+TEXT            = "|"
+
+MESSAGE         = "P_FALSE"
+TEXT            = "."
+
+MESSAGE         = "P_CHANGE"
+TEXT            = "="
+
+MESSAGE         = "P_PROMPT_ONCE"
+TEXT            = "Prompt Once On"
+
+MESSAGE         = "P_TRANS_PROMPT_ONCE"
+TEXT            = "Transaction Prompt Once"
+
+MESSAGE         = "SAVE_CHANGES"
+TEXT            = "Changes have been made. Would you like to save these changes?"
+
+MESSAGE         = "WRITE_ERROR"
+TEXT            = "There was an error writing the Audits.sec configuration file."
+SEVERITY        = "ERROR"
+
+MESSAGE GROUP "AUDIT_EXP_"
+
+MESSAGE         = "TITLE"
+TEXT            = "Audit Explorer"
+
+MESSAGE         = "RECREATE"
+TEXT            = "Recreate Data"
+
+MESSAGE         = "PRINT"
+TEXT            = "Print..."
+
+MESSAGE         = "CLOSE"
+TEXT            = "Close"
+
+MESSAGE         = "TRANS"
+TEXT            = "Transaction"
+
+MESSAGE         = "EVENT"
+TEXT            = "Event"
+
+MESSAGE         = "DATA"
+TEXT            = "Data"
+
+MESSAGE         = "PID"
+TEXT            = "System PID"
+
+MESSAGE         = "UID"
+TEXT            = "User ID"
+
+MESSAGE         = "NAME"
+TEXT            = "Name"
+
+MESSAGE         = "DATE"
+TEXT            = "Date"
+
+MESSAGE         = "TABLEID"
+TEXT            = "Table ID"
+
+MESSAGE         = "ACTION"
+TEXT            = "Action"
+
+MESSAGE         = "KEY0"
+TEXT            = "Record key0"
+
+MESSAGE         = "REASON"
+TEXT            = "Reason"
+
+MESSAGE         = "STATUS"
+TEXT            = "Print Compilation Status"
+
+MESSAGE         = "L_FIELD"
+TEXT            = "Field"
+
+MESSAGE         = "L_VAL"
+TEXT            = "Value"
+
+MESSAGE         = "L_VALPRE"
+TEXT            = "Old Value"
+
+MESSAGE         = "L_VALPOST"
+TEXT            = "New Value"
+
+MESSAGE         = "L_REASON"
+TEXT            = "Reason"
+
+MESSAGE         = "L_CANT_RECREATE"
+TEXT            = "Can't recreate. This record no longer exists."
+
+MESSAGE         = "T_WAIT"
+TEXT            = "Please wait..."
+
+MESSAGE         = "T_TRANS"
+TEXT            = "All Transactions"
+
+MESSAGE         = "T_OPS"
+TEXT            = "Operators"
+
+MESSAGE         = "T_TABS"
+TEXT            = "Tables"
+
+MESSAGE         = "T_YEAR"
+TEXT            = "Year of "
+
+MESSAGE         = "T_WEEK"
+TEXT            = "Week of "
+
+MESSAGE         = "T_TODAY"
+TEXT            = "Today"
+
+MESSAGE         = "T_DAY"
+TEXT            = "Monday"
+TEXT            = "Tuesday"
+TEXT            = "Wednesday"
+TEXT            = "Thursday"
+TEXT            = "Friday"
+TEXT            = "Saturday"
+TEXT            = "Sunday"
+
+MESSAGE         = "T_REBUILD"
+TEXT            = "Rebuild Tree"
+
+MESSAGE         = "T_P_ALLTRANS"
+TEXT            = "Print all transactions"
+
+MESSAGE         = "T_P_TRANSINTV"
+TEXT            = "Print all transactions from "
+
+MESSAGE         = "T_P_ALLOPS"
+TEXT            = "Print all operators' transactions"
+
+MESSAGE         = "T_P_ALLTABS"
+TEXT            = "Print all tables' events"
+
+MESSAGE         = "T_P_TRANS"
+TEXT            = "Print transaction "
+
+MESSAGE         = "T_P_OPS"
+TEXT            = "Print operator "
+TEXT            = "'s transactions"
+
+MESSAGE         = "T_P_OPSINTV"
+TEXT            = "Print operator "
+TEXT            = "s' transactions from "
+
+MESSAGE         = "T_P_TABS"
+TEXT            = "Print "
+TEXT            = "'s events"
+
+MESSAGE         = "T_P_EVENTS"
+TEXT            = "Print event "
+
+MESSAGE         = "MU_P_ALLTRANS"
+TEXT            = "All Transactions"
+
+MESSAGE         = "MU_P_ALLTRANSINTV"
+TEXT            = "All Transactions in interval..."
+
+MESSAGE         = "MU_P_ALLOPS"
+TEXT            = "All Operators"
+
+MESSAGE         = "MU_P_ALLTABS"
+TEXT            = "All Tables"
+
+MESSAGE         = "MU_P_TRANS"
+TEXT            = "All for Transaction..."
+
+MESSAGE         = "MU_P_OPS"
+TEXT            = "All for Operator..."
+
+MESSAGE         = "MU_P_OPSINTV"
+TEXT            = "All for Operator in interval..."
+
+MESSAGE         = "MU_P_TABS"
+TEXT            = "All for Table..."
+
+MESSAGE         = "MU_P_RECORD"
+TEXT            = "All for Table Record..."
+
+MESSAGE         = "MU_P_EVENT"
+TEXT            = "All for Event..."
+
+MESSAGE         = "MU_P_HEAD_TRANS"
+TEXT            = "Select Transaction to Print"
+
+MESSAGE         = "MU_P_PR_TRANS"
+TEXT            = "Transaction id:"
+
+MESSAGE         = "MU_P_HEAD_OPS"
+TEXT            = "Select Operator to Print"
+
+MESSAGE         = "MU_P_PR_OPS"
+TEXT            = "Operator id:"
+
+MESSAGE         = "MU_P_HEAD_TABS"
+TEXT            = "Select Table to Print"
+
+MESSAGE         = "MU_P_PR_TABS"
+TEXT            = "Table id:"
+
+MESSAGE         = "MU_P_HEAD_REC"
+TEXT            = "Select Record to Print"
+
+MESSAGE         = "MU_P_PR_REC"
+TEXT            = "Record key0:"
+
+MESSAGE         = "MU_P_HEAD_EVENT"
+TEXT            = "Select Event to Print"
+
+MESSAGE         = "MU_P_PR_EVENT"
+TEXT            = "Event id:"
+
+MESSAGE         = "MU_P_HEAD_INTV"
+TEXT            = "Select Period"
+
+MESSAGE         = "MU_P_PR_START"
+TEXT            = "Start Date >="
+
+MESSAGE         = "MU_P_PR_END"
+TEXT            = "End Date <"
+
+MESSAGE         = "M_P_NUMTRANS"
+TEXT            = " Transactions"
+
+MESSAGE         = "M_P_NUMEVENTS"
+TEXT            = " Events"
+
+MESSAGE         = "M_P_ALLTRANS"
+TEXT            = "Do you want to print ALL transactions, events and data?"
+
+MESSAGE         = "M_P_TRANSINTV"
+TEXT            = "Do you want to print ALL transactions in the period "
+TEXT            = " and all associated events and data?"
+
+MESSAGE         = "M_P_OPSINTV"
+TEXT            = "Do you want to print ALL "
+TEXT            = "'s transactions in the period "
+TEXT            = " and all associated events and data?"
+
+MESSAGE         = "M_P_ALLOPS"
+TEXT            = "Do you want to print ALL Operators' Transactions, Events and Data?"
+
+MESSAGE         = "M_P_ALLTABS"
+TEXT            = "Do you want to print ALL Tables, Records, Events and Data?"
+
+MESSAGE         = "M_P_TRANS"
+TEXT            = "Do you want to print transaction number "
+TEXT            = " and associated events and data?"
+
+MESSAGE         = "M_P_OPS"
+TEXT            = "Do you want to print all transactions associated with operator "
+
+MESSAGE         = "M_P_TABS"
+TEXT            = "Do you want to print ALL events associated with all records in table "
+
+MESSAGE         = "M_P_RECORD"
+TEXT            = "Do you want to print all events associated with "
+
+MESSAGE         = "M_P_EVENT"
+TEXT            = "Do you want to print event number "
+TEXT            = " and associated data?"
+
+MESSAGE         = "P_UID"
+TEXT            = "User ID"
+
+MESSAGE         = "P_NAME"
+TEXT            = "Name"
+
+MESSAGE         = "P_DATE"
+TEXT            = "Date"
+
+MESSAGE         = "P_TRANNO"
+TEXT            = "Transaction Number"
+
+MESSAGE         = "P_FIELDID"
+TEXT            = "Field  ID"
+
+MESSAGE         = "P_EVENTID"
+TEXT            = "Event ID"
+
+MESSAGE         = "P_TABLEID"
+TEXT            = "Table ID"
+
+MESSAGE         = "P_KEY0"
+TEXT            = "Record key0"
+
+MESSAGE         = "P_ACTION"
+TEXT            = "Action"
+
+MESSAGE         = "P_REASON"
+TEXT            = "Reason"
+
+MESSAGE         = "P_IDNUM"
+TEXT            = "ID Numeric"
+
+MESSAGE         = "P_IDTEXT"
+TEXT            = "Textual ID"
+
+MESSAGE         = "P_VALPRE"
+TEXT            = "Value Before : "
+
+MESSAGE         = "P_VALPOST"
+TEXT            = "Value After  : "
+
+MESSAGE         = "P_MORE"
+TEXT            = "Continued..."
+
+MESSAGE         = "P_HEAD_ON"
+TEXT            = ", Produced on :"
+
+MESSAGE         = "P_HEAD_PAGE"
+TEXT            = "Page ###"
+
+MESSAGE         = "P_HEAD_ALLTRANS"
+TEXT            = "All Transactions Report"
+
+MESSAGE         = "P_HEAD_TRANSINTV"
+TEXT            = "Transactions "
+
+MESSAGE         = "P_HEAD_OPSINTV"
+TEXT            = "'s Audits "
+
+MESSAGE         = "P_HEAD_ALLOPS"
+TEXT            = "All Operators Report"
+
+MESSAGE         = "P_HEAD_ALLTABS"
+TEXT            = "All Tables Report"
+
+MESSAGE         = "P_HEAD_USER"
+TEXT            = "Audit User Report"
+
+MESSAGE         = "P_HEAD_TRANS"
+TEXT            = "Audit Transaction Report"
+
+MESSAGE         = "P_HEAD_TABLE"
+TEXT            = "Audit Report"
+
+MESSAGE         = "P_HEAD_EVENT"
+TEXT            = "Audit Event Report"
+
+MESSAGE         = "P_TITLE_ALLTRANS"
+TEXT            = "ALL TRANSACTIONS REPORT"
+
+MESSAGE         = "P_TITLE_TRANSINTV"
+TEXT            = "ALL TRANSACTIONS "
+
+MESSAGE         = "P_TITLE_OPSINTV"
+TEXT            = "'S TRANSACTIONS "
+
+MESSAGE         = "P_TITLE_ALLOPS"
+TEXT            = "ALL OPERATORS REPORT"
+
+MESSAGE         = "P_TITLE_ALLTABS"
+TEXT            = "ALL TABLES REPORT"
+
+MESSAGE         = "P_TITLE_TRANS"
+TEXT            = "AUDIT TRANSACTION REPORT"
+
+MESSAGE         = "P_TITLE_USER"
+TEXT            = "AUDIT USER REPORT"
+
+MESSAGE         = "P_TITLE_EVENT"
+TEXT            = "AUDIT EVENT REPORT"
+
+MESSAGE         = "P_TITLE_TABLE"
+TEXT            = "AUDIT TABLE EVENT REPORT"
+
+MESSAGE         = "P_TITLE_TEST"
+TEXT            = "Audits for tests"
+
+MESSAGE GROUP "LABTAB_IMPRINT_"
+
+MESSAGE         = "TWO_PAGE"
+TEXT            = "Report is going to span two pages"
+
+MESSAGE         = "SELECT_STATUS"
+TEXT            = "Select / Deselect Appropriate Fields"
+
+MESSAGE         = "READY_STATUS"
+TEXT            = "Ready"
+
+MESSAGE         = "NO_COLUMNS_ERROR"
+TEXT            = "Error: You must select at least one column for the report"
+
+MESSAGE         = "CHANGED_ORIENTATION"
+TEXT            = "Report too wide, changing orientation to Landscape"
+
+MESSAGE         = "HEADER"
+TEXT            = "Imprint Report Fields"
+
+MESSAGE         = "SELECT_CRITERIA"
+TEXT            = "Selection Criteria"
+
+MESSAGE         = "SHOW_REMOVED"
+TEXT            = "Show removed records"
+
+MESSAGE GROUP "IMPRINT_"
+
+MESSAGE         = "LOADING"
+TEXT            = "Loading Imprint Please Wait..."
+
+MESSAGE         = "READY"
+TEXT            = "Ready"
+
+MESSAGE GROUP "BACKLOG_GUI_"
+
+MESSAGE         = "SELECTION"
+TEXT            = "Selection Criteria"
+
+MESSAGE GROUP "IMPRINT_CONNECT_"
+
+MESSAGE         = "CANT_RUN_CONNECT"
+TEXT            = "Unable to run connect.exe"
+
+MESSAGE         = "UNSUCCESSFUL"
+TEXT            = "SampleManager was unable to create the necessary components to use Imprint."
+TEXT            = "Please check your SMW installation"
+TEXT            = "Invalid imprint path. Check config item OLEIMPRINT_SERVER_SIDE, and make sure the imprint path within the registry points to the correct directory."
+
+MESSAGE         = "CANT_FIND_CONNECT"
+TEXT            = "Unable to locate connect.exe. Check SMW installation"
+
+MESSAGE         = "STATUS_MSG"
+TEXT            = "Creating Imprint Connection. Please Wait..."
+
+MESSAGE GROUP "PROMPT_PRINTER_"
+
+MESSAGE         = "CREATE_DLG_ERROR"
+TEXT            = "Failed to create a PrintDialogue OLE object: "
+
+MESSAGE GROUP "AUDIT_TREE_"
+
+MESSAGE         = "TITLE_1"
+TEXT            = "Audit/Esig Tree ( Table Select )"
+
+MESSAGE         = "TITLE_2"
+TEXT            = "Audit/Esig Tree ( Select Identity )"
+
+MESSAGE         = "TITLE_3"
+TEXT            = "Audit/Esig Tree Explorer"
+
+MESSAGE         = "TITLE_4"
+TEXT            = "Audit Transaction and Event List"
+
+MESSAGE         = "TITLE_5"
+TEXT            = "Esig Event and Data List"
+
+MESSAGE         = "AUD_TAB_TITLE"
+TEXT            = "Audit Transaction Tree"
+
+MESSAGE         = "ESIG_TAB_TITLE"
+TEXT            = "Esig Event Tree"
+
+MESSAGE         = "NO_DATA"
+TEXT            = "No Data Available."
+
+MESSAGE         = "SEARCH"
+TEXT            = "Getting data.."
+
+MESSAGE         = "DATAID"
+TEXT            = "Data Id"
+
+MESSAGE         = "P_REL_TRANS"
+TEXT            = "Print Related Audit Transaction"
+
+MESSAGE         = "P_REL_ESIG_EVENT"
+TEXT            = "Print Related Esig Event"
+
+MESSAGE         = "P_SAMPLE"
+TEXT            = "Print Sample Audit Report"
+
+MESSAGE         = "P_SEL_DATA"
+TEXT            = "Print Selected Data"
+
+MESSAGE         = "LIST_AUDIT"
+TEXT            = "List expand audit info"
+
+MESSAGE         = "LIST_ESIG"
+TEXT            = "List expand esig info"
+
+MESSAGE         = "P_EXPAND"
+TEXT            = "Print expand audit info"
+
+MESSAGE         = "PROMPT_1"
+TEXT            = "Enter Identity"
+
+MESSAGE         = "PROMPT_2"
+TEXT            = "Select Table"
+
+MESSAGE         = "PROMPT_3"
+TEXT            = "Select Hierarchy"
+
+MESSAGE         = "OPTION_1"
+TEXT            = "Display child data"
+
+MESSAGE         = "OPTION_2"
+TEXT            = "Display parent data"
+
+
+MESSAGE GROUP   = "LIB_ECSMLP_DISPLAY_"
+
+MESSAGE         = "SAMPLE"
+TEXT            = "Sample ID:"
+
+MESSAGE         = "LOT"
+TEXT            = "Lot Identity:"
+
+MESSAGE         = "JOB"
+TEXT            = "Job Name:"
+
+MESSAGE         = "PRODUCT"
+TEXT            = "Product"
+
+MESSAGE         = "PRODUCT_FAMILY"
+TEXT            = "Product Family"
+
+MESSAGE         = "VERSION"
+TEXT            = "Version"
+
+MESSAGE         = "LEVELS"
+TEXT            = "Levels"
+
+MESSAGE         = "ENTERED"
+TEXT            = "Compare Entered Results"
+
+MESSAGE         = "TITLE_SAMPLE"
+TEXT            = "Compare Sample with Product"
+
+MESSAGE         = "TITLE_JOB"
+TEXT            = "Compare Job with Product"
+
+MESSAGE         = "TITLE_LOT"
+TEXT            = "Compare Lot with Product"
+
+MESSAGE 	= "ENTERED_BUTTON"
+TEXT		= "Entered Results Mode"
+
+MESSAGE 	= "COMPARE_BUTTON"
+TEXT		= "Compare"
+
+MESSAGE 	= "INVESTIGATE_BUTTON"
+TEXT		= "Investigate"
+
+MESSAGE 	= "COA_BUTTON"
+TEXT		= "Generate CoA"
+
+MESSAGE 	= "UPDATE_BUTTON"
+TEXT		= "Update Database"
+
+MESSAGE		= "ALL_LEVEL"
+TEXT		= "All Levels"
+
+MESSAGE GROUP   = "LIB_ECSMLP_COMPARISON_"
+
+MESSAGE         = "PRODUCT"
+TEXT            = "Product"
+
+MESSAGE         = "VERSION"
+TEXT            = "Version"
+
+MESSAGE         = "STATUS"
+TEXT            = "Status"
+
+MESSAGE		= "DESC"
+TEXT		= "Description"
+
+MESSAGE		= "RESULT"
+TEXT		= "Result"
+
+MESSAGE GROUP   = "LIB_ECSMLP_LEVEL_"
+
+MESSAGE         = "NAME"
+TEXT            = "Level"
+
+MESSAGE         = "MIN"
+TEXT            = "Min"
+
+MESSAGE         = "MAX"
+TEXT            = "Max"
+
+MESSAGE		= "PROCESSED"
+TEXT		= "Processed"
+
+MESSAGE		= "RAW"
+TEXT		= "Entered"
+
+MESSAGE		= "RESULT"
+TEXT		= "Status"
+
+MESSAGE		= "RESULT_PASS"
+TEXT		= "Pass"
+
+MESSAGE		= "RESULT_FAIL"
+TEXT		= "Fail"
+
+MESSAGE GROUP   = "LIB_ECSMLP_TOOLTIP_"
+
+MESSAGE         = "ENTERED"
+TEXT            = "Compare Using Entered Results"
+
+MESSAGE         = "COMPARISON"
+TEXT            = "Perform Comparison"
+
+MESSAGE         = "INVESTIGATE"
+TEXT            = "Investigate Comparison"
+
+MESSAGE         = "GENERATE_COA"
+TEXT            = "Generate Certificate of Analysis"
+
+MESSAGE		= "UPDATE"
+TEXT		= "Update the database"
+
+MESSAGE		= "FAILURE_ONLY"
+TEXT		= "Show failures only"
+
+MESSAGE		= "FIRST_FAILURE"
+TEXT		= "Show first failure"
+
+MESSAGE		= "PREV_FAILURE"
+TEXT		= "Previous Component Comparison Failure"
+
+MESSAGE		= "NEXT_FAILURE"
+TEXT		= "Next Component Comparison Failure"
+
+MESSAGE GROUP   = "LIB_ECSMLP_ERROR_"
+
+MESSAGE		= "SAMPLE"
+TEXT		= "Sample Id cannot be left blank."
+
+MESSAGE		= "JOB"
+TEXT		= "Job Name cannot be left blank"
+
+MESSAGE		= "LOT"
+TEXT		= "Lot Identity cannot be left blank"
+
+MESSAGE		= "PRODUCT"
+TEXT		= "Please select a valid Product"
+
+MESSAGE		= "PRODUCT_FAMILY"
+TEXT		= "Please select a valid Product Family"
+
+MESSAGE         = "NULL_ANALYSIS"
+TEXT            = "Missing Test"
+
+MESSAGE         = "PERFORM_COMPARISON"
+TEXT            = "Please perform a comparison"
+
+MESSAGE         = "GEN_COA_OK"
+TEXT            = "Generate COA for "
+
+MESSAGE         = "GEN_COA_NOT_OK"
+TEXT            = "Cannot Generate COA for this selection"
+
+MESSAGE GROUP   = "LIB_ECSMLP_RMB_"
+
+MESSAGE		= "INVESTIGATION"
+TEXT		= "Investigate"
+
+MESSAGE		= "ADD_TEST"
+TEXT		= "Add Missing Test"
+
+MESSAGE		= "ADD_COMP"
+TEXT		= "Add Missing Result"
+
+MESSAGE		= "GEN_COA"
+TEXT		= "Generate Certificate of Analysis"
+
+MESSAGE         = "DISPLAY_RESULTS"
+TEXT            = "Display Results"
+
+MESSAGE GROUP   = "LIB_ECSMLP_STATUS_"
+
+MESSAGE         = "PASS"
+TEXT            = "Pass"
+
+MESSAGE         = "FAIL"
+TEXT            = "Fail"
+
+MESSAGE         = "PARTIAL"
+TEXT            = "Partial"
+
+MESSAGE         = "MISSING"
+TEXT            = "Missing"

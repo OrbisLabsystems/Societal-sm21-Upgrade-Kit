@@ -1,0 +1,701 @@
+MESSAGE GROUP "ESIG_SETUP_"
+
+MESSAGE = "ADD"
+TEXT    = "Add"
+
+MESSAGE = "EDIT"
+TEXT    = "Edit"
+
+MESSAGE = "ENTER_IP"
+TEXT    = "Enter an IP Address"
+
+MESSAGE = "HEADER"
+TEXT    = "Configure Electronic Signatures"
+
+MESSAGE = "INVALID"
+TEXT    = "Invalid value : "
+
+MESSAGE = "LOG"
+TEXT    = "Access Log Viewer"
+
+MESSAGE = "SIGNING_LOG"
+TEXT    = "Signature Viewer"
+
+MESSAGE = "PROMPT_IP"
+TEXT    = "Prompt for IP address"
+
+MESSAGE = "REMOVE"
+TEXT    = "Remove"
+
+MESSAGE = "REACTIVATE"
+TEXT    = "Reactivate"
+
+MESSAGE = "FREEZE"
+TEXT    = "Freeze"
+
+MESSAGE = "DISABLE"
+TEXT    = "Disable"
+
+MESSAGE = "ENABLE"
+TEXT    = "Enable"
+
+MESSAGE = "SELECT_ALL"
+TEXT    = "Select All"
+
+MESSAGE = "CLEAR_ALL"
+TEXT    = "Clear All"
+
+MESSAGE = "TOGGLE"
+TEXT    = "Toggle"
+
+
+
+MESSAGE GROUP "ESIG_SETUP_EXP_INT_"
+
+MESSAGE = "ALREADY"
+TEXT    = "Expiry Interval already defined for this user"
+
+MESSAGE = "DATE"
+TEXT    = "Expiry Date"
+
+MESSAGE = "ENTER"
+TEXT    = "Enter Expiry Details"
+
+MESSAGE = "HEADER"
+TEXT    = "Prompt for Expiry Interval"
+
+MESSAGE = "USER"
+TEXT    = "Username"
+
+MESSAGE = "TRANSACTION"
+TEXT    = "Updating Expiry Interval settings"
+
+MESSAGE = "UPDATE_FAILURE"
+TEXT    = "Error updating Expiry Interval settings"
+
+MESSAGE = "FROZEN"
+TEXT    = "Frozen"
+
+MESSAGE = "USER_REQUIRED"
+TEXT    = "Please supply a valid username"
+
+
+
+MESSAGE GROUP "ESIG_SETUP_IP_"
+
+MESSAGE = "ADDRESS"
+TEXT    = "IP Address "
+
+MESSAGE = "ALREADY"
+TEXT    = "IP Address already exists in list"
+
+MESSAGE = "SYSTEM"
+TEXT    = "System IP Address"
+
+MESSAGE = "AUTH"
+TEXT    = "Authorized IP Addresses"
+
+MESSAGE = "UNAUTH"
+TEXT    = "Unauthorized IP Addresses"
+
+MESSAGE = "INVALID"
+TEXT    = "Invalid IP Address"
+
+MESSAGE = "NO_SEL"
+TEXT    = "No selection"
+
+MESSAGE = "SESSIONS"
+TEXT    = "Max. Sessions"
+
+MESSAGE = "TRANSACTION"
+TEXT    = "Updating IP address list"
+
+MESSAGE = "UPDATE_FAILURE"
+TEXT    = "Error updating IP address list"
+
+MESSAGE = "ALLOW_ALL"
+TEXT    = "Removing all allowed IP addresses is equivalent to allowing *.*.*.*"
+
+MESSAGE = "SYSTEM_ALWAYS"
+TEXT    = "Always allow SYSTEM to login from this address"
+
+MESSAGE = "CHANGE_SYSTEM"
+TEXT    = "Change"
+
+
+
+MESSAGE GROUP "ESIG_SETUP_MENU_"
+
+MESSAGE = "DESC"
+TEXT    = "Menu Description"
+
+MESSAGE = "ESIG"
+TEXT    = "ESig Level"
+
+MESSAGE = "HEADER"
+TEXT    = "Menu Edit"
+
+MESSAGE = "INVALID"
+TEXT    = "Cannot put an esig level on a menu. only on a command"
+
+MESSAGE = "KEY"
+TEXT    = "key"
+
+MESSAGE = "MNEMONIC"
+TEXT    = "Mnemonic"
+
+MESSAGE = "CHANGE_REASON"
+TEXT    = "Change Reason Prompt"
+
+MESSAGE = "NO_ESIG"
+TEXT    = "No Electronic Signature Level"
+
+MESSAGE = "TRANSACTION"
+TEXT    = "Updating Electronic Signature settings"
+
+MESSAGE = "UPDATE_FAILURE"
+TEXT    = "Error updating Electronic Signature settings"
+
+MESSAGE = "NEEDS_SYSTEM"
+TEXT    = "Electronic Signature Menu settings requires a SYSTEM menu and barmenu"
+
+MESSAGE = "REASON"
+TEXT    = "Reason for Signature"
+
+MESSAGE = "LOADING"
+TEXT    = "Loading menu ..."
+
+MESSAGE = "BAD_MENU_NUMBER"
+TEXT    = "Option refers to invalid menu number"
+
+
+
+MESSAGE GROUP "ESIG_SETUP_REASON_"
+
+MESSAGE = "HEADER"
+TEXT    = "Reason for Signature"
+
+MESSAGE = "PROMPT"
+TEXT    = "Enter Reason for Signature"
+
+
+
+MESSAGE GROUP "ESIG_SETUP_TABLES_"
+
+MESSAGE = "HEADER"
+TEXT    = "Checksum Fields"
+
+MESSAGE = "TABLES"
+TEXT    = "Table Name"
+
+MESSAGE = "TRANSACTION"
+TEXT    = "Updating Esig Checksum Fields"
+
+MESSAGE = "LOCKED"
+TEXT    = "Encountered a locked record during the save operation for Checksum Fields"
+
+MESSAGE = "LOADING"
+TEXT    = "Loading checksum settings ..."
+
+MESSAGE = "CHECKSUM"
+TEXT    = "Checksum"
+
+MESSAGE = "NOCHECKSUM"
+TEXT    = "No Checksum"
+
+MESSAGE GROUP "ESIG_SETUP_PSWD_"
+
+MESSAGE = "STATIC"
+TEXT	= "Default Expiry Period    "
+TEXT	= "Minimum Password Length  "
+TEXT	= "Expiry Grace Period      "
+TEXT	= ""
+TEXT	= "Password Failures        "
+TEXT	= "Login Failures           "
+TEXT	= ""
+TEXT	= "Freeze IP Address        "
+TEXT	= "Freeze User Account      "
+TEXT	= ""
+TEXT	= "Save O/S Username Enabled"
+TEXT	= "Save SM Username Enabled "
+
+MESSAGE = "EXP_INT"
+TEXT    = "Password Expiry Intervals"
+
+MESSAGE = "HEADER"
+TEXT    = "Password"
+
+MESSAGE = "NAME"
+TEXT    = "Username"
+
+MESSAGE = "DATE"
+TEXT    = "Expiry Date"
+
+MESSAGE = "STATUS"
+TEXT    = "Status"
+
+MESSAGE = "WONT_EXPIRE"
+TEXT    = "<will not expire>"
+
+MESSAGE = "NO_FREEZE"
+TEXT    = "Accounts will not be frozen out unless 'Freeze User Account' is set"
+
+
+MESSAGE GROUP "ESIG_SETUP_TIMEOUT_"
+
+MESSAGE = "STATIC"
+TEXT	= "Number of seconds before timeout when no windows are active."
+TEXT	= "Specify 0 to disable."
+TEXT	= ""
+TEXT	= "Number of seconds before timeout when windows are active."
+TEXT	= "Specify 0 to disable."
+TEXT	= ""
+TEXT	= "Number of seconds before timeout when windows are active and Esigs is enabled."
+TEXT	= "Specify 0 to disable."
+TEXT	= ""
+TEXT	= "Number of seconds before logout after initial timeout."
+TEXT	= "Specify 0 to disable."
+
+MESSAGE = "HEADER"
+TEXT    = "Timeout"
+
+MESSAGE = "DEFAULT"
+TEXT    = "Inactive Timeout"
+
+MESSAGE = "ACTIVE"
+TEXT    = "Active Timeout"
+
+MESSAGE = "ESIG_ACTIVE"
+TEXT    = "Esig Active Timeout"
+
+MESSAGE = "TIMEOUT"
+TEXT    = "Timeout Timeout"
+
+MESSAGE = "TRANSACTION"
+TEXT    = "Updating Timeout settings"
+
+MESSAGE = "UPDATE_FAILURE"
+TEXT    = "Error updating Timeout settings"
+
+MESSAGE = "SECONDS"
+TEXT    = "Seconds"
+
+MESSAGE = "DELETE_USER"
+TEXT    = "Do you wish to delete all user and group level timeout settings ?"
+
+
+MESSAGE GROUP "ESIG_SETUP_AUTHORISE_"
+
+MESSAGE = "HEADER"
+TEXT    = "Authorization"
+
+MESSAGE = "TABLE"
+TEXT    = "Table for Authorization Esig"
+
+MESSAGE = "CHECKSUM_TABLES"
+TEXT    = "Checksum tables"
+
+MESSAGE = "ALLOWED"
+TEXT    = "JOB_HEADER"
+TEXT    = "SAMPLE"
+TEXT    = "TEST"
+TEXT    = "RESULT"
+
+MESSAGE = "REASON"
+TEXT    = "Reason for signing string"
+
+MESSAGE = "TRANSACTION"
+TEXT    = "Updating authorize settings"
+
+MESSAGE = "UPDATE_FAILURE"
+TEXT    = "Error updating Esig Authorization settings"
+
+MESSAGE = "HELP"
+TEXT	= "This screen allows the definition of Electronic Signature behaviour"
+TEXT	= "on the authorisation of dynamic data."
+TEXT	= ""
+TEXT	= "When a record from the table specified in the 'Table for Authorization'"
+TEXT	= "prompt is authorised, an electronic signature will be requested and "
+TEXT	= "a checksum will be created for all related records held in each of the"
+TEXT	= "'checked' tables from the 'Checksum tables' choose list."
+TEXT	= ""
+TEXT	= "Unchecking all 'Checksum tables' disables authorisation Electronic Signatures."
+TEXT	= ""
+TEXT	= "Text specified in the 'Reason for signing string' is displayed on the"
+TEXT	= "Electronic Signature request screen."
+
+MESSAGE = "WARN"
+TEXT    = "The table(s) [] do not have Checksum Fields definitions"
+
+MESSAGE GROUP "ESIG_SETUP_LAYOUT_"
+
+MESSAGE = "HEADER"
+TEXT    = "Layout"
+
+MESSAGE = "ASK_USERNAME"
+TEXT    = "Prompt for Username on Esig window"
+
+MESSAGE = "MESSAGE_ON_CANCEL"
+TEXT    = "Send an Esig failure message on Cancel"
+
+MESSAGE = "PASSWORD_ATTEMPTS"
+TEXT    = "Number of Password attempts"
+
+MESSAGE = "OPERATORS"
+TEXT    = "'Send to' list for Esig failures"
+
+MESSAGE = "LOADING"
+TEXT    = "Loading Layout Screen ..."
+
+MESSAGE = "TRANSACTION"
+TEXT    = "Updating Layout settings"
+
+MESSAGE = "UPDATE_FAILURE"
+TEXT    = "Error updating layout settings"
+
+
+
+MESSAGE GROUP "ESIG_ACCESS_LOG_"
+
+MESSAGE = "ACTION"
+TEXT    = "Action "
+
+MESSAGE = "ACTIONS"
+TEXT    = "Actions"
+
+MESSAGE = "CLIENT_DATE"
+TEXT    = "Client Date"
+
+MESSAGE = "CLIENT_TIME"
+TEXT    = "Client Time"
+
+MESSAGE = "FATAL"
+TEXT    = "Fatal"
+
+MESSAGE = "FILT_BUTT"
+TEXT    = "Filters..."
+
+MESSAGE = "REBUILD_BUTT"
+TEXT    = "Rebuild"
+
+MESSAGE = "CLEAR_BUTT"
+TEXT    = "Clear Log"
+
+MESSAGE = "FILT_HEAD"
+TEXT    = "Access Log Filters"
+
+MESSAGE = "FILT_VIEW"
+TEXT    = " Filtered View "
+
+MESSAGE = "FROM"
+TEXT    = "From"
+
+MESSAGE = "HEADER"
+TEXT    = "Access Log Viewer"
+
+MESSAGE = "INFO"
+TEXT    = "Information"
+
+MESSAGE = "IP"
+TEXT    = "IP Address "
+
+MESSAGE = "LOGOUT_DATE"
+TEXT    = "Logout Date"
+
+MESSAGE = "LOGOUT_TIME"
+TEXT    = "Logout Time"
+
+MESSAGE = "OPERATOR"
+TEXT    = "Operator "
+
+MESSAGE = "SERVER_DATE"
+TEXT    = "Server Date"
+
+MESSAGE = "SERVER_TIME"
+TEXT    = "Server Time"
+
+MESSAGE = "SERV_DATES"
+TEXT    = "Server Dates"
+
+MESSAGE = "SHOW"
+TEXT    = "Show"
+
+MESSAGE = "TO"
+TEXT    = "To"
+
+MESSAGE = "TYPES"
+TEXT    = "Types"
+
+MESSAGE = "WARNING"
+TEXT    = "Warning"
+
+MESSAGE = "SESSION"
+TEXT    = "Session"
+
+MESSAGE = "RMB_AUDIT"
+TEXT    = "Audits for Session"
+
+MESSAGE = "RMB_PROPERTIES"
+TEXT    = "Properties"
+
+MESSAGE GROUP "ESIG_ACCESS_LOG_CLEAR_"
+
+MESSAGE = "HEADER"
+TEXT    = "Clear Access Log"
+
+MESSAGE = "EXPORT"
+TEXT    = "Do you want to table save the access log before clearing ?"
+
+MESSAGE = "YES"
+TEXT    = "Yes"
+
+MESSAGE = "NO"
+TEXT    = "No"
+
+MESSAGE = "CANCEL"
+TEXT    = "Cancel"
+
+MESSAGE = "DO_DELETE"
+TEXT    = "Deleting records from database"
+
+MESSAGE = "REPOPULATE"
+TEXT    = "Rebuilding screen"
+
+
+MESSAGE GROUP = "SMP_PSWD_"
+
+MESSAGE     = "ANY_PASS_AUTH"
+TEXT        = "You have insufficient authority level to perform this operation"
+
+MESSAGE     = "INVALID_MUST_CHANGE"
+TEXT        = "New password must be different to the current password."
+
+MESSAGE     = "INVALID_TOO_EASY"
+TEXT        = "The password you have entered is too easy to guess."
+
+MESSAGE     = "INVALID_DIFF_CHARS"
+TEXT        = "The password you have entered does not have enough distinct characters."
+
+MESSAGE     = "INVALID_TOO_SHORT"
+TEXT        = "The password you have entered is too short."
+
+MESSAGE     = "INVALID_TOO_LONG"
+TEXT        = "The password you have entered is too long."
+
+MESSAGE     = "WILL_EXPIRE"
+TEXT        = "Your password is due to expire on []"
+
+MESSAGE     = "EXPIRED"
+TEXT        = "Your password has expired."
+
+MESSAGE     = "TRANS_NEW_PASSWORD"
+TEXT        = "Writing New Password"
+
+MESSAGE     = "TRANS_NEW_USER"
+TEXT        = "Adding New User"
+
+MESSAGE     = "TRANS_DELETE_USER"
+TEXT        = "Deleting User"
+
+MESSAGE     = "TRANS_LOGIN_INC"
+TEXT        = "Increment login failure count"
+
+MESSAGE     = "TRANS_LOGIN_RESET"
+TEXT        = "Reset login failure count"
+
+
+MESSAGE     = "TRANS_DISABLE_CLIENT"
+TEXT        = "Disabling client address"
+
+MESSAGE     = "SYSTEM_EXISTS"
+TEXT        = "SYSTEM user already has a password. Install not required."
+
+MESSAGE     = "ESIG_WARNING"
+TEXT        = "Completion of this form carries the same meaning and weight as a written signature"
+
+
+! Internal Role processing messages
+
+MESSAGE GROUP "ROLE_"
+
+MESSAGE     = "OPTION_NOT_IN_MM"
+TEXT        = "Option [] is not in the Master Menu table"
+
+! Signing log viewer
+
+MESSAGE GROUP "ESIG_SIGNING_LOG_"
+
+MESSAGE = "HEADER"
+TEXT    = "Signature Viewer"
+
+MESSAGE = "EVENT_ID"
+TEXT    = "Event ID"
+
+MESSAGE = "OPERATOR"
+TEXT    = "Operator"
+
+MESSAGE = "FULLNAME"
+TEXT    = "Full Name"
+
+MESSAGE = "REASON"
+TEXT    = "Reason"
+
+MESSAGE = "COMMENT"
+TEXT    = "Comment"
+
+MESSAGE = "SERVER_DATE"
+TEXT    = "Server Date"
+
+MESSAGE = "SERVER_TIME"
+TEXT    = "Server Time"
+
+MESSAGE = "SERVER_OFFSET"
+TEXT    = "Offset"
+
+MESSAGE = "IP"
+TEXT    = "IP Address"
+
+MESSAGE = "CLIENT_NAME"
+TEXT    = "Client Name"
+
+MESSAGE = "CLIENT_DATE"
+TEXT    = "Client Date"
+
+MESSAGE = "CLIENT_TIME"
+TEXT    = "Client Time"
+
+MESSAGE = "SESSION_ID"
+TEXT    = "Session ID"
+
+MESSAGE = "MENU_NUMBER"
+TEXT    = "Menu #"
+
+MESSAGE = "FILT_VIEW"
+TEXT    = " Filtered View "
+
+MESSAGE = "FILT_BUTT"
+TEXT    = "Filters"
+
+MESSAGE = "REBUILD_BUTT"
+TEXT    = "Rebuild"
+
+MESSAGE = "FILT_HEAD"
+TEXT    = "Signing Log Filters"
+
+MESSAGE = "OPERATORS"
+TEXT    = "Operators"
+
+MESSAGE = "SHOW"
+TEXT    = "Show"
+
+MESSAGE = "FROM"
+TEXT    = "From"
+
+MESSAGE = "TO"
+TEXT    = "To"
+
+MESSAGE = "TYPES"
+TEXT    = "Types"
+
+MESSAGE = "FAILED"
+TEXT    = "Failed"
+
+MESSAGE = "SUCCESS"
+TEXT    = "Success"
+
+MESSAGE = "SERV_DATES"
+TEXT    = "Server Dates"
+
+! Messages for menu options
+
+MESSAGE = "ENTER_EVENT"
+TEXT    = "Event ID"
+
+MESSAGE = "EVENT_HEADER"
+TEXT    = "Display event details"
+
+MESSAGE = "DATA_HEADER"
+TEXT    = "Display data details"
+
+MESSAGE = "TRANS_HEADER"
+TEXT    = "Display transaction details"
+
+MESSAGE = "NO_DATA"
+TEXT    = "No data records found for signing event"
+
+MESSAGE = "ENTER_DATA"
+TEXT    = "Data ID"
+
+MESSAGE = "VALIDATE_HEADER"
+TEXT    = "Validate data checksum"
+
+MESSAGE = "VALID_COLUMN"
+TEXT    = "Valid"
+
+MESSAGE = "STILL_VALID"
+TEXT    = "Checksum still valid. Fields included in the checksum have not changed since the signing."
+
+MESSAGE = "NOT_VALID"
+TEXT    = "Checksum is no longer valid. Fields included in the checksum have changed since the signing."
+
+MESSAGE = "RMB_HEADER"
+TEXT    = "Properties"
+
+MESSAGE = "RMB_RECORDS"
+TEXT    = "Signed Records"
+
+MESSAGE = "RMB_AUDITS"
+TEXT    = "Audits for Session"
+
+! Internal Esig message
+
+MESSAGE GROUP "ESIG_"
+
+MESSAGE     = "VERIFY_FAILURE"
+TEXT        = "The user [] has failed to verify their password on an Electronic Signature screen."
+
+MESSAGE     = "VERIFY_CANCEL"
+TEXT        = "The user [] cancelled an Electronic Signature screen."
+
+MESSAGE     = "VERIFY_HEADER"
+TEXT        = "Verify Password - []"
+
+! Internal Esig message
+
+MESSAGE GROUP "ESIG_SETUP_PROXY_"
+
+MESSAGE     = "HEADER"
+TEXT        = "Authentication"
+
+MESSAGE     = "DOMAIN"
+TEXT        = "Use Domain Authentication"
+
+MESSAGE     = "ALLOW"
+TEXT        = "Allow Proxy Login"
+
+MESSAGE     = "AD"
+TEXT        = "Active Directory"
+
+MESSAGE     = "WINNT"
+TEXT        = "WinNT"
+
+MESSAGE     = "NC"
+TEXT        = "Naming Context"
+
+MESSAGE     = "AD_GROUP"
+TEXT        = "Access Group"
+
+MESSAGE     = "MAP_LOOKUP"
+TEXT        = "User account lookup fields"
+
+MESSAGE     = "AD_FIELD"
+TEXT        = "AD Field"
+
+MESSAGE     = "PERSONNEL_FIELD"
+TEXT        = "Personnel Record"
+
+MESSAGE     = "UPDATE_FAILURE"
+TEXT        = "Error updating proxy login settings"
+
+MESSAGE     = "TRANSACTION"
+TEXT        = "Updating proxy login settings"

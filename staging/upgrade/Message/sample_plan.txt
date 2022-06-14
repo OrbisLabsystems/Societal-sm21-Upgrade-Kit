@@ -1,0 +1,361 @@
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "SP_CONFIG_FORM_"
+
+MESSAGE        = "CLOSE"
+TEXT           = "Close"
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "SP_DECISION_TREE_"
+
+MESSAGE        = "ANAL_ONLY"
+TEXT           = "Analysis only"
+
+MESSAGE        = "AUTO_REBUILD"
+TEXT           = "Record no longer exists. Tree will be rebuilt"
+
+MESSAGE        = "CONFIRM_REMOVE"
+TEXT           = "Node has children. Do you still want to remove?"
+
+MESSAGE        = "FIND_NONE"
+TEXT           = "No matches found."
+
+MESSAGE        = "FIND_TO_TOP"
+TEXT           = "No more matches found. Back to top."
+
+MESSAGE        = "GET_VERSIONS"
+TEXT           = "Number of versions to display: "
+
+MESSAGE        = "MATCH"
+TEXT           = "Match"
+
+MESSAGE        = "NO_ANAL"
+TEXT           = "< No triggerable analyses >"
+
+MESSAGE        = "NO_COUNT"
+TEXT           = "No Counter"
+
+MESSAGE        = "SPEC_ONLY"
+TEXT           = "Spec only"
+
+MESSAGE        = "UNMATCHED"
+TEXT           = "Unmatched Analysis and Specifications"
+
+MESSAGE        = "VERSIONS_HEAD"
+TEXT           = "Set Version Display"
+
+MESSAGE        = "PASTE_ERROR_1"
+TEXT           = "Cannot paste here. This would create more than one approval node for this branch"
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "SP_EDITOR_PROMPTS_"
+
+MESSAGE        = "BROWSE"
+TEXT           = "Browse"
+
+MESSAGE        = "BUILD"
+TEXT           = "Build"
+
+MESSAGE        = "CRITERIA"
+TEXT           = "Criteria"
+
+MESSAGE        = "CURRENT"
+TEXT           = "Current"
+
+MESSAGE        = "IF"
+TEXT           = "If     "
+
+MESSAGE        = "ELSEIF"
+TEXT           = "Else if"
+
+MESSAGE        = "ELSE"
+TEXT           = "Else   "
+
+MESSAGE        = "FIND"
+TEXT           = "Find"
+
+MESSAGE        = "N_A"
+TEXT           = "Not Applicable"
+
+MESSAGE GROUP "SP_LIB_"
+
+MESSAGE        = "DEFAULT"
+TEXT           = "Default"
+
+MESSAGE        = "ROOT"
+TEXT           = "Root"
+
+MESSAGE        = "UNDEFINED"
+TEXT           = "<Undefined Criteria>"
+
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "SP_NODE_"
+
+MESSAGE        = "TRANS_SAVE_NODE"
+TEXT           = "Sample Plan Save Node"
+
+MESSAGE        = "ANAL_RULE_BASED"
+TEXT           = "Analysis based rules"
+
+MESSAGE        = "BUTT_ADD_RULE"
+TEXT           = "Add Rule"
+
+MESSAGE        = "BUTT_IMPORT_MLP"
+TEXT           = "Import MLP Spec..."
+
+MESSAGE        = "BUTT_IMPORT_TS"
+TEXT           = "Import Test Schedule..."
+
+MESSAGE        = "BUTT_INSERT"
+TEXT           = "Insert"
+
+MESSAGE        = "BUTT_LEFT_RULE"
+TEXT           = "<<< Move"
+
+MESSAGE        = "BUTT_REMOVE"
+TEXT           = "Remove"
+
+MESSAGE        = "BUTT_REMOVE_RULE"
+TEXT           = "Remove Rule"
+
+MESSAGE        = "BUTT_RIGHT_RULE"
+TEXT           = "Move >>>"
+
+MESSAGE        = "BUTT_SAMPLE"
+TEXT           = "Sample ..."
+
+MESSAGE        = "HEAD_ANAL"
+TEXT           = "Analyses"
+
+MESSAGE        = "HEAD_ANAL_RULES"
+TEXT           = "Analyses Rules"
+
+MESSAGE        = "HEAD_HEAD"
+TEXT           = "Header"
+
+MESSAGE        = "RULES_BASED"
+TEXT           = "Rules based"
+
+MESSAGE        = "DISPLAYING"
+TEXT           = "Displaying"
+
+MESSAGE        = "MODIFYING"
+TEXT           = "Modifying"
+
+MESSAGE        = "SAMPLING_PLAN"
+TEXT           = "Sample Plan: "
+
+MESSAGE        = "NODE"
+TEXT           = "Node: "
+
+MESSAGE GROUP "SP_NODE_ANALYSES_"
+
+MESSAGE        = "IMPORT_MLP_HEAD"
+TEXT           = "Import MLP"
+
+MESSAGE        = "IMPORT_MLP_ID"
+TEXT           = "MLP Identity"
+
+MESSAGE        = "IMPORT_TS_HEAD"
+TEXT           = "Import Test Schedule"
+
+MESSAGE        = "IMPORT_TS_ID"
+TEXT           = "Test Schedule Id"
+
+MESSAGE        = "NO_ANAL"
+TEXT           = "Analysis must be entered"
+
+MESSAGE GROUP "SP_NODE_RULES_"
+
+MESSAGE        = "ADD"
+TEXT           = "Add Rule"
+
+MESSAGE        = "AFTER"
+TEXT           = "After"
+
+MESSAGE        = "ID"
+TEXT           = "Rule Id"
+
+MESSAGE        = "NEW_RULE_HEAD"
+TEXT           = "Add Rule"
+
+MESSAGE        = "NEW_RULE_ID"
+TEXT           = "Rule Id"
+
+MESSAGE        = "RULE_COUNT_HEAD"
+TEXT           = "Rule Count"
+
+MESSAGE        = "RULE_COUNT_OK"
+TEXT           = "OK"
+
+MESSAGE        = "RULE_COUNT_RESET"
+TEXT           = "Reset"
+
+MESSAGE GROUP "SP_MU_"
+
+MESSAGE        = "REBUILD"
+TEXT           = "Rebuild"
+
+MESSAGE        = "VIEW"
+TEXT           = "View"
+
+MESSAGE        = "VIEW_ALL"
+TEXT           = "All versions"
+
+MESSAGE        = "VIEW_HIGHEST"
+TEXT           = "Highest versions"
+
+MESSAGE        = "VIEW_HIGHEST_N"
+TEXT           = "Highest 'n' versions"
+
+MESSAGE        = "VIEW_SET_CRITERIA"
+TEXT           = "Set Criteria..."
+
+MESSAGE        = "FIND"
+TEXT           = "Find..."
+
+MESSAGE        = "FIND_NEXT"
+TEXT           = "Find Next"
+
+MESSAGE        = "NEW_NODE"
+TEXT           = "New Node"
+
+MESSAGE        = "NEW_NODE_LAST"
+TEXT           = "As Last Child"
+
+MESSAGE        = "NEW_NODE_FIRST"
+TEXT           = "As First Child"
+
+MESSAGE        = "NEW_NODE_ABOVE"
+TEXT           = "Above"
+
+MESSAGE        = "NEW_NODE_BELOW"
+TEXT           = "Below"
+
+MESSAGE        = "CUT_NODE"
+TEXT           = "Cut"
+
+MESSAGE        = "COPY_NODE"
+TEXT           = "Copy"
+
+MESSAGE        = "DEEPCOPY_NODE"
+TEXT           = "Copy ( Including Children )"
+
+MESSAGE        = "MODIFY_NODE"
+TEXT           = "Modify Node"
+
+MESSAGE        = "PASTE_NODE"
+TEXT           = "Paste Node"
+
+MESSAGE        = "PASTE_NODE_LAST"
+TEXT           = " As Last Child"
+
+MESSAGE        = "PASTE_NODE_FIRST"
+TEXT           = " As First Child"
+
+MESSAGE        = "PASTE_NODE_ABOVE"
+TEXT           = " Above"
+
+MESSAGE        = "PASTE_NODE_BELOW"
+TEXT           = " Below"
+
+MESSAGE        = "REMOVE_NODE"
+TEXT           = "Remove"
+
+MESSAGE        = "PRINT_NODE"
+TEXT           = "Print..."
+
+MESSAGE        = "SUBMIT"
+TEXT           = "Submit"
+
+MESSAGE        = "AUTHORISE"
+TEXT           = "Authorise"
+
+MESSAGE        = "REJECT"
+TEXT           = "Reject"
+
+MESSAGE        = "EDIT"
+TEXT           = "Edit"
+
+MESSAGE        = "CANCEL"
+TEXT           = "Retire"
+
+MESSAGE        = "VIEW_SELECTED_PRE_TEXT"
+TEXT           = "*"
+
+MESSAGE        = "EDIT_SAMPLE_INFO"
+TEXT           = "Edit Sample Information..."
+
+MESSAGE        = "VIEW_SAMPLE_INFO"
+TEXT           = "View Sample Information..."
+
+MESSAGE        = "INSERT_ANALYSES"
+TEXT           = "Insert Analyses"
+
+MESSAGE        = "REMOVE_ANALYSES"
+TEXT           = "Remove Analyses"
+
+MESSAGE        = "IMPORT_TEST_SCHEDULE"
+TEXT           = "Import Test Schedule..."
+
+MESSAGE        = "IMPORT_MLP_ANALYSES"
+TEXT           = "Import MLP's Analyses..."
+
+MESSAGE        = "ADD_RULE"
+TEXT           = "Insert Rule"
+
+MESSAGE        = "ADD_RULE_ID"
+TEXT           = "New Rule..."
+
+MESSAGE        = "MOVE_RULE_RIGHT"
+TEXT           = "Move Rule Right >>>"
+
+MESSAGE        = "MOVE_RULE_LEFT"
+TEXT           = "<<< Move Rule Left"
+
+MESSAGE        = "REMOVE_RULE"
+TEXT           = "Remove Rule"
+
+MESSAGE        = "EDIT_RULE"
+TEXT           = "Edit Rule Definition..."
+
+MESSAGE        = "VIEW_RULE"
+TEXT           = "View Rule Definition..."
+
+MESSAGE        = "SET_ALL_ON"
+TEXT           = "Set selection on"
+
+MESSAGE        = "SET_ALL_OFF"
+TEXT           = "Set selection off"
+
+MESSAGE        = "SET_ALL_TOGGLE"
+TEXT           = "Toggle selection"
+
+MESSAGE        = "EDIT_COUNTER"
+TEXT           = "Edit Rule Counter"
+
+MESSAGE        = "VIEW_COUNTER"
+TEXT           = "View Rule Counter"
+
+MESSAGE        = "NEWRULE_PRE_TEXT"
+TEXT           = "-"
+
+MESSAGE        = "PRINT_ALL"
+TEXT           = "Print All"
+
+MESSAGE        = "EDIT_DETAILS"
+TEXT           = "Edit Details..."
+
+MESSAGE        = "VIEW_DETAILS"
+TEXT           = "View Details..."
+
+MESSAGE        = "SET_APPROVAL_ON"
+TEXT           = "Set Approval On"
+
+MESSAGE        = "SET_APPROVAL_OFF"
+TEXT           = "Set Approval Off"

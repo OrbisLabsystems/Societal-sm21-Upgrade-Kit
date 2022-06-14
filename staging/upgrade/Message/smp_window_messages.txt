@@ -1,0 +1,59 @@
+MESSAGE GROUP "SMP_WINDOW_"
+
+! SEVERITY      ERROR
+
+MESSAGE =       "CREATE_FAILED"
+TEXT =          "CURSES failed to create a new window"
+
+MESSAGE =       "WINDOW_UPDATE"
+TEXT    =       "Too many window_end_update calls."
+
+MESSAGE =       "SCREEN_UPDATE"
+TEXT    =       "Too many screen_end_update calls."
+
+MESSAGE =       "BORDER_TOO_BIG"
+TEXT    =       "Text for window border too long"
+
+MESSAGE =       "INVALID_COLUMN"
+TEXT    =       "Invalid Column"
+
+MESSAGE =       "INVALID_ROW"
+TEXT    =       "Invalid Row"
+
+! SEVERITY      INFORMATION
+
+MESSAGE =       "PASTED"
+TEXT =          "Window - pasted row [] , column []"
+
+MESSAGE =       "UNPASTED"
+TEXT =          "Window - unpasted"
+
+MESSAGE =       "HEIGHT"
+TEXT =          "Height []"
+
+MESSAGE =       "WIDTH"
+TEXT =          "Width  []"
+
+MESSAGE =       "HELPCONTEXT"
+TEXT =          "Help Context '[]'"
+
+MESSAGE =       "HEADER"
+TEXT =          "Header '[]'"
+
+MESSAGE =       "FOOTER"
+TEXT =          "Footer '[]'"
+
+MESSAGE =       "NOBORDER"
+TEXT =          "No Border"
+
+MESSAGE =       "BORDERNOLABEL"
+TEXT =          "Border (No Label)"
+
+MESSAGE =       "BORDERLABEL"
+TEXT =          "Border (Label '[]')"
+
+MESSAGE =       "TERM_ENV_VAR_NOT_SET"
+TEXT =          "The TERM environment variable is not set"
+
+MESSAGE =       "NO_TERMINFO_FILE"
+TEXT =          "There is no terminfo file for []"

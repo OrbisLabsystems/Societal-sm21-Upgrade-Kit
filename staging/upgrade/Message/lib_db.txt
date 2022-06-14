@@ -1,0 +1,25 @@
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "LIB_DB_"
+
+MESSAGE        = "ERROR_CREATING"
+TEXT           = "Error Creating Record:"
+
+MESSAGE        = "ERROR_DELETING"
+TEXT           = "Error Deleting Record: "
+
+MESSAGE        = "ERROR_MODIFYING"
+TEXT           = "Error Modifying Record"
+
+MESSAGE        = "TRANSACTION_DELETE"
+TEXT           = "Delete Record"
+
+MESSAGE        = "TRANSACTION_MODIFY"
+TEXT           = "Modify Record"
+
+MESSAGE        = "TRANSACTION_NEW"
+TEXT           = "Create New Record"
+
+MESSAGE        = "TRANSACTION_ORDER"
+TEXT           = "Make space for order number"

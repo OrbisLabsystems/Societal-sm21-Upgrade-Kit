@@ -1,0 +1,131 @@
+! Messages for the pipes
+
+MESSAGE GROUP = "SMP_PIPE_"
+
+! Error messages - Generator Pipe
+
+MESSAGE = "NOPIPE"
+TEXT    = "Pipe does not exist or is not open"
+
+MESSAGE = "DUPLICATE"
+TEXT    = "Pipe already exists or is already open"
+
+MESSAGE = "NOCREATELOCAL"
+TEXT    = "Create local pipe '[]' failed. Error : []"
+
+MESSAGE = "NOCREATEREMOTE"
+TEXT    = "Create remote pipe '[]' failed. Error : []"
+
+MESSAGE = "NOOPENLOCAL"
+TEXT    = "Open local pipe '[]' failed. Error : []"
+
+MESSAGE = "NOOPENREMOTE"
+TEXT    = "Open remote pipe '[]' failed. Error : []"
+
+MESSAGE = "NOOPENANY"
+TEXT    = "Open pipe '[]' failed. Error : []"
+
+MESSAGE = "READFAIL"
+TEXT    = "Pipe read on pipe '[]' failed. Error : []"
+
+MESSAGE = "WRITEFAIL"
+TEXT    = "Pipe write on pipe '[]' failed. Error : []"
+
+MESSAGE = "CLOSEFAIL"
+TEXT    = "Close pipe '[]' failed. Error : []"
+
+MESSAGE = "ONMESSFAIL"
+TEXT    = "Failed to set up message handler on pipe '[]'. Error : []"
+
+MESSAGE = "CREATE_WITH_NODE"
+TEXT    = "Cannot specify a node name when creating a remote pipe"
+
+MESSAGE = "LOCAL_WITH_NODE"
+TEXT    = "Cannot specify a node name with a local pipe"
+
+MESSAGE = "BADREMOTENAME"
+TEXT    = "Must specify node with a remote pipe"
+
+! Error messages - Pipe VMS & Pipe UNIX
+
+MESSAGE = "NOTYPE"
+TEXT    = "Pipe does not have a local or a remote flag"
+
+! Error messages - Pipe VMS
+
+MESSAGE = "EXQUOTA"
+TEXT    = "Quota exceeded"
+
+MESSAGE = "NOPRIV"
+TEXT    = "No privilege for operation on pipe"
+
+MESSAGE = "NODEVICE"
+TEXT    = "No such device associated with pipe name"
+
+MESSAGE = "EXBYTEQUO"
+TEXT    = "Process byte count quota exceeded when using pipe"
+
+MESSAGE = "BADNAME"
+TEXT    = "Invalid pipe name specified"
+
+MESSAGE = "NOCHANNEL"
+TEXT    = "No channel available to pipe"
+
+MESSAGE = "BADCHANNEL"
+TEXT    = "Channel assigned to pipe is incorrect"
+
+MESSAGE = "LINKABORT"
+TEXT    = "Link aborted when using pipe"
+
+MESSAGE = "NETABORT"
+TEXT    = "Network aborted when using pipe"
+
+MESSAGE = "BADLOGIN"
+TEXT    = "Error reported when logging onto node"
+
+MESSAGE = "NETFAIL"
+TEXT    = "Network has failed"
+
+MESSAGE = "NODEOFFLINE"
+TEXT    = "Node requested is offline"
+
+MESSAGE = "SYSTEMERROR"
+TEXT    = "System error : []"
+
+MESSAGE = "NETSHUTDOWN"
+TEXT    = "Network has shutdown.  No remote pipes will work"
+
+MESSAGE = "NOSUCHOBJECT"
+TEXT    = "Given object does not exist on given node"
+
+MESSAGE = "NOSUCHNODE"
+TEXT    = "Given node does not exist"
+
+MESSAGE = "NOMORELINKS"
+TEXT    = "No free network links are available"
+
+MESSAGE = "MSG_TOO_BIG"
+TEXT    = "Pipe can only write messages upto [] characters long. [] characters are too many"
+
+! Error messages - Pipe UNIX
+
+MESSAGE = "EXISTS_AS_REMOTE"
+TEXT    = "Remote pipe of same name already exists"
+
+MESSAGE = "EXISTS_AS_LOCAL"
+TEXT    = "Local pipe of same name already exists"
+
+MESSAGE = "IS_NOT_REMOTELY_ACCESSIBLE"
+TEXT    = "Pipe of given name exists on given node, but is local"
+
+MESSAGE = "DOES_NOT_EXIST"
+TEXT    = "Specified pipe does not exist"
+
+MESSAGE = "ALREADY_EXISTS"
+TEXT    = "Pipe of same name already exists"
+
+MESSAGE = "UNEXPECTED_SYSTEM_ERROR"
+TEXT    = "[] returned system error : []"
+
+MESSAGE = "NO_PIPE_CHECKER"
+TEXT    = "The pipe checker program '[]' could not be found"

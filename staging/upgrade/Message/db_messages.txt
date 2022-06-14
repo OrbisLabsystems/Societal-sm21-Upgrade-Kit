@@ -1,0 +1,276 @@
+MESSAGE GROUP	"DB_"
+
+MESSAGE = 	"ROWNOTALTER"
+TEXT = 	     	"Row not altered"
+
+MESSAGE = 	"AUDIT_OLD_VALUE"
+TEXT = 	     	"Old Value"
+
+MESSAGE = 	"AUDIT_NEW_VALUE"
+TEXT = 	     	"New Value"
+
+MESSAGE = 	"AUDIT_REASON"
+TEXT = 	     	"Reason"
+
+MESSAGE = 	"AUDIT_FIELD_BOX"
+TEXT = 	     	"Audit on Field [] within []"
+
+MESSAGE = 	"AUDIT_FIELDS_BOX"
+TEXT = 	     	"Audit on [] Fields within Table []"
+
+MESSAGE = 	"AUDIT_TABLE_BOX"
+TEXT = 	     	"[] Audit on Table []"
+
+MESSAGE = 	"AUDIT_TABLES_BOX"
+TEXT = 	     	"Audit on Tables within a Transaction"
+
+MESSAGE = 	"AUDIT_NON_INTER"
+TEXT    = 	"Auditable transaction completed by non-interactive process"
+
+! SEVERITY	ERROR
+
+MESSAGE = 	"ROW_INVALID"
+TEXT = 		"Row is in invalid state ([]) to perform given operation"
+
+MESSAGE = 	"ID_EXISTS"
+TEXT =       	"The ID already exists"
+
+MESSAGE = 	"STATE_INVALID"
+TEXT =   	"Invalid Select clause specified"
+
+MESSAGE = 	"EOF"
+TEXT =          "End of file detected"
+
+MESSAGE = 	"NOT_WRITE"
+TEXT =       	"Must be in a write transaction to alter database"
+
+MESSAGE = 	"IN_WRITE"
+TEXT =        	"Already in a write transaction"
+
+MESSAGE = 	"KEY0_ASSN"
+TEXT =       	"Cannot assign into a key0 field"
+
+MESSAGE = 	"KEY0_BLANK"
+TEXT =      	"Cannot specify a blank key0 field"
+
+MESSAGE = 	"LOCKED"
+TEXT =          "Record locked by another user"
+
+MESSAGE = 	"NOTFIELD"
+TEXT =        	"Element [ [] , [] ] is not a valid field ( [] ) for table []"
+
+MESSAGE = 	"ARRAY_INVALID"
+TEXT =   	"Array row [] caused an invalid select state"
+
+MESSAGE = 	"INV_NUM"
+TEXT =         	"Element [ [] , 1 ] contains an unknown Select code []"
+
+MESSAGE = 	"NOTTABLE"
+TEXT =        	"Element [ [] , [] ] is not a valid table ( [] )"
+
+MESSAGE = 	"BADORACLE"
+TEXT =      	"Oracle error message code [] op [], []"
+
+MESSAGE = 	"BADINGRES"
+TEXT =       	"Ingres error message : []"
+
+MESSAGE = 	"AUD_TRANS"
+TEXT =       	"Audit_Transaction Table has not been defined"
+
+MESSAGE = 	"AUD_EVENT"
+TEXT =       	"Audit_Event Table has not been defined"
+
+MESSAGE = 	"AUD_DATA"
+TEXT =        	"Audit_Data Table has not been defined"
+
+MESSAGE = 	"TRANS_FIELD"
+TEXT =     	"Not all fields for the Audit_Transaction Table have been defined"
+
+MESSAGE = 	"EVENT_FIELD"
+TEXT =     	"Not all fields for the Event_Transaction Table have been defined"
+
+MESSAGE = 	"DATA_FIELD"
+TEXT =      	"Not all fields for the Data_Transaction Table have been defined"
+
+MESSAGE = 	"WRONGSTRUCT"
+TEXT =     	"Incompatible version of structure.sec. Please rebuild"
+
+MESSAGE = 	"COMMITFAIL"
+TEXT =      	"Operation cannot be performed in Commit View Mode"
+
+MESSAGE = 	"COMMALTER"
+TEXT =       	"Operation cannot be performed on a committed table"
+
+MESSAGE = 	"DEADLOCK"
+TEXT = 		"Database Management System has aborted a deadlock situation"
+
+MESSAGE = 	"CTRL_C_FAIL"
+TEXT = 		"Setup of control c handler failed with oracle error [] : "
+
+MESSAGE = 	"READONLY"
+TEXT = 		"Cannot modify read only table"
+
+MESSAGE =       "NO_DELETE"
+TEXT =          "Cannot obtain exclusive access to record to delete it"
+
+MESSAGE =       "INVALID_ID_FIELD"
+TEXT =          "Invalid key value for field [] . []"
+
+MESSAGE =       "LOCK_SCREEN_MAIN"
+TEXT =          "The following record has been locked -"
+
+MESSAGE =       "LOCK_SCREEN_HEADER"
+TEXT =          "Locked Record"
+
+MESSAGE =       "LOCK_SCREEN_FOOTER"
+TEXT =          "Press SPACE to continue"
+
+MESSAGE =       "LOCK_SCREEN_TABLE"
+TEXT =          "Table   : []"
+
+MESSAGE =       "LOCK_SCREEN_KEY0"
+TEXT =          "Key0    : []"
+
+MESSAGE =       "LOCK_SCREEN_USER"
+TEXT =          "User    : []"
+
+MESSAGE =       "LOCK_SCREEN_PROCESS"
+TEXT =          "Process : []"
+
+MESSAGE =       "LOCK_SCREEN_NODE"
+TEXT =          "Node    : []"
+
+MESSAGE =       "LOCK_SCREEN_OS_USER"
+TEXT =          "OS User : []"
+
+MESSAGE =       "NODATABASE"
+TEXT =          "Database access attempted when NODATABASE specified on command line"
+
+MESSAGE =       "SQLSERVER_ERROR"
+TEXT =          "SQL Server error : Number [] , Severity []"
+TEXT =          "SQL Server error : []"
+
+MESSAGE =       "SQLSERVER_CLIENT_MESSAGE"
+TEXT =          "SQL Server Client Message : Number [] , Severity []"
+TEXT =          "SQL Server Client Message : []"
+
+MESSAGE =       "SQLSERVER_SERVER_MESSAGE"
+TEXT =          "SQL Server Server Message : Number [] , Severity []"
+TEXT =          "SQL Server Server Message : []"
+
+MESSAGE =       "SQLSERVER_OSERROR"
+TEXT =          "SQL Server OS error : Number [] , Error : []"
+
+MESSAGE =       "SQLSERVER_MESSAGE"
+TEXT =          "SQL Server message : Number [] , Severity [] , State []"
+TEXT =          "[]"
+
+MESSAGE	=	"IN_USE"
+TEXT	=	"Time-out stopped operation completing"
+SEVERITY=	"ERROR"
+
+MESSAGE	=	"ALREADY_EXISTS"
+TEXT	=	"Database object already exists"
+SEVERITY=	"ERROR"
+
+MESSAGE	=	"DOESNT_EXIST"
+TEXT	=	"Database object does not exist"
+SEVERITY=	"ERROR"
+
+MESSAGE	= 	"TRANS_HEADER_WARNING"
+TEXT	= 	"Transaction Monitor Warning"
+SEVERITY=	"WARNING"
+
+MESSAGE	= 	"TRANS_READ_WARNING"
+TEXT	= 	"Read transaction started before write transaction finished"
+SEVERITY=	"WARNING"
+
+MESSAGE	= 	"TRANS_WRITE_WARNING"
+TEXT	= 	"Write transaction started before write transaction finished"
+SEVERITY=	"WARNING"
+
+MESSAGE	= 	"TRANS_INTERNAL_WARNING"
+TEXT	= 	"Internal rollback started before write transaction finished"
+SEVERITY=	"WARNING"
+
+MESSAGE	=	"BAD_CONSIGN"
+TEXT	=	"Cannot consign data to its current location"
+SEVERITY=	"ERROR"
+
+MESSAGE	=	"BAD_DECONSIGN"
+TEXT	=	"Cannot deconsign data from the active table []"
+SEVERITY=	"ERROR"
+
+MESSAGE	=	"NOMORECURSORS"
+TEXT	=	"Attempted to allocate more than [] select buffers"
+SEVERITY=	"ERROR"
+
+MESSAGE	=	"NULLDBPROCESS"
+TEXT	=	"SQL Server error: DB-Library dbopen() returned a NULL pointer"
+SEVERITY=	"ERROR"
+
+MESSAGE =       "NOBLOBRECORD"
+TEXT    =       "The requested BLOB record ( BLOB_ID='[]' ) does not exist"
+SEVERITY=	"ERROR"
+
+MESSAGE =       "INVBLOBLINK"
+TEXT    =       "A BLOB field must be a link to the BLOB_ID field in the BLOB_VALUES table"
+SEVERITY=	"ERROR"
+
+MESSAGE =       "BLOBNOCREATE"
+TEXT    =       "Error creating new BLOB record ( BLOB_ID='[]' )"
+SEVERITY=	"ERROR"
+
+MESSAGE =       "BLOBNOUPDATE"
+TEXT    =       "Error updating BLOB record ( BLOB_ID='[]' )"
+SEVERITY=	"ERROR"
+
+MESSAGE =       "BLOBNODELETE"
+TEXT    =       "Error deleting BLOB record ( BLOB_ID='[]' )"
+SEVERITY=	"ERROR"
+
+MESSAGE		= "AUDITS_SEC_NOT_FOUND"
+TEXT		= "audits.sec doesn't exist..."
+SEVERITY	= "WARNING"
+
+MESSAGE		= "AUDITS_SEC_WRONG_VERSION"
+TEXT		= "Incompatible version of audits.sec"
+SEVERITY	= "ERROR"
+
+MESSAGE		= "AUDITS_SEC_CANT_OPEN"
+TEXT		= "audits.sec file could not be created"
+SEVERITY	= "ERROR"
+
+MESSAGE		= "AUDITS_SEC_CANT_WRITE"
+TEXT		= "audits.sec could not be fully written - check disk quota"
+SEVERITY	= "ERROR"
+
+MESSAGE		= "AUDITS_SEC_CANT_CLOSE"
+TEXT		= "audits.sec could not be properly closed"
+SEVERITY	= "ERROR"
+
+MESSAGE		= "BAD_INSTANCE"
+TEXT		= "Cannot specify a blank instance name"
+SEVERITY	= "ERROR"
+
+MESSAGE		= "NO_INSTANCE"
+TEXT		= "Must set instance in environment variable (or logical), or specify explicitly"
+SEVERITY	= "ERROR"
+
+MESSAGE         = "USER_CANCEL"
+TEXT            = "User Cancelled"
+
+MESSAGE         = "NOLOCK_VIEW"
+TEXT            = "Cannot lock a record in a view"
+
+MESSAGE         = "NOLOCK_READONLY"
+TEXT            = "Cannot lock a record in a readonly table"
+
+MESSAGE         = "NO_UPDATES"
+TEXT            = "Update statement processed no rows : []"
+
+MESSAGE         = "MULTI_UPDATES"
+TEXT            = "Update statement not unique : []"
+
+MESSAGE         = "AUDIT_NOTSET"
+TEXT            = "Audit callback not setup"

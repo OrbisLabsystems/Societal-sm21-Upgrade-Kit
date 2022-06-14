@@ -1,0 +1,14 @@
+
+MESSAGE GROUP "OPTION_CONFIG_"
+
+MESSAGE = "ABANDON"
+TEXT    = "Abandon Changes?"
+
+MESSAGE = "ALTERED"
+TEXT    = " details have been altered"
+
+MESSAGE = "HEADER"
+TEXT    = "Option Config"
+
+MESSAGE = "NOT_ALTERED"
+TEXT    = " details have not been altered"

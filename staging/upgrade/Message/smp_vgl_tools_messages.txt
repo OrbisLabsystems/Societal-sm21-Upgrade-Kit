@@ -1,0 +1,896 @@
+! Messages for vgl_tools modules.
+
+MESSAGE GROUP	"SMP_VGL_TOOLS_"
+
+MESSAGE		= "LIB_IS_CALC"
+TEXT		= "Calculation"
+SEVERITY	= "INFORMATION"
+
+MESSAGE		= "LIB_IS_SYNT"
+TEXT		= "Syntax"
+SEVERITY	= "INFORMATION"
+
+MESSAGE		= "LIB_IS_REPT"
+TEXT		= "Report"
+SEVERITY	= "INFORMATION"
+
+MESSAGE		= "LIB_IS_SIGF"
+TEXT		= "Sig. Figs."
+SEVERITY	= "INFORMATION"
+
+MESSAGE		= "LIB_IS_STAN"
+TEXT		= "Standard"
+SEVERITY	= "INFORMATION"
+
+MESSAGE		= "LIB_IS_LIMITCALC"
+TEXT		= "Limit Calculation"
+SEVERITY	= "INFORMATION"
+
+MESSAGE		= "LIB_IS_LISTRESULT"
+TEXT		= "List Result"
+SEVERITY	= "INFORMATION"
+
+
+! Messages for vgl_tools reports.
+
+MESSAGE  GROUP  "COW_"
+
+MESSAGE		= "BAD_MENU_OPTION"
+TEXT		= "Parameter to COW must be numeric. Got '[]' instead."
+
+MESSAGE		= "TOO_MANY_PARAM"
+TEXT		= "COW can only take one parameter"
+
+MESSAGE		= "BAD_MENU_NUMBER"
+TEXT		= "COW menu option '[]' does not exist"
+
+MESSAGE		= "MAIN_MENU_HEADER"
+TEXT		= "COW - Main Menu"
+
+MESSAGE		= "MAIN_MENU_OPT_1"
+TEXT		= "1"
+TEXT		= "Display Memory Lists"
+
+MESSAGE		= "MAIN_MENU_OPT_2"
+TEXT		= "2"
+TEXT		= "Display Mapped Libraries"
+
+MESSAGE		= "MAIN_MENU_OPT_3"
+TEXT		= "3"
+TEXT		= "Transaction Performance Analyser"
+
+MESSAGE		= "MAIN_MENU_OPT_4"
+TEXT		= "4"
+TEXT		= "Make Classes Redefinable"
+
+MESSAGE		= "MAIN_MENU_OPT_5"
+TEXT		= "5"
+TEXT		= "Toggle Transaction Monitor ([])"
+
+MESSAGE		= "MAIN_MENU_OPT_6"
+TEXT		= "6"
+TEXT		= "Delete Mapped Libraries"
+
+MESSAGE		= "MAIN_MENU_OPT_7"
+TEXT		= "7"
+TEXT		= "Performance and Coverage Tool"
+
+MESSAGE		= "MAIN_MENU_TRANS_ON"
+TEXT		= "Currently On"
+
+MESSAGE		= "MAIN_MENU_TRANS_OFF"
+TEXT		= "Currently Off"
+
+MESSAGE         = "FORM_HEADER"
+TEXT            = "Memory Monitor"
+
+MESSAGE		= "FORM_FOOTER"
+TEXT 		= "Use  UP/DOWN  NEXT/PREVIOUS SCREEN      EXIT/DO to quit"
+
+MESSAGE		= "TITLE_1"
+TEXT		= "Memory Type"
+
+MESSAGE		= "TITLE_2"
+TEXT		= " Current"
+
+MESSAGE		= "TITLE_3"
+TEXT		= "Previous"
+
+MESSAGE		= "TITLE_4"
+TEXT		= "Change"
+
+MESSAGE		= "TITLE_5"
+TEXT		= "Size (Bytes)"
+
+MESSAGE		= "TITLE_6"
+TEXT		= "Total Size (Bytes)"
+
+MESSAGE		= "NO_LIBS_MAPPED"
+TEXT		= "ERROR: Unable to read list of mapped libraries"
+
+MESSAGE		= "NO_CLASSES_KNOWN"
+TEXT		= "ERROR: Unable to read list of defined classes"
+
+MESSAGE         = "DISPLAY_LIBS_HEADER"
+TEXT            = "Currently Mapped Libraries"
+
+MESSAGE		= "DISPLAY_LIBS_FOOTER"
+TEXT 		= "Use UP/DOWN, NEXT/PREVIOUS SCREEN to move EXIT/DO to quit"
+
+MESSAGE		= "CLASS_FORM_HEADER"
+TEXT		= "Currently Defined Classes"
+
+MESSAGE		= "CLASS_FORM_FOOTER"
+TEXT		= "Use SELECT to toggle redefinable flag, DO to save, EXIT to quit"
+
+MESSAGE		= "DISPLAY_LIB_TITLE_1"
+TEXT		= "Name"
+
+MESSAGE		= "DISPLAY_LIB_TITLE_2"
+TEXT		= "Type"
+
+MESSAGE		= "DISPLAY_LIB_TITLE_3"
+TEXT		= "In Use"
+
+MESSAGE		= "DISPLAY_LIB_TITLE_4"
+TEXT		= "Source Filename"
+
+MESSAGE		= "DISPLAY_LIB_TITLE_5"
+TEXT		= "Quality Mode"
+
+MESSAGE		= "DISPLAY_LIB_YES"
+TEXT		= "Yes"
+
+MESSAGE		= "DISPLAY_LIB_NO"
+TEXT		= " No"
+
+MESSAGE		= "DISPLAY_LIB_ON"
+TEXT		= " On"
+
+MESSAGE		= "DISPLAY_LIB_OFF"
+TEXT		= "Off"
+
+MESSAGE		= "MAPPED_LIBS_REMOVED"
+TEXT		= "All maps of unused libraries have been removed"
+
+MESSAGE		= "DISPLAY_CLASS_TITLE_1"
+TEXT		= "Name"
+
+MESSAGE		= "DISPLAY_CLASS_TITLE_2"
+TEXT		= "Complete"
+
+MESSAGE		= "DISPLAY_CLASS_TITLE_3"
+TEXT		= "Redefinable"
+
+MESSAGE		= "CLASSES_UPDATED"
+TEXT		= "Classes updated"
+
+MESSAGE		= "CLASSES_NOT_UPDATED"
+TEXT		= "Classes not updated"
+
+MESSAGE		= "TRANS_MON_NOW_ON"
+TEXT		= "Transaction monitor switched on"
+
+MESSAGE		= "TRANS_MON_NOW_OFF"
+TEXT		= "Transaction monitor switched off"
+
+MESSAGE		= "CLASS_BUTTON_FIND"
+TEXT		= "Find"
+
+MESSAGE		= "CLASS_BROWSE_HEADER"
+TEXT		= "Find Class"
+
+MESSAGE		= "CLASS_BROWSE_FOOTER"
+TEXT		"Press DO to confirm or Exit to quit"
+
+MESSAGE		= "CLASS_BROWSE_PROMPT"
+TEXT		= "Class name"
+
+MESSAGE         = "MEMORY_TYPE_LIST"
+TEXT            = "Memory Type List"
+
+MESSAGE         = "MEMORY_USAGE_HISTORY"
+TEXT            = "Memory Usage History"
+
+MESSAGE         = "REFRESH_NOW"
+TEXT            = "Refresh"
+
+MESSAGE         = "REFRESH_AUTO"
+TEXT            = "Auto Refresh"
+
+MESSAGE         = "BUTTON_STOP"
+TEXT            = "Stop"
+
+MESSAGE         = "BUTTON_RESETBASELINE"
+TEXT            = "Reset Baseline"
+
+MESSAGE         = "STATUS1"
+TEXT            = "Memory Usage: "
+
+MESSAGE         = "STATUS2"
+TEXT            = "Kb    |    Peak Usage: "
+
+MESSAGE         = "STATUS3"
+TEXT            = "Kb    |    Task Count: "
+
+MESSAGE		= "MAIN_MENU_OPT_8"
+TEXT		= "8"
+TEXT		= "Start SQL_TRACE for Oracle"
+TEXT		= "Stop SQL_TRACE and run TKPROF "
+
+MESSAGE GROUP     "PERFORM_TREE_"
+
+MESSAGE		= "LIT_PAGE"
+TEXT		= "Page###"
+
+MESSAGE		= "LIT_CENT_1"
+TEXT		= "Routine calls"
+
+MESSAGE		= "LIT_CENT_2"
+TEXT		= "Routine calls (continued)"
+
+MESSAGE		= "LIT_CENT_3"
+TEXT		= "List of routine calls, sorted by []"
+
+MESSAGE		= "LIT_CENT_4"
+TEXT		= "List of routine calls (continued)"
+
+MESSAGE		= "LIT_CENT_5"
+TEXT		= "The following raw timing files were used (collective name : [] )"
+
+MESSAGE		= "LIT_CENT_6"
+TEXT		= "The following errors occured"
+
+MESSAGE		= "LIT_CENT_7"
+TEXT		= "Coverage analysis for []"
+
+MESSAGE		= "LIT_CENT_8"
+TEXT		= "Partial coverage analysis for []"
+
+MESSAGE		= "LIT_CENT_9"
+TEXT		= "Full routine trace"
+
+MESSAGE		= "LIT_HDRS"
+TEXT		= "  Clock    Library or"
+TEXT		= "  Ticks    Report                        Routines"
+TEXT		= "  Time     Library or"
+TEXT		= "  Taken    Report                        Routines"
+TEXT		= "Mean Time    No. of   Library or"
+TEXT		= "  Taken   Occurrences Report                        Routines"
+TEXT		= "Total Time   No. of   Library or"
+TEXT		= "  Taken   Occurrences Report                        Routines"
+TEXT		= "  No. of   Total Time Library or"
+TEXT		= "Occurrences  Taken    Report                        Routines"
+TEXT		= " Run No.   Operator   Date              Tick Rate  Command Line"
+TEXT		= " Run No.   Error"
+TEXT		= "Total Time   No. of   Source text"
+TEXT		= "  Taken   Occurrences From report"
+TEXT		= "Line no.   Total Time  Source text"
+TEXT		= "of Report    Taken     From report"
+
+MESSAGE		= "LIT_SUFF"
+TEXT		= "individual time"
+TEXT		= "mean time"
+TEXT		= "total time"
+TEXT		= "frequency"
+TEXT		= "report and routine name"
+
+MESSAGE		= "LIT_OTHR_1"
+TEXT		= "Collective name of timing file"
+
+MESSAGE		= "LIT_OTHR_2"
+TEXT		= "Run number of collective name"
+
+MESSAGE		= "LIT_OTHR_3"
+TEXT		= "Timing file generated by command"
+
+MESSAGE		= "LIT_OTHR_4"
+TEXT		= "Timing performed by operator"
+
+MESSAGE		= "LIT_OTHR_5"
+TEXT		= "Timing file created on"
+
+MESSAGE		= "LIT_OTHR_6"
+TEXT		= "Clock ticks per second"
+
+MESSAGE		= "LIT_OTHR_7"
+TEXT		= "Exclusive timing values shown"
+
+MESSAGE		= "LIT_OTHR_8"
+TEXT		= "Cumulative timing values shown"
+
+MESSAGE		= "LIT_OTHR_9"
+TEXT		= "[End of report]"
+
+MESSAGE		= "LIT_OTHR_10"
+TEXT		= " (Top [])"
+
+MESSAGE		= "LIT_OTHR_11"
+TEXT		= "Only [] routines(s) found."
+
+MESSAGE		= "LIT_OTHR_12"
+TEXT		= "Routine traced"
+
+MESSAGE		= "LIT_OTHR_13"
+TEXT		= "Report containing routine"
+
+MESSAGE		= "LIT_OTHR_14"
+TEXT		= "Total time taken was [] clock cycles."
+
+MESSAGE		= "SRC_HEAD"
+TEXT		= "Performance and Coverage Tool : Source File Error"
+
+MESSAGE		= "SPACEBAR"
+TEXT		= "Press the <SPACEBAR> to continue"
+
+MESSAGE		= "READ_WAIT"
+TEXT		= "Reading Source File - Please Wait"
+
+MESSAGE		= "RPF_TOO_SML"
+TEXT		= "The report or library source file is too small"
+
+
+MESSAGE GROUP	  "PERFORM_"
+
+MESSAGE		= "ROOT_ROUTINE"
+TEXT		= "Complete time"
+
+MESSAGE		= "REP_NODE"
+TEXT		= "Repeated Routines"
+
+MESSAGE		= "MAIN_HEAD"
+TEXT		= " Performance and Coverage Analysis : Main Menu "
+
+MESSAGE		= "MAIN_MENU"
+TEXT		= "M"
+TEXT		= "Time a Menu option"
+TEXT		= "R"
+TEXT		= "Time a Report"
+TEXT		= "A"
+TEXT		= "Analyse timing information"
+TEXT		= "D"
+TEXT		= "Delete timing information"
+
+MESSAGE		= "DELETE_HEADER"
+TEXT		= "Performance and Coverage Tool : Delete Timing Files"
+
+MESSAGE		= "DELETE_FOOTER"
+TEXT		= "Use SELECT to choose timing runs to delete, DO when complete"
+
+MESSAGE		= "DELETE_CONFIRM"
+TEXT		= "Delete selected files ?"
+
+MESSAGE		= "DELETE_CANCEL"
+TEXT		= "Exit without deleting the selected files ?"
+
+MESSAGE		= "COLL_HEAD"
+TEXT		= "Performance and Coverage Tool : Timing Files"
+
+MESSAGE		= "GET_COLL"
+TEXT		= "Enter collective filename"
+
+MESSAGE		= "SAME_FOOT"
+TEXT		= "Press DO when complete or EXIT to cancel"
+
+MESSAGE		= "TIMING_ERR"
+TEXT		= "Invalid menu mnemonic"
+
+MESSAGE		= "CANT_TIME"
+TEXT		= "That menu option is not written in VGL"
+
+MESSAGE		= "GEN_COMMAND"
+TEXT		= "Generate '[]' (no parameters)"
+
+MESSAGE		= "GEN_WITH_PAR"
+TEXT		= "Generate '[]' with: '[]'"
+
+MESSAGE		= "COMM_HEAD"
+TEXT		= "Performance and Coverage Tool : Time a Menu Option"
+
+MESSAGE		= "REPT_HEAD"
+TEXT		= "Performance and Coverage Tool : Time a Report"
+
+MESSAGE	        = "FILE_PROMPT"
+TEXT		= "Collective filename"
+
+MESSAGE	        = "REPORT_PROMPT"
+TEXT		= "Report ID"
+
+MESSAGE	        = "PARAMETER_PROMPT"
+TEXT		= "Report parameter"
+
+MESSAGE	        = "ANALYSIS_TYPE_PROMPT"
+TEXT		= "Analysis type"
+
+MESSAGE		= "NO_REPORT"
+TEXT		= "Error : A Report ID must be entered"
+
+MESSAGE	        = "COMMAND_PROMPT"
+TEXT		= "Menu ($) command"
+
+MESSAGE	        = "COVERAGE_PROMPT"
+TEXT		= "Get coverage data"
+
+MESSAGE	        = "FILE_REPORT_PROMPT"
+TEXT		= "Library for analysis"
+
+MESSAGE	        = "REPETITIONS_PROMPT"
+TEXT		= "Compress repetitions ?"
+
+MESSAGE		= "GET_COMM"
+TEXT		= "Enter menu command : $"
+
+MESSAGE		= "GET_COV"
+TEXT		= "Get coverage data? : "
+
+MESSAGE		= "TIME_HEAD"
+TEXT		= "Performance and Coverage Tool : Time a Menu Error"
+
+MESSAGE		= "FILE_HEAD"
+TEXT		= "Performance and Coverage Tool : Filing Error"
+
+MESSAGE		= "TREE_HEAD"
+TEXT		= "Performance and Coverage Tool : Error in Timing File"
+
+MESSAGE		= "SPACEBAR"
+TEXT		= "Press the SPACEBAR to continue"
+
+MESSAGE		= "ANAL_HEAD"
+TEXT		= "Analysis Menu"
+
+MESSAGE		= "ANAL_MENU"
+TEXT		= "ROUTINE"
+TEXT		= "Routine Analysis"
+TEXT		= "LIBRARY"
+TEXT		= "VGL Library Analysis"
+
+MESSAGE		= "READ_WAIT"
+TEXT		= "Reading Timing Data - Please Wait"
+
+MESSAGE		= "DT_NOT_DATE"
+TEXT		= "Cannot understand date of run"
+
+MESSAGE		= "CT_NOT_NUMBER"
+TEXT		= "Clock tick is non-numeric"
+
+MESSAGE		= "CR_NOT_NUMBER"
+TEXT		= "Clock quantum is non-numeric"
+
+MESSAGE		= "CS_NOT_NUMBER"
+TEXT		= "Clock start time is non-numeric"
+
+MESSAGE		= "CF_NOT_NUMBER"
+TEXT		= "Final clock time is non-numeric"
+
+MESSAGE		= "CV_INVAL"
+TEXT		= "Coverage must be ON or OFF (CV)"
+
+MESSAGE		= "SR_AND_ER_MIS"
+TEXT		= "ENDROUTINE does not match start of ROUTINE"
+
+MESSAGE		= "WRONG_MNEMON"
+TEXT		= "Incorrect mnemonic found"
+
+MESSAGE		= "INVAL_MNEMON"
+TEXT		= "Invalid mnemonic found"
+
+MESSAGE		= "LINE_NOT_NUM"
+TEXT		= "Line number not numeric"
+
+MESSAGE		= "TIME_NOT_NUM"
+TEXT		= "Time is not numeric"
+
+MESSAGE		= "INV_FOUR_FIELD"
+TEXT		= "Mnemonic should not have four fields"
+
+MESSAGE		= "MISSING_FIELD"
+TEXT		= "Not enough fields found for mnemonic"
+
+MESSAGE		= "EXTRA_FIELDS"
+TEXT		= "Too many fields found for mnemonic"
+
+MESSAGE		= "NO_COV_DAT"
+TEXT		= "Coverage data is required for this option !"
+
+MESSAGE		= "INVALID_LI_SYN"
+TEXT		= "Invalid line syntax (LI)"
+
+MESSAGE		= "RED_HEAD"
+TEXT		= "Performance and Coverage by Routine"
+
+MESSAGE		= "GET_RED"
+TEXT		= "Compress repetitions? : "
+
+MESSAGE		= "TOGG_FOOT"
+TEXT		= "SPACEBAR to toggle and DO to select"
+
+MESSAGE		= "FORM_HEAD"
+TEXT		= "Performance Analysis : Routine Calls"
+
+MESSAGE		= "FORM_FOOT"
+TEXT		= "Use INSERT / REMOVE to open / close, SELECT for report menu"
+
+MESSAGE		= "NO_FILES"
+TEXT		= "There are no timing files for this collective name"
+
+MESSAGE		= "NO_COV_FILES"
+TEXT		= "There are no timing files with coverage information for this collective name"
+
+MESSAGE		= "GRID_TEXT"
+TEXT		= "Total"
+TEXT		= "Time"
+TEXT		= "No. of"
+TEXT		= "Occurrences"
+TEXT		= "Open"
+TEXT		= "Y/N"
+TEXT		= "Report or"
+TEXT		= "Library"
+TEXT		= "Routine"
+TEXT		= "Name"
+
+MESSAGE		= "PERF_HEAD"
+TEXT		= "Analysis Reports Menu"
+
+MESSAGE		= "PERF_MENU"
+TEXT		= "1"
+TEXT		= "Hard copy of routine calls"
+TEXT		= "2"
+TEXT		= "Slowest total routine times"
+TEXT		= "3"
+TEXT		= "Slowest mean routine times"
+TEXT		= "Slowest individual routine times"
+TEXT		= "4"
+TEXT		= "Most called routines"
+TEXT		= "5"
+TEXT		= "Alphabetical list of routines"
+TEXT		= "6"
+TEXT		= "Coverage analysis of selected routine"
+TEXT		= "7"
+TEXT		= "Line by line trace of selected routine"
+TEXT		= "Coverage analysis using current timing file"
+
+MESSAGE		= "MAX_HEAD"
+TEXT		= "Performance Tool : List of Routines"
+
+MESSAGE		= "GET_MAX"
+TEXT		= "Maximum number of routines to display (0 for all)"
+
+MESSAGE		= "MAX_FOOT"
+TEXT		= "Press DO when finished"
+
+MESSAGE		= "LIB_HEAD"
+TEXT		= "Performance and Coverage by Library"
+
+MESSAGE		= "GET_LIB"
+TEXT		= "Enter name of report or library for analysis : "
+
+MESSAGE		= "EXCL_HEAD"
+TEXT		= "Performance Tool Reporting parameters"
+
+MESSAGE		= "EXCL_FOOT"
+TEXT		= "Press DO to confirm or EXIT to cancel"
+
+MESSAGE		= "GET_EXCL"
+TEXT		= "Select cumulative or exclusive time"
+
+MESSAGE		= "EXCL_WORD"
+TEXT		= "Exclusive"
+
+MESSAGE		= "CUMU_WORD"
+TEXT		= "Cumulative"
+
+MESSAGE		= "NONN_RUNN"
+TEXT		= "Non-numeric run number found"
+
+MESSAGE		= "LIST_HEAD"
+TEXT		= "Performance and Coverage Tool : Timing Run Selection"
+
+MESSAGE		= "DEL_INS"
+TEXT		= " for deletion"
+
+MESSAGE		= "ONE_FILE_FOOTER"
+TEXT		= "Use SELECT to choose a timing run, DO when complete"
+
+MESSAGE		= "MANY_FILE_FOOTER"
+TEXT		= "Use SELECT to choose timing runs, DO when complete"
+
+MESSAGE		= "SEL_MLT"
+TEXT		= "Use SELECT to choose timing runs[], DO when ready"
+
+MESSAGE		= "SEL_MAX"
+TEXT		= "Use SELECT to choose [] timing run(s)[], DO when ready"
+
+MESSAGE		= "FILE_TEXT"
+TEXT		= "Run No"
+TEXT		= "Operator"
+TEXT		= "Command line"
+TEXT		= "Date"
+TEXT		= "Coverage"
+
+MESSAGE		= "RUN_HEAD"
+TEXT		= "Performance and Coverage Tool : Timing File Error"
+
+MESSAGE		= "COVR_HEAD"
+TEXT		= "Coverage Tool : Error in Timing File : Analysis Aborted"
+
+MESSAGE		= "COVER_YES"
+TEXT		= "Yes"
+
+MESSAGE		= "COVER_NO"
+TEXT		= "No"
+
+MESSAGE		= "BUTTON_EXPAND"
+TEXT		= "Expand"
+
+MESSAGE		= "BUTTON_CONTRACT"
+TEXT		= "Contract"
+
+MESSAGE		= "BUTTON_REPORTS"
+TEXT		= "Reports..."
+
+MESSAGE		= "NO_LIBRARY"
+TEXT		= "Error : A library must be entered for this analysis type"
+
+MESSAGE		= "NO_ANALYSIS_FILES"
+TEXT		= "Error : No data files have been selected"
+
+
+MESSAGE  GROUP  "SQL_PERF_"
+
+MESSAGE         = "MENU_HEADER"
+TEXT            = "SQL Performance Tool"
+
+MESSAGE         = "FILE_ON"
+TEXT            = "SQL Performance collector is already on"
+
+MESSAGE         = "GET_FILE"
+TEXT            = "Enter file name: "
+
+MESSAGE         = "NO_FILE"
+TEXT            = "Unable to open file"
+
+MESSAGE         = "NOCONFIRM"
+TEXT            = "SQL Collector was not started"
+
+MESSAGE         = "FILE_OFF"
+TEXT            = "SQL Performance collector is already off"
+
+MESSAGE         = "TURN_OFF"
+TEXT            = "SQL Performance collector turned OFF.  Data in "
+
+MESSAGE         = "TURN_ON"
+TEXT            = "SQL Performance collector turned ON with file "
+
+MESSAGE         = "LIT_HEADER"
+TEXT            = "SQL Performance Data                                                   Page ###"
+
+MESSAGE         = "READ_NEXT"
+TEXT            = "Reading Next Operations : "
+
+MESSAGE         = "ALL_WIN"
+TEXT            = "View All Performance Data"
+
+MESSAGE         = "RAW_WIN"
+TEXT            = "View Raw Performance Data"
+
+MESSAGE         = "ALL_TITLE"
+TEXT            = "Performance Data for All Operations"
+
+MESSAGE         = "READ_ALL"
+TEXT            = "Reading All Operations : "
+
+MESSAGE         = "TRANS_WIN"
+TEXT            = "View Performance Data by Operations"
+
+MESSAGE         = "TRANSACTION_HEADER"
+TEXT            = "View Performance Data by Operation"
+
+MESSAGE         = "TRANS_TITLE"
+TEXT            = "Performance Data for [] Operations"
+
+MESSAGE         = "TRANSACTION_1"
+TEXT            = " Selects (including Nexts)"
+
+MESSAGE         = "TRANSACTION_2"
+TEXT            = " Inserts"
+
+MESSAGE         = "TRANSACTION_3"
+TEXT            = " Updates"
+
+MESSAGE         = "TRANSACTION_4"
+TEXT            = " Deletes"
+
+MESSAGE         = "TRANSACTION_5"
+TEXT            = " Commits"
+
+MESSAGE         = "TRANSACTION_6"
+TEXT            = " Rollbacks"
+
+MESSAGE         = "READ_TRANS"
+TEXT            = "Reading [] Operations : "
+
+MESSAGE         = "TABLE_WIN"
+TEXT            = "View Performance Data by Table Name"
+
+MESSAGE         = "TABLE_TITLE"
+TEXT            = "Performance Data for Operations on Table []"
+
+MESSAGE         = "ENTER_TABLE"
+TEXT            = "Enter Table Name : "
+
+MESSAGE         = "READ_TABLE"
+TEXT            = "Reading Operations For Table [] : "
+
+MESSAGE         = "LIBRARY_WIN"
+TEXT            = "View Performance Data by Report Name"
+
+MESSAGE         = "LIBRARY_TITLE"
+TEXT            = "Performance Data for Operations from Report []"
+
+MESSAGE         = "ENTER_LIBRARY"
+TEXT            = "Enter Report Name : "
+
+MESSAGE         = "READ_LIBRARY"
+TEXT            = "Reading Operations For Report [] : "
+
+MESSAGE         = "TOP_WIN"
+TEXT            = "View Slowest Operations"
+
+MESSAGE         = "TOP_TITLE"
+TEXT            = "Top Slowest Operations"
+
+MESSAGE         = "FLASH_1"
+TEXT            = "Reporting of menu operations now OFF"
+
+MESSAGE         = "FLASH_2"
+TEXT            = "Reporting of menu operations now ON"
+
+MESSAGE		= "FILENAME"
+TEXT            = "Performance filename"
+
+MESSAGE		= "STATUS"
+TEXT            = "Collector status"
+TEXT            = "Collector turned ON"
+TEXT            = "Collector turned OFF"
+
+MESSAGE		= "REPORT_TYPE"
+TEXT            = "Report type"
+
+MESSAGE		= "REPORT_TYPES"
+TEXT            = "All data"
+TEXT            = "ALL"
+TEXT            = "Operation type"
+TEXT            = "OPERATION"
+TEXT            = "Table name"
+TEXT            = "TABLE"
+TEXT            = "Report name"
+TEXT            = "REPORT"
+TEXT            = "Slowest operation"
+TEXT            = "SPEED"
+TEXT            = "Raw data"
+TEXT            = "RAW"
+
+MESSAGE		= "REPORT_PARAMETER"
+TEXT            = "Report parameter"
+
+MESSAGE		= "REPORT_PARAMETERS"
+TEXT            = "No parameters required"
+TEXT            = "NONE"
+
+MESSAGE		= "OPERATION_TYPE"
+TEXT            = "Operation type"
+
+MESSAGE		= "OPERATION_TYPES"
+TEXT            = "Selects (including Nexts)"
+TEXT            = "SELECT"
+TEXT            = "Inserts"
+TEXT            = "INSERT"
+TEXT            = "Updates"
+TEXT            = "UPDATE"
+TEXT            = "Deletes"
+TEXT            = "DELETE"
+TEXT            = "Commits"
+TEXT            = "COMMIT"
+TEXT            = "Rollbacks"
+TEXT            = "ROLLBACK"
+
+MESSAGE		= "TABLE_NAME"
+TEXT            = "Table name"
+
+MESSAGE		= "REPORT_ID"
+TEXT            = "Report ID"
+
+MESSAGE		= "NUM_TRANSACTIONS"
+TEXT            = "Number of transactions"
+
+MESSAGE		= "IGNORE_MENU"
+TEXT            = "Ignore menu operations"
+
+MESSAGE		= "REPORTING_STATUS"
+TEXT            = "Reporting status"
+
+MESSAGE		= "START_BUTTON"
+TEXT            = "Start"
+
+MESSAGE		= "STOP_BUTTON"
+TEXT            = "Stop"
+
+MESSAGE		= "REPORT_BUTTON"
+TEXT            = "Report"
+
+MESSAGE         = "MAIN_HEADER"
+TEXT            = "SQL Performance Tool"
+
+MESSAGE         = "MAIN_FOOTER"
+TEXT            = "Press EXIT to close"
+TEXT            = "Press SELECT for reports or EXIT to close"
+
+MESSAGE         = "REPORT_HEADER"
+TEXT            = "SQL Performance Tool Reporting Options"
+
+MESSAGE         = "REPORT_FOOTER"
+TEXT            = "Press DO to report or EXIT to cancel"
+
+MESSAGE		= "COLLECTIONS_PARS"
+TEXT            = "Collection parameters"
+
+MESSAGE		= "REPORT_PARS"
+TEXT            = "Reporting parameters"
+
+MESSAGE		= "NO_REPORTING"
+TEXT            = "Reporting is not enabled while collector is ON"
+
+MESSAGE		= "STATUS_CONFIRM"
+TEXT            = "Please confirm change in collector status"
+
+MESSAGE		= "NO_FILE_EXISTS"
+TEXT		= "Error : File [] does not exist"
+
+
+MESSAGE  GROUP  "SQL_OBJ_"
+
+MESSAGE         = "OP_TYPE"
+TEXT            = "Operation Type : []"
+
+MESSAGE         = "TIME"
+TEXT            = "Total Time   : [] Seconds"
+
+MESSAGE         = "PREP_TIME"
+TEXT            = "Prepare Time : [] Seconds"
+
+MESSAGE         = "TABLE"
+TEXT            = "Table        :    []"
+
+MESSAGE         = "LIBRARY"
+TEXT            = "Report       :    []"
+
+MESSAGE         = "ROUTINE"
+TEXT            = "Routine      :    []"
+
+MESSAGE         = "LINE"
+TEXT            = "Line         :    []"
+
+MESSAGE         = "NEXT_INFO"
+TEXT            = "Next Information"
+
+MESSAGE         = "NEXT_NO"
+TEXT            = "Total Number :    []"
+
+MESSAGE         = "NEXT_TIME"
+TEXT            = "Total Time   : [] Seconds"
+
+MESSAGE         = "NEXT_END"
+TEXT            = "End of Table :    Yes"
+TEXT            = "End of Table :    No"
+
+MESSAGE         = "FUNCTION_ID"
+TEXT            = "Function I.D."
+
+MESSAGE         = "FIELD_ID"
+TEXT            = "Field I.D."
+
+MESSAGE         = "ORDER_ID"
+TEXT            = "Order I.D."
+
+MESSAGE         = "OP_ID"
+TEXT            = "Operator"

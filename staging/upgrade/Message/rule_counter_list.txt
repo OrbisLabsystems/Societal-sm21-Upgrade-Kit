@@ -1,0 +1,7 @@
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "RULE_COUNTER_LIST_"
+
+MESSAGE        = "HEAD"
+TEXT           = "Rule's Counters"

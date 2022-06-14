@@ -1,0 +1,187 @@
+MESSAGE GROUP = "SMP_SERVER_"
+
+MESSAGE = "NOT_CONNECTED"
+TEXT    = "Server not connected to client"
+
+MESSAGE = "EXIT"
+TEXT    = "Server task shutdown - should be caught"
+
+MESSAGE = "OS_VMS_LOGIN"
+TEXT    = "Enter VMS Login information"
+
+MESSAGE = "OS_UNIX_LOGIN"
+TEXT    = "Enter Unix Login information"
+
+MESSAGE = "SMP_LOGIN"
+TEXT    = "SampleManager Login"
+
+MESSAGE = "LOGIN_CANCELLED"
+TEXT    = "Login cancelled"
+
+MESSAGE = "UNEXPECTED_COMMAND"
+TEXT    = "Unexpected command from client : []"
+
+MESSAGE = "UNKNOWN_NETWORK"
+TEXT    = "Unknown network '[]' requested."
+
+MESSAGE = "RECURSIVE_MENU"
+TEXT    = "Menu '[]' contains a recursive element '[]'"
+
+MESSAGE = "GRAPHICS_NOT_SUPPORTED"
+TEXT    = "Graphics are not supported in server mode"
+
+MESSAGE = "WINEXEC"
+TEXT    = "Error ? - Unknown Windows error"
+
+MESSAGE = "WINEXEC_0"
+TEXT    = "Error 0 - System was out of memory, executable file was corrupt, or relocations were invalid."
+
+MESSAGE = "WINEXEC_2"
+TEXT    = "Error 2 - File was not found."
+
+MESSAGE = "WINEXEC_3"
+TEXT    = "Error 3 - Path was not found."
+
+MESSAGE = "WINEXEC_5"
+TEXT    = "Error 5 - Attempt was made to dynamically link to a task, or there was a sharing or network-protection error."
+
+MESSAGE = "WINEXEC_6"
+TEXT    = "Error 6 - Library required separate data segments for each task."
+
+MESSAGE = "WINEXEC_8"
+TEXT    = "Error 8 - There was insufficient memory to start the application."
+
+MESSAGE = "WINEXEC_10"
+TEXT    = "Error 10 - Windows version was incorrect."
+
+MESSAGE = "WINEXEC_11"
+TEXT    = "Error 11 - Executable file was invalid. Either it was not a Windows Application or there was an error in the .EXE image."
+
+MESSAGE = "WINEXEC_12"
+TEXT    = "Error 12 - Application was designed for a different operating system."
+
+MESSAGE = "WINEXEC_13"
+TEXT    = "Error 13 - Application was designed for MS-DOS 4.0."
+
+MESSAGE = "WINEXEC_14"
+TEXT    = "Error 14 - Type of executable file was unknown."
+
+MESSAGE = "WINEXEC_15"
+TEXT    = "Error 15 - Attempt was made to load a real-mode application (developed for an earlier version of Windows)."
+
+MESSAGE = "WINEXEC_16"
+TEXT    = "Error 16 - Attempt was made to load a second instance of an executable file containing multiple data segments that were not marked read-only."
+
+MESSAGE = "WINEXEC_19"
+TEXT    = "Error 19 - Attempt was made to load a compressed executable file. The file must be decompressed before it can be loaded."
+
+MESSAGE = "WINEXEC_20"
+TEXT    = "Error 20 - Dynamic-link library (DLL) file was invalid. One of the DLLs required to run this application was corrupt."
+
+MESSAGE = "WINEXEC_21"
+TEXT    = "Error 21 - Application requires Microsoft Windows 32-bit extensions."
+
+MESSAGE = "CLIENT_ERROR"
+TEXT    = "Client signalled error : []"
+
+MESSAGE = "CLIENT_FILE_ERROR"
+TEXT    = "Client file error : []"
+
+MESSAGE = "CLIENT_FILE_READ_ONLY"
+TEXT    = "Client file [] is read only"
+
+MESSAGE = "CLIENT_FILE_NOT_FOUND"
+TEXT    = "Client file [] not found"
+
+MESSAGE = "LOGIN_FAILED"
+TEXT    = "Login failed.  Reason: '[]'"
+
+MESSAGE = "UNEXPECTED_RESPONSE"
+TEXT    = "Expected '[]', Received '[]'"
+
+MESSAGE = "CLIENT_LOGIN_ATTEMPTS"
+TEXT    = "Detected failed login attempt from [], client name '[]'"
+
+MESSAGE = "BAD_TELNET_PROMPT_FORMAT"
+TEXT    = "Telnet prompt format '[]' is invalid"
+
+MESSAGE = "TELNET_EXECUTABLE_NO_PATH"
+TEXT    = "Full path of telnet executable was not specified"
+
+MESSAGE = "BAD_TELNET_EXECUTABLE"
+TEXT    = "The specified telnet program '[]' is not a valid executable"
+
+MESSAGE = "BAD_TELNET_CONFIGURATION"
+TEXT    = "Required SMW telnet environment variable '[]' was not set"
+
+MESSAGE = "TELNET_TIMED_OUT"
+TEXT    = "Telnet login check timed out - check configuration"
+
+MESSAGE = "ACCESS_TRANSACTION"
+TEXT    = "Update Access Log"
+	
+MESSAGE = "ACCESS_SMW_CANCEL"
+TEXT    = "Client Login Cancelled"
+
+MESSAGE = "ACCESS_SMW_FAILED"
+TEXT    = "Client login failure"
+
+MESSAGE = "ACCESS_SMW_LOGIN"
+TEXT    = "Client login"
+
+MESSAGE = "ACCESS_BACKGROUND"
+TEXT    = "Background login"
+
+MESSAGE = "ACCESS_BACK_USER"
+TEXT    = "Background user overridden"
+
+MESSAGE = "ACCESS_BACK_RESUME"
+TEXT    = "Background user resumed"
+
+MESSAGE = "ACCESS_BATCH"
+TEXT    = "Batch login"
+
+MESSAGE = "ACCESS_CHAR_CELL"
+TEXT    = "Character cell login"
+
+MESSAGE = "ACCESS_STD_USER_LOGIN"
+TEXT    = "Std_user_login_login_user"
+
+MESSAGE = "USER_ACCOUNT_FROZEN"
+TEXT    = "User account frozen - please contact your system administrator"
+
+MESSAGE = "BACKGROUND_USER_FROZEN"
+TEXT    = "User account frozen - cannot execute background entry"
+
+MESSAGE = "CLIENT_FILE_NO_LOCK"
+TEXT    = "Locked by another user"
+
+MESSAGE = "CLIENT_BAD_ADDRESS"
+TEXT    = "Access denied - invalid IP address. Login cancelled."
+
+MESSAGE = "CLIENT_TOO_MANY"
+TEXT    = "Login limit reached from current IP address. Login cancelled."
+
+MESSAGE = "ACCESS_SETUP"
+TEXT    = "Setup login"
+
+MESSAGE = "RESOURCE_SYNC"
+TEXT    = "Synchronising Resource"
+
+MESSAGE = "ACCESS_PROXY"
+TEXT    = "Client Proxy Login"
+
+MESSAGE = "BAD_DOMAIN_GROUP"
+TEXT    = "You are not a member of the SampleManager access domain group"
+
+MESSAGE = "AUTH_BY_SMP"
+TEXT    = "Domain authorisation failed - authorised by SampleManager"
+
+MESSAGE = "NOT_USER"
+TEXT    = "Domain authorisation failed - SampleManager personnel [] is not a user"
+
+MESSAGE = "ACCESS_WEB_LOGIN"
+TEXT    = "WEB login"
+
+MESSAGE = "NO_PROXY"
+TEXT    = "This server does not allow proxy login. Please correct the setting in the Manage Servers dialog"

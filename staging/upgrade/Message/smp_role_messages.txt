@@ -1,0 +1,65 @@
+
+MESSAGE GROUP "ROLE_PERSONNEL_"
+
+MESSAGE = "ADD"
+TEXT    = "Add"
+
+MESSAGE = "ALREADY_GRP"
+TEXT    = "Group already exists for this Role."
+
+MESSAGE = "ALREADY_ROLE"
+TEXT    = "Operator already has this role"
+
+MESSAGE = "ASS_FOR"
+TEXT    = "Role Assignment for "
+
+MESSAGE = "CANCEL"
+TEXT    = "Cancel"
+
+MESSAGE = "OK"
+TEXT    = "OK"
+
+MESSAGE = "DESC"
+TEXT    = "Description"
+
+MESSAGE = "ENT_GROUP"
+TEXT    = "Enter Group to Add"
+
+MESSAGE = "ENT_OP_ID"
+TEXT    = "Enter Operator ID"
+
+MESSAGE = "ENT_ROLE"
+TEXT    = "Enter Role to Add"
+
+MESSAGE = "GROUP"
+TEXT    = "Group"
+
+MESSAGE = "GROUPS"
+TEXT    = "Groups"
+
+MESSAGE = "GROUPS_FOR"
+TEXT    = "Groups for role : "
+
+MESSAGE = "GROUPS_FOR_NONE"
+TEXT    = "Groups for role : <none>"
+
+MESSAGE = "HELP"
+TEXT    = "Help"
+
+MESSAGE = "NO_SEL"
+TEXT    = "No item selected to remove."
+
+MESSAGE = "OPERATOR"
+TEXT    = "Operator"
+
+MESSAGE = "REMOVE"
+TEXT    = "Remove"
+
+MESSAGE = "ROLE"
+TEXT    = "Role"
+
+MESSAGE = "ROLES"
+TEXT    = "Roles"
+
+MESSAGE = "SAVE_DATA"
+TEXT    = "Save data before closing window?"

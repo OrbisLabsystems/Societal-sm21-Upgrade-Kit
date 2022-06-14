@@ -1,0 +1,63 @@
+! Messages for Message handling in generator
+
+MESSAGE GROUP = "SMP_MATRIX_ANAL_"
+
+MESSAGE = "HEAD"
+TEXT    = "Matrix Definition " 
+
+MESSAGE = "HEAD_GRID"
+TEXT    = "Attributes"
+
+MESSAGE = "INPUT1"
+TEXT    = "Row name "
+
+MESSAGE = "INPUT2"
+TEXT    = "Matrix name "
+
+MESSAGE = "INPUT3"
+TEXT    = "Test Number"
+
+MESSAGE = "INPUT4"
+TEXT    = "Matrix Number"
+
+MESSAGE = "DEFAULT"
+TEXT    = "Matrix"
+
+MESSAGE = "BUTT"
+TEXT    = "View Matrices..." 
+
+MESSAGE = "ERROR1"
+TEXT    = "There is no right mouse options defined"
+
+MESSAGE = "ERROR2"
+TEXT    = "Matrix has to be selected"
+
+MESSAGE = "ERROR3"
+TEXT    =  "'[]' already used as a matrix name"
+
+MESSAGE = "ERROR4"
+TEXT    = "Row has to be selected"
+
+MESSAGE = "ERROR5"
+TEXT    =  "'[]' already exists on matrix '[]'"
+
+MESSAGE = "ERROR6"
+TEXT    = "At least one row has to be defined "
+
+MESSAGE = "ERROR7"
+TEXT    = "Cannot include matrix character [] in component name"
+
+MESSAGE = "ERROR8"
+TEXT    =  "A Matrix without columns will not be saved"
+
+MESSAGE = "ERROR9"
+TEXT    =  "Unable to locate current result record"
+
+
+MESSAGE = "OPTIONS"
+TEXT    = "Add Matrix..."   
+TEXT    = "Delete Matrix"
+TEXT    = "Add Row..."
+TEXT    = "Delete Row"
+
+

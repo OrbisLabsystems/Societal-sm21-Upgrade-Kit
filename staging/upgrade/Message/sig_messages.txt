@@ -1,0 +1,25 @@
+MESSAGE GROUP "SIG_K_"
+
+! SEVERITY      INFORMATION
+
+MESSAGE = 	"SUCCESS"
+TEXT = 		"Operation successfully completed"
+
+MESSAGE = 	"COMPILING"
+TEXT = 		"Compiling Sig Figs Filter Format"
+
+! SEVERITY      WARNING
+
+MESSAGE = 	"CALNOTFND"
+TEXT = 		"Sig Figs Filter Format Not Found"
+
+! SEVERITY      ERROR
+
+MESSAGE = 	"ABORTED"
+TEXT = 		"Execution of Sig Figs Filter Format not Complete"
+
+MESSAGE = 	"CALCOMFAI"
+TEXT = 		"Sig Figs Filter Compilation Failed"
+
+MESSAGE = 	"INVPARLIST"
+TEXT = 		"Invalid Parameter List Passed"

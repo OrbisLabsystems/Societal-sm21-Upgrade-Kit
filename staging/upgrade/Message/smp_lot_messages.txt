@@ -1,0 +1,162 @@
+MESSAGE GROUP "LOT_REVIEW_"
+
+MESSAGE        = "AUTHORISE"
+TEXT           = "Authorise"
+
+MESSAGE        = "CIRCLE"
+TEXT           = "Circular Relationship Detected, Load Aborted"
+
+MESSAGE        = "CUSTOM"
+TEXT           = "Customize"
+
+MESSAGE        = "DISPLAY"
+TEXT           = "Display"
+
+MESSAGE        = "DONE"
+TEXT           = "Already Authorised"
+
+MESSAGE        = "FOR"
+TEXT           = "Used For.."
+
+MESSAGE        = "FROM"
+TEXT           = "Made From.."
+
+MESSAGE        = "HEADER"
+TEXT           = "Lot Management : []"
+
+MESSAGE        = "ID"
+TEXT           = "Lot Id: "
+
+MESSAGE        = "IDENTITY"
+TEXT           = "Lot Identity"
+
+MESSAGE        = "MINIHEAD"
+TEXT           = "Lot Review"
+
+MESSAGE        = "MODIFY"
+TEXT           = "Modify"
+
+MESSAGE        = "NOLOAD"
+TEXT           = "Could Not Load Lot Information"
+
+MESSAGE        = "OPTIONS"
+TEXT           = "Options"
+
+MESSAGE GROUP "LOT_LOGIN_"
+
+MESSAGE        = "CHILD"
+TEXT           = "Child Lots"
+
+MESSAGE        = "CIRCLE"
+TEXT           = "This would form a Circular Relationship."
+
+MESSAGE        = "CLOSE"
+TEXT           = "Close"
+
+MESSAGE        = "DELETE"
+TEXT           = "Delete"
+
+MESSAGE        = "DESC"
+TEXT           = "Description"
+
+MESSAGE        = "DISPLAY"
+TEXT           = "Display Lot"
+
+MESSAGE        = "DISPLOT"
+TEXT           = "Display Lot Information"
+
+MESSAGE        = "DISP_HEADER"
+TEXT           = "Lot Information"
+
+MESSAGE        = "DUPE"
+TEXT           = "That Lot Already Exists"
+
+MESSAGE        = "ENTER"
+TEXT           = "Template ID : "
+
+MESSAGE        = "GENERATE"
+TEXT           = "To Be Generated"
+
+MESSAGE        = "ID"
+TEXT           = "Lot Identity"
+
+MESSAGE        = "LOGIN"
+TEXT           = "Login"
+
+MESSAGE        = "LOTID"
+TEXT           = "Lot Identity"
+
+MESSAGE        = "MANDY"
+TEXT           = "Please fill in all the Mandatory Fields"
+
+MESSAGE        = "MINIHEAD"
+TEXT           = "Login New Lot"
+
+MESSAGE        = "MODLOT"
+TEXT           = "Modify Lot Information"
+
+MESSAGE        = "NEWHEAD"
+TEXT           = "Login New Lot"
+
+MESSAGE        = "NOLOAD"
+TEXT           = "Could Not Load Lot Information"
+
+MESSAGE        = "NORELS"
+TEXT           = "Failed to Add Related Lot."
+
+MESSAGE        = "PARENT"
+TEXT           = "Parent Lots"
+
+MESSAGE        = "QNTY"
+TEXT           = "Quantity"
+
+MESSAGE        = "RELATIVE"
+TEXT           = "Relations"
+
+MESSAGE        = "SAVE"
+TEXT           = "Save Lot Changes"
+
+MESSAGE        = "SAVEIT"
+TEXT           = "Save Changes?"
+
+MESSAGE        = "STATUS"
+TEXT           = "Status"
+
+MESSAGE        = "ABORT"
+TEXT           = "Lot Login Aborted"
+
+MESSAGE        = "SUCCESS"
+TEXT           = "Logged in Lot : [] "
+
+MESSAGE        = "ALREADY_SPEC"
+TEXT           = "Lot already specified in relations list"
+
+MESSAGE GROUP "LTE_LOT_"
+
+MESSAGE        = "DESC"
+TEXT           = "Description"
+
+MESSAGE        = "DISPNAME"
+TEXT           = "Lot Template"
+
+MESSAGE        = "GROUP"
+TEXT           = "Group Name"
+
+MESSAGE        = "HEAD"
+TEXT           = "Lot Template Definition"
+
+MESSAGE        = "INPUT"
+TEXT           = "Enter Lot Template ID : "
+
+MESSAGE        = "MODIFY"
+TEXT           = "Modifiable"
+
+MESSAGE        = "STATUS"
+TEXT           = "Default Status"
+
+MESSAGE        = "SYNTAX"
+TEXT           = "Syntax"
+
+MESSAGE        = "TEMP"
+TEXT           = "Job Template"
+

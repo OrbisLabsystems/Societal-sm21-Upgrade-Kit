@@ -1,0 +1,166 @@
+! Messages for Unix signals
+
+MESSAGE GROUP = "SMP_SIGNAL_"
+
+MESSAGE = "KNOWN"
+TEXT    = "Signal caught - []"
+
+MESSAGE = "UNKNOWN"
+TEXT    = "Signal caught - number []"
+
+MESSAGE = "SIGHUP"
+TEXT    = "SIGHUP - process hangup"
+
+MESSAGE = "SIGINT"
+TEXT    = "SIGINT - process interrupt"
+
+MESSAGE = "SIGQUIT"
+TEXT    = "SIGQUIT - process quit"
+
+MESSAGE = "SIGILL"
+TEXT    = "SIGILL - illegal instruction"
+
+MESSAGE = "SIGTRAP"
+TEXT    = "SIGTRAP - trace trap"
+
+MESSAGE = "SIGABRT"
+TEXT    = "SIGABRT - software generated abort"
+
+MESSAGE = "SIGIOT"
+TEXT    = "SIGIOT - software generated signal"
+
+MESSAGE = "SIGEMT"
+TEXT    = "SIGEMT - software generated signal"
+
+MESSAGE = "SIGFPE"
+TEXT    = "SIGFPE - floating point exception"
+
+MESSAGE = "SIGKILL"
+TEXT    = "SIGKILL - process kill"
+
+MESSAGE = "SIGBUS"
+TEXT    = "SIGBUS - bus error"
+
+MESSAGE = "SIGSEGV"
+TEXT    = "SIGSEGV - segmentation violation"
+
+MESSAGE = "SIGSYS"
+TEXT    = "SIGSYS - bad argument to system call"
+
+MESSAGE = "SIGPIPE"
+TEXT    = "SIGPIPE - write on a pipe with no one to read it"
+
+MESSAGE = "SIGALRM"
+TEXT    = "SIGALRM - alarm clock"
+
+MESSAGE = "SIGTERM"
+TEXT    = "SIGTERM - software termination signal"
+
+MESSAGE = "SIGUSR1"
+TEXT    = "SIGUSR1 - user defined signal 1"
+
+MESSAGE = "SIGUSR2"
+TEXT    = "SIGUSR2 - user defined signal 2"
+
+MESSAGE = "SIGCHLD"
+TEXT    = "SIGCHLD - death of a child process"
+
+MESSAGE = "SIGPWR"
+TEXT    = "SIGPWR - power failure"
+
+MESSAGE = "SIGVTALRM"
+TEXT    = "SIGVTALRM - virtual timer alarm"
+
+MESSAGE = "SIGPROF"
+TEXT    = "SIGPROF - profiling timer alarm"
+
+MESSAGE = "SIGIO"
+TEXT    = "SIGIO - asynchronous IO ready"
+
+MESSAGE = "SIGWINDOW"
+TEXT    = "SIGWINDOW - window size change"
+
+MESSAGE = "SIGSTOP"
+TEXT    = "SIGSTOP - process stop"
+
+MESSAGE = "SIGTSTP"
+TEXT    = "SIGTSTP - process stop generated from keyboard"
+
+MESSAGE = "SIGCONT"
+TEXT    = "SIGCONT - continue after stop"
+
+MESSAGE = "SIGTTIN"
+TEXT    = "SIGTTIN - background read attempted from control terminal"
+
+MESSAGE = "SIGTTOU"
+TEXT    = "SIGTTOU - background write attempted from control terminal"
+
+MESSAGE = "SIGURG"
+TEXT    = "SIGURG - urgent data arrived on an IO channel"
+
+MESSAGE = "SIGLOST"
+TEXT    = "SIGLOST - file lock lost ( NFS locking )"
+
+MESSAGE = "SIGXCPU"
+TEXT    = "SIGXCPU - cpu time limit exceeded"
+
+MESSAGE = "SIGXFSZ"
+TEXT    = "SIGXFSZ - file size limit exceeded"
+
+MESSAGE = "SIGWINCH"
+TEXT    = "SIGWINCH - window size change"
+
+MESSAGE = "SIGINFO"
+TEXT    = "SIGINFO - information request"
+
+MESSAGE = "SIGMSG"
+TEXT    = "SIGMSG - input data has been stored into the HFT monitor mode ring"
+
+MESSAGE = "SIGDANGER"
+TEXT    = "SIGDANGER - system crash imminent"
+
+MESSAGE = "SIGMIGRATE"
+TEXT    = "SIGMIGRATE - migrate process"
+
+MESSAGE = "SIGPRE"
+TEXT    = "SIGPRE - user defined programming exception"
+
+MESSAGE = "SIGVIRT"
+TEXT    = "SIGVIRT - virtual time alarm"
+
+MESSAGE = "SIGRETRACT"
+TEXT    = "SIGRETRACT - HFT monitor access should be relinquished"
+
+MESSAGE = "SIGSOUND"
+TEXT    = "SIGSOUND - an HFT sound control has completed"
+
+MESSAGE = "SIGSAK"
+TEXT    = "SIGSAK - secure attention key"
+
+MESSAGE = "SIGPOLL"
+TEXT    = "SIGPOLL - pollable event"
+
+MESSAGE = "SIGWAITING"
+TEXT    = "SIGWAITING - process's LWPs are blocked"
+
+MESSAGE = "SIGLWP"
+TEXT    = "SIGLWP - special signal used by thread library"
+
+MESSAGE = "_SIGRESERVE"
+TEXT    = "_SIGRESERVE - special signal reserved for future use"
+
+MESSAGE = "_SIGDIL"
+TEXT    = "_SIGDIL - DIL signal reserved for future use"
+
+MESSAGE = "SIGGRANT"
+TEXT    = "SIGGRANT - HFT monitor access wanted"
+
+MESSAGE = "SIGKAP"
+TEXT    = "SIGKAP - Keep Alive Poll from native keyboard"
+
+MESSAGE = "SIGALRM1"
+TEXT    = "SIGALRM1 - status change in condition variables"
+
+MESSAGE = "SIGRESV"
+TEXT    = "SIGRESV - special signal reserved for future use"
+

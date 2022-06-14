@@ -1,0 +1,372 @@
+MESSAGE GROUP = "RPC_K_"
+
+MESSAGE =       "ABORTED"
+TEXT =          "Execution of the report format was not completed"
+
+MESSAGE =       "CALLDUMP"
+TEXT =          "Dump of routine calls"
+
+MESSAGE =       "VARIABLES"
+TEXT =          "Format uses [] variable(s), named as follows:"
+
+MESSAGE =       "NONEXREPT"
+TEXT =          "There is no format for this Report ID"
+
+MESSAGE =       "NONEXREPT_ID"
+TEXT =          "There is no format for the Report ID []"
+
+MESSAGE =       "VARBLDUMP"
+TEXT =          "Variable dump:"
+
+MESSAGE =       "NOSOURCE"
+TEXT =          "Unable to find the source file"
+
+MESSAGE =       "WRONGSOURCE"
+TEXT =          "(Incorrect source file)"
+
+MESSAGE =       "WRONGSOURCEDUMP"
+TEXT =          "Correct version of source file not found - using another version"
+
+MESSAGE =       "EXITREP"
+TEXT =          "Exit command performed - this message should never appear "
+
+MESSAGE = 	"THEWRONGVERSION"
+TEXT =		"Old version of rpc file - recompiling report []"
+
+MESSAGE = 	"VARNOTINI"
+TEXT =		"Variable [] was used before being assigned a value"
+
+MESSAGE = 	"INVALRESL"
+TEXT =		"The result value is not valid for this component"
+
+MESSAGE = 	"NONEXTEST"
+TEXT =		"The specified test record does not exist"
+
+MESSAGE = 	"UNKJUSTFY"
+TEXT =		"Unrecognised second value for JUSTIFY: '[]'"
+
+MESSAGE = 	"INSUFPRIV"
+TEXT =		"You do not have the authority to use this command"
+
+MESSAGE = 	"ILLNUMFOR"
+TEXT =		"Illegal numeric format string"
+
+MESSAGE = 	"ILLTABNAM"
+TEXT =		"Illegal table name '[]'"
+
+MESSAGE = 	"BAD_STATUS_TABLE"
+TEXT =		"The '[]' table cannot be used in status change commands"
+
+MESSAGE = 	"UNSUPPORTED_TABLE"
+TEXT =		"The use of '[]' table is not supported in this command"
+
+MESSAGE = 	"ILLFLDNAM"
+TEXT =		"Illegal field name '[]' in table '[]'"
+
+MESSAGE = 	"VARNOTCOE"
+TEXT =		"Variable could not be coerced to field type '[]'"
+
+MESSAGE = 	"ILLTYPCOE"
+TEXT =		"Variable [] could not be coerced from '[]' to '[]'"
+
+MESSAGE = 	"FILNOTOPE"
+TEXT =		"A required file has not been opened '[]'"
+
+MESSAGE = 	"INVFLDNAM"
+TEXT =		"Invalid field name"
+
+MESSAGE = 	"ILLFUN"
+TEXT =		"BUG - Illegal function number, byte value []"
+
+MESSAGE = 	"MUSTBEPRC"
+TEXT =		"This format must be called from a specific menu procedure"
+
+MESSAGE = 	"NOOPENTXT"
+TEXT =		"Cannot open text file (pascal error [])"
+
+MESSAGE = 	"FILALOPEN"
+TEXT =		"Text file is already open"
+
+MESSAGE = 	"EOFTXTFIL"
+TEXT =		"Attempt to read past end of text file"
+
+MESSAGE = 	"ILLARGTYPS"
+TEXT =		"Illegal type combination, '[]' and '[]'"
+
+MESSAGE = 	"NOTWIN"
+TEXT =		"Variable is not a window"
+
+MESSAGE = 	"INVDIR"
+TEXT =		"Illegal direction specified"
+
+MESSAGE = 	"NOTREF"
+TEXT =		"Parameter is declared as reference cannot pass expression result"
+SEVERITY =      "ERROR"
+
+MESSAGE = 	"NOGPHVAR"
+TEXT =		"Graph variable expected"
+
+MESSAGE = 	"WRITETOREAD"
+TEXT =		"Cannot write to global []"
+
+MESSAGE = 	"NOTGLOBAL"
+TEXT =		"[] is not a global variable"
+
+MESSAGE = 	"PMPTNOTACT"
+TEXT =		"Prompt is not active in the current report environment"
+
+MESSAGE = 	"ROUTNOTFND"
+TEXT =		"Routine [] has not been found in library"
+
+MESSAGE = 	"INSPARAM"
+TEXT =		"Insufficent parameters supplied to external routine []"
+
+MESSAGE = 	"TOOMANYPARAM"
+TEXT =		"Too many parameters supplied to external routine []"
+
+MESSAGE = 	"ERRORLIB"
+TEXT =		"Error opening Library []"
+
+MESSAGE = 	"VARNOTFND"
+TEXT =		"[] is not a variable"
+
+MESSAGE = 	"CONSTNOTFND"
+TEXT =		"Constant [] has not been found in library"
+
+MESSAGE = 	"INVTABSET"
+TEXT =		"Unknown table set"
+
+MESSAGE = 	"NOSTATSUPP"
+TEXT =		"Current config file doesn't allow suppression of status checks"
+
+MESSAGE = 	"BADFIELD"
+TEXT =		"The specified result field does not exist"
+
+MESSAGE = 	"BADFLDSTATUS"
+TEXT =		"The status field cannot be updated"
+
+MESSAGE = 	"BADFLDTEST"
+TEXT =		"The test field cannot be updated"
+
+MESSAGE = 	"BADFLDENTON"
+TEXT =		"The entered_on field cannot be updated"
+
+MESSAGE = 	"BADFLDENTBY"
+TEXT =		"The entered_by field cannot be updated"
+
+MESSAGE = 	"BADFLDNAME"
+TEXT =		"The name field cannot be updated"
+
+MESSAGE = 	"BADFLDTYPE"
+TEXT =		"The type field cannot be updated"
+
+MESSAGE = 	"COMPISMAND"
+TEXT =		"Mandatory field component_name is missing"
+
+MESSAGE = 	"NORESTYPE"
+TEXT =		"Mandatory field result_type is required for ad hoc results"
+
+MESSAGE = 	"NONEXSAMP"
+TEXT =		"No sample exists for this test"
+
+MESSAGE = 	"MLPFAIL"
+TEXT =		"Value off limits disallowed : "
+
+MESSAGE = 	"CLUSTNOEXIST"
+TEXT =		"Global cluster does not exist"
+
+MESSAGE = 	"GLOBALEXISTS"
+TEXT =		"Global already exists"
+
+MESSAGE = 	"GLOBALNOEXIST"
+TEXT =		"Global does not exist"
+
+MESSAGE = 	"READ_OTHER"
+TEXT =		"Attempted to read type '[]' from variable '[]'"
+
+MESSAGE = 	"INVPROTYP"
+TEXT =		"Array element [[],2] did not contain a valid prompt type []"
+
+MESSAGE = 	"PREFIXTOOBIG"
+TEXT =		"Prefix for the List Editor is too big '[]'"
+
+MESSAGE = 	"ENTALLEXISTS"
+TEXT =		"This entry already exists"
+
+MESSAGE = 	"ORDERATEND"
+TEXT =		"The order field must be at the end of the Key0 "
+
+MESSAGE =       "MATHRANGE"
+TEXT =          "Maths range error ([])"
+
+MESSAGE =       "MATHDOMAIN"
+TEXT =          "Maths argument domain error: []([])"
+
+MESSAGE =       "MATHSING"
+TEXT =          "Maths argument singularity error: []([]) returns []"
+
+MESSAGE =       "MATHUNDERFLOW"
+TEXT =          "Maths underflow error: []([]) returns []"
+
+MESSAGE =       "MATHOVERFLOW"
+TEXT =          "Maths overflow error: []([]) returns []"
+
+MESSAGE =       "MATHPLOSS"
+TEXT =          "Maths partial loss of precision error: []([]) returns []"
+
+MESSAGE =       "MATHTLOSS"
+TEXT =          "Maths total loss of precision error: []([]) returns []"
+
+MESSAGE =       "MATHUNKNOWN"
+TEXT =          "Maths UNKNOWN error: []([]) returns []"
+
+MESSAGE =       "MATHILLREAL"
+TEXT =          "Illegal real value []"
+
+MESSAGE =       "MATHERROR"
+TEXT =          "Maths error: []([]). Reason: []-[]"
+
+MESSAGE =       "MATHINFINITY"
+TEXT =          "<Infinity>"
+
+MESSAGE =       "MATHUNDEFINED"
+TEXT =          "<Undefined>"
+
+MESSAGE = 	"BADORDER"
+TEXT = 		"Unknown field '[]' in order on clause"
+
+MESSAGE = 	"BADWHERE"
+TEXT = 		"Unknown field '[]' in where clause"
+
+MESSAGE = 	"NOARRAYEDITOR"
+TEXT = 		"Parameter is not an array editor"
+
+MESSAGE = 	"NORPC"
+TEXT = 		"Unable to read code for [] - recompiling"
+
+! Warnings
+
+MESSAGE =       "REPORTEND"
+TEXT =          "Report failed on line [] in library []"
+
+MESSAGE =       "FILEDUMP"
+TEXT =          "File dump:"
+
+MESSAGE =       "FILENOTOPEN"
+TEXT    =       "[] closed"
+
+MESSAGE =       "FILEREADONLY"
+TEXT    =       "[] open for read only access"
+
+MESSAGE =       "FILEREADWRITE"
+TEXT    =       "[] open for read/write access"
+
+MESSAGE =       "FILEAPPEND"
+TEXT    =       "[] open for extend"
+
+MESSAGE =       "PIPEDUMP"
+TEXT =          "Pipe dump:"
+
+MESSAGE =       "PIPELOCAL"
+TEXT    =       "Local pipe []"
+
+MESSAGE =       "PIPEREMOTE"
+TEXT    =       "Remote pipe []"
+
+MESSAGE =       "TABLEDUMP"
+TEXT =          "Table dump:"
+
+MESSAGE =       "TABLEEMPTY"
+TEXT    =       "Empty"
+
+MESSAGE =       "TABLELOCKED"
+TEXT    =       "Locked"
+
+MESSAGE =       "TABLECREATED"
+TEXT    =       "Created"
+
+MESSAGE =       "TABLERESERVER"
+TEXT    =       "Reserved '[]' read lock"
+
+MESSAGE =       "TABLERESERVEW"
+TEXT    =       "Reserved '[]'"
+
+MESSAGE =       "TABLESELECT"
+TEXT    =       "Selected '[]'"
+
+MESSAGE =       "TABLESELECTR"
+TEXT    =       "Selected '[]' read lock"
+
+MESSAGE =       "TABLESELECTW"
+TEXT    =       "Selected '[]' for update"
+
+MESSAGE =	"MENUINMENU"
+TEXT    =	"Variable for nested choose / call menu expected"
+
+MESSAGE =       "BACKGROUNDDUMP"
+TEXT    =       "VGL dump file written to"
+
+MESSAGE = "LOWMEM"
+TEXT    = "Unable to allocate memory report exit in progress"
+
+MESSAGE = "BAD_QUERY"
+TEXT	= "Cannot use a query variable in this context"
+
+MESSAGE = "FILESEND_ERR"
+TEXT	  = "FILE SEND error : []"
+
+MESSAGE = "INTOVERFLOW"
+TEXT    = "Integer overflow detected"
+
+MESSAGE = "NOMOD"
+TEXT    = "This result field cannot be modified"
+
+MESSAGE GROUP = "GENCOMP_"
+
+MESSAGE = "MENU_TITLE"
+TEXT    = "Report Compilation and Generation"
+
+MESSAGE = "MENU"
+TEXT    = "Compile Reports"
+TEXT    = "Debug Reports"
+TEXT    = "Generate Reports"
+
+MESSAGE = "GEN_REPORT"
+TEXT    = "Generate Report"
+
+MESSAGE = "DO_EXIT"
+TEXT    = "<DO> to confirm, <EXIT> to quit"
+
+MESSAGE = "DBG_REPORT"
+TEXT    = "Debug Report"
+
+MESSAGE = "COMP_REPORT"
+TEXT    = "Translate Report"
+
+MESSAGE = "SELECT_DO_EXIT"
+TEXT    = "<SELECT> options, <DO> confirm, <EXIT> quit"
+
+MESSAGE = "DISP_ERRORS"
+TEXT    = "Display Translation Errors"
+
+MESSAGE = "REPORT_ID"
+TEXT    = "Report ID"
+
+MESSAGE = "PARAMS"
+TEXT    = "Parameters"
+
+MESSAGE = "NO"
+TEXT    = "No"
+
+MESSAGE = "YES"
+TEXT    = "Yes"
+
+MESSAGE = "COMP_OPTIONS"
+TEXT    = "Declare Mode"
+TEXT    = "26 Compatability Mode"
+TEXT    = "Test Mode"
+TEXT    = "Message Expansion Mode"
+
+MESSAGE = "COMP_HEADER"
+TEXT    = "Compiler Options"
+

@@ -1,0 +1,7 @@
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "EXPANDING_TREE_"
+
+MESSAGE        = "WAIT"
+TEXT           = "Please wait..."

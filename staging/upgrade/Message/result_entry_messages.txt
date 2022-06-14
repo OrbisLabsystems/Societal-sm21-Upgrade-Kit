@@ -1,0 +1,854 @@
+MESSAGE GROUP = "RESULT_ENTRY_"
+
+! Messages for Result Entry reports
+
+! Messages for worksheet errors
+
+MESSAGE       = "ILLEGAL_SAMP_FILE"
+TEXT          = "Specified worksheet is not marked as a sample worksheet"
+
+MESSAGE       = "ILLEGAL_ANAL_FILE"
+TEXT          = "Specified worksheet is not marked as an analysis worksheet"
+
+MESSAGE       = "NO_ANALYSIS"
+TEXT          = "Specified worksheet does not contain an analysis"
+
+MESSAGE       = "INSUFFICIENT_AUTHORITY"
+TEXT          = "Specified worksheet is not assigned to the current operator"
+
+MESSAGE       = "MISSING_TEST"
+TEXT          = "There are tests assigned to this worksheet that do not exist"
+
+! Messages for washes and unknown samples
+
+MESSAGE       = "WASH"
+TEXT          = "WASH"
+
+MESSAGE       = "UNSPECIFIED"
+TEXT          = "UNSPECIFIED"
+
+MESSAGE       = "EMPTY_RESULT"
+TEXT          = "    ---   "
+
+MESSAGE       = "UNSPECIFIED_BROWSE"
+TEXT          = "Sample has not been selected"
+
+MESSAGE       = "WASH_BROWSE"
+TEXT          = "Wash"
+
+! Messages for sample collection errors
+
+MESSAGE       = "INVALID_SAMP_STATUS"
+TEXT          = "Sample has a status incompatible with this operation"
+
+MESSAGE       = "SAMP_NOT_FOUND"
+TEXT          = "Unable to locate chosen sample"
+
+! Messages for Test collection errors
+
+MESSAGE       = "NO_SAMPLES"
+TEXT          = "No samples were located for this analysis"
+
+MESSAGE       = "NO_TESTS"
+TEXT          = "No tests have been assigned to this sample"
+
+MESSAGE       = "INVALID_TEST_STATUS"
+TEXT          = "All assigned tests have a status incompatible with this operation"
+
+MESSAGE       = "CNF_SECURITY"
+TEXT          = "Analysis security prevents access in this context"
+
+MESSAGE       = "OA"
+TEXT          = "You are not approved to access the test in this context"
+
+MESSAGE       = "TR_ANAL"
+TEXT          = "Training requirements for the analysis prevent access"
+
+MESSAGE       = "TR_INST"
+TEXT          = "Training requirements for the instrument prevent access"
+
+MESSAGE       = "INST_STATUS"
+TEXT          = "Instrument status prevents access"
+
+MESSAGE       = "INST_REQ"
+TEXT          = "Instrument must be specified for test"
+
+! Messages for Component collection errors
+
+MESSAGE       = "NO_COMPS"
+TEXT          = "Specified analysis defines no components"
+
+! Messages for Result processing
+
+MESSAGE       = "LOCKED_USER"
+TEXT          = "Result record currently locked by [] on []"
+
+MESSAGE       = "LOCKED"
+TEXT          = "Result record currently locked by another user"
+
+MESSAGE       = "TESTLOCKED"
+TEXT          = "Test record currently locked by another user"
+
+MESSAGE       = "SAMPLELOCKED"
+TEXT          = "Sample record currently locked by another user"
+
+MESSAGE       = "AUTH_TEST"
+TEXT          = "Test has been authorised"
+
+MESSAGE       = "AUTH_RESULT"
+TEXT          = "Result has been authorised"
+
+MESSAGE       = "NO_TEST_AUTH"
+TEXT          = "You do not have permission to Authorise tests"
+
+MESSAGE       = "NO_TEST_REJECT"
+TEXT          = "You do no have permission to Reject tests"
+
+! Messages for Result Entry browse
+
+MESSAGE       = "AD_HOC_BROWSE"
+TEXT          = "Ad Hoc results required : Press INSERT to create Ad Hoc result"
+
+MESSAGE       = "BOOLEAN_BROWSE"
+TEXT          = "Boolean result :    []    []"
+
+MESSAGE       = "CALC_BROWSE"
+TEXT          = "Calculated result : Press <RETURN> to recalculate"
+
+MESSAGE       = "CHAR_BROWSE"
+TEXT          = "Character result : One of '[]'"
+
+MESSAGE       = "DATE_BROWSE"
+TEXT          = "Date result : using date format '[]'"
+
+MESSAGE       = "ENTITY_BROWSE"
+TEXT          = "ID from a table : Specify a record ID from the [] table"
+
+MESSAGE       = "FILE_BROWSE"
+TEXT          = "File name result : Press <BUILD> to edit file"
+
+MESSAGE       = "INTERVAL_BROWSE"
+TEXT          = "Interval result : using interval format '[]'"
+
+MESSAGE       = "NUMERIC_BROWSE"
+TEXT          = "Numerical result : Minimum Value = [], Maximum Value = []"
+
+MESSAGE       = "MATRIX_BROWSE"
+TEXT          = "Matrix result : Press <RETURN> to enter Matrix grid"
+
+MESSAGE       = "NO_NUMERIC_BROWSE"
+TEXT          = "Numerical result : No range specified"
+
+MESSAGE       = "OPTION_BROWSE"
+TEXT          = "Option result : Textual result based on phrase type []"
+
+MESSAGE       = "TEXT_BROWSE"
+TEXT          = "Text result : Free format textual value"
+
+MESSAGE       = "UNKNOWN_BROWSE"
+TEXT          = "Unknown result type : prompting as free format text"
+
+MESSAGE       = "RECALCULATING"
+TEXT          = "Recalculating all calculated results for current result entry screen"
+
+MESSAGE       = "BINDING"
+TEXT          = "Binding all calculated results to results on screen"
+
+MESSAGE       = "RECALC_HEADER"
+TEXT          = "Recalculating ..."
+
+MESSAGE       = "TEST_TITLE"
+TEXT          = "Test name : "
+
+MESSAGE       = "SET_LESS_PQL"
+TEXT          = "Setting all unentered results to less than PQL"
+
+MESSAGE       = "SET_GREATER_PQL"
+TEXT          = "Setting all unentered results to greater than PQL"
+
+MESSAGE       = "PQL_SAMPLE_ONLY"
+TEXT          = "Set PQL Sample Only"
+
+MESSAGE       = "PQL_SAMPLE"
+TEXT          = "Sample [] only"
+
+
+! Messages for Result Entry screen headers
+
+MESSAGE       = "TWR_ANALYSIS_HEADER"
+TEXT          = "Spread Sheet Result Entry by Analysis"
+
+MESSAGE       = "LIST_SAMPLE"
+TEXT          = "Single Sample Result Entry Screen"
+
+MESSAGE       = "LIST_WORKSHEET_SAMPLE"
+TEXT          = "Sample Worksheet Result Entry Screen"
+
+MESSAGE       = "LIST_TEST_AND_SAMPLE"
+TEXT          = "Single Analysis / Single Sample Result Entry Screen"
+
+MESSAGE       = "RAW_ANALYSIS_HEADER"
+TEXT          = "Spread Sheet Result Entry by Analysis Worksheet"
+
+MESSAGE       = "QAQC_ANALYSIS_HEADER"
+TEXT          = "Spread Sheet Result Entry by Analysis Worksheet"
+
+MESSAGE       = "RUW_ANALYSIS_HEADER"
+TEXT          = "Spread Sheet Result Entry by Defined Worksheet"
+
+MESSAGE       = "RET_ANALYSIS_HEADER"
+TEXT          = "Spread Sheet Result Entry by Template Worksheet"
+
+MESSAGE       = "CRITERIA_HEADER"
+TEXT          = "Spread Sheet Result Entry"
+
+MESSAGE       = "ENTRY_TITLE"
+TEXT          = "Result Entry"
+
+MESSAGE       = "DISPLAY_TITLE"
+TEXT          = "Result Display"
+
+MESSAGE       = "AUTHORISE_TITLE"
+TEXT          = "Result Authorise"
+
+MESSAGE       = "SAMPLE_COL_TITLE"
+TEXT          = "Sample"
+
+MESSAGE       = "INCIDENT_COL_TITLE"
+TEXT          = "Incident"
+
+! Messages for SELECT menu
+! Display first message line when option is ON
+! Display second message line when option is OFF
+! Display third message line on GUI options box
+
+MESSAGE       = "SELECT_HEADER"
+TEXT          = "Result Entry Options"
+
+MESSAGE       = "IDL_HEADER"
+TEXT          = "IDL Options"
+
+MESSAGE       = "LIMIT_TOGGLE"
+TEXT          = "L - Remove Analysis Limits"
+TEXT          = "L - Display Analysis Limits"
+TEXT          = "Display Analysis Limits"
+
+MESSAGE       = "AUDIT_BOX_CONTROL"
+TEXT          = "A - Remove Audits"
+TEXT          = "A - Display Audits"
+TEXT          = "Display Audits"
+
+MESSAGE       = "INFO_BOX_CONTROL"
+TEXT          = "I - Disable Result Information"
+TEXT          = "I - Enable Result Information"
+TEXT          = "Result Information"
+
+MESSAGE       = "LIMITS_BOX_CONTROL"
+TEXT          = "M - Remove MLP Limits"
+TEXT          = "M - Display MLP Limits"
+TEXT          = "Display MLP Limits"
+
+MESSAGE       = "DISPLAY_INCIDENTS"
+TEXT          = "N - Remove Incidents"
+TEXT          = "N - Display Incidents"
+TEXT          = "Display Incidents"
+
+MESSAGE       = "RECALCULATE_ALL"
+TEXT          = "R - Recalculate All Results"
+
+MESSAGE       = "ENTER_MODIFY"
+TEXT          = "E - Enter / Modify Results"
+
+MESSAGE       = "AUTH_RESULTS"
+TEXT          = "T - Authorise Results"
+
+MESSAGE       = "AUTH_TESTS"
+TEXT          = "S - Authorise Test and Results"
+
+MESSAGE       = "AUTH_ALL_RESULTS"
+TEXT          = "U - Authorise All Results"
+
+MESSAGE       = "COMPLETE_TEST"
+TEXT          = "C - Complete Test"
+
+MESSAGE       = "RES_VAL_PROMPT"
+TEXT          = "Result Value Prompt"
+
+MESSAGE       = "RES_TEXT_PROMPT"
+TEXT          = "Result Text Prompt"
+
+MESSAGE       = "DILUTION_FACTOR"
+TEXT          = "D - Dilution/Spike"
+TEXT	      = "Dilution/Spike"
+
+MESSAGE       = "GREATER_PQL"
+TEXT          = "G - Set Greater than PQL"
+TEXT	      = "Set Greater than PQL"
+
+MESSAGE       = "LESS_PQL"
+TEXT          = "P - Set Less than PQL"
+TEXT	      = "Set Less than PQL"
+
+MESSAGE       = "FORMULA"
+TEXT          = "F - Formula Runtime Report"
+TEXT	      = "Formula Runtime Report"
+
+! Messages for Audit display code
+
+MESSAGE       = "AUDIT"
+TEXT          = "Audit Result Values"
+
+MESSAGE       = "NO_AUDIT"
+TEXT          = "No Audits for this result"
+
+MESSAGE       = "AUDIT_GUI_HEADER"
+TEXT          = "Date"
+TEXT          = "Who"
+TEXT          = "Previous Value"
+TEXT          = "Audit Reason"
+
+! Messages for MLP checking and display code
+
+! Messages for MLP checking and display code
+
+MESSAGE       = "MLP_LIMITS"
+TEXT          = "MLP Limits Box"
+
+MESSAGE       = "NO_MLP"
+TEXT          = "There is no MLP for this result"
+
+MESSAGE       = "MLP_SCREEN_HEADER_T"
+TEXT          = "Level ID   Text Spec  Text Phrase "
+MESSAGE       = "MLP_SCREEN_HEADER_T_GUI"
+TEXT          = "Level ID"
+TEXT          = "Text Spec"
+TEXT          = "Text Phrase"
+
+MESSAGE       = "MLP_SCREEN_HEADER_B"
+TEXT          = "Level ID   Pass"
+
+MESSAGE       = "MLP_SCREEN_HEADER_B_GUI"
+TEXT          = "Level ID"
+TEXT          = "Pass"
+TEXT          = ""
+
+MESSAGE       = "MLP_SCREEN_HEADER_N"
+TEXT          = "Level ID   Minimum    Maximum"
+
+MESSAGE       = "MLP_SCREEN_HEADER_N_GUI"
+TEXT          = "Level ID"
+TEXT          = "Minimum"
+TEXT          = "Maximum"
+
+MESSAGE       = "INCIDENT_SCREEN_HEADER_N_GUI"
+TEXT          = "Incident ID"
+TEXT          = "Table"
+TEXT          = "Status"
+TEXT          = "Description"
+
+MESSAGE       = "MLP_SCREEN_HEADER_I"
+TEXT          = "Level ID   Minimum    Maximum"
+
+MESSAGE       = "MLP_SCREEN_HEADER_I_GUI"
+TEXT          = "Level ID"
+TEXT          = "Minimum"
+TEXT          = "Maximum"
+
+MESSAGE       = "MLP_TITLE"
+TEXT          = "OffSpec Message"
+
+MESSAGE       = "MLP_LEVEL_ID"
+TEXT          = "WARNING - result off specification, level : []"
+
+MESSAGE       = "MLP_NUMERIC_LIMIT"
+TEXT          = "Specification ( min / max ) : [] / []"
+
+MESSAGE       = "MLP_INTERVAL_LIMIT"
+TEXT          = "Specification ( min / max ) : [] / []"
+
+MESSAGE       = "MLP_TEXT_LIMIT"
+TEXT          = "Specification : []"
+
+MESSAGE       = "MLP_BOOLEAN_LIMIT"
+TEXT          = "Specification : []"
+
+MESSAGE       = "PHRASE_MISSING"
+TEXT          = "Limit Phrase [] not defined"
+
+MESSAGE       = "UNKNOWN_LIMIT_TYPE"
+TEXT          = "Unknown limit type []"
+
+MESSAGE       = "LEVEL_NON_EXISTS"
+TEXT          = "Level [] does not exist"
+
+MESSAGE       = "MLP_NON_EXISTS"
+TEXT          = "Non existant MLP [] found on schedule"
+
+MESSAGE       = "INVALID_CALC"
+TEXT          = "Invalid Calculation Return Status []"
+
+! Button text
+
+MESSAGE = "BUTTON_SAMPLE"
+TEXT    = "View Sample Information"
+TEXT    = "View Sample"
+TEXT    = "Sample..."
+
+MESSAGE = "BUTTON_SAMPLE_RESULTS"
+TEXT    = "View Sample Results"
+TEXT    = "Sample Results"
+TEXT    = "TSR..."
+
+MESSAGE = "BUTTON_UNDO"
+TEXT    = "Undo status change"
+TEXT    = "Undo"
+TEXT    = "Undo"
+
+MESSAGE = "BUTTON_AUTHORISE"
+TEXT    = "Authorise selected results"
+TEXT    = "Authorise"
+TEXT    = "Authorise"
+
+MESSAGE = "BUTTON_REJECT"
+TEXT    = "Reject selected results"
+TEXT    = "Reject"
+TEXT    = "Reject"
+
+MESSAGE = "BUTTON_COMPLETE"
+TEXT    = "Complete selected results"
+TEXT    = "Complete"
+TEXT    = "Complete"
+
+MESSAGE = "BUTTON_INSTRUMENT"
+TEXT    = "Read result from connected instrument"
+TEXT    = "Read Instrument"
+TEXT    = "Read Inst"
+
+MESSAGE = "BUTTON_RECALC"
+TEXT    = "Recalculate all results"
+TEXT    = "Recalculate"
+TEXT    = "Recalculate"
+
+MESSAGE = "BUTTON_ADHOC"
+TEXT    = "Insert Ad-Hoc Result"
+TEXT    = "Ad-Hoc Result"
+TEXT    = "Ad-Hoc"
+
+MESSAGE = "BUTTON_MLPS"
+TEXT    = "Show/Hide Multi Level Product Limit Window"
+TEXT    = "Show/Hide Mlps"
+TEXT    = "Show/Hide Mlps"
+
+MESSAGE = "BUTTON_AUDITS"
+TEXT    = "Show/Hide Result Audits"
+TEXT    = "Show/Hide Audits"
+TEXT    = "Show/Hide Audits"
+
+MESSAGE = "BUTTON_INFORMATION"
+TEXT    = "Show/Hide Result Information"
+TEXT    = "Show/Hide Info"
+TEXT    = "Show/Hide Info"
+
+MESSAGE = "BUTTON_INCIDENT"
+TEXT    = "Show/Hide Incidents relating to Sample, Test and Result"
+TEXT    = "Show/Hide Incidents"
+TEXT    = "Show/Hide Incidents"
+
+MESSAGE = "BUTTON_INSERT"
+TEXT    = "Insert Sample into Worksheet"
+TEXT    = "Insert Sample"
+TEXT    = "Insert..."
+
+MESSAGE = "BUTTON_HELP"
+TEXT    = "Call the help system"
+TEXT    = "Help"
+TEXT    = "Help"
+
+MESSAGE = "BUTTON_CLOSE"
+TEXT    = "Exit result entry"
+TEXT    = "Close"
+TEXT    = "Close"
+
+MESSAGE = "BUTTON_SAVE"
+TEXT    = "Save results to database"
+TEXT    = "Save"
+TEXT    = "Save"
+
+MESSAGE = "BUTTON_RESET"
+TEXT    = "Reset results"
+TEXT    = "Reset"
+TEXT    = "Reset"
+
+MESSAGE = "BUTTON_OPTIONS"
+TEXT    = "Options"
+TEXT    = "Options"
+TEXT    = "Options..."
+
+MESSAGE = "BUTTON_IDL"
+TEXT    = "IDL"
+TEXT    = "IDL"
+TEXT    = "IDL..."
+
+MESSAGE = "BUTTON_STOCK"
+TEXT    = "Stock Usage"
+TEXT    = "Stock"
+TEXT    = "Stock..."
+
+MESSAGE = "BUTTON_ANAL_INST"
+TEXT    = "Specify instrument used for analysis"
+TEXT    = "Instrument used in analysis"
+TEXT    = "Inst used..."
+
+
+MESSAGE = "BUTTON_UNLOCK"
+TEXT    = "Unlock test"
+TEXT    = "Unlock test"
+TEXT    = "Unlock..."
+
+MESSAGE = "BUTTON_FILE_VIEW"
+TEXT    = "View file contents of file type result"
+TEXT    = "View file contents"
+TEXT    = "View File"
+
+! Messages for Dilution Factors
+
+MESSAGE = "DILUTION_UNENTERED"
+TEXT    = "Alter Dilution Factor for Unentered Results"
+
+MESSAGE = "DILUTION_ENTERED"
+TEXT    = "Dilution Factor / Spike for "
+
+MESSAGE = "ENTER_DILUTION"
+TEXT    = "Dilution Factor "
+
+MESSAGE = "NO_DILUTION"
+TEXT    = "Dilution factor not allowed for current result"
+
+MESSAGE = "NO_CRITERIA"
+TEXT    = "Criteria has not been specified"
+
+MESSAGE = "DEFAULT_DILUTION"
+TEXT    = "Default Dilution Factor"
+
+MESSAGE = "ENTER_SPIKE"
+TEXT    = "Spike Value"
+
+MESSAGE  = "SOME_ALLOWED"
+TEXT     = "You are not allowed to Authorise or Reject results that you entered. Do you wish to authorise the rest ?"
+
+MESSAGE  = "OPERATION_DENIED"
+TEXT     = "You are not allowed to Authorise or Reject results that you entered"
+SEVERITY = "ERROR"
+
+MESSAGE  = "TRANSACTION"
+TEXT     = "Result Entry"
+
+MESSAGE  = "STATUS_TRANSACTION"
+TEXT     = "Result Entry Status Change"
+
+MESSAGE  = "BASE_STORE_RESULTS"
+TEXT     = "Invalid call to base class Store Results"
+
+MESSAGE  = "SAVE_RES_MESS"
+TEXT     = "Results have been entered. Would you like to save these Results ?"
+
+MESSAGE  = "SAVE_RES_HEAD"
+TEXT     = "SampleManager Result Entry"
+
+MESSAGE  = "LOOSE_CURRENT"
+TEXT     = "Abandon all unsaved data"
+
+MESSAGE  = "MUST_COMMIT"
+TEXT     = "Updates must be saved before continuing. Please confirm the save operation."
+
+! Messages for Job spread sheet result entry
+
+MESSAGE  = "JOB_NAME"
+TEXT     = "Job Name"
+
+MESSAGE  = "BY_JOB"
+TEXT     = "Result Entry for Job"
+
+MESSAGE  = "DISPLAY_BY_JOB"
+TEXT     = "Result Display for Job"
+
+MESSAGE  = "AUTH_BY_JOB"
+TEXT     = "Result Authorisation for Job"
+
+MESSAGE  = "JOB_NO_SAMPLES"
+TEXT     = "No samples have been assigned to this job"
+
+MESSAGE  = "JOB_NO_TESTS"
+TEXT     = "No test have been found on the samples in this job"
+
+MESSAGE GROUP = "LIB_OA_"
+
+! Messages for Operator Approval checking
+
+MESSAGE       = "FLDNOTFND"
+TEXT          = "The field [] has not been defined for table []"
+
+MESSAGE       = "RECNOTFND"
+TEXT          = "Unable to locate record [] in table [] for Operator Approval"
+
+
+MESSAGE GROUP = "LIB_RE_LIST_"
+
+MESSAGE       = "ANALYSIS"
+TEXT          = "Analysis"
+
+MESSAGE       = "COMPONENT"
+TEXT          = "Component"
+
+MESSAGE       = "ASSIGNED"
+TEXT          = "Assigned"
+
+MESSAGE       = "REPLICATES"
+TEXT          = "Replicates"
+
+MESSAGE       = "HEADER"
+TEXT          = "Result List Modification Screen for []"
+
+MESSAGE       = "FOOTER"
+TEXT          = "Toggle Assigned Flag"
+
+MESSAGE       = "TRANSACTION"
+TEXT          = "Result List Modifications"
+
+MESSAGE       = "ENTER_SAMPLE"
+TEXT          = "Enter Sample ID:"
+
+MESSAGE       = "ENTER_HEADER"
+TEXT          = "Result List Option"
+
+MESSAGE       = "VALUE"
+TEXT          = "Value"
+
+MESSAGE       = "UNITS"
+TEXT          = "Units"
+
+MESSAGE       = "DP"
+TEXT          = "DP"
+
+MESSAGE       = "SF"
+TEXT          = "SF"
+
+MESSAGE       = "Round"
+TEXT          = "Round"
+
+MESSAGE       = "FILTER"
+TEXT          = "Filter"
+
+MESSAGE       = "PQL_CALC"
+TEXT          = "PQL Calc"
+
+MESSAGE GROUP "LIB_RE_ENTITY_"
+
+MESSAGE       = "INVALID_ENTITY"
+TEXT          = "Invalid entity '[]' specified in component - defaulting to text prompt"
+
+MESSAGE GROUP = "LIB_COMP_"
+
+MESSAGE       = "REPLICATE_CHAR"
+TEXT          = "Cannot include replicate character [] in component name"
+
+MESSAGE       = "TOO_LONG"
+TEXT          = "Component Name is too long"
+
+MESSAGE GROUP "LIB_RE_INCIDENT_"
+
+MESSAGE        = "FORM_HEADER"
+TEXT           = "Incidents"
+
+MESSAGE GROUP "LIB_RE_NUMERIC_"
+
+MESSAGE        = "ENFORCE_DP_1"
+TEXT           = "Please enter a minimum of "
+
+MESSAGE        = "ENFORCE_DP_2"
+TEXT           = " decimal places"
+
+MESSAGE GROUP "LIB_RE_RESULT_"
+
+MESSAGE        = "INCID_TEMP_UNDEF"
+TEXT           = "Incident template undefined for level "
+
+MESSAGE        = "LOCK_SAMPLE_FAIL"
+TEXT           = "Failed to upgrade lock on sample"
+
+MESSAGE        = "LOCK_TEST_FAIL"
+TEXT           = "Failed to upgrade lock on test"
+
+MESSAGE        = "SAMPLE_UPDATE_NO_WRITE"
+TEXT           = "Attempted to update sample object outside a write transaction"
+
+MESSAGE        = "TEST_UPDATE_NO_WRITE"
+TEXT           = "Attempted to update a test object outside a write transaction"
+
+MESSAGE GROUP "LIB_RE_COLUMNS_"
+
+MESSAGE        = "SAVE_TRANS"
+TEXT           = "Save Result Entry column definitions"
+
+MESSAGE        = "HEADER"
+TEXT           = "Modify Column Details"
+
+MESSAGE        = "TABLE"
+TEXT           = "Table Name"
+
+MESSAGE        = "FIELD"
+TEXT           = "Field Name"
+
+MESSAGE        = "TITLE"
+TEXT           = "Title"
+
+MESSAGE        = "WIDTH"
+TEXT           = "Width"
+
+MESSAGE        = "NOREMOVE"
+TEXT           = "Column required by Result Entry - Removal not allowed"
+
+MESSAGE        = "DUPLICATE"
+TEXT           = "Field is already a column in Result Entry"
+
+MESSAGE GROUP "RESULT_ENTRY_RMB_"
+
+MESSAGE        = "DISP_SAMP"
+TEXT           = "Display"
+
+MESSAGE        = "EDIT_TESTS"
+TEXT           = "Edit Tests"
+
+MESSAGE        = "DISP_SAMP_RES"
+TEXT           = "All Results"
+
+MESSAGE        = "DISP_ANAL"
+TEXT           = "Display Analysis"
+
+MESSAGE        = "COMPLETE"
+TEXT           = "Complete"
+
+MESSAGE        = "UNCOMPLETE"
+TEXT           = "Uncancel Results"
+
+MESSAGE        = "AUTHORISE"
+TEXT           = "Authorise"
+
+MESSAGE        = "REJECT"
+TEXT           = "Reject"
+
+MESSAGE        = "CANCEL"
+TEXT           = "Cancel"
+
+MESSAGE        = "EDIT_STOCK"
+TEXT           = "Edit stocks used"
+
+MESSAGE        = "DISP_STOCK"
+TEXT           = "Display stocks used"
+
+MESSAGE        = "UNLOCK_TEST"
+TEXT           = "Override Training"
+
+MESSAGE        = "INST_USED"
+TEXT           = "Specify Instrument Used"
+
+MESSAGE GROUP "LIB_RE_CRITERIA_"
+
+MESSAGE        = "HEADER"
+TEXT           = "Progress Warning : [] tests selected"
+
+MESSAGE        = "STOP"
+TEXT           = "Stop now"
+
+MESSAGE        = "RUN_TO_END"
+TEXT           = "Run to completion"
+
+MESSAGE        = "WARN"
+TEXT           = "Warn again"
+
+MESSAGE        = "AMOUNT"
+TEXT           = "further tests to select"
+
+MESSAGE GROUP "RE_INST_"
+
+MESSAGE        = "ERR_NO_LOCAL"
+TEXT           = "There are no suitable instruments setup on your machine"
+
+MESSAGE        = "H_READ"
+TEXT           = "Read Instrument Result"
+
+MESSAGE        = "SPEC_HEADER"
+TEXT           = "Instrument used for testing"
+
+MESSAGE        = "SPEC_TYPE"
+TEXT           = "Instrument type []"
+
+MESSAGE        = "OVERRIDE_HEADER"
+TEXT           = "Confirm Instrument Status Override"
+
+MESSAGE        = "NOOVERRIDE_HEADER"
+TEXT           = "Instrument Status Prevents Use"
+
+MESSAGE        = "OVER_INST_ID"
+TEXT           = "Instrument"
+
+MESSAGE        = "OVER_SERVICED"
+TEXT           = "Serviced"
+
+MESSAGE        = "OVER_CALIBRATED"
+TEXT           = "Calibrated"
+
+MESSAGE        = "OVER_AVAILABLE"
+TEXT           = "Available"
+
+MESSAGE        = "OVER_PARTS_OK"
+TEXT           = "Parts OK"
+
+MESSAGE        = "OVER_REASON"
+TEXT           = "Reason"
+
+MESSAGE        = "OVER_CONFIRM"
+TEXT           = "Confirm"
+
+MESSAGE        = "OVER_CANCEL"
+TEXT           = "Cancel"
+
+
+MESSAGE GROUP "RE_FILE_"
+
+MESSAGE        = "NOT_FOUND"
+TEXT           = "Unable to locate file []"
+
+MESSAGE        = "APP_NOT_FOUND"
+TEXT           = "Unable to find application to open file []"
+
+MESSAGE        = "BROWSE_HEADER"
+TEXT           = "File Result Entry"
+
+MESSAGE        = "RADIO_LINKED"
+TEXT           = "Linked file"
+
+MESSAGE        = "NAME_LINKED"
+TEXT           = "File name"
+
+MESSAGE        = "RADIO_UPLOAD"
+TEXT           = "Upload file"
+
+MESSAGE        = "SERVER_NAME_UPLOAD"
+TEXT           = "Server file name"
+
+MESSAGE        = "CLIENT_NAME_UPLOAD"
+TEXT           = "Client file name"
+
+MESSAGE        = "BUTTON_UPLOAD"
+TEXT           = "Upload file"
+
+MESSAGE        = "FILTER"
+TEXT           = "All Files (*.*)| *.*|"
+
+MESSAGE        = "CLIENT_BROWSE_HEADER"
+TEXT           = "Choose Client File"
+
+MESSAGE        = "BUTTON_VIEW"
+TEXT           = "View"
+

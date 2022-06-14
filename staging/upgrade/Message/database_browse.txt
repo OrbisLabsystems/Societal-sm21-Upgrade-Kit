@@ -1,0 +1,16 @@
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "DATABASE_BROWSE_"
+
+MESSAGE        = "DISP"
+TEXT           = "Select field from table:"
+
+MESSAGE        = "HEADER"
+TEXT           = "Database Browse"
+
+MESSAGE        = "MU_ORDER_AB"
+TEXT           = "Display in Alphabetic Order"
+
+MESSAGE        = "MU_ORDER_DB"
+TEXT           = "Display in Database Order"

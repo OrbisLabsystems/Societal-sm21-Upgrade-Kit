@@ -1,0 +1,19 @@
+MESSAGE GROUP = "SMP_DAEMON_"
+
+MESSAGE = "SERVICE_UNDEFINED"
+TEXT    = "Internet service '[]' not defined"
+
+MESSAGE = "UNKNOWN_NETWORK"
+TEXT    = "Network type '[]' is unknown"
+
+MESSAGE = "PROTOCOL_UNDEFINED"
+TEXT    = "Daemon protocol not defined"
+
+MESSAGE = "LOCK_FAIL"
+TEXT    = "Failed to connect to Lock Daemon"
+
+MESSAGE = "INCREMENT_FAIL"
+TEXT    = "Failed to connect to Increment Daemon"
+
+MESSAGE = "CONNECTION_CONTEXT"
+TEXT    = "Error in '[]' network layer when connected to service '[]' on '[]'"

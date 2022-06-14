@@ -1,0 +1,171 @@
+
+MESSAGE GROUP "LABTABLE_DB_"
+
+MESSAGE        = "TEST"
+TEXT           = "Test"
+
+MESSAGE        = "REPORT"
+TEXT           = "VGL Report"
+
+MESSAGE        = "DISCOVER_ALL"
+TEXT           = "Convert all LTE's in the System? This will take a while to complete..."
+
+MESSAGE        = "EXISTS"
+TEXT           = "An Interface Definition for this LTE Already Exists."
+
+MESSAGE        = "BADVGL"
+TEXT           = "Invalid VGL Report"
+
+MESSAGE        = "OPERATION"
+TEXT           = "Operation"
+
+MESSAGE        = "TABLE"
+TEXT           = "Table Name"
+
+MESSAGE        = "ICON"
+TEXT           = "Menu Icon"
+
+MESSAGE        = "OPEN"
+TEXT           = "Open..."
+
+MESSAGE        = "ADDOPT"
+TEXT           = "Add Option"
+
+MESSAGE        = "COPYOPT"
+TEXT           = "Copy Option"
+
+MESSAGE        = "MODOPT"
+TEXT           = "Modify Option"
+
+MESSAGE        = "DISPOPT"
+TEXT           = "Display Option"
+
+MESSAGE        = "LISTOPT"
+TEXT           = "List Option"
+
+MESSAGE        = "PRINTOPT"
+TEXT           = "Print Option"
+
+MESSAGE        = "REMOPT"
+TEXT           = "Remove Option"
+
+MESSAGE        = "RESTOPT"
+TEXT           = "Restore Option"
+
+MESSAGE        = "VEROPT"
+TEXT           = "New Version Option"
+
+MESSAGE        = "APPOPT"
+TEXT           = "Approve Option"
+
+MESSAGE        = "SUBOPT"
+TEXT           = "Submit Option"
+
+MESSAGE        = "ADDED"
+TEXT           = "Added [] Master Menu Records."
+
+MESSAGE        = "MENOPTS"
+TEXT           = "Master Menu Options"
+
+MESSAGE        = "NO_MENU"
+TEXT           = "No Menu Defined"
+
+MESSAGE        = "SKIPPED"
+TEXT           = "Added [] Master Menu Records, Skipped [] Duplicates."
+
+MESSAGE        = "SUBMIT"
+TEXT           = "Submit"
+
+MESSAGE        = "APPROVE"
+TEXT           = "Approve"
+
+MESSAGE        = "VERSION"
+TEXT           = "New Version"
+
+MESSAGE        = "RESTORE"
+TEXT           = "Restore"
+
+MESSAGE        = "REMOVE"
+TEXT           = "Remove"
+
+MESSAGE        = "PRINT"
+TEXT           = "Print"
+
+MESSAGE        = "LIST"
+TEXT           = "List"
+
+MESSAGE        = "DISPLAY"
+TEXT           = "Display"
+
+MESSAGE        = "MODIFY"
+TEXT           = "Modify"
+
+MESSAGE        = "COPY"
+TEXT           = "Copy"
+
+MESSAGE        = "ADD"
+TEXT           = "Add"
+
+MESSAGE        = "CONTEXT"
+TEXT           = "Menu Context"
+
+MESSAGE        = "INTERFACE"
+TEXT           = "Interface"
+
+MESSAGE        = "LTMENU"
+TEXT           = "Laboratory Table Menus"
+MESSAGE        = "HEADER"
+TEXT           = "Laboratory Table Operation"
+
+MESSAGE        = "NOTLTE"
+TEXT           = "This report is not an LTE"
+
+MESSAGE        = "DONE"
+TEXT           = "Conversion Completed Successfully"
+
+MESSAGE        = "FIND"
+TEXT           = "Discover LTE Options"
+
+MESSAGE        = "OPTMENU"
+TEXT           = "Create Menu Items"
+
+MESSAGE        = "OPTALL"
+TEXT           = "Convert All LTEs"
+
+MESSAGE        = "OPTCONV"
+TEXT           = "Convert LTE"
+
+MESSAGE        = "ADD_LTE"
+TEXT           = "Add Default LTE Values?"
+
+MESSAGE GROUP "LABTABLE_DB_EDIT_"
+
+MESSAGE = "ID"
+TEXT    = " ID : "
+
+MESSAGE = "ENTER"
+TEXT    = "Enter "
+
+MESSAGE = "SCREEN"
+TEXT    = " Data Entry Screen"
+
+MESSAGE = "NOTYPE"
+TEXT    = "Please specify a valid type"
+
+MESSAGE = "NOROUT"
+TEXT    = "Please specify a routine"
+
+MESSAGE = "NOFIELD"
+TEXT    = "Please specify a field"
+
+MESSAGE = "NOLINK"
+TEXT    = "Please specify a valid link"
+
+MESSAGE = "NOREPORT"
+TEXT    = "Please specify the VGL Report"
+
+MESSAGE = "NOINTER"
+TEXT    = "Please specify the Interface Type"
+
+MESSAGE = "NOFIELDS"
+TEXT    = "Please specify the Interface Fields using the button at the base of the form."

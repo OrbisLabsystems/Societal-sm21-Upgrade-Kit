@@ -1,0 +1,2127 @@
+! Messages for worksheet options
+
+MESSAGE  GROUP  "GRAPHWSHT_"
+
+MESSAGE         = "COMP_1"
+TEXT            = "Worksheet Position"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "               X Axis               "
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "               Y Axis               "
+
+MESSAGE         = "TITLE_1"
+TEXT            = "Graph of "
+
+MESSAGE         = "TITLE_2"
+TEXT            = " vs "
+
+MESSAGE         = "TITLE_3"
+TEXT            = " for Worksheet "
+
+MESSAGE         = "MESS_1"
+TEXT            = "Worksheet ID for Graph Study :"
+
+MESSAGE         = "MESS_2"
+TEXT            = "Error Reading Worksheet"
+SEVERITY 	= "ERROR"
+
+MESSAGE         = "MESS_3"
+TEXT            = "Press any key to quit"
+
+MESSAGE         = "MESS_4"
+TEXT            = "Error detected in worksheet "
+SEVERITY 	= "ERROR"
+
+MESSAGE         = "MESS_5"
+TEXT            = "Invalid worksheet type "
+SEVERITY 	= "ERROR"
+
+MESSAGE         = "MESS_6"
+TEXT            = "Please select a component for the X and Y axis"
+
+MESSAGE         = "MESS_7"
+TEXT            = "Press <DO> or <Return> to Draw graph, <Exit> to quit"
+
+MESSAGE         = "MESS_8"
+TEXT            = "Initialising graph variables - Please Wait"
+
+MESSAGE         = "MESS_9"
+TEXT            = "                      Graphic Display of Worksheet Results "
+
+MESSAGE         = "MESS_10"
+TEXT            = "Cannot plot graph - no results entered for either one or both components"
+
+MESSAGE         = "MESS_11"
+TEXT            = "     Selecting component      "
+
+MESSAGE         = "MESS_12"
+TEXT            = "Press '<-' or '->' to move between Axis Selection"
+
+MESSAGE  GROUP "JOBWRKSHT_"
+
+MESSAGE         = "CONST_1"
+TEXT            = "GENERATE WORKSHEET FROM JOB"
+
+MESSAGE         = "CONST_2"
+TEXT            = "Job ID : "
+
+MESSAGE         = "CONST_3"
+TEXT            = "SELECT toggle, FIND default, INSERT global"
+
+MESSAGE         = "CONST_4"
+TEXT            = "Sample Worksheet Generation From Job"
+
+MESSAGE         = "CONST_5"
+TEXT            = "Default Operator : "
+
+MESSAGE         = "CONST_6"
+TEXT            = "Assignment Mode"
+
+MESSAGE         = "CONST_7"
+TEXT            = "SELECT toggles, DO assign, EXIT quit"
+
+MESSAGE         = "CONST_8"
+TEXT            = "Background Assign"
+
+MESSAGE         = "CONST_9"
+TEXT            = "Interactive Assign"
+
+MESSAGE         = "CONST_10"
+TEXT            = "Creating Sample Worksheets"
+
+MESSAGE         = "CONST_11"
+TEXT            = "There are no valid samples in the JOB"
+SEVERITY 	= "ERROR"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "                                 Generate   Assigned  "
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = " Sample Textual ID               Worksheet  Operator  "
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Error creating file "
+SEVERITY 	= "ERROR"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Error closing file "
+SEVERITY 	= "ERROR"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Error writing to pipe "
+SEVERITY 	= "ERROR"
+
+MESSAGE         = "TAB_1"
+TEXT            = "!U!BSAMPLES FOR JOB WORKSHEET CREATION!B!U"
+
+MESSAGE         = "TAB_2"
+TEXT            = "The following samples did not have worksheets created for them"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Error opening pipe "
+SEVERITY 	= "ERROR"
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "Error writing to file "
+SEVERITY 	= "ERROR"
+
+
+MESSAGE GROUP "PRANALWKS_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Printing Analysis Worksheet"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Worksheet ID"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Sample Number"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Replicate Number"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Sample Name is"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Component is"
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "Result is "
+
+MESSAGE         = "DISPLAY_8"
+TEXT            = "Worksheet could not be found"
+SEVERITY 	= "ERROR"
+
+MESSAGE         = "DISPLAY_9"
+TEXT            = "Worksheet read error "
+SEVERITY 	= "ERROR"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "Analysis Worksheet :"
+
+MESSAGE         = "HEAD_2"
+TEXT            = "Page ##"
+
+MESSAGE         = "TAB_1"
+TEXT            = "A N A L Y S I S   W O R K S H E E T"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Worksheet prepared on"
+
+MESSAGE         = "TAB_3"
+TEXT            = "Analysis ID :"
+
+MESSAGE         = "TAB_4"
+TEXT            = " Technique : "
+
+MESSAGE         = "TAB_5"
+TEXT            = "The following results are required from this analysis :"
+
+MESSAGE         = "TAB_6"
+TEXT            = "| Result |                                          |           Expected Range           |"
+
+MESSAGE         = "TAB_7"
+TEXT            = "| Number |              Name of test                |  Minimum value  |  Maximum value   |"
+
+MESSAGE         = "TAB_8"
+TEXT            = "The following samples are to be analysed:"
+
+MESSAGE         = "TAB_9"
+TEXT            = "| Sample ID  R |Sample Name                     |  Location  |"
+
+MESSAGE         = "TAB_10"
+TEXT            = "| Sample ID  R |Sample Name                     |  Location  |   Actual Results    |"
+
+MESSAGE         = "TAB_11"
+TEXT            = "| Sample ID  R |Sample Name                     |  Location  |               Actual Results              |"
+
+MESSAGE         = "TAB_12"
+TEXT            = "| Sample ID  R |Sample Name                     | Location   |                         Actual Results                          |"
+
+MESSAGE         = "TAB_13"
+TEXT            = "Free format text "
+
+MESSAGE         = "TAB_14"
+TEXT            = "or"
+
+MESSAGE         = "TAB_15"
+TEXT            = "Type ="
+
+MESSAGE         = "DISPLAY_10"
+TEXT            = "Could not locate sample "
+
+MESSAGE         = "DISPLAY_11"
+TEXT            = " for test "
+
+MESSAGE         = "DISPLAY_12"
+TEXT            = "Test number "
+
+MESSAGE         = "DISPLAY_13"
+TEXT            = " could not be located."
+
+MESSAGE         = "DISPLAY_14"
+TEXT            = "Analysis for test "
+
+MESSAGE         = "DISPLAY_15"
+TEXT            = " is "
+
+MESSAGE         = "DISPLAY_16"
+TEXT            = " not "
+
+MESSAGE         = "DISPLAY_17"
+TEXT            = " as expected. "
+
+MESSAGE         = "INVAL_WKS"
+TEXT            = "Invalid worksheet type "
+
+MESSAGE         = "FOOT"
+TEXT            = "End of Analysis Worklist."
+
+MESSAGE         = "NO_SUCH_WKS"
+TEXT            = "Invalid worksheet ID entered"
+
+MESSAGE         = "FOOTER"
+TEXT            = "Press DO to print or EXIT to cancel"
+
+MESSAGE         = "FOR"
+TEXT            = "for"
+
+
+MESSAGE GROUP "PRPWKS_"
+
+MESSAGE         = "TAB_1"
+TEXT            = "S A M P L E   P R E P A R A T I O N  W O R K S H E E T"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Printing Sample Preparation Worksheet"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Worksheet ID"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Sample ID"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "Sample Preparation Worksheet :"
+
+MESSAGE         = "HEAD_2"
+TEXT            = "                                  Page ## "
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Worksheet file not found :"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Unassigned"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Worksheet prepared on "
+
+MESSAGE         = "TAB_3"
+TEXT            = "for"
+
+MESSAGE         = "TAB_4"
+TEXT            = "Preparation ID :"
+
+MESSAGE         = "TAB_5"
+TEXT            = "Description :"
+
+MESSAGE         = "FIN_1"
+TEXT            = "Preparation Complete"
+
+MESSAGE         = "TAB_7"
+TEXT            = " The following samples require this preparation:"
+
+MESSAGE         = "TAB_8"
+TEXT            = "|  Sample    |  Preparation Finished      |"
+
+MESSAGE         = "FOOTER"
+TEXT            = "Press DO to print or EXIT to cancel"
+
+MESSAGE         = "NO_SUCH_WKS"
+TEXT            = "Invalid worksheet ID entered"
+
+
+MESSAGE GROUP "PRSAMPWS_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Sample could not be found"
+
+MESSAGE         = "HEADER"
+TEXT            = "Printing Sample Worksheet"
+
+MESSAGE         = "FOOTER"
+TEXT            = "Press DO to print or EXIT to cancel"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Worksheet ID"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Replicate Number"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Analysis ID"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Component is"
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "Result is"
+
+MESSAGE         = "DISPLAY_8"
+TEXT            = "Worksheet file could not be found"
+
+MESSAGE         = "DISPLAY_9"
+TEXT            = "Invalid worksheet type "
+
+MESSAGE         = "DISPLAY_10"
+TEXT            = "Worksheet read error "
+
+MESSAGE         = "OP_1"
+TEXT            = " for "
+
+MESSAGE         = "HEAD_1"
+TEXT            = "Sample Worksheet : "
+
+MESSAGE         = "HEAD_2"
+TEXT            = "        Sample : "
+
+MESSAGE         = "HEAD_3"
+TEXT            = "Page ##"
+
+MESSAGE         = "HEAD_4"
+TEXT            = "Worksheet prepared on "
+
+MESSAGE         = "TAB_1"
+TEXT            = "S A M P L E    W O R K S H E E T"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Numeric ID :"
+
+MESSAGE         = "TAB_3"
+TEXT            = "Textual_ID :"
+
+MESSAGE         = "TAB_4"
+TEXT            = "Description :"
+
+MESSAGE         = "DISPLAY_11"
+TEXT            = "Selection of sample "
+
+MESSAGE         = "DISPLAY_12"
+TEXT            = " failed."
+
+MESSAGE         = "TAB_5"
+TEXT            = "| Analysis ID |            Component name              |Type|     Result       |"
+
+MESSAGE         = "DISPLAY_13"
+TEXT            = "Test number "
+
+MESSAGE         = "DISPLAY_14"
+TEXT            = " could not be located."
+
+MESSAGE         = "DISPLAY_15"
+TEXT            = " is assigned to sample "
+
+MESSAGE         = "DISPLAY_16"
+TEXT            = " not "
+
+MESSAGE         = "DISPLAY_17"
+TEXT            = " as expected."
+
+MESSAGE         = "NO_SUCH_WKS"
+TEXT            = "Invalid worksheet ID entered"
+
+
+MESSAGE GROUP "PRTWKS_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Printing Test Preparation Worksheet"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Worksheet ID"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Test number found"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Analysis found"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Sample found"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "Test Preparation Worksheet :"
+
+MESSAGE         = "HEAD_2"
+TEXT            = "                                              Page ## "
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Worksheet file not found :"
+
+MESSAGE         = "OP_1"
+TEXT            = "Unassigned"
+
+MESSAGE         = "TAB_1"
+TEXT            = "T E S T  P R E P A R A T I O N  W O R K S H E E T"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Worksheet prepared on "
+
+MESSAGE         = "TAB_3"
+TEXT            = " for "
+
+MESSAGE         = "TAB_4"
+TEXT            = "Preparation ID :"
+
+MESSAGE         = "TAB_5"
+TEXT            = "Description :"
+
+MESSAGE         = "FIN_1"
+TEXT            = "Preparation complete"
+
+MESSAGE         = "TAB_7"
+TEXT            = "The following samples require this preparation for their respective analysis:"
+
+MESSAGE         = "TAB_8"
+TEXT            = "|  Sample    |   Analysis  |     Preparation Finished       |"
+
+MESSAGE         = "NO_SUCH_WKS"
+TEXT            = "Invalid worksheet ID entered"
+
+MESSAGE         = "FOOTER"
+TEXT            = "Press DO to print or EXIT to cancel"
+
+
+MESSAGE GROUP "PRUDWSHT_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "                           Print Defined Worksheet                                "
+
+MESSAGE         = "HEAD_1"
+TEXT            = "Worksheet :"
+
+MESSAGE         = "HEAD_2"
+TEXT            = "                                                             Page ## "
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Enter Worksheet ID : "
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Worksheet file not found :"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "                           WORKSHEET TABLE OPTIONS                               "
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Please Select Which Sample Fields you wish to appear on the worksheet"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Job Name         :  "
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "No"
+
+MESSAGE         = "DISPLAY_8"
+TEXT            = "Project ID       :  "
+
+MESSAGE         = "DISPLAY_9"
+TEXT            = "Product Name     :  "
+
+MESSAGE         = "DISPLAY_10"
+TEXT            = "Sample Point     :  "
+
+MESSAGE         = "DISPLAY_11"
+TEXT            = "Location         :  "
+
+MESSAGE         = "DISPLAY_12"
+TEXT            = "Customer ID      :  "
+
+MESSAGE         = "DISPLAY_13"
+TEXT            = "All sample fields have been pre-defined"
+
+MESSAGE         = "DISPLAY_14"
+TEXT            = "  Select the option required by Pressing the SELECT Key in the relevant field,    "
+
+MESSAGE         = "DISPLAY_15"
+TEXT            = "  Press the UP and DOWN arrows to traverse the display                          "
+
+MESSAGE         = "DISPLAY_16"
+TEXT            = "  Press the DO key to generate the worksheet with the selected options           "
+
+MESSAGE         = "DISPLAY_17"
+TEXT            = "  Press EXIT to quit                                                                "
+
+MESSAGE         = "DISPLAY_18"
+TEXT            = "  PRINT DEFINABLE WORKSHEET "
+
+MESSAGE         = "DISPLAY_19"
+TEXT            = "Sample Found    : "
+
+MESSAGE         = "TAB_1"
+TEXT            = " S A M P L E  M A N A G E R  W O R K S H E E T"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Worksheet prepared on"
+
+MESSAGE         = "TAB_3"
+TEXT            = " for "
+
+MESSAGE         = "TAB_4"
+TEXT            = "This worksheet consists of tests which contain the following parameters :"
+
+MESSAGE         = "TAB_5"
+TEXT            = "Analysis ID....... :"
+
+MESSAGE         = "TAB_6"
+TEXT            = "Instrument ID..... :"
+
+MESSAGE         = "TAB_7"
+TEXT            = "Operator ID....... :"
+
+MESSAGE         = "TAB_8"
+TEXT            = "Job Name.......... :"
+
+MESSAGE         = "TAB_9"
+TEXT            = "Project ID........ :"
+
+MESSAGE         = "TAB_10"
+TEXT            = "Product Name...... :"
+
+MESSAGE         = "TAB_11"
+TEXT            = "Sample Point...... :"
+
+MESSAGE         = "TAB_12"
+TEXT            = "Location.......... :"
+
+MESSAGE         = "TAB_13"
+TEXT            = "Customer ID....... :"
+
+MESSAGE         = "DISPLAY_20"
+TEXT            = "Customer      : "
+
+MESSAGE         = "TAB_14"
+TEXT            = "| Sample ID|   Sample Description   |  Analysis  |Instrument | Operator |"
+
+MESSAGE         = "TAB_15"
+TEXT            = "Results are required for the following Components :"
+
+MESSAGE         = "TAB_16"
+TEXT            = " Component                       Units                Result"
+
+MESSAGE         = "TAB_17"
+TEXT            = "| Sample ID|   Sample Description   | Instrument | Operator |"
+
+MESSAGE         = "TAB_18"
+TEXT            = "| Sample ID|   Sample Description   | Analysis | Operator |"
+
+MESSAGE         = "TAB_19"
+TEXT            = "| Sample ID|   Sample Description   |  Operator  |"
+
+MESSAGE         = "TAB_20"
+TEXT            = "| Sample ID|   Sample Description   | Instrument  |"
+
+MESSAGE         = "TAB_21"
+TEXT            = "| Sample ID|   Sample Description   |  Analysis  |"
+
+MESSAGE         = "TAB_22"
+TEXT            =  "| Sample ID|   Sample Description   |"
+
+
+MESSAGE GROUP "SAMPWSHT_"
+
+MESSAGE		= "NO_OPERATOR"
+TEXT            = "The operator specified does not exist"
+
+MESSAGE		= "NO_SAMPLE"
+TEXT            = "The sample specified does not exist"
+
+MESSAGE		= "FILE_ERROR"
+TEXT            = "Error creating Worksheet text file : "
+
+MESSAGE		= "NO_TESTS"
+TEXT            = "No tests are available for addition to a sample worksheet "
+
+MESSAGE		= "NEW_RECORD_ERROR"
+TEXT            = "Error in creating worksheet record : "
+
+MESSAGE		= "WORKSHEET_EXISTS"
+TEXT            = "A Worksheet already exists for this Sample"
+
+MESSAGE		= "SAMPLE_LOCKED"
+TEXT            = "Sample record is locked"
+
+MESSAGE		= "WORKSHEET_OK"
+TEXT            = "Succesfully generated worksheet "
+
+MESSAGE		= "WORKSHEET_FAIL"
+TEXT            = "Worksheet could not be generated"
+
+MESSAGE		= "GEN_WORKSHEET"
+TEXT            = "Generating worksheet - Please wait"
+
+MESSAGE		= "GEN_SAMPLE_WKS"
+TEXT            = "Generating Sample Worksheet : "
+
+MESSAGE		= "HEADER_1"
+TEXT            = "Generate Sample Worksheet"
+
+MESSAGE		= "FOOTER_1"
+TEXT            = "Press EXIT to QUIT"
+
+MESSAGE		= "USE_OPER"
+TEXT            = "Assign to Operator"
+
+MESSAGE		= "WKS_OPER"
+TEXT            = "Operator ID"
+
+MESSAGE		= "SAMPLE"
+TEXT            = "Sample ID"
+
+
+MESSAGE GROUP "STANVERS_"
+
+MESSAGE		 = "NO_STAND"
+TEXT		 = "There are no standards to look at"
+
+MESSAGE          = "BOX_1"
+TEXT             = "| Standard Versions |"
+
+MESSAGE          = "BOX_2"
+TEXT             = "| Component |"
+
+MESSAGE          = "BOX_3"
+TEXT             = "Standard ID"
+
+MESSAGE          = "TAB_1"
+TEXT             = "STANDARDS REPORT"
+
+MESSAGE          = "TAB_2"
+TEXT             = "This is a report of the samples, tests and results assigned to the"
+
+MESSAGE          = "TAB_3"
+TEXT             = "standard "
+
+MESSAGE          = "TAB_4"
+TEXT             = "between the dates"
+
+MESSAGE          = "TAB_5"
+TEXT             = "and"
+
+MESSAGE          = "TAB_6"
+TEXT             = "|     Standard Description    | Sample ID  | Analysis ID | Login Date  |"
+
+MESSAGE          = "TAB_7"
+TEXT             = "   | The Results for this standard are :  "
+
+MESSAGE          = "TITLE_1"
+TEXT             = "Graph of "
+
+MESSAGE          = "TITLE_2"
+TEXT             = " vs "
+
+MESSAGE          = "BORD_1"
+TEXT             = "| Standard To Study |"
+
+MESSAGE          = "MESS_1"
+TEXT             = "PAUSE"
+
+MESSAGE          = "MESS_2"
+TEXT             = "CONFM"
+
+MESSAGE          = "MESS_3"
+TEXT             = "                             Standard Results Report                               "
+
+MESSAGE          = "MESS_4"
+TEXT             = "     Version  Usage Date Created Date of Expiry "
+
+MESSAGE          = "MESS_5"
+TEXT             = "Standard ID   :"
+
+MESSAGE          = "MESS_6"
+TEXT             = "Study From :"
+
+MESSAGE          = "MESS_7"
+TEXT             = "Study To   :"
+
+MESSAGE          = "MESS_8"
+TEXT             = "The following Analysis have been assigned to the Standard"
+
+MESSAGE          = "MESS_9"
+TEXT             = "The Analysis selected consists of the following Components Standard "
+
+MESSAGE          = "MESS_10"
+TEXT             = "No results have been entered for this component"
+
+MESSAGE          = "MESS_11"
+TEXT             = "Error - No dates have been selected for the study"
+
+MESSAGE          = "MESS_12"
+TEXT             = "No analysis have been assigned to the standard"
+
+MESSAGE          = "MESS_13"
+TEXT             = "Select which Standard versions you wish to study"
+
+MESSAGE          = "MESS_14"
+TEXT             = "Select the dates between which the standards will be studied "
+
+MESSAGE          = "MESS_15"
+TEXT             = "Output the Study to a graph"
+
+MESSAGE          = "MESS_16"
+TEXT             = "Output the Study to a report"
+
+MESSAGE          = "MESS_17"
+TEXT             = "Creating Report"
+
+MESSAGE          = "MESS_18"
+TEXT             = "Select the Standard to be Studied"
+
+MESSAGE          = "MESS_19"
+TEXT             = "Select or deselect a version by pressing the select key "
+
+MESSAGE          = "MESS_20"
+TEXT             = "Select the Analysis for the Graph"
+
+MESSAGE          = "MESS_21"
+TEXT             = "Select the Component to Plotted"
+
+MESSAGE          = "MESS_22"
+TEXT             = "Searching for versions - Please Wait"
+
+MESSAGE          = "MESS_23"
+TEXT             = "Initialising graph Variables - Please Wait"
+
+MESSAGE          = "BOX_4"
+TEXT             = "| Study Options |"
+
+MESSAGE          = "BOX_5"
+TEXT             = "Select Standard Versions     "
+
+MESSAGE          = "BOX_6"
+TEXT             = "Select Date to search between"
+
+MESSAGE          = "BOX_7"
+TEXT             = "Output to Graph              "
+
+MESSAGE          = "BOX_8"
+TEXT             = "Output to Report             "
+
+MESSAGE          = "HEAD_1"
+TEXT             = "  Standards Report                                                  PAGE ##"
+
+
+MESSAGE GROUP "STD_VERS_"
+
+MESSAGE		 = "MESS_WIND"
+TEXT		 = "MESSAGE"
+
+MESSAGE          = "GRID_TITLE_1"
+TEXT             = "Version"
+TEXT             = ""
+
+MESSAGE          = "GRID_TITLE_2"
+TEXT             = "Status"
+TEXT             = ""
+
+MESSAGE          = "GRID_TITLE_3"
+TEXT             = "   Date"
+TEXT             = "  Created"
+
+MESSAGE          = "GRID_TITLE_4"
+TEXT             = "    Expiry"
+TEXT             = "     Type"
+
+MESSAGE          = "GRID_TITLE_5"
+TEXT             = "    Lifetime"
+TEXT             = ""
+
+MESSAGE          = "GRID_TITLE_6"
+TEXT             = "Remaining"
+TEXT             = "  Usage"
+
+MESSAGE          = "GRID_TITLE_7"
+TEXT             = "Amount"
+TEXT             = " Made"
+
+MESSAGE          = "GRID_TITLE_8"
+TEXT             = "Version"
+TEXT             = "Comment"
+
+MESSAGE          = "GRID_TITLE_9"
+TEXT             = "Usage"
+TEXT             = "Count"
+
+MESSAGE          = "GRID_TITLE_10"
+TEXT             = "  Expiry"
+TEXT             = "   Date"
+                     
+MESSAGE          = "GRID_TITLE_11"
+TEXT             = "  Product ID"
+TEXT             = ""
+                     
+MESSAGE          = "GRID_TITLE_12"
+TEXT             = "Maximum"
+TEXT             = "Usage"
+
+MESSAGE          = "CONST_4"
+TEXT             = "REMOVE/INSERT - expire/reactivate version, DO - save, EXIT - quit"
+
+MESSAGE          = "CONST_5"
+TEXT             = "Press DO or EXIT to quit"
+
+MESSAGE          = "CONST_6"
+TEXT             = "Choose Standard Version To Display"
+
+MESSAGE          = "CONST_7"
+TEXT             = "Choose Standard Version To Modify"
+
+MESSAGE          = "CONST_8"
+TEXT             = "<EXIT> - Quit"
+
+MESSAGE          = "CONST_9"
+TEXT             = "Enter Standard Id    : "
+
+MESSAGE          = "CONST_10"
+TEXT             = "Enter Version Number : "
+
+MESSAGE          = "CONST_11"
+TEXT             = "Standard Version Data Entry Screen"
+
+MESSAGE          = "CONST_12"
+TEXT             = "Select For components / DO to save / EXIT to quit"
+
+MESSAGE          = "CONST_13"
+TEXT             = "Select For components / DO, EXIT to quit"
+
+MESSAGE          = "CONST_14"
+TEXT             = "Component List Editor For "
+
+MESSAGE          = "CONST_15"
+TEXT             = "Select For Values / DO to save / EXIT to quit"
+
+MESSAGE          = "CONST_16"
+TEXT             = "Select For Values / DO, EXIT to quit"
+
+MESSAGE          = "CONST_17"
+TEXT             = "Component Name                Type   Units       Typical   D.P. "
+
+MESSAGE          = "CONST_18"
+TEXT             = "Values For Component "
+
+MESSAGE          = "CONST_19"
+TEXT             = "DO to save / EXIT to quit"
+
+MESSAGE          = "CONST_20"
+TEXT             = "DO, EXIT to quit"
+
+MESSAGE          = "CONST_21"
+TEXT             = "Level ID   Minimum     Maximum     Units      "
+
+MESSAGE          = "CONST_22"
+TEXT             = "Level ID   Textual Value                      "
+
+MESSAGE          = "DIS_1_1"
+TEXT             = "Expire Standard Versions"
+
+MESSAGE          = "DIS_1_2"
+TEXT             = "View Standard Versions"
+
+MESSAGE          = "SCHED_1"
+TEXT             = "Versions for Standard "
+
+MESSAGE          = "INPUT_8"
+TEXT             = "Active"
+
+MESSAGE          = "INPUT_9"
+TEXT             = "Expired"
+
+MESSAGE          = "HEAD_1"
+TEXT             = "Information for Version "
+
+MESSAGE          = "HEAD_2"
+TEXT             = "Standard Versions Listing on "
+
+MESSAGE          = "HEAD_3"
+TEXT             = "                    PAGE ##"
+
+MESSAGE          = "TAB_1"
+TEXT             = "The following Versions have been created for Standard "
+
+MESSAGE          = "FOOTER"
+TEXT             = "End of Listing"
+
+MESSAGE          = "DIS_3"
+TEXT             = "Checking status of MLP link"
+
+MESSAGE          = "DIS_4"
+TEXT             = "Error creating new MLP "
+
+MESSAGE          = "DIS_5"
+TEXT             = "Error in creating MLP Level "
+
+MESSAGE          = "DIS_6"
+TEXT             = "Automatically created via standards"
+
+MESSAGE          = "DIS_7"
+TEXT             = "Value does not conform to standard"
+
+MESSAGE          = "DIS_8"
+TEXT             = "Error in creating mlp value "
+
+MESSAGE          = "DIS_9"
+TEXT             = "Error in creating MLP Version "
+
+MESSAGE          = "DIS_10"
+TEXT             = "MLP for Standard :"
+
+MESSAGE          = "DIS_11"
+TEXT             = "Error in creating Standard Version "
+
+MESSAGE          = "DIS_12"
+TEXT             = "Created as Standard"
+
+MESSAGE          = "DIS_13"
+TEXT             = "Updating MLP link"
+
+MESSAGE          = "PROM_1"
+TEXT             = "Version Comment      :"
+
+MESSAGE          = "PROM_2"
+TEXT             = "Expiry Type          :"
+
+MESSAGE          = "PROM_3"
+TEXT             = "Lifetime             :"
+
+MESSAGE          = "PROM_4"
+TEXT             = "Maximum Usage        :"
+
+MESSAGE          = "PROM_5"
+TEXT             = "Amount Made          :"
+
+MESSAGE          = "DIS_14"
+TEXT             = "Standard Id          :"
+
+MESSAGE          = "DIS_15"
+TEXT             = "Version Number       :"
+
+MESSAGE          = "DIS_16"
+TEXT             = "Usage Count          :"
+
+MESSAGE          = "DIS_17"
+TEXT             = "Expiry Date          :"
+
+MESSAGE          = "DIS_18"
+TEXT             = "Minimum lifetime for a standard is : "
+
+MESSAGE          = "DIS_19"
+TEXT             = "No components for standard version"
+
+MESSAGE          = "DIS_20"
+TEXT             = "Master Version for Standard"
+
+MESSAGE          = "NO_VERSIONS"
+TEXT             = "There are no versions for this standard"
+SEVERITY 	 = "ERROR"
+
+MESSAGE          = "BUTTON_EXPIRE"
+TEXT             = "Expire"
+
+MESSAGE          = "BUTTON_REACT"
+TEXT             = "Reactivate"
+
+MESSAGE          = "BUTTON_YES"
+TEXT             = "Yes"
+                       
+MESSAGE          = "BUTTON_NO"
+TEXT             = "No"
+                       
+MESSAGE          = "BUTTON_APPLY"
+TEXT             = "Apply"
+
+MESSAGE          = "BUTTON_COMPONENT"
+TEXT             = "Comp's"
+
+MESSAGE          = "BUTTON_LIMITS"
+TEXT             = "Limits"
+                    
+MESSAGE          = "CONCENTRATION"
+TEXT             = "Concentrations"
+                    
+MESSAGE          = "LIMITS"
+TEXT             = "Limits"
+                    
+MESSAGE          = "DESCRIP"
+TEXT             = "Description"
+
+MESSAGE          = "CONC_GUI"
+TEXT             = "Conc"
+
+MESSAGE		 = "TYPE_1"
+TEXT		 = "Time"
+
+MESSAGE		 = "TYPE_2"
+TEXT		 = "Usage"
+
+MESSAGE		 = "TYPE_3"
+TEXT		 = "Time and Usage"
+
+MESSAGE		 = "MODIFY" 
+TEXT             = "Modify"
+
+MESSAGE		 = "NEW_VERSION"
+TEXT		 = "Create New Version"
+               
+MESSAGE		 = "REMOVE_VERSION"
+TEXT		 = "Remove New Version"
+
+MESSAGE		 = "CREATE_LIMIT"
+TEXT		 = "Create Limits"
+
+MESSAGE		 = "CONFIRM_CHANGES"
+TEXT		 = "Do you want to save changes to this item"
+               
+MESSAGE		 = "TREE_VERS_HEAD"
+TEXT		 = "Standard Versions Explorer"
+
+MESSAGE GROUP      "STD_CONC_"
+
+MESSAGE          = "CONCENTRATION_TOP_LINE"
+TEXT             = "Standard Concentration Editor"
+
+MESSAGE          = "CONCENTRATION_HEAD_LINE"
+TEXT             = "  Component                              Amount     Units"
+                                                                     
+MESSAGE          = "CONCENTRATION_BOT_LINE"
+TEXT             = "Press SELECT for Options/Do to save/EXIT to quit"
+
+MESSAGE          = "CONCENTRATION_FIELD_1"
+TEXT             = "Component"
+
+MESSAGE          = "CONCENTRATION_FIELD_2"
+TEXT             = "Amount"
+
+MESSAGE          = "CONCENTRATION_FIELD_3"
+TEXT             = "Units"
+
+MESSAGE          = "OPTION_HEADER"
+TEXT             = "Concentration Options"
+
+MESSAGE          = "OPTION_ANALYSIS"
+TEXT             = "Analysis"
+
+MESSAGE          = "OPTION_CATEGORY"
+TEXT             = "Only [] Components"
+                               
+MESSAGE		 = "ALL_OPTION"
+TEXT		 = "Select All Components"
+
+MESSAGE		 = "VERSION_PROMPT"
+TEXT		 = "Analysis Version" 
+                                             
+MESSAGE		 = "IGNORE_ALL"
+TEXT		 = "Components already exist"
+
+MESSAGE		 = "IGNORE_SOME"
+TEXT		 = "Existing Components were detected and ignored"
+
+MESSAGE          = "CONCENTRATION_FOOTER"
+TEXT             = "DO to insert components/EXIT to quit"
+
+MESSAGE		 = "NO_LIMITS"
+TEXT		 = "No Limits Found"
+                                             
+MESSAGE		 = "IGNORE_ONE"
+TEXT		 = "Component already exist"
+               
+MESSAGE		 = "BLANK_ID"
+TEXT		 = "Blank ID was detected and cannot be inserted" 
+
+MESSAGE		 = "REC_LOCKED"
+TEXT		 = "Record is currently locked"
+
+MESSAGE		 = "CREATE_FAILED"
+TEXT		 = "Record could not be created"
+
+MESSAGE GROUP "UDWSHT_"
+
+MESSAGE          = "BORD_1"
+TEXT             = "WORKSHEET INFORMATION"
+
+MESSAGE          = "BORD_2"
+TEXT             = "HELP INFORMATION"
+
+MESSAGE          = "BORD_3"
+TEXT             = "DEFINED PARAMETERS"
+
+MESSAGE          = "BORD_4"
+TEXT             = "SAVE WORKSHEET"
+
+MESSAGE          = "BORD_5"
+TEXT             = "CREATE MC_RSF"
+
+MESSAGE          = "DISPLAY_1"
+TEXT             = "                         Definable Worksheet Generation                        "
+
+MESSAGE          = "BOX_1"
+TEXT             = "SORT OPTIONS"
+
+MESSAGE          = "BOX_2"
+TEXT             = "ASCENDING SAMPLE PRIORITY"
+
+MESSAGE          = "BOX_3"
+TEXT             = "DESCENDING SAMPLE PRIORITY"
+
+MESSAGE          = "BOX_4"
+TEXT             = "ASCENDING TEST PRIORITY"
+
+MESSAGE          = "BOX_5"
+TEXT             = "DESCENDING TEST PRIORITY"
+
+MESSAGE          = "BOX_6"
+TEXT             = "ASCENDING DATE LOGGED IN"
+
+MESSAGE          = "BOX_7"
+TEXT             = "DESCENDING DATE LOGGED IN"
+
+MESSAGE          = "BOX_8"
+TEXT             = "ASCENDING DATE RESULTS REQUIRED"
+
+MESSAGE          = "BOX_9"
+TEXT             = "DESCENDING DATE RESULTS REQUIRED"
+
+MESSAGE          = "BOX_10"
+TEXT             = "SELECT BOX"
+
+MESSAGE          = "BOX_11"
+TEXT             = "SORT LIST"
+
+MESSAGE          = "BOX_12"
+TEXT             = "INSERT SAMPLE FROM BUFFER"
+
+MESSAGE          = "BOX_13"
+TEXT             = "SHOW DEFINED PARAMETERS"
+
+MESSAGE          = "DISPLAY_2"
+TEXT             = "Please Input the Parameters by which the worksheet will be created"
+
+MESSAGE          = "DISPLAY_3"
+TEXT             = "Analysis ID..... : "
+
+MESSAGE          = "DISPLAY_4"
+TEXT             = "Instrument ID... : "
+
+MESSAGE          = "DISPLAY_5"
+TEXT             = "Operator ID..... : "
+
+MESSAGE          = "DISPLAY_6"
+TEXT             = "Job Name........ : "
+
+MESSAGE          = "DISPLAY_7"
+TEXT             = "Project ID...... : "
+
+MESSAGE          = "DISPLAY_8"
+TEXT             = "Product Name.... : "
+
+MESSAGE          = "DISPLAY_9"
+TEXT             = "Sample Point.... : "
+
+MESSAGE          = "DISPLAY_10"
+TEXT             = "Location........ : "
+
+MESSAGE          = "DISPLAY_11"
+TEXT             = "Customer ID..... : "
+
+MESSAGE          = "DISPLAY_12"
+TEXT             = "Sample Type..... : "
+
+MESSAGE          = "DISPLAY_13"
+TEXT             = "     Press DO to select configuration                                          "
+
+MESSAGE          = "DISPLAY_14"
+TEXT             = "     Press EXIT to quit                                                        "
+
+MESSAGE          = "DISPLAY_15"
+TEXT             = "The worksheet will contain tests which have the following parameters"
+
+MESSAGE          = "DISPLAY_16"
+TEXT             = "    Press EXIT to return to previous screen                                    "
+
+MESSAGE          = "DISPLAY_17"
+TEXT             = "No Search parameters have been Selected"
+
+MESSAGE          = "DISPLAY_18"
+TEXT             = "Compiling List of Samples for the Worksheet"
+
+MESSAGE          = "DISPLAY_19"
+TEXT             = "Sample ID found  : "
+
+MESSAGE          = "DISPLAY_20"
+TEXT             = "No in List :"
+
+MESSAGE          = "DISPLAY_21"
+TEXT             = "Operator :"
+
+MESSAGE          = "DISPLAY_22"
+TEXT             = "Date Generated :"
+
+MESSAGE          = "DISPLAY_23"
+TEXT             = "No Samples Found"
+
+MESSAGE          = "DISPLAY_24"
+TEXT             = "No Samples Removed"
+
+MESSAGE          = "BORD_6"
+TEXT             = "REMOVED SAMPLES"
+
+MESSAGE          = "DISPLAY_31"
+TEXT             = "Number of Tests to Include :"
+
+MESSAGE          = "DISPLAY_32"
+TEXT             = "Error - exceeds total number available"
+
+MESSAGE          = "DISPLAY_33"
+TEXT             = "Create RSF File : "
+
+MESSAGE          = "DISPLAY_34"
+TEXT             = "Do you wish to save another worksheet :"
+
+MESSAGE          = "DISPLAY_35"
+TEXT             = "Worksheet ID :"
+
+MESSAGE          = "DISPLAY_36"
+TEXT             = "An Active Worksheet Already Exists with this Name"
+
+MESSAGE          = "DISPLAY_37"
+TEXT             = "Cannot Create worksheet record"
+
+MESSAGE          = "DISPLAY_38"
+TEXT             = "Creating Worksheet File    : "
+
+MESSAGE          = "DISPLAY_39"
+TEXT             = "Test is no longer valid for worksheet : "
+
+MESSAGE          = "DISPLAY_40"
+TEXT             = "Cannot save worksheet"
+
+MESSAGE          = "DISPLAY_41"
+TEXT             = " UP        - Moves cursor up one line."
+
+MESSAGE          = "DISPLAY_42"
+TEXT             = " DOWN      - Moves cursor down one line."
+
+MESSAGE          = "DISPLAY_43"
+TEXT             = " NEXT SCREEN - moves the screen down one page."
+
+MESSAGE          = "DISPLAY_44"
+TEXT             = " PREV SCREEN - Moves the screen up one page."
+
+MESSAGE          = "DISPLAY_45"
+TEXT             = " SELECT    - Display Further Options."
+
+MESSAGE          = "DISPLAY_46"
+TEXT             = " REMOVE    - Remove sample into Sample Buffer."
+
+MESSAGE          = "DISPLAY_47"
+TEXT             = " INSERT    - Insert all samples from the Sample buffer."
+
+MESSAGE          = "DISPLAY_48"
+TEXT             = " FIND      - Find a particular sample in the Worksheet."
+
+MESSAGE          = "DISPLAY_49"
+TEXT             = " DO/RETURN - Save Worksheet."
+
+MESSAGE          = "DISPLAY_50"
+TEXT             = " EXIT      - Exit to Options Menu"
+
+MESSAGE          = "DISPLAY_51"
+TEXT             = "Sample ID :"
+
+MESSAGE          = "DISPLAY_52"
+TEXT             = "Sample not found in worksheet"
+
+MESSAGE          = "DISPLAY_53"
+TEXT             = "Analysis......: "
+
+MESSAGE          = "DISPLAY_54"
+TEXT             = "Instrument....: "
+
+MESSAGE          = "DISPLAY_55"
+TEXT             = "Operator......: "
+
+MESSAGE          = "DISPLAY_56"
+TEXT             = "JANFEBMARAPRMAYJUNJULAUGSEPOCTNOVDEC"
+
+
+MESSAGE GROUP "WKS_"
+
+MESSAGE	= "ST1"
+TEXT	= "JANFEBMARAPRMAYJUNJULAUGSEPOCTNOVDEC"
+
+MESSAGE	= "NO_TESTS_INCLUDED"
+TEXT	= "No tests have been included for the worksheet"
+SEVERITY = "ERROR"
+
+MESSAGE	= "T_SIMULTANEOUS_ASSIGN"
+TEXT	= "Test for this worksheet has been assigned to another worksheet"
+SEVERITY = "ERROR"
+
+MESSAGE	= "S_SIMULTANEOUS_ASSIGN"
+TEXT	= "Sample for this worksheet has been assigned to another worksheet"
+SEVERITY = "ERROR"
+
+MESSAGE	= "T_SIMULTANEOUS_STATUS"
+TEXT	= "Test for this worksheet has been changed to an invalid status"
+SEVERITY = "ERROR"
+
+MESSAGE	= "S_SIMULTANEOUS_STATUS"
+TEXT	= "Sample for this worksheet has been changed to an invalid status"
+SEVERITY = "ERROR"
+
+MESSAGE	= "T_SIMULTANEOUS_DELETE"
+TEXT	= "Test for this worksheet has been deleted"
+SEVERITY = "ERROR"
+
+MESSAGE	= "S_SIMULTANEOUS_DELETE"
+TEXT	= "Sample for this worksheet has been deleted"
+SEVERITY = "ERROR"
+
+MESSAGE	= "NONE_REMOVED"
+TEXT	= "No entries have been removed from the list"
+
+MESSAGE	 = "FILE_ERROR"
+TEXT     = "File Error - []"
+SEVERITY = "ERROR"
+
+MESSAGE	= "NO_GEN_WORK"
+TEXT	= "Worksheet Has not Been Successfully Created"
+
+MESSAGE	= "FILE_NOT_FOUND"
+TEXT	= "Error Could Not Find The File :"
+SEVERITY = "ERROR"
+
+MESSAGE	= "RECORD_NOT_FOUND"
+TEXT	= "Error Could Not Find Record for "
+SEVERITY = "ERROR"
+
+MESSAGE	= "NO_IN_LIST"
+TEXT	= "Number in List : "
+
+MESSAGE	= "COMP_WKS"
+TEXT	= "The Worksheet has been Completed"
+
+MESSAGE	= "NO_COMP_WKS"
+TEXT	= "The Worksheet has NOT been Completed"
+
+MESSAGE	= "CANC_WKS"
+TEXT	= "The Worksheet has been Cancelled"
+
+MESSAGE	= "NO_CANC_WKS"
+TEXT	= "The Worksheet has NOT been Cancelled"
+
+MESSAGE	= "REG_WKS"
+TEXT	= "The Worksheet has been Regenerated"
+
+MESSAGE	= "NO_REG_WKS"
+TEXT	= "The Worksheet has NOT been Regenerated"
+
+MESSAGE	= "INVALID_WORKSHEET_TYPE"
+TEXT	= "Invalid Worksheet Type "
+
+MESSAGE	= "COMPLETE_WKS"
+TEXT	= "Complete Worksheet"
+
+MESSAGE	= "CANCEL_WKS"
+TEXT	= "Cancel Worksheet"
+
+MESSAGE	= "NEW_WKS_FOR_RSF"
+TEXT	= "Do you wish to create a new worksheet : "
+
+MESSAGE	= "IS_COMP"
+TEXT	= "Completing"
+
+MESSAGE	= "IS_CANC"
+TEXT	= "Cancelling"
+
+MESSAGE	= "COMPILE_MESS"
+TEXT	= "Compiling List of Tests for Worksheet - Press EXIT to Interrupt"
+
+MESSAGE	= "PCOMPILE_MESS"
+TEXT	= "Compiling List of Samples for Worksheet - Press EXIT to Interrupt"
+
+MESSAGE	= "CANC_WKS_HEAD"
+TEXT	= "Cancel Worksheet"
+
+MESSAGE	= "COMP_WKS_HEAD"
+TEXT	= "Complete Worksheet"
+
+MESSAGE	= "RSF_WKS_HEAD"
+TEXT	= "Create RSF From Worksheet"
+
+MESSAGE	= "REG_WKS_HEAD"
+TEXT	= "Regenerate Sample Worksheet"
+
+MESSAGE	= "WKS_ACT_FOOT"
+TEXT	= "Press EXIT to Quit"
+
+MESSAGE	= "GET_WKS_ID"
+TEXT	= "Enter Worksheet ID : "
+
+MESSAGE	= "REM_TEST_FOOT"
+TEXT	= "Press Do to Insert Test / EXIT to Quit"
+
+MESSAGE	= "REMOVED_TESTS"
+TEXT	= "Removed Tests"
+
+MESSAGE	= "INC_SAMP_IN_WKS"
+TEXT	= "Press DOWN Cursor to include Tests, DO to Create Worksheet, EXIT to Quit"
+
+MESSAGE	= "ASS_STAN_TO_WKS"
+TEXT	= "Assigning Standards to Worksheet"
+
+MESSAGE	= "OP_ASSIGN"
+TEXT	= "Operator Assignment"
+
+MESSAGE	= "ENT_OPID"
+TEXT	= "Enter Operator ID : "
+
+MESSAGE	= "GEN_ANAL_HEAD"
+TEXT	= "Generate Analysis Worksheet"
+
+MESSAGE	= "GEN_PREP_HEAD"
+TEXT	= "Generate Test Preparation Worksheet"
+
+MESSAGE	= "GEN_SPREP_HEAD"
+TEXT	= "Generate Sample Preparation Worksheet"
+
+MESSAGE	= "GEN_ANAL_ID"
+TEXT	= "Enter Analysis ID : "
+
+MESSAGE	= "GEN_PREP_ID"
+TEXT	= "Enter Search ID   : "
+
+MESSAGE	= "THE_SORT_MODE"
+TEXT	= "Sort Mode         : "
+
+MESSAGE	= "CR_BOX_FOOT"
+TEXT	= "Press EXIT to Quit"
+
+MESSAGE	= "BLOCK_MODE"
+TEXT	= " Block Removal Mode Selected  "
+
+MESSAGE	= "STOP_BLOCK_MODE"
+TEXT	= " Block Removal Mode Cancelled "
+
+MESSAGE	= "HEAD_GEN_ANAL"
+TEXT	= "Generate Analysis Worksheet"
+
+MESSAGE	= "HEAD_GEN_PREP"
+TEXT	= "Generate Test Preparation Worksheet"
+
+MESSAGE	= "CHOSEN_ANAL"
+TEXT	= "Analysis ID : "
+
+MESSAGE	= "CHOSEN_PREP"
+TEXT	= "Preparation ID : "
+
+MESSAGE	= "MANIP_FOOT"
+TEXT	= "SELECT/FIND/REMOVE/INSERT-Screen Editing Keys / DO-Save / EXIT-Quit"
+
+MESSAGE	= "CREATE_ANAL_WKS"
+TEXT	= "Creating Analysis Worksheet    : "
+
+MESSAGE	= "CREATE_PREP_WKS"
+TEXT	= "Creating Preparation Worksheet : "
+
+MESSAGE	= "STAND_HEAD1"
+TEXT	= "Analysis ID   :            Worksheet ID :                      Usage   : "
+
+MESSAGE	= "STAN_DISP_HEAD"
+TEXT	="  Type       Sample ID           ID Text"
+
+MESSAGE	= "STAND_HEAD2"
+TEXT	= "Standard Type :            Standard ID  :                      Version : "
+
+MESSAGE	= "STAN_DISP_FOOT"
+TEXT	= "SELECT-Standard ID;INSERT/REMOVE-Standard;DO-Create;EXIT-Quit Standard Entry"
+
+MESSAGE	= "EXPIRE_STAN_MESS"
+TEXT	= "This Standard Has Now Expired"
+SEVERITY = "WARNING"
+
+MESSAGE	= "TCOMP_HEAD"
+TEXT	= " Sample ID             ID Text            Analysis/Rep  Comp "
+
+MESSAGE	= "PCOMP_HEAD"
+TEXT	= " Sample ID             ID Text                          Comp "
+
+MESSAGE	= "TCOMP_TITLE"
+TEXT	= "Complete Test Preparation Worksheet"
+
+MESSAGE	= "PCOMP_TITLE"
+TEXT	= "Complete Sample Preparation Worksheet"
+
+MESSAGE	= "COMP_FOOT"
+TEXT	= "Press SPACE to modify complete field"
+
+MESSAGE	= "NO_TESTS"
+TEXT	= "No Valid Tests have been found for this Analysis"
+SEVERITY = "WARNING"
+
+MESSAGE	= "NO_TESTS_PREP"
+TEXT	= "No Valid Tests have been found for this Preparation"
+SEVERITY = "WARNING"
+
+MESSAGE	= "NO_SAMPS"
+TEXT	= "No Valid Samples have been found for this Preparation"
+SEVERITY = "WARNING"
+
+MESSAGE	= "WORKS_GEN_SCR"
+TEXT	= "Worksheet Generation Screen"
+
+MESSAGE	= "STANDINSERT_SCR"
+TEXT	= "Standard Insertion Screen"
+
+MESSAGE	= "NOT_APPROVED"
+TEXT	= "This operator is not approved for "
+SEVERITY = "ERROR"
+
+MESSAGE	= "JOB_BOX_HEAD"
+TEXT	= "Select Samples from Specified Job Name"
+
+MESSAGE	= "JOB_BOX_MESS"
+TEXT	= "Job Name for Search : "
+
+MESSAGE	= "JOB_BOX_FOOT"
+TEXT	= "Enter Job Name for search or press DO for all jobs"
+
+MESSAGE	 = "JOB_IS_ALREADY_USED"
+TEXT	 = "This Job has already been used for building the sample list"
+SEVERITY = "ERROR"
+
+MESSAGE  = "JOB_BLANK_ALREADY_USED"
+TEXT     = "The blank Job has already been used for building the sample list"
+SEVERITY = "ERROR"
+
+MESSAGE	 = "DESTROY_LIST"
+TEXT	 = "Erase current list"
+
+MESSAGE	= "FIND_OPTIONS"
+TEXT	= "Options Available"
+
+MESSAGE	= "SEARCH_AGAIN"
+TEXT	= "Search for More Samples"
+
+MESSAGE	= "INSERT_INSTEAD"
+TEXT	= "Insert Removed Sample  "
+
+MESSAGE	= "DONE_ALREADY"
+TEXT	= "Samples from all Jobs have already been included"
+SEVERITY = "ERROR"
+
+MESSAGE	= "REG_D_WKS"
+TEXT	= "Regenerate Worksheet"
+
+MESSAGE	= "FOUND_REG"
+TEXT	= "Found Tests"
+
+MESSAGE	= "DELETED_REG"
+TEXT	= "Tests deleted"
+
+MESSAGE	= "NO_REG_TESTS"
+TEXT	= "No tests have been added or deleted for this sample"
+
+MESSAGE	= "SAMPS_SELECTED"
+TEXT	= "Samples Selected"
+
+MESSAGE	= "SELECTED_TEST"
+TEXT	= " No Found  :            "
+
+MESSAGE	= "SELECTED_SAMPLE"
+TEXT	= " Sample ID :            "
+
+MESSAGE	= "ASC_TESTP"
+TEXT	= "Ascending Test Priority"
+
+MESSAGE	= "DESC_TESTP"
+TEXT	= "Descending Test Priority"
+
+MESSAGE	= "JOB_NAME"
+TEXT	= "Job Name"
+
+MESSAGE	= "DATERESREQ"
+TEXT	= "Date Results Required"
+
+MESSAGE	= "TIMEINSYS"
+TEXT	= "Time in System"
+
+MESSAGE	= "APDRR"
+TEXT	= "Ascending Priority and Date Results Required"
+
+MESSAGE	= "DPDRR"
+TEXT	= "Descending Priority and Date Results Required"
+
+MESSAGE	= "APTIS"
+TEXT	= "Ascending Priority and Time in System"
+
+MESSAGE	= "DPTIS"
+TEXT	= "Descending Priority and Time in System"
+
+MESSAGE	= "ASPR"
+TEXT	= "Ascending Sample Priority"
+
+MESSAGE	= "DSPR"
+TEXT	= "Descending Sample Priority"
+
+MESSAGE	= "ASPTP"
+TEXT	= "Ascending Sample Priority and Test Priority"
+
+MESSAGE	= "DSPTP"
+TEXT	= "Descending Sample Priority and Test Priority"
+
+MESSAGE = "ANAL_TABLE_NAME"
+TEXT	= "Analysis "
+
+MESSAGE = "NID_MESS"
+TEXT    = "  Sample ID  "
+
+MESSAGE = "TID_MESS"
+TEXT    = "           ID Text            "
+
+MESSAGE = "PRI_MESS"
+TEXT    = "PR"
+
+MESSAGE = "DLO_MESS"
+TEXT    = "Login Date "
+
+MESSAGE = "DRQ_MESS"
+TEXT    = "Date Req   "
+
+MESSAGE = "JOB_MESS"
+TEXT    = "      Job Name      "
+
+MESSAGE = "CUS_MESS"
+TEXT    = "Customer  "
+
+MESSAGE = "SPT_MESS"
+TEXT    = "Sample Pt "
+
+MESSAGE = "PRJ_MESS"
+TEXT    = "Project id"
+
+MESSAGE = "PRD_MESS"
+TEXT    = "Product   "
+
+MESSAGE = "BCH_MESS"
+TEXT    = "Batch Num "
+
+MESSAGE = "TYP_MESS"
+TEXT    = "Samp Type "
+
+MESSAGE = "LOC_MESS"
+TEXT    = "Location  "
+
+MESSAGE = "TPR_MESS"
+TEXT    = "TP"
+
+MESSAGE = "DSA_MESS"
+TEXT    = "Date Taken "
+
+MESSAGE = "DRC_MESS"
+TEXT    = "Date Recd  "
+
+MESSAGE = "DES_MESS"
+TEXT    = "          Description         "
+
+MESSAGE = "NAM_MESS"
+TEXT    = "     Sample Name    "
+
+MESSAGE	= "PREP_HEAD_1"
+TEXT	= "Sample ID"
+
+MESSAGE	= "PREP_HEAD_2"
+TEXT	= "ID Text"
+
+MESSAGE	= "PREP_HEAD_3"
+TEXT	= "Analysis/Rep"
+
+MESSAGE	= "PREP_HEAD_4"
+TEXT	= "Comp"
+
+MESSAGE	 = "OP_REQUIRED"
+TEXT     = "The Operator ID Field must be entered"
+SEVERITY = "ERROR"
+
+MESSAGE	 = "EMPTY_WORKSHEET"
+TEXT     = "Can't generate an empty worksheet"
+SEVERITY = "ERROR"
+
+MESSAGE	 = "BUTTON_ADD"
+TEXT     = "Add >"
+
+MESSAGE	 = "BUTTON_ADD_ALL"
+TEXT     = "Add >>"
+
+MESSAGE	 = "BUTTON_REMOVE"
+TEXT     = "< Remove"
+
+MESSAGE	 = "BUTTON_REMOVE_ALL"
+TEXT     = "<< Remove"
+
+MESSAGE	 = "BUTTON_STAN"
+TEXT     = "Standard >"
+
+MESSAGE	 = "BUTTON_SELECT"
+TEXT     = "Select"
+
+MESSAGE	 = "BUTTON_CLEAR"
+TEXT     = "Clear"
+
+MESSAGE	 = "BUTTON_GENERATE"
+TEXT     = "Generate"
+
+MESSAGE	 = "ANAL_LABEL"
+TEXT     = "Analysis"
+
+MESSAGE	 = "PREP_LABEL"
+TEXT     = "Preparation"
+
+MESSAGE	 = "JOB_LABEL"
+TEXT     = "Job ID"
+
+MESSAGE	 = "STANDARD_LABEL"
+TEXT     = "Standard ID"
+
+MESSAGE	 = "VERSION_LABEL"
+TEXT     = "Version"
+
+MESSAGE	 = "USAGE_LABEL"
+TEXT     = "Usage"
+
+MESSAGE	 = "OPERATOR_LABEL"
+TEXT     = "Operator"
+
+MESSAGE	 = "TEST_SEL_BOX"
+TEXT     = "Test Selection"
+
+MESSAGE	 = "SAMP_SEL_BOX"
+TEXT     = "Sample Selection"
+
+MESSAGE	 = "TEST_AVAIL_BOX"
+TEXT     = "Available Tests"
+
+MESSAGE	 = "SAMP_AVAIL_BOX"
+TEXT     = "Available Samples"
+
+MESSAGE	 = "WORKSHEET_BOX"
+TEXT     = "Worksheet"
+
+MESSAGE	 = "STANDARDS_BOX"
+TEXT     = "Standards"
+
+
+MESSAGE GROUP "MODWSHT_"
+
+MESSAGE = "WKSINFO"
+TEXT	= "WORKSHEET INFORMATION"
+
+MESSAGE = "HELPINFO"
+TEXT	= "HELP INFORMATION"
+
+MESSAGE = "OPTIONS"
+TEXT	= "OPTIONS"
+
+MESSAGE = "HELP_INFO"
+TEXT 	= "HELP INFORMATION"
+
+MESSAGE = "DEF_PARAM"
+TEXT 	= "DEFINED PARAMETERS"
+
+MESSAGE = "READ"
+TEXT	= "READ"
+
+MESSAGE = "INSERT"
+TEXT	= "INSERT"
+
+MESSAGE = "MODIFY"
+TEXT	= "MODIFY"
+
+MESSAGE = "PRINT"
+TEXT	= "PRINT"
+
+MESSAGE = "AUTHORISE"
+TEXT	= "AUTHORISE"
+
+MESSAGE = "RESULT_ENTRY"
+TEXT	= "RESULT ENTRY"
+
+MESSAGE = "SAVE"
+TEXT	= "SAVE"
+
+MESSAGE = "COMPLETE"
+TEXT	= "COMPLETE"
+
+MESSAGE = "EXIT"
+TEXT	= "EXIT"
+
+MESSAGE = "REM_SAMP"
+TEXT    = "REMOVED SAMPLES"
+
+MESSAGE	= "SAMPLE"
+TEXT	= "SAMPLE"
+
+MESSAGE	= "STANDARD"
+TEXT	= "STANDARD"
+
+MESSAGE	= "BLANK"
+TEXT	= "BLANK"
+
+MESSAGE	= "ALL_SAMPLES"
+TEXT	= "ALL SAMPLES"
+
+MESSAGE	= "SELECTED_SAMPLE"
+TEXT	= "SELECTED SAMPLE"
+
+MESSAGE	= "TEST_ONLY"
+TEXT	= "TEST ONLY"
+
+MESSAGE	= "FOR_WORKSHEET"
+TEXT	= "FOR WORKSHEET"
+
+MESSAGE	= "FOR_A_SAMPLE"
+TEXT	= "FOR A SAMPLE"
+
+MESSAGE	= "VIEWED_WORKSHEET"
+TEXT	= "VIEWED WORKSHEET"
+
+MESSAGE	= "BUFFERED_WORKSHEET"
+TEXT	= "BUFFERED WORKSHEET"
+
+MESSAGE	= "ANALYSIS_WORKSHEET"
+TEXT	= "ANALYSIS WORKSHEET"
+
+MESSAGE	= "DEFINED_WORKSHEET"
+TEXT	= "DEFINED WORKSHEET"
+
+MESSAGE	= "DELETE_FROM_BUFFER"
+TEXT	= "DELETE FROM BUFFER"
+
+MESSAGE = "SCREEN_HEAD"
+TEXT 	= "  READ  INSERT  MODIFY  PRINT  AUTHORISE  RESULT ENTRY  SAVE  COMPLETE  EXIT      "
+
+MESSAGE	= "MESS_1"
+TEXT	=  "Analysis ID :"
+
+MESSAGE	= "MESS_2"
+TEXT	=  "Defined : SELECT to view"
+
+MESSAGE	= "MESS_3"
+TEXT	=  "Operator :"
+
+MESSAGE	= "MESS_4"
+TEXT	=  "Date Generated :"
+
+MESSAGE	= "MESS_5"
+TEXT	=  "Worksheet ID : "
+
+MESSAGE	= "MESS_6"
+TEXT	=  "Error Reading :"
+
+MESSAGE	= "MESS_7"
+TEXT	=  "Analysis......: "
+
+MESSAGE	= "MESS_8"
+TEXT	=  "Instrument....: "
+
+MESSAGE	= "MESS_9"
+TEXT	=  "Operator......: "
+
+MESSAGE	= "MESS_10"
+TEXT	= "Job Name......: "
+
+MESSAGE	= "MESS_11"
+TEXT	= "Project ID....: "
+
+MESSAGE	= "MESS_12"
+TEXT	= "Product Name..: "
+
+MESSAGE	= "MESS_13"
+TEXT	= "Sample Point..: "
+
+MESSAGE	= "MESS_14"
+TEXT	= "Location......: "
+
+MESSAGE	= "MESS_15"
+TEXT	= "Customer ID...: "
+
+MESSAGE	= "MESS_16"
+TEXT	= "PAUSE"
+
+MESSAGE	= "MESS_17"
+TEXT	= " READ      - Reads an active worksheet"
+
+MESSAGE	= "MESS_18"
+TEXT	= " INSERT    - Allows new samples to be added"
+
+MESSAGE	= "MESS_19"
+TEXT	= " MODIFY    - Allows modification of the worksheet list"
+
+MESSAGE	= "MESS_20"
+TEXT	= " PRINT     - Calls the Print menu function"
+
+MESSAGE	= "MESS_21"
+TEXT	= " AUTHORISE - Authorise Samples in the worksheet"
+
+MESSAGE	= "MESS_22"
+TEXT	= " RESULT ENTRY - Views and inserts results"
+
+MESSAGE	= "MESS_23"
+TEXT	= " SAVE      - Saves the worksheet with all modifications"
+
+MESSAGE	= "MESS_24"
+TEXT	= " COMPLETE  - Calls the Complete menu function"
+
+MESSAGE	= "MESS_25"
+TEXT	= " EXIT      - Quits the Routine."
+
+MESSAGE	= "MESS_26"
+TEXT	= "There are no worksheets available"
+
+MESSAGE	= "MESS_27"
+TEXT	= "Not Reading Worksheet"
+
+MESSAGE	= "MESS_28"
+TEXT	= "Sample ID :"
+
+MESSAGE	= "MESS_29"
+TEXT	= "Unable to assign sample"
+
+MESSAGE	= "MESS_30"
+TEXT	= "Sample is Already on a Worksheet"
+
+MESSAGE	= "MESS_31"
+TEXT	= "         For Information on Key Functions Press HELP"
+
+MESSAGE	= "MESS_32"
+TEXT	= "This Standard Has Expired"
+
+MESSAGE	= "MESS_33"
+TEXT	= "Assigning Identity - Please wait"
+
+MESSAGE	= "MESS_34"
+TEXT	= "Error in assigning Test "
+
+MESSAGE	= "MESS_35"
+TEXT	= "Cannot Login Sample"
+
+MESSAGE	= "MESS_36"
+TEXT	= "Cannot modify - no Samples in Worksheet"
+
+MESSAGE	= "MESS_37"
+TEXT	= "Worksheet has no Generating Analysis"
+
+MESSAGE	= "MESS_38"
+TEXT	= "Warning - Active Worksheets in Buffer"
+
+MESSAGE	= "MESS_39"
+TEXT	= "Warning - Remove Buffer not empty"
+
+MESSAGE	= "MESS_40"
+TEXT	= "Do You Wish To Exit? :"
+
+MESSAGE	= "MESS_41"
+TEXT	= "Assign to Previous Operator? :"
+
+MESSAGE	= "MESS_42"
+TEXT	= "New Operator ID :"
+
+MESSAGE	= "MESS_43"
+TEXT	= "Worksheet Has Been Saved"
+
+MESSAGE	= "MESS_44"
+TEXT	= "Cannot Save Worksheet"
+
+MESSAGE	= "MESS_45"
+TEXT	= "Sample not found in worksheet"
+
+MESSAGE	= "MESS_46"
+TEXT	= " UP        - Moves cursor up one line"
+
+MESSAGE	= "MESS_47"
+TEXT	= " DOWN      - Moves cursor down one line"
+
+MESSAGE	= "MESS_48"
+TEXT	= " NEXT SCREEN - moves the screen down one page"
+
+MESSAGE	= "MESS_49"
+TEXT	= " PREV SCREEN - Moves the screen up one page"
+
+MESSAGE	= "MESS_50"
+TEXT	= " SELECT    - Insert a Sample from the paste buffer"
+
+MESSAGE	= "MESS_51"
+TEXT	= " REMOVE    - Remove sample into paste Buffer"
+
+MESSAGE	= "MESS_52"
+TEXT	= " INSERT    - Insert all samples from the paste buffer"
+
+MESSAGE	= "MESS_53"
+TEXT	= " FIND      - Find a particular sample in the worksheet"
+
+MESSAGE	= "MESS_54"
+TEXT	= " DO/RETURN/EXIT "
+
+MESSAGE	= "MESS_55"
+TEXT	= "           - Store Changes and Exit to Options menu"
+
+MESSAGE	= "MESS_56"
+TEXT	= " INSERT    - Insert Sample,Standard or Blank"
+
+MESSAGE	= "MESS_57"
+TEXT	= "No Samples Removed"
+
+MESSAGE	= "MESS_58"
+TEXT	= "Cannot Insert - No Generic Analysis ID"
+
+MESSAGE	= "MESS_59"
+TEXT	= "Standard ID : "
+
+MESSAGE	= "MESS_60"
+TEXT	= "Blank ID :"
+
+MESSAGE	= "MESS_61"
+TEXT	= "CONFM"
+
+MESSAGE	= "MESS_62"
+TEXT	= "Required Record is Locked - Please Wait"
+
+MESSAGE	= "MESS_63"
+TEXT	= "Version Required : "
+
+MESSAGE	= "MESS_64"
+TEXT	= "Standard assignment is not Configured"
+
+MESSAGE	= "MESS_65"
+TEXT	= "Analysis Incompatible with worksheet"
+
+MESSAGE	= "MESS_66"
+TEXT	= "Could Not Find Record for This Standard Version"
+
+MESSAGE	= "MESS_67"
+TEXT	= "Error Closing Worksheet File"
+
+MESSAGE	= "MESS_68"
+TEXT	= "Invalid Sample Status, must be C"
+
+MESSAGE	= "MESS_69"
+TEXT	= "Invalid Test Status, must be C "
+
+MESSAGE	= "MESS_70"
+TEXT	= "The SAMPLE record is currently locked"
+
+MESSAGE	= "MESS_71"
+TEXT	= "The TEST record is currently locked"
+
+MESSAGE	= "MESS_72"
+TEXT	= "Error - Could not find Sample record"
+
+MESSAGE	= "MESS_73"
+TEXT	= "Error - Could not find Test record"
+
+MESSAGE	= "MESS_74"
+TEXT	= "    Move Cursor to required Position and Press INSERT HERE"
+
+MESSAGE	= "MESS_75"
+TEXT	= "Sample has already been Authorised"
+
+MESSAGE	= "MESS_76"
+TEXT	= "Test has already been Authorised"
+
+MESSAGE	= "ACTWORK"
+TEXT	= "ACTIVE WORKSHEETS"
+
+
+MESSAGE GROUP "LIB_STAN_"
+
+MESSAGE       = "CONST_1"
+TEXT          = "MLP for Standard :"
+
+MESSAGE       = "CONST_2"
+TEXT          = "Created New Standard Version : "
+
+MESSAGE       = "CONST_3"
+TEXT          = "Failed to create New Standard Version : "
+
+MESSAGE       = "CONST_4"
+TEXT          = "Create Standard Version"
+
+MESSAGE       = "CONST_5"
+TEXT          = "Standard ID :"
+
+MESSAGE       = "CONST_6"
+TEXT          = "Press <EXIT> to Quit"
+
+MESSAGE       = "CONST_7"
+TEXT          = "Could not find record for standard "
+ 

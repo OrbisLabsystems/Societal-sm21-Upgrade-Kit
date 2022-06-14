@@ -1,0 +1,58 @@
+
+! Messages by DEMESSAGER
+
+MESSAGE GROUP "LTE_RULE_"
+
+MESSAGE        = "DISP_FOOT"
+TEXT           = "Press DO to save/EXIT to quit"
+
+MESSAGE        = "FIELD_DESC"
+TEXT           = "Description"
+
+MESSAGE        = "FIELD_FREQ"
+TEXT           = "Frequency"
+
+MESSAGE        = "FIELD_INTV"
+TEXT           = "Interval"
+
+MESSAGE        = "FIELD_LIB"
+TEXT           = "VGL Library"
+
+MESSAGE        = "FIELD_PRO_NUM"
+TEXT           = "Probation Number"
+
+MESSAGE        = "FIELD_PRO_PER"
+TEXT           = "Probation Period"
+
+MESSAGE        = "FIELD_ROUT"
+TEXT           = "VGL Routine"
+
+MESSAGE        = "FOOT"
+TEXT           = "Press DO to save/EXIT to quit"
+
+MESSAGE        = "HEAD"
+TEXT           = "Rule Data Entry Screen"
+
+MESSAGE        = "ID"
+TEXT           = "Rule Id"
+
+MESSAGE        = "OPT_HEAD"
+TEXT           = "Rule Library Options"
+
+MESSAGE        = "OPT_COUNTER"
+TEXT           = "1 Rule Counters"
+
+MESSAGE        = "OPT_DISP_LIB"
+TEXT           = "2 Display Library"
+
+MESSAGE        = "OPT_MOD_LIB"
+TEXT           = "2 Modify Library"
+
+MESSAGE        = "OPT_COMP_LIB"
+TEXT           = "3 Compile Library"
+
+MESSAGE        = "OPT_DISP_ERR"
+TEXT           = "4 Compile Errors"
+
+MESSAGE        = "TABLE_NAME"
+TEXT           = "Rule"

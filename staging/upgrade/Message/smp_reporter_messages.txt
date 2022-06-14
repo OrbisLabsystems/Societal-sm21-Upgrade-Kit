@@ -1,0 +1,520 @@
+! Messages used by the Ad-hoc Reporter.
+
+MESSAGE  GROUP  "REPORTER_"
+
+MESSAGE = "WARNING"
+TEXT    = "No fields have been selected for output - please select before proceeding"
+TEXT    = " records have been selected. Confirm to proceed."
+
+MESSAGE = "FORM_HEADER"
+TEXT    = "Ad-Hoc Reporter "
+TEXT    = "Ad-Hoc Reporter Report Definition"
+
+MESSAGE = "FORM_FOOTER"
+TEXT    = "<DO> to Create Report, <EXIT> to Quit"
+
+MESSAGE = "CRITERIA_CAPTION"
+TEXT    = "Criteria..."
+
+MESSAGE = "FIELDS_CAPTION"
+TEXT    = "Fields..."
+
+MESSAGE = "LAYOUT_CAPTION"
+TEXT    = "Layout..."
+
+MESSAGE = "OPTIONS_CAPTION"
+TEXT    = "Options"
+
+MESSAGE = "SAVE_CAPTION"
+TEXT    = "Save"
+
+MESSAGE = "LOAD_OPTION_CAPTION"
+TEXT    = "Load saved report"
+
+MESSAGE = "SAVE_OPTION_CAPTION"
+TEXT    = "Save current report"
+
+MESSAGE = "CONFIG_CAPTION"
+TEXT    = "Configure.."
+
+MESSAGE = "OPTIONS_TITLE"
+TEXT    = "Ad Hoc Reporter Options"
+
+MESSAGE = "LOAD_HEADER"
+TEXT    = "Enter name of report"
+
+MESSAGE = "LOAD_FOOTER"
+TEXT    = "EXIT to quit, DO to save"
+
+MESSAGE = "LOAD_PROMPT"
+TEXT    = "Report Name"
+
+MESSAGE = "GROUP_PROMPT"
+TEXT    = "Group Name"
+
+MESSAGE = "NO_FIELDS"
+TEXT    = "No fields have been selected"
+
+MESSAGE = "FIELD_LIST_HEADER"
+TEXT    = "Select Fields for Report"
+
+MESSAGE = "DATA_FIELDS_HEADER"
+TEXT    = "Select Fields for Table"
+TEXT    = "Select Fields for Graph"
+
+MESSAGE = "FIELD_LIST_FOOTER"
+TEXT    = "<SELECT> to toggle fields, <DO> to proceed, <EXIT> to quit"
+
+MESSAGE = "FIELD_LIST"
+TEXT    = "List of fields for table '[]':"
+
+MESSAGE = "SELECT_ALL_CAPTION"
+TEXT    = "Select All"
+
+MESSAGE = "DESELECT_ALL_CAPTION"
+TEXT    = "Deselect All"
+
+MESSAGE = "BAR_HEADER"
+TEXT    = "Writing [] records from '[]' table to file"
+
+MESSAGE = "BAR_FOOTER"
+TEXT    = "Please Wait"
+
+MESSAGE = "READ_TRAN"
+TEXT    = "Send '[]' table to CSV file"
+
+MESSAGE = "SAVE_FAIL"
+TEXT    = "Failed to save report - []"
+
+MESSAGE = "LOAD_FAIL"
+TEXT    = "Failed to load report - []"
+
+MESSAGE = "ID_EXISTS"
+TEXT    = "Id already exists"
+
+MESSAGE = "HEADER"
+TEXT    = "Report Selection"
+
+MESSAGE = "NEW_CAPTION"
+TEXT    = "New..."
+
+MESSAGE = "MODIFY_CAPTION"
+TEXT    = "Modify..."
+
+MESSAGE = "RUN_CAPTION"
+TEXT    = "Run"
+
+MESSAGE = "DELETE_CAPTION"
+TEXT    = "Delete"
+
+MESSAGE = "HELP_CAPTION"
+TEXT    = "Help"
+
+MESSAGE = "CLOSE_CAPTION"
+TEXT    = "Close"
+
+MESSAGE = "NO_REPORT_WARNING"
+TEXT    = "No report selected"
+
+MESSAGE = "NO_RECORDS"
+TEXT    = "No records match the selection criteria"
+
+MESSAGE = "WIDTH_HEADER"
+TEXT    = "Width"
+
+MESSAGE = "ORDER_HEADER"
+TEXT    = "Order"
+
+MESSAGE = "TRANSFER_ERROR"
+TEXT    = "Error occured writing file to client"
+
+MESSAGE = "NOT_AVAILABLE"
+TEXT    = "This option is only available with SampleManager for Windows"
+
+MESSAGE = "INVALID_FILE"
+TEXT    = "Output file name is invalid!"
+
+MESSAGE = "CONFIRM_DELETE"
+TEXT    = "Do you want to delete report '[]' ?"
+
+MESSAGE = "CONFIRM_EXIT"
+TEXT    = "A template has been created or modified."
+TEXT	= "Do you wish to continue?"
+
+MESSAGE = "CONFIRM_OVERWRITE"
+TEXT    = "Do you want to overwrite the existing report '[]' ?"
+
+MESSAGE = "NO_TABLE"
+TEXT    = "Table has been deleted from the database"
+
+MESSAGE = "NO_FIELD"
+TEXT    = "Please check the fields you selected and resave report as file format changed"
+
+MESSAGE = "FILE_FILTER"
+TEXT    = "All Files ( *.* ) | *.*"
+
+MESSAGE = "FILE_TITLE"
+TEXT    = "Client File Browse"
+
+! Reporter template definitions
+
+MESSAGE = "TEMPLATE_TITLE"
+TEXT    = "Template Definition Form"
+
+MESSAGE = "CREATE_REPORT"
+TEXT    = "Report Generation"
+TEXT    = "Auto generating report - please wait"
+
+MESSAGE = "MODIFY_TEMPLATE"
+TEXT    = "Modify..."
+
+MESSAGE = "DELETE_TEMPLATE"
+TEXT    = "Delete"
+
+! Retained for compatability with the original ad-hoc reporter
+
+MESSAGE = "TABLE_PROMPT"
+TEXT    = "Table to Report "
+
+MESSAGE = "OUTPUT_PROMPT"
+TEXT    = "Output Application "
+
+MESSAGE = "FILE_PROMPT"
+TEXT    = "Output File Name "
+
+! Ad-hoc reporter templates options prompts messages
+
+MESSAGE = "TEMPLATE_DETAILS"
+TEXT    = "Report Name"
+TEXT    = "Table to Report "
+TEXT    = "Output Application "
+TEXT    = "Description"
+TEXT    = "Modified By"
+TEXT    = "Modified On"
+TEXT    = "Group ID"
+
+! Word processor template definitions
+
+MESSAGE = "HEADER_FORM"
+TEXT    = "Header Definition"
+TEXT    = "Header Details"
+TEXT    = "Header Text"
+
+MESSAGE = "FOOTER_FORM"
+TEXT    = "Footer Definition"
+TEXT    = "Footer Details"
+TEXT    = "Footer Text"
+
+MESSAGE = "HEAD_FOOT_CB_TEXT"
+TEXT    = "Underline"
+TEXT    = "Overline"
+TEXT    = "None"
+TEXT    = "Box"
+TEXT    = "Border"
+
+MESSAGE = "HEAD_FOOT_BUTTON_TEXT"
+TEXT    = "Font..."
+TEXT    = "Tab Stops..."
+TEXT    = "Tab"
+TEXT    = "Date"
+TEXT    = "File Name"
+TEXT    = "Page 'x'"
+TEXT    = "Page 'x of y'"
+
+! Spreadsheet header and footer button text
+
+MESSAGE = "SS_HEAD_FOOT_BUTTON_TEXT"
+TEXT    = "Font..."
+TEXT    = "Date"
+TEXT    = "Time"
+TEXT    = "File Name"
+TEXT    = "Page 'x'"
+TEXT    = "Page 'x of y'"
+TEXT    = "Sheet No."
+TEXT    = "CR/LF"
+
+MESSAGE = "SS_HEAD_FOOT_PROMPT_TEXT"
+TEXT    = "Left"
+TEXT    = "Centre"
+TEXT    = "Right"
+
+MESSAGE = "BUTTON_TEXT"
+TEXT    = "Save"
+TEXT    = "Layout..."
+TEXT    = "Help"
+TEXT    = "Cancel"
+
+! the following message blocks provide the form and frame titles for the
+! document presentation forms (the layout, data details and text details forms)
+
+MESSAGE = "LAYOUT_TITLES"
+TEXT    = "Document Presentation"
+TEXT    = "Data Attributes"
+TEXT    = "Text Attributes"
+TEXT    = "Graph Style"
+TEXT    = "Document Layout"
+
+MESSAGE = "LAYOUT_FRAME_TITLES"
+TEXT    = "Presentation"
+TEXT    = "Data Format"
+TEXT    = "Text Format"
+TEXT    = "Graph Styles"
+
+MESSAGE = "TABS_TITLE"
+TEXT    = "Set Tab Stops"
+
+MESSAGE = "FONT_TITLE"
+TEXT    = "Fonts and Attributes"
+
+MESSAGE = "ADV_OPTS_TITLE"
+TEXT    = "Advanced Options"
+
+! Attribute frame message texts
+
+! The following three text blocks provide the check box text for the 
+! data table format form
+
+MESSAGE = "GRAPH_TEXT"
+TEXT    = "Style"
+TEXT    = "X-Axis Field"
+TEXT    = "X-Axis Text"
+TEXT    = "Y-Axis Field"
+TEXT    = "Y-Axis Text"
+TEXT    = "Title"
+
+MESSAGE = "TABLE_FORMAT"
+TEXT    = "Format Table"
+TEXT    = "Format Graph"
+
+MESSAGE = "SEPARATOR_TEXT"
+TEXT    = "Separator"
+TEXT    = "Tab Separated"
+TEXT    = "Comma Separated"
+TEXT    = "Other Separator"
+TEXT    = "Type"
+TEXT    = "Value"
+
+MESSAGE = "BORDER_TEXT"
+TEXT    = "Inner Border"
+TEXT    = "Outer Border"
+TEXT    = "Single"
+TEXT    = "Double"
+TEXT    = "None"
+TEXT    = "Border Type"
+
+MESSAGE = "COL_WIDTHS_TEXT"
+TEXT    = "Column Widths"
+TEXT    = "Auto"
+TEXT    = "Manual"
+TEXT    = "Wrap"
+TEXT    = "Mode"
+TEXT    = "Units"
+TEXT    = "Value"
+
+! The next two message blocks provide the check box text for the
+! font and attributes form
+
+MESSAGE = "FONT_TEXT"
+TEXT    = "Font"
+TEXT    = "Font"
+TEXT    = "Size"
+
+MESSAGE = "ATTRIBUTE_TEXT"
+TEXT    = "Attributes"
+TEXT    = "Bold"
+TEXT    = "Underlined"
+TEXT    = "Italics"
+
+MESSAGE = "JUSTIFICATION_TEXT"
+TEXT    = "Justification"
+TEXT    = "Left"
+TEXT    = "Right"
+TEXT    = "Centre"
+TEXT    = "Fill"
+TEXT    = "Justify Text"
+
+! The next message block provides the check box text for the tab stops
+! form
+
+MESSAGE = "TABS_TEXT"
+TEXT    = "Tab Stops"
+TEXT    = "Alignment"
+TEXT    = "Leader Character"
+TEXT    = "Tabs (CSV String)"
+TEXT    = "Units"
+TEXT    = "Left"
+TEXT    = "Right"
+TEXT    = "Centre"
+TEXT    = "Decimal"
+TEXT    = "Bar"
+TEXT    = "None"
+TEXT    = "Full Stop"
+TEXT    = "Hyphen"
+TEXT    = "Underscore"
+TEXT    = "Tab Type"
+TEXT    = "Leader"
+
+! the next two text blocks provide the check box text for the advanced
+! options form
+
+MESSAGE = "INSERT_PT_TEXT"
+TEXT    = "Insert Point"
+TEXT    = "Document ID"
+TEXT    = "Top"
+TEXT    = "Bottom"
+TEXT    = "Bookmark"
+TEXT    = "Bookmark Name"
+TEXT    = "Insert At"
+
+MESSAGE = "SEL_TEMPLATE_TEXT"
+TEXT    = "Template Selection"
+TEXT    = "From Server"
+TEXT    = "From Client"
+TEXT    = "Use Template"
+TEXT    = "Client"
+TEXT    = "Sever"
+TEXT    = "Run Macro"
+TEXT    = "Macro Name"
+
+! Document layout and attributes text button message texts
+
+MESSAGE = "ADD_TEXT_BLOCK"
+TEXT    = "Add Text"
+
+MESSAGE = "ADD_DATA_BLOCK"
+TEXT    = "Add Data"
+
+MESSAGE = "ADD_GRAPH_BLOCK"
+TEXT    = "Add Graph"
+
+MESSAGE = "BLOCK_DETAILS"
+TEXT    = "Details..."
+
+MESSAGE = "FONTS_AND_ATTRIBS"
+TEXT    = "Fonts..."
+
+MESSAGE = "REMOVE_ROW"
+TEXT    = "Remove"
+
+MESSAGE = "INSERT_ROW"
+TEXT    = "Insert"
+
+MESSAGE = "MODIFY_FOOTER"
+TEXT    = "Footer"
+
+MESSAGE = "MODIFY_HEADER"
+TEXT    = "Header"
+
+MESSAGE = "ADV_OPTS"
+TEXT    = "Advanced..."
+
+! Text file template definitions
+
+! Spreadsheet template definitions
+
+MESSAGE = "SS_ADV_OPTS_TEXT"
+TEXT    = "Spreadsheet Details"
+TEXT    = "Workbook ID"
+TEXT    = "Workbook Sheet"
+TEXT    = "Run Macro"
+TEXT    = "Macro Name"
+
+MESSAGE = "SS_BORDER_TEXT"
+TEXT    = "Table Borders"
+TEXT    = "Outline"
+TEXT    = "Left"
+TEXT    = "Right"
+TEXT    = "Top"
+TEXT    = "Bottom"
+                       
+MESSAGE = "SS_INSERT_PT_TEXT"
+TEXT    = "Insert Point"
+TEXT    = "X Co-ordinate"
+TEXT    = "Y Co-ordinate"
+TEXT    = "Row"
+TEXT    = "Column"
+
+MESSAGE = "SS_CHART_SIZE_TEXT"
+TEXT    = "Size"
+TEXT    = "Width"
+TEXT    = "Height"
+
+MESSAGE = "SS_BOX_SIZE_TEXT"
+TEXT    = "Text Box Size"
+TEXT    = "Width"
+TEXT    = "Height"
+
+MESSAGE = "BROWSE_TITLES"
+TEXT    = "Template ID"
+TEXT    = "Type       Description"
+TEXT    = "Browse on Report Template"
+
+MESSAGE = "INVAL_TYPE"
+TEXT    = "An invalid template type has been entered"
+
+MESSAGE = "DB_DEFINED"
+TEXT    = "A template has been defined. The database table cannot be changed."
+
+MESSAGE = "TEMPLATE_DEFINED"
+TEXT    = "A template has been defined. The field selection cannot be changed."
+
+MESSAGE = "INITIALISE_TABLES"
+TEXT    = "Field Selection Modification Message"
+TEXT    = "Report tables have been defined but not saved."
+TEXT    = "If the selected field list is modified the table"
+TEXT    = "definitions data will be deleted."
+TEXT    = "Do You wish to continue?"
+TEXT    = "Continue"
+
+MESSAGE = "NO_CSV_FILE"
+TEXT    = "CSV create error "
+
+! Add the reporter word processor DDE library messages
+
+MESSAGE = "DDE_WORD_CON"
+TEXT    = "Word Processor Connect "
+
+MESSAGE = "DDE_WORD_DISCON"
+TEXT    = "Word Processor Close "
+
+MESSAGE = "DDE_WORD_WRITE"
+TEXT    = "Word Processor Write "
+
+MESSAGE = "DDE_NO_TEMP"
+TEXT    = "Load template requested. No template defined."
+
+MESSAGE = "DDE_NO_SERV_TEMP"
+TEXT    = "Failed to download template from server."
+
+MESSAGE = "DDE_NO_BMARK"
+TEXT    = "Go to bookmark requested. No bookmark defined."
+
+! Add the reporter spreadsheet DDE library messages
+
+MESSAGE = "DDE_SS_CON"
+TEXT    = "Spreadsheet Connect "
+
+MESSAGE = "DDE_SS_DISCON"
+TEXT    = "Spreadsheet Close "
+
+MESSAGE = "DDE_SS_WRITE"
+TEXT    = "Spreadsheet Write "
+
+MESSAGE = "INVAL_STYLE"
+TEXT    = "The graph style selected cannot be found"
+
+MESSAGE = "HEAD_FOOT_TOO_LONG"
+TEXT    = "There are more than 255 chars in the header or footer. Some sections will not be defined."
+
+MESSAGE = "TABLE_BROWSE"
+TEXT    = "Table Name"
+TEXT    = "Alias"
+TEXT    = "Select Table for Report"
+
+MESSAGE = "NOT_SAVED"
+TEXT    = "Modifications have been made "
+TEXT    = "to the template but not saved. "
+TEXT    = "Do you wish to continue?"
+
+MESSAGE = "FIELD_BAD_RANGE"
+TEXT    = "Invalid number of fields selected, valid range is 1-63"

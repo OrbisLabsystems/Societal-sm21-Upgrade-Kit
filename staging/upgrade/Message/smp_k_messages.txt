@@ -1,0 +1,401 @@
+MESSAGE GROUP "SMP_K_"
+
+! SEVERITY      INFORMATION
+
+MESSAGE = 	"SUCCESS"
+TEXT =		"Operation successfully completed"
+
+MESSAGE = 	"UPDATED"
+TEXT =		"The record has been updated successfully"
+
+MESSAGE = 	"NOTUPDATE"
+TEXT =		"The record has NOT been updated"
+
+MESSAGE = 	"USERABORT"
+TEXT =		"You aborted the last operation"
+
+MESSAGE = 	"NOTLOGNAM"
+TEXT =		"The operator ID [] is NOT a valid SM username"
+
+MESSAGE = 	"INVALUSEN"
+TEXT =		"Invalid Login Information"
+
+MESSAGE = 	"AUDBEUP"
+TEXT =		"The audit behaviour file has been updated"
+
+MESSAGE = 	"INVPRTID"
+TEXT =		"Invalid printer ID"
+
+MESSAGE =	"UNIX_OPCOM"
+TEXT =		"Message from SampleManager to operator class '[]' : []"
+
+MESSAGE =	"UNIX_SYSTEM"
+TEXT =		"Message from SampleManager to system error log : []"
+
+MESSAGE =       "VERSION"
+TEXT    =       "Thermo SampleManager Server [] (Build:[]) for [] on []. Linked on [] at []."
+
+MESSAGE =       "VERSION_DEBUG"
+TEXT    =       "Thermo SampleManager Server [] (Build:[]) for [] on []. Linked (debug) on [] at []."
+
+MESSAGE = 	"IDNONEX"
+TEXT =		"The ID you specified does not exist"
+
+MESSAGE = 	"IDNONMOD"
+TEXT =		"The ID you specified is marked as not modifiable"
+
+MESSAGE = 	"NOANALINFO"
+TEXT =		"No analysis information available - test not assigned"
+
+MESSAGE = 	"ACCMETINC"
+TEXT =		"File has the wrong access method"
+
+MESSAGE = 	"BUG"
+TEXT =		"Fatal internal error - please submit SPR"
+SEVERITY =      "ERROR"
+
+MESSAGE = 	"FILE_CREATE"
+TEXT =		"Error creating file []"
+
+MESSAGE = 	"FILE_OPEN"
+TEXT =		"Error opening file []"
+
+MESSAGE = 	"FILE_READ"
+TEXT =		"Error reading file []"
+
+MESSAGE = 	"FILE_WRITE"
+TEXT =		"Error writing file []"
+
+MESSAGE = 	"FILE_REWIND"
+TEXT =		"Error rewinding file []"
+
+MESSAGE = 	"FILE_CLOSE"
+TEXT =		"Error closing file []"
+
+MESSAGE = 	"FILE_DELETE"
+TEXT =		"Error deleting file []"
+
+MESSAGE = 	"FILE_COPY_SOURCE"
+TEXT =		"Error copying from file []"
+
+MESSAGE = 	"FILE_COPY_TARGET"
+TEXT =		"Error copying to file []"
+
+MESSAGE = 	"FILE_TRANSLATE"
+TEXT =		"Unable to translate [] into UNIX"
+
+MESSAGE = 	"INSUFPRIV"
+TEXT =		"You do not have the authority to view any options on this menu"
+
+MESSAGE = 	"INSUFPRIV_OPTION"
+TEXT =		"You do not have the authority to access this option"
+
+MESSAGE = 	"NOLOCKCOMM"
+TEXT =		"Cannot lock record whilst viewing committed tables"
+
+MESSAGE = 	"SHUTDOWN"
+TEXT =		"SampleManager shutdown requested"
+
+MESSAGE = 	"NOSHUTDOWN"
+TEXT =		"SampleManager startup / shutdown is not enabled"
+
+MESSAGE = 	"NOSTARTUP"
+TEXT =		"SampleManager has not been started up"
+
+MESSAGE =       "NOUSERS"
+TEXT =          "There are no SampleManager users"
+
+MESSAGE =       "INSUFAUTH"
+TEXT =          "You do not have sufficient authority to do this"
+
+MESSAGE =       "SHUTDOWN_SUCCESS"
+TEXT =          "SampleManager shutdown request performed successfully"
+
+MESSAGE =       "STARTUP_SUCCESS"
+TEXT =          "SampleManager startup request performed successfully"
+
+MESSAGE =       "USERS_HEADER_1"
+TEXT    =       "Count User Name       Node Name       Mode       ID       Process Name   "
+
+MESSAGE =       "USERS_HEADER_2"
+TEXT    =       "----- --------------- --------------- ---------- -------- ---------------"
+
+MESSAGE =       "USERS_HEADER_3"
+TEXT    =       "Count Mode       Instance   SM User    Node Name       OS User         ID      "
+
+MESSAGE =       "USERS_HEADER_4"
+TEXT    =       "----- ---------- ---------- ---------- --------------- --------------- --------"
+
+MESSAGE =       "USERS_HEADER_5"
+TEXT    =       "Oracle username                Oracle schema name             OS username                    OS PID       Logon date and time"
+
+MESSAGE =       "USERS_HEADER_6"
+TEXT    =       "------------------------------ ------------------------------ ------------------------------ ------------ --------------------"
+
+MESSAGE =       "FOREGROUND"
+TEXT    =       "Foreground"
+
+MESSAGE =       "BACKGROUND"
+TEXT    =       "Background"
+
+MESSAGE =       "BATCH"
+TEXT    =       "Batch"
+
+MESSAGE =       "SMPDLL"
+TEXT    =       "SMPdll"
+
+MESSAGE =       "UNKNOWN"
+TEXT    =       "Unknown"
+
+MESSAGE =       "MANDATORY_TABLE"
+TEXT =          "Mandatory table [] is missing"
+
+MESSAGE =       "MANDATORY_FIELD"
+TEXT =          "Mandatory field [] is missing from table []"
+
+MESSAGE =       "OSERROR"
+TEXT =          "System Error - []"
+
+MESSAGE =       "OSMORE"
+TEXT =          "               []"
+
+MESSAGE =       "BLANK"
+TEXT =          "[]"
+
+MESSAGE =       "UNKNOWNSTANDARD"
+TEXT =          "Unknown standard library []"
+
+MESSAGE =       "BADSTDLIBCALL"
+TEXT =          "Unknown routine number [] in standard library []"
+
+MESSAGE = 	"REPORT_PROMPT_HEAD"
+TEXT = 		"Report ID"
+
+MESSAGE = 	"REPORT_PROMPT_ID"
+TEXT = 		"Report :"
+
+MESSAGE =       "COMMIT_FLAG"
+TEXT =          "COMM"
+
+MESSAGE =       "ROLLBACK_FLAG"
+TEXT =          "ROLL"
+
+MESSAGE =       "READ_FLAG"
+TEXT =          "READ"
+
+MESSAGE =       "WRITE_FLAG"
+TEXT =          "WRITE"
+
+MESSAGE =       "NOMAP"
+TEXT =          "Unable to map '[]'"
+
+MESSAGE =       "NOINCLUDE"
+TEXT =          "Unable to map library include file"
+
+MESSAGE =       "NOSTRUCTURE"
+TEXT =          "Unable to map structure file"
+
+MESSAGE =       "ASCII_BAD"
+TEXT    =       "Value [] is not a valid ASCII code."
+
+MESSAGE =       "SQUIRREL_OPEN_READ"
+TEXT    =       "Existing Squirrel file cannot be written to"
+
+MESSAGE =       "SQUIRREL_OPEN_WRITE"
+TEXT    =       "Newly created Squirrel file cannot be read from"
+
+MESSAGE =       "SQUIRREL_NOT_SUP"
+TEXT    =       "Datatype [] not supported by Squirrels"
+
+MESSAGE =       "SQUIRREL_INVALID"
+TEXT    =       "Squirrel has already failed"
+
+MESSAGE =       "NOT_SQUIRREL"
+TEXT    =       "Variable [] is not a squirrel"
+
+MESSAGE =       "MAILPIPEFAIL"
+TEXT    =       "Pipe open failure"
+
+MESSAGE =       "MAILWRITEFAIL"
+TEXT    =       "Failure in issuing mail command: []"
+
+MESSAGE =       "ACTIVE_TABLES"
+TEXT    =       "Active Tables + "
+
+MESSAGE =       "COMMITTED_TABLES"
+TEXT    =       "Committed Tables : "
+
+MESSAGE =       "ACTIVE_MODE"
+TEXT    =       "Active"
+
+MESSAGE =       "COMMITTED_MODE"
+TEXT    =       "Committed"
+
+MESSAGE =       "SPAWN_PIPE_OPEN_FAIL"
+TEXT    =       "Pipe open failure during Spawn"
+
+MESSAGE =       "SPAWN_PIPE_READ_FAIL"
+TEXT    =       "Error reading pipe during Spawn"
+
+MESSAGE =       "QUAL_NOVALUE"
+TEXT    =       "A qualifier value is expected with qualifier []"
+
+MESSAGE =       "OPTION_INVALID"
+TEXT    =       "Invalid option []"
+
+MESSAGE =       "OPTION_NOVALUE"
+TEXT    =       "An option value is expected with option []"
+
+MESSAGE =       "VALUE_INVALID"
+TEXT    =       "Option value [] cannot start with the character -"
+
+MESSAGE =       "OPTION_PRESENT"
+TEXT    =       "Option [] already present"
+
+MESSAGE =       "USER_LOGIN_HEADER"
+TEXT    =       "User Login Screen"
+
+MESSAGE =       "USER_LOGIN_FOOTER"
+TEXT    =       ""
+
+MESSAGE =       "MODE_INVALID"
+TEXT    =       "Invalid value included on command line - []"
+
+MESSAGE =       "ELEM_CONFLICT"
+TEXT    =       "Illegal combination of command elements - [] and []"
+
+MESSAGE =       "MUST_BE_WITH"
+TEXT    =       "Command element [] must be used with []"
+
+MESSAGE =       "BATCH_WITH"
+TEXT    =       "Command element [] needs element [] or command line parameters"
+
+MESSAGE =       "USER_LOGIN_USER_PROMPT"
+TEXT    =       "Enter user ID  :"
+
+MESSAGE =       "USER_LOGIN_PASS_PROMPT"
+TEXT    =       "Enter password :"
+
+MESSAGE = 	"CANNOT_CHANGE"
+TEXT	=	"You do not have sufficient authority to do this"
+
+MESSAGE = 	"USER_NEEDS_OPERATOR"
+TEXT	=	"User does not exist as an operator"
+
+MESSAGE = 	"NO_SUCH_USER"
+TEXT	=	"That user does not exist"
+
+MESSAGE =       "LICENCE_USER_LIMIT_REACHED"
+TEXT    =       "The user limit in the licence for product [] has been reached"
+
+MESSAGE =       "LICENCE_HAS_EXPIRED"
+TEXT    =       "The licence for product [] has expired"
+
+MESSAGE =       "LICENCE_CHECKSUM_FAILED"
+TEXT    =       "The checksum in the licence for product [] is incorrect"
+
+MESSAGE =       "LICENCE_NO_LICENCE"
+TEXT    =       "There is no licence for product []"
+
+MESSAGE =       "DEVICE_INV_CHARACTERISTIC"
+TEXT    =       "Device characteristic is invalid."
+
+MESSAGE =       "DEVICE_UNK_CHARACTERISTIC"
+TEXT    =       "Device characteristic [] is unknown."
+
+MESSAGE =       "DEVICE_NOT_FOUND"
+TEXT    =       "The device definition file for [] can not be found"
+
+MESSAGE =       "MENU_BAD_NUM"
+TEXT    =       "Menu number [] does not exist."
+
+MESSAGE =       "MENU_BAD_OPTION"
+TEXT    =       "Menu option [] does not exist."
+
+MESSAGE	=	"LOGMESS_BAD_DEST"
+TEXT	= 	"The LOGMESSAGE destination '[]' is invalid"
+
+MESSAGE	=	"LOGMESS_MISS_QUAL"
+TEXT	= 	"The LOGMESSAGE destination '[]' requires a qualifier"
+
+MESSAGE	=	"LOGMESS_BAD_QUAL"
+TEXT	= 	"Invalid qualifier '[]' for LOGMESSAGE destination '[]'"
+
+MESSAGE =	"NO_UNIX_CONSOLE"
+TEXT =		"Unable to send message to UNIX console device"
+
+MESSAGE =	"NOT_DEBUG"
+TEXT =		"SampleManager debug has not been enabled"
+
+MESSAGE =       "NOT_TEST_EDITOR"
+TEXT    =       "Variable [] is not a test editor"
+
+MESSAGE = 	"SPAWN_TOO_LONG"
+TEXT    = 	"SPAWN Command was too long.  Maximum command length is []"
+
+MESSAGE = 	"EDITOR_COMMAND_FAILED"
+TEXT    = 	"Attempt to use the editor '[]' failed.  Error returned: []"
+
+MESSAGE = 	"FILE_DETAILS_FAILED"
+TEXT    = 	"Attempt to get details of '[]' failed.  Error returned: []"
+
+MESSAGE =	"CANNOT_SPAWN_INTERACTIVE"
+TEXT	=	"Cannot SPAWN .. INTERACTIVE when captive"
+
+MESSAGE =	"UNIX_SYSTEM_ERROR"
+TEXT	=	"System command '[]' failed with '[]'"
+
+MESSAGE =	"INVALSESSION"
+TEXT =		"Invalid Session Number"
+
+! NT error messages
+
+MESSAGE = "NT_SYSTEM_ERROR"
+TEXT	  = "System command '[]' failed with '[]'"
+
+MESSAGE = "NT_SYSTEM"
+TEXT    = "Message from SampleManager to system error log : []"
+
+MESSAGE = "NO_NT_CONSOLE"
+TEXT    = "Unable to send message to NT console device"
+
+MESSAGE = "NT_OPCOM"
+TEXT    = "Message from SampleManager to operator class '[]' : []"
+
+! SEVERITY      INFORMATION
+
+MESSAGE =	"HELP_USAGE"
+TEXT	=	"Usage :"
+
+! SampleManager messaging
+
+MESSAGE = "MESSAGE_WAITING"
+TEXT    = "MESS"
+
+! Server OLE error
+
+MESSAGE = "SERVER_OLE_ERROR"
+TEXT    = "Invoking method [] returned error []"
+
+MESSAGE = "SERVER_OLE_PARAM"
+TEXT    = "Error passing variable with content []"
+
+MESSAGE = "OLE_UNKNOWN_PROP"
+TEXT    = "Unknown property []"
+
+MESSAGE = "LOGOUT_NOTZERO"
+TEXT    = "Logout date not zero - resume session [] not allowed"
+
+MESSAGE = "NO_SESSION"
+TEXT    = "Unable to locate session - resume session [] not allowed"
+
+MESSAGE = "INV_USERPASS"
+TEXT    = "Invalid username or password"
+
+! Flexnet implementation
+
+MESSAGE = "FLEXNET_FAIL"
+TEXT    = "Failed to acquire FlexNet license : []"
+
+MESSAGE = "FLEXNET_INIT_FAIL"
+TEXT    = "Failed to initialise FlexNet job (lc_new_job) : []"

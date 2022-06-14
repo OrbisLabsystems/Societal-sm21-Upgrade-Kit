@@ -1,0 +1,414 @@
+MESSAGE GROUP = "DP_LTE_"
+
+MESSAGE = "HEAD"
+TEXT    = "Destination Data Entry Screen"
+
+MESSAGE = "BUTT_COMP"
+TEXT    = "Comp Equiv"
+
+MESSAGE = "DEST"
+TEXT    = "Destination"
+
+MESSAGE = "DEST_TYPE"
+TEXT    = "Destination Type"
+
+MESSAGE = "DEST_DESC"
+TEXT    = "Description"
+
+MESSAGE = "DEST_REPORT"
+TEXT    = "Default Report"
+
+MESSAGE = "DEST_ROUTINE"
+TEXT    = "Default Routine"
+
+MESSAGE = "DEST_SAMP_STAT"
+TEXT    = "Sample Status"
+
+MESSAGE = "DEST_TEST_STAT"
+TEXT    = "Test Status"
+
+MESSAGE = "DEST_RESULT_STAT"
+TEXT    = "Result Status"
+
+MESSAGE = "DEST_PROMPT_ID"
+TEXT    = "Enter Destination Id:"
+
+MESSAGE = "CE_ANAL"
+TEXT    = "Analysis Id"
+
+MESSAGE = "CE_COMP"
+TEXT    = "Component Name"
+
+MESSAGE = "CE_FCOMP"
+TEXT    = "Foreign Component"
+
+MESSAGE = "CE_REPORT"
+TEXT    = "Report"
+
+MESSAGE = "CE_ROUTINE"
+TEXT    = "Routine"
+
+MESSAGE = "CE_COMP_TYPE"
+TEXT    = "Comp Type"
+
+MESSAGE = "CE_REMOVED"
+TEXT    = "Inactive?"
+
+MESSAGE = "CE_PROMPT_ID_HEAD"
+TEXT    = "Component Equivalence Entry"
+
+MESSAGE = "CE_HEAD"
+TEXT    = "Component Equivalence"
+
+
+MESSAGE GROUP = "DP_DISP_"
+
+MESSAGE = "INTERACTIVE"
+TEXT    = "The Data Pipe Dispatcher is starting in Interactive Mode. This can only be terminated from a separate process. Continue?"
+
+MESSAGE = "START"
+TEXT    = "Data Pipe Dispatcher...started"
+
+MESSAGE = "TERM"
+TEXT    = "Data Pipe Dispatcher...terminated"
+
+MESSAGE = "SUSP"
+TEXT    = "Data Pipe Dispatcher...suspended"
+
+MESSAGE = "RES"
+TEXT    = "Data Pipe Dispatcher...resumed"
+
+MESSAGE = "ALREADY"
+TEXT    = "A Data Pipe Dispatcher is already running elsewhere."
+
+MESSAGE = "STATNOT"
+TEXT    = "Not Running"
+
+MESSAGE = "STATRUN"
+TEXT    = "Running"
+
+MESSAGE = "STATSUS"
+TEXT    = "Suspended"
+
+MESSAGE = "STATNON"
+TEXT    = "No Response. This could be due to the dispatcher being in the process of terminating"
+
+MESSAGE = "HEAD"
+TEXT    = "Data Pipe Dispatcher"
+
+MESSAGE = "COMMAND_SUCCESS"
+TEXT    = "Command Sent Successfully"
+
+MESSAGE = "COMMAND_FAIL_NO_PIPE"
+TEXT    = "Command unsuccessful. The dispatcher is not running"
+
+MESSAGE GROUP = "DP_TRAIL_"
+
+MESSAGE = "TRANS_NEW"
+TEXT    = "Manual Data Trail Entry"
+
+MESSAGE = "TRANS_S"
+TEXT    = "Destination Success"
+
+MESSAGE = "TRANS_I"
+TEXT    = "Destination Information"
+
+MESSAGE = "TRANS_E"
+TEXT    = "Destination Error"
+
+MESSAGE = "TRANS_F"
+TEXT    = "Destination Fatal Error"
+
+MESSAGE = "TRANS_A"
+TEXT    = "Destination Error - AutoResubmit"
+
+MESSAGE = "FIELD_ENTRY"
+TEXT    = "Entry Number"
+
+MESSAGE = "FIELD_REJECT"
+TEXT    = "Reject"
+
+MESSAGE = "FIELD_DATE_R"
+TEXT    = "Last Retry Date"
+
+MESSAGE = "FIELD_DATE"
+TEXT    = "Entry Date"
+
+MESSAGE = "FIELD_COMP"
+TEXT    = "Component Name"
+
+MESSAGE = "FIELD_RESULT"
+TEXT    = "Result Value"
+
+MESSAGE = "FIELD_STATUS"
+TEXT    = "Status"
+
+MESSAGE = "FIELD_TEST"
+TEXT    = "Test Number"
+
+MESSAGE = "MONITOR_HEAD"
+TEXT    = "Data Trail Monitor"
+
+MESSAGE = "FAILURES_HEAD"
+TEXT    = "Data Trail failed Entries"
+
+MESSAGE = "DISPLAY_FAIL_HEAD"
+TEXT    = "Display Failure"
+
+MESSAGE = "CLEAR_FAIL_HEAD"
+TEXT    = "Clear Failure"
+
+MESSAGE = "RESUBMIT_FAIL_HEAD"
+TEXT    = "Resubmit Failure"
+
+MESSAGE = "FAILURE_PROMPT"
+TEXT    = "Select Failure Entry"
+
+MESSAGE = "DISPLAY_HEAD"
+TEXT    = "Display Record"
+
+MESSAGE = "ENTRY_PROMPT"
+TEXT    = "Select Entry"
+
+MESSAGE = "CONFIRM_CLEAR"
+TEXT    = "Are you sure you wish to clear this entry?"
+
+MESSAGE = "CONFIRM_CLEAR_VIRGIN"
+TEXT    = "This entry has never been processed. Do you still want to clear this entry?"
+
+MESSAGE = "TRANS_CLEAR"
+TEXT    = "Clear Entry"
+
+MESSAGE = "SUCCESS"
+TEXT    = "Operation Successful"
+
+MESSAGE = "TRANS_RESUBMIT"
+TEXT    = "Resubmit Entry"
+
+MESSAGE = "NORECORDSPACE"
+TEXT    = "There is insufficient space to store XML in the table data_trail_entry. Please add more XML fields."
+
+
+MESSAGE GROUP = "RP_"
+
+MESSAGE = "RDNOSEND"
+TEXT = "Result not sent "
+
+MESSAGE = "FCREATEF"
+TEXT = "File create failed "
+SEVERITY = "ERROR"
+
+MESSAGE = "FDELETEF"
+TEXT = "File delete failed "
+SEVERITY = "ERROR"
+
+MESSAGE = "FEXTENDF"
+TEXT = "File extend failed "
+SEVERITY = "ERROR"
+
+MESSAGE = "FOPENF"
+TEXT = "File open failed "
+SEVERITY = "ERROR"
+
+MESSAGE = "TXMSG"
+TEXT = "Could not transmit message to dest "
+SEVERITY = "ERROR"
+
+MESSAGE = "RECACCES"
+TEXT = "Could not access associated table records "
+SEVERITY = "ERROR"
+
+MESSAGE = "ROUTCED"
+TEXT = "No routine defined in compequiv/destination table "
+SEVERITY = "ERROR"
+
+MESSAGE = "RTENTRY"
+TEXT = "Error obtaining entry from result trail "
+SEVERITY = "ERROR"
+
+MESSAGE = "SAMPNO"
+TEXT = "Sample number : "
+SEVERITY = "ERROR"
+
+MESSAGE = "TEST"
+TEXT = "Test number : "
+SEVERITY = "ERROR"
+
+MESSAGE = "RESULT"
+TEXT = "Component/equivalence "
+SEVERITY = "ERROR"
+
+MESSAGE = "DEST"
+TEXT = "Destination "
+SEVERITY = "ERROR"
+
+MESSAGE = "VGCOMP"
+TEXT = "VGSM component "
+SEVERITY = "ERROR"
+
+MESSAGE = "REMCOMP"
+TEXT = "Remote component "
+SEVERITY = "ERROR"
+
+MESSAGE = "UNK"
+TEXT = "Unknown error condition "
+SEVERITY = "ERROR"
+
+MESSAGE = "ROUTBAT"
+TEXT = "No routine specified for batch mode entry "
+SEVERITY = "ERROR"
+
+MESSAGE = "PIFENTRYF"
+TEXT = "Destination pif - could not create new entry "
+SEVERITY = "ERROR"
+
+MESSAGE = "SQCOK"
+TEXT = "Result trail entry transmitted ok to SQC chart "
+
+
+MESSAGE = "SQCNOTVAL"
+TEXT = "Result trail entry not valid for SQC "
+
+
+MESSAGE = "SQCUNDEST"
+TEXT = "Undefined destination for SQC "
+SEVERITY = "ERROR"
+
+MESSAGE = "COMPTYPE"
+TEXT = "Numeric"
+TEXT = "Textual"
+
+MESSAGE = "KEYZERO"
+TEXT = "key0:"
+
+MESSAGE = "MBXCREATEF"
+TEXT = "Mailbox - failed to create "
+
+MESSAGE = "MBXOPENF"
+TEXT = "Mailbox - failed to open "
+
+MESSAGE = "MBXREADF"
+TEXT = "Mailbox - failed to read "
+
+MESSAGE = "MBXWRITEF"
+TEXT = "Mailbox failed to write "
+
+MESSAGE = "DSPEC"
+TEXT = "Destination Specification "
+
+MESSAGE = "DTYPE"
+TEXT = "Enter Destination Type.. : "
+
+MESSAGE = "DCODE"
+TEXT = "Enter Destination Code.. : "
+
+MESSAGE = "REXISTS"
+TEXT = "This record already exists"
+
+MESSAGE = "RNEXISTS"
+TEXT = "This record does not exist"
+
+MESSAGE = "DFREM"
+TEXT = "(Destination flagged as removed)"
+
+MESSAGE = "MONRP"
+TEXT = "Monitor Screen for Result Pipe"
+
+MESSAGE = "PNUM"
+TEXT = "Enter Pipe Number : "
+
+MESSAGE = "UNDEFMP"
+TEXT = "Message = pipe undefined for this process "
+
+MESSAGE = "UNDEFCP"
+TEXT = "Command pipe undefined for this process "
+
+MESSAGE = "OC"
+TEXT = "Operation Complete"
+
+MESSAGE = "RSPEC"
+TEXT = "RECORD SPECIFICATION"
+
+MESSAGE = "AID"
+TEXT = "Analysis ID "
+
+MESSAGE = "VGCN"
+TEXT = "VGSM Component Name "
+
+MESSAGE = "D"
+TEXT = "Destination "
+
+MESSAGE = "REMCN"
+TEXT = "Remote Component Name "
+
+MESSAGE = "RID"
+TEXT = "Report ID "
+
+MESSAGE = "ROUTN"
+TEXT = "Routine Name "
+
+MESSAGE = "RESTYP"
+TEXT = "Result Type "
+
+MESSAGE = "ERRRCER"
+TEXT = "Error relocating Component Equivalence record"
+
+MESSAGE = "ERRLCER"
+TEXT = "Error locating Component Equivalence record"
+
+MESSAGE = "CERNON"
+TEXT = "The Component Equivalence record does not exist"
+
+MESSAGE = "RMODANO"
+TEXT = "This record is being modified by another user"
+
+MESSAGE = "CECANON"
+TEXT = "Component does not exist for this Analysis "
+
+MESSAGE = "CEINVDEST"
+TEXT = "Destination does not exist."
+
+MESSAGE = "CEA"
+TEXT = "Component Equivalences for Analysis "
+
+MESSAGE = "ENTAID"
+TEXT = "Enter Analysis ID : "
+
+MESSAGE = "CEFOR"
+TEXT = "Component Equivalences for "
+
+MESSAGE = "BROWC"
+TEXT = "Use BROWSE to select Component"
+
+MESSAGE = "CED"
+TEXT = "Component Equivalences for Destination "
+
+MESSAGE = "CEPRA"
+TEXT = "Print of Component Equivalences by Analysis"
+
+MESSAGE = "NRF"
+TEXT = "No records found"
+
+MESSAGE = "CEPRD"
+TEXT = "Print of Component Equivalences by Destination"
+
+MESSAGE = "CEPRALL"
+TEXT = "Print of all Component Equivalences"
+
+MESSAGE = "LIST_HEAD"
+TEXT    = "VGSM List of Compequiv records                                           Page ##"
+
+MESSAGE = "PRINT_HEAD"
+TEXT    = "VGSM Printout of Compequiv record                                        Page ##"
+
+MESSAGE = "ESC"
+TEXT = "Press EXIT to return to menu"
+
+MESSAGE ="CETCHK"
+TEXT = "Checking validity of Component Equivalence table"
+
+MESSAGE = "CETOK"
+TEXT = "Compequiv table is consistent with Sample Manager tables"
+
+MESSAGE = "CETFAIL"
+TEXT = "Compequiv entry failed validation "

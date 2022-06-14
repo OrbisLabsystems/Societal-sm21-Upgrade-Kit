@@ -1,0 +1,650 @@
+! Messages for the compiler
+
+MESSAGE GROUP = "SMP_COMPILER_"
+
+! Info messages
+
+MESSAGE = "COMP_SUCCESS"
+TEXT    = "Compiled Successfully"
+
+MESSAGE = "LIST_HEADER"
+TEXT    = "SampleManager version []"
+
+MESSAGE = "LIST_PAGE"
+TEXT    = "Page"
+
+MESSAGE = "MISS_ROUTINES"
+TEXT 	= "One or more routine definitions are missing"
+
+MESSAGE = "MISS_LABELS"
+TEXT 	= "One or more labels referenced by GOTO or GOSUB are missing"
+
+MESSAGE = "NOINC"
+TEXT 	= "Unable to read include file for [] - recompiling"
+
+! Warning messages
+
+MESSAGE = "VAR_NOT_DECLARED"
+TEXT    = "Variable [] used but not declared"
+SEVERITY= "WARNING"
+
+MESSAGE = "VAR_NOT_USED"
+TEXT    = "Variable [] declared but never used"
+SEVERITY= "WARNING"
+
+MESSAGE = "VAR_NOT_READ"
+TEXT    = "Variable [] assigned but never read"
+SEVERITY= "WARNING"
+
+MESSAGE = "VAR_NOT_ASSIGNED"
+TEXT    = "Variable [] read but never assigned"
+SEVERITY= "WARNING"
+
+MESSAGE = "VAR_DEC_TWICE"
+TEXT    = "Variable [] declared twice in same context"
+SEVERITY= "WARNING"
+
+MESSAGE = "COMP_WARN"
+TEXT    = "Compilation of [] completed with [] warning(s)"
+SEVERITY= "WARNING"
+
+MESSAGE = "USER_FIELD"
+TEXT 	= "User defined field name '[]' assumed in table '[]'"
+SEVERITY= "WARNING"
+
+MESSAGE = "USER_ORDER"
+TEXT 	= "User defined order on field '[]' assumed in table '[]'"
+SEVERITY= "WARNING"
+
+MESSAGE = "USER_TABLE"
+TEXT 	= "User defined table '[]' assumed"
+SEVERITY= "WARNING"
+
+MESSAGE = "USES_MAIN"
+TEXT 	= "The main window is not active in this report"
+TEXT 	= "Windows were enabled by a previous command"
+SEVERITY= "WARNING"
+
+MESSAGE = "USES_WIN"
+TEXT 	= "The main window has already been used in this report"
+TEXT 	= "Enabling windows will stop the main window from being displayed"
+SEVERITY= "WARNING"
+
+MESSAGE = "STD_LIB_LATE"
+TEXT    = "Standard Libraries should be included before they are used"
+SEVERITY= "WARNING"
+
+MESSAGE = "LIB_A_BIT_LATE"
+TEXT    = "Libraries should be included before they are used"
+SEVERITY= "WARNING"
+
+MESSAGE	= "UNDEFINED_MESSAGE"
+TEXT	= "User message [] does not exist"
+SEVERITY= "WARNING"
+
+! Error messages
+
+MESSAGE = "COMP_ERROR"
+TEXT    = "Compilation of [] failed with [] error(s) and [] warning(s)"
+SEVERITY= "ERROR"
+
+MESSAGE = "INSUF_PARAM"
+TEXT    = "Insufficient Parameters"
+SEVERITY= "ERROR"
+
+MESSAGE = "INVALID_PARAM"
+TEXT    = "Unrecognised Parameter [] - Check Validity and Spelling"
+SEVERITY= "ERROR"
+
+MESSAGE = "COMP_ABORT"
+TEXT    = "Compilation of [] aborted"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_COMMAND"
+TEXT    = "Unrecognised command '[]', Check position and spelling"
+SEVERITY= "ERROR"
+
+MESSAGE = "EXPECT_COMMA"
+TEXT    = "Found '[]' when expecting a comma separator"
+SEVERITY= "ERROR"
+
+MESSAGE = "EXPECT_TO"
+TEXT    = "Found '[]' when expecting the TO keyword"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_STATUS"
+TEXT    = "'[]' is not a valid status variable"
+SEVERITY= "ERROR"
+
+MESSAGE = "REPEATED_CLAUSE"
+TEXT    = "The '[]' Clause cannot be repeated in the command"
+SEVERITY= "ERROR"
+
+MESSAGE = "NO_EQUALS"
+TEXT    = "Found '[]' when expecting '='"
+TEXT    = "The use of equals is mandatory in this clause"
+SEVERITY= "ERROR"
+
+MESSAGE = "REPEATED_COLUMN"
+TEXT    = "The column value in the '[]' Clause has already been specified"
+SEVERITY= "ERROR"
+
+MESSAGE = "REPEATED_ROW"
+TEXT    = "The row value in the '[]' Clause has already been specified"
+SEVERITY= "ERROR"
+
+MESSAGE = "EXPECT_FROM"
+TEXT    = "Found '[]' when expecting FROM"
+SEVERITY= "ERROR"
+
+MESSAGE = "EXPECT_ONLINE"
+TEXT    = "Found '[]' when expecting ONLINE"
+SEVERITY= "ERROR"
+
+MESSAGE = "EXPECT_FROM_ON"
+TEXT    = "Found '[]' when expecting AT, ON LINE or FROM"
+SEVERITY= "ERROR"
+
+MESSAGE = "MIS_L_PAREN"
+TEXT    = "Missing left parenthesis '('"
+SEVERITY= "ERROR"
+
+MESSAGE = "MIS_R_PAREN"
+TEXT    = "Missing right parenthesis ')'"
+SEVERITY= "ERROR"
+
+MESSAGE = "ARR_TOO_LARGE"
+TEXT 	= "The array has been declared with too many dimensions []"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_VAR"
+TEXT    = "'[]' is not a valid variable reference"
+SEVERITY= "ERROR"
+
+MESSAGE = "EXPECT_OUTOF"
+TEXT    = "Found '[]' when expecting OUTOF"
+SEVERITY= "ERROR"
+
+MESSAGE = "ILL_CONST"
+TEXT 	= "This expression cannot be assigned to a constant"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_ASSIGN"
+TEXT 	= "Expecting '=' to form an assignment expression"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_ROUTINE"
+TEXT 	= "'[]' is not a valid routine name"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_LABEL"
+TEXT 	= "Invalid label '[]', must start with letter"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_LIB_NAME"
+TEXT 	= "Invalid library name '[]', must start with letter"
+SEVERITY= "ERROR"
+
+MESSAGE = "LESS_ARG"
+TEXT 	= "Previous usage of routine [] defined less parameters"
+SEVERITY= "ERROR"
+
+MESSAGE = "MORE_ARG"
+TEXT 	= "Previous usage of routine [] defined more parameters"
+SEVERITY= "ERROR"
+
+MESSAGE = "NO_ROUTINE"
+TEXT 	= "Missing routine name, a routine name is required"
+SEVERITY= "ERROR"
+
+MESSAGE = "HAD_ROUTINE"
+TEXT 	= "Multiple definition of routine []"
+SEVERITY= "ERROR"
+
+MESSAGE = "UNEXPECTED_END"
+TEXT 	= "Unexpected ')'. Check the use of ',' in the parameter list"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_PARAM_LIST"
+TEXT    = "Parameter list for routine [] is incorrect"
+TEXT    = "Check use of parenthesis ')' and parameter list arguments"
+SEVERITY= "ERROR"
+
+MESSAGE = "MISS_QUERY"
+TEXT 	= "Missing query symbol '?'"
+SEVERITY= "ERROR"
+
+MESSAGE = "NOT_ARRAY"
+TEXT 	= "Invalid use of array index, check use of brackets '[' and ']'"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_ARRAY_LIST"
+TEXT    = "Array element list for array [] is incorrect"
+TEXT    = "Check use of parenthesis ']' and separators ','"
+SEVERITY= "ERROR"
+
+MESSAGE = "NOT_CALL"
+TEXT 	= "Invalid use of routine variable, check use of brackets '(' and ')'"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_REFERENCE"
+TEXT    = "Found an action/routine call when expecting a variable reference"
+SEVERITY= "ERROR"
+
+MESSAGE = "UNEXP_CMD"
+TEXT    = "Unexpected use of reserved word '[]' in expression"
+SEVERITY= "ERROR"
+
+MESSAGE = "UNEXP_EOF"
+TEXT    = "Unexpected End Of File"
+SEVERITY= "ERROR"
+
+MESSAGE = "ILL_VAL_EXPR"
+TEXT    = "Illegal value in expression"
+SEVERITY= "ERROR"
+
+MESSAGE = "PREV_WAS_VAL"
+TEXT    = "Parameter previously used as a value expression"
+SEVERITY= "ERROR"
+
+MESSAGE = "PREV_WAS_REF"
+TEXT    = "Cannot pass value expression to a reference parameter"
+SEVERITY= "ERROR"
+
+MESSAGE = "VAR_NOT_ROUTINE"
+TEXT    = "Identifier '[]' has already been used as a variable"
+TEXT    = "Check intended usage of routine call and parenthesis ( )"
+SEVERITY= "ERROR"
+
+MESSAGE = "MIS_HEIGHT"
+TEXT 	= "Mandatory HEIGHT clause not specified"
+SEVERITY= "ERROR"
+
+MESSAGE = "MIS_WIDTH"
+TEXT 	= "Mandatory WIDTH clause not specified"
+SEVERITY= "ERROR"
+
+MESSAGE = "TOO_FEW_ARG"
+TEXT 	= "Too few arguments for this function, or separator omitted"
+SEVERITY= "ERROR"
+
+MESSAGE = "WIN_NA_PLOT"
+TEXT 	= "IN WINDOW not allowed in PLOT GRAPH command"
+SEVERITY= "ERROR"
+
+MESSAGE = "NO_LN_COL"
+TEXT 	= "Found [] when expecting one of LINE or COLUMN"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULT_SCALE"
+TEXT 	= "Scale for positioning already specified for this statement"
+SEVERITY= "ERROR"
+
+MESSAGE = "HAD_LINE"
+TEXT 	= "Cannot mix ON LINE and ON COLUMN, ON LINE already specified"
+SEVERITY= "ERROR"
+
+MESSAGE = "HAD_COL"
+TEXT 	= "Cannot mix ON LINE and ON COLUMN, ON COLUMN already specified"
+SEVERITY= "ERROR"
+
+MESSAGE = "NEED_LINE_COL"
+TEXT 	= "ON LINE or ON COLUMN are mandatory in this command"
+SEVERITY= "ERROR"
+
+MESSAGE = "ILL_IDENT"
+TEXT 	= "'[]' is not a valid identifier"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULT_THEN_SEL"
+TEXT 	= "Multiple definition of THEN SELECT"
+SEVERITY= "ERROR"
+
+MESSAGE = "EXPECT_SELECT"
+TEXT 	= "Found [] when expecting SELECT"
+SEVERITY= "ERROR"
+
+MESSAGE = "EXPECT_UPDATE"
+TEXT 	= "Found [] when expecting UPDATE"
+SEVERITY= "ERROR"
+
+MESSAGE = "BROWSE_FORMAT"
+TEXT 	= "Illegal attempt to use both FORMAT and BROWSE in prompt statement"
+SEVERITY= "ERROR"
+
+MESSAGE = "BROWSE_CHOOSE"
+TEXT 	= "Illegal attempt to use both CHOOSE and BROWSE in prompt statement"
+SEVERITY= "ERROR"
+
+MESSAGE = "FORMAT_CHOOSE"
+TEXT 	= "Illegal attempt to use both FORMAT and CHOOSE in prompt statement"
+SEVERITY= "ERROR"
+
+MESSAGE = "OBJECT_FOR"
+TEXT 	= "Illegal attempt to use both OBJECT and FOR in prompt statement"
+SEVERITY= "ERROR"
+
+MESSAGE = "OBJECT_USING"
+TEXT 	= "Illegal attempt to use both OBJECT and USING in prompt statement"
+SEVERITY= "ERROR"
+
+MESSAGE = "MISS_PROMPT_FOR"
+TEXT 	= "Missing FOR clause in PROMPT command"
+SEVERITY= "ERROR"
+
+MESSAGE = "BFC_WITH_CLASS"
+TEXT 	= "Cannot use BROWSE, FORMAT or CHOOSE when a class has been specified"
+SEVERITY= "ERROR"
+
+MESSAGE = "PROMPT_IN_OBJECT"
+TEXT    = "Cannot specify IN OBJECT without THEN SELECT"
+SEVERITY= "ERROR"
+
+MESSAGE = "NO_KEY_EXPR"
+TEXT 	= "Too few arguments for this function"
+TEXT 	= "Expecting a comma separator ',' followed by a unique identity"
+SEVERITY= "ERROR"
+
+MESSAGE = "UNKNOWN_MODE"
+TEXT 	= "Unrecognised mode '[]' in the SET MODE command"
+TEXT 	= "Try COMMITTED or ACTIVE"
+SEVERITY= "ERROR"
+
+MESSAGE = "EXPECT_USING"
+TEXT 	= "Found [] when expecting USING"
+SEVERITY= "ERROR"
+
+MESSAGE = "NO_RES_EXPR"
+TEXT 	= "Too few arguments for this function"
+TEXT 	= "Expecting a comma separator ',' followed by the results array"
+SEVERITY= "ERROR"
+
+MESSAGE = "MISS_APOST"
+TEXT 	= "Missing Apostrophe '"
+SEVERITY= "ERROR"
+
+MESSAGE = "NOT_TAB_FIELD"
+TEXT 	= "Found '[]' when expecting a table or field expression"
+SEVERITY= "ERROR"
+
+MESSAGE = "MISS_POINT"
+TEXT 	= "Missing point separator in a 'a.b' expression"
+SEVERITY= "ERROR"
+
+MESSAGE = "ILL_REL_OPER"
+TEXT 	= "'[]' is not a valid relational operator"
+SEVERITY= "ERROR"
+
+MESSAGE = "NO_AND_BETW"
+TEXT 	= "Expecting AND, correct usage - BETWEEN <low_val> AND <high_val>"
+SEVERITY= "ERROR"
+
+MESSAGE = "MISS_WHERE"
+TEXT 	= "The WHERE clause is mandatory when using this select function"
+SEVERITY= "ERROR"
+
+MESSAGE = "REDEF_ROUT_VAR"
+TEXT    = "Variable [] has previously been used as a routine"
+SEVERITY= "ERROR"
+
+MESSAGE = "REDEF_CONST_VAR"
+TEXT    = "Variable [] has previously been used as a constant"
+SEVERITY= "ERROR"
+
+MESSAGE = "REDEF_ROUT_CONST"
+TEXT    = "Constant [] has previously been used as a routine"
+SEVERITY= "ERROR"
+
+MESSAGE = "REDEF_VAR_CONST"
+TEXT    = "Constant [] has previously been used as a variable"
+SEVERITY= "ERROR"
+
+MESSAGE = "REDEF_CONST"
+TEXT    = "Illegal redefinition of constant []"
+SEVERITY= "ERROR"
+
+MESSAGE = "EXTERN_CONST"
+TEXT    = "External constant [] conflicts with a locally defined identifier"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULT_LABEL"
+TEXT 	= "Multiple definition of label []"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_GET_FIELD"
+TEXT 	= "Incorrect usage of GET_FIELD_DETAILS"
+TEXT	= "Correct syntax : GET_FIELD_DETAILS table.field, expr, var"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_GET_TABLE"
+TEXT 	= "Incorrect usage of GET_TABLE_DETAILS"
+TEXT	= "Correct syntax : GET_TABLE_DETAILS table, expr, var"
+SEVERITY= "ERROR"
+
+MESSAGE = "ILL_LIT_COM"
+TEXT 	= "Illegal command or identifier [] in literal text"
+TEXT 	= "Check use of '$', '$ENDLITERAL' or spelling of variable names"
+SEVERITY= "ERROR"
+
+MESSAGE = "NO_END_LIT"
+TEXT 	= "$ENDLITERAL not found"
+SEVERITY= "ERROR"
+
+MESSAGE = "MUST_BE_EXPR"
+TEXT 	= "This function can only be used as part of an expression"
+SEVERITY= "ERROR"
+
+MESSAGE = "TOO_FEW_EON"
+TEXT 	= "ON routine was not terminated by ENDON"
+SEVERITY= "ERROR"
+
+MESSAGE = "TOO_MANY_EROU"
+TEXT    = "ENDROUTINE found when not defining a routine"
+SEVERITY= "ERROR"
+
+MESSAGE = "TOO_FEW_EROU"
+TEXT    = "Routine was not terminated by an ENDROUTINE"
+SEVERITY= "ERROR"
+
+MESSAGE = "TOO_FEW_ENDIF"
+TEXT 	= "Too few ENDIFs, [] IF command(s) not terminated"
+SEVERITY= "ERROR"
+
+MESSAGE = "TOO_FEW_UNTIL"
+TEXT 	= "Too few UNTILs, [] REPEAT command(s) not terminated"
+SEVERITY= "ERROR"
+
+MESSAGE = "TOO_FEW_ENDW"
+TEXT 	= "Too few ENDWHILEs, [] WHILE command(s) not terminated"
+SEVERITY= "ERROR"
+
+MESSAGE = "TOO_MANY_EON"
+TEXT    = "ENDON command does not match an ON command"
+SEVERITY= "ERROR"
+
+MESSAGE = "TOO_MANY_ENDW"
+TEXT    = "ENDWHILE command does not match a WHILE command"
+SEVERITY= "ERROR"
+
+MESSAGE = "TOO_MANY_UNTIL"
+TEXT    = "UNTIL command does not match a REPEAT command"
+SEVERITY= "ERROR"
+
+MESSAGE = "TOO_MANY_ENDIF"
+TEXT 	= "ENDIF command does not match an IF statement"
+SEVERITY= "ERROR"
+
+MESSAGE = "TOO_MANY_ELSE"
+TEXT 	= "ELSE detected while not in IF...ENDIF"
+SEVERITY= "ERROR"
+
+MESSAGE = "ELSIF_AFTER_ELS"
+TEXT 	= "Cannot used ELSEIF after the ELSE command has been used"
+SEVERITY= "ERROR"
+
+MESSAGE = "MULT_ELSE"
+TEXT 	= "The ELSE command can only be used once in an IF statement"
+SEVERITY= "ERROR"
+
+MESSAGE = "MISPL_ENDW"
+TEXT    = "ENDWHILE command doesn't match a WHILE command at the same level"
+TEXT    = "WHILE .. ENDWHILE must be used at the same level within a"
+TEXT    = "REPEAT, ON or IF command"
+SEVERITY= "ERROR"
+
+MESSAGE = "MISPL_UNTIL"
+TEXT    = "UNTIL command doesn't match a REPEAT command at the same level"
+TEXT    = "REPEAT .. UNTIL must be used at the same level within a"
+TEXT    = "WHILE, ON or IF command"
+SEVERITY= "ERROR"
+
+MESSAGE = "MISPL_IF"
+TEXT    = "ELSEIF, ELSE or ENDIF command doesn't match an IF command"
+TEXT    = "IF . ELSEIF . ELSE . ENDIF must be used at the same level within a"
+TEXT    = "WHILE, ON or REPEAT command"
+SEVERITY= "ERROR"
+
+MESSAGE = "IN_ROUTINE"
+TEXT 	= "Already defining a ROUTINE"
+SEVERITY= "ERROR"
+
+MESSAGE = "ROUT_IN_IF"
+TEXT 	= "Routine declared inside IF block"
+SEVERITY= "ERROR"
+
+MESSAGE = "ROUT_IN_REP"
+TEXT	= "Routine declared inside REPEAT block"
+SEVERITY= "ERROR"
+
+MESSAGE = "ROUT_IN_WH"
+TEXT    = "Routine declared inside WHILE block"
+SEVERITY= "ERROR"
+
+MESSAGE = "ROUT_IN_ON"
+TEXT    = "Routine declared inside ON block"
+SEVERITY= "ERROR"
+
+MESSAGE = "IN_ON"
+TEXT    = "Already defining an ON block"
+SEVERITY= "ERROR"
+
+MESSAGE = "OPEN_RPC"
+TEXT    = "Failed to open the .RPC file"
+SEVERITY= "ERROR"
+
+MESSAGE = "OPEN_SYM"
+TEXT    = "Failed to open the symbol table dump file file"
+SEVERITY= "ERROR"
+
+MESSAGE = "STD_ROUT_CONF"
+TEXT    = "Standard library call [] conflicts with a previously declared routine"
+SEVERITY= "ERROR"
+
+MESSAGE = "STD_VAR_CONF"
+TEXT    = "Standard library call [] conflicts with a program variable"
+SEVERITY= "ERROR"
+
+MESSAGE = "STD_CONST_CONF"
+TEXT    = "Standard library call [] conflicts with a declared constant"
+SEVERITY= "ERROR"
+
+MESSAGE = "REDEF_STD_CALL"
+TEXT    = "Illegal redefinition of standard library routine []"
+SEVERITY= "ERROR"
+
+MESSAGE = "REDEF_EXT_CALL"
+TEXT    = "Illegal redefinition of external routine []"
+SEVERITY= "ERROR"
+
+MESSAGE = "EXT_ROUT_CONF"
+TEXT    = "External routine [] conflicts with a previously declared routine"
+SEVERITY= "ERROR"
+
+MESSAGE = "EXT_VAR_CONF"
+TEXT    = "External routine [] conflicts with a program variable"
+SEVERITY= "ERROR"
+
+MESSAGE = "EXT_CONST_CONF"
+TEXT    = "External routine [] conflicts with a declared constant"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_OPTION_NAME"
+TEXT    = "Invalid compiler option : []"
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_REAL_PARAM"
+TEXT    = "Invalid floating point value parameter "
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_INT_PARAM"
+TEXT    = "Invalid integer value parameter "
+SEVERITY= "ERROR"
+
+MESSAGE = "BAD_INTERVAL_PARAM"
+TEXT    = "Invalid interval value parameter "
+SEVERITY= "ERROR"
+
+MESSAGE = "NEED_FIELD_NOT"
+TEXT    = "A field name is not required for this select function"
+SEVERITY= "ERROR"
+
+MESSAGE = "STD_CALL_PARAMS"
+TEXT    = "Incorrect number of parameters on a standard library function"
+SEVERITY= "ERROR"
+
+MESSAGE = "NOCOMPILER"
+TEXT    = "No compiler present"
+SEVERITY= "ERROR"
+
+MESSAGE = "ROUTINE"
+TEXT 	= "Missing routine definition : []"
+SEVERITY= "ERROR"
+
+MESSAGE = "LABEL"
+TEXT 	= "Missing label : []"
+SEVERITY= "ERROR"
+
+MESSAGE = "MIS_AT"
+TEXT 	= "Mandatory AT clause not specified"
+SEVERITY= "ERROR"
+
+MESSAGE = "MIS_USING"
+TEXT	= "Mandatory USING clause not specified"
+SEVERITY= "ERROR"
+
+MESSAGE = "MIS_FROM"
+TEXT	= "Mandatory FROM clause not specified"
+SEVERITY= "ERROR"
+
+MESSAGE = "MIS_TO"
+TEXT	= "Mandatory TO clause not specified"
+SEVERITY= "ERROR"
+
+MESSAGE = "UNKNOWN_STD_LIB"
+TEXT 	= "Standard library '[]' does not exist"
+SEVERITY= "ERROR"
+
+MESSAGE = "INTERRUPT"
+TEXT    = "User terminated compilation"
+SEVERITY= "ERROR"
+
+MESSAGE = "INSUFPRIV"
+TEXT    = "Insufficient privilege to use this command"
+SEVERITY= "ERROR"
+
+MESSAGE = "READONLY"
+TEXT    = "Table [] is defined as read only"
+SEVERITY= "ERROR"
+
+MESSAGE = "UPDATEVIEW"
+TEXT    = "Cannot perform update operation on view []"
+SEVERITY= "ERROR"
+
+MESSAGE = "UNKNOWN_LIB"
+TEXT 	= "Unable to join library '[]' : []"
+SEVERITY= "ERROR"
+
+MESSAGE = "RECURSION"
+TEXT 	= "Recursion detected : []"
+SEVERITY= "ERROR"
+

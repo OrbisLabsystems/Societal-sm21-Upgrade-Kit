@@ -1,0 +1,2209 @@
+! Messages that don't really fit anywhere else.
+
+MESSAGE GROUP = "STAND_"
+
+! Standard messages to be used in SampleManager
+
+MESSAGE       = "DISPLAY_MESSAGE"
+TEXT          = "Press EXIT to quit"
+
+MESSAGE       = "EDIT_MESSAGE"
+TEXT          = "Press DO to save changes / EXIT to quit"
+
+MESSAGE       = "MODIFIABLE"
+TEXT          = "Modifiable Entry?"
+
+MESSAGE       = "GROUP_ID"
+TEXT          = "Group ID"
+
+MESSAGE       = "DESCRIPTION"
+TEXT          = "Description"
+
+MESSAGE       = "NAME"
+TEXT          = "Name"
+
+MESSAGE GROUP = "HELP_"
+
+! Default message for top line of help screen if none provided by
+! get_help_message
+
+MESSAGE       = "DEF_TOP"
+
+TEXT          = "Help Screen"
+
+! Default message for the bottom of the help screen - when
+! related help available
+
+MESSAGE       = "DEF_BOT_REL"
+
+TEXT          = "Press Select to see related help / Exit to leave screen"
+
+! Default message for the bottom of the help screen - when
+! no related help available
+
+MESSAGE       = "DEF_BOT_NOREL"
+
+TEXT          = "Press Exit to leave screen"
+
+! Header for related menu box
+
+MESSAGE       = "REL_HEAD"
+TEXT          = "Available Related Help"
+
+! Messages for $BARMENU
+
+MESSAGE GROUP = "BARMENU_"
+
+MESSAGE       = "NOEXIST"
+TEXT          = "No records found for menu "
+
+MESSAGE       = "TOOSHORT"
+TEXT          = "The top bar is too short to fit all the options on-please respecify"
+
+MESSAGE       = "DOLLAR"
+TEXT          = "SampleManager command"
+
+MESSAGE       = "ENTER"
+TEXT          = "Enter command $"
+
+
+MESSAGE GROUP = "CALIB_"
+ 
+MESSAGE       = "INST"
+TEXT          = "Instrument found"
+
+MESSAGE       = "HEAD"
+TEXT          = "Instrument Calibration Report"
+
+MESSAGE       = "FOOT"
+TEXT          = "Press EXIT to quit"
+
+MESSAGE       = "DUE"
+TEXT          = "Calibration due by date"
+
+MESSAGE       = "GENERATING"
+TEXT          = "Generating ... "
+
+MESSAGE       = "COMPLETE"
+TEXT          = "Report Complete"
+
+MESSAGE       = "HEADER"
+TEXT          = "             Instrument Calibration Report             Page ##"
+
+MESSAGE       = "FLAG"
+TEXT          = "The following instruments are flagged as requiring calibration."
+
+MESSAGE       = "TITLE1"
+TEXT          = "!L VE !L                 !L VE !L                         !L VE !L  Date Calib  !L VE !L   Date Next  !L VE !L"
+
+MESSAGE       = "TITLE2"
+TEXT          = "!L VE !L  Instrument ID  !L VE !L      Description        !L VE !L   Required   !L VE !L  Calibration !L VE !L"
+
+
+MESSAGE GROUP = "SERVICE_"
+
+MESSAGE       = "INST"
+TEXT          = "Instrument Found : "
+
+MESSAGE       = "HEAD"
+TEXT          = "Instrument Servicing Report"
+
+MESSAGE       = "FOOT"
+TEXT          = "Press EXIT to quit"
+
+MESSAGE       = "DUE"
+TEXT          = "Service due by date : "
+
+MESSAGE       = "GENERATING"
+TEXT          = "Generating ... "
+
+MESSAGE       = "HEADER"
+TEXT          = "             Instrument Service Report                 Page ##"
+
+MESSAGE       = "FLAG"
+TEXT          = "The following instruments are flagged as requiring servicing."
+
+MESSAGE       = "TITLE1"
+TEXT          = "!L VE !L                 !L VE !L                         !L VE !L Date Service !L VE !L  Date Next   !L VE !L"
+
+MESSAGE       = "TITLE2"
+TEXT          = "!L VE !L  Instrument ID  !L VE !L      Description        !L VE !L   Required   !L VE !L   Service    !L VE !L"
+
+
+MESSAGE  GROUP "APPROVAL_"
+
+MESSAGE         = "ONE_1"
+TEXT            = "Operator Approval Feature is not Enabled"
+
+MESSAGE         = "EDIT_FORM_HEADER"
+TEXT            = "Edit Operator Approval  -  Operator ID : "
+
+MESSAGE         = "DISPLAY_FORM_HEADER"
+TEXT            = "Display Operator Approval  -  Operator ID : "
+
+MESSAGE         = "FORM_FOOTER"
+TEXT            = "Press DO to confirm, SELECT for submenu, EXIT to cancel"
+
+MESSAGE         = "MENU_1"
+TEXT            = "Operator Approval Navigation"
+
+MESSAGE         = "MENU_2"
+TEXT            = "Start of "
+
+MESSAGE         = "MENU_3"
+TEXT            = "End of List "
+
+MESSAGE         = "DISP_4"
+TEXT            = "Enter Operator ID :   "
+
+MESSAGE  	= "PRINT_TITLE"
+TEXT	     	= "Print Approval"
+
+MESSAGE         = "DUPLICATE_ENTRY"
+TEXT            = "An approval record already exists for this entry type and ID"
+
+MESSAGE         = "NO_ENTRIES"
+TEXT            = "There are no "
+TEXT            = " entries"
+
+MESSAGE         = "NO_APPROVAL"
+TEXT            = "There is no operator approval data for this operator"
+
+MESSAGE         = "OP_APPRO"
+TEXT            = "Operator Approval  -  Operator ID  :"
+
+MESSAGE         = "EDIT_PROMPT_HEADER"
+TEXT            = "Edit Operator Approval"
+
+MESSAGE         = "DISPLAY_PROMPT_HEADER"
+TEXT            = "Display Operator Approval"
+
+MESSAGE         = "OPERATOR"
+TEXT            = "Operator ID"
+
+MESSAGE         = "ENTRY_TYPE"
+TEXT            = "Entry Type"
+
+MESSAGE         = "ENTRY_ID"
+TEXT            = "Entry ID"
+
+MESSAGE         = "BODY"
+TEXT            = "Approval Body"
+
+MESSAGE         = "DATE"
+TEXT            = "Approval Date"
+
+MESSAGE         = "EXPIRY_DATE"
+TEXT            = "Expiry Date"
+
+MESSAGE         = "DO_CONFIRM_MESSAGE"
+TEXT            = "Save updated Operator Approval information in the database"
+
+MESSAGE         = "EXIT_CONFIRM_MESSAGE"
+TEXT            = "Discard changes to Operator Approval information"
+
+MESSAGE		= "BUTTONS"
+TEXT		= "Save"
+TEXT		= "Insert"
+TEXT		= "Remove"
+TEXT		= "Help"
+TEXT		= "Cancel"
+
+MESSAGE		= "MORE_INFO"
+TEXT		= "An Entry type, entry id, approval body, and approval date must be defined for each line used"
+
+MESSAGE 	= "LOCK"
+TEXT		= "Operator approval data is LOCKED by another user"
+
+MESSAGE		= "BORDER"
+TEXT		= " "
+
+MESSAGE		= "PRINT_ID"
+TEXT		= "Operator ID   : "
+
+MESSAGE		= "PRINT_NAME"
+TEXT		= "Operator Name : "
+
+MESSAGE		= "PRINT_HEADER"
+TEXT		= "SampleManager Operator Approval records                                Page ##"
+
+MESSAGE		= "LIST_HEADER"
+TEXT		= "SampleManager List of Operator Approval records                        Page ##"
+
+MESSAGE		= "LIST_END"
+TEXT		= "End of listing"
+
+MESSAGE		= "INVALID_DATES"
+TEXT		= "Approval date ([]) should be earlier than expiry date ([])"
+
+MESSAGE		= "MAIN_MENU"
+TEXT		= "Operator Approval Menu"
+TEXT		= "Edit Operator Approval"
+TEXT		= "Display Operator Approval"
+TEXT		= "Print Operator Approval"
+TEXT		= "List Operator Approval"
+
+
+MESSAGE  GROUP  "CALIBINST_"
+
+MESSAGE         = "HEADER"
+TEXT            = "Completion of Instrument Calibration"
+
+MESSAGE         = "FOOTER"
+TEXT            = "Press DO to confirm or EXIT to quit"
+
+MESSAGE         = "PROM_1"
+TEXT            = "Enter instrument ID"
+
+MESSAGE         = "PROM_2"
+TEXT            = "Enter date of calibration"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Next calibration date is"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Next service date is"
+
+MESSAGE         = "NOT_ENT"
+TEXT            = "<None Entered>"
+
+MESSAGE         = "LOCKED"
+TEXT            = "Instrument record is locked.  Details cannot be updated."
+
+MESSAGE         = "UPDATE_DB"
+TEXT            = "Update database with new dates ?"
+
+MESSAGE         = "ISO_USED"
+TEXT            = "Instrument not allowed - extended calibration fields have been defined - please use RMB options from instrument folder"
+
+
+MESSAGE  GROUP  "CHSTAT_"
+
+MESSAGE         = "MAIN_1"
+TEXT            = "Table List"
+
+MESSAGE         = "MAIN_3"
+TEXT            = "T - Test"
+
+MESSAGE         = "MAIN_5"
+TEXT            = "S - Sample"
+
+MESSAGE         = "MAIN_6"
+TEXT            = "R - Result"
+
+MESSAGE         = "MAIN_7"
+TEXT            = "J - Job"
+
+MESSAGE         = "INIT_1"
+TEXT            = "Initial Status List"
+
+MESSAGE         = "INIT_3"
+TEXT            = "E - Entered"
+
+MESSAGE         = "INIT_5"
+TEXT            = "M - Modified"
+
+MESSAGE         = "INIT_7"
+TEXT            = "A - Authorised"
+
+MESSAGE         = "INIT_9"
+TEXT            = "R - Rejected"
+
+MESSAGE         = "INIT_11"
+TEXT            = "X - Cancelled"
+
+MESSAGE         = "FINAL_1"
+TEXT            = " Final Status List"
+
+MESSAGE         = "INIT_13"
+TEXT            = "U - Unavailable"
+
+MESSAGE         = "INIT_15"
+TEXT            = "W - Waiting"
+
+MESSAGE         = "INIT_17"
+TEXT            = "V - Available"
+
+MESSAGE         = "INIT_19"
+TEXT            = "P - Pending"
+
+MESSAGE         = "INIT_21"
+TEXT            = "C - Complete"
+
+MESSAGE         = "FINAL_2"
+TEXT            = "S - Suspended"
+
+MESSAGE         = "INIT_23"
+TEXT            = "H - Hold"
+
+MESSAGE         = "PROMPT_1"
+TEXT            = "Force Change ? "
+
+MESSAGE         = "PROMPT_3"
+TEXT            = "Enter Result Id > "
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "No forced changes allowed by global configuration"
+
+MESSAGE         = "PROMPT_2"
+TEXT            = "Suppress Prompt Audits ? "
+
+MESSAGE         = "PROMPT_4"
+TEXT            = "Enter Test No > "
+
+MESSAGE         = "PROMPT_5"
+TEXT            = "Enter Sample ID > "
+
+MESSAGE         = "PROMPT_6"
+TEXT            = "Enter Job name > "
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Status change complete"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Test has incorrect status"
+
+
+MESSAGE  GROUP  "COM_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Committed menu not found."
+
+MESSAGE         = "MODE_CHANGE_WARNING"
+TEXT            = "Changing commit mode with open reports may cause unpredictable errors.  Are you sure you want to continue ?"
+
+
+MESSAGE  GROUP  "DEVELOP_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "<NEXT>            Swap menus"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "NEXT"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "<UP> & <DOWN>     Move option pointer"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "UP"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "DOWN"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "<RETURN> or <DO>  Execute option"
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "RETURN"
+
+MESSAGE         = "DISPLAY_8"
+TEXT            = "DO"
+
+MESSAGE         = "DISPLAY_9"
+TEXT            = "<SELECT>          Toggle Auto Execute"
+
+MESSAGE         = "DISPLAY_10"
+TEXT            = "SELECT"
+
+MESSAGE         = "DISPLAY_11"
+TEXT            = "<$>               Enter SampleManager command"
+
+MESSAGE         = "DISPLAY_12"
+TEXT            = "$"
+
+MESSAGE         = "DISPLAY_13"
+TEXT            = "<HELP>            Give this screen"
+
+MESSAGE         = "DISPLAY_14"
+TEXT            = "HELP"
+
+MESSAGE         = "DISPLAY_15"
+TEXT            = "Pressing  a  numeric  key  moves  the"
+
+MESSAGE         = "DISPLAY_16"
+TEXT            = "option pointer  to the  relevant menu"
+
+MESSAGE         = "DISPLAY_17"
+TEXT            = "option.  If Auto Execute  is on, then"
+
+MESSAGE         = "DISPLAY_18"
+TEXT            = "the menu option will execute."
+
+MESSAGE         = "DISPLAY_19"
+TEXT            = " Press <HELP>  for $DEVELOP tutorial"
+
+MESSAGE         = "DISPLAY_20"
+TEXT            = "     Press <EXIT>  to quit this"
+
+MESSAGE         = "DISPLAY_21"
+TEXT            = "    AUTO EXECUTE  IS NOW    "
+
+MESSAGE         = "DISPLAY_22"
+TEXT            = "         SELECT ANOTHER REPORT"
+
+MESSAGE         = "DISPLAY_23"
+TEXT            = "Select another  report  to work  on from"
+
+MESSAGE         = "DISPLAY_24"
+TEXT            = "the list given below."
+
+MESSAGE         = "DISPLAY_25"
+TEXT            = "<INSERT> adds a report to the list"
+
+MESSAGE         = "DISPLAY_26"
+TEXT            = "<REMOVE> removes the highlighted report"
+
+MESSAGE         = "DISPLAY_27"
+TEXT            = "<DO>     selects the highlighted report"
+
+MESSAGE         = "DISPLAY_28"
+TEXT            = "<SELECT> edit parameters  of the report"
+
+MESSAGE         = "DISPLAY_29"
+TEXT            = "INSERT"
+
+MESSAGE         = "DISPLAY_30"
+TEXT            = "REMOVE"
+
+MESSAGE         = "DISPLAY_31"
+TEXT            = "DO"
+
+MESSAGE         = "DISPLAY_32"
+TEXT            = "SELECT"
+
+MESSAGE         = "MENU_1"
+TEXT            = "1. Edit the report"
+
+MESSAGE         = "MENU_2"
+TEXT            = "2. Compile the report"
+
+MESSAGE         = "MENU_3"
+TEXT            = "3. View compilation errors"
+
+MESSAGE         = "MENU_4"
+TEXT            = "4. Execute the report"
+
+MESSAGE         = "MENU_5"
+TEXT            = "5. Debug the report"
+
+MESSAGE         = "MENU_6"
+TEXT            = "1. Edit Report Header"
+
+MESSAGE         = "MENU_7"
+TEXT            = "2. View the Report"
+
+MESSAGE         = "MENU_8"
+TEXT            = "3. Print the Report"
+
+MESSAGE         = "MENU_9"
+TEXT            = "4. Execute another Report"
+
+MESSAGE         = "MENU_10"
+TEXT            = "5. Enter OS Command(s)"
+
+MESSAGE         = "DISPLAY_34"
+TEXT            = "                     VGL DEVELOPMENT PROGRAM"
+
+MESSAGE         = "DISPLAY_36"
+TEXT            = "PARAMETERS : "
+
+MESSAGE         = "DISPLAY_37"
+TEXT            = " Press <HELP> for information "
+
+MESSAGE         = "DISPLAY_38"
+TEXT            = "R.E.P.O.R.T  D.E.V.E.L.O.P.M.E.N.T"
+
+MESSAGE         = "DISPLAY_39"
+TEXT            = "(c)1986-2006 Thermo Electron Corporation. All rights reserved."
+
+MESSAGE         = "PROMPT_1"
+TEXT            = "REPORT ID  : "
+
+MESSAGE         = "DISPLAY_40"
+TEXT            = "REPORT ID  : "
+
+MESSAGE         = "PROMPT_2"
+TEXT            = "PARAMETERS : "
+
+MESSAGE         = "DISPLAY_41"
+TEXT            = "   <FIND> select another report, <DO> execute option, <NEXT> toggles menu  "
+
+MESSAGE         = "DISPLAY_42"
+TEXT            = "Enter the name of the report to execute"
+
+MESSAGE         = "CREATE_1"
+TEXT            = "KEYS AVAILABLE"
+
+MESSAGE         = "CREATE_2"
+TEXT            = "REPORT INFO ENTRY"
+
+MESSAGE         = "CREATE_3"
+TEXT            = "SampleManager INTERFACE"
+
+MESSAGE         = "CREATE_4"
+TEXT            = "EXECUTE ANOTHER REPORT"
+
+MESSAGE         = "CREATE_5"
+TEXT            = "SPAWN A OS PROCESS"
+
+MESSAGE         = "CREATE_6"
+TEXT            = "EXECUTE THE REPORT"
+
+MESSAGE         = "DISPLAY_43"
+TEXT            = "  Enter the  OS  commands,  or  press"
+
+MESSAGE         = "DISPLAY_44"
+TEXT            = "  <DO> or <RETURN> to spawn a process"
+
+MESSAGE         = "SAY_1"
+TEXT            = "C O M P I L I N G"
+
+MESSAGE         = "SAY_2"
+TEXT            = "COMPILATION ERRORS"
+
+MESSAGE         = "SAY_3"
+TEXT            = "D E B U G G I N G"
+
+MESSAGE         = "SAY_4"
+TEXT            = "V I E W   R E P O R T"
+
+MESSAGE         = "SAY_5"
+TEXT            = "P R I N T I N G"
+
+MESSAGE         = "HEADER_1"
+TEXT            = " Report "
+
+MESSAGE         = "HEADER_2"
+TEXT            = " last edited by "
+
+MESSAGE         = "HEADER_3"
+TEXT            = "  on  "
+
+MESSAGE         = "DISPLAY_45"
+TEXT            = "Executing  : "
+
+MESSAGE         = "SAY_6"
+TEXT            = "E x e c u t i n g"
+
+MESSAGE         = "MESS_1"
+TEXT            = "CAN'T EDIT: The report is currently locked by another user"
+
+MESSAGE         = "SAY_7"
+TEXT            = "E d i t i n g"
+
+MESSAGE         = "MESS_2"
+TEXT            = "CAN'T EDIT HEADER: The report is locked by another user ."
+
+MESSAGE         = "SAY_8"
+TEXT            = "EDIT REPORT HEADER"
+
+MESSAGE         = "DISPLAY_46"
+TEXT            = "GROUP ID    : "
+
+MESSAGE         = "DISPLAY_47"
+TEXT            = "DESCRIPTION : "
+
+MESSAGE         = "DISPLAY_48"
+TEXT            = "MODIFIABLE  : "
+
+MESSAGE         = "DISPLAY_49"
+TEXT            = " YES "
+
+MESSAGE         = "DISPLAY_50"
+TEXT            = " NO "
+
+MESSAGE         = "PROMPT_3"
+TEXT            = "GROUP ID    : "
+
+MESSAGE         = "PROMPT_4"
+TEXT            = "DESCRIPTION : "
+
+MESSAGE         = "DISPLAY_51"
+TEXT            = "press <SELECT> to toggle yes/no"
+
+MESSAGE         = "DISPLAY_52"
+TEXT            = "Report Header was NOT modified"
+
+MESSAGE         = "DISPLAY_53"
+TEXT            = "Report Header modified"
+
+MESSAGE         = "MESS_3"
+TEXT            = "This report has been deleted from the report table"
+
+MESSAGE         = "MESS_4"
+TEXT            = "That was the only report in the report list. Program terminating."
+
+MESSAGE         = "DISPLAY_54"
+TEXT            = " PRESS <SPACE> OR <EXIT> "
+
+MESSAGE         = "DISPLAY_55"
+TEXT            = "  HELP       DO"
+
+MESSAGE         = "DISPLAY_56"
+TEXT            = "        Insert Re-"
+
+MESSAGE         = "DISPLAY_57"
+TEXT            = " Find   Here   Move"
+
+MESSAGE         = "DISPLAY_58"
+TEXT            = "        Prev   Next"
+
+MESSAGE         = "DISPLAY_59"
+TEXT            = " Select Screen Screen"
+
+MESSAGE         = "DISPLAY_60"
+TEXT            = "        DEVELOPMENT REPORT HELP ROUTINE"
+
+MESSAGE         = "DISPLAY_61"
+TEXT            = "When you see 'PRESS <SPACE> OR <EXIT>'displayed at"
+
+MESSAGE         = "DISPLAY_62"
+TEXT            = "the bottom of the screen,  you should either press"
+
+MESSAGE         = "DISPLAY_63"
+TEXT            = "the space-bar to continue with the help,  or press"
+
+MESSAGE         = "DISPLAY_64"
+TEXT            = "<EXIT> to exit from help "
+
+MESSAGE         = "DISPLAY_65"
+TEXT            = "This help  routine will now  explain the different"
+
+MESSAGE         = "DISPLAY_66"
+TEXT            = "functions available in $DEVELOP."
+
+MESSAGE         = "DISPLAY_67"
+TEXT            = "When the  $DEVELOP report  is first  executed  the"
+
+MESSAGE         = "DISPLAY_68"
+TEXT            = "window  shown opposite is pasted  onto the screen."
+
+MESSAGE         = "DISPLAY_69"
+TEXT            = "You  are  asked  to supply  information  into  two"
+
+MESSAGE         = "DISPLAY_70"
+TEXT            = "fields."
+
+MESSAGE         = "DISPLAY_71"
+TEXT            = "Into  this you  enter the name  of the report that"
+
+MESSAGE         = "DISPLAY_72"
+TEXT            = "you   wish   to work  on.   The  <browse>  key  is"
+
+MESSAGE         = "DISPLAY_73"
+TEXT            = "available."
+
+MESSAGE         = "DISPLAY_74"
+TEXT            = "Into this you can enter any text that you want to"
+
+MESSAGE         = "DISPLAY_75"
+TEXT            = "send  into the  report every time you execute it."
+
+MESSAGE         = "DISPLAY_76"
+TEXT            = "Each parameter should be separated by commas, and"
+
+MESSAGE         = "DISPLAY_77"
+TEXT            = "should not include speech marks. These parameters"
+
+MESSAGE         = "DISPLAY_78"
+TEXT            = "will satisfy the  first n PROMPT  commands in the"
+
+MESSAGE         = "DISPLAY_79"
+TEXT            = "report, n being the number of parameters entered."
+
+MESSAGE         = "DISPLAY_80"
+TEXT            = "To move from the REPORT ID field to the PARAMETERS"
+
+MESSAGE         = "DISPLAY_81"
+TEXT            = "field either user the <UP> and <DOWN> cursor keys"
+
+MESSAGE         = "DISPLAY_82"
+TEXT            = "or press <RETURN>."
+
+MESSAGE         = "DISPLAY_83"
+TEXT            = "When you have entered the information required"
+
+MESSAGE         = "DISPLAY_84"
+TEXT            = "into the two fields, press <DO>."
+
+MESSAGE         = "DISPLAY_85"
+TEXT            = "NOTE: You don't have to enter anything into the"
+
+MESSAGE         = "DISPLAY_86"
+TEXT            = "      PARAMETERS field."
+
+MESSAGE         = "DISPLAY_87"
+TEXT            = "There are two menus  available in the  $DEVELOP program.The first one, shown"
+
+MESSAGE         = "DISPLAY_88"
+TEXT            = "above on the  left  offers  the main  development options such as editing and"
+
+MESSAGE         = "DISPLAY_89"
+TEXT            = "compiling."
+
+MESSAGE         = "DISPLAY_90"
+TEXT            = "The one on the right is the 2nd menu.  This offers the options that probably"
+
+MESSAGE         = "DISPLAY_91"
+TEXT            = "won't be used as often as the  rest such  as entering OS commands and editing"
+
+MESSAGE         = "DISPLAY_92"
+TEXT            = "the report header."
+
+MESSAGE         = "DISPLAY_93"
+TEXT            = "Only one of the  above menus  are shown  on the  screen at any time."
+
+MESSAGE         = "DISPLAY_94"
+TEXT            = "To swap between one and the other press the <NEXT> key."
+
+MESSAGE         = "DISPLAY_95"
+TEXT            = "        DEVELOPMENT REPORT HELP ROUTINE"
+
+MESSAGE         = "DISPLAY_96"
+TEXT            = "To select  an option  from either of the menus"
+
+MESSAGE         = "DISPLAY_97"
+TEXT            = "the function keypad is used  (this is situated"
+
+MESSAGE         = "DISPLAY_98"
+TEXT            = "to the right of the keyboard)."
+
+MESSAGE         = "DISPLAY_99"
+TEXT            = "The  <UP> and <DOWN> arrow keys move a pointer"
+
+MESSAGE         = "DISPLAY_100"
+TEXT            = "on  the  menu and  pressing <DO>  or  <RETURN>"
+
+MESSAGE         = "DISPLAY_101"
+TEXT            = "executes the option pointed to."
+
+MESSAGE         = "DISPLAY_102"
+TEXT            = "As  an alternative to  using the arrow keys to"
+
+MESSAGE         = "DISPLAY_103"
+TEXT            = "select  options from  the menu,  you can press"
+
+MESSAGE         = "DISPLAY_104"
+TEXT            = "the number key shown next to menu option."
+
+MESSAGE         = "DISPLAY_105"
+TEXT            = "For instance,  the 'EXECUTE THE REPORT' option"
+
+MESSAGE         = "DISPLAY_106"
+TEXT            = "in menu one  has the number 4 next  to it.  By"
+
+MESSAGE         = "DISPLAY_107"
+TEXT            = "pressing 4  on the  keyboard  this  option  is"
+
+MESSAGE         = "DISPLAY_108"
+TEXT            = "selected."
+
+MESSAGE         = "DISPLAY_109"
+TEXT            = "By using  the <SELECT>  key it  is possible to"
+
+MESSAGE         = "DISPLAY_110"
+TEXT            = "toggle between the  menu options automatically"
+
+MESSAGE         = "DISPLAY_111"
+TEXT            = "executing when  a numeric  key is  pressed, or"
+
+MESSAGE         = "DISPLAY_112"
+TEXT            = "not automatically executing."
+
+MESSAGE         = "DISPLAY_113"
+TEXT            = "The default  for this is for  the menu options"
+
+MESSAGE         = "DISPLAY_114"
+TEXT            = "not to automatically execute."
+
+MESSAGE         = "DISPLAY_115"
+TEXT            = "             Report SAMP_LOGIN last edited by S_PAUL on  1-DEC-1988         "
+
+MESSAGE         = "DISPLAY_116"
+TEXT            = "The header line  (shown above)  is displayed  above the menu and gives details"
+
+MESSAGE         = "DISPLAY_117"
+TEXT            = "on the report currently being worked on."
+
+MESSAGE         = "DISPLAY_118"
+TEXT            = "In the example  the report being  worked on  is SAMP_LOGIN, and this was last"
+
+MESSAGE         = "DISPLAY_119"
+TEXT            = "edited on the 1st December 1988 by the user S_PAUL."
+
+MESSAGE         = "DISPLAY_120"
+TEXT            = "Whilst in either menu, it's possible to enter SampleManager commands by"
+
+MESSAGE         = "DISPLAY_121"
+TEXT            = "typing the $ key. This will bring up a window into which the SampleManager"
+
+MESSAGE         = "DISPLAY_122"
+TEXT            = "$"
+
+MESSAGE         = "DISPLAY_123"
+TEXT            = "command is entered. Pressing <DO> or <RETURN> executes the command."
+
+MESSAGE         = "DISPLAY_124"
+TEXT            = "Pressing <exit> returns back to the menu without executing any commands."
+
+MESSAGE         = "DISPLAY_125"
+TEXT            = "We shall now look at the options available in the two  menus."
+
+MESSAGE         = "DISPLAY_126"
+TEXT            = "Remember that when using the $DEVELOP report we move from one menu to another"
+
+MESSAGE         = "DISPLAY_127"
+TEXT            = "by pressing the <NEXT> key."
+
+MESSAGE         = "DISPLAY_128"
+TEXT            = "MENU ONE:"
+
+MESSAGE         = "DISPLAY_129"
+TEXT            = "EDIT THE REPORT:"
+
+MESSAGE         = "DISPLAY_130"
+TEXT            = "                 This lets you edit the report being worked on."
+
+MESSAGE         = "DISPLAY_131"
+TEXT            = "                 Unlike the usual  report editor,  you aren't given the option"
+
+MESSAGE         = "DISPLAY_132"
+TEXT            = "                 of editing  the report  header details. This is done from an"
+
+MESSAGE         = "DISPLAY_133"
+TEXT            = "                 option in menu two."
+
+MESSAGE         = "DISPLAY_134"
+TEXT            = "COMPILE THE REPORT:"
+
+MESSAGE         = "DISPLAY_135"
+TEXT            = "                 This compiles the report.  If any errors are found during the"
+
+MESSAGE         = "DISPLAY_136"
+TEXT            = "                 compilation then a message is  displayed at the bottom of the"
+
+MESSAGE         = "DISPLAY_137"
+TEXT            = "                 screen. Press the space-bar to continue  from this message."
+
+MESSAGE         = "DISPLAY_138"
+TEXT            = "VIEW COMPILATION ERRORS:"
+
+MESSAGE         = "DISPLAY_139"
+TEXT            = "                  If  you  are  told  that   there have  been  errors  during"
+
+MESSAGE         = "DISPLAY_140"
+TEXT            = "                  compilation  then you  should select this option to display"
+
+MESSAGE         = "DISPLAY_141"
+TEXT            = "                  them."
+
+MESSAGE         = "DISPLAY_142"
+TEXT            = "EXECUTE THE REPORT:"
+
+MESSAGE         = "DISPLAY_143"
+TEXT            = "                  This executes the last successfully compiled  version of the"
+
+MESSAGE         = "DISPLAY_144"
+TEXT            = "                  report."
+
+MESSAGE         = "DISPLAY_145"
+TEXT            = "DEBUG THE REPORT:"
+
+MESSAGE         = "DISPLAY_146"
+TEXT            = "                  This debugs the last compiled version of the report."
+
+MESSAGE         = "DISPLAY_147"
+TEXT            = "MENU TWO"
+
+MESSAGE         = "DISPLAY_148"
+TEXT            = "EDIT REPORT HEADER:"
+
+MESSAGE         = "DISPLAY_149"
+TEXT            = "                  This  lets  you  edit  the  report header.  This  holds such"
+
+MESSAGE         = "DISPLAY_150"
+TEXT            = "                  information as  the group_id  of the report, its description"
+
+MESSAGE         = "DISPLAY_151"
+TEXT            = "                  and whether it is modifiable or not."
+
+MESSAGE         = "DISPLAY_152"
+TEXT            = "VIEW THE REPORT:"
+
+MESSAGE         = "DISPLAY_153"
+TEXT            = "                  This allows you to view the report  without editing it."
+
+MESSAGE         = "DISPLAY_154"
+TEXT            = "                  Unlike  the  'edit the report'  option this  does not change"
+
+MESSAGE         = "DISPLAY_155"
+TEXT            = "                  information such as who last modified the report and when it"
+
+MESSAGE         = "DISPLAY_156"
+TEXT            = "                  was last edited."
+
+MESSAGE         = "DISPLAY_157"
+TEXT            = "PRINT THE REPORT:"
+
+MESSAGE         = "DISPLAY_158"
+TEXT            = "                 This prints out the report to the default text printer."
+
+MESSAGE         = "DISPLAY_159"
+TEXT            = "EXECUTE ANOTHER REPORT:"
+
+MESSAGE         = "DISPLAY_160"
+TEXT            = "                 On selecting this  option you are asked to enter the name of"
+
+MESSAGE         = "DISPLAY_161"
+TEXT            = "                 another report which is then executed."
+
+MESSAGE         = "DISPLAY_162"
+TEXT            = "ENTER OS COMMAND(S):"
+
+MESSAGE         = "DISPLAY_163"
+TEXT            = "                 On selecting this option  you are asked to either enter a OS"
+
+MESSAGE         = "DISPLAY_164"
+TEXT            = "                 command, or to press <do> without entering anything.  If you"
+
+MESSAGE         = "DISPLAY_165"
+TEXT            = "                 enter a  command then this is executed and we go back to the"
+
+MESSAGE         = "DISPLAY_166"
+TEXT            = "                 $DEVELOP  report.  If  you  don't  enter a  command  then the"
+
+MESSAGE         = "DISPLAY_167"
+TEXT            = "                 report  'spawns'  a new  process. To  return to $DEVELOP you"
+
+MESSAGE         = "DISPLAY_168"
+TEXT            = "                 should type LOGOUT or EOJ for VMS or exit for UNIX."
+
+MESSAGE         = "DISPLAY_169"
+TEXT            = "DEVELOPMENT REPORT HELP ROUTINE"
+
+MESSAGE         = "DISPLAY_170"
+TEXT            = "SAMP_LOGIN"
+
+MESSAGE         = "DISPLAY_171"
+TEXT            = "After entering the $ report  and typing in the name of a report to work"
+
+MESSAGE         = "DISPLAY_172"
+TEXT            = "on, you'll notice that underneath the menu are three blocks (shown below). The"
+
+MESSAGE         = "DISPLAY_173"
+TEXT            = "first of these holds the report name you just entered."
+
+MESSAGE         = "DISPLAY_174"
+TEXT            = "As will  be  explained  in a moment,   it is  possible to enter a  report name"
+
+MESSAGE         = "DISPLAY_175"
+TEXT            = "into each of these blocks, and then choose one of these reports to work on."
+
+MESSAGE         = "DISPLAY_176"
+TEXT            = "Initially only one of the blocks has anything in it,and that will be the"
+
+MESSAGE         = "DISPLAY_177"
+TEXT            = "report name you first entered."
+
+MESSAGE         = "DISPLAY_178"
+TEXT            = "Press <FIND> and the  menu will change to give instructions on how to select a"
+
+MESSAGE         = "DISPLAY_179"
+TEXT            = "different report to work on, and the first block will be highlighted."
+
+MESSAGE         = "DISPLAY_180"
+TEXT            = "Pressing <INSERT> lets you enter a new report name into the blocks (upto a"
+
+MESSAGE         = "DISPLAY_181"
+TEXT            = "a maximum of three)."
+
+MESSAGE         = "DISPLAY_182"
+TEXT            = "Pressing <REMOVE> removes a report name from the blocks."
+
+MESSAGE         = "DISPLAY_183"
+TEXT            = "PL_STAB   "
+
+MESSAGE         = "DISPLAY_184"
+TEXT            = "PL_HANGMAN"
+
+MESSAGE         = "DISPLAY_185"
+TEXT            = "You can select one of the reports to work on by using the <LEFT> and <RIGHT>"
+
+MESSAGE         = "DISPLAY_186"
+TEXT            = "cursor keys to highlight the name, and then press <DO> or <RETURN>."
+
+MESSAGE         = "DISPLAY_187"
+TEXT            = "Enter a SampleManager command"
+
+MESSAGE         = "DISPLAY_188"
+TEXT            = "This command is not available."
+
+MESSAGE         = "DISPLAY_189"
+TEXT            = "PAUSE - press <SPACE>"
+
+MESSAGE         = "DISPLAY_190"
+TEXT            = "  O N  "
+
+MESSAGE         = "DISPLAY_191"
+TEXT            = " O F F "
+
+MESSAGE		= "WINDOW_HEADER"
+TEXT		= "VGL Report Development"
+
+MESSAGE		= "REPORTS"
+TEXT		= "VGL reports"
+
+MESSAGE		= "PARAMETER"
+TEXT		= "Parameter  "
+
+MESSAGE		= "DESCRIPTION"
+TEXT		= "Description"
+
+MESSAGE		= "MODIFIED_BY"
+TEXT		= "Last modified by"
+
+MESSAGE		= "MODIFIED_ON"
+TEXT		= "Last modified on"
+
+MESSAGE		= "BUTTON_NEW"
+TEXT		= "New"
+
+MESSAGE		= "BUTTON_EDIT"
+TEXT		= "Edit"
+
+MESSAGE		= "BUTTON_COMPILE"
+TEXT		= "Compile"
+
+MESSAGE		= "BUTTON_ERRORS"
+TEXT		= "Errors"
+
+MESSAGE		= "BUTTON_EXECUTE"
+TEXT		= "Execute"
+
+MESSAGE		= "BUTTON_DEBUG"
+TEXT		= "Debug"
+
+MESSAGE		= "BUTTON_PRINT"
+TEXT		= "Print"
+
+MESSAGE		= "GUI_WARNING"
+TEXT		= "This report can only be run on a GUI terminal"
+
+MESSAGE		= "BUTTON_MANAGE"
+TEXT		= "Setup"
+
+
+MESSAGE  GROUP  "DIARY_"
+
+MESSAGE         = "DAY_1"
+TEXT            = "Monday   "
+
+MESSAGE         = "DAY_2"
+TEXT            = "Tuesday  "
+
+MESSAGE         = "DAY_3"
+TEXT            = "Wednesday"
+
+MESSAGE         = "DAY_4"
+TEXT            = "Thursday "
+
+MESSAGE         = "DAY_5"
+TEXT            = "Friday   "
+
+MESSAGE         = "DAY_6"
+TEXT            = "Saturday "
+
+MESSAGE         = "DAY_7"
+TEXT            = "Sunday   "
+
+MESSAGE         = "MONTH_1"
+TEXT            = "JANFEBMARAPRMAYJUNJULAUGSEPOCTNOVDEC"
+
+MESSAGE         = "WEEK_1"
+TEXT            = "MON   TUE   WED   THUR  FRI   SAT   SUN"
+
+MESSAGE         = "BORDER_1"
+TEXT            = "| Diary |"
+
+MESSAGE         = "BORDER_2"
+TEXT            = "| Find date |"
+
+MESSAGE         = "BORDER_3"
+TEXT            = "| Add entry to diary |"
+
+MESSAGE         = "BORDER_4"
+TEXT            = "| Delete entry in diary |"
+
+MESSAGE         = "BORDER_5"
+TEXT            = "| Browse menu |"
+
+MESSAGE         = "BORDER_6"
+TEXT            = "| Modify fields |"
+
+MESSAGE         = "BORDER_7"
+TEXT            = "| Help |"
+
+MESSAGE         = "BORDER_8"
+TEXT            = "| Select required entry |"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "WELCOME TO THE ELECTRONIC DIARY."
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Enter the entry type that you "
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "wish to be displayed [ALL TYPES] :"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Press RETURN to enter another "
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "entry type or DO to enter diary "
+
+MESSAGE         = "BORDER_9"
+TEXT            = "Entries selected"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "This entry does not exist"
+
+MESSAGE         = "PROMPT_1"
+TEXT            = "Press <RETURN> to continue :"
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "ENTRIES :"
+
+MESSAGE         = "DISPLAY_8"
+TEXT            = "This entry has been selected "
+
+MESSAGE         = "DISPLAY_9"
+TEXT            = "Date : "
+
+MESSAGE         = "DISPLAY_10"
+TEXT            = "Enter date >"
+
+MESSAGE         = "DISPLAY_11"
+TEXT            = "Enter the date    >"
+
+MESSAGE         = "DISPLAY_12"
+TEXT            = "Enter entry type  >"
+
+MESSAGE         = "DISPLAY_13"
+TEXT            = "Enter description >"
+
+MESSAGE         = "DISPLAY_14"
+TEXT            = "Enter diary entry >"
+
+MESSAGE         = "DISPLAY_15"
+TEXT            = "Browse on date"
+
+MESSAGE         = "DISPLAY_16"
+TEXT            = "(d)"
+
+MESSAGE         = "DISPLAY_17"
+TEXT            = "or entry type"
+
+MESSAGE         = "DISPLAY_18"
+TEXT            = "(t)"
+
+MESSAGE         = "DISPLAY_19"
+TEXT            = " ?"
+
+MESSAGE         = "DISPLAY_20"
+TEXT            = "Enter date of entries >"
+
+MESSAGE         = "BORDER_10"
+TEXT            = "| Browse facility |"
+
+MESSAGE         = "DISPLAY_21"
+TEXT            = "DATE        :"
+
+MESSAGE         = "DISPLAY_22"
+TEXT            = "Entry types :"
+
+MESSAGE         = "DISPLAY_23"
+TEXT            = "Description :"
+
+MESSAGE         = "DISPLAY_24"
+TEXT            = "No entries exist for this date."
+
+MESSAGE         = "DISPLAY_25"
+TEXT            = "<NEXT SCREEN> for next screen "
+
+MESSAGE         = "DISPLAY_26"
+TEXT            = "<PREV SCREEN> for previous screen "
+
+MESSAGE         = "DISPLAY_27"
+TEXT            = "DATES        :"
+
+MESSAGE         = "DISPLAY_28"
+TEXT            = "No entries exist for this date."
+
+MESSAGE         = "DISPLAY_29"
+TEXT            = "Text line 1 :"
+
+MESSAGE         = "DISPLAY_30"
+TEXT            = "Text line 2"
+
+MESSAGE         = "PROMPT_2"
+TEXT            = "No dates exist for this entry."
+
+MESSAGE         = "DISPLAY_31"
+TEXT            = "Enter entry type to be deleted [All] >"
+
+MESSAGE         = "DISPLAY_32"
+TEXT            = "Welcome to the help facility"
+
+MESSAGE         = "DISPLAY_33"
+TEXT            = "<CURSOR KEYS> Move around the month"
+
+MESSAGE         = "DISPLAY_34"
+TEXT            = "<NEXT SCREEN> Move  to  next  month"
+
+MESSAGE         = "DISPLAY_35"
+TEXT            = "<PREV SCREEN> Move  to  prev  month"
+
+MESSAGE         = "DISPLAY_36"
+TEXT            = "<SELECT> Move to  a specified  date"
+
+MESSAGE         = "DISPLAY_37"
+TEXT            = "<INSERT> Add entry specific to date"
+
+MESSAGE         = "DISPLAY_38"
+TEXT            = "<FIND> Browse, current date entries"
+
+MESSAGE         = "DISPLAY_39"
+TEXT            = "<DO>   All the current day  entries"
+
+MESSAGE         = "DISPLAY_40"
+TEXT            = "<REMOVE> Delete  a diary  entry (s) "
+
+MESSAGE         = "DISPLAY_41"
+TEXT            = "<HELP> Brings you to this help menu"
+
+MESSAGE         = "DISPLAY_42"
+TEXT            = "Move cursor to select option"
+
+MESSAGE         = "USER_1"
+TEXT            = "Select a date"
+
+MESSAGE         = "USER_2"
+TEXT            = "Insert a new entry "
+
+MESSAGE         = "USER_3"
+TEXT            = "Browse/modify an entry"
+
+MESSAGE         = "USER_4"
+TEXT            = "Examine present day entries "
+
+MESSAGE         = "USER_5"
+TEXT            = "Return to diary "
+
+MESSAGE GROUP "INTCOMM_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "                      Interactive Sample Commit report                "
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "       Options Available        "
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Commit by Date"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Commit by Sample Id"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Commit ALL cancelled samples"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Commit ALL authorised samples"
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "Use up/down to position cursor, Do to select"
+
+MESSAGE         = "DISPLAY_8"
+TEXT            = "Exit to abandon"
+
+MESSAGE         = "PROM_1"
+TEXT            = "Enter login date of last sample to commit : "
+
+MESSAGE         = "DISPLAY_9"
+TEXT            = "Press any key to abandon"
+
+MESSAGE         = "DISPLAY_10"
+TEXT            = "Committing sample ID : "
+
+MESSAGE         = "PROM_2"
+TEXT            = "Enter sample ID : "
+
+MESSAGE         = "DISPLAY_11"
+TEXT            = "Confirm committing all cancelled samples [DO]"
+
+MESSAGE         = "DISPLAY_12"
+TEXT            = "Confirm committing all authorised samples [DO]"
+
+MESSAGE         = "DISPLAY_13"
+TEXT            = "ABORTING - Exit key detected."
+
+MESSAGE GROUP "MAIL_"
+
+MESSAGE         = "OPT_1"
+TEXT            = "Mail Utility"
+
+MESSAGE         = "OPT_2"
+TEXT            = "1. Read Mail"
+
+MESSAGE         = "OPT_3"
+TEXT            = "2. Delete Mail"
+
+MESSAGE         = "OPT_4"
+TEXT            = "3. Move to another folder"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Initialising..."
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Checking for new mail..."
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Checking folders available..."
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "You have no mail ..."
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Mail Information"
+
+MESSAGE         = "PROM_1"
+TEXT            = "Enter number of message to read - FIND to browse : "
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Reading message ..."
+
+MESSAGE         = "PROM_2"
+TEXT            = "Enter Folder FIND to browse : "
+
+MESSAGE         = "DISPLAY_7"
+TEXT            = "Selecting Folder "
+
+MESSAGE         = "DISPLAY_8"
+TEXT            = "Current Folder is "
+
+MESSAGE         = "DISPLAY_9"
+TEXT            = "Checking messages for Folder "
+
+MESSAGE         = "DISPLAY_10"
+TEXT            = "It contains "
+
+MESSAGE         = "DISPLAY_11"
+TEXT            = " messages"
+
+MESSAGE         = "PROM_3"
+TEXT            = "Enter number of message to delete - FIND to browse : "
+
+MESSAGE         = "DISPLAY_12"
+TEXT            = "You have no mail ..."
+
+MESSAGE GROUP "NMCBROWSE_"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "New Menu Option"
+
+MESSAGE         = "FOOT_1"
+TEXT            = "Press EXIT to Quit "
+
+MESSAGE         = "PROM_1"
+TEXT            = "Enter Menu ID : "
+
+MESSAGE GROUP "PHONE_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Leaving the phone utility..."
+
+MESSAGE         = "OPT_1"
+TEXT            = "Select Mode"
+
+MESSAGE         = "OPT_2"
+TEXT            = "1. Answer your phone"
+
+MESSAGE         = "OPT_3"
+TEXT            = "2. Phone another user"
+
+MESSAGE         = "OPT_4"
+TEXT            = "3. Display help window"
+
+MESSAGE         = "OPT_5"
+TEXT            = "4. Quit"
+
+MESSAGE         = "BORD_1"
+TEXT            = "How to Use The Phone Utility"
+TEXT            = "Press SPACE to continue"
+
+MESSAGE         = "HELP"
+TEXT            = "Select the appropriate option to either make or answer a call."
+TEXT            = "Control-Z:"
+TEXT            = " exactly like Shift-Z, control-Z allows you to leave the"
+TEXT            = "phone utility.  Hold down the 'Ctrl' key and press 'Z' to hangup"
+TEXT            = "your phone, then Ctrl-Z again to leave the phone utility."
+TEXT            = "The normal "
+TEXT            = "PF4"
+TEXT            = " key will not work in the phone utility."
+
+MESSAGE         = "BORD_2"
+TEXT            = "| SampleManager Phone Utility |"
+
+MESSAGE         = "DISPLAY_10"
+TEXT            = "Initialising..."
+
+MESSAGE         = "DISPLAY_11"
+TEXT            = "Nearly done..."
+
+MESSAGE         = "DISPLAY_12"
+TEXT            = "Unable to determine VMS version"
+
+MESSAGE         = "DISPLAY_13"
+TEXT            = "Unable to establish if node in a cluster"
+
+MESSAGE         = "DISPLAY_14"
+TEXT            = "VMS version "
+
+MESSAGE         = "DISPLAY_15"
+TEXT            = " not yet supported"
+
+MESSAGE         = "DISPLAY_16"
+TEXT            = "Building username list..."
+
+MESSAGE         = "DISPLAY_17"
+TEXT            = "There are no other users to phone."
+
+MESSAGE         = "DISPLAY_18"
+TEXT            = "Press FIND for list of available users."
+
+MESSAGE         = "HEAD_1"
+TEXT            = "Who do you want to phone: "
+
+MESSAGE         = "DISPLAY_19"
+TEXT            = "User no longer present"
+
+MESSAGE         = "DISPLAY_20"
+TEXT            = "on specified node"
+
+MESSAGE GROUP "RESL_USER_"
+
+MESSAGE         = "TITLE_1"
+TEXT            = "Result Info Modify"
+
+MESSAGE         = "TITLE_2"
+TEXT            = "Result Info Display"
+
+MESSAGE         = "TITLE_3"
+TEXT            = "Result Info Authorise"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Test Num   :"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Entered On :"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Entered By :"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "LEFT"
+
+MESSAGE GROUP "RES_ENTRY_"
+
+MESSAGE         = "HEAD_1"
+TEXT            = "Single Sample Result Screen"
+
+MESSAGE         = "FOOT_1"
+TEXT            = "Exit to Abort"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = "Sample id  :"
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "Textual id :"
+
+MESSAGE         = "HEAD_2"
+TEXT            = "Test and Sample Result Screen"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Analysis   :"
+
+MESSAGE         = "HEAD_3"
+TEXT            = "Sample Worksheet Result Screen"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Worksheet :"
+
+MESSAGE         = "HEAD_4"
+TEXT            = "Results by Analysis"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Analysis :"
+
+MESSAGE         = "HEAD_5"
+TEXT            = "Result Authorisation by Analysis Worksheet"
+
+MESSAGE         = "HEAD_6"
+TEXT            = "Results by Analysis Worksheet"
+
+MESSAGE         = "HEAD_7"
+TEXT            = "Result Authorisation by User Defined Worksheet"
+
+MESSAGE         = "HEAD_8"
+TEXT            = "Results by User Defined Worksheet"
+
+MESSAGE         = "LOADING"
+TEXT            = "Loading results screen ..."
+
+
+MESSAGE GROUP "SETCOM_"
+
+MESSAGE          = "HEADER"
+TEXT             = "Table Set Selection Screen"
+
+MESSAGE          = "FOOTER"
+TEXT             = "Press DO to confirm or EXIT to cancel"
+
+MESSAGE          = "DISPLAY_MODE"
+TEXT             = "Current mode"
+
+MESSAGE          = "DISPLAY_SET"
+TEXT             = "New Table Set"
+
+MESSAGE          = "ACTIVE"
+TEXT             = "Active Tables"
+
+MESSAGE          = "COMMITTED"
+TEXT             = "Committed Tables"
+
+
+MESSAGE GROUP "NOTE_QUIK_"
+
+MESSAGE          = "TOP_1"
+TEXT             = "QUICK NOTES UTILITY"
+
+MESSAGE          = "TOP_2"
+TEXT             = "1 Add A Note"
+
+MESSAGE          = "TOP_3"
+TEXT             = "2 Retrieve Notes"
+
+MESSAGE GROUP "LIB_APPR_"
+
+MESSAGE		= "MORE"
+TEXT		= "MORE"
+
+MESSAGE		= "HELP"
+TEXT		= "HELP"
+
+MESSAGE		= "SORRY"
+TEXT		= "Sorry SMP$USERHELPFILES:"
+TEXT		= ".HLP does not exist"
+
+MESSAGE		= "END"
+TEXT		= "END "
+
+MESSAGE GROUP "LIB_COMM_"
+
+MESSAGE		= "SAMPLE_HEADER"
+TEXT		= "Commit Sample"
+
+MESSAGE		= "SAMPLE_FOOTER"
+TEXT		= "Press EXIT to exit"
+
+MESSAGE		= "STATUS_HEADER"
+TEXT		= "Current action"
+
+MESSAGE		= "SAMPLE_ID"
+TEXT		= "Sample ID"
+
+MESSAGE		= "TEST"
+TEXT		= "Test Number"
+
+MESSAGE		= "ANALYSIS"
+TEXT		= "Analysis"
+
+MESSAGE		= "COMPONENT"
+TEXT		= "Component"
+
+MESSAGE		= "RESULT"
+TEXT		= "Result"
+
+MESSAGE		= "JOB_HEADER"
+TEXT		= "Commit Job"
+
+MESSAGE		= "JOB_FOOTER"
+TEXT		= "Press EXIT to exit"
+
+MESSAGE		= "JOB_ID"
+TEXT		= "Job Name"
+
+MESSAGE       	= "JOB_SAMPLE_ID"
+TEXT          	= "Sample ID"
+
+MESSAGE		= "JOB_SAMPLE_TEXT"
+TEXT		= "Sample text"
+
+MESSAGE       	= "DISPLAY_3"
+TEXT          	= "Checking samples"
+
+MESSAGE       	= "TIMER_Q"
+TEXT          	= "Adding timer queue entries"
+
+MESSAGE       	= "COMMITTING_JOB"
+TEXT          	= "Committing Job record"
+
+MESSAGE       	= "JOB_COMMITTED"
+TEXT          	= "Job Committed"
+
+MESSAGE       	= "SAMPLE_COMMITTED"
+TEXT          	= "Sample Committed"
+
+MESSAGE       	= "TEST_COMMITTED"
+TEXT          	= "Test Committed"
+
+MESSAGE       	= "RESULT_COMMITTED"
+TEXT          	= "Result Committed"
+
+MESSAGE       	= "CHECK_SAMPLES"
+TEXT          	= "Checking samples"
+
+MESSAGE       	= "DISPLAY_7"
+TEXT          	= "Consign error : "
+
+MESSAGE       	= "DISPLAY_8"
+TEXT          	= "Job has unauthorised samples"
+
+MESSAGE       	= "HEAD_2"
+TEXT          	= "Commit Status"
+
+MESSAGE       	= "STAT_1"
+TEXT          	= "Locked test record"
+
+MESSAGE       	= "DISPLAY_12"
+TEXT          	= "Committing Sample record"
+
+MESSAGE       	= "STAT_2"
+TEXT          	= "Locked result record"
+
+MESSAGE       	= "DISPLAY_13"
+TEXT          	= "Committing Test record"
+
+MESSAGE       	= "DISPLAY_14"
+TEXT          	= "Committing Result record"
+
+MESSAGE       	= "AUDIT_COMMITTING"
+TEXT          	= "Committing Audit Records"
+
+MESSAGE       	= "AUDIT_COMMITTED"
+TEXT          	= "Audit Records Committed"
+
+MESSAGE       	= "OK_2"
+TEXT          	= "Sample Commit Destination"
+
+MESSAGE       	= "OK_3"
+TEXT          	= "Press Select to examine sample"
+
+MESSAGE       	= "OK_4"
+TEXT          	= "Sample destination : "
+
+MESSAGE       	= "OK_6"
+TEXT          	= "Job Commit Destination"
+
+MESSAGE       	= "OK_7"
+TEXT          	= "Press Select to examine job"
+
+MESSAGE       	= "OK_8"
+TEXT          	= "Job destination : "
+
+MESSAGE       	= "OK_9"
+TEXT          	= "Batch Commit Destination"
+
+MESSAGE       	= "OK_10"
+TEXT          	= "Press Select to examine batch"
+
+MESSAGE       	= "OK_11"
+TEXT          	= "Batch destination : "
+
+MESSAGE       	= "MENU_1"
+TEXT          	= "View Sample"
+
+MESSAGE       	= "MENU_2"
+TEXT          	= "Display Full Sample"
+
+MESSAGE       	= "MENU_3"
+TEXT          	= "Display Sample and Results"
+
+MESSAGE       	= "SAMPLE_FAILED"
+TEXT          	= "Failed to commit sample with numeric id []"
+
+MESSAGE       	= "SAMPLE_ERROR"
+TEXT          	= "Error returned was: []"
+
+MESSAGE       	= "JOB_FAILED"
+TEXT          	= "Failed to commit job []"
+
+MESSAGE       	= "SAMPLE_LOCKED"
+TEXT          	= "Locked sample record"
+
+MESSAGE       	= "CANT_FIND_SAMPLE"
+TEXT          	= "Can't find sample record"
+
+MESSAGE       	= "JOB_LOCKED"
+TEXT          	= "Locked job record"
+
+MESSAGE 	= "CANT_FIND_JOB"
+TEXT    	= "Can't find job record"
+
+MESSAGE 	= "DECON_JOB_HEAD"
+TEXT    	= "Deconsign Job"
+
+MESSAGE 	= "DECON_JOB_PROMPT"
+TEXT    	= "Job name"
+
+MESSAGE 	= "DECON_SAMP_HEAD"
+TEXT    	= "Deconsign Sample"
+
+MESSAGE 	= "DECON_SAMP_PROMPT"
+TEXT    	= "Sample ID"
+
+MESSAGE 	= "UNEXPECTED"
+TEXT    	= "Unexpected error"
+
+MESSAGE 	= "DECON_JOBNAME"
+TEXT    	= "Deconsigning Job "
+
+MESSAGE 	= "DECON_SAMPNO"
+TEXT    	= "Deconsigning Sample number "
+
+MESSAGE 	= "DECON_TESTNO"
+TEXT    	= "Deconsigning Test number "
+
+MESSAGE 	= "DECON_RESULTS"
+TEXT    	= "Deconsigning Results"
+
+MESSAGE 	= "SAMP_FAIL"
+TEXT    	= "Failed to commit sample [] : []"
+
+MESSAGE 	= "JOB_FAIL"
+TEXT    	= "Failed to commit job [] : []"
+
+MESSAGE 	= "DECON_SAMP_FAIL"
+TEXT    	= "Failed to deconsign sample [] : []"
+
+MESSAGE 	= "DECON_JOB_FAIL"
+TEXT    	= "Failed to deconsign job [] : []"
+
+MESSAGE 	= "DECON_JOB_OK"
+TEXT		= "Job [] deconsigned successfully"
+
+MESSAGE 	= "DECON_SAMP_OK"
+TEXT		= "Sample [] deconsigned successfully"
+
+MESSAGE 	= "JOB_OK"
+TEXT		= "Job [] committed successfully"
+
+MESSAGE 	= "SAMPLE_OK"
+TEXT		= "Sample [] committed successfully"
+
+MESSAGE 	= "FOR_TABLE"
+TEXT		= " for "
+
+MESSAGE		= "BATCH_ID"
+TEXT		= "Batch Name"
+
+MESSAGE		= "ESIG_COMMITTING"
+TEXT		= "Committing Esig Records"
+
+MESSAGE       	= "ESIG_DATA_LOCKED"
+TEXT          	= "Esig Data record Locked"
+
+MESSAGE       	= "ESIG_EVENT_LOCKED"
+TEXT          	= "Esig Event record Locked"
+
+MESSAGE		= "ESIG_COMMITTED"
+TEXT		= "Esig Records Committed"
+
+MESSAGE		= "ESIG_DECON"
+TEXT		= "Deconsigning Esig Records"
+
+MESSAGE		= "ESIG_DECON_DONE"
+TEXT		= "Esig Records Deconsigned"
+
+MESSAGE		= "AUDIT_DECON"
+TEXT		= "Deconsigning Audit Records"
+
+MESSAGE		= "AUDIT_DECON_DONE"
+TEXT		= "Audit Records Deconsigned"
+
+
+MESSAGE GROUP "LIB_SEL_"
+
+MESSAGE       = "PLAY_1"
+TEXT          = "   OR               "
+
+MESSAGE       = "PLAY_2"
+TEXT          = "   AND              "
+
+MESSAGE       = "PLAY_3"
+TEXT          = "LIKE"
+
+MESSAGE       = "ACTIVE_BROWSE"
+TEXT          = "Active Browse   "
+
+MESSAGE       = "COMMIT_BROWSE"
+TEXT          = "Committed Browse"
+
+MESSAGE       = "CRITERIA_MENU"
+TEXT          = "Table Selection Criteria Menu"
+
+MESSAGE GROUP "LIB_UTILS_"
+
+MESSAGE       = "HEAD"
+TEXT          = "Sample Select Screen"
+
+MESSAGE       = "CONFIRM_HEADER"
+TEXT          = "Confirm Operation"
+
+MESSAGE       = "CONFIRM_FOOTER"
+TEXT          = "<DO> to confirm , <EXIT> to cancel"
+
+MESSAGE       = "BAD_VERSION"
+TEXT          = "Unable to find highest version for [] in table []"
+
+MESSAGE GROUP "MENU_"
+
+MESSAGE	      = "NO_EXIST_MENU"
+TEXT	      = "Menu [] does not exist"
+
+MESSAGE	      = "TITLE"
+TEXT	      = "SampleManager"
+TEXT	      = "Version []"
+
+MESSAGE       = "FOOTER"
+TEXT	      = "Please move to an entry and press DO to select."
+
+MESSAGE GROUP "NMC_"
+
+MESSAGE	      = "HEADER"
+TEXT	      = "Change to a New Menu"
+
+MESSAGE	      = "FOOTER"
+TEXT	      = "Press <EXIT> to Quit"
+
+MESSAGE	      = "PROMPT"
+TEXT	      = "Enter new menu name : "
+
+MESSAGE GROUP "EVE_"
+
+MESSAGE = "HEADER"
+TEXT    = "Edit a file"
+
+MESSAGE = "FOOTER"
+TEXT    = "EXIT to cancel"
+
+MESSAGE = "PROMPT"
+TEXT    = "File to edit"
+
+MESSAGE GROUP "UNIT_"
+
+MESSAGE = "INVALID"
+TEXT    = "Invalid Unit Symbol/Expression ( [] )"
+
+MESSAGE = "INCOMPATIBLE"
+TEXT    = "Incompatible unit combination ( [] and [] )"
+
+MESSAGE = "MISSING"
+TEXT    = "Missing unit expression"
+
+MESSAGE = "TOO_LARGE"
+TEXT    = "Unit expression too large"
+
+MESSAGE = "MISSING_PAREN"
+TEXT    = "Unbalanced Parentheses in Unit Expression"
+
+MESSAGE = "BAD_CALC"
+TEXT    = "Cannot use a calculated unit as part of a unit expression"
+
+MESSAGE = "NO_BASE"
+TEXT    = "Cannot find a base unit for this quantity"
+
+MESSAGE = "NO_UNITS"
+TEXT    = "This component has not been defined with units"
+
+MESSAGE GROUP "SERVER_MANAGER_"
+
+MESSAGE        = "AUTHORITY"
+TEXT           = "Authority  "
+
+MESSAGE        = "BUTTON_DO"
+TEXT           = "Execute"
+
+MESSAGE        = "BUTTON_EXIT"
+TEXT           = "Close"
+
+MESSAGE        = "CONFIRM_NEWTABLE"
+TEXT           = "Are you sure you want to run in NEWTABLE mode?"
+
+MESSAGE        = "CONV_MODE"
+TEXT           = "Mode"
+
+MESSAGE        = "CONV_TABLE"
+TEXT           = "Convert Table"
+
+MESSAGE        = "CONV_TABLE_NAMES"
+TEXT           = "Tables"
+
+MESSAGE        = "CREATE_MESS"
+TEXT           = "Create Messages"
+
+MESSAGE        = "CREATE_STRUCT"
+TEXT           = "Create Structure/Entity Definitions"
+
+MESSAGE        = "EDIT_MESS"
+TEXT           = "Edit Message File"
+
+MESSAGE        = "EDIT_MESS_FILENAME"
+TEXT           = "Filename"
+
+MESSAGE        = "EDIT_STRUCT"
+TEXT           = "Edit Structure"
+
+MESSAGE        = "ERROR_COMMAND"
+TEXT           = "Error in Command : "
+
+MESSAGE        = "ERROR_LOGFILE"
+TEXT           = "Unable to locate logfile"
+
+MESSAGE        = "ERROR_OPTION"
+TEXT           = "Option unavailable. Unable to locate "
+
+MESSAGE        = "ERROR_PRINTER"
+TEXT           = "Please enter a printer ID for Logfile Printing"
+
+MESSAGE        = "ERROR_TABLES"
+TEXT           = "Please enter a table name or * for all"
+
+MESSAGE        = "ERROR_MESSFILE"
+TEXT           = "Please enter a message file name"
+
+MESSAGE        = "FOOTER"
+TEXT           = "Press DO to continue, EXIT to quit"
+
+MESSAGE        = "FRAME_INFO"
+TEXT           = "Information"
+
+MESSAGE        = "FRAME_LOGFILE"
+TEXT           = "Log File"
+
+MESSAGE        = "FRAME_MESS"
+TEXT           = "Messages"
+
+MESSAGE        = "FRAME_RE_LOGIN"
+TEXT           = "Re-Login"
+
+MESSAGE        = "FRAME_STRUCT"
+TEXT           = "Structure"
+
+MESSAGE        = "FRAME_USER"
+TEXT           = "Logged-in Users"
+
+MESSAGE        = "HEADER"
+TEXT           = "Client Server Manager"
+
+MESSAGE        = "INSTANCE"
+TEXT           = "Instance   "
+
+MESSAGE        = "NO_LOG"
+TEXT           = "No Log File"
+
+MESSAGE        = "PRINTER"
+TEXT           = "Printer"
+
+MESSAGE        = "PRINT_LOG"
+TEXT           = "Print Log File"
+
+MESSAGE        = "RE_LOGIN"
+TEXT           = "Re-Login to SampleManager"
+
+MESSAGE        = "SHOW_USERS"
+TEXT           = "Show Logged-in Users"
+
+MESSAGE        = "STATUS"
+TEXT           = "Status"
+
+MESSAGE        = "STATUS_AUTHORITY"
+TEXT           = "Authority Level"
+
+MESSAGE        = "STATUS_CONV_MODE"
+TEXT           = "Convert Mode"
+
+MESSAGE        = "STATUS_CONV_OPTION"
+TEXT           = "Convert Options"
+
+MESSAGE        = "STATUS_CONV_TABLE"
+TEXT           = "Convert Table"
+
+MESSAGE        = "STATUS_CREATE_MESS"
+TEXT           = "Create Messages"
+
+MESSAGE        = "STATUS_CREATE_STRUCT"
+TEXT           = "Create Entity Definitions"
+
+MESSAGE        = "STATUS_DEFAULT"
+TEXT           = "Ready"
+
+MESSAGE        = "STATUS_EDIT_MESSAGES"
+TEXT           = "Edit Message File"
+
+MESSAGE        = "STATUS_EDIT_STRUCT"
+TEXT           = "Edit Structure"
+
+MESSAGE        = "STATUS_FIND_CONV"
+TEXT           = "Converting Tables - Please Wait"
+
+MESSAGE        = "STATUS_FIND_CRMESS"
+TEXT           = "Creating Messages - Please Wait"
+
+MESSAGE        = "STATUS_FIND_CRSTRUCT"
+TEXT           = "Creating Entity Definitions - Please Wait"
+
+MESSAGE        = "STATUS_FIND_EDMESS"
+TEXT           = "Edit Message File - Please Wait"
+
+MESSAGE        = "STATUS_FIND_EDSTRUCT"
+TEXT           = "Edit Structure - Please Wait"
+
+MESSAGE        = "STATUS_FIND_USER"
+TEXT           = "Finding Users - Please Wait"
+
+MESSAGE        = "STATUS_INSTANCE"
+TEXT           = "Instance Name"
+
+MESSAGE        = "STATUS_MESSAGE_NAME"
+TEXT           = "Message File Name"
+
+MESSAGE        = "STATUS_NO_LOG"
+TEXT           = "No Log File"
+
+MESSAGE        = "STATUS_PRINTER"
+TEXT           = "Printer Identity"
+
+MESSAGE        = "STATUS_PRINT_LOG"
+TEXT           = "Print Log File"
+
+MESSAGE        = "STATUS_RE_LOGIN"
+TEXT           = "Re-login to SampleManager"
+
+MESSAGE        = "STATUS_STATUS"
+TEXT           = "Status"
+
+MESSAGE        = "STATUS_USER"
+TEXT           = "Logged in User"
+
+MESSAGE        = "STATUS_USERS"
+TEXT           = "Show users currently logged into the system"
+
+MESSAGE        = "STATUS_VERSION"
+TEXT           = "SampleManager Version"
+
+MESSAGE        = "STATUS_VIEW_LOG"
+TEXT           = "View Log File"
+
+MESSAGE        = "USER"
+TEXT           = "User Name  "
+
+MESSAGE        = "VERSION"
+TEXT           = "Version    "
+
+MESSAGE        = "VIEW_LOG"
+TEXT           = "View Log File"
+
+MESSAGE        = "ALL_TABLES"
+TEXT           = "All Tables"
+
+MESSAGE        = "CREATE_ENTITIES"
+TEXT           = "Please reconnect and run $CREATE_ENTITIES to publish new tables and fields"
+
+MESSAGE GROUP "TEXTEDITOR_"
+
+MESSAGE        = "FILE_LOCKED"
+TEXT           = "Attempt to lock file [] produced the error '[]'"
+
+MESSAGE GROUP "LIB_EXPORT_"
+
+MESSAGE        = "WRITING"
+TEXT           = "Writing Record"
+
+MESSAGE GROUP "DATABASE_"
+
+MESSAGE        = "BAD_TABLE"
+TEXT           = "Invalid table []"
+SEVERITY       = "ERROR"
+
+MESSAGE        = "BAD_FIELD"
+TEXT           = "Invalid field []/[]"
+SEVERITY       = "ERROR"
+
+MESSAGE GROUP "LIB_OBJECT_BROWSER_"
+
+MESSAGE        = "NAME"
+TEXT           = "Name"
+
+MESSAGE        = "MANY"
+TEXT           = "Too Many Dimensions : "
+
+MESSAGE        = "ITEMNO"
+TEXT           = "Item #"
+
+MESSAGE        = "INFO"
+TEXT           = "Information"
+
+MESSAGE        = "BEF"
+TEXT           = "<"
+
+MESSAGE        = "UNASSIGN"
+TEXT           = "<Unassigned>"
+
+MESSAGE        = "ACTION"
+TEXT           = "Action"
+
+MESSAGE        = "NOTHING"
+TEXT           = "Nothing to Browse..."
+
+MESSAGE        = "INTERNAL"
+TEXT           = "Internal"
+
+MESSAGE        = "PROPERTY"
+TEXT           = "Property"
+
+MESSAGE        = "AFT"
+TEXT           = ">"
+
+MESSAGE        = "CLASSNAME"
+TEXT           = "Class Name"
+
+MESSAGE        = "VALUE"
+TEXT           = "Value"
+
+MESSAGE        = "UPPER"
+TEXT           = "Upperbound"
+
+MESSAGE        = "DATA"
+TEXT           = "Datatype"
+
+MESSAGE        = "OBJECT"
+TEXT           = "Object"
+
+MESSAGE        = "CLASS"
+TEXT           = "Class "
+
+MESSAGE        = "TYPE"
+TEXT           = "Type"
+
+MESSAGE        = "HEADER"
+TEXT           = "Object Browser"

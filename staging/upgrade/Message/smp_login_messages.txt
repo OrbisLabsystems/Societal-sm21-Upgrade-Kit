@@ -1,0 +1,1170 @@
+! Messages associated with sample login
+
+MESSAGE GROUP = "SAMPLE_"
+
+MESSAGE       = "CRE_JOB"
+TEXT          = "SELECT for selection criteria / DO to create JOB / EXIT to quit"
+
+MESSAGE       = "CRE_SAMP"
+TEXT          = "SELECT for login control / DO to create SAMPLE / EXIT to quit"
+
+MESSAGE       = "UP_SAMP"
+TEXT          = "SELECT for sample commands / DO to update SAMPLE / EXIT to quit"
+
+MESSAGE       = "UP_JOB"
+TEXT          = "DO to update JOB / EXIT to quit"
+
+MESSAGE       = "DISP_SAMP"
+TEXT          = "Select to view samples / EXIT to quit"
+
+MESSAGE       = "VIEW"
+TEXT          = "Sample Entry View"
+
+MESSAGE GROUP = "TEST_ASSN_"
+
+! Messages for the test assignment editor $TEST_ASSN
+! Messages for test list options
+
+MESSAGE       = "ADD_STORED"
+TEXT          = "Added stored test list to sample test list"
+
+MESSAGE       = "STORE_CURR"
+TEXT          = "Current sample test list stored"
+
+MESSAGE       = "SAMPLE_READ"
+TEXT          = "Test list read from Sample"
+
+MESSAGE       = "ADD_INTER"
+TEXT          = "Internal List will be added to subsequent Samples"
+
+MESSAGE       = "CONST_1"
+TEXT          = "Sample ID : "
+
+MESSAGE       = "CONST_2"
+TEXT          = "Test Assignment Editor"
+
+MESSAGE       = "CONST_3"
+TEXT          = "DO to add all / Exit to add scheduled / Select for options"
+
+MESSAGE       = "CONST_8"
+TEXT          = "DO to save Internal List / Exit to quit / Select for options"
+
+MESSAGE       = "CONST_9"
+TEXT          = "DO to change Tests / Exit to quit / Select for options"
+
+MESSAGE       = "CONST_10"
+TEXT          = "DO or Exit to quit / Select to display Analysis"
+
+MESSAGE       = "CONST_11"
+TEXT          = "Edit Tests for sample "
+
+MESSAGE       = "CONST_12"
+TEXT          = "Display Tests for sample"
+
+MESSAGE       = "CONST_13"
+TEXT          = "Edit Internal Test List"
+
+MESSAGE       = "CONST_14"
+TEXT          = "Assign"
+
+MESSAGE       = "CONST_15"
+TEXT          = "Analysis ID"
+
+MESSAGE       = "FIELD_INST_TYPE"
+TEXT          = "Instrument Type"
+
+MESSAGE       = "CONST_16"
+TEXT          = "Instrument"
+
+MESSAGE       = "CONST_17"
+TEXT          = "Operator"
+
+MESSAGE       = "CONST_18"
+TEXT          = "Count"
+
+MESSAGE       = "CONST_19"
+TEXT          = "Prio"
+
+MESSAGE       = "CONST_20"
+TEXT          = "Std"
+
+MESSAGE       = "CONST_21"
+TEXT          = "List"
+
+
+MESSAGE       = "DISPLAY_1"
+TEXT          = "Internal Test List"
+
+MESSAGE       = "DISPLAY_2"
+TEXT          = "Enter Test Schedule :"
+
+MESSAGE       = "DISPLAY_3"
+TEXT          = "Add Test Schedule"
+
+MESSAGE       = "DISPLAY_4"
+TEXT          = "Copy Test List From Sample"
+
+MESSAGE       = "DISPLAY_5"
+TEXT          = "Enter Sample ID : "
+
+MESSAGE       = "MENU_1"
+TEXT          = "Test Editor Options"
+
+MESSAGE       = "MENU_2"
+TEXT          = "1 Add Test Schedule"
+
+MESSAGE       = "MENU_3"
+TEXT          = "2 Display Analysis"
+
+MESSAGE       = "MENU_4"
+TEXT          = "4 Add Internal List"
+
+MESSAGE       = "MENU_5"
+TEXT          = "5 Store Current List"
+
+MESSAGE       = "MENU_6"
+TEXT          = "6 Edit Internal List"
+
+MESSAGE       = "MENU_7"
+TEXT          = "7 Read Internal List from Sample"
+
+MESSAGE       = "MENU_8"
+TEXT          = "8 Clear Internal List"
+
+MESSAGE       = "MENU_9"
+TEXT          = "9 Assign Internal List"
+
+MESSAGE       = "MENU_10"
+TEXT          = "2 Display Analysis"
+
+MESSAGE       = "MENU_11"
+TEXT          = "3 Display Stock Use"
+
+MESSAGE       = "MENU_12"
+TEXT          = "3 Modify Stock Use"
+
+MESSAGE       = "DISPLAY_7"
+TEXT          = "Edit Test Option"
+
+MESSAGE       = "DISPLAY_8"
+TEXT          = "Enter Sample ID :"
+
+MESSAGE       = "DISPLAY_10"
+TEXT          = "Test Editing"
+
+MESSAGE       = "DISPLAY_11"
+TEXT          = "Display Test Option"
+
+MESSAGE       = "DISPLAY_YES_Y"
+TEXT          = "Y"
+
+MESSAGE       = "DISPLAY_NO_N"
+TEXT          = "N"
+
+MESSAGE       = "NO_TESTS"
+TEXT          = "Sample has no tests"
+
+MESSAGE GROUP = "STT_"
+
+MESSAGE       = "HEADER"
+TEXT          = "Display Selected Sample Status"
+
+MESSAGE       = "FOOTER_WITH_TEST"
+TEXT          = "NEXT/PREV select another sample, UP/DOWN display more tests, EXIT quits"
+
+MESSAGE       = "FOOTER_NO_TEST"
+TEXT          = "NEXT/PREV select another sample, EXIT quits"
+
+MESSAGE       = "SAMPLE_NUM"
+TEXT          = "Sample ID"
+
+MESSAGE       = "SAMPLE_TEXT"
+TEXT          = "Textual ID"
+
+MESSAGE       = "JOB_NAME"
+TEXT          = "Job Name"
+
+MESSAGE       = "LOGIN_DATE"
+TEXT          = "Login Date"
+
+MESSAGE       = "STATUS"
+TEXT          = "Status"
+
+MESSAGE       = "PRIORITY"
+TEXT          = "Priority"
+
+MESSAGE       = "READING_TESTS"
+TEXT          = "Reading tests assigned to sample . . ."
+
+MESSAGE       = "SMALL_HEADER"
+TEXT          = "Selected Sample Status"
+
+MESSAGE       = "SMALL_WITH_TEST"
+TEXT          = "NEXT/PREV another sample, UP/DOWN more tests"
+
+MESSAGE       = "SMALL_NO_TEST"
+TEXT          = "NEXT/PREV another sample, EXIT quits"
+
+MESSAGE       = "SAMP_RES_BUT"
+TEXT          = "Sample Results"
+
+MESSAGE       = "SAMP_TEST_BUT"
+TEXT          = "Test Results"
+
+MESSAGE       = "SAMP_INFO_BUT"
+TEXT          = "Sample Info"
+
+MESSAGE       = "SAMP_RECORD"
+TEXT          = "Sample"
+
+MESSAGE       = "SAMP_OF"
+TEXT          = "Of"
+
+MESSAGE GROUP = "RQR_"
+
+MESSAGE       = "HDR"
+TEXT          = "Request Resample"
+
+MESSAGE       = "FTR"
+TEXT          = "<DO> to Resample, Else <EXIT> to quit "
+
+MESSAGE       = "SUCCESS"
+TEXT          = "Resample Successful"
+
+MESSAGE       = "ABORT"
+TEXT          = "Resample Aborted"
+
+MESSAGE       = "ENTER_SID"
+TEXT          = "Enter Sample ID"
+
+MESSAGE       = "SAMP_STAT"
+TEXT          = "Sample Status"
+
+MESSAGE       = "J_NAME"
+TEXT          = "Job Name"
+
+MESSAGE       = "L_DATE"
+TEXT          = "Login Date"
+
+MESSAGE       = "CONF_REACT_JOB"
+TEXT          = "Confirm Reactivation of Job"
+
+MESSAGE       = "DO_OR_EXIT"
+TEXT          = "<DO> to Confirm, <EXIT> to Quit"
+
+MESSAGE       = "CREAT_SAMP"
+TEXT          = "Creating New Sample"
+
+MESSAGE       = "ERR_SAMP_TEMPL"
+TEXT          = "Error selecting Sample Template"
+
+MESSAGE       = "ERR_SAMP_NOT_LOGGED"
+TEXT          = "Sample was not logged in"
+
+MESSAGE       = "SAMP_CREAT"
+TEXT          = "Created Sample "
+
+MESSAGE       = "ERR"
+TEXT          = "ERROR"
+
+MESSAGE       = "ALREADY_RESAMPLED"
+TEXT          =  "ERROR - Cannot Resample Resampled Sample"
+
+MESSAGE       = "OPT_1"
+TEXT          = "Options for sample []"
+
+MESSAGE       = "OPT_2"
+TEXT          = "Edit Tests"
+
+MESSAGE       = "OPT_3"
+TEXT          = "Modify Full Sample"
+
+MESSAGE  GROUP "HOT_EGC_"
+
+MESSAGE         = "CONST_1"
+TEXT            = "Edit one Labtable Entry"
+
+MESSAGE         = "CONST_2"
+TEXT            = "Reprompt for Labtable Entry"
+
+MESSAGE         = "CONST_3"
+TEXT            = "Hotkeys Configuration Editor"
+
+MESSAGE         = "CONST_4"
+TEXT            = "Press DO to save / Exit to quit"
+
+MESSAGE GROUP "HOT_STT_"
+
+MESSAGE         = "TXT_1"
+TEXT            = "SELECTED SAMPLE STATUS"
+
+MESSAGE         = "TXT_2"
+TEXT            = "Press NEXT/PREVIOUS SCREEN for more samples - EXIT to exit"
+
+MESSAGE         = "TXT_3"
+TEXT            = "Enter the Sample ID > "
+
+MESSAGE         = "TXT_4"
+TEXT            = "NO MORE SAMPLES"
+
+MESSAGE         = "TXT_5"
+TEXT            = "Sample ID"
+
+MESSAGE         = "TXT_6"
+TEXT            = "Text ID"
+
+MESSAGE         = "TXT_7"
+TEXT            = "Job Name"
+
+MESSAGE         = "TXT_8"
+TEXT            = "Login Date"
+
+MESSAGE         = "TXT_9"
+TEXT            = "Status"
+
+MESSAGE         = "TXT_10"
+TEXT            = "Priority"
+
+MESSAGE         = "TXT_11"
+TEXT            = "No Tests Assigned to Sample"
+
+MESSAGE         = "TXT_12"
+TEXT            = "Press any key to see more tests"
+
+MESSAGE  GROUP "JOBCREATE_"
+
+MESSAGE         = "CONST_1"
+TEXT            = "Do to save changes Exit to quit"
+
+MESSAGE         = "CONST_2"
+TEXT            = "Do or Exit to quit"
+
+MESSAGE         = "CONST_3"
+TEXT            = "Job Creation Control Screen for Template"
+
+MESSAGE         = "CONST_4"
+TEXT            = "Creation Title      :"
+
+MESSAGE         = "CONST_5"
+TEXT            = "Prompt for name     :"
+
+MESSAGE         = "CONST_6"
+TEXT            = "Job Syntax ID       :"
+
+MESSAGE         = "CONST_7"
+TEXT            = "Sample Syntax ID    :"
+
+MESSAGE         = "CONST_8"
+TEXT            = "Sample Template ID  :"
+
+MESSAGE         = "CONST_9"
+TEXT            = "Sample Repeat Count :"
+
+MESSAGE         = "TAB_1"
+TEXT            = "Job creation Control Parameters for Job template"
+
+MESSAGE GROUP "RECEIPT_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = " Sample "
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = "could not be found"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Printing Sample Receipt"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Sample id"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Receipt id"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Printer id"
+
+MESSAGE         = "TAB_1"
+TEXT            = "Receipt for Sample number"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Printed on"
+
+MESSAGE         = "T"
+TEXT            = "at"
+
+MESSAGE         = "TAB_3"
+TEXT            = "Sample name"
+
+MESSAGE         = "TAB_4"
+TEXT            = "!BLogin date        Received date     Date tests start Date results required!B"
+
+MESSAGE         = "TAB_5"
+TEXT            = "Job name . . . . . . .  :"
+
+MESSAGE         = "TAB_6"
+TEXT            = "Project name . . . . .  :"
+
+MESSAGE         = "TAB_7"
+TEXT            = "Customer ID  . . . . .  :"
+
+MESSAGE         = "TAB_8"
+TEXT            = "Invoice Number. . . . . :"
+
+MESSAGE         = "TAB_9"
+TEXT            = "Product name . . . . .  :"
+
+MESSAGE         = "TAB_10"
+TEXT            = "Sampling point . . . .  :"
+
+MESSAGE         = "TAB_11"
+TEXT            = "Sample type  . . . . .  :"
+
+MESSAGE         = "TAB_12"
+TEXT            = "Sample description . .  :"
+
+MESSAGE         = "TAB_13"
+TEXT            = "Sample name  . . . . .  :"
+
+MESSAGE         = "TAB_14"
+TEXT            = "Hazard ID  . . . . . .  :"
+
+MESSAGE         = "TAB_15"
+TEXT            = "Location ID  . . . . .  :"
+
+MESSAGE         = "TAB_16"
+TEXT            = "Sample priority  . . .  :"
+
+MESSAGE         = "TAB_17"
+TEXT            = "Preparation ID . . . .  :"
+
+MESSAGE         = "TAB_18"
+TEXT            = "No tests are currently assigned to sample"
+
+MESSAGE         = "TAB_19"
+TEXT            = "!BTests assigned to sample!B"
+
+MESSAGE         = "TAB_20"
+TEXT            = "Test schedule  . . . .  :"
+
+MESSAGE         = "TAB_21"
+TEXT            = "!BTest number   Instrument   Analysis name   Description!B"
+
+MESSAGE GROUP "SAMPLABEL_"
+
+MESSAGE         = "DISPLAY_1"
+TEXT            = " Sample "
+
+MESSAGE         = "DISPLAY_2"
+TEXT            = " could not be found"
+
+MESSAGE         = "DISPLAY_3"
+TEXT            = "Printing Sample Label"
+
+MESSAGE         = "DISPLAY_4"
+TEXT            = "Sample id"
+
+MESSAGE         = "DISPLAY_5"
+TEXT            = "Label id"
+
+MESSAGE         = "DISPLAY_6"
+TEXT            = "Printer id"
+
+MESSAGE         = "TAB_1"
+TEXT            = "Sample numeric ID :"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Sample Text ID    :"
+
+MESSAGE         = "TAB_3"
+TEXT            = "Job Name          :"
+
+MESSAGE         = "TAB_4"
+TEXT            = "Sampled date      :"
+
+MESSAGE         = "TAB_5"
+TEXT            = "Hazard            :"
+
+MESSAGE GROUP "SAMP_EGC_"
+
+MESSAGE         = "CONST_1"
+TEXT            = "Print Label"
+
+MESSAGE         = "CONST_2"
+TEXT            = "Print Receipt"
+
+MESSAGE         = "CONST_3"
+TEXT            = "Edit Tests"
+
+MESSAGE         = "CONST_4"
+TEXT            = "Assign on background"
+
+MESSAGE         = "CONST_5"
+TEXT            = "Receipt Report"
+
+MESSAGE         = "CONST_6"
+TEXT            = "Receipt Printer"
+
+MESSAGE         = "CONST_7"
+TEXT            = "Label Report"
+
+MESSAGE         = "CONST_8"
+TEXT            = "Label Printer"
+
+MESSAGE         = "CONST_9"
+TEXT            = "Generate Worksheet"
+
+MESSAGE         = "CONST_10"
+TEXT            = "Print Worksheet"
+
+MESSAGE         = "CONST_11"
+TEXT            = "Add Internal Tests"
+
+MESSAGE         = "CONST_12"
+TEXT		= "Sample Login Control Screen"
+
+MESSAGE         = "CONST_13"
+TEXT		= "Override label defined on template."
+
+MESSAGE GROUP "SAMP_JOB_"
+
+MESSAGE         = "CONST_1"
+TEXT            = "Samples logged in"
+
+MESSAGE         = "CONST_3"
+TEXT            = "Sample login screen"
+
+MESSAGE         = "CONST_4"
+TEXT            = "Press DO to save information / EXIT to quit"
+
+MESSAGE         = "CONST_5"
+TEXT            = "Samples logged in"
+
+MESSAGE         = "REPEAT"
+TEXT            = "Number of sample groups logged"
+
+MESSAGE         = "REPLICATE"
+TEXT            = "Number of sample replicates logged"
+
+MESSAGE         = "CONST_7"
+TEXT            = "Indicated Mandatory Fields must have a value entered"
+
+MESSAGE         = "CONST_10"
+TEXT            = "Enter Job Template : "
+
+MESSAGE		= "CONST_12"
+TEXT		= "Job name"
+
+MESSAGE         = "CONST_13"
+TEXT            = "Date created"
+
+MESSAGE         = "CONST_14"
+TEXT            = "Job status"
+
+MESSAGE		= "CONST_15"
+TEXT		= "Date completed"
+
+MESSAGE         = "CONST_16"
+TEXT            = "Job Identity"
+
+MESSAGE         = "CONST_17"
+TEXT            = "No Job specified"
+
+MESSAGE         = "CONST_18"
+TEXT            = "Job description"
+
+MESSAGE         = "CONST_19"
+TEXT            = "Sample template"
+
+MESSAGE         = "CONST_20"
+TEXT            = "Repeat count"
+
+MESSAGE         = "CONST_23"
+TEXT            = "Press DO to login Sample"
+
+MESSAGE         = "CONST_24"
+TEXT            = "Building Sample list for Job"
+
+MESSAGE		= "CONST_26"
+TEXT		= "Sample ID"
+
+MESSAGE		= "CONST_29"
+TEXT		= "SELECT to display sample / NEXT SCREEN to leave screen"
+
+MESSAGE		= "CONST_31"
+TEXT		= "Modify Job Header screen"
+
+MESSAGE		= "CONST_32"
+TEXT		= "Modify Job Header"
+
+MESSAGE         = "CONST_33"
+TEXT            = "Display Sample Entry"
+
+MESSAGE         = "CONST_34"
+TEXT            = "Sample Internal Fields"
+
+MESSAGE		= "CONST_35"
+TEXT		= "Sample User Internal Fields"
+
+MESSAGE         = "CONST_36"
+TEXT            = "Press EXIT to return to Sample Display screen"
+
+MESSAGE         = "CONST_37"
+TEXT            = "Id Numeric"
+
+MESSAGE         = "CONST_38"
+TEXT            = "Status"
+
+MESSAGE         = "CONST_39"
+TEXT            = "Commands"
+
+MESSAGE         = "CONST_40"
+TEXT            = "Internal User Fields"
+
+MESSAGE         = "CONST_41"
+TEXT            = "Internal Fields"
+
+MESSAGE         = "CONST_42"
+TEXT            = "Press DO to create JOB / EXIT to quit"
+
+MESSAGE         = "CONST_43"
+TEXT            = "Press DO to create SAMPLE / EXIT to quit"
+
+MESSAGE         = "CONST_47"
+TEXT            = "Display Job Header Screen"
+
+MESSAGE         = "CONST_48"
+TEXT            = "Display Job Header"
+
+MESSAGE         = "CONST_53"
+TEXT            = "Display Sample Entry"
+
+MESSAGE         = "CONST_54"
+TEXT            = "Modify Sample Entry"
+
+MESSAGE         = "CONST_55"
+TEXT            = "Display Full Sample"
+
+MESSAGE         = "CONST_56"
+TEXT            = "Modify Full Sample"
+
+MESSAGE		= "CONST_57"
+TEXT		= "New Job Login"
+
+MESSAGE		= "CONST_58"
+TEXT		= "Enter Sample ID for printing"
+
+MESSAGE		= "CONST_59"
+TEXT		= "Enter Sample ID :"
+
+MESSAGE         = "CONST_60"
+TEXT            = "No fields to display / prompt "
+
+MESSAGE         = "CONST_61"
+TEXT            = "Enter Job ID for printing"
+
+MESSAGE         = "CONST_62"
+TEXT            = "Enter Job ID :"
+
+MESSAGE         = "CONST_63"
+TEXT            = "Job has been Authorised"
+
+MESSAGE         = "CONST_64"
+TEXT            = "Job has been Completed"
+
+MESSAGE         = "CONST_65"
+TEXT            = "Job is currently in progress"
+
+MESSAGE         = "CONST_66"
+TEXT            = "Login Date"
+
+MESSAGE         = "CONST_67"
+TEXT            = "Priority"
+
+MESSAGE         = "CONST_68"
+TEXT            = "Press Select to view Sample"
+
+MESSAGE         = "CONST_69"
+TEXT            = "Job has been Cancelled"
+
+MESSAGE         = "CONST_70"
+TEXT            = "Job has been Suspended"
+
+MESSAGE         = "PROC"
+TEXT            = "Sampling Procedure specifies "
+TEXT            = " samples."
+
+MESSAGE         = "AD_HOC"
+TEXT            = "AD-HOC"
+
+MESSAGE         = "ADD_1"
+TEXT            = "Display Sample"
+
+MESSAGE         = "ADD_2"
+TEXT            = "Modify Sample"
+
+MESSAGE         = "ADD_3"
+TEXT            = "Display Tests"
+
+MESSAGE         = "ADD_4"
+TEXT            = "Display Results"
+
+MESSAGE         = "ADD_5"
+TEXT            = "Sample Tree"
+
+MESSAGE         = "ADD_6"
+TEXT            = "Print Receipt"
+
+MESSAGE         = "ADD_7"
+TEXT            = "Print Label"
+
+MESSAGE         = "ADD_8"
+TEXT            = "Print Worksheet"
+
+MESSAGE         = "ADD_9"
+TEXT            = "Edit Tests"
+
+MESSAGE         = "ADD_10"
+TEXT            = "Move Up"
+
+MESSAGE         = "ADD_11"
+TEXT            = "Move Down"
+
+MESSAGE         = "TAB_1"
+TEXT            = "JOB HEADER REPORT"
+
+MESSAGE         = "TAB_2"
+TEXT            = "Name of Job  : "
+
+MESSAGE         = "TAB_3"
+TEXT            = "Started      : "
+
+MESSAGE         = "TAB_4"
+TEXT            = "Completed    :"
+
+MESSAGE         = "TAB_5"
+TEXT            = "Job Status   :"
+
+MESSAGE         = "GET_1"
+TEXT            = "Press EXIT for blank entry"
+
+MESSAGE         = "GET_2"
+TEXT            = "Template name"
+
+MESSAGE         = "GET_3"
+TEXT            = "Syntax name"
+
+MESSAGE         = "MENU_1"
+TEXT            = "Version2 Sample And Jobs"
+
+MESSAGE         = "MENU_2"
+TEXT            = "1 Sample Menu"
+
+MESSAGE         = "MENU_3"
+TEXT            = "2 Job and Tests Menu"
+
+MESSAGE         = "MENU_4"
+TEXT            = "Sample menu"
+
+MESSAGE         = "MENU_5"
+TEXT            = "1 Login Sample"
+
+MESSAGE         = "MENU_6"
+TEXT            = "2 Login Sample with template"
+
+MESSAGE         = "MENU_7"
+TEXT            = "3 Login Sample for new Job"
+
+MESSAGE         = "MENU_8"
+TEXT            = "4 Login Sample for old Job"
+
+MESSAGE         = "MENU_9"
+TEXT            = "5 Modify Sample Entry"
+
+MESSAGE         = "MENU_10"
+TEXT            = "6 Display Sample Entry"
+
+MESSAGE         = "MENU_11"
+TEXT            = "7 Modify Full Entry"
+
+MESSAGE         = "MENU_12"
+TEXT            = "8 Display Full Entry"
+
+MESSAGE         = "MENU_13"
+TEXT            = "9 Test new sample"
+
+MESSAGE         = "MENU_14"
+TEXT            = "A Print full sample"
+
+MESSAGE         = "MENU_15"
+TEXT            = "Job Menu"
+
+MESSAGE         = "MENU_16"
+TEXT            = "1 Modify Job Header"
+
+MESSAGE         = "MENU_17"
+TEXT            = "2 Display Job Header"
+
+MESSAGE         = "MENU_18"
+TEXT            = "3 Print Full Sample"
+
+MESSAGE         = "MENU_19"
+TEXT            = "4 Print Sample Entry"
+
+MESSAGE         = "MENU_20"
+TEXT            = "5 Print Job"
+
+MESSAGE         = "BUTTON_LOGIN"
+TEXT            = "Login"
+
+MESSAGE         = "BUTTON_INVOKE_LOGIN"
+TEXT            = "Login..."
+
+MESSAGE         = "BUTTON_EXIT"
+TEXT            = "Cancel"
+
+MESSAGE         = "BUTTON_CLOSE"
+TEXT            = "Close"
+
+MESSAGE         = "BUTTON_OPTIONS"
+TEXT            = "Options..."
+
+MESSAGE         = "BUTTON_DETAILS"
+TEXT            = "Details"
+
+MESSAGE         = "BUTTON_JOB_OPTIONS"
+TEXT            = "Samples..."
+
+MESSAGE         = "BUTTON_CONFIG"
+TEXT            = "Config..."
+
+MESSAGE         = "BUTTON_INSERT"
+TEXT            = "Insert"
+
+MESSAGE         = "BUTTON_REMOVE"
+TEXT            = "Remove"
+
+MESSAGE         = "TT_INVOKE_LOGIN"
+TEXT            = "Sample Login ( Alt + Enter )"
+
+MESSAGE         = "TT_OPTIONS"
+TEXT            = "Login Options ( F3 )"
+
+MESSAGE GROUP "SAMP_SYN_"
+
+MESSAGE          = "ERR_1"
+TEXT             = "Undefined element "
+
+MESSAGE  GROUP "LIB_EGC_"
+
+MESSAGE       = "PROM_1"
+TEXT          = "Editor Type"
+
+MESSAGE       = "PROM_2"
+TEXT          = "Text Printer Identity"
+
+MESSAGE       = "PROM_3"
+TEXT          = "Label Printer Identity"
+
+MESSAGE GROUP "LIB_JOB_"
+
+MESSAGE       = "DISPLAY_1"
+TEXT          = "Error creating Job"
+
+MESSAGE       = "DISPLAY_2"
+TEXT          = "Error locating Job Template Header "
+
+MESSAGE       = "HEAD_1"
+TEXT          = "Job created on "
+
+MESSAGE       = "HEAD_2"
+TEXT          = " by "
+
+MESSAGE       = "HEAD_3"
+TEXT          = " using "
+
+MESSAGE       = "DISPLAY_3"
+TEXT          = "Could not read job template : "
+
+MESSAGE       = "DISPLAY_4"
+TEXT          = "Error locking Job header record"
+
+MESSAGE       = "DISPLAY_5"
+TEXT          = "Record not found "
+
+MESSAGE GROUP "LIB_SAMP_"
+
+MESSAGE       = "SAM_1"
+TEXT          = "Template"
+
+MESSAGE       = "SAM_2"
+TEXT          = "Old Status"
+
+MESSAGE       = "SAM_3"
+TEXT          = "Compared with Product"
+
+MESSAGE       = "SAM_4"
+TEXT          = "On Specification"
+
+MESSAGE       = "SAM_5"
+TEXT          = "Sample Resampled"
+
+MESSAGE       = "SAM_6"
+TEXT          = "Original Sample"
+
+MESSAGE       = "SAM_7"
+TEXT          = "Supertemplate Link Number"
+
+MESSAGE       = "SAM_8"
+TEXT          = "Number of Tests to do"
+
+MESSAGE       = "SAM_9"
+TEXT          = "Sample on Worksheet"
+
+MESSAGE       = "SAM_10"
+TEXT          = "Login Date"
+
+MESSAGE       = "SAM_11"
+TEXT          = "Date Results Available"
+
+MESSAGE       = "SAM_12"
+TEXT          = "Authorised Date"
+
+MESSAGE       = "SAM_13"
+TEXT          = "Logged in by"
+
+MESSAGE       = "SAM_14"
+TEXT          = "Authoriser ID"
+
+MESSAGE       = "SAM_15"
+TEXT          = "Authorisation Notes"
+
+MESSAGE       = "SAM_16"
+TEXT          = "Product Name"
+
+MESSAGE       = "SAM_17"
+TEXT          = "Product Grade ( Level )"
+
+MESSAGE       = "SAM_18"
+TEXT          = "Product Version"
+
+MESSAGE       = "DISPLAY_1"
+TEXT          = "Error reading sample template header "
+
+MESSAGE       = "INVALID_QUEUE"
+TEXT          = "Label Template requires the printer to be defined as a queue"
+
+! MESSAGES FOR $LIB_SAMP copied over from SMP_USER_MESSAGE
+
+MESSAGE       = "NOT_SAMP_STAT_CHANGE"
+TEXT          = "Could not change Sample status from '"
+TEXT          = "' to 'V'"
+TEXT          = "' to 'W'"
+
+MESSAGE       = "NOT_SAMP_CHANGE_STAT_TEST"
+TEXT          = "Could not change Sample status : Test with status '"
+TEXT          = "'"
+
+MESSAGE       = "ERROR_SAMP_PREP_ID"
+TEXT          = "Error Updating Sample Preparation ID"
+
+MESSAGE       = "TRY_SUPPRESSED"
+TEXT          = "Status change requires status check suppression"
+
+MESSAGE       = "NO_PREP"
+TEXT          = "Preparation record not found"
+
+MESSAGE       = "PROFILE_AND_SCHED"
+TEXT          = "Warning - A Work Profile and a Test Schedule has been assigned - Test Schedule ignored "
+
+
+MESSAGE GROUP "LIB_TEMP_"
+
+MESSAGE       = "DISPLAY_1"
+TEXT          = "Unable to find linked field "
+
+MESSAGE       = "DISPLAY_2"
+TEXT          = " in table "
+
+MESSAGE GROUP "LIB_TEST_"
+
+MESSAGE       = "CONST_1"
+TEXT          = "Test Schedule is recursive"
+
+MESSAGE       = "CONST_2"
+TEXT          = "Error assigning tests to Sample"
+
+MESSAGE       = "MESS_1"
+TEXT          = "Error writing test list "
+
+MESSAGE       = "TEST_1"
+TEXT          = "Test Assignment"
+
+MESSAGE       = "MESS_2"
+TEXT          = "Error Opening Test Text file "
+
+MESSAGE       = "MESS_3"
+TEXT          = "Error creating pipe"
+
+
+MESSAGE GROUP "MLP_UPGRADE_READ_"
+
+MESSAGE       = "MLP_FILE"
+TEXT          = "versioned_mlp_header"
+
+MESSAGE       = "SELECT"
+TEXT          = "Select file for download"
+
+MESSAGE       = "INVALID"
+TEXT          = "Invalid filename"
+
+MESSAGE       = "PROBLEM"
+TEXT          = "Encountered problem: "
+
+MESSAGE       = "COMPLETED_1"
+TEXT          = "MLP Records read and downloaded to file"
+
+MESSAGE       = "COMPLETED_2"
+TEXT          = "Recreate database structure,"
+
+MESSAGE       = "COMPLETED_3"
+TEXT          = "then run $MLP_UPGRADE_WRITE"
+
+MESSAGE       = "READING"
+TEXT          = "Reading MLP Records..."
+
+
+MESSAGE GROUP "MLP_UPGRADE_WRITE_"
+
+MESSAGE        = "BAD_FILE"
+TEXT           = "File does not contain the right amount of field information.  Process terminated"
+
+MESSAGE        = "CONTINUE"
+TEXT           = "Continue?"
+
+MESSAGE        = "DAT_WARN_1"
+TEXT           = "WARNING: New CREATED_DATE field is length: "
+
+MESSAGE        = "DAT_WARN_2"
+TEXT           = "Old CREATED_DATE field is length: "
+
+MESSAGE        = "DESC_WARN_1"
+TEXT           = "WARNING: New DESCRIPTION field is length: "
+
+MESSAGE        = "DESC_WARN_2"
+TEXT           = "Old DESCRIPTION field is length: "
+
+MESSAGE        = "EC_WARN_1"
+TEXT           = "WARNING: New ENTRY_CODE field is length: "
+
+MESSAGE        = "EC_WARN_2"
+TEXT           = "Old ENTRY_CODE field is length: "
+
+MESSAGE        = "GP_WARN_1"
+TEXT           = "WARNING: New GROUP_ID field is length: "
+
+MESSAGE        = "GP_WARN_2"
+TEXT           = "Old GROUP_ID field is length: "
+
+MESSAGE        = "ID_WARN_1"
+TEXT           = "WARNING: New IDENTITY field is length: "
+
+MESSAGE        = "ID_WARN_2"
+TEXT           = "Old IDENTITY field is length: "
+
+MESSAGE        = "INVALID"
+TEXT           = "Invalid filename.  Process terminated"
+
+MESSAGE        = "INVALID_2"
+TEXT           = "Invalid file specified.  Process terminated"
+
+MESSAGE        = "MODABLE_WARN_1"
+TEXT           = "WARNING: New MODIFIABLE field is length: "
+
+MESSAGE        = "MODABLE_WARN_2"
+TEXT           = "Old MODIFIABLE field is length: "
+
+MESSAGE        = "MODBY_WARN_1"
+TEXT           = "WARNING: New MODIFIED_BY field is length: "
+
+MESSAGE        = "MODBY_WARN_2"
+TEXT           = "Old MODIFIED_BY field is length: "
+
+MESSAGE        = "MODON_WARN_1"
+TEXT           = "WARNING: New MODIFIED_ON field is length: "
+
+MESSAGE        = "MODON_WARN_2"
+TEXT           = "Old MODIFIED_ON field is length: "
+
+MESSAGE        = "PC_WARN_1"
+TEXT           = "WARNING: New PRODUCT_CODE field is length: "
+
+MESSAGE        = "PC_WARN_2"
+TEXT           = "Old PRODUCT_CODE field is length: "
+
+MESSAGE        = "PG_WARN_1"
+TEXT           = "WARNING: New PRODUCT_GROUP field is length: "
+
+MESSAGE        = "PG_WARN_2"
+TEXT           = "Old PRODUCT_GROUP field is length: "
+
+MESSAGE        = "PS_WARN_1"
+TEXT           = "WARNING: New PRODUCT_STATUS field is length: "
+
+MESSAGE        = "PS_WARN_2"
+TEXT           = "Old PRODUCT_STATUS field is length: "
+
+MESSAGE        = "READY"
+TEXT           = "Ready"
+
+MESSAGE        = "REM_WARN_1"
+TEXT           = "WARNING: New REMOVEFLAG field is length: "
+
+MESSAGE        = "REM_WARN_2"
+TEXT           = "Old REMOVEFLAG field is length: "
+
+MESSAGE        = "TS_WARN_1"
+TEXT           = "WARNING: New TEST_SCHEDULE field is length: "
+
+MESSAGE        = "TS_WARN_2"
+TEXT           = "Old TEST_SCHEDULE field is length: "
+
+MESSAGE        = "UPLOAD_COMPLETE"
+TEXT           = "Upload of versioned MLP_Header records is complete"
+
+MESSAGE        = "UPLOAD_SELECT"
+TEXT           = "Select file to upload..."
+
+MESSAGE        = "VC_WARN_1"
+TEXT           = "WARNING: New VERSION_COMMENT field is length: "
+
+MESSAGE        = "VC_WARN_2"
+TEXT           = "Old VERSION_COMMENT field is length: "
+
+MESSAGE        = "VERS_WARN_1"
+TEXT           = "WARNING: New VERSION field is length: "
+
+MESSAGE        = "VERS_WARN_2"
+TEXT           = "Old VERSION field is length: "
+
+MESSAGE        = "VSTAT_WARN_1"
+TEXT           = "WARNING: New VERSION_STATUS field is length: "
+
+MESSAGE        = "VSTAT_WARN_2"
+TEXT           = "Old VERSION_STATUS field is length: "
+
+MESSAGE        = "WRITING"
+TEXT           = "Writing to MLP_Header table...Please Wait"
+
+MESSAGE GROUP "LIB_STOCK_TEST_USE_"
+
+MESSAGE        = "NONE"
+TEXT           = "No stock usage defined for analysis []"
+
+MESSAGE        = "HEADER"
+TEXT           = "Stock usage for []/[] on sample []"
+
+MESSAGE        = "NOT_YET"
+TEXT           = "Stock usage details for [] will be created on save"
+
+
+

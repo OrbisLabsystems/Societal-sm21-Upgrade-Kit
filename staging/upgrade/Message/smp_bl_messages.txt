@@ -1,0 +1,131 @@
+MESSAGE GROUP "BL_ERROR_"
+
+MESSAGE  = "ROW_LOCK"
+TEXT     = "Lock error"
+TEXT 	 = "Could not lock record for write"
+SEVERITY = "ERROR"
+
+MESSAGE  = "ROW_RESERVE"
+TEXT     = "Reserve error"
+TEXT 	 = "Error:'[]'"
+SEVERITY = "ERROR"
+
+MESSAGE  = "FILE_NOT_MODIFIABLE"
+TEXT     = "File Modify Error"
+TEXT 	 = "Cannot set code because the modifiable flag is false"
+SEVERITY = "ERROR"
+
+MESSAGE  = "ITEM_NOT_EXIST"
+TEXT     = "Item does not exist"
+TEXT 	 = "Item '[]' of type '[]' does not exist"
+SEVERITY = "ERROR"
+
+MESSAGE  = "TYPE_NOT_EXIST"
+TEXT     = "Type does not exist"
+TEXT 	 = "Type '[]' does not exist"
+SEVERITY = "ERROR"
+
+MESSAGE  = "RELATIONSHIP_NOT_EXIST"
+TEXT     = "Relationship does not exist"
+TEXT 	 = "Relationship '[]' does not exist"
+SEVERITY = "ERROR"
+
+MESSAGE  = "DOT_NET_CLASS_INSTANTIATION"
+TEXT     = "Could not instantiate .NET class"
+TEXT 	 = ".NET class '[]' in assembly '[]' could not be instantiated: '[]'"
+SEVERITY = "ERROR"
+
+MESSAGE  = "PROPERTY_NOT_EXIST"
+TEXT     = "Property does not exist"
+TEXT 	 = "Property '[]' does not exist for type '[]'"
+SEVERITY = "ERROR"
+
+MESSAGE  = "PROPERTY_INVALID_VALUE"
+TEXT     = "Value is invalid for property"
+TEXT 	 = "Value '[]' is not a valid value for Property '[]' of type '[]'"
+SEVERITY = "ERROR"
+
+MESSAGE  = "INDEX_OUT_OF_BOUNDS"
+TEXT     = "Attempted to access non-existant item"
+TEXT 	 = "Could not read item at position []. (Collection size is [])"
+SEVERITY = "ERROR"
+
+MESSAGE  = "TYPE_INITIALISATION_NOT_EXIST"
+TEXT     = "Could not initialise type. Initialisation routine not found"
+TEXT     = "Type '[]' could not be initialised. Initialisation routine '[]' in library '[]' does not exist. Please check the TYPE_VGL_LIBRARY and NEW_TYPE_ROUTINE fields of the '[]' record in the BL_TYPE table."
+SEVERITY = "ERROR"
+
+MESSAGE  = "TYPE_TABLE_NOT_EXIST"
+TEXT     = "Could not initialise type. Type based on invalid table."
+TEXT     = "Type '[]' could not be initialised. Table '[]' does not exist. Please check the PRIMARY_TABLE field of the '[]' record in the BL_TYPE table."
+SEVERITY = "ERROR"
+
+MESSAGE  = "ITEM_INITIALISATION_NOT_EXIST"
+TEXT     = "Could not initialise item. Initialisation routine not found"
+TEXT     = "Item of type '[]' could not be initialised. Initialisation routine '[]' in library '[]' does not exist. Please check the ITEM_VGL_LIBRARY and NEW_ITEM_ROUTINE fields of the '[]' record in the BL_TYPE table."
+SEVERITY = "ERROR"
+
+MESSAGE  = "ROUTINE_NOT_EXIST"
+TEXT     = "Invalid routine specified"
+TEXT     = "Routine '[]' in Library '[]' does not exist"
+SEVERITY = "ERROR"
+
+MESSAGE  = "RELATIONSHIP_TYPE_INVALID"
+TEXT     = "Invalid Relationship type"
+TEXT     = "'[]' is not a valid relationship type. Check the BL_RELATIONSHIP table."
+SEVERITY = "ERROR"
+
+MESSAGE  = "DATASET_BUILDER_INTERNAL"
+TEXT     = "An error occured in the Dataset Builder (SMADONet.dll)"
+TEXT     = "[]"
+SEVERITY = "ERROR"
+
+MESSAGE  = "SELECT_ARRAY_INVALID_OPERATOR"
+TEXT     = "Invalid select array format"
+TEXT     = "Could not intepret operator [] at position [] in select array"
+SEVERITY = "ERROR"
+
+MESSAGE  = "DATATABLE_INCOMPATIBLE_TYPES"
+TEXT     = "Datatable has an incompatible type to the item"
+TEXT     = "Could not add an item of type '[]' to the datatable of type '[]'"
+SEVERITY = "ERROR"
+
+MESSAGE  = "IMPRINT_NOT_FOUND"
+TEXT     = "Imprint could not be found"
+TEXT     = "Could not locate Imprint executable on the server"
+SEVERITY = "ERROR"
+
+MESSAGE  = "IMPRINT_INTERNAL"
+TEXT     = "Imprint Error"
+TEXT     = "[]"
+SEVERITY = "ERROR"
+
+MESSAGE  = "JOB_CREATE_NAME"
+TEXT     = "Job creation error"
+TEXT     = "Could not create new job name"
+SEVERITY = "ERROR"
+
+MESSAGE  = "JOB_CREATE_ID_NOT_SPECIFIED"
+TEXT     = "Job couldn't be created: no job name was specified"
+TEXT     = "The job template '[]' requires an identity to be provided"
+SEVERITY = "ERROR"
+
+MESSAGE  = "TYPE_INFERENCE"
+TEXT     = "Could not infer type from table"
+TEXT     = "Cannot infer a type from the table or view '[]'"
+SEVERITY = "ERROR"
+
+MESSAGE  = "TYPE_NOT_TABLE_BASED"
+TEXT     = "Type does not use a table as its data store"
+TEXT     = "Type '[]' is not based upon a table"
+SEVERITY = "ERROR"
+
+MESSAGE  = "ITEM_REMOVED"
+TEXT     = "Specified item has been removed"
+TEXT     = "You cannot use item '[]' of type '[]' because it has been flagged as removed"
+SEVERITY = "ERROR"
+
+MESSAGE  = "ITEM_LOCKED"
+TEXT     = "Item currently Locked"
+TEXT 	 = "Item '[]' currently Locked"
+SEVERITY = "WARNING"
