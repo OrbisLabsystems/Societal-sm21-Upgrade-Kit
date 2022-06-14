@@ -1,0 +1,219 @@
+{******************************************************************************
+*
+* Module Name	: OLS_EMPOWER_CUST
+* Purpose	: Custom or example code for empower
+*
+* Version	: 1.1
+*
+* Modifications:
+*
+*******************************************************************************}
+{
+MOD1 : GVL site
+}
+
+SET NAME "DEFER/"
+ENABLE WINDOWS
+SET NOTPROTECTED
+SET COMPILE_OPTION DECLARE
+
+JOIN STANDARD_LIBRARY STD_CLASS
+JOIN STANDARD_LIBRARY STD_ARRAY_SELECT
+JOIN STANDARD_LIBRARY STD_PROMPT
+JOIN STANDARD_LIBRARY STD_ARRAY
+JOIN STANDARD_LIBRARY STD_WINDOW
+JOIN STANDARD_LIBRARY STD_UTILS
+JOIN STANDARD_LIBRARY STD_CLIENT
+JOIN LIBRARY $LIB_STAN
+JOIN LIBRARY $lib_utils
+
+
+{ Settings that impact existing transforms }
+GLOBAL CONSTANT CONFIG_SEND_ROW_PER_REPLICATE		= TRUE
+GLOBAL CONSTANT CONFIG_USE_FIELDS_SUFFIX 		= TRUE
+GLOBAL CONSTANT CONFIG_EXPLORER_TEST_VIEW_NAME	="samp_test_view"
+GLOBAL CONSTANT CONFIG_HAS_TEST_UPDATE_CALLBACKS 	= FALSE
+GLOBAL CONSTANT CONFIG_INCLUDE_ALTERSAMPLE		= TRUE
+GLOBAL CONSTANT CONFIG_INCLUDE_COMPONENTPROMPT	= TRUE
+GLOBAL CONSTANT CONFIG_INCLUDE_STANDALONESAMPS	= TRUE
+GLOBAL CONSTANT CONFIG_INCLUDE_RES_COMPMAP		= TRUE
+GLOBAL CONSTANT CONFIG_INCLUDE_RES_USERMAP		= TRUE
+GLOBAL CONSTANT CONFIG_RUN_RESLTESAMPTYPE		= TRUE
+GLOBAL CONSTANT CONFIG_RUN_RESLTESAMPTYPE_DEFAULT 	= "NA"
+GLOBAL CONSTANT CONFIG_RUN_EXTRASAMPLENAME		= "post"
+
+GLOBAL
+ROUTINE imcust_xml_add_custom_values_list (item, array_test_data, VALUE indx)
+
+{
+	Called when the XML is being built. Allows additional items be added.
+	Parameters:
+	item : XML object
+	array_test_data : array of data to send
+	indx: current index of the above array
+}
+
+
+ENDROUTINE
+
+
+GLOBAL
+ROUTINE imcust_edit_sent_test_record (VALUE sampleset)
+
+{  Can assign to the test, its selected already, must be updated }
+{
+e.g.
+	ASSIGN test.empower_transfer_status = TRUE
+     UPDATE test
+}
+
+
+ENDROUTINE
+
+
+GLOBAL
+ROUTINE imcust_additional_field ( 
+	VALUE sample, test_array, field_array)
+
+	{ configured_parameter is from the fields phrase }
+	{ It determines where to get the data }
+	{ sample id id_numeric - blank for sample, analysis worksheet }
+	{ test array is the 4 optional tests (so any 3 may be blank) }
+	{ field_array is the output . DO NOT initialise. Set the 2nd parameter, the first determines what it is }
+
+ENDROUTINE
+
+
+GLOBAL
+ROUTINE imcust_analysis_grid_display (grid, VALUE row, VALUE column, cell_value)
+
+ENDROUTINE
+
+
+
+GLOBAL
+ROUTINE imcust_validate_final (project, sampleset, runtype, num_replicates, array_test_data)
+
+	{ This has 3 functions: }
+	{ (1) Validate.  RETURN status=TRUE if ok, otherwise status=FALSE }
+	{ (2) Edit any of the input values }
+	{ (3) Do some other action, such as updating database }
+
+	{ CALLED BEFORE transfer to IM }
+	{ This routine is never called within a transaction, }
+	{ and any started transaction should be completed here }
+	{ Input parameters: Empower project name, sampleset, run type, no of replicates, }
+	{ array of tests to send (in format) [x,y] where y is in this order: }
+	{ sample, test1,test2,test3,test4, any other custom values }
+	{ Ignore array_test_data 1st row   }
+
+	DECLARE status
+
+	status = TRUE
+
+	RETURN (status)
+
+ENDROUTINE
+
+
+GLOBAL
+ROUTINE imcust_final_action (VALUE current_status, VALUE project, VALUE sampleset, 
+						VALUE runtype, VALUE num_replicates, array_test_data)
+
+	{ CALLED AFTER transfer to IM (even if error occurred) }
+	{ This routine is never called within a transaction, }
+	{ and any started transaction should be completed here }
+	{ Input parameters: current_status (EMPTY if no errors), }
+	{ Empower project name, sampleset, run type, no of replicates, }
+	{ array of tests to send (in format) [x,y] where y is in this order: }
+      { sample, test1,test2,test3,test4, any other custom values }
+	{ Ignore array_test_data 1st row   }
+
+
+ENDROUTINE
+
+GLOBAL
+ROUTINE imcust_runsetup_lte_data (field_array, VALUE start_index)
+
+	{ start_index is the first row in the array, if any, for the LTE data }
+	{ field_array [i, 1] is the element name }
+	{ field_array [i, 2] is analysis/testcount//component==value }
+
+	{ MOD1 }
+
+	{ if field_array [i, 1]=<certain value>, then its value is matched to other rows for  }
+	{ the same test. Rows that dont match are blanked.  }
+      { Using the N in aaaN_xxxxx  name format to match   }
+
+	DECLARE i,j, indx, std_no_text, stdno, testid, testid2, lastnum
+
+	std_no_text = "STAN_NO-0-"
+
+	i = start_index-1
+	WHILE (i < sizeofarray(field_array)) DO
+
+		i = i + 1
+		{  1 may be xxx_n-yyy   2 is anal/tc//comp==value  }
+
+		stdno=""	
+		testid=""	
+		IF (field_array [i,1]=std_no_text) THEN
+
+			indx = INDEX (field_array[i,2], "//")
+			IF (indx>0) THEN
+				testid = LEFTSTRING (field_array[i,2], indx-1)
+			ENDIF
+
+			IF (NOT BLANK(testid)) THEN
+
+				indx = INDEX (field_array[i,2], "==")
+				IF (indx>0) THEN
+					stdno = RIGHTSTRING (field_array[i,2],
+						STRINGLENGTH(field_array[i,2])+1-(indx+2))
+
+					stdno = STRIP(stdno)
+				ENDIF
+
+			ENDIF
+
+		ENDIF
+
+		j = start_index-1
+
+		WHILE (NUMTEXT(stdno)) AND
+			(j < sizeofarray(field_array)) DO
+
+			j = j + 1
+
+			testid2 = ""
+			indx = INDEX (field_array[j,2], "//")
+			IF (indx>0) THEN
+				testid2 = LEFTSTRING (field_array[j,2], indx-1)
+			ENDIF
+
+			IF (testid = testid2) THEN
+
+				{ same test, change element name. If no _, do nothing }
+				indx = INDEX (field_array[j,1], "_")
+				IF (indx>0) THEN
+					
+					lastnum = SUBSTRING (field_array[j,1], indx-1, 1)
+					IF (NUMTEXT(lastnum)) THEN
+						IF (lastnum <> stdno) THEN
+
+							field_array[j,2]=""
+
+						ENDIF
+					ENDIF
+						 
+				ENDIF
+
+			ENDIF
+
+		ENDWHILE
+
+	ENDWHILE
+
+	{ end MOD1 }
+
+ENDROUTINE

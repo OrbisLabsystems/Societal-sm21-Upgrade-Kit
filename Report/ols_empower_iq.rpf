@@ -1,0 +1,297 @@
+{******************************************************************************
+*
+* Module Name	: OLS_EMPOWER_IQ
+* Purpose	: For installation
+*
+*
+*******************************************************************************}
+ 
+SET COMPILE_OPTION DECLARE
+SET NAME "DEFER/"
+ENABLE WINDOWS
+SET NOTPROTECTED
+
+JOIN STANDARD_LIBRARY STD_ARRAY
+JOIN STANDARD_LIBRARY STD_GENERAL
+JOIN STANDARD_LIBRARY STD_DATABASE
+JOIN STANDARD_LIBRARY STD_ARRAY_SELECT
+JOIN STANDARD_LIBRARY STD_STRUCTURE
+JOIN STANDARD_LIBRARY STD_UTILS
+JOIN STANDARD_LIBRARY STD_PROMPT
+JOIN STANDARD_LIBRARY STD_CLASS
+JOIN STANDARD_LIBRARY STD_CLIENT
+JOIN LIBRARY $LIB_UTILS
+JOIN LIBRARY $PROMPT_LIST
+JOIN LIBRARY $TOOLBOX
+JOIN LIBRARY $CRITERIA_EDIT
+JOIN LIBRARY $CRITERIA_SAVED
+JOIN LIBRARY $CRITERIA_CACHE
+JOIN LIBRARY $CRITERIA_LIB
+JOIN LIBRARY $CRITERIA_SAVED
+JOIN LIBRARY $INTEGRATION_MANAGER
+
+{ CONSTANT INSTALLING_ON = FALSE }
+CONSTANT INSTALLING_MENU = "SYSTEM"
+CONSTANT INSTALLING_IFACE_MENU_NAME = "Empower Interface"
+
+run_iq ()
+
+
+ROUTINE run_iq 
+
+	IF (confirmwithtext("Include Install ?")) THEN
+
+		flashmessage ("Installing", TRUE)
+		do_installs ()
+
+	ENDIF
+
+	do_checks ()
+
+ENDROUTINE
+
+
+ROUTINE do_installs 
+
+	{ Install the menu, if not already there }
+
+	DECLARE rec, procedure_no, is_client_file, 
+		mtb_file
+
+	procedure_no = 15778
+	is_client_file = FALSE 
+	mtb_file="empower_menu.mtb"
+
+	rec = SELECT menu_toolbar . item_name
+		  WHERE toolbar_name = INSTALLING_MENU	
+		   AND  item_name = INSTALLING_IFACE_MENU_NAME
+
+	IF (rec = EMPTY) THEN
+
+		{ if here, no interface menu, so install it }
+		{ Use Setup/Install options/Load menu tree  }
+
+		MENUPROC procedure_no
+			USING INSTALLING_MENU, is_client_file,
+				mtb_file
+
+	ENDIF
+
+ENDROUTINE
+
+ROUTINE do_checks 
+
+	DECLARE status, final_message, dir
+
+	status = EMPTY
+	final_message = ""
+
+	{ Check directories are created }
+	{ Verify connections for browsing empower and send to SM agent }	
+
+	{ Directory check }
+	
+	IF (status=EMPTY) THEN
+
+		dir ="smp$userfiles:Empower"
+		status = directory_check (dir)
+	ENDIF
+
+	{ Browse Empower check }
+	IF (status=EMPTY) THEN
+
+		status = check_empower_agent_connect ()
+	ENDIF
+
+	{ Data to SM agent }
+
+	IF (status = EMPTY) THEN
+
+		status = test_sm_agent_link ()
+
+	ENDIF
+
+	IF (status=EMPTY) THEN
+
+		final_message = "Installation check completed successfully"
+	ELSE
+
+		final_message = "Error: ":status
+
+	ENDIF
+
+	flashmessage (final_message, TRUE)
+
+ENDROUTINE
+
+
+ROUTINE directory_check (VALUE dir)
+
+	DECLARE fn, check_ok, status
+
+	status = EMPTY
+
+	{ make a file as a test }
+
+	fn = dir:"\EMPOWER_IQ.txt"
+
+	IF (FILE EXISTS(fn)) THEN
+
+		FILE DELETE fn
+	ENDIF
+
+	FILE CREATE fn, check_ok
+
+	IF (check_ok = EMPTY) THEN
+
+		FILE CLOSE fn
+		FILE DELETE fn
+	ELSE
+
+		status = "Error checking directory ":STRIP(dir):" : ":
+				check_ok
+	ENDIF
+
+	RETURN (status)
+
+ENDROUTINE
+
+ROUTINE check_empower_agent_connect  
+
+	DECLARE cmd, quot, check_ok, cds, user, pwd, dummy_project, exe_location, 
+            output_location, file_to_write, error_file, status
+
+	status = EMPTY
+	quot = ASCII (34)
+
+	exe_location = get_instance_logical ("smp$programs"):"\Orbis\":STRIP ( GLOBAL("OLS_CDS_INSTANCE") ):"\"
+	output_location = get_instance_logical ("smp$userfiles") : "\Empower\"
+	dummy_project = GLOBAL("OLS_CDS_PROJECT")
+
+	{ Not testing the Empower part, just the agent connect }
+	user="noSuchUser"	
+	pwd="doesntExist"
+	cds = GLOBAL("OLS_CDS_ALIAS")
+
+
+	file_to_write = output_location:"IQ.txt"
+	error_file = file_to_write:".error.log"
+
+        { Ensure no error log there }
+	IF (FILE EXISTS (error_file)) THEN
+
+	     FILE DELETE error_file
+	ENDIF
+
+	cmd = quot:quot:exe_location:
+		"Orbis.LimsClientEmpower.exe":quot:
+        "  ":
+	   quot:file_to_write:quot:
+        "  ":
+	   dummy_project:" ":cds:" ":user:" ":pwd:" 2 #BLANK F":quot
+
+
+	SPAWN cmd, check_ok QUIETLY
+
+	IF (check_ok <> EMPTY) THEN
+
+		status = "Error in SM: ":check_ok
+
+		RETURN (status)
+
+	ENDIF
+
+	{ Now look for the error log (guaranteed error log because wrong user/password }
+	DECLARE fn, line, msg, chk
+
+	fn = error_file
+
+	IF (FILE EXISTS(fn)) THEN
+
+		FILE OPEN fn
+
+		FILE READ fn, line, chk  { ignore 1st line, date }
+		msg = ""
+		WHILE (chk = EMPTY) DO
+
+			FILE READ fn, line, chk
+
+			IF (chk=EMPTY) THEN
+
+				msg = msg:line
+			ENDIF
+
+		ENDWHILE
+
+		FILE CLOSE fn
+		FILE DELETE fn
+
+		msg = TOLOWER(msg)
+		IF (INDEX(msg,"exception calling empower") < 1) THEN
+
+			{ Error, it didnt reach empower }
+			status = "Error connecting to Empower Agent"
+
+		ENDIF
+
+	ENDIF
+
+	RETURN (status)
+
+ENDROUTINE
+
+ROUTINE get_instance_logical (VALUE logical_name)
+
+	{ Gets the instance (1st) logical as a string, without concetenated other paths }
+
+	DECLARE ret, i
+
+	ret = LOGICAL (logical_name)
+
+	i = INDEX (ret, ";")
+	IF (i>0) THEN
+		ret = LEFTSTRING (ret, i-1)
+	ENDIF
+	
+	RETURN ( STRIP(ret) )
+
+ENDROUTINE
+
+ROUTINE test_sm_agent_link
+
+	DECLARE im, list, item, status 
+
+	status = "SM agent: Not sent"
+	im     = im_create_integration_object (  )
+	im . InstanceName = STRIP(GLOBAL("OLS_CDS_IM_IP"))
+	im . ObjectType = STRIP(GLOBAL("OLS_CDS_IM_IPO"))
+
+	list   = im_create_list_object ( )
+
+	list . ElementName = "WorksheetExport"
+	list . ItemsName = "WorksheetEntries"
+
+	list . Set ( "DateCreated", NOW )
+	list . Set ( "Operator", OPERATOR )
+	list . Set ( "LimsInstance", GLOBAL("INSTANCE") )
+
+	im . DataItem = list	
+
+     	item = im_create_data_object ( )
+	item . ElementName = "Iq"
+	item . Name = "0" 	  
+	item.Set ("A","1")
+
+	list . Items . Add ( item ) 
+
+	IF im . send ( ) THEN
+
+		status = EMPTY
+	ELSE
+		status = "SM agent: ":im . LastException . ToString()		
+
+      ENDIF
+
+	RETURN ( status )
+
+ENDROUTINE

@@ -1,0 +1,781 @@
+{*******************************************************************************
+*
+* Module Name   : $INTEGRATION_MANAGER_LIB
+*
+* Purpose       : Integration Manager integration report
+*
+* Document Ref  : N/a
+*
+*******************************************************************************}
+
+SET NOTPROTECTED
+SET NAME "DEFER/"
+SET COMPILE_OPTION DECLARE
+ENABLE WINDOWS
+
+{******************************************************************************}
+
+JOIN STANDARD_LIBRARY STD_UTILS
+JOIN STANDARD_LIBRARY STD_DATABASE
+
+{******************************************************************************}
+
+CONSTANT IM_CLASS_NAME   = "Thermo.SampleManager.Integration.DataItemIntegration"
+CONSTANT LIST_CLASS_NAME = "Thermo.SampleManager.Integration.DataItemList"
+CONSTANT ITEM_CLASS_NAME = "Thermo.SampleManager.Integration.DataItem"
+
+CONSTANT ASSEMBLY        = "Thermo.SampleManager.Integration"
+CONSTANT DIRECTORY       = "INTEGRATION"
+CONSTANT DEBUG           = TRUE
+
+JOIN LIBRARY $LIB_UTILS
+
+{******************************************************************************}
+{*                              R O U T I N E S                               *}
+{******************************************************************************}
+
+ROUTINE example_send_data ( rmb_object, object, data )
+
+{
+*   Explorer RMB callback routine for sending explorer folder contents to IM
+*
+*******************************************************************************}
+
+	im_send_rmb_data ( data, "SampleManager Data" )
+
+ENDROUTINE
+
+{******************************************************************************}
+{*                         G L O B A L    R O U T I N E S                     *}
+{******************************************************************************}
+
+GLOBAL ROUTINE im_send_rmb_data ( data, VALUE object_type )
+
+{
+*   Explorer RMB support - push data to IM using the specified object type
+*
+*******************************************************************************}
+
+	DECLARE status
+
+	status = im_send_items ( data, object_type )
+
+	IF status = EMPTY THEN
+
+		flash_message ( "Data Sent to Integration Manager", TRUE )
+
+	ELSE
+
+		flash_message ( status, TRUE )
+
+	ENDIF
+
+ENDROUTINE
+
+{******************************************************************************}
+
+GLOBAL ROUTINE im_send_items ( data, VALUE object_type )
+
+{
+*   Send Items to Integration Agent
+*
+*******************************************************************************}
+
+	DECLARE im, item, list, status
+
+	status = EMPTY
+	im     = im_create_integration_object ( )
+	list   = im_create_list_object ( )
+
+	list . ElementName = "SampleManagerExport"
+	list . ItemsName = "Items"
+
+	list . Set ( "DateCreated", NOW )
+	list . Set ( "Operator", OPERATOR )
+
+	im . ObjectType = object_type
+	im . DataItem = list
+
+	data . set_first ()
+
+	WHILE ( data . current <> EMPTY ) DO
+
+  		item = im_create_object_from_record ( data . current )
+ 		list . Items . Add ( item )
+		data . set_next ()
+
+	ENDWHILE
+
+	IF NOT im . send ( ) THEN
+
+		status = im . LastException . ToString()		
+
+	ENDIF
+
+	RETURN ( status )
+
+ENDROUTINE
+
+{******************************************************************************}
+
+GLOBAL ROUTINE im_create_object_from_record ( record )
+
+{
+*   Create a data object using a ODB Record
+*
+*******************************************************************************}
+
+	DECLARE fields, count, val, field, item, key, table
+
+	count = 1
+	table = record . table
+	key   = get_key_value ( record )
+
+ 	item = im_create_data_object ( )
+	item . ElementName = table
+	item . Name = key
+
+	GET_UNORDERED_FIELD_NAMES ( table, fields )
+	
+	WHILE ( fields [ count, 1 ] <> EMPTY ) DO
+
+		field = fields [ count, 1 ]
+		val = SELECT 'table' . 'field' IN OBJECT record
+			
+		item . Set ( field, val )
+		count = count + 1
+
+	ENDWHILE
+
+	RETURN ( item )
+
+ENDROUTINE
+
+{******************************************************************************}
+
+GLOBAL ROUTINE im_create_integration_object
+
+{
+*   Create a configured Integration Object
+*
+*******************************************************************************}
+
+	DECLARE im
+
+	im = im_create_object ( IM_CLASS_NAME )
+
+	im . URL = GLOBAL("INTEGRATION_MANAGER_SERVER_URL")
+	im . InstanceName = GLOBAL("INTEGRATION_MANAGER_INSTANCE")
+	im . Username = GLOBAL("INTEGRATION_MANAGER_USERNAME")
+	im . Password = GLOBAL("INTEGRATION_MANAGER_PASSWORD")
+	
+	RETURN ( im )
+
+ENDROUTINE
+
+{******************************************************************************}
+
+GLOBAL ROUTINE im_create_data_object
+
+{
+*   Create an Integration Manager data object
+*
+*******************************************************************************}
+
+	RETURN ( im_create_object ( ITEM_CLASS_NAME ) )
+
+ENDROUTINE
+
+{******************************************************************************}
+
+GLOBAL ROUTINE im_create_list_object
+
+{
+*   Create an Integration Manager data object
+*
+*******************************************************************************}
+
+	RETURN ( im_create_object ( LIST_CLASS_NAME ) )
+
+ENDROUTINE
+
+{******************************************************************************}
+
+GLOBAL ROUTINE im_create_object ( VALUE class_name )
+
+{
+*   Create an Integration Manager data object
+*
+*******************************************************************************}
+
+	DECLARE object, status
+
+	CREATE OBJECT "STD_NET_SERVER", object
+	status = object . create ( ASSEMBLY, class_name, DIRECTORY )
+
+	IF ( status <> EMPTY )
+
+		flash_message ( status, TRUE )
+		EXIT
+
+	ENDIF
+
+	RETURN ( object )
+
+ENDROUTINE
+
+{******************************************************************************}
+
+ROUTINE get_key_value ( data_object )
+
+{
+*   Get a Key value from a data object
+*
+*******************************************************************************}
+
+	DECLARE key, table, key_fields, count, field, val
+
+	key   = ""
+	count = 1
+	table = data_object . table
+
+	GET_TABLE_DETAILS 'table', "KEY0_FIELD", key_fields
+
+	WHILE ( key_fields [ count ] <> EMPTY ) DO
+
+		field = key_fields [ count ]
+		val = SELECT 'table' . 'field' IN OBJECT data_object
+		key = key : val
+
+		count = count + 1
+		
+	ENDWHILE
+
+	RETURN ( key )
+
+ENDROUTINE
+
+{******************************************************************************}
+{*                               W O R K S H E E T S                          *}
+{******************************************************************************}
+
+ROUTINE send_worksheet_data ( rmb_object, object, data )
+
+{
+*   Explorer RMB callback routine for sending explorer folder contents to IM
+*
+*******************************************************************************}
+
+	DECLARE status
+
+	status = im_send_worksheet ( data )
+
+	IF status = EMPTY THEN
+
+		flash_message ( "Worksheet Sent to Integration Manager", TRUE )
+
+	ELSE
+
+		flash_message ( status, TRUE )
+
+	ENDIF
+
+ENDROUTINE
+
+{******************************************************************************}
+
+ROUTINE im_send_worksheet ( data )
+
+{
+*   Send Items to Integration Agent
+*
+*******************************************************************************}
+
+	DECLARE im, item, list, status
+
+	status = EMPTY
+	im     = im_create_integration_object (  )
+	list   = im_create_list_object ( )
+
+	list . ElementName = "WorksheetExport"
+	list . ItemsName = "WorksheetEntries"
+
+	list . Set ( "DateCreated", NOW )
+	list . Set ( "Operator", OPERATOR )
+
+	im . ObjectType = "AnalysisWorksheet"
+	im . DataItem = list	
+
+	data . set_first ()
+
+	WHILE ( data . current <> EMPTY ) DO
+
+  		item = create_worksheet_object ( data . current )
+
+ 		list . Items . Add ( item )
+		data . set_next ()
+
+	ENDWHILE
+
+	IF NOT im . send ( ) THEN
+
+		status = im . LastException . ToString()		
+
+	ENDIF
+
+	RETURN ( status )
+
+ENDROUTINE
+
+{******************************************************************************}
+
+ROUTINE create_worksheet_object ( record )
+
+{
+*   Create a Worksheet data object using a ODB Record
+*
+*******************************************************************************}
+
+	DECLARE item, key, table, id
+
+	table = record . table
+	key = get_key_value ( record )
+
+ 	item = im_create_data_object ( )
+	item . ElementName = table
+	item . Name = key
+
+	id = SELECT worksheet . identity IN OBJECT record	
+
+	IF ( id <> EMPTY )
+
+		get_analysis_worksheet ( id, item )
+
+	ENDIF
+
+	RETURN ( item )
+
+ENDROUTINE
+
+{******************************************************************************}
+
+ROUTINE get_analysis_worksheet ( wks_name, item )
+
+{
+*   Create a data object using a ODB Record
+*
+*******************************************************************************}
+
+	DECLARE success, wks_type, wks_analysis, wks_date, wks_op, tests,
+	        wks_file, wks_test_num
+
+	wks_name = STRIP ( wks_name )
+	wks_file = TOLOWER ( "SMP$WORKSHEETS:" : wks_name : ".WSA" )
+
+	FILE OPEN wks_file, success
+
+	IF ( success = EMPTY ) THEN
+
+		FILE READ wks_file, wks_type, success
+		item . Set ( "TYPE", wks_type )
+
+		FILE READ wks_file, wks_analysis, success
+		item . Set ( "ANALYSIS", wks_analysis )
+
+		FILE READ wks_file, wks_date, success
+		item . Set ( "DATE", wks_date )
+
+		FILE READ wks_file, wks_op, success
+		item . Set ( "OPERATOR", wks_op )		
+
+		tests = im_create_list_object ( )
+		tests . ItemsName = "Tests"
+
+		REPEAT
+
+			FILE READ wks_file, wks_test_num, success
+
+			IF ( ( wks_test_num <> EMPTY ) AND
+			     ( wks_test_num <> " "   ) AND
+			     ( success = EMPTY       ) ) THEN
+
+				get_test_and_components ( wks_test_num, tests )
+
+			ENDIF			
+
+		UNTIL wks_test_num = EMPTY
+
+		IF ( tests . GetCount() > 0 )
+			
+			item . Set ( "Tests", tests )
+
+		ENDIF
+
+	ELSE	
+
+		flash_message ( success, TRUE )
+
+	ENDIF
+
+	FILE CLOSE wks_file, success
+
+ENDROUTINE
+
+{******************************************************************************}
+
+ROUTINE get_test_and_components ( VALUE test_number, tests )
+
+{
+*   Get hold of a test data item with components
+*
+*******************************************************************************}
+
+	DECLARE test, anal, ver, comps, list, comp, id_text
+
+	test_number = SELECT test . test_number
+	              WHERE test_number = test_number
+
+	IF ( test_number <> EMPTY )
+
+		test = im_create_object_from_select ( "TEST" )
+
+		comps = im_create_list_object ( )
+		comps . ItemsName = "Components"
+
+		list = SELECT test . has_result_list
+
+		IF ( list )
+
+			add_results ( test_number, comps )
+
+		ELSE
+			anal = SELECT test . analysis
+			ver  = SELECT test . analysis_version
+
+			comp = SELECT versioned_component . name
+			       WHERE analysis = anal
+			       AND analysis_version = ver
+
+			WHILE comp <> EMPTY DO
+
+				add_result ( comp, test_number, comps )
+
+				NEXT versioned_component
+				comp = SELECT versioned_component . name
+
+			ENDWHILE
+
+		ENDIF		
+
+		IF ( comps . GetCount() > 0 )
+	
+			test . Set ( "Components", comps )
+
+		ENDIF
+
+		id_text = get_id_text ( SELECT test . sample )
+		test . Set ( "IDText", id_text )
+
+		tests . Items . Add ( test )
+				
+	ENDIF
+
+	RETURN ( test )
+	
+ENDROUTINE
+
+
+{******************************************************************************}
+
+ROUTINE get_id_text ( VALUE id_numeric )
+
+{
+*   Get Hold of the Sample Text
+*
+*******************************************************************************}
+
+	DECLARE id_text
+
+	id_text = SELECT sample . id_text
+	          WHERE id_numeric = id_numeric
+
+	RETURN ( id_text )
+
+ENDROUTINE
+
+{******************************************************************************}
+
+ROUTINE add_result ( VALUE name, VALUE test_number, comps )
+
+{
+*   Add a Result/Component to the Data Object
+*
+*******************************************************************************}
+
+	DECLARE result, resultitem, compitem
+
+	result = SELECT result . name
+	         WHERE test_number = test_number
+	         AND name = name
+
+	IF ( result = EMPTY )
+	
+		compitem = im_create_object_from_select ( "VERSIONED_COMPONENT" )
+		comps . Items . Add ( compitem )
+
+	ELSE
+
+		resultitem = im_create_object_from_select ( "RESULT" )
+		comps . Items . Add ( resultitem )
+
+	ENDIF
+
+ENDROUTINE
+
+{******************************************************************************}
+
+ROUTINE add_results ( VALUE test_number, comps )
+
+{
+*  Add Results to the Data Object
+*
+*******************************************************************************}
+
+	DECLARE result, resultitem
+
+	result = SELECT result . name
+	         WHERE test_Number = test_number
+
+	WHILE ( result <> EMPTY ) DO
+
+		resultitem = im_create_object_from_select ( "RESULT" )
+		comps . Items . Add ( resultitem )
+
+		NEXT result
+		result = SELECT result . name
+
+	ENDWHILE
+
+ENDROUTINE
+
+{******************************************************************************}
+
+ROUTINE im_create_object_from_select ( VALUE table )
+
+{
+*   Create a data object using a ODB Record
+*
+*******************************************************************************}
+
+	DECLARE item, key
+
+	key   = get_select_key_value ( table )
+ 	item  = im_create_data_object ( )
+
+	item . ElementName = table
+	item . Name = key
+
+	im_update_object_from_select ( item, table, "" )
+
+	RETURN ( item )
+
+ENDROUTINE
+
+{******************************************************************************}
+
+ROUTINE im_update_object_from_select ( item, VALUE table, VALUE prefix )
+
+{
+*   Update an Object from VGL
+*
+*******************************************************************************}
+
+	DECLARE fields, count, field, val
+	count = 1
+
+	GET_UNORDERED_FIELD_NAMES ( table, fields )
+	
+	WHILE ( fields [ count, 1 ] <> EMPTY ) DO
+
+		field = fields [ count, 1 ]
+		val = SELECT 'table' . 'field'
+			
+		item . Set ( prefix : field, val )
+		count = count + 1
+
+	ENDWHILE
+
+ENDROUTINE
+
+{******************************************************************************}
+
+ROUTINE get_select_key_value ( VALUE table )
+
+{
+*   Get a Key value from selection
+*
+*******************************************************************************}
+
+	DECLARE key, key_fields, count, field, val
+
+	key   = ""
+	count = 1
+
+	GET_TABLE_DETAILS 'table', "KEY0_FIELD", key_fields
+
+	WHILE ( key_fields [ count ] <> EMPTY ) DO
+
+		field = key_fields [ count ]
+		val = SELECT 'table' . 'field'
+		key = key : val
+
+		count = count + 1
+		
+	ENDWHILE
+
+	RETURN ( key )
+
+ENDROUTINE
+
+{******************************************************************************}
+{*                                B A T C H E S                               *}
+{******************************************************************************}
+
+ROUTINE send_batch_data ( rmb_object, object, data )
+
+{
+*   Explorer RMB callback routine for sending a batch to IM
+*
+*******************************************************************************}
+
+	DECLARE status
+
+	status = im_send_batch ( data )
+
+	IF status = EMPTY THEN
+
+		flash_message ( "Batch Sent to Integration Manager", TRUE )
+
+	ELSE
+
+		flash_message ( status, TRUE )
+
+	ENDIF
+
+ENDROUTINE
+
+{******************************************************************************}
+
+ROUTINE im_send_batch ( data )
+
+{
+*   Send Batch to Integration Agent
+*
+*******************************************************************************}
+
+	DECLARE im, item, list, status
+
+	status = EMPTY
+	im     = im_create_integration_object (  )
+	list   = im_create_list_object ( )
+
+	list . ElementName = "BatchExport"
+	list . ItemsName = "Batches"
+
+	list . Set ( "DateCreated", NOW )
+	list . Set ( "Operator", OPERATOR )
+
+	im . ObjectType = "Batch"
+	im . DataItem = list	
+
+	data . set_first ()
+
+	WHILE ( data . current <> EMPTY ) DO
+
+  		item = create_batch_object ( data . current )
+
+ 		list . Items . Add ( item )
+		data . set_next ()
+
+	ENDWHILE
+
+	IF NOT im . send ( ) THEN
+
+		status = im . LastException . ToString()		
+
+	ENDIF
+
+	RETURN ( status )
+
+ENDROUTINE
+
+{******************************************************************************}
+
+ROUTINE create_batch_object ( record )
+
+{
+*   Create a Batch data object using a ODB Record
+*
+*******************************************************************************}
+
+	DECLARE item, id
+
+	id = SELECT batch_header . identity IN OBJECT record
+	id = SELECT batch_header . identity WHERE identity = id
+
+	IF ( id <> EMPTY )
+
+		item = get_batch ( id )
+
+	ENDIF
+
+	RETURN ( item )
+
+ENDROUTINE
+
+{******************************************************************************}
+
+ROUTINE get_batch ( identity )
+
+{
+*   Get hold of batch information
+*
+*******************************************************************************}
+
+	DECLARE tests, batch, test_num, test	
+
+	batch = im_create_object_from_Select ( "BATCH_HEADER" )
+
+	tests = im_create_list_object ( )
+	tests . ItemsName = "Tests"
+
+	test_num = SELECT batch_entry . test
+	           WHERE identity = identity
+	           ORDER ON order_number
+
+	WHILE test_num <> EMPTY DO
+
+		test = get_test_and_components ( test_num, tests )
+		im_update_object_from_select ( test, "BATCH_ENTRY", "Entry" )
+
+		NEXT batch_entry		
+		
+{gw}
+{		test_num = SELECT batch_entry . order_number}
+		test_num = SELECT batch_entry . test
+
+	ENDWHILE
+	
+	IF ( tests . GetCount() > 0 )
+		
+		batch . Set ( "Tests", tests )
+
+	ENDIF
+
+	RETURN ( batch )
+
+ENDROUTINE
+
+{******************************************************************************}
+{******************************************************************************}
+{******************************************************************************}

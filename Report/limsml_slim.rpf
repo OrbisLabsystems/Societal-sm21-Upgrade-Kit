@@ -1,0 +1,797 @@
+{******************************************************************************
+*
+* Module Name   : LIMSML_SLIM
+*
+* Purpose       :
+*
+*******************************************************************************
+*
+* Modification History :
+* 
+* Version   Date         By             Description
+* -------   -----------  ----------     ---------------------------------------
+* 1.0       15-OCT-2014  L. Dawson      Initial release
+* 
+* 2.0       04-NOV-2014  L. Dawson      GVL Update to get material based on
+*                                       packaging code in study name.                                     
+*******************************************************************************}
+
+SET NOTPROTECTED
+SET COMPILE_OPTION DECLARE
+SET NAME "DEFER/"
+
+ENABLE WINDOWS
+
+JOIN STANDARD_LIBRARY STD_ARRAY
+JOIN STANDARD_LIBRARY STD_CLASS
+JOIN STANDARD_LIBRARY STD_GENERAL
+JOIN STANDARD_LIBRARY STD_DATABASE
+
+JOIN LIBRARY $BL
+JOIN LIBRARY $BL_COLUMN
+JOIN LIBRARY $BL_COLUMN_COLL
+JOIN LIBRARY $BL_IDS_BUILDER
+JOIN LIBRARY $BL_ITEM_DATACOLUMN
+JOIN LIBRARY $BL_ITEM_DATATABLE
+JOIN LIBRARY $EXPLORER_UTILS
+JOIN LIBRARY $LIMSML_COLUMN_DT
+
+JOIN LIBRARY $LIB_UTILS
+JOIN LIBRARY $LIMSML_LIB
+JOIN LIBRARY $LIB_TEMP
+JOIN LIBRARY LIB_SLIM
+JOIN LIBRARY LIB_NEW_TEST
+
+{**********************************************************************}
+{*     Configuration items                                            *}
+{**********************************************************************}
+
+CONSTANT JOB_TMPL    = "ORBIS_SLIM_JOB_TMPL"
+CONSTANT SAMPLE_TMPL = "ORBIS_SLIM_SAMPLE_TMPL"
+CONSTANT SITE        = "ORBIS_SLIM_SITE"
+
+{*******************************************************************************}
+GLOBAL
+ROUTINE slim_job_create_by_template ( processor, entity, action, response )
+
+{
+*
+*
+* Parameters   : processor , [LIMSML_PROCESS]
+*                entity    , [HELPER_ENTITY]
+*                action    , [HELPER_ACTIONML]
+*                response  , [HELPER_RICHDOCUMENT,HELPER_DOCUMENT]]
+*
+* Return Value : None
+*
+*******************************************************************************}
+
+	DECLARE job_type, job_builder, new_job_item, entity_copy, item, job_id, 
+              samp_template_id, replicates, study_id,
+	        job_login_name, entity_sample, action_sample, slim_obj,
+              ignore_samp_slim, slim_product_id, 
+              num_samples, samplecount, study_size, new_study_id
+              	        
+	job_id  = action . get_param_default ( "JOB_NAME", EMPTY )
+	ignore_samp_slim  = action . get_param_default ( "IGNORE_SAMPLE_SLIM", TRUE )  
+	slim_product_id  = action . get_param_default ( "SLIM_PRODUCT_ID", "BLANK" ) 
+
+      study_id = entity . get_field_by_name( "STAB_STUDY_ID" ) . getvalue()
+
+      IF ( INDEX(study_id,"SM") = 1 ) THEN
+ 
+	    {**********************************************************************}
+	    {*     Create SLIM object and Process XML                             *}
+	    {**********************************************************************}
+          define_slim_classes()
+          CREATE OBJECT "SLIM_CLASS", slim_obj
+
+          slim_obj . site     = GLOBAL( SITE )
+          slim_obj . study    = study_id
+          slim_obj . slim_product_id = slim_product_id
+
+          {*  Create log  *}
+          slim_obj . log . create_log_file() 
+          slim_obj . log . write_log_file("Start Job Login") 
+
+	    {*  Get material code  *}
+          slim_obj . get_material()
+
+          IF ( slim_obj . material <> EMPTY) THEN
+
+              entity . get_field_by_name( "MATERIAL" ) . setvalue( slim_obj . material ) 
+
+              {* Ensure that the Study Id length is within the field size *}
+
+              GET_FIELD_DETAILS job_header . stab_study_id, "FIELD_SIZE", study_size
+        
+              IF ( study_size < LENGTH( study_id )) THEN
+
+                  new_study_id = LEFTSTRING( STRIP( study_id ), study_size)
+                  entity . get_field_by_name( "STAB_STUDY_ID" ) . setvalue( new_study_id )
+
+                   slim_obj . log . write_log_file("Study Id : " : study_id : " is too long. Max field size allowed = "
+                                                    : STRIP(study_size) : ".  This has been truncated to : " : new_study_id)
+
+              ENDIF
+
+              {* Set SLIM object properties *}
+
+              slim_obj . ss_test_schedule     = SELECT slim_map_header . ster_sub_test_sched
+                                                WHERE material = slim_obj . material
+              slim_obj . diss_sum_analysis    = SELECT slim_map_header . diss_sum_analysis
+                                                WHERE material = slim_obj . material
+
+              process_slim_xml( entity, slim_obj )
+
+              {**********************************************************************}
+              {*     Check if it is a T0/Initial job                                *}
+              {**********************************************************************}
+
+              IF ((STRIP(slim_obj.t_factor) = "T0") OR (STRIP(slim_obj.t_factor) = "INITIAL")) THEN
+
+                  slim_obj . save_tzero_download_records ()
+
+              ELSE
+
+                  {**********************************************************************}
+                  {*     Create Job                                                     *}
+                  {**********************************************************************}
+	
+                  job_type = bl_system ( ) . get_type ( "JOB" )
+
+                  job_builder = job_type . new_builder( )
+
+                  job_builder . set_template_id( GLOBAL(JOB_TMPL) )
+
+                  IF job_id <> EMPTY THEN
+
+                     job_builder . set_identity( job_id )
+
+                  ENDIF
+
+                  IF NOT bl_system ( ) . error_flagged ( ) THEN
+
+                     job_builder . build ( )
+
+                  ENDIF
+
+                  IF NOT bl_system ( ) . error_flagged ( ) THEN
+
+                      new_job_item = job_builder . get_new_item ( )
+
+                      entity . fields_bl_get ( new_job_item )
+
+                  ENDIF
+
+                  IF NOT bl_system ( ) . error_flagged ( ) THEN
+
+                      new_job_item . update ( )
+		
+                      entity_copy = entity . copy ( FALSE )		
+
+                      item = response . addentityxml ( entity_copy . returnxml() )
+
+                      item . bl_update ( new_job_item )
+
+                  ENDIF		
+
+                  {**********************************************************************}
+                  {*     Add Samples                                                    *}
+                  {**********************************************************************}
+
+                  IF NOT ignore_samp_slim THEN
+
+                        job_login_name = new_job_item . get_identity()
+ 
+                        IF slim_obj.site = "GVL" THEN
+
+                            replicates        = SELECT slim_map_header . gvl_sample_number WHERE material = slim_obj.material
+
+                        ELSEIF slim_obj.site  = "WIL"
+
+                            replicates        = 1
+                            slim_obj . build_wil_test_arrays()
+
+                        ENDIF
+
+                        entity_sample = entity . get_child ( 0 ) 
+                        action_sample = entity_sample . getaction ( 0 )
+   
+                        samp_template_id   = GLOBAL( SAMPLE_TMPL )
+
+                        IF ( ( entity_sample <> EMPTY ) AND ( entity_sample.gettype()="SAMPLE" ) ) THEN
+
+                            IF ( action_sample <> EMPTY) THEN
+
+                                {*************************************************************************}
+                                {*  Add Chem sample                                                      *}
+                                {*************************************************************************}
+
+                                slim_obj . current_sample_type        = "MULTI_TEST"
+
+                                limsml_slim_sample_create_by_template ( processor, entity_sample, action_sample, item, 
+                                                                        replicates, samp_template_id,
+                                                                        job_login_name, slim_obj , TRUE)
+
+                                {*************************************************************************}
+                                {*  Add single test samples (Micro/Sterility) for WIL                    *}
+                                {*************************************************************************}
+
+                                IF ( slim_obj.site  = "WIL" ) THEN
+
+                                    num_samples = size_of_array(slim_obj.single_test_assign_array)
+                                    samplecount = 0
+
+                                    WHILE ( samplecount < numsamples ) DO
+
+                                        samplecount = samplecount + 1
+
+                                        slim_obj . current_sample_type        = "SINGLE_TEST"
+                                        slim_obj . current_test_sample_number = samplecount
+
+                                        limsml_slim_sample_create_by_template ( processor, entity_sample, action_sample, item, 
+                                                                                replicates, samp_template_id,
+                                                                                job_login_name, slim_obj ,TRUE)
+
+                                    ENDWHILE
+                
+                                    {*  Add Sterility Subculture Sample *}
+                                    IF ( (slim_obj . ss_test_schedule <> EMPTY ) 
+                                          AND (slim_obj . ss_test_schedule <> "" )
+                                           AND (slim_obj . sterility_subculture_reqd )) THEN
+
+                                        limsml_slim_sample_create_by_template ( processor, entity_sample, action_sample, item, 
+                                                                                replicates, samp_template_id,
+                                                                                job_login_name, slim_obj, FALSE )
+                                    ENDIF
+                                 
+                                ENDIF
+		
+                            ENDIF
+
+                        ENDIF
+ 
+                        IF ( slim_obj .site = "WIL" ) THEN
+      
+                            slim_obj . save_download_records ()
+
+                        ENDIF
+
+                  ENDIF
+
+              ENDIF
+
+          ENDIF
+
+          slim_obj . log . write_log_file("End")
+          slim_obj . log . close_log_file()
+
+          slim_obj = ""
+
+      ENDIF
+
+ENDROUTINE  { slim_job_create_by_template }
+
+{******************************************************************************}
+
+GLOBAL
+ROUTINE limsml_slim_sample_create_by_template ( processor, entity, action, response, 
+                                    replicates, template, job_login_name, slim_obj, 
+                                    VALUE ignore_test_schedule  )
+
+{ 
+*
+*******************************************************************************}
+
+	DECLARE samp_type, samp_builder,new_samples,
+	        tests, item, child, sample_obj, samps_enum, tests_enum,
+	        test_count, childxml, entity_copy, test_obj,
+	        sample_xml
+               	
+     
+	{**********************************************************************}
+	{* Create the Base Business Object                                    *}
+	{**********************************************************************}
+
+	samp_type    = bl_system ( ) . get_type ( "SAMPLE" )
+	samp_builder = samp_type . new_builder ( )
+
+	IF replicates <> EMPTY THEN	
+		samp_builder . set_replicates ( replicates )		
+	ENDIF
+	
+	IF template <> EMPTY THEN		
+		samp_builder . set_template_id ( template )		
+	ENDIF
+	
+	IF job_login_name <> EMPTY THEN	
+		samp_builder . set_job_id ( job_login_name )
+	ENDIF
+
+	{**********************************************************************}
+	{* Add the Test Schedule Tests if appropriate                         *}
+	{**********************************************************************}
+
+      IF ignore_test_schedule THEN
+
+            samp_builder . set_test_schedule_id ( "" )
+
+      ELSE
+
+            samp_builder . set_test_schedule_id( slim_obj . ss_test_schedule )
+
+      ENDIF
+
+	{**********************************************************************}
+	{* Set field values                                                   *}
+	{**********************************************************************}
+
+      entity . get_field_by_name( "STAB_REF_NO" ) . setvalue( slim_obj.lwr_id )
+      entity . get_field_by_name( "TIME_FACTOR" ) . setvalue( slim_obj.t_factor )
+      entity . get_field_by_name( "C_FACTOR" ) . setvalue( slim_obj.c_factor )
+
+	{**********************************************************************}
+	{* Add the tests to the Sample Records ready for login                *}
+	{**********************************************************************}
+
+	IF NOT bl_system ( ) . error_flagged ( ) THEN
+
+		samp_builder . build ( )
+
+		new_samples = samp_builder . get_new_items ( )
+
+		samps_enum = new_samples . get_enumerator ( )
+
+		WHILE samps_enum . move_next ( ) DO
+
+			sample_obj = samps_enum . get_current ()
+
+			entity . fields_bl_get ( sample_obj )
+
+
+		ENDWHILE
+
+	ENDIF
+
+	{**********************************************************************}
+	{* Create the Samples and build up the Response                       *}
+	{**********************************************************************}
+
+	IF NOT bl_system ( ) . error_flagged ( ) THEN
+
+		new_samples . update ( )
+
+		entity_copy = entity . copy ( FALSE )
+
+		samps_enum = new_samples . get_enumerator ( )
+		
+		sample_xml = entity_copy . returnxml()
+
+		WHILE samps_enum . move_next ( ) DO
+		
+			sample_obj = samps_enum . get_current ( )
+
+                  slim_obj . current_sample_id = sample_obj.get_identity()
+
+	            {********************************************************}
+	            {* Assign Tests                                         *}
+	            {********************************************************}
+                  IF ignore_test_schedule THEN
+
+                      IF ( slim_obj.site = "WIL" ) THEN
+
+                          IF ( slim_obj . current_sample_type = "MULTI_TEST") THEN
+
+                              assign_chem_tests_wil ( sample_obj.get_identity(), slim_obj )
+
+                          ELSEIF ( slim_obj . current_sample_type = "SINGLE_TEST") THEN
+
+                              assign_single_test_wil ( sample_obj.get_identity(), slim_obj )
+
+                          ENDIF
+
+                      ELSE
+
+                          assign_tests_gvl ( sample_obj.get_identity(), slim_obj ) 
+
+                          slim_obj . save_download_records ()
+
+                      ENDIF
+
+                  ENDIF
+						
+			IF OBJECT_GET_CLASS_NAME ( response ) = "HELPERENTITY" THEN
+
+				item = response . addchildxml ( sample_xml )
+				
+			ELSE
+
+				item = response . addentityxml ( sample_xml )
+
+			ENDIF
+			
+			item . bl_update ( sample_obj  )
+		
+		
+			IF action <> EMPTY THEN
+
+				tests  = sample_obj . get_added_tests ( )
+
+				tests_enum = tests . get_enumerator ( )
+				tests_enum . reset ( )
+
+				test_count = 0
+
+				WHILE tests_enum . move_next ( ) DO
+
+					test_obj    = tests_enum . get_current ( )
+
+		{**********************************************************************}
+		{* Only return child data which was within our request.               *}
+		{**********************************************************************}
+
+					childxml = test_obj . get_custom_value ( "REQUEST" )
+
+					IF ( childxml <> EMPTY ) THEN
+						child = item . addchildxml ( childxml )
+						child . bl_update ( test_obj )
+
+						child . reset()
+						test_count =  test_count + 1
+					ENDIF
+
+
+				ENDWHILE
+			
+			ELSE	
+			
+				limsml_build_response_for_tests ( sample_obj, entity , item )
+				
+			ENDIF
+
+		ENDWHILE
+
+
+	ENDIF
+
+
+
+ENDROUTINE
+
+{******************************************************************************}
+
+ROUTINE process_slim_xml ( entity, slim_obj )
+
+{
+*  Processes the xml, writing to the slim object and slim_download collection
+*
+*******************************************************************************}
+
+     
+      DECLARE test_count, entity_test, slim_test_id, slim_testtype,
+              res_count, entity_res, action_res, action_test,
+              download_obj, sample_count, entity_sample, slim_def_method,
+              action_sample, time_factor, c_factor, lwr, analysis, arr_size, slim_tf_name,
+              test_level
+
+      sample_count  = 0
+      entity_sample = entity . get_child ( sample_count )                          
+            
+      WHILE ( ( entity_sample <> EMPTY ) AND ( entity_sample.gettype()="SAMPLE" )  ) DO 
+                                        
+          action_sample = entity_sample . getaction ( 0 )
+
+          time_factor = entity_sample . get_field_by_name( "TIME_FACTOR" ) 
+          c_factor    = entity_sample . get_field_by_name( "C_FACTOR" )
+          lwr         = entity_sample . get_field_by_name( "STAB_REF_NO" )
+
+          IF ( lwr <> EMPTY ) THEN
+
+              slim_obj . lwr_id = entity_sample . get_field_by_name( "STAB_REF_NO" ) . getvalue()    
+
+              slim_obj . log . write_log_file("LWR Id : " : slim_obj . lwr_id)         
+
+          ENDIF  
+
+          IF ( time_factor <> EMPTY ) THEN
+
+              time_factor         = entity_sample . get_field_by_name( "TIME_FACTOR" ) . getvalue()
+              slim_obj . t_factor = SELECT time_factor . identity WHERE aka_name = time_factor
+
+              IF ( slim_obj . t_factor = EMPTY ) THEN
+
+                  slim_obj . log . write_log_file("ERROR:  A time factor needs to be configured for : "
+                                                  : time_factor )
+
+              ENDIF
+
+          ENDIF
+
+          IF ( c_factor <> EMPTY ) THEN
+
+              c_factor            = entity_sample . get_field_by_name( "C_FACTOR" ) . getvalue()
+            
+              WHILE ( INDEX(c_factor, "DEGSYMBOL") > 0 ) DO
+
+                 c_factor = LEFTSTRING(c_factor, INDEX(c_factor, "DEGSYMBOL") - 1 ) : "°" :
+                            RIGHTSTRING(c_factor, LENGTH(c_factor)-INDEX(c_factor, "DEGSYMBOL") -8 )
+
+              ENDWHILE
+
+              WHILE ( INDEX(c_factor, "PLUSMINUS") > 0 ) DO
+
+                 c_factor = LEFTSTRING(c_factor, INDEX(c_factor, "PLUSMINUS") - 1 ) : "±" :
+                            RIGHTSTRING(c_factor, LENGTH(c_factor)-INDEX(c_factor, "PLUSMINUS") -8 )
+
+              ENDWHILE
+
+              slim_obj . c_factor = SELECT c_factor . identity WHERE aka_name = c_factor
+
+              IF ( slim_obj . c_factor = EMPTY ) THEN
+
+                  slim_obj . log . write_log_file("ERROR:  C-Factor needs to be configured for : "
+                                                  : c_factor )
+
+              ENDIF
+
+          ENDIF
+
+          IF ( action_sample <> EMPTY) THEN
+
+              test_count  = 0
+              entity_test = entity_sample . get_child ( test_count)                          
+            
+              WHILE ( ( entity_test <> EMPTY ) AND ( entity_test.gettype()="TEST" )  ) DO                       
+               
+                  action_test = entity_test . getaction ( 0 )
+
+                  IF ( action_test <> EMPTY) THEN
+
+                      slim_test_id   = action_test . get_param_default( "SLIM_TEST_ID", "BLANK" )
+                      slim_testtype  = action_test . get_param_default( "SLIM_TESTTYPE", "BLANK" )
+                      slim_testtype  = SUBSTITUTE(slim_test_type,"Â","")
+
+                      slim_def_method  = action_test . get_param_default( "DEFAULT_METHOD_REF", "BLANK" )
+
+                      res_count  = 0
+                      entity_res = entity_test . get_child (res_count)
+
+                      WHILE ( ( entity_res <> EMPTY ) AND ( entity_res.gettype()="RESULT" )  ) DO 
+
+                          action_res = entity_res . getaction ( 0 )
+
+                          IF ( action_res <> EMPTY ) THEN
+
+                              {*******************************************************************}
+                              {* 1.  Get record from slim map entries                            *}
+                              {* 2.  Check if analysis is already in test assign array and       *}
+                              {*     assign to array if not.                                     *}
+                              {* 3.  Create download object if record exists in slim_map_entries *}
+                              {*******************************************************************}
+                              slim_tf_name = action_res . get_param_default( "SLIM_TESTFIELDNAME", "BLANK" )
+                              slim_tf_name   = SUBSTITUTE(slim_tf_name,"Â","")
+
+                              analysis =  SELECT slim_map_entries . analysis
+                                          WHERE material = slim_obj.material
+                                          AND slim_test_name = slim_testtype
+                                          AND slim_test_field_name = slim_tf_name
+                                          ORDER ON test_stage ASCENDING
+
+                              IF analysis = EMPTY THEN
+
+                                   slim_obj . log . write_log_file("WARNING:  There is no entry in slim_map_entries for Slim Test Name : " 
+                                                                   : slim_testtype : " and Field Name : " : slim_tf_name )
+
+                              ENDIF
+
+                              WHILE ( analysis <> EMPTY ) DO
+                                  
+                                  test_level = SELECT slim_map_entries . test_stage
+
+                                  IF ( ( NOT slim_obj.analysis_in_array(analysis) ) AND (test_level = 1) ) THEN
+
+                                      arr_size = size_of_array( slim_obj . test_assign_array )
+
+                                      slim_obj . test_assign_array [arr_size + 1, 1] = analysis
+                                      slim_obj . test_assign_array [arr_size + 1, 2] = SELECT slim_map_entries . component_list
+                                      slim_obj . test_assign_array [arr_size + 1, 3] = SELECT slim_map_entries . test_type
+                                      slim_obj . test_assign_array [arr_size + 1, 4] = slim_test_id
+                                      slim_obj . test_assign_array [arr_size + 1, 6] = SELECT slim_map_entries . test_schedule
+                                      slim_obj . test_assign_array [arr_size + 1, 7] = slim_testtype
+
+                                  ENDIF
+                           
+                                  CREATE OBJECT "SLIM_DOWNLOAD_CLASS", download_obj
+
+                                  download_obj . slim_lwr_id     = slim_obj . lwr_id
+                                  download_obj . slim_test_id    = slim_test_id
+                                  download_obj . slim_test_name  = slim_testtype 
+                                  download_obj . slim_def_method = slim_def_method
+                                  download_obj . slim_tf_id      = action_res . get_param_default( "SLIM_TESTFIELDID", "BLANK" ) 
+                                  download_obj . slim_tf_name    = slim_tf_name
+                                  download_obj . test_type       = SELECT slim_map_entries . test_type
+                                  download_obj . analysis        = analysis
+
+                                  slim_obj.download_collection.add(download_obj)    
+
+                                  test_level = test_level + 1
+
+                                  analysis =  SELECT slim_map_entries . analysis
+                                              WHERE material = slim_obj.material
+                                              AND slim_test_name = slim_testtype
+                                              AND slim_test_field_name = slim_tf_name
+                                              AND test_stage = test_level            
+                   
+                              ENDWHILE
+
+                          ENDIF
+
+                          res_count = res_count + 1
+                          entity_res = entity_test . get_child ( res_count )
+
+                      ENDWHILE
+
+                  ENDIF
+
+                  test_count = test_count + 1
+                  entity_test = entity_sample . get_child ( test_count )
+
+              ENDWHILE
+
+          ENDIF
+
+          slim_obj.download_collection.re_index("SLIM_TEST_ID")
+
+          sample_count = sample_count + 1
+          entity_sample = entity . get_child ( sample_count )
+
+      ENDWHILE
+
+ENDROUTINE { process_slim_xml }
+
+{******************************************************************************}
+
+ROUTINE assign_tests_gvl ( VALUE sample_no, slim_obj )
+{
+*  Test assignment routine for GVL:  All tests assigned to a single sample
+*
+*******************************************************************************}
+
+    DECLARE num_analysis, count, instrument, priority
+
+    instrument   = ""
+    priority     = 1
+    num_analysis = size_of_array( slim_obj . test_assign_array )
+    count = 0
+
+    WHILE ( count < num_analysis ) DO
+
+        count = count + 1
+
+        slim_obj . test_assign_array[count,5] = lib_new_test( sample_no, 
+                                                              slim_obj . test_assign_array[count,1], 
+                                                              slim_obj . test_assign_array[count,2],
+                                                              instrument, 
+                                                              priority )
+
+    ENDWHILE
+
+    { Assign Dissolution Summary analysis if required }
+
+    IF ( slim_obj . diss_sum_analysis <> "") AND ( slim_obj . diss_sum_analysis <> EMPTY) THEN
+
+        slim_obj . test_assign_array[count,5] = lib_new_test( sample_no, 
+                                                              slim_obj . diss_sum_analysis,
+                                                              "",
+                                                              instrument, 
+                                                              priority )    
+
+    ENDIF
+
+ENDROUTINE { assign_tests_gvl }
+
+{******************************************************************************}
+
+ROUTINE assign_chem_tests_wil ( VALUE sample_no, slim_obj )
+{
+*  Chemistry test assignment routine for WIL:  
+*      All Chem tests assigned to a single sample
+*
+*******************************************************************************}
+
+    DECLARE num_analysis, count, instrument, priority
+
+    instrument   = ""
+    priority     = 1
+    num_analysis = size_of_array( slim_obj . chem_test_assign_array )
+
+    count = 0
+
+    WHILE ( count < num_analysis ) DO
+
+        count = count + 1
+
+        slim_obj . chem_test_assign_array[count,5] = lib_new_test( sample_no, 
+                                                                   slim_obj . chem_test_assign_array[count,1], 
+                                                                   slim_obj . chem_test_assign_array[count,2],
+                                                                   instrument, 
+                                                                   priority )
+
+    ENDWHILE
+
+    { Assign Dissolution Summary analysis if required }
+
+    IF ( slim_obj . diss_sum_analysis <> "") AND ( slim_obj . diss_sum_analysis <> EMPTY) THEN
+
+        slim_obj . test_assign_array[count,5] = lib_new_test( sample_no, 
+                                                              slim_obj . diss_sum_analysis,
+                                                              "",
+                                                              instrument, 
+                                                              priority )    
+
+    ENDIF
+
+ENDROUTINE { assign_chem_tests_wil }
+
+{******************************************************************************}
+
+ROUTINE assign_single_test_wil ( VALUE sample_no, slim_obj )
+{
+*  Micro test assignment routine for WIL:  One test per sample
+*
+*******************************************************************************}
+
+    DECLARE test_num, instrument, priority, do_commit, sample_record
+
+    instrument   = ""
+    priority     = 1
+    test_num     = slim_obj . current_test_sample_number
+
+    slim_obj . single_test_assign_array[test_num ,5] = lib_new_test( sample_no, 
+                                                               slim_obj . single_test_assign_array[test_num ,1], 
+                                                               slim_obj . single_test_assign_array[test_num ,2],
+                                                               instrument, 
+                                                               priority )
+
+    IF ( INDEX( TOUPPER(slim_obj . single_test_assign_array[test_num ,7]), "STERILITY") > 0 ) THEN
+
+       slim_obj . sterility_subculture_reqd = TRUE
+
+    ENDIF
+
+    IF ( slim_obj . single_test_assign_array[test_num ,6] <> EMPTY ) THEN
+
+        IF NOT transaction_is_write() THEN
+        
+            START WRITE TRANSACTION ("UPDATE SAMPLE TEST SCHEDULE")
+            do_commit = TRUE
+
+        ENDIF
+
+        sample_record = SELECT sample.id_numeric FOR UPDATE
+                        WHERE id_numeric=sample_no
+
+        IF ( sample_record <> LOCKED ) THEN
+
+            ASSIGN sample.test_schedule = slim_obj . single_test_assign_array[test_num ,6]
+            UPDATE sample
+
+        ELSE
+
+            ROLLBACK
+
+        ENDIF    
+
+        IF do_commit THEN
+            COMMIT
+        ENDIF
+
+    ENDIF 
+
+ENDROUTINE { assign_chem_tests_wil }
+
+
+{******************************************************************************}
+{******************************************************************************}
+{******************************************************************************}

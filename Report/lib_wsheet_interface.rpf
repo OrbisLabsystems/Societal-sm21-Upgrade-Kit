@@ -1,0 +1,123 @@
+{*******************************************************************************
+*
+* Module Name   :  LIB_WSHEET_INTERFACE
+*
+* Purpose       :  For entering worksheet header fields in background
+*
+* Document Ref  : N/a
+*
+* Versions:
+*
+*******************************************************************************} 
+
+SET COMPILE_OPTION DECLARE
+SET NAME "DEFER/"
+ENABLE WINDOWS
+SET NOTPROTECTED
+
+JOIN STANDARD_LIBRARY STD_ARRAY
+JOIN STANDARD_LIBRARY STD_GENERAL
+JOIN STANDARD_LIBRARY STD_DATABASE
+JOIN STANDARD_LIBRARY STD_ARRAY_SELECT
+JOIN STANDARD_LIBRARY STD_MESSAGE
+JOIN STANDARD_LIBRARY STD_STRUCTURE
+JOIN STANDARD_LIBRARY STD_UTILS
+JOIN STANDARD_LIBRARY STD_PROMPT
+JOIN LIBRARY $LIB_UTILS
+
+
+GLOBAL
+ROUTINE wsheet_put_test_values (VALUE testId, array_fields, error_array)
+
+
+	{ If error, error_array[1] is not EMPTY, and error_array[n] - not implemented, only [1] }
+	{ 2d array in following format }
+	{ [x,1],[x,2],[x,3]....[x,N]   }
+	{ If x=1, its the field names (any case), else a new field to write }
+	{ [1,1] must be "identity".  [1,2] must be "record_value"       }
+
+
+	DECLARE rec, status, row,col 
+
+	ARRAY error_array
+	error_array [1] = EMPTY
+	status = EMPTY
+
+	{ Force the first 2 fields to be identity,recordvalue }
+	array_fields[1,1]="IDENTITY"
+	array_fields[1,2]="RECORD_VALUE"
+	{ ====}
+
+	IF(STRIP(TOLOWER(array_fields[1,1])) <> "identity") THEN
+
+		status = "First field must be IDENTITY"
+
+	ELSEIF(STRIP(TOLOWER(array_fields[1,2])) <> "record_value") THEN
+
+		status = "Second field must be RECORD_VALUE"
+	ENDIF
+
+	row = 1
+
+	WHILE (status = EMPTY) AND
+		(row < sizeofarray(array_fields)) DO
+
+		row = row + 1
+
+		rec = SELECT wsheet_info . identity FOR UPDATE
+			WHERE test_number = testId
+				  AND identity = STRIP(array_fields[row, 1])
+
+		IF (rec = EMPTY) THEN
+
+			status = "Field does not exist: ":STRIP(array_fields[row, 1])
+
+		ELSEIF (rec = LOCKED) THEN
+
+			status = "Field is locked: ":STRIP(array_fields[row, 1])
+
+		ENDIF
+
+		IF (status = EMPTY) THEN
+
+			{ If here, I know record is selected }
+			ASSIGN wsheet_info . 'array_fields[1, 2]' = array_fields[row, 2]
+		ENDIF
+
+		{ Any optional additional columns e.g. tracking fields for integration }
+		col = 2
+
+		WHILE (status = EMPTY) AND
+			(array_fields[1,col+1] <> EMPTY) AND
+			(NOT BLANK(array_fields[1,col+1])) DO
+
+			col = col + 1
+			ASSIGN wsheet_info . 'array_fields[1, col]' = array_fields[row, col]
+
+		ENDWHILE
+
+
+		IF (status = EMPTY) AND (rec <> EMPTY) THEN
+
+			UPDATE wsheet_info 	
+
+			{ make sure only 1 such worksheet fields exists, else its error }
+			NEXT wsheet_info  
+			rec = SELECT wsheet_info . identity
+
+		ENDIF
+
+		IF (rec <> EMPTY) THEN
+
+			status = "Worksheet record is not unique: "
+
+		ENDIF
+
+	ENDWHILE
+
+	IF (status <> EMPTY) THEN
+
+		error_array [1] = status
+	ENDIF
+
+ENDROUTINE

@@ -1,0 +1,386 @@
+{******************************************************************************
+*
+* Module Name	: OLS_IM_RESULT
+* Purpose	: modifications for result entry
+*
+* Version	: 1.1
+*
+*******************************************************************************}
+
+SET NAME "DEFER/"
+ENABLE WINDOWS
+SET NOTPROTECTED
+SET COMPILE_OPTION DECLARE
+
+JOIN STANDARD_LIBRARY STD_CLASS
+JOIN STANDARD_LIBRARY STD_ARRAY_SELECT
+JOIN STANDARD_LIBRARY STD_PROMPT
+JOIN STANDARD_LIBRARY STD_ARRAY
+JOIN STANDARD_LIBRARY STD_WINDOW
+JOIN STANDARD_LIBRARY STD_UTILS
+JOIN STANDARD_LIBRARY STD_CLIENT
+JOIN LIBRARY $LIB_STAN
+JOIN LIBRARY $lib_utils
+JOIN LIBRARY $BL
+
+
+GLOBAL
+ROUTINE or_sample_result_entry ( processor, entity, action, response )
+
+	DECLARE num_loops, num_loops_cfg, i
+ 
+	num_loops = 1
+
+	{ Can configure it to repeat, using a parameter }
+	num_loops_cfg = action . get_param_default( "OR_REPEATS" , "" )
+
+	IF (NUM_TEXT(num_loops_cfg)) THEN
+
+		num_loops = 1 + NUMERIC(num_loops_cfg)
+
+	ENDIF
+
+	i = 0
+
+	WHILE (i < num_loops) DO
+
+		i = i + 1
+		or_sample_result_entry_internal ( processor, entity, action, response )
+
+	ENDWHILE
+
+ENDROUTINE
+
+ROUTINE or_sample_result_entry_internal ( processor, entity, action, response )
+
+	DECLARE samp_entity, samp_count, ok, status, sm_user, comment, system_instance,
+		limsml_error_handler, is_orig_transaction, do_commit, trans_name,
+		action_entity
+
+	trans_name = ""
+	is_orig_transaction = transaction_is_write()
+	limsml_error_handler = processor . get_root_error() 
+
+	{ Need this to take control of the transaction
+	 }
+	status = get_additional_param_data (action, sm_user, comment, 
+								system_instance)
+
+	IF (status <> EMPTY) THEN
+
+		{ This stores the error }
+		limsml_error_handler . adderrorall( "Error", STRIP(status) ,
+					         "1"  , "1" , "LIMSML VGL")
+
+	ELSE
+
+		status = validate_user (sm_user, system_instance)
+
+		IF (status = EMPTY) THEN
+
+			trans_name = "IM_OR__":STRIP(sm_user)
+			status = start_transaction (trans_name, system_instance)
+
+		ENDIF
+
+		IF (status <> EMPTY) THEN
+
+			{ This stores the error }
+			limsml_error_handler . adderrorall( "Error", STRIP(status) ,
+						         "1"  , "1" , "LIMSML VGL")
+
+		ENDIF
+
+	ENDIF	
+
+	IF (status <> EMPTY) THEN
+
+		{ no transaction made, no data written  }
+
+		RETURN
+
+	ENDIF
+
+	samp_count = 0
+	ok = TRUE
+
+	WHILE ( ok ) DO
+
+		samp_entity = entity . get_child( samp_count )
+
+        	IF ( samp_entity = EMPTY ) THEN
+
+			ok = FALSE
+		ELSE
+
+			{ Get action, need be able have different per sample }
+			{ e.g. may want ignore_adhoc on only same }
+
+			action_entity = samp_entity . get_action (0)
+
+			IF (action_entity <> EMPTY) THEN
+
+				{ Call the standard functionality }
+				{ Only change is the entity }
+
+				CALL_ROUTINE "sample_result_entry"
+					IN LIBRARY "$LIMSML_SAMPLE"
+					USING processor, samp_entity, action_entity, response
+
+			ELSE
+
+				limsml_error_handler . adderrorall( "Error", "LIMSML missing Sample ACTION" ,
+						         "1"  , "1" , "LIMSML VGL")
+
+			ENDIF
+
+		ENDIF
+
+		samp_count = samp_count + 1
+
+	ENDWHILE
+
+	{ This updates commit/rollback, audits, and resets the transaction }
+	do_commit = TRUE
+
+	IF (limsml_error_handler.childtotal() > 0) THEN
+
+		{ Some errors, so dont commit }
+		do_commit = FALSE
+
+	ENDIF
+
+	end_transaction_and_correct_audit (do_commit, trans_name, 
+								sm_user, comment)
+
+	{ Open the original transaction, just so SM doesnt break }
+
+	IF (is_orig_transaction) THEN
+
+		START WRITE TRANSACTION "LIMSML"
+
+	ENDIF
+
+ENDROUTINE
+
+ROUTINE start_transaction (VALUE trans_name, VALUE system_instance)
+
+	DECLARE status
+
+	status = EMPTY
+
+	IF (status=EMPTY) THEN		
+
+		{ end any current transaction }
+
+		IF (transaction_is_write ()) THEN
+
+			COMMIT
+
+		ENDIF
+
+		START WRITE TRANSACTION trans_name
+
+	ENDIF
+
+	RETURN (status)
+
+ENDROUTINE      {  start_transaction_and_validate_user  }
+
+ROUTINE end_transaction_and_correct_audit (VALUE do_commit, VALUE trans_name, 
+								VALUE user_id, VALUE audit_comment)
+	
+	{ Commit in order to update the audit details }	
+
+	IF (do_commit) THEN
+		
+		COMMIT
+		set_audits (trans_name, user_id, audit_comment)
+
+	ELSE
+
+		ROLLBACK 		
+
+	ENDIF
+	
+ENDROUTINE      {  end_transaction_and_correct_audit  }
+
+
+ROUTINE get_additional_param_data (action, sm_user, comment, 
+						system_instance)
+
+	DECLARE status, param_val, i, delim
+
+	status = EMPTY
+	sm_user = ""
+	comment = ""
+	system_instance = ""
+
+	param_val = action . get_param_default( "OR_ADDITIONAL" , "" )
+	param_val = STRIP( param_val )
+
+	IF (param_val="") THEN
+
+		status = "XML missing OR_ADDITIONAL parameter"
+
+	ENDIF
+
+	IF ( status = EMPTY ) THEN
+
+		{ value in format user#comment, with #comment optional }
+		delim = "#"
+		i = INDEX (param_val, delim)
+
+		IF (i > 0) THEN
+
+			sm_user = SUBSTRING (param_val, 1, i-1)
+			comment = SUBSTRING (param_val, i+STRINGLENGTH(delim),
+								STRINGLENGTH(param_val)+1-(i+STRINGLENGTH(delim)))
+
+			sm_user = STRIP (sm_user)
+			comment = STRIP (comment)
+
+		ELSE
+
+			sm_user = param_val
+
+		ENDIF
+
+	ENDIF
+
+	system_instance = action . get_param_default( "OR_SYSTEM" , "" )
+	system_instance = STRIP( system_instance )
+
+ENDROUTINE      {  get_additional_param_data   }
+
+{
+  If using 1 user ID set in IM, then audit data is incorrect without this. 
+  Also sets the comment.
+}
+ROUTINE set_audits (VALUE trans_name, VALUE user_id, VALUE audit_comment)
+
+	DECLARE aud, aud_event
+
+	{ should have ended the transaction by now, thats important,  }
+	{ deliberatly assume it is, so will crash if not ended        }
+
+	START WRITE TRANSACTION "IM Interface"
+
+	aud = SELECT MAX audit_transaction . transaction
+			WHERE system_pid=STRIP(NUMBER_TO_TEXT(GLOBAL("PROCESS_ID") ,"99999"))
+			AND transaction_date >= TODAY   
+			AND user_id=STRIP(GLOBAL("operator") )
+			AND transaction_name = trans_name
+
+{    not reliable:  AND session_id = STRIP(NUMBER_TO_TEXT(GLOBAL ("SESSION_ID"),"99999")) }
+
+	IF (aud <> EMPTY) THEN
+    
+		aud = SELECT audit_transaction . transaction FOR UPDATE
+          	 	  WHERE transaction=aud 
+	ENDIF
+
+	IF (aud <> LOCKED) AND (aud <> EMPTY) THEN
+
+		ASSIGN audit_transaction . user_id = user_id
+		UPDATE audit_transaction 
+
+		{ set the reason }
+
+		audit_comment = STRIP (audit_comment)
+
+		IF (audit_comment <> "") THEN
+
+			aud = SELECT audit_event . transaction FOR UPDATE
+					WHERE transaction = aud
+
+			WHILE (aud <> EMPTY) DO
+
+				ASSIGN audit_event . event_reason = audit_comment
+				UPDATE audit_event 
+
+				{ audit_data }
+
+				aud_event = SELECT audit_event . event
+
+				aud = SELECT audit_data . field FOR UPDATE
+                                        WHERE event = aud_event
+
+				WHILE (aud <> EMPTY)
+
+					ASSIGN audit_data . data_reason = audit_comment
+					UPDATE audit_data
+
+					NEXT audit_data
+					aud = SELECT audit_data . field  
+
+				ENDWHILE
+
+				NEXT audit_event 
+				aud = SELECT audit_event . transaction
+
+			ENDWHILE
+
+		ENDIF
+
+	ENDIF
+
+	COMMIT
+
+ENDROUTINE      {  set_audits  }
+
+
+ROUTINE validate_user (sm_user, VALUE system_instance)
+
+        DECLARE status, rec, chk_sm_user
+
+        status = EMPTY
+
+        { if system_instance not blank, call the LTE check libaray. That does any configured checks }
+
+        system_instance = STRIP(system_instance)
+        IF (system_instance <> "") THEN
+
+                chk_sm_user = TOLOWER (sm_user)  { lcase empower user id in lte  }
+
+                CALL_ROUTINE "Smemp_CheckUserMap"
+                        IN LIBRARY "OLS_IM_SM_EMPOWER"
+                        USING system_instance, chk_sm_user
+                        RETURNING rec
+
+                IF (rec <> EMPTY) THEN
+
+                        sm_user = STRIP(rec)
+
+                ELSE
+                        { This will cause the error further down this routine }
+                        sm_user = "********* Not Mapped *************":sm_user:"********"
+
+                ENDIF
+
+        ENDIF
+
+        rec = SELECT password.identity 
+		WHERE identity = sm_user
+		AND frozen=FALSE
+
+        IF (rec = EMPTY) THEN
+
+	        status = "There is no valid user account for ":STRIP(system_instance):" user ":STRIP(sm_user)
+
+        ELSEIF (STRIP(rec) <> STRIP(sm_user))
+
+			{ VGL was found to have converted sm_user to uppercase in the query }
+			{ This is a risk, so dont allow  }
+
+	        status = "User ID must be uppercase: ":STRIP(sm_user)
+
+        ENDIF
+
+        { There are other things to check also e.g. group access, but not done as it could cause other problems }
+
+        RETURN (status)
+
+ENDROUTINE      {  validate_user  }
+
+

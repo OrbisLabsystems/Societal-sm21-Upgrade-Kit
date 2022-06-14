@@ -1,0 +1,261 @@
+{******************************************************************************
+*
+* Module Name	: OLS_EMPOWER_CHROM
+* Purpose	: View Empower chromatogram
+*
+* Version	: 1.0
+*
+*******************************************************************************}
+
+SET NAME "DEFER/"
+SET NOTPROTECTED
+SET COMPILEOPTION DECLARE
+ENABLE WINDOWS
+
+JOIN STANDARD_LIBRARY STD_CLASS
+JOIN STANDARD_LIBRARY STD_PROMPT
+JOIN STANDARD_LIBRARY STD_ARRAY
+JOIN STANDARD_LIBRARY STD_DATABASE
+JOIN STANDARD_LIBRARY STD_ARRAY_SELECT
+JOIN STANDARD_LIBRARY STD_UTILS
+JOIN STANDARD_LIBRARY std_user_global
+JOIN LIBRARY $lib_re_globals
+JOIN LIBRARY $lib_utils
+JOIN LIBRARY OLS_EMPOWER_USER
+
+
+CONSTANT INTERFACE_REG_KEY    = "HKEY_LOCAL_MACHINE\SOFTWARE\Orbis Labsystems\OrbisEmpowerClient\Location"
+CONSTANT REVIEW_EXE_NAME      = "EmpowerUI1.exe"
+
+
+test_only (0)
+
+ROUTINE test_only (VALUE x)
+
+	DECLARE mill_res_id, mill_proj, mill_db_link
+
+	mill_res_id = "123"
+	mill_proj = "Test Project"
+	mill_db_link = ""
+	execute_client_chrom (mill_res_id, mill_proj, mill_db_link)
+
+ENDROUTINE    { test_only }
+
+
+{
+  Call from button in result entry screen
+}
+GLOBAL ROUTINE generic_prompt_chrom ( self )
+
+	DECLARE arg_mode, tsr
+
+	arg_mode = 1
+	tsr = FALSE
+
+	tsr = object_check_property (self . user_info ,  "result_array")
+
+	IF (tsr) THEN
+
+		{ TSR / single }
+		arg_mode = 2
+
+	ENDIF
+
+	RETURN (generic_prompt_chrom_internal ( self, arg_mode ))
+
+ENDROUTINE
+
+
+ROUTINE generic_prompt_chrom_internal ( self, VALUE arg_mode )
+
+    DECLARE result_object , grid
+    DECLARE mill_res_id, mill_proj, mill_db_link
+              
+
+     DECLARE cell_row, cur_col, comp_name, anal_name
+
+	IF arg_mode = 1 THEN {spreadsheet mode}
+	
+		cell_row = self . user_info . current_row
+		cur_col = self . user_info . current_column
+
+		comp_name = self . userinfo . title_text_top [ cur_col , 1 ]
+
+		anal_name = self . userinfo . title_text_top [ cur_col , 3 ]
+
+		result_object = self . userinfo . result_collection .
+				   get_by_index ( "ROW_KEY",
+				                  NUMBER_TO_TEXT ( cell_row, ROW_FORMAT ) :
+				                  comp_name : anal_name ) . result_object
+				                  		
+	ELSEIF arg_mode = 2 THEN {single-entry mode}
+	
+		grid = self . user_info	
+		result_object = grid . result_array [ grid . current_row ]
+	
+	ENDIF
+
+    mill_res_id   = SELECT result.mill_res_id    IN OBJECT result_object
+    mill_db_link  = SELECT result.mill_db_link   IN OBJECT result_object
+    mill_proj     = SELECT result.mill_project   IN OBJECT result_object
+    
+
+    IF (mill_res_id <> EMPTY) 
+        AND (mill_res_id <> 0) 
+        AND (mill_db_link <> EMPTY) 
+        AND (mill_proj <> EMPTY) THEN
+
+        mill_db_link  = STRIP (mill_db_link)
+        mill_proj     = STRIP (mill_proj)
+        mill_res_id   = STRIP (mill_res_id)
+
+        execute_client_chrom (mill_res_id, mill_proj, mill_db_link)
+
+    ELSE
+
+        flashmessage ("Not Empower result", TRUE)
+
+    ENDIF
+
+
+    RETURN ( FALSE )
+
+ENDROUTINE   {  generic_prompt_chrom  }
+
+
+GLOBAL ROUTINE execute_client_chrom (VALUE mill_res_id, VALUE mill_proj, VALUE mill_db_link)
+
+    DECLARE Ole_Shell_run, Ole_Shell, fsoObject, fileObject, shortPath, theValue
+    DECLARE mill_user, mill_pw, cmd_string, formatted_mill_proj, i
+    
+    { Get exe location in registry }
+    CREATE OBJECT "STD_OLE_AUTOMATION", Ole_Shell
+    Ole_Shell.Create("WScript.shell")
+    theValue = Ole_Shell.Regread (INTERFACE_REG_KEY)
+    Ole_Shell = EMPTY
+
+    theValue = STRIP(theValue)
+    IF (RIGHTSTRING (theValue,1)<>"\") THEN
+
+        theValue = theValue & "\"
+
+    ENDIF
+
+    the_value = STRIP(the_value)
+    the_value = the_value : "\":REVIEW_EXE_NAME    
+
+    CREATE OBJECT "STD_OLE_AUTOMATION", fsoObject
+
+    fsoObject.Create("Scripting.FileSystemObject")
+    fileObject = fsoObject.GetFile(theValue)
+    shortPath = FileObject.Shortpath
+    fsoObject = EMPTY
+    FileObject = EMPTY
+
+    CREATE OBJECT "STD_OLE_AUTOMATION", Ole_Shell_run
+    Ole_Shell_run.Create("WScript.shell")
+
+    { Handle spaces in project name }
+    formatted_mill_proj = ""    
+    i = 0
+
+    WHILE (i < STRINGLENGTH(mill_proj)) DO
+
+        i = i + 1
+        { Replace spaces }
+
+        IF (get_character_at(mill_proj,i)=" ") THEN
+
+            formatted_mill_proj = formatted_mill_proj:"*+++*"
+        ELSE
+
+            formatted_mill_proj = formatted_mill_proj:get_character_at(mill_proj,i)
+        ENDIF
+
+    ENDWHILE
+
+    { Get Empower details }
+    get_security_params (mill_db_link, mill_user, mill_pw)
+
+    IF (STRIP(mill_user) <> "") THEN                  
+
+        { Make command line string for exe that will display the chromatogram }
+        cmd_string = "-zN -mN -s":STRIP(mill_db_link):"  -r":STRIP(formatted_mill_proj):"  -i":STRIP(mill_res_id):
+                    "  -u":STRIP(mill_user):"  -w":STRIP(mill_pw)
+        mill_pw = ""
+
+        { Shell it }
+        shortPath = shortPath : " ":cmd_string
+        cmd_string = ""
+        Ole_Shell_run.Run (shortPath)
+        Ole_Shell_run = EMPTY
+
+    ENDIF
+
+ENDROUTINE    {  execute_client_chrom  }
+
+
+ROUTINE get_security_params (emp_tns, mill_user, mill_password)
+
+	DECLARE global_empower_cluster, global_empower_user, global_empower_pwd
+
+	global_empower_cluster = "CDSEMPOWER"
+	global_empower_user = "USERI"
+	global_empower_pwd = "USERP"
+
+	emp_tns = ""
+	mill_user = ""
+	mill_password = ""
+
+     { If its in memory, no need to prompt }
+     { If not, prompt and store in  memory (in user global) }
+
+	IF (user_cluster_exists ( global_empower_cluster )) THEN
+   
+		mill_user     = read_user_global (global_empower_cluster, global_empower_user)
+		mill_password = read_user_global (global_empower_cluster, global_empower_pwd)
+		emp_tns       = GLOBAL("OLS_CDS_ALIAS")
+
+	ELSE
+
+		get_cds_user_details (emp_tns, mill_user, mill_password, TRUE)
+
+		IF (STRIP(mill_user) <> "") THEN
+
+     		add_and_set_global ( global_empower_cluster, global_empower_user, mill_user)
+	     	add_and_set_global ( global_empower_cluster, global_empower_pwd, mill_password)
+
+		ENDIF
+
+	ENDIF
+
+ENDROUTINE    {  get_security_params  }
+
+
+ROUTINE add_and_set_global ( VALUE cluster,
+                             VALUE global_name,
+                             VALUE global_value  )
+
+{
+* Sets a user global (adds if necessary)
+*******************************************************************************}
+
+
+    IF NOT user_cluster_exists ( cluster ) THEN
+        add_global_cluster ( cluster )
+    ENDIF
+
+    IF user_global_exists ( cluster, global_name ) THEN
+
+        assign_user_global ( cluster, global_name, global_value )
+
+    ELSE
+
+        add_user_global ( cluster, global_name )
+        assign_user_global ( cluster, global_name, global_value )
+
+    ENDIF
+
+    RETURN ( TRUE )
+
+ENDROUTINE

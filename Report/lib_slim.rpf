@@ -1,0 +1,1389 @@
+{*******************************************************************************
+*
+* Module Name   : LIB_SLIM
+*
+* Purpose       : Library for SLIM
+*
+*
+*
+*******************************************************************************
+*
+* Modification History :
+* 
+* Version   Date         By             Description
+* -------   -----------  ----------     ---------------------------------------
+* 1.0       15-Oct-2014  Liam Dawson    Release Version 
+*
+* 2.0       04-Nov-2014  Liam Dawson    Add get_material routine
+*******************************************************************************}
+
+SET COMPILE_OPTION DECLARE
+SET NOTPROTECTED
+ENABLE WINDOWS
+SET NAME "DEFER/"
+
+JOIN STANDARD_LIBRARY STD_UTILS
+JOIN STANDARD_LIBRARY STD_DATABASE
+JOIN STANDARD_LIBRARY STD_CLASS
+JOIN STANDARD_LIBRARY STD_WINDOW
+JOIN STANDARD_LIBRARY STD_FLAGS
+
+JOIN LIBRARY $LIB_UTILS
+
+{*****************************************************************************
+*                                C O N S T A N T S                           *
+*****************************************************************************}
+
+GLOBAL CONSTANT SLIM_CLASS             = "SLIM_CLASS"
+       CONSTANT SLIM_DOWNLOAD_CLASS    = "SLIM_DOWNLOAD_CLASS"
+GLOBAL CONSTANT SLIM_LOG_CLASS         = "SLIM_LOG_CLASS"
+
+{******************************************************************************}
+{**           C L A S S E S                                                  **}
+{******************************************************************************}
+
+GLOBAL
+ROUTINE define_slim_classes
+{
+*    Defines the SLIM Classes           
+*
+*******************************************************************************}
+
+IF NOT class_defined ( SLIM_CLASS ) THEN
+
+    DEFINE CLASS SLIM_CLASS
+
+            INITIALISATION
+
+            PROPERTIES
+            "download_collection"    ,
+            "log"                    ,
+            "site"                   ,
+            "study"                  ,
+            "slim_product_id"        ,
+            "material"               ,
+            "ss_test_schedule"       ,
+            "diss_sum_analysis"      ,
+            "lwr_id"                 ,
+            "c_factor"               ,
+            "t_factor"               ,
+            "current_sample_type"    ,
+            "current_sample_id"      ,
+            "current_test_sample_number"    ,
+            "sterility_subculture_reqd",     { Boolean : identifies if the sterility subculture sample should be logged }
+            "sample_type_array"      ,       { Stores sample types required for WIL                              }
+            "test_assign_array"      ,       { Stores analyses/component lists that are to be assigned to sample - GVL }           
+            "chem_test_assign_array" ,       { Stores analyses/component lists that are to be assigned to CHEM sample for WIL }
+            "single_test_assign_array"       { Stores analyses/component lists that require a new sample for WIL (1 Test : 1 Sample) }
+
+            ACTIONS
+            "save_download_records"  ,
+            "save_tzero_download_records"  ,
+            "build_wil_test_arrays"  ,
+            "get_sample_types"       ,
+            "analysis_in_array"      ,
+            "get_material"
+
+    END CLASS
+
+ENDIF
+
+    { Collected class used to store SLIM download records }
+
+IF NOT class_defined ( SLIM_DOWNLOAD_CLASS ) THEN
+
+    DEFINE CLASS SLIM_DOWNLOAD_CLASS
+ 
+            INHERIT "STD_COLLECTED"
+
+            INITIALISATION
+
+            PROPERTIES
+
+            "identity"              ,
+            "slim_lwr_id"           ,   {from xml}
+            "slim_test_id"          ,   {from xml}
+            "slim_test_name"        ,   {from xml}
+            "slim_tf_id"            ,   {from xml}
+            "slim_tf_name"          ,   {from xml}
+            "slim_def_method"       ,   {from xml}
+            "test_number"           , 
+            "analysis"              ,   {from mapping table}
+            "test_type"             ,   {from mapping table}
+            "comments"
+            
+
+    END CLASS
+
+ENDIF
+
+ENDROUTINE { define_slim_classes }
+
+
+{******************************************************************************}
+GLOBAL
+ROUTINE define_slim_log_class
+{
+*    Defines the SLIM Classes           
+*
+*******************************************************************************}
+
+IF NOT class_defined ( SLIM_LOG_CLASS ) THEN
+
+    DEFINE CLASS SLIM_LOG_CLASS
+
+            INITIALISATION
+
+            PROPERTIES
+
+            "logfile" 
+
+            ACTIONS
+
+            "create_log_file"             , { Create log file   }
+            "write_log_file"              , { Write to log file }
+            "close_log_file"                { Close log file    } 
+
+    END CLASS
+
+ENDIF
+
+ENDROUTINE { define_slim_log_class }
+
+{******************************************************************************}
+{**           C L A S S   A C T I O N S                                      **}
+{******************************************************************************}
+
+ROUTINE slim_class_class_initialisation ( self ) 
+{
+*    SLIM Class initialisation routine.                     
+*
+*******************************************************************************}
+
+    CREATE OBJECT "STD_COLLECTION", self.download_collection
+    self.download_collection.add_index("SLIM_TEST_ID") 
+
+    self . log      = ""
+    self . site     = ""
+    self . slim_product_id = ""
+    self . study    = ""
+    self . material = ""
+    self . ss_test_schedule = ""
+    self . diss_sum_analysis = ""
+    self . lwr_id   = ""
+    self . c_factor = ""
+    self . t_factor = ""
+    self . current_test_sample_number = ""
+    self . current_sample_type = ""
+    self . current_sample_id = ""  
+    self . sterility_subculture_reqd = FALSE
+
+    ARRAY self . sample_type_array ARRAYSIZE (0)
+    ARRAY self . test_assign_array ARRAYSIZE (0,7)  {Analysis, Comp list, Sample type, Slim Id, Test number, test sched, slim_testtype}
+    ARRAY self . chem_test_assign_array ARRAYSIZE (0,7)  {Analysis, Comp list, Sample type, Slim Id, Test number, test sched, slim_testtype}
+    ARRAY self . single_test_assign_array ARRAYSIZE (0,7)  {Analysis, Comp list, Sample type, Slim Id, Test number, test sched, slim_testtype}
+
+    define_slim_log_class()
+    CREATE OBJECT SLIM_LOG_CLASS, self . log
+    
+ENDROUTINE {slim_class_initialisation }
+
+{******************************************************************************}
+
+ROUTINE slim_class_action_save_download_records( self ) 
+{
+*   Update test numbers and write slim_download records                    
+*
+*******************************************************************************}
+
+    DECLARE download_number, download_count, download_obj, test_count,
+            num_tests, test_num, is_write, success, check_ok
+
+    success = TRUE
+    is_write = FALSE
+
+    IF NOT transaction_is_write() THEN
+        
+        START WRITE TRANSACTION ("CREATE DOWNLOAD RECORDS")
+        is_write = TRUE
+        
+    ENDIF
+
+    download_number = self.download_collection.size()
+    download_count = 0
+
+    WHILE ( download_count < download_number ) AND ( success = TRUE ) DO
+
+        download_count = download_count + 1
+
+        download_obj = self.download_collection.get_by_number( download_count )
+
+        {***********************************************************}  
+        {*   Get test number                                       *}
+        {***********************************************************}  
+        test_num = "BLANK"
+
+        IF ( self . site = "WIL" ) THEN
+
+            IF ( download_obj . test_type = "CHEM" ) THEN
+
+                num_tests = size_of_array(self.chem_test_assign_array)
+                test_count= 0
+
+                WHILE (( test_count < num_tests ) AND (test_num="BLANK")) DO
+
+                    test_count = test_count + 1
+
+                    IF ( self.chem_test_assign_array[test_count, 1] = download_obj.analysis ) THEN
+  
+                        test_num = self.chem_test_assign_array[test_count, 5]
+
+                    ENDIF 
+
+                ENDWHILE
+
+            ELSE
+
+                num_tests = size_of_array(self.single_test_assign_array)
+                test_count= 0
+
+                WHILE (( test_count < num_tests ) AND (test_num="BLANK")) DO
+
+                    test_count = test_count + 1
+
+                    IF ( self.single_test_assign_array[test_count, 1] = download_obj.analysis ) THEN
+  
+                        test_num = self.single_test_assign_array[test_count, 5]
+
+                    ENDIF 
+
+                ENDWHILE
+
+            ENDIF
+
+        ELSE
+
+           num_tests = size_of_array(self.test_assign_array)
+           test_count= 0
+
+           WHILE (( test_count < num_tests ) AND (test_num="BLANK")) DO
+
+               test_count = test_count + 1
+
+               IF ( self.test_assign_array[test_count, 1] = download_obj.analysis ) THEN
+  
+                   test_num = self.test_assign_array[test_count, 5]
+
+               ENDIF 
+
+           ENDWHILE
+
+        ENDIF
+
+        download_obj.identity = INCREMENT ( "SLIM_DOWNLOAD", "SLIM_DOWNLOAD" )
+
+        RESERVE ENTRY slim_download, download_obj.identity , check_ok
+
+        IF check_ok <> EMPTY THEN
+            
+            success = FALSE
+            self . log . write_log_file("ERROR:  Reserving slim_download - " : check_ok)
+            
+        ELSE
+
+          ASSIGN slim_download.slim_lwr_id            = STRIP(STRING(download_obj.slim_lwr_id))
+          ASSIGN slim_download.slim_test_id           = STRIP(STRING(download_obj.slim_test_id))
+          ASSIGN slim_download.slim_test_name         = STRIP(STRING(download_obj.slim_test_name))
+          ASSIGN slim_download.method_ref             = STRIP(STRING(download_obj.slim_def_method))
+          ASSIGN slim_download.comments               = STRIP(STRING(download_obj.comments))
+          ASSIGN slim_download.slim_test_field_id     = STRIP(STRING(download_obj.slim_tf_id))
+          ASSIGN slim_download.slim_test_field_name   = STRIP(STRING(download_obj.slim_tf_name))
+          ASSIGN slim_download.analysis               = STRIP(STRING(download_obj.analysis))
+          ASSIGN slim_download.sample_number          = STRIP(STRING( self . current_sample_id ))
+
+          IF (test_num <> "BLANK") AND (test_num <> EMPTY) THEN
+              ASSIGN slim_download.test_number            = test_num
+          ENDIF
+
+          UPDATE slim_download
+            
+        ENDIF
+
+    ENDWHILE      
+
+    IF is_write THEN
+
+        IF success THEN
+
+            COMMIT
+
+        ELSE
+
+            ROLLBACK
+
+        ENDIF
+
+    ENDIF
+
+ENDROUTINE { slim_class_action_save_download_records }
+
+{******************************************************************************}
+
+ROUTINE slim_class_action_save_tzero_download_records( self ) 
+{
+*   Write slim_download_tzero records                    
+*
+*******************************************************************************}
+
+    DECLARE download_number, download_count, download_obj, 
+             is_write, success, check_ok, delete_record
+
+    success = TRUE
+    is_write = FALSE
+    check_ok = EMPTY
+
+    {*********************************************************}
+    { First check if a SLIM pull has already been downloaded. }
+    { If so, DELETE the previous records.                     }
+    {*********************************************************}
+
+    IF NOT transaction_is_write() THEN
+        
+        START WRITE TRANSACTION ("DELETE DOWNLOAD RECORDS")
+        is_write = TRUE
+        
+    ENDIF
+
+    download_number = self.download_collection.size()
+    download_count = 0
+
+    WHILE ( download_count < download_number ) DO
+
+        download_count = download_count + 1
+        download_obj = self.download_collection.get_by_number( download_count )
+        
+        delete_record = SELECT slim_download_tzero . slim_lwr_id
+                        WHERE slim_lwr_id = download_obj.slim_lwr_id
+
+        IF ( delete_record <> EMPTY ) THEN
+
+            delete_record = SELECT slim_download_tzero . slim_lwr_id FOR UPDATE
+                            WHERE slim_lwr_id = download_obj.slim_lwr_id
+
+            WHILE (delete_record <> EMPTY) and (check_ok = EMPTY) DO
+
+                IF (delete_record <> LOCKED)
+
+                    DELETE slim_download_tzero, check_ok
+
+                ENDIF
+
+                NEXT slim_download_tzero
+                delete_record = SELECT slim_download_tzero . slim_lwr_id 
+
+            ENDWHILE
+
+        ENDIF
+
+    ENDWHILE      
+
+    IF is_write THEN
+
+        IF (check_ok = EMPTY) THEN
+            COMMIT
+        ELSE
+            self . log . write_log_file("ERROR:  slim_download_tzero - " : check_ok)
+            ROLLBACK
+        ENDIF
+
+    ENDIF
+
+
+    {*********************************************************}
+    {  Write new download records                             }
+    {*********************************************************}
+
+    IF NOT transaction_is_write() THEN
+        
+        START WRITE TRANSACTION ("CREATE DOWNLOAD RECORDS")
+        is_write = TRUE
+        
+    ENDIF
+
+    download_number = self.download_collection.size()
+    download_count = 0
+
+    WHILE ( download_count < download_number ) AND ( success = TRUE ) DO
+
+        download_count = download_count + 1
+
+        download_obj = self.download_collection.get_by_number( download_count )
+
+        download_obj.identity = INCREMENT ( "SLIM_DOWNLOAD_TZERO", "SLIM_DOWNLOAD_TZERO" )
+
+        RESERVE ENTRY slim_download_tzero, download_obj.identity , check_ok
+
+        IF check_ok <> EMPTY THEN
+
+            self . log . write_log_file("ERROR:  Reserving slim_download_tzero - " : check_ok)  
+            success = FALSE
+            
+        ELSE
+
+          ASSIGN slim_download_tzero.slim_lwr_id            = STRIP(STRING(download_obj.slim_lwr_id))
+          ASSIGN slim_download_tzero.slim_test_id           = STRIP(STRING(download_obj.slim_test_id))
+          ASSIGN slim_download_tzero.slim_test_name         = STRIP(STRING(download_obj.slim_test_name))
+          ASSIGN slim_download_tzero.method_ref             = STRIP(STRING(download_obj.slim_def_method))
+          ASSIGN slim_download_tzero.comments               = STRIP(STRING(download_obj.comments))
+          ASSIGN slim_download_tzero.slim_test_field_id     = STRIP(STRING(download_obj.slim_tf_id))
+          ASSIGN slim_download_tzero.slim_test_field_name   = STRIP(STRING(download_obj.slim_tf_name))
+          ASSIGN slim_download_tzero.analysis               = STRIP(STRING(download_obj.analysis))
+
+          UPDATE slim_download_tzero
+            
+        ENDIF
+
+    ENDWHILE      
+
+    IF is_write THEN
+
+        IF success THEN
+            COMMIT
+        ELSE
+            ROLLBACK
+        ENDIF
+
+    ENDIF
+
+ENDROUTINE { slim_class_action_save_tzero_download_records }
+
+{******************************************************************************}
+
+ROUTINE slim_class_action_build_wil_test_arrays( self ) 
+{
+*   Build the two WIL test arrays 
+*     1.  CHEM array - all tests assigned to a single sample       
+*     2.  Single test array - one sample for each test            
+*
+*******************************************************************************}
+    
+    DECLARE testcount, numtests, chemcount, othercount
+
+    numtests  = size_of_array(self.test_assign_array)
+    testcount = 0
+    chemcount = 0
+    othercount = 0
+
+    WHILE ( testcount < numtests ) DO
+
+        testcount = testcount + 1
+
+        IF ( self.test_assign_array[testcount,3] = "CHEM" ) THEN
+
+            chemcount = chemcount + 1
+
+            self . chem_test_assign_array[chemcount,1] = self . test_assign_array[testcount,1] 
+            self . chem_test_assign_array[chemcount,2] = self . test_assign_array[testcount,2]
+            self . chem_test_assign_array[chemcount,3] = self . test_assign_array[testcount,3]
+            self . chem_test_assign_array[chemcount,4] = self . test_assign_array[testcount,4]   
+            self . chem_test_assign_array[chemcount,6] = self . test_assign_array[testcount,6] 
+            self . chem_test_assign_array[chemcount,7] = self . test_assign_array[testcount,7] 
+
+        ELSE
+
+            othercount = othercount + 1
+
+            self . single_test_assign_array[othercount,1] = self . test_assign_array[testcount,1] 
+            self . single_test_assign_array[othercount,2] = self . test_assign_array[testcount,2]
+            self . single_test_assign_array[othercount,3] = self . test_assign_array[testcount,3]
+            self . single_test_assign_array[othercount,4] = self . test_assign_array[testcount,4]   
+            self . single_test_assign_array[othercount,6] = self . test_assign_array[testcount,6]   
+            self . single_test_assign_array[othercount,7] = self . test_assign_array[testcount,7]  
+
+        ENDIF
+
+    ENDWHILE
+
+ENDROUTINE  { slim_class_action_build_wil_test_arrays }
+
+{******************************************************************************}
+
+ROUTINE slim_class_action_get_sample_types( self ) 
+{
+*   Get the SampleManager info for SLIM Test/Test Field                     
+*
+*******************************************************************************}
+    
+    DECLARE sample_type, count
+
+    sample_type = SELECT DISTINCT slim_map_entries . test_type
+                  WHERE material = self . material
+
+    count = 0
+
+    IF sample_type <> EMPTY THEN
+
+        WHILE sample_type <> EMPTY DO
+
+            count = count + 1
+
+            self.sample_type_array[count] = sample_type
+
+            NEXT slim_map_entries
+            sample_type = SELECT slim_map_entries . test_type
+
+        ENDWHILE
+
+    ENDIF
+
+    RETURN ( count )
+
+ENDROUTINE  { slim_class_action_get_sample_types }
+
+{******************************************************************************}
+
+ROUTINE slim_class_action_analysis_in_array( self, analysis ) 
+{
+*   Check if analysis is in test_assign_array         
+*
+*******************************************************************************}
+    
+    DECLARE numtests, found, count
+
+    numtests  = size_of_array(self.test_assign_array)
+    found     = FALSE
+    count     = 0
+
+    WHILE ( ( count < numtests ) AND (NOT found)) DO
+         
+        count = count +1
+
+        IF ( self . test_assign_array[count,1] = analysis) THEN
+
+            found = TRUE
+
+        ENDIF
+        
+    ENDWHILE
+    
+    return (found)
+
+ENDROUTINE  { slim_class_action_analysis_in_array }
+
+{******************************************************************************}
+
+ROUTINE slim_class_action_get_material( self ) 
+{
+*   Get material code based on slim product id / packaging code       
+*
+*******************************************************************************}
+
+    DECLARE pack_code, material 
+ 
+    IF ( self . site = "GVL" ) THEN
+
+        pack_code = RIGHTSTRING( STRIP(self . study), LENGTH( STRIP(self . study)) - 2 )
+
+        IF ( INDEX( pack_code, "-") = 1 ) THEN
+            pack_code = RIGHTSTRING( pack_code, LENGTH( pack_code ) - 1 )                   
+            pack_code = LEFTSTRING( pack_code, INDEX(pack_code,"-") - 1 )
+        ELSE
+            pack_code = LEFTSTRING( pack_code, INDEX(pack_code,"-") - 1 )
+        ENDIF
+
+        material = SELECT slim_map_header . material 
+                   WHERE slim_pack_code = pack_code
+
+        IF ( material <> EMPTY ) THEN
+            self . log . write_log_file("Packaging Code : " : pack_code : ", " : "Material : " : material)
+        ELSE
+            self . log . write_log_file("No entry in slim_map_header for slim_pack_code : " : pack_code ) 
+        ENDIF
+
+    ELSE
+
+        material = SELECT slim_map_header . material 
+                   WHERE slim_product_id = self . slim_product_id
+
+        IF ( material <> EMPTY ) THEN
+            self . log . write_log_file("Slim Product ID: " : self . slim_product_id : ", " : "Material : " : material)
+        ELSE
+            self . log . write_log_file("No entry in slim_map_header for slim_product_id : " : self . slim_product_id ) 
+        ENDIF
+
+    ENDIF
+
+    self . material = material      
+
+ENDROUTINE  { slim_class_action_get_material } 
+
+
+
+{******************************************************************************}
+ROUTINE slim_download_class_class_initialisation ( self ) 
+{
+*    SLIM Download Class initialisation routine.                     
+*
+*******************************************************************************}
+
+    self . identity             = ""    
+    self . slim_lwr_id          = ""
+    self . slim_test_id         = ""
+    self . slim_test_name       = ""
+    self . slim_def_method      = ""
+    self . slim_tf_id           = ""
+    self . slim_tf_name         = ""
+    self . test_number          = ""
+    self . analysis             = ""
+    self . test_type            = ""
+    self . comments             = ""
+
+ENDROUTINE {slim_download_class_initialisation }
+
+{******************************************************************************}
+ROUTINE slim_log_class_class_initialisation ( self ) 
+{
+*    SLIM Log Class initialisation routine.                     
+*
+*******************************************************************************}
+
+    self . logfile             = ""    
+
+ENDROUTINE {slim_log_class_initialisation }
+
+{******************************************************************************}
+ROUTINE slim_log_class_action_create_log_file (self)
+
+    DECLARE status
+
+    SET DATE FORMAT "YYYY-MZ-DZ"
+
+    self . logfile = lib_utils_logical_to_string ("smp$userfiles") : "\SLIM\" : TODAY : ".LOG"
+
+    RESTORE DATE FORMAT
+
+    IF (FILE EXISTS(self . logfile)) THEN
+
+        {If exists, open to extend}   
+
+        FILE EXTEND self . logfile, status
+
+    ELSE
+
+        { If not exists, create it }
+
+        FILE CREATE self . logfile, status
+
+    ENDIF
+
+    IF (status <> EMPTY) THEN
+
+        flash_message("Failed to create logfile ": self.logfile : " : " : status,false)
+
+    ENDIF
+
+
+ENDROUTINE {slim_log_class_action_create_log_file}
+
+{******************************************************************************}
+ROUTINE slim_log_class_action_write_log_file (self, VALUE log_text)
+
+    DECLARE status
+
+    IF (self . logfile <> EMPTY) THEN
+
+        SET DATE FORMAT "DZ-MZ-YZ H24:MI:SS"
+    
+        FILE WRITE self . logfile, NOW : " - " : log_text, status
+    
+        RESTORE DATE FORMAT
+
+    ENDIF
+
+    IF ( status <> EMPTY ) THEN
+
+        flash_message("Failed to write to logfile ": self.logfile : " : " : status,false)
+            
+    ENDIF 
+
+
+ENDROUTINE {slim_log_class_action_write_log_file} 
+
+{******************************************************************************}
+ROUTINE slim_log_class_action_close_log_file (self)
+
+    DECLARE status
+
+    FILE CLOSE self . logfile, status     
+
+    IF ( status <> EMPTY ) THEN
+
+        flash_message("Failed to close logfile ": self.logfile : " : " : status,false)
+            
+    ENDIF                 
+    
+
+ENDROUTINE {slim_log_class_action_close_log_file} 
+
+
+
+{*******************************************************************************
+*                      S T A T U S   C H A N G E  R O U T I N E S 
+*******************************************************************************}
+
+GLOBAL
+ROUTINE slim_download_update ( VALUE test_num )
+{
+*   Updates the following slim_download fields:
+*       1. METHOD_REF
+*       2. COMMENTS
+*
+*******************************************************************************}
+    
+    DECLARE  method_ref, do_commit, continue, download_record, download_test,
+             analysis, sample_num, level_1_analysis
+
+    analysis = SELECT test.analysis WHERE test_number = test_num
+    sample_num = SELECT test.sample WHERE test_number = test_num 
+               
+    do_commit = FALSE
+    continue  = TRUE
+    level_1_analysis = TRUE
+
+    method_ref = get_method_ref( test_num )
+
+    {** Update Download records **}
+
+    IF NOT transaction_is_write() THEN
+        
+        START WRITE TRANSACTION ("UPDATE DOWNLOAD RECORDS")
+        do_commit = TRUE
+
+    ENDIF
+
+    download_test = SELECT slim_download.slim_test_name
+                            WHERE test_number = test_num
+
+    IF ( download_test = EMPTY ) THEN
+
+        download_record = SELECT slim_download.slim_test_name FOR UPDATE
+                          WHERE sample_number = sample_num
+                          AND analysis = analysis
+
+        level_1_analysis = FALSE
+
+    ELSE
+
+        download_record = SELECT slim_download.slim_test_name FOR UPDATE
+                          WHERE test_number = test_num
+
+    ENDIF
+
+    WHILE ( download_record <> EMPTY ) and ( continue ) DO
+
+        IF ( download_record <> LOCKED ) THEN
+
+            IF NOT level_1_analysis THEN
+
+                ASSIGN slim_download.test_number = test_num
+
+            ENDIF
+          
+            ASSIGN slim_download.method_ref = method_ref
+            ASSIGN slim_download.comments   = get_comments( test_num, download_record )
+            UPDATE slim_download
+
+        ELSE
+
+            continue = FALSE
+
+        ENDIF
+
+        NEXT slim_download
+        download_record = SELECT slim_download.slim_test_name 
+           
+    ENDWHILE
+
+    IF continue THEN
+            
+        IF do_commit THEN
+            COMMIT
+        ENDIF
+
+    ELSE
+
+        flash_message("Could not update SLIM_DOWNLOAD record for test  :  " : test_num, true)
+        ROLLBACK
+
+    ENDIF          
+
+ENDROUTINE {update_slim_download }
+
+{******************************************************************************}
+
+ROUTINE get_method_ref ( VALUE test_num )
+{
+*   Gets the analytical protocol and revision for a test
+*
+*******************************************************************************}
+
+    DECLARE analysis, version, protocol, rev_num, index_pos, prot_rev
+  
+    prot_rev = ""             
+    analysis = SELECT test.analysis WHERE test_number = test_num
+    version = SELECT test.analysis_version WHERE test_number = test_num
+
+    IF ( analysis <> EMPTY ) THEN
+
+        {** Get analytical protocol **}
+
+        protocol = SELECT versioned_analysis.analytical_protocol 
+                     WHERE identity = analysis 
+                     AND analysis_version = version
+ 
+        IF (( protocol = EMPTY) OR ( protocol="" )) THEN
+
+            { Get protocol from NAME field }
+            
+            protocol = SELECT versioned_analysis.name 
+                         WHERE identity = analysis 
+                         AND analysis_version = version
+
+            IF ( protocol <> EMPTY ) THEN
+
+                index_pos = INDEX ( protocol, ":" )
+                
+                IF ( index_pos <> 0 ) THEN 
+
+                    protocol = LEFTSTRING ( protocol, index_pos-1 )
+
+                ENDIF
+
+            ELSE
+
+                protocol=""
+
+            ENDIF
+
+        ENDIF 
+
+        {** Get Protocol Revision # **}
+
+        rev_num = SELECT result.text 
+                    WHERE test_number = test_num
+                    AND name = "Protocol Revision #"
+
+        IF ( rev_num <> EMPTY ) THEN
+
+            rev_num = "Revision " : STRIP(STRING(rev_num))
+
+        ELSE
+
+            rev_num = ""
+
+        ENDIF
+
+        prot_rev = STRIP(protocol) : " " : rev_num
+
+    ENDIF
+
+    RETURN (prot_rev)
+
+ENDROUTINE { get_method_ref } 
+
+{******************************************************************************}
+
+ROUTINE get_comments ( VALUE test_num , VALUE slim_test_name )
+{
+*   Gets the comments for test
+*
+*******************************************************************************}
+
+    DECLARE comments_in, comments_out, index_position, result_name,
+            result_text, comments_length, samp_num, material
+
+    comments_out = ""
+    
+    samp_num = SELECT test.sample WHERE test_number = test_num
+    material = SELECT sample.material WHERE id_numeric=samp_num
+
+    comments_in = SELECT slim_map_entries.comments
+                    WHERE slim_test_name = slim_test_name
+                    AND material = material
+                    AND comments <> NULL 
+                    AND comments <> "" 
+                    AND comments <> EMPTY
+
+
+    IF ( comments_in <> EMPTY ) THEN
+
+        REPEAT
+
+            index_position = INDEX(comments_in, ",")
+            comments_length = LENGTH(comments_in)
+
+            IF (index_position=0 ) THEN
+
+                result_name = STRIP(comments_in)
+
+            ELSE
+
+                result_name = STRIP( LEFTSTRING( comments_in, index_position-1 ))
+                comments_in = RIGHTSTRING(STRIP(comments_in), comments_length - index_position)
+
+            ENDIF
+
+            result_text = SELECT result.text
+                            WHERE test_number = test_num
+                            AND name = result_name
+
+            IF (result_text <> EMPTY) THEN
+
+                IF ( comments_out = "" ) THEN
+
+                    comments_out = STRIP(result_name) : " = " : STRIP(result_text)
+
+                ELSE
+
+                    comments_out = comments_out : ", " : STRIP(result_name) : " = " : STRIP(result_text)
+
+                ENDIF
+           
+
+            ENDIF
+             
+        UNTIL ( index_position = 0 )
+
+    ENDIF    
+
+    {SLIM accepts a max of 255 characters. Truncate string if necessary}
+
+    IF ( LENGTH(comments_out) > 255 ) THEN
+
+        comments_out = LEFTSTRING(comments_out, 255)
+
+    ENDIF
+
+    RETURN (comments_out)
+
+
+ENDROUTINE { get_comments } 
+
+{*******************************************************************************
+*                      T - Z E R O   R O U T I N E S 
+*******************************************************************************}
+
+{******************************************************************************}
+
+ROUTINE tzero_slim_lwr_rmb (rmb_object, 
+                            object, 
+                            data)
+
+{
+*  RMB option for assigning SLIM LWR id to T0 samples
+*
+******************************************************************************}
+
+    DECLARE the_record, no_records, sample_record, sample_status, the_table
+
+    the_table = data . table
+
+    no_records = data . size()
+
+    data . set_first ()
+
+    WHILE ((data . current_position <= no_records) AND ( data . current_position > 0 )) DO
+
+        the_record = data . get_by_number (data . current_position)
+
+        sample_record = SELECT 'the_table' . id_numeric IN OBJECT the_record
+
+        sample_status = SELECT 'the_table' . status IN OBJECT the_record
+
+        IF ( sample_status = "A") THEN
+
+            assign_tzero_lwr (sample_record)
+
+        ELSE
+
+            flash_message("Sample " : STRIP(sample_record): " must be authorised before it can be sent to SLIM",true)
+
+        ENDIF
+
+        data . set_next()
+    
+    ENDWHILE
+
+
+
+ENDROUTINE { tzero_slim_lwr_rmb }
+
+{******************************************************************************}
+
+ROUTINE assign_tzero_lwr (VALUE sample_record)
+
+{
+*  Form prompt for LWR Id
+*******************************************************************************}
+
+    DECLARE lwr_prompt, lwr, lwr_form
+    
+    CREATE OBJECT PROMPT_CLASS_FORM, lwr_form
+	  
+    lwr_form . height = 2
+    lwr_form . width = 40
+    lwr_form . row = 2
+    lwr_form . column = 2
+    lwr_form . border = TRUE
+    lwr_form . header = "Assign SLIM LWR to Tzero Sample"
+    lwr_form . active_prompt = 1
+    lwr_form . return_behaviour = FORM_RETURN_STAY
+
+    PROMPT OBJECT lwr_prompt
+    ON LINE 1 FROM 13 TO 30 
+    WITH (    always_validate=TRUE,
+		    browse_routine="tzero_download_browse",
+                vgl_library= GLOBAL ("CURRENT_LIBRARY") )
+	  
+    lwr_form . add_prompt(lwr_prompt)  
+    lwr_form . add_display("LWR ID" , 1 , 1, PROMPT_RENDITION_BOLD)
+  
+    lwr_form . start_prompt()
+    lwr_form . wait_prompt()
+    lwr_form . end_prompt()
+	  
+    IF lwr_form . get_lastkey () = "DO" THEN
+	  	  
+        lwr     = lwr_form . prompt_objects[1] . text    
+
+        update_download_tzero(sample_record, lwr)             
+        
+    ENDIF
+
+ENDROUTINE {}
+
+{*******************************************************************************}
+
+ROUTINE tzero_download_browse ( lwr_prompt )
+{
+*    Browse on T0 LWRs that have been downloaded from SLIM
+*
+********************************************************************************}
+
+    DECLARE lwr_array,lwr, i
+
+    ARRAY lwr_array ARRAYSIZE ( 0 )
+
+    i = 1
+
+    lwr = SELECT DISTINCT slim_download_tzero . slim_lwr_id 
+
+    WHILE (lwr <> EMPTY) DO
+
+        lwr_array[i] = lwr
+        
+
+        NEXT  slim_download_tzero 
+
+        lwr = SELECT slim_download_tzero . slim_lwr_id
+
+        i = i + 1
+
+    ENDWHILE
+
+    array_sort(lwr_array, ARRAY_SORT_DESCENDING )
+
+    browse_on_array (30, lwr_prompt . text, lwr_array)
+
+    lwr_prompt . repaste()
+
+ENDROUTINE { tzero_download_browse  }
+
+{*******************************************************************************}
+
+ROUTINE update_download_tzero( VALUE sample_id, VALUE lwr_id)
+{
+*   1. assign lwr to sample.stab_ref_no
+*   2. update slim_download_tzero table with test numbers 
+*
+********************************************************************************}
+
+    DECLARE do_commit, sample_record, status, test_array, analysis, 
+            download_record, test_id, method_ref, i, warning_msg,
+            sent_to_slim, dl_send, do_it, from_slim
+            
+    status = EMPTY
+    do_commit = FALSE
+    ARRAY test_array 
+
+    from_slim = SELECT sample.from_slim WHERE id_numeric=sample_id
+
+    IF NOT from_slim THEN
+
+        warning_msg = "Sample " : STRIP(sample_id) : " results will be written to LWR " : STRIP(lwr_id) : "." 
+
+        sent_to_slim = SELECT sample.tzero_to_slim WHERE id_numeric=sample_id
+
+        IF sent_to_slim THEN
+
+            warning_msg = warning_msg : ASCII(10) :ASCII(10) :"WARNING: Sample " : STRIP(sample_id) : " has already been sent to SLIM. " 
+
+        ENDIF
+
+        dl_send = SELECT slim_download_tzero.send_to_slim WHERE slim_lwr_id = lwr_id
+
+        IF dl_send THEN
+
+            warning_msg = warning_msg : ASCII(10) :ASCII(10) :"WARNING: LWR " : STRIP(lwr_id) : " has already been updated. If you continue previous results will be overwritten." 
+
+        ENDIF
+
+        warning_msg = warning_msg : ASCII(10) : ASCII(10):"Do you wish to continue?"
+
+        do_it = confirm_with_text( warning_msg )
+
+        IF do_it THEN
+    
+            IF NOT transaction_is_write() THEN
+        
+                START WRITE TRANSACTION ("UPDATE SLIM TZERO")
+                do_commit = TRUE
+
+            ENDIF
+
+            sample_record = SELECT sample.id_numeric FOR UPDATE
+                            WHERE id_numeric = sample_id
+
+            IF ( sample_record <> LOCKED ) THEN
+
+                ASSIGN sample . stab_ref_no = lwr_id
+                ASSIGN sample . tzero_to_slim = TRUE
+                ASSIGN sample . tzero_to_slim_date = NOW
+                UPDATE sample
+
+            ELSE
+
+                status = "Sample " : STRIP(sample_id) : " cannot be updated as it is locked."
+
+            ENDIF
+
+            test_id = SELECT test.test_number
+                      WHERE sample = sample_id
+                      and replicate_test = FALSE
+            i=1
+            WHILE ( test_id <> EMPTY ) DO
+
+                test_array[i,1] = test_id
+                test_array[i,2] = SELECT test.analysis
+
+                i = i + 1
+                NEXT test
+                test_id =SELECT test.test_number
+
+            ENDWHILE
+
+            i = 0
+            WHILE ( i < size_of_array(test_array) ) DO
+
+                analysis = test_array[i+1,2]
+                test_id  = test_array[i+1,1]
+            
+                IF ( GLOBAL("ORBIS_SLIM_SITE") = "GVL" ) THEN
+
+                    method_ref = get_method_ref( test_id )
+
+                ENDIF
+
+                download_record = SELECT slim_download_tzero.slim_test_name FOR UPDATE
+                                  WHERE slim_lwr_id = lwr_id
+                                  AND analysis = analysis
+
+                WHILE ( download_record <> EMPTY ) and ( status=EMPTY) DO
+
+                    IF ( download_record <> LOCKED ) THEN
+
+                        ASSIGN slim_download_tzero.test_number = test_id
+                        ASSIGN slim_download_tzero.send_to_slim = TRUE
+
+                        IF ( GLOBAL("ORBIS_SLIM_SITE") = "GVL" ) THEN
+
+                            ASSIGN slim_download_tzero.method_ref = method_ref
+                            ASSIGN slim_download_tzero.comments   = get_comments( test_id , download_record )
+
+                        ENDIF
+
+                        UPDATE slim_download_tzero
+
+                    ELSE  
+
+                        status = "SLIM download record LOCKED, could not be update."
+
+                    ENDIF
+
+                    NEXT slim_download_tzero
+                    download_record = SELECT slim_download_tzero.slim_test_name 
+           
+                ENDWHILE
+
+                i = i + 1
+
+            ENDWHILE
+      
+            IF ( status = EMPTY ) THEN
+            
+                IF do_commit THEN
+                    COMMIT
+                    flash_message( "Complete", true)
+                ENDIF
+
+            ELSE
+         
+               flash_message( status, true )
+               ROLLBACK
+
+            ENDIF  
+
+        ENDIF
+
+    ELSE
+
+        flash_message( "Sample ": STRIP(sample_id) : " was logged from SLIM. Results are transferred on sample authorization.", true)
+
+    ENDIF
+
+    RETURN ( status )
+
+ENDROUTINE { update_download_tzero }
+
+
+{*******************************************************************************
+*                      L T E   R O U T I N E S 
+*******************************************************************************}
+ROUTINE component_prompt (      self        ,
+                               grid        ,
+                         VALUE cell_column ,
+                         VALUE cell_row    ,
+                         VALUE column      ,
+                         VALUE row         ,
+                         VALUE cell_width  ,
+                               window      ,
+                         VALUE is_display   )
+
+
+{
+*   Prompt for the Component for the selected analysis
+*
+*******************************************************************************}
+
+	DECLARE field_value, 
+             mandatory_array, 
+             analysis_id
+
+	
+	field_value = SELECT slim_map_entries . component 
+	              IN OBJECT self
+	
+	IF is_display THEN
+	
+		DISPLAY field_value
+			AT 1 , 1
+			IN WINDOW window
+			
+	ELSE
+	
+		analysis_id = SELECT slim_map_entries . analysis
+		        IN OBJECT self
+		
+		ARRAY mandatory_array
+
+		ARRAY_SELECT_ADD ( mandatory_array ,
+		                   ARRAY_SELECT_EQ ,
+		                   "ANALYSIS"    ,
+		                   analysis_id           )
+		                   
+		PROMPT FOR field_value
+		    AT 1 , 1 
+		    IN WINDOW window
+		    BROWSE ON versioned_component . name
+		    WITH ( mandatory_array = mandatory_array            ,
+{		           build_routine   = "BUILD_CRITERIA_ROUTINE"   ,}
+		           user_info       = analysis_id,
+		           display_only    = is_display               ,
+		           vgl_library    = GLOBAL ( "CURRENT_LIBRARY" ))
+
+		ASSIGN slim_map_entries . component 
+		    IN OBJECT self = field_value
+				
+	ENDIF
+	
+ENDROUTINE
+
+{*******************************************************************************}
+
+ROUTINE component_list_prompt (      self        ,
+                                     grid        ,
+                                     VALUE cell_column ,
+                                     VALUE cell_row    ,
+                                     VALUE column      ,
+                                     VALUE row         ,
+                                     VALUE cell_width  ,
+                                     window      ,
+                                     VALUE is_display   )
+
+
+{
+*   Prompt for the Component list for the selected analysis
+*
+*******************************************************************************}
+
+	DECLARE field_value, 
+             mandatory_array, 
+             analysis_id
+
+	
+	field_value = SELECT slim_map_entries . component_list 
+	              IN OBJECT self
+	
+	IF is_display THEN
+	
+		DISPLAY field_value
+			AT 1 , 1
+			IN WINDOW window
+			
+	ELSE
+	
+		analysis_id = SELECT slim_map_entries . analysis
+		        IN OBJECT self
+		
+		ARRAY mandatory_array
+
+		ARRAY_SELECT_ADD ( mandatory_array ,
+		                   ARRAY_SELECT_EQ ,
+		                   "ANALYSIS"    ,
+		                   analysis_id           )
+		                   
+		PROMPT FOR field_value
+		    AT 1 , 1 
+		    IN WINDOW window
+		    BROWSE ON versioned_c_l_header . comp_list
+		    WITH ( mandatory_array = mandatory_array            ,
+{		           build_routine   = "BUILD_CRITERIA_ROUTINE"   ,}
+		           user_info       = analysis_id,
+		           display_only    = is_display               ,
+		           vgl_library    = GLOBAL ( "CURRENT_LIBRARY" ))
+
+		ASSIGN slim_map_entries . component_list
+		    IN OBJECT self = field_value
+				
+	ENDIF
+	
+ENDROUTINE { component_list_prompt }
+
+
+{*******************************************************************************}
+{*******************************************************************************}
+{*******************************************************************************}
+
+
+
+

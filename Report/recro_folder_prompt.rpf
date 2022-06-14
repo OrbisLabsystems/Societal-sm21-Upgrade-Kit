@@ -1,0 +1,133 @@
+{*******************************************************************************
+*
+* Module Name   : RECRO_FOLDER_PROMPT.RPF
+*
+* Purpose       : Program to provide the functionality for explorer folder prompts
+*
+* Portability   : Not Checked
+*
+* Re-entrant    : No
+*
+*******************************************************************************
+*
+* Modification history
+*
+* Change	Modified By	Modified On	Comment
+* ======	===========	===========	===========================================
+*
+* 1.0       Orbis       8-Feb-2019  Created
+*
+*******************************************************************************}
+
+ENABLE WINDOWS
+
+SET NOTPROTECTED
+SET NAME "DEFER/"
+
+SET COMPILE_OPTION DECLARE
+
+JOIN LIBRARY $lib_utils
+JOIN STANDARD_LIBRARY std_browse
+
+CONSTANT wildcard = "%"
+
+{** Main Code *****************************************************************}
+
+EXIT
+
+{* Routines *******************************************************************}
+
+{******************************************************************************}
+
+    ROUTINE recro_wildcard_prompt ( prompt_obj )
+
+{
+*	Routine to assign to the form prompt. Creates and maanges the folder prompt.
+*
+*******************************************************************************}
+
+DECLARE prompt_table, prompt_field
+
+    prompt_table = prompt_obj . table
+    prompt_field = prompt_obj . field
+
+
+    PROMPT OBJECT prompt_obj
+		FORMAT 'prompt_table' . 'prompt_field'
+
+    prompt_obj . vgl_library = GLOBAL ( "CURRENT_LIBRARY" )
+
+    prompt_obj . leave_prompt_routine = "leave_prompt"
+    prompt_obj . validation_routine   = "validate"
+    prompt_obj . browse_routine       = "table_browse"
+    prompt_obj . always_validate      = TRUE
+
+ENDROUTINE
+
+
+{******************************************************************************}
+
+    ROUTINE validate ( prompt_obj )
+
+{
+*   Makes sure that whatever is entered is valid
+*
+*******************************************************************************}
+
+    RETURN ( TRUE )
+
+ENDROUTINE
+
+
+{******************************************************************************}
+
+    ROUTINE leave_prompt ( prompt_obj )
+
+{
+*   Appends the wildcard when the prompt is left
+*
+*******************************************************************************}
+
+DECLARE prompt_val
+
+    prompt_val = prompt_obj . value
+
+    prompt_obj . set_text ( STRIP ( prompt_val ) : wildcard )
+
+ENDROUTINE
+
+
+{******************************************************************************}
+
+    ROUTINE table_browse ( prompt_obj )
+
+{
+*   Performs the browse for the prompt
+*
+*******************************************************************************}
+
+DECLARE id, row, entities
+
+    ARRAY entities ARRAYSIZE ( 0 )
+
+    row = 0
+    id  = SELECT 'prompt_obj . table'. 'prompt_obj . field'
+              WHERE 'prompt_obj . field' > ""
+
+    WHILE ( id <> EMPTY ) DO
+
+        row              = row + 1
+        entities [ row ] = id
+
+        NEXT 'prompt_obj . table'
+
+        id = SELECT 'prompt_obj . table'. 'prompt_obj . field'
+
+    ENDWHILE
+
+    browse_on_array ( 80 , prompt_obj . text , entities )
+
+    prompt_obj . repaste ( )
+
+ENDROUTINE
+

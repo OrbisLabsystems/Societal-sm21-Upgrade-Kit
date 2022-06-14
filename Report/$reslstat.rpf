@@ -1,0 +1,98 @@
+﻿{******************************************************************************
+*
+* Module Name   : $RESLSTAT
+*
+* Purpose       : SMP report for user defined code which is called when the
+*                 status of a sample is changed
+*
+* Document Ref. : SE/T/TVGL-WORK-REPORTS/1/3
+*
+* Specification : 
+*
+* Portability   : Not Checked
+*
+* Re-entrant    : 
+*
+*******************************************************************************}
+{*******************************************************************************
+* MOD1    AF    20-Feb-2014      For balance integration
+*MOD2    AF    20-Oct-2014      For empower integration
+*MOD3    AF    05-DEC-2014      For Empower OQ Deviation
+*Raphael Castro 14-JUN-2022	  SampleManager 21 report merge
+*
+*
+*
+*
+*******************************************************************************}
+
+SET NOTPROTECTED { MOD3 }
+JOIN LIBRARY BALANCE_LIB  { MOD1 }
+
+ROUTINE set_status_a
+
+ENDROUTINE
+
+
+ROUTINE set_status_e
+
+	or_auto_handle_result_change ()  { MOD1 }
+
+	blank_auto_fields_if_interactive ("E")  { MOD2 }
+
+ENDROUTINE
+
+
+ROUTINE set_status_m
+
+	or_auto_handle_result_change ()  { MOD1 }
+
+	blank_auto_fields_if_interactive ("M")  { MOD2 }
+
+ENDROUTINE
+
+
+ROUTINE set_status_r
+
+ENDROUTINE
+
+
+ROUTINE set_status_u
+
+	or_auto_handle_result_change ()  { MOD1 }
+
+	blank_auto_fields_if_interactive ("U")  { MOD2 }
+
+ENDROUTINE
+
+
+ROUTINE set_status_x
+
+ENDROUTINE
+
+
+ROUTINE blank_auto_fields_if_interactive (VALUE trigger)
+
+	DECLARE is_manual, old_status
+
+	is_manual = FALSE
+
+	IF (GLOBAL ( "mode" ) = "INTERACTIVE") THEN
+
+		is_manual = TRUE
+
+	ENDIF
+
+	IF (is_manual) THEN		
+
+		{ If reactivating, dont blank }
+
+		old_status = STRIP(SELECT result . old_status)
+		IF (old_status="E") OR (old_status="M") THEN
+
+			ASSIGN result . mill_res_id = 0
+			ASSIGN result . mill_project = ""
+
+		ENDIF
+	ENDIF
+
+ENDROUTINE

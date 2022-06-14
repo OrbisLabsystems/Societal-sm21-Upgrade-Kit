@@ -1,0 +1,205 @@
+{*******************************************************************************
+*
+* Module Name   : OLS_IM_SM_EMPOWER
+* Purpose       : Provide support for the old SM-Empower LTEs functionality in the Im interface
+*
+*******************************************************************************}
+
+SET NOTPROTECTED
+SET NAME "DISPLAY/"
+SET COMPILE_OPTION DECLARE
+ENABLE WINDOWS
+
+{******************************************************************************}
+
+JOIN STANDARD_LIBRARY STD_UTILS
+JOIN STANDARD_LIBRARY STD_DATABASE
+JOIN LIBRARY $LIB_UTILS
+JOIN LIBRARY OLS_EMPOWER_CUST
+
+CONSTANT ANY_PROJECT_TEXT = "All Projects"
+
+test ()
+EXIT
+
+
+ROUTINE test
+
+	DECLARE x
+	x = Smemp_CheckComponentMap ("2|1|active|Area|", "ASSAY_1API", "DEFAULT")
+
+	flashmessage ("Complete: ":x, TRUE)
+
+ENDROUTINE
+
+
+GLOBAL
+ROUTINE Smemp_CheckUserMap (VALUE system_instance, VALUE userFromIm)
+
+	DECLARE answer
+
+	answer = userFromIm
+
+	{ Either use the value IM sends, or if configured, check the mapping LTE in SM }
+
+	IF (CONFIG_INCLUDE_RES_USERMAP) THEN
+
+		answer = SELECT mill_security . lims_user
+			WHERE database_link = system_instance
+			AND mill_user = STRIP(userFromIm)
+
+		IF (answer <> EMPTY) THEN
+
+			answer = STRIP(answer)
+		ENDIF
+
+	ENDIF
+
+	RETURN (answer)
+
+ENDROUTINE
+
+{ Returns the correct component name, or EMPTY if no map 
+}
+GLOBAL
+ROUTINE Smemp_CheckComponentMap (VALUE componentString, VALUE analysis, VALUE system_instance)
+
+	{ componentString may be | delimited  }
+	{ If it is, look up the mapping table }
+	{ If not, its the actual component    }
+	
+	DECLARE indx, delim, arrayValues, mappedComp, ver
+
+	IF (CONFIG_INCLUDE_RES_COMPMAP) THEN
+
+		delim = "|"
+		indx  = INDEX (componentString, delim)
+
+	ELSE
+
+		{ this causes routine to do nothing }
+		indx = -1
+	ENDIF
+
+	IF (indx>0) THEN
+
+		{ Parse and lookup in mapping table }
+		{ replicate|injection|peakname|fieldname|comp-specific optional runtype  }
+
+		ARRAY arrayValues
+		splitString (delim, componentString:delim, arrayValues)
+
+		{ No project-specific map supported }
+
+		IF (sizeofarray(arrayValues)>=5) THEN
+
+			componentString = EMPTY
+
+			mappedComp = EMPTY
+
+			ver = EMPTY
+
+			IF (NUMTEXT(arrayValues[2])) THEN
+
+				{ analysis_version is field name from old LTE }
+				{ But it is now the record version, not the analysis version }
+
+				ver = SELECT MAX mill_component_map_hdr . analysis_version
+						WHERE database_link = system_instance 
+						AND  analysis = analysis 
+						AND mill_entity = ANY_PROJECT_TEXT
+			ENDIF
+
+			IF (ver <> EMPTY) THEN
+
+				mappedComp = SELECT mill_component_map . component
+						WHERE database_link = system_instance 
+						AND  analysis = analysis 
+						AND mill_entity = ANY_PROJECT_TEXT
+						AND enable = TRUE
+						AND mill_type = arrayValues[4] 
+						AND inject_comment=arrayValues[1] 
+						AND injection = NUMERIC(arrayValues[2])
+
+			ENDIF
+
+			WHILE (componentString=EMPTY) AND
+					(mappedComp <> EMPTY) DO
+
+				IF ( peakCompare(arrayValues[3],
+						SELECT mill_component_map . mill_analyte) ) THEN
+
+					IF (STRIP(arrayValues[5])=
+						STRIP(SELECT mill_component_map . run_type) ) OR
+					 (STRIP(arrayValues[5])="")                                          THEN
+
+						componentString = mappedComp
+
+					ENDIF
+
+				ENDIF
+
+				NEXT mill_component_map
+				mappedComp = SELECT mill_component_map . component
+
+			ENDWHILE
+
+		ENDIF
+
+
+	ENDIF
+
+	RETURN (componentString)
+
+ENDROUTINE
+
+ROUTINE peakCompare (VALUE actual, VALUE map)
+
+	DECLARE ok
+	
+	ok = FALSE
+
+	actual = STRIP(TOUPPER(actual))
+	map = STRIP(TOUPPER(map))
+
+	IF (map = actual) THEN
+
+		ok = TRUE
+
+	ENDIF
+
+	RETURN (ok)
+
+ENDROUTINE
+
+ROUTINE splitString (VALUE delimChar, VALUE stringToSplit, arrayValues)
+
+    DECLARE tab_posn, val
+
+    ARRAY arrayValues
+   
+    stringToSplit = STRIP (stringToSplit)
+    tab_posn = -1
+            
+    { First remove " (ascii 34)  }
+    stringToSplit = SUBSTITUTE (stringToSplit, ASCII(34),"") 
+
+    WHILE (tab_posn <> 0) DO
+
+	tab_posn = INDEX (stringToSplit,delimChar)
+
+	IF (tab_posn=0) THEN
+
+	    val = stringToSplit
+	ELSE
+	    val = LEFTSTRING (stringToSplit, tab_posn-1)
+            stringToSplit = stringToSplit # LEFTSTRING(stringToSplit, tab_posn)
+
+	ENDIF
+
+	arrayValues [sizeofarray(arrayValues)+1] = STRIP(val)
+
+
+    ENDWHILE     
+
+ENDROUTINE     

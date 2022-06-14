@@ -1,0 +1,373 @@
+{******************************************************************************
+*
+* Module Name          : OLS_GENERIC_PROMPTS
+*
+* Purpose              : Generic prompts
+*
+*******************************************************************************}
+
+SET NOTPROTECTED
+SET COMPILE_OPTION DECLARE
+SET NAME "DEFER/"
+ENABLE WINDOWS
+
+JOIN STANDARD_LIBRARY STD_ARRAY 
+JOIN STANDARD_LIBRARY STD_CLASS
+JOIN STANDARD_LIBRARY STD_CLIENT
+JOIN STANDARD_LIBRARY STD_MESSAGE
+JOIN STANDARD_LIBRARY STD_STRUCTURE
+JOIN STANDARD_LIBRARY STD_TRANSFER
+JOIN STANDARD_LIBRARY STD_UTILS
+JOIN STANDARD_LIBRARY STD_VGL
+JOIN STANDARD_LIBRARY STD_WINDOW
+JOIN STANDARD_LIBRARY std_user_global
+JOIN LIBRARY $lib_utils
+
+test_routine_grid1 (0)
+EXIT
+{========================================================}
+
+{ testing only
+}
+ROUTINE test_routine_grid1 (VALUE option)
+
+    DECLARE  array_selected_indexes, array_from_im, i, indx
+    DECLARE msg,  array_columns
+
+     msg = ""    
+    ARRAY array_columns
+    ARRAY array_selected_indexes  ARRAYSIZE (0)
+    ARRAY array_from_im
+
+    i=1
+    array_from_im[i,1]="0"
+    array_from_im[i,2]="1"
+    array_from_im[i,3]="T1"
+    i=2
+    array_from_im[i,1]="1"
+    array_from_im[i,2]="7"
+    array_from_im[i,3]="T2"
+    i=3
+    array_from_im[i,1]="2"
+    array_from_im[i,2]="13"
+    array_from_im[i,3]="T3"
+
+   
+    array_columns  [1,1] = "Sample"
+    array_columns  [1,2] = 30
+    array_columns  [2,1] = "Replicate"
+    array_columns  [2,2] = 10
+    array_columns  [3,1] = "Replicate Name"
+    array_columns  [3,2] = 30
+
+
+    IF olsgprompts_selection_grid(array_from_im, array_columns, 
+                 70, "IM data", msg, array_selected_indexes) THEN
+
+
+    ENDIF
+
+    i=0 
+    WHILE (i< sizeofarray(array_selected_indexes)) DO
+
+	i=i+1
+	indx = array_selected_indexes [i]
+
+             flashmessage (array_from_im[indx,3],true)
+
+    ENDWHILE
+
+ENDROUTINE
+
+{========================================================}
+{ end of test code }
+{========================================================}
+
+
+{ 
+Generic grid with checkboxes 
+
+This crashes if array has 0 rows
+
+}
+GLOBAL
+ROUTINE olsgprompts_selection_grid (array_from_im, array_columns,  
+                          VALUE frm_width, VALUE the_caption, VALUE msg,
+					array_selected_indexes)
+		
+
+    DECLARE form,  can_leave, ret,i,j
+    DECLARE  start_line, start_col,select_all_button,
+          the_header, form_height
+
+    the_header  = the_caption
+    form_height = 15
+    ARRAY array_selected_indexes
+    ret = FALSE
+
+
+    PROMPT OBJECT form
+        CLASS PROMPT_CLASS_FORM
+        WITH ( width  = frm_width                                  ,
+               row    = 5                                   ,
+               column = 10                                  ,
+               height = form_height                          ,
+               header = the_header                          ,
+               footer = "<DO> to Continue, <EXIT> to Cancel",
+               proportional = TRUE                          ,
+               return_behaviour = FORM_RETURN_LEAVE     ,
+               user_info = ""  )
+
+    form . add_frame ( "" ,   1, 1, form_height, form.width )
+
+
+    { add in a column at start for the status/checkbox }
+
+    ARRAY_INSERT_SLICE(array_columns,1,1)
+
+    array_columns [1,1] = ""
+    array_columns [1,2] = 5
+      
+    start_line = 1
+    start_col  = 3
+
+
+    { Add grid }
+    DECLARE the_grid
+                    
+    PROMPT OBJECT the_grid
+    CLASS PROMPT_CLASS_GRID
+    WITH ( row                  = start_line ,
+           column               = start_col,
+           height               = form_height ,
+           width                = frm_width - 2 ,
+           cell_columns         = SIZE_OF_ARRAY (array_columns) ,
+           cell_rows            = SIZE_OF_ARRAY (array_from_im) ,
+           current_column       = 1 ,
+           current_row          = 1 ,
+           check_move_routine   = "grid_check_move" ,
+           prompt_cell_routine  = "grid_prompt" ,
+           display_cell_routine = "grid_display" )
+
+
+    the_grid . title_size_top          = 1
+    
+    i = 0
+
+    WHILE (i < SIZE_OF_ARRAY (array_columns)) DO
+
+        i = i + 1
+
+        the_grid . title_text_top [ i , 1 ] = array_columns [i,1]
+        the_grid . column_size    [ i  ] = array_columns [i,2]
+
+    ENDWHILE
+
+    ARRAY the_grid . user_info 
+
+    { Add in the data }
+
+    i = 0
+
+    WHILE (i < SIZE_OF_ARRAY (array_from_im)) DO
+
+        i = i + 1
+
+        { The first column gets the status }
+        the_grid . user_info [i,1] = FALSE
+
+
+        j = 0
+        WHILE (j < SIZE_OF_ARRAY (array_columns)) DO
+
+            j = j + 1
+            the_grid . user_info [i,j+1] = array_from_im [i, j]
+
+        ENDWHILE
+
+    ENDWHILE
+
+    form . add_prompt ( the_grid )
+
+
+    { Select All button }
+
+    PROMPT OBJECT select_all_button
+            CLASS "STD_PROMPT_BUTTON"
+            WITH ( row                 = form_height   + 2     ,
+                   width               = 14          ,
+                   column              = 3                          ,
+                   caption             = "Select All"             ,
+                   mouse_click_routine = "grid_select_all"        ,
+                   vgl_library         = GLOBAL( "CURRENT_LIBRARY" ) ,
+                   enabled             = TRUE                       )
+
+
+    form . add_prompt ( select_all_button )
+
+
+    { Display the form }
+
+    form . start_prompt ()
+
+    REPEAT
+
+        form . wait_prompt  ()
+
+        can_leave = TRUE       
+
+        IF (form . get_lastkey () <> "EXIT" ) THEN
+
+            i = 0
+            WHILE (i < SIZE_OF_ARRAY ( the_grid . user_info )) DO
+
+               i = i + 1
+               IF (the_grid . user_info[i,1]) THEN
+
+			{ If here, its checked. Fill the original array index }
+                  array_selected_indexes [sizeofarray(array_selected_indexes) + 1] = i
+
+               ENDIF
+
+            ENDWHILE
+
+             ret = TRUE
+
+        ENDIF
+
+    UNTIL  (can_leave) OR (form . get_lastkey () = "EXIT" ) 
+ 
+
+    form . end_prompt ()
+
+
+    RETURN (ret)
+
+
+ENDROUTINE    {  olsgprompts_selection_grid  }
+
+
+ROUTINE grid_check_move (       self        ,
+                          VALUE cell_column ,
+                          VALUE cell_row    ,
+                                new_column  ,
+                                new_row     )
+
+   
+ENDROUTINE     {  grid_check_move  }
+
+ROUTINE grid_prompt (       self        ,
+                  VALUE cell_column ,
+              VALUE cell_row    ,
+                window      ,
+              VALUE column      ,
+              VALUE row         ,
+              VALUE cell_height ,
+                  VALUE cell_width  )
+
+
+    IF (cell_column=1) THEN
+
+                PROMPT FOR self . user_info [ cell_row, cell_column]
+                    BROWSE ON BOOLEAN
+                    AT column, row
+                    IN WINDOW window
+                    TO column + cell_width - 1
+		    WITH ( is_check = TRUE )
+
+
+    ELSE
+
+                PROMPT FOR self . user_info [ cell_row, cell_column]
+                    AT column, row
+                    IN WINDOW window
+                    TO column + cell_width - 1
+                    WITH( DISPLAY_ONLY = TRUE)
+
+    ENDIF
+
+
+ENDROUTINE      {  grid_prompt }
+
+
+ROUTINE grid_display (       self        ,
+               VALUE cell_column ,
+               VALUE cell_row    ,
+                 window      ,
+               VALUE column      ,
+               VALUE row         ,
+               VALUE cell_height ,
+               VALUE cell_width  )
+
+
+    DECLARE display_val
+
+        display_val = self . user_info [cell_row, cell_column]
+
+    IF (cell_column = 1) THEN
+
+        DISPLAY display_val
+        FORMAT BOOLEAN
+        IN WINDOW window
+        ON LINE row FROM column
+        INVERSE = FALSE
+        WITH ( is_check=TRUE, foreground_colour = PROMPT_COLOUR_BLACK )
+
+    ELSE
+
+        DISPLAY display_val
+        IN WINDOW window
+        ON LINE row FROM column
+        INVERSE = FALSE
+        WITH ( foreground_colour = PROMPT_COLOUR_BLACK )
+
+    ENDIF
+ 
+
+ENDROUTINE    {  grid_display  }
+
+
+
+ROUTINE grid_select_all  (self)
+
+    DECLARE the_grid  , i
+
+    the_grid = self. parent_prompt.prompt_objects [1]
+
+    i = 0
+    WHILE (i < SIZE_OF_ARRAY (the_grid.user_info)) DO
+
+        i = i + 1
+        the_grid.user_info [i,1] = TRUE
+
+    ENDWHILE
+
+    the_grid . redisplay_contents ( )
+    the_grid . repaste ()
+    
+ENDROUTINE    {  grid_select_all  }
+
+
+{ Output message }
+ROUTINE do_msg (VALUE msg)
+
+    flashmessage (msg, TRUE)
+
+ENDROUTINE
+
+
+ROUTINE check_write_transaction
+{
+*  This checks if the process is already in a     
+*  write_transaction, and if not, starts one.     
+*******************************************************************************}
+
+    IF NOT transaction_is_write() THEN
+
+       START WRITE TRANSACTION "update record"
+
+    ENDIF
+
+ENDROUTINE
+
+

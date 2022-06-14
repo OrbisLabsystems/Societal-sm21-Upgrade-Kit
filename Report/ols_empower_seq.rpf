@@ -1,0 +1,3577 @@
+{******************************************************************************
+*
+* Module Name	: OLS_EMPOWER_SEQ
+* Purpose	: Send worksheet for Empower to IM
+*
+* Version	: 1.6
+*
+*******************************************************************************}
+{
+MOD1:   For dissolution, order by timepoint
+MOD2:   Component xml section, Remove button fix
+MOD3:  2017 for Empower 2 or 3 option
+}
+SET COMPILE_OPTION DECLARE
+SET NAME "DEFER/"
+ENABLE WINDOWS
+SET NOTPROTECTED
+
+JOIN STANDARD_LIBRARY STD_ARRAY
+JOIN STANDARD_LIBRARY STD_GENERAL
+JOIN STANDARD_LIBRARY STD_DATABASE
+JOIN STANDARD_LIBRARY STD_ARRAY_SELECT
+JOIN STANDARD_LIBRARY STD_STRUCTURE
+JOIN STANDARD_LIBRARY STD_UTILS
+JOIN STANDARD_LIBRARY STD_PROMPT
+JOIN STANDARD_LIBRARY STD_CLASS
+JOIN STANDARD_LIBRARY STD_CLIENT
+JOIN LIBRARY $LIB_UTILS
+JOIN LIBRARY $PROMPT_LIST
+JOIN LIBRARY $TOOLBOX
+JOIN LIBRARY $CRITERIA_EDIT
+JOIN LIBRARY $CRITERIA_SAVED
+JOIN LIBRARY $CRITERIA_CACHE
+JOIN LIBRARY $CRITERIA_LIB
+JOIN LIBRARY $CRITERIA_SAVED
+JOIN LIBRARY $INTEGRATION_MANAGER
+JOIN LIBRARY OLS_EMPOWER_USER
+JOIN LIBRARY OLS_EMPOWER_FIELDS
+JOIN LIBRARY OLS_GENERIC_PROMPTS
+JOIN LIBRARY OLS_EMPOWER_CUST
+
+CONSTANT SRC_TYPE_SAMPLES   = 1
+CONSTANT SRC_TYPE_WORKSHEET = 2
+CONSTANT SRC_TYPE_BATCH     = 3
+CONSTANT SRC_TYPE_TEST      = 4
+
+CONSTANT SAMP_TEST_ARRAY_TEST_DELIMITER = "/_###_/"
+
+DECLARE g_browse_started
+DECLARE g_test_properties  { MOD1 }
+DECLARE g_index_start_extra_samples  { MOD2 }
+DECLARE g_index_start_extra_initial  { MOD2 }
+DECLARE g_use_old_empower   { MOD3 }
+
+test1 ()
+
+ROUTINE test1
+
+	DECLARE id, wsheet, header_array, test_num_array, tests_array, i,j,k, tmp,
+			status, rec, array_analyses,  found , samp_test_array, 
+			sent_sampleset_name, found_a_test, 
+			samp_test_array_extra, index_start_extra_samples
+
+	ARRAY header_array
+	ARRAY test_num_array
+	ARRAY samp_test_array
+	ARRAY tests_array
+	ARRAY array_analyses
+
+	found_a_test = FALSE
+	wsheet = ""
+
+	IF (STRIP(GLOBAL("OLS_CDS_SSET_SYNTAX")) <> "") THEN
+
+		wsheet = GET SYNTAX ( STRIP(GLOBAL("OLS_CDS_SSET_SYNTAX")))
+
+	ENDIF
+
+	prompt_in_window ( "SAMPLE", "Sample ID", "Sample for testing", EMPTY ,id )
+
+	IF (id = EMPTY) THEN
+
+		flashmessage ("No sample, Exiting...", TRUE)
+		EXIT
+	ENDIF
+
+	rec = SELECT test.test_number 
+				WHERE sample=id
+				AND ( status="V" OR status="P" OR status="C"
+				OR status="A" )
+				ORDER ON sample
+
+	tmp = size_of_array(samp_test_array) + 1
+	samp_test_array [tmp,1] = id
+
+	WHILE (rec <> EMPTY) DO
+
+			tmp = size_of_array(test_num_array)+1
+			test_num_array [tmp,1] = id  
+			test_num_array [tmp,2] = SELECT test. test_number  
+			test_num_array [tmp,3] = SELECT test. analysis
+
+			NEXT test
+			rec = SELECT test.test_number 
+
+	ENDWHILE
+		
+
+     { This allows multiple analyses, select 4 }
+
+     display_analysis_form (array_analyses)
+
+     IF (size_of_array(array_analyses)=0) THEN
+
+         flashmessage ("No tests selected, Exiting...", TRUE)
+
+         EXIT
+
+     ENDIF
+
+	{ For samples, fill in the rest of samp_test_array, which here, just has a sample id }
+	{ The tests are in test_num_array, need them in samp_test_array }
+	{ found_a_test  is set=TRUE if a valid test is found }
+
+	i = 0
+
+	WHILE (i < size_of_array(samp_test_array)) DO
+
+		i = i + 1
+		k = 0
+
+		WHILE (k < size_of_array (test_num_array) ) DO
+
+			k = k + 1
+
+			IF (samp_test_array [i,1] = test_num_array [k,1]) THEN
+
+				found = FALSE
+				j = 0
+
+				{ See if this analysis is on the sample }
+
+				WHILE (NOT found) AND
+			 		(j < size_of_array (array_analyses) ) DO
+
+					j = j + 1
+
+					IF (  STRIP(array_analyses[j]) = STRIP(test_num_array[k,3])  ) THEN
+
+						found = TRUE
+						found_a_test = TRUE  { checked later, to stop crash }
+
+						IF (samp_test_array[i, j+1] <> EMPTY) THEN
+
+							samp_test_array[i, j+1] = samp_test_array[i, j+1]:
+								SAMP_TEST_ARRAY_TEST_DELIMITER:
+								test_num_array[k,2]
+
+						ELSE
+
+							samp_test_array[i, j+1] = test_num_array[k,2]
+
+						ENDIF
+
+					ENDIF
+
+				ENDWHILE
+
+			ENDIF
+
+		ENDWHILE
+
+	ENDWHILE
+
+	{ Make new row if >1 test replicates }
+	expand_samp_test_array (samp_test_array)
+
+	ARRAY samp_test_array_extra
+	add_standalone_samples (samp_test_array_extra)
+	fill_test_array (SRC_TYPE_SAMPLES, "", samp_test_array, 
+					samp_test_array_extra, tests_array,
+					 index_start_extra_samples)
+
+     { Prevent crash by checking for empty array }
+     IF (NOT found_a_test) THEN
+
+        flashmessage ("No tests for the selected analyses, Exiting.....", TRUE)
+
+        EXIT
+
+     ENDIF
+
+	status = send_cds_data_to_im ( SRC_TYPE_SAMPLES, wsheet, 
+				STRIP(GLOBAL("OLS_CDS_IM_IP")), STRIP(GLOBAL("OLS_CDS_IM_IPO")),
+                      tests_array, header_array , sent_sampleset_name, index_start_extra_samples)
+
+     IF (status=EMPTY) THEN
+	     flashmessage ("Transferred worklist ":STRIP(sent_sampleset_name), true)
+     ELSE
+	     flashmessage ("Error: ":status, true)
+     ENDIF
+
+
+ENDROUTINE
+
+
+{
+array_test_data is [row, value] and row 1 is field names
+array_header_data is same format.
+}
+GLOBAL ROUTINE send_cds_data_to_im ( VALUE source_type, VALUE worksheet_id, 
+						VALUE ip, VALUE ipo,
+                      		array_test_data, array_header_data ,
+						sent_sampleset_name, 
+					VALUE index_start_extra_samples)
+
+	DECLARE im, list, item, status, first_item, i,j 
+	DECLARE proj, sset, repl , runtype,   replCnt, tmp,is_alter,
+			array_test_data_sendInfo, repl_ok, extra,
+			element_name, element_repl, replicate_loop_ok
+
+	ARRAY array_test_data_sendInfo
+	sent_sampleset_name = ""
+	proj = ""
+	sset = ""
+	repl = ""
+	runtype = ""
+	is_alter = FALSE
+
+	g_browse_started = FALSE
+
+	{ Allow user change details }
+	g_index_start_extra_samples = index_start_extra_samples 
+	g_index_start_extra_initial  = g_index_start_extra_samples
+
+	confirm_and_update_tests_array (array_test_data)
+
+	{ in case removed any , set the new value }
+	index_start_extra_samples = g_index_start_extra_samples
+
+	status = EMPTY
+	im     = im_create_integration_object (  )
+	im . InstanceName = ip
+	im . ObjectType = ipo
+
+	list   = im_create_list_object ( )
+
+	list . ElementName = "WorksheetExport"
+	list . ItemsName = "WorksheetEntries"
+
+	list . Set ( "DateCreated", NOW )
+	list . Set ( "Operator", OPERATOR )
+	list . Set ( "LimsInstance", GLOBAL("INSTANCE") )
+
+	im . DataItem = list	
+
+	{ Get additional information }
+
+	status = display_wsheet_form (worksheet_id, proj, sset, repl, runtype , is_alter)
+	
+	{ if some error, allow 1 chance to change, then send anyway }
+
+	IF (status <> EMPTY) THEN
+
+		flashmessage (status, TRUE)
+
+		display_wsheet_form (worksheet_id, proj, sset, repl, runtype , is_alter)
+
+	ENDIF
+
+	IF (status = EMPTY) AND (CONFIG_SEND_ROW_PER_REPLICATE) THEN
+
+		set_replicates_test_array (array_test_data, 
+						array_test_data_sendInfo)
+
+	ENDIF
+
+	item = im_create_data_object ( )
+	item . ElementName = "Header"
+	item . Name = "0"
+	first_item = item  
+ 	  
+	j = 0
+
+	WHILE (array_header_data[1,j+1]<> EMPTY ) DO
+
+		j = j + 1
+		item.Set (make_valid_element_name (array_header_data[1,j]), array_header_data[2,j])
+
+	ENDWHILE
+
+	list . Items . Add ( item )             	
+
+	{ Correct component names }
+	DECLARE components_item, components_item_set 
+
+	components_item_set = FALSE
+	item = im_create_data_object ( )
+	item . ElementName = "Component"
+	item . Name = "C"
+	components_item = item
+
+	list . Items . Add ( item ) 
+
+	{ Allow custom code to validate everything, or change things  }
+
+	IF (NOT imcust_validate_final (proj, sset, runtype, repl, array_test_data)) THEN
+
+		flashmessage ("No sample set will be transferred to IM, Exiting....", TRUE)
+
+		EXIT
+
+	ENDIF
+
+  { MOD1: those declared variables below }
+  DECLARE order_num_loops, order_count, array_disl_times
+  ARRAY array_disl_times
+
+  order_num_loops = build_replicate_order_array (array_test_data, array_disl_times)
+
+  order_count = 0
+  WHILE (order_count < order_num_loops) DO
+
+      order_count = order_count + 1
+
+      i = 1
+
+	WHILE (  i < size_of_array (array_test_data) ) DO
+
+          i = i + 1
+    
+          { send one for each replicate }
+          DECLARE count_included_reps
+          count_included_reps=0
+          extra = 0
+          replCnt = 0
+
+          WHILE (replCnt < (repl+extra) ) DO           
+
+		  repl_ok = TRUE
+
+		  replicate_loop_ok = CONFIG_SEND_ROW_PER_REPLICATE
+              replCnt = replCnt + 1
+
+              item = im_create_data_object ( )
+              item . ElementName = "Lines"
+              item . Name = i-1
+              item . Name = item . Name:".":STRIP(replCnt)
+
+              IF (i>index_start_extra_samples) AND (index_start_extra_samples>0) THEN
+
+                  item . Name = CONFIG_RUN_EXTRASAMPLENAME 
+                  replicate_loop_ok = FALSE
+
+              ENDIF
+
+              tmp = i-2
+              tmp=tmp*repl
+              tmp=tmp+replCnt
+              item.Set ("_index", tmp)
+
+              { If component-specific replicates, set that replicate number here }
+		  { Check the replicate number }
+
+		  repl_ok = is_this_replicate_ok (array_test_data_sendInfo, replCnt, i)
+
+		  IF (array_test_data_sendInfo[i,1]<> EMPTY) THEN
+				extra = 6*10  
+                                                  { array_test_data_sendInfo checked so extra doesnt mean more replicates }
+		ENDIF
+
+              IF (array_test_data_sendInfo[i,replCnt]<> EMPTY) AND
+			( repl_ok ) THEN
+
+                  item.Set ("_repl", replCnt)
+
+              ELSE
+
+                  item.Set ("_repl", replCnt)
+
+              ENDIF  
+
+		IF (repl_ok) THEN
+
+			{ MOD1 }
+			repl_ok = 
+			is_disl_replicate_ok ( array_disl_times, 
+					array_test_data, i, 
+					replCnt, order_count )
+
+              	IF (i>index_start_extra_samples) AND (index_start_extra_samples>0) THEN
+
+				{ these extra samples, ignore the dissolution ordering }
+				{ add the the end of sequence, ONLY }
+
+				IF (order_count <> order_num_loops) THEN
+
+					repl_ok = FALSE
+				ENDIF
+
+		   	ENDIF
+
+		ENDIF
+          
+              j = 0
+
+              WHILE (repl_ok) AND
+			(array_test_data[1,j+1]<> EMPTY ) DO
+
+                  j = j + 1
+                  element_name = array_test_data[1,j]
+                  element_repl = 0
+
+                  { Some types include a replicate name, handle this }
+                  IF (CONFIG_SEND_ROW_PER_REPLICATE) AND 
+                              ( INDEX(STRIP(element_name),"L.")=1 ) THEN
+
+                      element_repl = flds_modify_l_type_replicates (element_name)
+
+                  ENDIF
+
+                  IF (replCnt=element_repl) OR (element_repl=0) THEN
+
+                      item.Set (make_valid_element_name (element_name), array_test_data[i,j])
+
+                  ENDIF
+
+                  IF (NOT components_item_set) THEN
+
+                      components_item.Set (make_valid_element_name (element_name), element_name)
+
+                  ENDIF
+
+              ENDWHILE
+
+		  IF (repl_ok) THEN
+
+			components_item_set = TRUE
+
+		  ENDIF
+
+		  IF (count_included_reps >= repl) THEN
+
+			repl_ok = FALSE
+
+		  ENDIF
+
+		  IF (repl_ok) THEN
+
+			count_included_reps=count_included_reps+1
+
+      	        imcust_xml_add_custom_values_list (item, array_test_data, i)
+	              list . Items . Add ( item )
+
+		  ENDIF
+
+              { If not sending a row per replicate }
+              IF (NOT replicate_loop_ok) THEN
+
+                  replCnt = 9999
+
+              ENDIF
+
+         ENDWHILE
+
+	ENDWHILE
+
+  ENDWHILE    { order_count }
+
+
+	item = first_item
+	item . Set ( "EMPOWER_PROJ", proj )
+	item . Set ( "EMPOWER_SSET", sset )
+	item . Set ( "EMPOWER_REPL", repl )
+	item . Set ( "EMPOWER_RUNTYPE", runtype )
+	IF (is_alter) THEN
+		item . Set ( "EMPOWER_ALTERSAMPLE", "T" )
+	ELSE
+		item . Set ( "EMPOWER_ALTERSAMPLE", "F" )
+	ENDIF
+
+	sent_sampleset_name = sset
+
+	{MOD3 - hardcoded URL for old empower - will be only used until end 2017 }
+	IF (g_use_old_empower) THEN
+
+		im . URL = "soap.tcp://ATL-LIMSIM-ENT.recropharma.com:50000/SampleManagerAgent1"
+
+	ENDIF
+
+	{ This is where it is sent to IM }
+
+	IF im . send ( ) THEN
+
+		{ option to update (in LIMS) sent records }
+
+		optional_record_updates (worksheet_id, sent_sampleset_name, 
+							source_type, array_test_data)
+
+	ELSE
+
+		status = im . LastException . ToString()		
+
+     ENDIF
+
+	{ Any final custom actions e.g. update database }
+
+	imcust_final_action (status, proj, sset, runtype, repl, array_test_data)
+
+
+	RETURN ( status )
+
+ENDROUTINE
+
+ROUTINE is_this_replicate_ok (array_test_data_sendInfo, 
+						VALUE repl_no, VALUE row_no)
+
+	DECLARE answer, i
+
+	answer = FALSE
+
+	{ If none in array, ignore  }
+
+	IF (sizeofarray(array_test_data_sendInfo)=0) THEN
+
+		answer = TRUE
+
+	ELSEIF (array_test_data_sendInfo[row_no, 1]=EMPTY) THEN
+
+		answer = TRUE
+
+	ENDIF
+
+	i = 0
+
+	WHILE (answer=FALSE) AND
+		(array_test_data_sendInfo[row_no, i+1] <> EMPTY) DO
+
+		i = i + 1
+		IF (repl_no=array_test_data_sendInfo[row_no,i]) THEN
+
+			answer = TRUE
+
+		ENDIF
+
+	ENDWHILE
+
+	RETURN (answer)
+
+ENDROUTINE
+
+ROUTINE display_wsheet_form (VALUE wsheet, proj, sset, repl, runtype, is_alter)
+
+	DECLARE pr, form,  sset_val, status 
+
+  	status = EMPTY
+     proj = ""
+     sset = ""
+     repl = GLOBAL ("OLS_CDS_DEFAULT_REPLICATES")
+     runtype = ""	
+     is_alter = FALSE
+
+	{ MOD3 - prompt for empower instance }
+	g_use_old_empower = NOT
+	confirm_with_text ("Send to Empower 3 instance ?":ASCII(13):ASCII(10):"(Click NO to send to Empower 2)")   { MOD3 }
+
+	set_up_std_prompt_list_class ( )
+ 
+	CREATE OBJECT "STD_FORM", form
+ 
+	form . height = 4
+	form . width = 100
+	form . row = 4
+	form . column = 6
+	form . border = TRUE
+	form . header = "Send worksheet to Empower"	
+	form . validation_routine = "cds_params_validation_routine"
+
+	form . add_display ( "Project " , 2 , 1 , PROMPT_RENDITION_RAISED )
+ 
+	PROMPT OBJECT pr
+		ON LINE 1 FROM 14 to 93
+		WITH ( vgl_library = GLOBAL ( "CURRENT_LIBRARY" ) ,
+                  browse_routine="browse_projects_local")
+ 
+	form . add_prompt ( pr )
+
+	form . add_display ( "SampleSet " , 2 , 2 , PROMPT_RENDITION_RAISED )
+ 
+	sset_val = wsheet
+
+	PROMPT OBJECT pr
+		ON LINE 2 FROM 14
+		BROWSE ON TEXT
+		WITH ( vgl_library = GLOBAL ( "CURRENT_LIBRARY" ),  value=sset_val )
+ 
+	form . add_prompt ( pr )
+
+	form . add_display ( "Run type " , 2 , 3 , PROMPT_RENDITION_RAISED )
+ 
+	PROMPT OBJECT pr
+		ON LINE 3 FROM 14 TO  27
+		BROWSE ON PHRASE.OR_CDSRTYP
+		WITH ( vgl_library = GLOBAL ( "CURRENT_LIBRARY" ) )
+ 
+	form . add_prompt ( pr )
+
+	form . add_display ( "No. of replicates " , 2 , 4 , PROMPT_RENDITION_RAISED )
+ 
+	PROMPT OBJECT pr
+		ON LINE 4 FROM 22 TO 27
+		BROWSE ON INTEGER
+		WITH ( value=repl, text=NUMBER_TO_TEXT(repl,"999"),
+			 vgl_library = GLOBAL ( "CURRENT_LIBRARY" ) )
+ 
+	form . add_prompt ( pr )
+
+	{ button }
+	PROMPT OBJECT pr
+		CLASS "STD_PROMPT_BUTTON"
+		ON LINE 1 FROM 98 to 100
+		WITH ( caption="...",
+				vgl_library = GLOBAL ( "CURRENT_LIBRARY" ) ,
+				mouse_click_routine="browse_projects_in_cds")
+ 
+	form . add_prompt ( pr )
+
+
+	IF (CONFIG_INCLUDE_ALTERSAMPLE) THEN
+
+		form . height = form . height + 1
+		form . add_display ( "Alter sample" , 2 , 5 , PROMPT_RENDITION_RAISED )
+ 
+		PROMPT OBJECT pr
+			ON LINE 5 FROM 22 TO 27
+			BROWSE ON BOOLEAN
+			WITH ( is_check=TRUE, value=FALSE, 
+			 vgl_library = GLOBAL ( "CURRENT_LIBRARY" ) )
+	 
+		form . add_prompt ( pr )
+
+	ENDIF
+
+	{ Add frame here at at end, when height is known }
+	form . add_frame ( ""  ,   1, 1, form . height, form . width )
+
+	ARRAY form . user_info 
+
+	form . start_prompt ( )
+	form . wait_prompt ( )
+	form . end_prompt ( )
+
+     IF form.get_lastkey() <> "EXIT" THEN
+
+           proj = STRIP(form . prompt_objects [1] . value)
+           sset = STRIP(form . prompt_objects [2] . value)
+           runtype = STRIP(form . prompt_objects [3] . value)
+           repl = STRIP(NUMBER_TO_TEXT(form . prompt_objects [4] . value,"9999999"))
+
+           IF (CONFIG_INCLUDE_ALTERSAMPLE) THEN
+               IF (form . prompt_objects [6] . value) THEN
+
+                   is_alter=TRUE
+
+               ENDIF
+           ENDIF
+
+           IF (STRIP(form . prompt_objects [1] . value) = "") THEN
+
+                status = "No project"
+
+           ELSEIF (STRIP(form . prompt_objects [2] . value) = "") THEN
+
+                status = "No sample set"
+
+           ELSEIF (STRIP(form . prompt_objects [3] . value) = "") THEN
+
+                status = "No run type set"
+
+           ELSEIF (repl < 1) THEN
+
+                status = "Invalid replicate number"
+
+           ENDIF
+
+    ENDIF
+
+     IF form.get_lastkey() = "EXIT" THEN
+
+        flashmessage ("Exiting...", TRUE)
+
+        EXIT
+
+     ENDIF
+
+
+	RETURN (status)
+
+ENDROUTINE
+
+
+ROUTINE cds_params_validation_routine (self)
+
+	DECLARE form, ok, msg,
+		sset_text, proj_text, numrepl_text
+
+	ok = TRUE
+
+	form = self  
+
+	proj_text = form.prompt_objects[1].text
+	sset_text = form.prompt_objects[2].text
+	numrepl_text = form.prompt_objects[4].text
+
+	IF (INDEX (sset_text, "-") >0) OR
+	   (INDEX (sset_text, "+") >0) OR
+	   (INDEX (sset_text, "*") >0) OR
+	   (INDEX (sset_text, "^") >0) THEN
+
+		msg = "Invalid sample set name"
+		ok = FALSE
+
+	ELSEIF (STRIP(proj_text)="") THEN
+
+		msg = "No project"
+		ok = FALSE
+
+	ELSEIF (numrepl_text="0") THEN
+
+		msg = "Set number of replicates"
+		ok = FALSE
+
+	ENDIF
+
+
+	IF (NOT ok) THEN
+
+		flashmessage (msg, TRUE)
+
+	ENDIF
+
+	RETURN (ok)
+
+ENDROUTINE
+
+
+ROUTINE make_valid_element_name (VALUE element)
+
+    DECLARE ret, i, ch, changeIt, newVal, changeTo
+
+    ret = STRIP(element)
+
+    IF (ret="") THEN
+
+        { Should never be here, but handle it anyway }
+
+        ret = "INVALID_BLANK_NAME"    
+
+    ENDIF
+
+    ret = SUBSTITUTE (ret, " ", "_")
+
+    i = 0
+    WHILE (i < STRINGLENGTH(ret)) DO
+
+        i = i + 1
+        changeIt = FALSE
+        changeTo = "_"
+        ch = GET_CHARACTER_AT(ret,i)
+        IF (SafeOrdCheck(ch) < 48) THEN
+            IF (SafeOrdCheck(ch) <> 45) AND (SafeOrdCheck(ch) <> 46) THEN
+                changeIt = TRUE
+            ENDIF
+        ENDIF
+        IF (SafeOrdCheck(ch) >= 58) AND (SafeOrdCheck(ch) <=64) THEN
+            changeIt = TRUE
+        ENDIF
+        IF (SafeOrdCheck(ch) >= 91) AND (SafeOrdCheck(ch) <=96) THEN
+            changeIt = TRUE
+        ENDIF
+        IF (SafeOrdCheck(ch) = 126) OR (SafeOrdCheck(ch) > 122) THEN
+	      changeTo = "-"
+            changeIt = TRUE
+        ENDIF
+
+        IF (changeIt) THEN
+
+            newVal = changeTo
+            ret = LEFTSTRING (ret,i-1):newVal:
+                     RIGHTSTRING (ret,STRINGLENGTH(ret)-i)
+
+        ENDIF
+
+    ENDWHILE
+
+    { Check valid first character }
+
+    ch = GET_CHARACTER_AT ( TOUPPER(ret),1)
+    IF (SafeOrdCheck(ch)<65) OR (SafeOrdCheck(ch)>90) THEN
+
+        ret="_":ret
+
+    ENDIF
+
+    RETURN (ret)
+
+ENDROUTINE
+
+
+ROUTINE SafeOrdCheck (VALUE ch)
+
+    DECLARE ret
+
+    ret = ORD(ch)
+
+    IF (ret=ERROR) OR (ret=EMPTY) THEN
+
+        ret = 0
+
+    ENDIF
+
+    RETURN (ret)
+
+ENDROUTINE
+
+
+{***************************************************************}
+{ Source data routines
+{***************************************************************}
+
+GLOBAL ROUTINE empower_export_analysis_worksheet 
+							( rmb_object, object, data )
+
+	DECLARE id, wsheet, header_array, test_num_array, tests_array, 
+			status, sent_sampleset_name, 
+			samp_test_array_extra, index_start_extra_samples
+
+	ARRAY header_array
+	ARRAY test_num_array
+	ARRAY tests_array
+
+	data . set_first ()
+
+	WHILE ( data . current <> EMPTY ) DO
+
+		wsheet = SELECT analysis_worksheet . identity 
+			IN OBJECT data . current	
+     
+		id = get_key_value ( data . current )
+		id = SELECT worksheet . identity 
+			WHERE identity = id
+
+		get_analysis_worksheet ( wsheet , header_array, test_num_array)
+		data . set_next ()
+
+	ENDWHILE
+
+	ARRAY samp_test_array_extra
+	fill_test_array (SRC_TYPE_WORKSHEET, wsheet, test_num_array,  
+					samp_test_array_extra, tests_array, index_start_extra_samples)
+
+
+	status = send_cds_data_to_im ( SRC_TYPE_WORKSHEET, wsheet, 
+					STRIP(GLOBAL("OLS_CDS_IM_IP")), STRIP(GLOBAL("OLS_CDS_IM_IPO")),  
+                      tests_array, header_array , sent_sampleset_name, index_start_extra_samples)
+
+     IF (status=EMPTY) THEN
+	     flashmessage ("Transferred worklist ":STRIP(sent_sampleset_name), true)
+     ELSE
+	     flashmessage ("Error: ":status, true)
+     ENDIF
+
+ENDROUTINE
+
+GLOBAL ROUTINE empower_export_batch_worksheet 
+							( rmb_object, object, data )
+
+	DECLARE id, wsheet, header_array, test_num_array, tests_array, 
+			status, sent_sampleset_name, 
+			samp_test_array_extra, index_start_extra_samples
+
+	ARRAY header_array
+	ARRAY test_num_array
+	ARRAY tests_array
+
+	data . set_first ()
+
+	WHILE ( data . current <> EMPTY ) DO
+
+		wsheet = SELECT batch_header . identity 
+                       IN OBJECT data . current	
+     
+		id = get_key_value ( data . current )
+		id =  SELECT batch_header . identity 
+			WHERE identity = id
+
+		get_batch ( wsheet , header_array, test_num_array)
+
+		data . set_next ()
+
+	ENDWHILE
+
+	ARRAY samp_test_array_extra
+	fill_test_array (SRC_TYPE_BATCH, wsheet, test_num_array,
+				samp_test_array_extra, tests_array, index_start_extra_samples)
+
+	status = send_cds_data_to_im ( SRC_TYPE_BATCH, wsheet, 
+				STRIP(GLOBAL("OLS_CDS_IM_IP")), STRIP(GLOBAL("OLS_CDS_IM_IPO")),
+                      tests_array, header_array , sent_sampleset_name, index_start_extra_samples)
+
+     IF (status=EMPTY) THEN
+	     flashmessage ("Transferred worklist ":STRIP(sent_sampleset_name), true)
+     ELSE
+	     flashmessage ("Error: ":status, true)
+     ENDIF
+
+
+ENDROUTINE
+
+GLOBAL ROUTINE empower_export_explorer_samples
+							( rmb_object, object, data )
+
+	DECLARE id, wsheet, header_array, test_num_array, tests_array, i,j,k, tmp,
+			status, rec, array_analyses,  found , samp_test_array, 
+			sent_sampleset_name, found_a_test, 
+			samp_test_array_extra, index_start_extra_samples
+
+	ARRAY header_array
+	ARRAY test_num_array
+	ARRAY samp_test_array
+	ARRAY tests_array
+	ARRAY array_analyses
+
+	found_a_test = FALSE
+	wsheet = ""
+
+	IF (STRIP(GLOBAL("OLS_CDS_SSET_SYNTAX")) <> "") THEN
+
+		wsheet = GET SYNTAX ( STRIP(GLOBAL("OLS_CDS_SSET_SYNTAX")))
+
+	ENDIF
+
+	data . set_first ()
+
+	WHILE ( data . current <> EMPTY ) DO		
+     
+		{ Important to order on sample in test query }
+
+		id = get_key_value ( data . current )		
+		rec = SELECT test.test_number 
+				WHERE sample=id
+				AND ( status="V" OR status="P" OR status="C" )
+				ORDER ON sample
+
+		tmp = size_of_array(samp_test_array) + 1
+		samp_test_array [tmp,1] = id
+
+		WHILE (rec <> EMPTY) DO
+
+			tmp = size_of_array(test_num_array)+1
+			test_num_array [tmp,1] = id  
+			test_num_array [tmp,2] = SELECT test. test_number  
+			test_num_array [tmp,3] = SELECT test. analysis
+
+			NEXT test
+			rec = SELECT test.test_number 
+
+		ENDWHILE
+		
+		data . set_next ()
+
+	ENDWHILE
+
+     { This allows multiple analyses, select 4 }
+
+     display_analysis_form (array_analyses)
+
+     IF (size_of_array(array_analyses)=0) THEN
+
+         flashmessage ("No tests selected, Exiting...", TRUE)
+
+         EXIT
+
+     ENDIF
+
+	{ For samples, fill in the rest of samp_test_array, which here, just has a sample id }
+	{ The tests are in test_num_array, need them in samp_test_array }
+	{ found_a_test  is set=TRUE if a valid test is found }
+
+	i = 0
+
+	WHILE (i < size_of_array(samp_test_array)) DO
+
+		i = i + 1
+		k = 0
+
+		WHILE (k < size_of_array (test_num_array) ) DO
+
+			k = k + 1
+
+			IF (samp_test_array [i,1] = test_num_array [k,1]) THEN
+
+				found = FALSE
+				j = 0
+
+				{ See if this analysis is on the sample }
+
+				WHILE (NOT found) AND
+			 		(j < size_of_array (array_analyses) ) DO
+
+					j = j + 1
+
+					IF (  STRIP(array_analyses[j]) = STRIP(test_num_array[k,3])  ) THEN
+
+						found = TRUE
+						found_a_test = TRUE  { checked later, to stop crash }
+
+						IF (samp_test_array[i, j+1] <> EMPTY) THEN
+
+							samp_test_array[i, j+1] = samp_test_array[i, j+1]:
+								SAMP_TEST_ARRAY_TEST_DELIMITER:
+								test_num_array[k,2]
+
+						ELSE
+
+							samp_test_array[i, j+1] = test_num_array[k,2]
+
+						ENDIF
+
+					ENDIF
+
+				ENDWHILE
+
+			ENDIF
+
+		ENDWHILE
+
+	ENDWHILE
+
+	{ Make new row if >1 test replicates }
+	expand_samp_test_array (samp_test_array)
+
+	ARRAY samp_test_array_extra
+	add_standalone_samples (samp_test_array_extra)
+	fill_test_array (SRC_TYPE_SAMPLES, "", samp_test_array, 
+					samp_test_array_extra, tests_array,
+					index_start_extra_samples)
+
+     { Prevent crash by checking for empty array }
+     IF (NOT found_a_test) THEN
+
+        flashmessage ("No tests for the selected analyses, Exiting.....", TRUE)
+
+        EXIT
+
+     ENDIF
+
+	status = send_cds_data_to_im ( SRC_TYPE_SAMPLES, wsheet, 
+				STRIP(GLOBAL("OLS_CDS_IM_IP")), STRIP(GLOBAL("OLS_CDS_IM_IPO")),
+                      tests_array, header_array , sent_sampleset_name, index_start_extra_samples)
+
+     IF (status=EMPTY) THEN
+	     flashmessage ("Transferred worklist ":STRIP(sent_sampleset_name), true)
+     ELSE
+	     flashmessage ("Error: ":status, true)
+     ENDIF
+
+
+ENDROUTINE
+
+GLOBAL ROUTINE empower_export_test_view 
+							( rmb_object, object, data )
+
+	DECLARE id, wsheet, header_array, test_num_array, tests_array, 
+			status, sent_sampleset_name, indx, 
+			samp_test_array, samp_test_array_extra, index_start_extra_samples
+
+	ARRAY header_array
+	ARRAY test_num_array
+	ARRAY tests_array
+	ARRAY samp_test_array
+
+	wsheet = ""
+	IF (STRIP(GLOBAL("OLS_CDS_SSET_SYNTAX")) <> "") THEN
+
+		wsheet = GET SYNTAX ( STRIP(GLOBAL("OLS_CDS_SSET_SYNTAX")))
+
+	ENDIF
+
+	data . set_first ()
+
+	WHILE ( data . current <> EMPTY ) DO
+	
+		id = get_key_value ( data . current )
+
+		{ May get id_numeric in at start, so clear it, only want test id }
+		id = STRIP (id)
+		indx = INDEX (id, " ")
+
+		IF (indx>0) THEN
+			id = SUBSTRING (id, indx+1, STRINGLENGTH(id)-indx )
+		ENDIF
+
+		id =  SELECT 'CONFIG_EXPLORER_TEST_VIEW_NAME' . test_number
+				WHERE test_number = id
+
+		get_view_test ( id , test_num_array, samp_test_array)
+
+		data . set_next ()
+
+	ENDWHILE
+
+	complete_samp_test_array (samp_test_array, test_num_array)
+	expand_samp_test_array (samp_test_array)
+
+	ARRAY samp_test_array_extra
+	add_standalone_samples (samp_test_array_extra)
+	fill_test_array (SRC_TYPE_TEST, wsheet, samp_test_array, 
+				samp_test_array_extra, tests_array, index_start_extra_samples)
+
+	status = send_cds_data_to_im ( SRC_TYPE_TEST, wsheet, 
+				STRIP(GLOBAL("OLS_CDS_IM_IP")), STRIP(GLOBAL("OLS_CDS_IM_IPO")),
+                      tests_array, header_array , sent_sampleset_name, index_start_extra_samples)
+
+     IF (status=EMPTY) THEN
+
+	     flashmessage ("Transferred worklist ":STRIP(sent_sampleset_name), true)
+     ELSE
+	     flashmessage ("Error: ":status, true)
+     ENDIF
+
+
+ENDROUTINE
+
+
+ROUTINE get_view_test ( VALUE identity , test_num_array, samp_test_array )
+
+	{ samp_test_array is for sorting out samples, same as if call from sample }
+
+	DECLARE test_num, tmp, i, samp, found
+
+	test_num = SELECT test.test_number 
+			WHERE test_number=identity
+
+	IF test_num <> EMPTY THEN
+
+		{ See if this sample is in samp_test_array, and if not, then add it }
+		samp = SELECT test.sample
+		found = FALSE
+		i = 0
+
+		WHILE (NOT found) AND
+			(i < size_of_array(samp_test_array)) DO
+
+			i = i + 1
+			IF (samp_test_array[i,1]=samp) THEN
+
+				found = TRUE
+			ENDIF
+
+		ENDWHILE
+
+		IF (NOT found) THEN
+
+			i = size_of_array (samp_test_array) + 1
+			samp_test_array[i,1] = samp
+
+		ENDIF
+
+		tmp = size_of_array(test_num_array)+1
+		test_num_array [tmp,1] = samp  
+		test_num_array [tmp,2] = SELECT test. test_number  
+		test_num_array [tmp,3] = SELECT test. analysis
+
+	ENDIF
+	 
+ENDROUTINE
+
+ROUTINE get_analysis_worksheet ( wks_name , header_array, test_num_array)
+
+	DECLARE success, wks_type, wks_analysis, wks_date, wks_op,  
+	        wks_file, wks_test_num, hdr_row, tmp
+
+	wks_name = STRIP ( wks_name )
+	wks_file = TOLOWER ( "SMP$WORKSHEETS:" : wks_name : ".WSA" )
+
+	
+	FILE OPEN wks_file, success
+
+	IF ( success = EMPTY ) THEN
+
+		hdr_row = size_of_array(header_array)+2
+
+		FILE READ wks_file, wks_type, success
+		header_array [1,1] = "TYPE"
+		header_array [hdr_row, 1] = wks_type 
+
+		FILE READ wks_file, wks_analysis, success
+		header_array [1,2] = "ANALYSIS"
+		header_array [hdr_row, 2] = wks_analysis
+
+		FILE READ wks_file, wks_date, success
+		header_array [1,3] = "DATE"
+		header_array [hdr_row, 3] = wks_date
+
+		FILE READ wks_file, wks_op, success
+		header_array [1,4] = "OPERATOR"
+		header_array [hdr_row, 4] = wks_op
+	        
+
+		REPEAT
+
+			FILE READ wks_file, wks_test_num, success
+
+			IF ( ( wks_test_num <> EMPTY ) AND
+			     ( wks_test_num <> " "   ) AND
+			     ( success = EMPTY       ) ) THEN
+
+				wks_test_num = SELECT test . test_number
+						WHERE test_number = wks_test_num
+
+				IF (wks_test_num <> EMPTY) THEN
+
+					tmp = size_of_array(test_num_array)+1
+					test_num_array [tmp, 1] = ""    { blank for worksheets }
+					test_num_array [tmp, 2] = wks_test_num
+
+				ENDIF
+
+			ENDIF			
+
+		UNTIL wks_test_num = EMPTY	 
+
+	ENDIF
+
+	FILE CLOSE wks_file, success
+
+ENDROUTINE
+
+
+ROUTINE get_batch ( identity , header_array, test_num_array)
+
+	DECLARE rec, i, hdr_row, test_num, tmp
+
+	hdr_row = size_of_array(header_array)+2
+
+	rec = SELECT batch_header . identity
+			WHERE identity = identity
+
+	i = 0
+
+	IF (rec <> EMPTY) THEN
+
+		i = i + 1
+		header_array [1,i] = "BATCH_CLASS"
+		header_array [hdr_row, i] = SELECT batch_header . 'header_array [1,i]'
+		i = i + 1
+		header_array [1,i] = "TEMPLATE_ID"
+		header_array [hdr_row, i] = SELECT batch_header . 'header_array [1,i]'
+		i = i + 1
+		header_array [1,i] = "ANALYSIS"
+		header_array [hdr_row, i] = SELECT batch_header . 'header_array [1,i]'
+		i = i + 1
+		header_array [1,i] = "ANALYST"
+		header_array [hdr_row, i] = SELECT batch_header . 'header_array [1,i]'
+		i = i + 1
+		header_array [1,i] = "CDS_PROJECT"
+		header_array [hdr_row, i] = SELECT batch_header . 'header_array [1,i]'
+		i = i + 1
+		header_array [1,i] = "CDS_TEMPLATE_NAME"
+		header_array [hdr_row, i] = SELECT batch_header . 'header_array [1,i]'
+		i = i + 1
+		header_array [1,i] = "CDS_ANALYSIS_NAME"
+		header_array [hdr_row, i] = SELECT batch_header . 'header_array [1,i]'
+		i = i + 1
+		header_array [1,i] = "CDS_METHOD_NAME"
+		header_array [hdr_row, i] = SELECT batch_header . 'header_array [1,i]'
+		i = i + 1
+		header_array [1,i] = "CDS_CONTROL_NAME"
+		header_array [hdr_row, i] = SELECT batch_header . 'header_array [1,i]'
+		i = i + 1
+		header_array [1,i] = "CDS_INSTRUMENT"
+		header_array [hdr_row, i] = SELECT batch_header . 'header_array [1,i]'
+		i = i + 1
+		header_array [1,i] = "CDS_APPEND_ANALYSIS"
+		header_array [hdr_row, i] = SELECT batch_header . 'header_array [1,i]'
+
+	ENDIF
+
+
+	test_num = SELECT batch_entry . test
+	           	WHERE identity = identity
+	          	 ORDER ON order_number
+
+	WHILE test_num <> EMPTY DO
+
+		tmp = size_of_array(test_num_array)+1
+		test_num_array [tmp, 1] = ""    { blank for worksheets }
+		test_num_array [tmp, 2] = test_num
+
+		NEXT batch_entry			
+		test_num = SELECT batch_entry . test
+
+	ENDWHILE
+	 
+
+ENDROUTINE
+
+{
+sm_samp_test_array is input: 
+  For worksheet, the tests are rows. For samples, the samples are rows, tests are columns.
+
+index_start_extra_samples is output
+}
+ROUTINE fill_test_array (VALUE source_type, VALUE source_id, 
+			sm_samp_test_array,  sm_samp_test_array_extra,
+			full_array, index_start_extra_samples )
+
+	DECLARE highest_column_no
+	ARRAY full_array
+
+	ARRAY g_test_properties   { MOD1 }
+
+	highest_column_no=0
+	index_start_extra_samples = 0
+	fill_test_array_internal (source_type, source_id, 
+			sm_samp_test_array, full_array, highest_column_no, TRUE)
+
+	index_start_extra_samples = sizeofarray (full_array)
+
+	fill_test_array_internal (source_type, source_id, 
+			sm_samp_test_array_extra, full_array, highest_column_no,FALSE)
+
+
+	RETURN (TRUE)
+
+ENDROUTINE
+
+
+{
+   full_array is out
+   highest_column_no is in,out  (for allowing a different set of columns in 2nd array without deleting the first set)
+}
+ROUTINE fill_test_array_internal (VALUE source_type, VALUE source_id, 
+			sm_samp_test_array, full_array, highest_column_no, VALUE is_first_call)
+
+	DECLARE i,j,k, full_array_count, fld_type, val, samp_id,
+			field_array_sample, field_array_batch, field_array_result, 
+			field_array_test, field_array_result_samp, 
+			field_array_analysis, field_array_vgl, num_a
+			,field_array_lte, lte_index, field_array_lte_temp
+
+
+      j=0
+	i = 1
+	full_array [1,i] = "sample"
+	i = i + 1
+	full_array [1,i] = "test1"
+	i = i + 1
+	full_array [1,i] = "test2"
+	i = i + 1
+	full_array [1,i] = "test3"
+	i = i + 1
+	full_array [1,i] = "test4"
+
+	ARRAY field_array_sample
+	fld_type = "S"
+	get_configured_fields (fld_type, field_array_sample)	 
+
+	{ test fields }
+	ARRAY field_array_test
+	fld_type = "T"
+	get_configured_fields (fld_type, field_array_test)
+	
+	{ component names from analysis definition }
+	ARRAY field_array_analysis
+	fld_type = "A"
+	get_configured_fields (fld_type, field_array_analysis)
+	IF (size_of_array (field_array_analysis)>0) THEN
+
+		IF (NOT NUMTEXT(field_array_analysis[1,1])) OR
+			(STRIP(field_array_analysis[1,1])="0") THEN
+			field_array_analysis[1,1]="10"
+		ENDIF
+		num_a= NUMBER_TO_TEXT (field_array_analysis[1,1],"9999")
+		ARRAY field_array_analysis 
+		i = 0
+		WHILE (i < num_a) DO
+
+			i = i + 1
+			field_array_analysis[i,1] = ""  { will be filled later }
+			field_array_analysis[i,2] = ""
+
+		ENDWHILE
+
+	ENDIF
+
+	{ result values for test }
+	ARRAY field_array_result
+	fld_type = "R"
+	get_configured_fields (fld_type, field_array_result)
+	 
+	{ result values for sample }
+	ARRAY field_array_result_samp
+	fld_type = "Q"
+	get_configured_fields (fld_type, field_array_result_samp)
+
+	{ Batch fields }
+	ARRAY field_array_batch
+	fld_type = "B"
+	IF (source_type=SRC_TYPE_BATCH ) THEN
+
+		get_configured_fields (fld_type, field_array_batch)
+	ENDIF
+
+	{ VGL callback fields }
+	ARRAY field_array_vgl
+	fld_type = "V"
+	get_configured_fields (fld_type, field_array_vgl)
+
+	{ LTE (configured) fields }
+	ARRAY field_array_lte
+	fld_type = "L"
+	get_configured_fields (fld_type, field_array_lte)
+
+	i = 0
+
+	WHILE (i < size_of_array (sm_samp_test_array)) DO
+
+		i = i + 1
+
+		IF (TRUE) THEN
+
+			{ This select is only to get the sample }
+			{4 tests, but all the same sample       }
+
+			k = 1
+			WHILE (k<5) DO
+
+				k = k + 1
+				IF (sm_samp_test_array[i, k]=EMPTY) THEN
+					sm_samp_test_array[i, k] = ""
+				ENDIF
+
+			ENDWHILE
+
+			samp_id = SELECT test.sample 
+					WHERE test_number=sm_samp_test_array[i, 2]
+					  OR test_number=sm_samp_test_array[i, 3]
+					  OR test_number=sm_samp_test_array[i, 4]
+					  OR test_number=sm_samp_test_array[i, 5]
+
+			store_test_properties ()   { MOD1 }
+
+			IF (samp_id <> EMPTY) THEN
+
+				full_array_count = size_of_array (full_array ) + 1
+
+                        { first thing is analysis number }
+				j = 1
+				full_array  [full_array_count,  j] = samp_id
+				k = 0
+				WHILE (k<4) DO
+
+					k = k + 1
+					val = SELECT test.analysis 
+							WHERE test_number=sm_samp_test_array[i, k+1]
+					IF (val=EMPTY) THEN
+						val = ""
+					ELSE
+						val = STRIP(val): "/" : STRIP (SELECT test.test_count)
+					ENDIF
+					j = j + 1
+					full_array  [full_array_count,  j] = val
+
+				ENDWHILE
+
+				IF (highest_column_no>0) AND (j<=highest_column_no) THEN
+
+					j = highest_column_no + 1
+				ENDIF
+
+				IF (size_of_array (field_array_sample)>0) THEN
+
+					clear_fields_array_value (field_array_sample)
+					flds_get_sample_data (samp_id, field_array_sample)
+					store_conf_fields_value (field_array_sample, full_array, full_array_count, j, "S", is_first_call)
+
+				ENDIF
+ 
+				IF (size_of_array (field_array_test)>0) THEN
+
+					clear_fields_array_value (field_array_test)
+					flds_get_test_data (sm_samp_test_array[i, 2],
+									    sm_samp_test_array[i, 3],
+									    sm_samp_test_array[i, 4],
+									    sm_samp_test_array[i, 5],
+									    field_array_test     )
+					store_conf_fields_value (field_array_test, full_array, full_array_count, j, "T", is_first_call)
+
+				ENDIF
+
+				IF (size_of_array (field_array_analysis)>0) THEN
+
+					clear_fields_array_value (field_array_analysis)
+					flds_get_analysis_data (sm_samp_test_array[i, 2],
+									    sm_samp_test_array[i, 3],
+									    sm_samp_test_array[i, 4],
+									    sm_samp_test_array[i, 5],
+									    field_array_analysis     )
+					store_conf_fields_value (field_array_analysis, full_array, full_array_count, j, "A", is_first_call)
+
+				ENDIF
+
+				IF (size_of_array (field_array_result)>0) THEN
+
+					clear_fields_array_value (field_array_result)
+					flds_get_result_data (  sm_samp_test_array[i, 2],
+									    sm_samp_test_array[i, 3],
+									    sm_samp_test_array[i, 4],
+									    sm_samp_test_array[i, 5],
+									    field_array_result     )
+					store_conf_fields_value (field_array_result, full_array, full_array_count, j, "R", is_first_call)
+
+				ENDIF
+
+				IF (size_of_array (field_array_result_samp)>0) THEN
+
+					clear_fields_array_value (field_array_result_samp)
+					flds_get_sample_result_data (  samp_id,  field_array_result_samp  )
+					store_conf_fields_value (field_array_result_samp, full_array, full_array_count, j, "Q", is_first_call)
+
+				ENDIF
+
+
+				IF (size_of_array (field_array_batch)>0) THEN
+
+					clear_fields_array_value (field_array_batch)
+					flds_get_batch_data (source_id, field_array_batch)
+					store_conf_fields_value (field_array_batch, full_array, full_array_count, j, "B", is_first_call)
+
+				ENDIF
+
+				IF (size_of_array (field_array_vgl)>0) THEN
+
+					clear_fields_array_value (field_array_vgl)
+					flds_get_vgl_data (samp_id,
+							sm_samp_test_array[i, 2],
+							sm_samp_test_array[i, 3],
+							sm_samp_test_array[i, 4],
+							sm_samp_test_array[i, 5],
+							 field_array_vgl)
+					store_conf_fields_value (field_array_vgl, full_array, full_array_count, j, "V", is_first_call)
+
+				ENDIF
+
+				IF (size_of_array (field_array_lte)>0) THEN
+
+					{ There is a value in field_array_lte for the LTE record }
+
+					lte_index = 0
+					WHILE (lte_index < sizeofarray(field_array_lte)) DO
+
+						lte_index = lte_index + 1
+
+						ARRAY field_array_lte_temp
+						flds_get_lte_result_data  (samp_id,
+							sm_samp_test_array[i, 2],
+							sm_samp_test_array[i, 3],
+							sm_samp_test_array[i, 4],
+							sm_samp_test_array[i, 5],
+							 field_array_lte_temp , 
+							field_array_lte [lte_index,1])
+
+						store_conf_fields_value (field_array_lte_temp,
+									 full_array, full_array_count, j, "L", is_first_call)
+					ENDWHILE
+
+				ENDIF
+
+			ENDIF
+
+		ENDIF
+
+	ENDWHILE
+
+	highest_column_no = j-1
+
+ENDROUTINE
+
+
+ROUTINE clear_fields_array_value (field_array)
+
+	DECLARE i
+
+	i = 0
+
+	WHILE (i<size_of_array(field_array)) DO
+
+		i = i + 1
+		field_array [i,2] = ""
+
+	ENDWHILE
+
+ENDROUTINE
+
+
+ROUTINE store_conf_fields_value (field_array, full_array, full_array_count, 
+							current_column, VALUE suffix,
+							VALUE is_first_call)
+
+	DECLARE k, hdr, column_to_use
+
+	k = 0
+
+	WHILE (k < size_of_array (field_array)) DO
+
+		k = k + 1
+
+		{ field name }
+		hdr = STRIP(field_array [k,1])
+
+		IF ( CONFIG_USE_FIELDS_SUFFIX ) THEN
+
+			hdr = suffix:".":hdr
+
+		ENDIF
+
+		{ Here, Always leave in each column, even if the value is blank }
+		{ Otherwise the data may go into the wrong columns  }
+
+		IF (TRUE) THEN
+
+			IF (TRUE) THEN
+
+				{ possible that the column is here already, so search }
+				DECLARE col_cnt
+				column_to_use = 0
+				col_cnt=0
+				WHILE (column_to_use = 0) AND
+					(full_array[1,col_cnt+1]<>EMPTY) DO
+
+					col_cnt = col_cnt + 1
+					IF (full_array[1,col_cnt]=hdr) THEN
+
+						column_to_use = col_cnt
+					ENDIF
+
+				ENDWHILE
+
+				IF (column_to_use=0) THEN
+
+					{ that field is not here, add new column for it }
+					current_column = col_cnt + 1
+					column_to_use = current_column
+
+				ENDIF
+
+			ENDIF
+
+			IF (  NUMTEXT( STRIP(field_array [k, 2]) )  ) THEN
+
+				full_array  [full_array_count,  column_to_use] = field_array [k, 2]
+
+			ELSE
+
+				full_array  [full_array_count,  column_to_use] = STRIP (field_array [k, 2])
+
+			ENDIF
+
+			IF (TRUE) THEN
+
+				{ Always fill the header row }
+				{ 1st row is header, but none set for the conf. fields, so do here }
+
+				full_array  [1,  column_to_use] = hdr
+
+			ENDIF
+
+		ENDIF
+
+	ENDWHILE
+
+ENDROUTINE
+
+ROUTINE get_key_value ( data_object )
+
+	DECLARE key, table, key_fields, count, field, val
+
+	key   = ""
+	count = 1
+	table = data_object . table
+
+	GET_TABLE_DETAILS 'table', "KEY0_FIELD", key_fields
+
+	WHILE ( key_fields [ count ] <> EMPTY ) DO
+
+		field = key_fields [ count ]
+		val = SELECT 'table' . 'field' IN OBJECT data_object
+		key = key : val
+
+		count = count + 1
+		
+	ENDWHILE
+
+	RETURN ( key )
+
+ENDROUTINE
+
+
+ROUTINE display_analysis_form (array_analyses)
+
+	DECLARE pr, form, status , select_array
+
+     ARRAY array_analyses   ARRAYSIZE (4)
+     ARRAY select_array
+     status = make_browse_criteria ("ANALYSIS_VIEW", GLOBAL("OLS_CDS_ANALYSIS_CRITERIA"), 
+							select_array)
+
+     IF (status <> EMPTY) THEN
+
+         flashmessage ("Analysis criteria error: ":status, TRUE)
+
+         RETURN
+
+     ENDIF
+
+	set_up_std_prompt_list_class ( )
+ 
+	CREATE OBJECT "STD_FORM", form
+ 
+	form . height = 4
+	form . width = 50
+	form . row = 4
+	form . column = 6
+	form . border = TRUE
+	form . header = "Select Analyses"	
+
+     form . add_frame ( ""  ,   1, 1, form . height, form . width )
+     form . add_display ( "Analysis 1 " , 2 , 1 , PROMPT_RENDITION_RAISED )
+ 
+	PROMPT OBJECT pr
+		ON LINE 1 FROM 14
+		BROWSE ON analysis_view
+		WITH (  vgl_library = GLOBAL ( "CURRENT_LIBRARY" ) ,
+                 mandatory_array = select_array )
+ 
+	form . add_prompt ( pr )
+     form . add_display ( "Analysis 2 " , 2 , 2 , PROMPT_RENDITION_RAISED )
+
+
+	PROMPT OBJECT pr
+		ON LINE 2 FROM 14
+		BROWSE ON analysis_view
+		WITH (  vgl_library = GLOBAL ( "CURRENT_LIBRARY" ) ,
+                 mandatory_array = select_array )
+ 
+	form . add_prompt ( pr )
+     form . add_display ( "Analysis 3 " , 2 , 3 , PROMPT_RENDITION_RAISED )
+ 
+	PROMPT OBJECT pr
+		ON LINE 3 FROM 14  
+		BROWSE ON analysis_view
+		WITH (  vgl_library = GLOBAL ( "CURRENT_LIBRARY" ) ,
+                 mandatory_array = select_array )
+ 
+	form . add_prompt ( pr )
+	form . add_display ( "Analysis 4 " ,  2 , 4 , PROMPT_RENDITION_RAISED )
+
+
+	PROMPT OBJECT pr
+		ON LINE 4 FROM 14
+		BROWSE ON analysis_view
+		WITH (  vgl_library = GLOBAL ( "CURRENT_LIBRARY" ) ,
+                 mandatory_array = select_array )
+ 
+	form . add_prompt ( pr )
+
+	ARRAY form . user_info 
+
+	form . start_prompt ( )
+	form . wait_prompt ( )
+	form . end_prompt ( )
+
+	IF (form . get_lastkey () = "EXIT" ) THEN
+             
+			flashmessage ("Exiting...", TRUE)
+
+			EXIT
+
+        ELSE
+
+           array_analyses [1] = STRIP(form . prompt_objects [1] . value)
+           array_analyses [2] = STRIP(form . prompt_objects [2] . value)
+           array_analyses [3] = STRIP(form . prompt_objects [3] . value)
+           array_analyses [4] = STRIP(form . prompt_objects [4] . value)
+          
+    ENDIF
+
+ENDROUTINE
+
+
+ROUTINE make_browse_criteria (VALUE crit_table, VALUE crit_name, select_array)
+
+    DECLARE status, rec
+
+    status = EMPTY
+    ARRAY select_array
+
+    rec = SELECT criteria_saved . identity
+                WHERE table_name = crit_table
+                  AND identity = crit_name
+
+    IF ( rec = EMPTY ) THEN
+        
+        status = "Invalid criteria ":STRIP(crit_name):" on ":STRIP(crit_table)
+
+    ENDIF
+
+    IF (status = EMPTY) THEN
+
+        status = criteria_saved_load_squirrel ( crit_table,
+                                                crit_name     ,
+                                                select_array )
+    ENDIF
+
+    RETURN (status)
+
+ENDROUTINE
+
+
+ROUTINE confirm_and_update_tests_array (array_tests)
+
+	DECLARE array_grid_data,  array_columns,  i 
+
+	ARRAY array_grid_data
+	ARRAY array_columns
+
+	i = 1
+	array_columns [i,1] = "Sample"
+	array_columns [i,2] = 20
+	i = i + 1
+	array_columns [i,1] = "Test 1"
+	array_columns [i,2] = 20
+	i = i + 1
+	array_columns [i,1] = "Test 2"
+	array_columns [i,2] = 20
+	i = i + 1
+	array_columns [i,1] = "Test 3"
+	array_columns [i,2] = 20
+	i = i + 1
+	array_columns [i,1] = "Test 4"
+	array_columns [i,2] = 20
+
+	{ Grid prompt to confirm/modify }
+	make_grid_array (array_tests, array_grid_data)
+	show_the_grid (array_grid_data,    array_columns)
+
+	i = 0
+	WHILE (i < size_of_array (array_grid_data)) DO
+
+		i = i + 1
+		array_tests [i+1,1] = STRIP(array_grid_data[i,1])
+		array_tests [i+1,2] = STRIP(array_grid_data[i,2])
+		array_tests [i+1,3] = STRIP(array_grid_data[i,3])
+		array_tests [i+1,4] = STRIP(array_grid_data[i,4])
+		array_tests [i+1,5] = STRIP(array_grid_data[i,5])
+
+	ENDWHILE
+
+	{ If no tests, remove }
+	i = 0
+
+	WHILE (i < size_of_array (array_tests)) DO
+
+		i = i + 1
+
+		IF (STRIP(array_tests[i,2]) = "") AND
+			(STRIP(array_tests[i,3]) = "") AND
+			(STRIP(array_tests[i,4]) = "") AND
+			(STRIP(array_tests[i,5]) = "") THEN
+
+			array_remove_slice (array_tests,1,i)
+			i = i - 1
+
+		ENDIF
+
+	ENDWHILE
+
+ENDROUTINE
+
+{****************************************************************}
+{ grid routines  }
+
+
+{
+  tests_array IN
+  grid_array OUT
+}
+ROUTINE make_grid_array (tests_array, grid_array)
+
+	DECLARE i, grid_row,  status
+
+	status = EMPTY	
+	ARRAY grid_array
+
+	{ skip 1st row }
+	i = 1
+
+	WHILE (i < size_of_array(tests_array)) DO
+
+		i = i + 1
+
+		grid_row = size_of_array (grid_array) + 1
+		grid_array [grid_row,1] = tests_array [i,1]
+		grid_array [grid_row,2] = tests_array [i,2]
+		grid_array [grid_row,3] = tests_array [i,3]
+		grid_array [grid_row,4] = tests_array [i,4]
+		grid_array [grid_row,5] = tests_array [i,5]
+
+	ENDWHILE
+
+	RETURN (status)
+
+ENDROUTINE
+
+
+{
+  array_grid_data  IN, OUT
+  array_columns IN
+}
+ROUTINE show_the_grid (array_grid_data,    array_columns)
+		
+
+    DECLARE form,  pr, can_leave, i,j, grid_col_cnt,
+           start_line, start_col, status,
+          the_header, form_height, frm_width, tbl_width
+
+    the_header  = "Select tests"
+    form_height = 15
+    frm_width   = 100
+
+    status = EMPTY
+
+
+    { Get total width of all columns }
+    tbl_width = 0
+    i = 0
+    WHILE (i < size_of_array (array_columns)) DO
+
+        i = i + 1
+        tbl_width = tbl_width + NUMERIC (array_columns [i,2])
+
+    ENDWHILE
+
+    IF (tbl_width >= (frm_width-3)) THEN
+
+        tbl_width = frm_width - 3
+
+    ENDIF
+
+
+    PROMPT OBJECT form
+        CLASS PROMPT_CLASS_FORM
+        WITH ( width  = frm_width              ,
+               row    = 5                                   ,
+               column = 10                                  ,
+               height = form_height                          ,
+               header = the_header                          ,
+               footer = "<DO> to Continue, <EXIT> to Cancel",
+               proportional = TRUE                          ,
+               return_behaviour = FORM_RETURN_LEAVE     ,
+               user_info = ""  )
+
+    form . add_frame ( "" ,   1, 1, form_height, form.width )
+      
+    start_line = 1
+    start_col  = 3
+
+
+    { Add grid }
+    DECLARE the_grid
+                    
+    PROMPT OBJECT the_grid
+    CLASS PROMPT_CLASS_GRID
+    WITH ( row                  = start_line ,
+           column               = start_col,
+           height               = form_height ,
+           width                = tbl_width ,
+           cell_columns         = SIZE_OF_ARRAY (array_columns)  ,
+           cell_rows            = SIZE_OF_ARRAY (array_grid_data) ,
+           current_column       = 1 ,
+           current_row          = 1 ,
+           check_move_routine   = "grid_check_move" ,
+           prompt_cell_routine  = "grid_prompt" ,
+           display_cell_routine = "grid_display" )
+
+
+    the_grid . title_size_top          = 1
+    grid_col_cnt = 0
+    i = 0
+
+    WHILE (i < SIZE_OF_ARRAY (array_columns)) DO
+
+        grid_col_cnt = grid_col_cnt + 1
+        i = i + 1
+
+        the_grid . title_text_top [ grid_col_cnt , 1 ] = array_columns [i,1]
+        the_grid . column_size    [ grid_col_cnt ] = array_columns [i,2]
+
+    ENDWHILE
+
+    ARRAY the_grid . user_info 
+
+    { Add in the data }
+
+    i = 0
+
+    WHILE (i < SIZE_OF_ARRAY (array_grid_data)) DO
+
+        i = i + 1
+        grid_col_cnt = 0
+        j = 0
+        WHILE (j < SIZE_OF_ARRAY (array_columns)) DO
+
+            grid_col_cnt = grid_col_cnt + 1
+            j = j + 1
+            the_grid . user_info [i, grid_col_cnt] = array_grid_data [i, j]
+
+        ENDWHILE
+
+    ENDWHILE
+
+    form . add_prompt ( the_grid )
+
+    { "Remove" button }
+    PROMPT OBJECT pr
+		CLASS "STD_PROMPT_BUTTON"
+		ON LINE form_height+2 FROM 1 to 10
+		WITH ( caption="Remove",
+				vgl_library = GLOBAL ( "CURRENT_LIBRARY" ) ,
+				mouse_click_routine="remove_grid_item")
+ 	
+    form . add_prompt ( pr )
+
+
+    { Display the form }
+
+    form . start_prompt ()
+
+    REPEAT
+
+        form . wait_prompt  ()
+
+        can_leave = TRUE
+
+        IF (form . get_lastkey () = "EXIT" ) THEN
+             
+			flashmessage ("Exiting...", TRUE)
+
+			EXIT
+
+        ELSE
+
+            i = 0
+            WHILE (i < size_of_array (array_grid_data)) DO
+
+                i = i + 1
+                j = 1
+                WHILE (j < 4) DO
+
+                    j = j + 1
+                    IF (STRIP(the_grid . user_info [i, j]) = "") THEN
+
+                         { If user blanked out the test, update array }
+                         array_grid_data [i,j] = ""
+
+                    ENDIF
+
+                ENDWHILE
+
+            ENDWHILE
+
+        ENDIF
+
+    UNTIL  (can_leave) OR (form . get_lastkey () = "EXIT" ) 
+ 
+
+    form . end_prompt ()
+
+
+    RETURN (status)
+
+
+ENDROUTINE    {    disp_results_grid   }
+
+
+ROUTINE grid_prompt (       self        ,
+                  VALUE cell_column ,
+              VALUE cell_row    ,
+                window      ,
+              VALUE column      ,
+              VALUE row         ,
+              VALUE cell_height ,
+                  VALUE cell_width  )
+
+    DECLARE arr
+
+    IF (cell_column>1) THEN
+
+                ARRAY arr
+                arr [1] = self
+                arr [2] = cell_row
+
+                PROMPT FOR self . user_info [ cell_row, cell_column]
+                    AT column, row
+                    IN WINDOW window
+                    TO column + cell_width - 1
+				BROWSE ON TEXT
+                    WITH( DISPLAY_ONLY = FALSE,
+                     { browse_routine="browse_samples", }
+                     user_info = arr)
+
+    ELSE
+
+
+                PROMPT FOR self . user_info [ cell_row, cell_column]
+                    AT column, row
+                    IN WINDOW window
+                    TO column + cell_width - 1
+                    WITH( DISPLAY_ONLY = TRUE)
+
+    ENDIF
+
+
+ENDROUTINE      {  grid_prompt }
+
+
+ROUTINE grid_display (       self        ,
+               VALUE cell_column ,
+               VALUE cell_row    ,
+                 window      ,
+               VALUE column      ,
+               VALUE row         ,
+               VALUE cell_height ,
+               VALUE cell_width  )
+
+
+    DECLARE display_val
+
+    display_val = self . user_info [cell_row, cell_column]
+
+    IF (cell_column > -1) THEN
+
+        imcust_analysis_grid_display (self, cell_row, cell_column, display_val)
+
+        DISPLAY display_val
+        IN WINDOW window
+        ON LINE row FROM column
+        INVERSE = FALSE
+        WITH ( foreground_colour = PROMPT_COLOUR_BLACK )
+
+    ENDIF
+ 
+
+ENDROUTINE    {  grid_display  }
+
+
+ROUTINE grid_check_move (       self        ,
+                          VALUE cell_column ,
+                          VALUE cell_row    ,
+                                new_column  ,
+                                new_row     )
+
+    IF ( cell_row <> new_row ) THEN
+
+        self . current_row    = new_row
+        self . current_column = new_column
+
+        IF ( cell_row > 0 ) AND
+           ( cell_row <= SIZE_OF_ARRAY ( self . user_info )) THEN
+
+            IF ( STRIP(self . user_info [ cell_row, 1]) <> "" ) AND
+               ( self . user_info [ cell_row, 1 ] <> EMPTY ) THEN
+
+            self . redisplay_row ( cell_row )
+
+            ENDIF
+
+        ENDIF
+
+        self . redisplay_row ( new_row )
+
+    ENDIF
+
+    self . redisplay_row ( new_row )
+
+ENDROUTINE     {  grid_check_move  }
+
+
+{*****************************************************************}
+
+ROUTINE remove_grid_item (self)
+
+	DECLARE grid
+
+	grid = self.parent_prompt.prompt_objects[1]
+
+	IF (BLANK(grid . user_info [ grid . current_row, 2 ])) AND
+		 (BLANK(grid . user_info [ grid . current_row, 3 ])) AND
+		 (BLANK(grid . user_info [ grid . current_row, 4 ])) AND
+	 	 (BLANK(grid . user_info [ grid . current_row, 5 ])) THEN
+
+		RETURN  { all deleted for this line, prevent a count twice }
+
+	ENDIF
+
+	IF (grid . current_column < 2) THEN
+
+		flashmessage ("Select a test", TRUE)
+
+	ELSEIF ( confirm_with_text ("Remove this test (":
+			STRIP(grid . user_info [ grid . current_row, 1 ]):
+               "  ":
+               STRIP(grid . user_info [ grid . current_row, grid . current_column ]):")?") )
+
+		grid . user_info [ grid . current_row, grid . current_column ] = ""
+		grid . redisplay_row ( grid . current_row )
+
+		{ MOD2 } 
+		{ If Removed a sample, then the index of the standards samples at the end needs to change }
+		IF (grid . current_row < g_index_start_extra_initial) THEN
+
+			{ if any left, dont count it  }
+			IF (BLANK(grid . user_info [ grid . current_row, 2 ])) AND
+				 (BLANK(grid . user_info [ grid . current_row, 3 ])) AND
+				 (BLANK(grid . user_info [ grid . current_row, 4 ])) AND
+	 			 (BLANK(grid . user_info [ grid . current_row, 5 ])) THEN
+
+				g_index_start_extra_samples = g_index_start_extra_samples - 1
+
+			ENDIF
+		ENDIF
+ 
+	ENDIF
+
+ENDROUTINE
+
+
+ROUTINE browse_projects_in_cds ( self )
+
+	DECLARE cmd, quot, check_ok, cds, user, pwd, dummy_project, exe_location, 
+            output_location, file_to_write, error_file
+	DECLARE old_version_suffix  { MOD3 }
+
+	IF (g_use_old_empower) THEN
+
+		old_version_suffix = "_e2"
+	ELSE
+		old_version_suffix = ""
+	ENDIF
+
+	quot = ASCII (34)
+
+	exe_location = get_instance_logical ("smp$programs"):"\Orbis\":STRIP ( GLOBAL("OLS_CDS_INSTANCE") ):old_version_suffix:"\"
+	output_location = get_instance_logical ("smp$userfiles") : "\Empower":old_version_suffix:"\"
+	dummy_project = GLOBAL("OLS_CDS_PROJECT")
+	get_cds_user_details (cds, user, pwd, FALSE)
+
+	file_to_write = output_location:"A_":STRIP(GLOBAL("operator")):"_2.txt"
+	error_file = file_to_write:".error.log"
+
+     { Ensure no error log there }
+	IF (FILE EXISTS (error_file)) THEN
+
+	     FILE DELETE error_file
+	ENDIF
+
+	cmd = quot:quot:exe_location:
+		"Orbis.LimsClientEmpower.exe":quot:
+        "  ":
+	   quot:file_to_write:quot:
+        "  ":
+	   dummy_project:" ":cds:" ":user:" ":pwd:" 2 #BLANK F":quot
+
+
+	SPAWN cmd, check_ok QUIETLY
+
+	IF (check_ok <> EMPTY) THEN
+
+		flashmessage (check_ok, TRUE)
+
+	ENDIF
+
+ENDROUTINE
+
+ROUTINE get_instance_logical (VALUE logical_name)
+
+	{ Gets the instance (1st) logical as a string, without concetenated other paths }
+
+	DECLARE ret, i
+
+	ret = LOGICAL (logical_name)
+
+	i = INDEX (ret, ";")
+	IF (i>0) THEN
+		ret = LEFTSTRING (ret, i-1)
+	ENDIF
+	
+	RETURN ( STRIP(ret) )
+
+ENDROUTINE
+
+
+ROUTINE browse_projects_local ( self )
+    
+    DECLARE the_array, i, browse_params_array, browse_type, array_results
+
+    ARRAY the_array
+    ARRAY browse_params_array
+
+    browse_type = "2"
+
+    get_browse_array_projects_local (browse_type, browse_params_array,
+                        array_results)
+
+    i = 0
+
+    WHILE (i < size_of_array (array_results)) DO
+
+        i = i + 1
+        
+        the_array [i,1] = array_results [i,1]
+        the_array [i,2] = ""
+
+    ENDWHILE
+
+    browse_on_array ( 200 , self . text ,the_array )
+
+    self . repaste ( )
+    
+ENDROUTINE
+
+
+ROUTINE get_browse_array_projects_local (browse_type, browse_params_array,
+                        array_results)
+
+    DECLARE status, file_status, row_count, parsed_string, 
+             file_to_parse , error_file, needs_browse_cds
+	,old_version_suffix
+
+    IF (g_use_old_empower) THEN
+
+		old_version_suffix = "_e2"
+    ELSE
+		old_version_suffix = ""
+    ENDIF
+
+    status = EMPTY
+    ARRAY array_results
+    needs_browse_cds = FALSE
+    file_to_parse = "smp$userfiles:Empower":old_version_suffix:"\A_":STRIP(GLOBAL("operator")):"_":STRIP(browse_type):".txt"
+    error_file = file_to_parse:".error.log"
+
+{    file_to_parse = "smp$userfiles:Empower_ALL_":STRIP(browse_type):".txt"
+}
+    display_and_delete_error (error_file)
+
+    FILE OPEN file_to_parse, file_status
+
+    IF file_status <> EMPTY THEN
+
+        needs_browse_cds = TRUE
+
+    ELSE
+
+        { read header details }
+        FILE READ file_to_parse, parsed_string, file_status
+
+        IF (file_status <> EMPTY) THEN
+
+            needs_browse_cds = TRUE
+
+        ELSE
+{
+            parsed_string = STRIP(parsed_string)
+            IF (STRINGLENGTH(parsed_string) < 16) THEN
+
+                needs_browse_cds = TRUE
+
+            ELSE
+
+	           parsed_string = SUBSTRING (parsed_string,1,16)
+                IF (IS_DATE(parsed_string)) THEN
+
+                    SET DATE FORMAT "YYYY-MZ-DZ H24:MI"
+                    last_date = DATE (parsed_string)
+                    RESTORE DATE FORMAT
+
+                    last_date = last_date + "0 00:06:00.0"  
+                    IF (last_date < NOW) THEN
+
+                        needs_browse_cds = TRUE
+
+                    ENDIF
+
+                ELSE
+
+                    needs_browse_cds = TRUE
+
+                ENDIF
+
+
+            ENDIF
+}
+
+        ENDIF
+
+    ENDIF
+
+    IF (needs_browse_cds) AND (NOT g_browse_started) THEN
+
+        { prevent it happening too often }
+        g_browse_started = TRUE
+
+    ENDIF
+
+    IF (needs_browse_cds) THEN
+
+        IF (g_browse_started) THEN
+
+            RETURN (status)
+
+        ENDIF
+
+        { wait for the browse }
+        SLEEP FOR INTERVAL ("0 00:00:06.0")
+
+    ENDIF
+
+    row_count = 0
+
+    REPEAT
+
+        FILE READ file_to_parse, parsed_string, file_status
+
+        IF (STRIP(parsed_string) <> "") AND (file_status=EMPTY) THEN
+
+            row_count = row_count + 1
+            array_results [row_count, 1] = parsed_string
+
+        ENDIF
+
+    UNTIL (file_status <> EMPTY)
+
+    FILE CLOSE file_to_parse
+
+    RETURN (status)
+
+ENDROUTINE
+
+ROUTINE display_and_delete_error (error_file)
+
+	DECLARE fn, line, msg, chk
+
+	fn = error_file
+
+	IF (FILE EXISTS(fn)) THEN
+
+		FILE OPEN fn
+
+		FILE READ fn, line, chk  { ignore 1st line, date }
+		msg = ""
+		WHILE (chk = EMPTY) DO
+
+			FILE READ fn, line, chk
+
+			IF (chk=EMPTY) THEN
+
+				msg = msg:line
+			ENDIF
+
+		ENDWHILE
+
+		FILE CLOSE fn
+		FILE DELETE fn
+
+		flashmessage ("Error browsing on Empower data: ":msg, true)
+
+	ENDIF
+
+ENDROUTINE
+
+
+ROUTINE get_configured_fields (VALUE fldtype, fields_array)
+
+	DECLARE rec,  field_names_phrase, i 
+
+	fldtype = STRIP(fldtype):"-"
+
+	field_names_phrase=STRIP ( GLOBAL ("OLS_CDS_IM_FIELDS_PHRASE") )
+	rec = SELECT phrase . phrase_text
+			WHERE phrase_type = field_names_phrase
+			AND  phrase_id LIKE fldtype:"%"
+			  ORDER ON order_num
+
+	i = 0
+	
+	WHILE (rec <> EMPTY) DO
+
+		i = i + 1
+		fields_array [i,1] = STRIP (SELECT phrase . phrase_text)
+		fields_array [i,2] = ""   {  reserved for values later }
+
+		NEXT phrase 
+		rec = SELECT phrase . phrase_text
+
+	ENDWHILE
+
+ENDROUTINE
+
+
+ROUTINE expand_samp_test_array (out_array)
+
+	DECLARE delim, i, j, in_array, test_string, out_i, indx, test,
+			one_test_array, one_test_index, this_sample_num_rows, max_count_cols
+
+	ARRAY in_array
+	delim = SAMP_TEST_ARRAY_TEST_DELIMITER 
+	max_count_cols = 0
+
+	{ make a copy and rebuild out_array }
+	ARRAY_COPY (in_array, out_array)
+	ARRAY out_array
+
+	i = 0
+
+	WHILE (i < size_of_array(in_array)) DO
+
+		i = i + 1
+		out_i = size_of_array (out_array) + 1
+		out_array [out_i, 1] = in_array [i,1]   { sample is [x,1], [x,n] is tests }
+		this_sample_num_rows = 1
+
+		j = 1
+
+		{ Loop on tests }
+
+		WHILE (j < 5) DO
+
+			j = j + 1
+
+			IF (in_array[i,j] <> EMPTY) THEN
+
+				test_string = in_array [i,j]
+				ARRAY one_test_array
+				one_test_index = 0
+
+				{ Count the test replicates of this test }
+
+				REPEAT
+	
+					indx = INDEX (test_string, delim)
+
+					IF (indx > 0) THEN
+
+						test = SUBSTRING (test_string, 1, indx-1)
+						IF (STRIP(test) <> "") THEN
+							one_test_index = size_of_array(one_test_array)+1
+							one_test_array [one_test_index,1] = test
+						ENDIF
+
+						test_string = SUBSTRING (test_string, indx+STRINGLENGTH(delim),
+									1+STRINGLENGTH(test_string)-(indx+STRINGLENGTH(delim)))
+				
+					ELSE
+
+						test = test_string
+						IF (STRIP(test) <> "") THEN
+							one_test_index = size_of_array(one_test_array)+1
+							one_test_array [one_test_index,1] = test
+						ENDIF
+						test_string = ""
+
+					ENDIF
+
+					split_anal_tc ( one_test_array [one_test_index,1] , 
+								 one_test_array [one_test_index,2] , 
+								 one_test_array [one_test_index,3]  )
+
+				UNTIL (indx=0)
+
+				{ Ensure the lowest replicate is first }
+
+				sort_one_test_array (one_test_array)
+	
+
+				{ Add new rows for this sample }
+
+				WHILE (this_sample_num_rows < size_of_array(one_test_array)) DO
+
+					this_sample_num_rows = this_sample_num_rows + 1
+					out_array [out_i+(this_sample_num_rows-1), 1] = in_array [i,1]   { sample is [x,1], [x,n] is tests }
+
+				ENDWHILE
+
+				{ Populate the tests }
+
+				one_test_index = 0
+
+				WHILE (one_test_index < size_of_array(one_test_array)) DO
+
+					one_test_index = one_test_index + 1
+					out_array [out_i+(one_test_index-1), j] = one_test_array [one_test_index,1]
+
+				ENDWHILE
+
+			ENDIF
+
+		ENDWHILE
+
+		{ Need this to remove EMPTY where not many replicates }
+
+		IF (j > max_count_cols) THEN
+
+			max_count_cols = j
+
+		ENDIF
+
+	ENDWHILE
+
+	{ Remove EMPTYs }
+
+	WHILE (i < size_of_array(out_array))
+
+		i = i + 1
+		j = 1
+
+		WHILE (j < max_count_cols) DO		
+
+			j = j + 1
+
+			IF (out_array [i,j]=EMPTY) THEN
+
+				out_array [i,j] = ""
+
+			ENDIF
+
+		ENDWHILE
+
+	ENDWHILE
+
+ENDROUTINE
+
+ROUTINE sort_one_test_array (one_test_array)
+
+	DECLARE i, found, temp1, temp2, temp3
+
+	REPEAT
+
+		found = FALSE
+		i = 1   { start at 1 because looking back 1 }
+
+		WHILE (i < size_of_array (one_test_array) ) DO	
+
+			i = i + 1
+
+			IF (one_testarray [i,1] < one_test_array [i-1,1]) THEN
+
+				found = TRUE
+
+				temp1 = one_testarray [i,1]
+				temp2 = one_testarray [i,2]
+				temp3 = one_testarray [i,3]
+				one_testarray [i,1] = one_testarray [i-1,1]
+				one_testarray [i,2] = one_testarray [i-1,2]
+				one_testarray [i,3] = one_testarray [i-1,3]
+				one_testarray [i-1,1] = temp1
+				one_testarray [i-1,2] = temp2
+				one_testarray [i-1,3] = temp3
+
+			ENDIF
+
+		ENDWHILE
+
+	UNTIL (NOT found)
+
+ENDROUTINE
+
+ROUTINE split_anal_tc (VALUE all, anal, test_count)
+
+	DECLARE i, ndx
+
+	ndx=0
+	anal=""
+	test_count="0"
+
+	i = STRINGLENGTH(all)
+
+	WHILE (i>1) DO
+
+		IF (get_character_at(all,i) = "/") THEN
+			ndx=i
+			i=0
+		ENDIF
+
+		i = i - 1
+
+	ENDWHILE
+
+	anal = SUBSTRING (all, 1, ndx-1)
+	test_count = SUBSTRING (all, ndx+1, STRINGLENGTH(all)-ndx)
+
+ENDROUTINE
+
+{
+  Look in 2d array for some value. Returns 0 if not there
+}
+ROUTINE exists_in_2d_array (search_array, VALUE search_value, VALUE d2_index)
+
+	DECLARE i, found, the_index
+
+	found = FALSE
+	the_index = 0
+	i = 0
+
+	WHILE (NOT found) AND
+			(i < size_of_array(search_array)) DO
+
+			i = i + 1
+			IF (search_array[i,d2_index]=search_value) THEN
+
+				the_index = i
+				found = TRUE
+
+			ENDIF
+
+	ENDWHILE
+
+	RETURN (the_index)
+
+ENDROUTINE
+
+
+
+{ For samples, fills in the rest of samp_test_array, which on input, just has a sample id }
+{ The tests are in test_num_array, need them in samp_test_array }
+{}
+ROUTINE complete_samp_test_array (samp_test_array, test_num_array)
+
+	DECLARE i,j,k, test_no_col_array
+
+	{ Assign a column number, per analysis }
+	ARRAY test_no_col_array   ARRAYSIZE(0,2)
+	i = 0
+	WHILE (i < size_of_array(test_num_array)) DO
+
+		i = i + 1
+		IF (0 = exists_in_2d_array(test_no_col_array, test_num_array[i,3],1)) THEN
+
+			k = size_of_array (test_no_col_array) + 1
+			test_no_col_array [k,1] = test_num_array[i,3]
+			test_no_col_array [k,2] = k
+
+		ENDIF
+				
+	ENDWHILE
+
+	i = 0
+
+	WHILE (i < size_of_array(samp_test_array)) DO
+
+		i = i + 1
+		k = 0
+
+		WHILE (k < size_of_array (test_num_array) ) DO
+
+			k = k + 1
+
+			IF (samp_test_array [i,1] = test_num_array [k,1]) THEN
+
+				{ 0 check not required for this, already know the analysis is in array }
+				j = exists_in_2d_array(test_no_col_array, test_num_array[k,3],1)
+
+				{ Increment on j as [x,1] is the sample  }
+				IF (samp_test_array[i, j+1] <> EMPTY) THEN
+
+					samp_test_array[i, j+1] = samp_test_array[i, j+1]:
+						SAMP_TEST_ARRAY_TEST_DELIMITER:
+						test_num_array[k,2]
+
+				ELSE
+
+					samp_test_array[i, j+1] = test_num_array[k,2]
+
+				ENDIF
+
+			ENDIF
+
+		ENDWHILE
+
+	ENDWHILE
+
+ENDROUTINE
+
+
+{
+  Currently can only update tests, not worksheets
+}
+ROUTINE optional_record_updates (VALUE lims_wsheet, VALUE sampleset, 
+							VALUE source_type, array_test_data)
+
+	DECLARE cnt, started_trans
+
+	{ Allow field to be updated  }
+	started_trans = FALSE	
+	IF (CONFIG_HAS_TEST_UPDATE_CALLBACKS) AND
+		(NOT transaction_is_write()) THEN
+
+		started_trans = TRUE
+		START WRITE TRANSACTION "update empower status"
+
+	ENDIF
+
+	cnt = 2
+
+	WHILE (CONFIG_HAS_TEST_UPDATE_CALLBACKS) AND
+		(cnt <= size_of_array (array_test_data)) DO
+
+		{ try all 4 optional tests, update whatever exists }
+
+		update_one_test (array_test_data[cnt,1] , array_test_data[cnt,2], sampleset)
+		update_one_test (array_test_data[cnt,1] , array_test_data[cnt,3], sampleset)
+		update_one_test (array_test_data[cnt,1] , array_test_data[cnt,4], sampleset)
+		update_one_test (array_test_data[cnt,1] , array_test_data[cnt,5], sampleset)
+
+		cnt = cnt + 1
+
+	ENDWHILE
+
+	IF (started_trans) THEN
+
+		COMMIT
+	ENDIF
+
+ENDROUTINE       {  optional_record_updates  }
+
+ROUTINE update_one_test (VALUE samp, VALUE test_string, VALUE sampleset)
+
+	DECLARE anal, test_count, dummy
+
+	split_anal_tc (test_string, anal, test_count)
+
+	IF (anal <> "") AND (anal <> ERROR) AND (anal <> EMPTY) THEN
+				
+			dummy = SELECT test.test_number   FOR UPDATE
+					WHERE sample=samp
+					AND analysis=anal
+					AND test_count=test_count
+
+			IF (dummy <> EMPTY) THEN
+
+				IF (dummy=LOCKED) THEN
+
+					flashmessage ("Test locked, no update: ":
+						STRIP(samp):" ":STRIP(anal):"/":STRIP(test_count), TRUE)
+				ELSE
+
+					imcust_edit_sent_test_record (sampleset)
+
+				ENDIF
+
+			ENDIF
+
+	ENDIF               
+
+ENDROUTINE
+
+ROUTINE get_component_specific_replicates (VALUE cds_instance,
+						VALUE test_num,
+						array_replicates ) 
+
+
+	DECLARE array_comp_info, array_selected_indexes, 
+		array_selected_runtypes, test_no, i, j
+
+	ARRAY array_replicates
+	ARRAY array_selected_indexes
+
+	testno = SELECT test.test_number
+			WHERE test_number = test_num
+
+	IF (testno = EMPTY) THEN
+
+		{ should never get here, this checked earlier }
+
+	ENDIF
+
+	get_prompt_types (cds_instance, SELECT test.analysis,
+				SELECT test.analysis_version,
+				SELECT test.component_list,							
+		 	array_comp_info)
+	
+	IF (sizeofarray (array_comp_info) > 0) THEN
+
+		prompt_select_comp_replicates (SELECT test.sample,
+					array_comp_info, array_selected_indexes)
+
+		ARRAY array_selected_runtypes
+		i = 0
+		WHILE (i < sizeofarray(array_selected_indexes)) DO
+
+			i = i + 1
+			j = array_selected_indexes[i]
+			IF (NUMTEXT(j)) THEN
+
+				array_selected_runtypes [sizeofarray(array_selected_runtypes)+1] = 
+					array_comp_info[j,1]
+
+			ENDIF
+
+		ENDWHILE
+
+		IF (TRUE) THEN
+
+			get_required_replicates (cds_instance, SELECT test.analysis,
+				SELECT test.analysis_version
+				 array_selected_runtypes, array_replicates)
+
+		ENDIF
+	ENDIF
+
+ENDROUTINE
+
+
+ROUTINE prompt_select_comp_replicates (VALUE sample, array_comp_runtypes, 
+							array_selected_indexes)
+
+    DECLARE  msg,  array_columns, array_data_display, i
+
+    msg = ""    
+    ARRAY array_columns
+    ARRAY array_selected_indexes 
+    ARRAY array_data_display  
+
+    i = 0
+    WHILE (i<sizeofarray(array_comp_runtypes)) DO
+
+        i = i + 1
+        array_data_display [i,1] = sample
+        array_data_display [i,2] = array_comp_runtypes [i,1]
+
+    ENDWHILE
+
+    array_columns  [1,1] = "Sample"
+    array_columns  [1,2] = 30
+    array_columns  [2,1] = "Type"
+    array_columns  [2,2] = 40
+
+
+    IF olsgprompts_selection_grid ( array_data_display, array_columns, 
+                 70, "IM data", msg, array_selected_indexes ) THEN
+
+
+    ENDIF
+
+ENDROUTINE   
+
+ROUTINE get_required_replicates (VALUE cds_instance,
+						VALUE test_analysis, VALUE test_anal_ver, 
+						array_comps_info , array_replicates)
+
+	DECLARE rec, record_ver, i, found, rp
+
+	ARRAY array_replicates
+
+	{ Loop on the mapped components and see which }
+	{ match the runtypes in array_comps_info }
+
+	record_ver = SELECT MAX mill_component_map_hdr . analysis_version
+			WHERE analysis=test_analysis
+			AND database_link=cds_instance
+
+	rec = EMPTY
+	IF (record_ver <> EMPTY) THEN
+
+		rec = SELECT mill_component_map . component
+			WHERE analysis=test_analysis
+			AND analysis_version = record_ver
+			AND enable=TRUE
+			AND run_type <> ""
+			AND database_link=cds_instance
+			ORDER On order_num
+	ENDIF
+
+	WHILE (rec <> EMPTY) DO
+
+		rp = SELECT mill_component_map . inject_comment
+
+		found=FALSE
+		i = 0
+		WHILE (NOT found) AND
+			(i < sizeofarray(array_replicates)) DO
+		
+			i = i + 1
+			IF(array_replicates [i,1] = rp) THEN
+				found=TRUE
+			ENDIF
+
+		ENDWHILE
+
+		IF (NOT found) THEN
+			
+			{ Check is it selected ? }
+
+			found=FALSE
+			i = 0
+			WHILE (NOT found) AND
+				(i < sizeofarray(array_comps_info)) DO
+ 
+				{ compare selected runtype with mapping record }
+
+				i = i + 1
+				IF(STRIP(array_comps_info[i]) = STRIP(SELECT mill_component_map . run_type) ) THEN
+
+					found=TRUE
+				ENDIF
+
+			ENDWHILE
+
+			IF (found) THEN
+
+				i = sizeofarray (array_replicates) + 1
+				array_replicates [i,1] = rp
+
+			ENDIF
+
+		ENDIF
+
+		NEXT mill_component_map
+		rec = SELECT mill_component_map . component
+
+	ENDWHILE
+
+ENDROUTINE
+
+ROUTINE get_prompt_types (VALUE cds_instance,
+					VALUE test_analysis, VALUE test_anal_ver, 
+					VALUE test_comp_list, array_comp_info)
+
+	{ This looks at the analysis mapping }
+	{ Up to the customer to select the correct items }
+
+	DECLARE rec, record_ver, i, found, rt
+
+	ARRAY array_comp_info
+
+	record_ver = SELECT MAX mill_component_map_hdr . analysis_version
+			WHERE analysis=test_analysis
+			AND database_link=cds_instance
+
+	rec = EMPTY
+	IF (record_ver <> EMPTY) THEN
+
+		rec = SELECT mill_component_map . component
+			WHERE analysis=test_analysis
+			AND analysis_version = record_ver
+			AND enable=TRUE
+			AND run_type <> ""
+			AND database_link=cds_instance
+			ORDER On order_num
+	ENDIF
+
+	WHILE (rec <> EMPTY) DO
+
+		rt = SELECT mill_component_map . run_type
+
+		found=FALSE
+		i = 0
+		WHILE (NOT found) AND
+			(i < sizeofarray(array_comp_info)) DO
+		
+			i = i + 1
+			IF(array_comp_info [i,1] = rt) THEN
+				found=TRUE
+			ENDIF
+
+		ENDWHILE
+
+		IF (NOT found) THEN
+
+			{ if the test has a component list, check this is on it }
+			
+			IF (STRIP(test_comp_list) <> "") THEN
+
+				rec = SELECT versioned_c_l_entry . name
+						WHERE analysis=test_analysis
+						AND analysis_version = test_anal_ver
+						AND comp_list = test_comp_list
+						AND name = SELECT mill_component_map . component
+			ELSE
+
+				rec = ""  {anything except EMPTY }
+
+			ENDIF
+
+			IF (rec <> EMPTY) THEN
+
+				i = sizeofarray (array_comp_info) + 1
+				array_comp_info [i,1] = rt
+
+			ENDIF
+
+		ENDIF
+
+		NEXT mill_component_map
+		rec = SELECT mill_component_map . component
+
+	ENDWHILE
+
+ENDROUTINE
+
+
+ROUTINE set_replicates_test_array (array_test_data, array_test_data_sendInfo)
+
+	IF (NOT CONFIG_INCLUDE_COMPONENTPROMPT) THEN
+
+		RETURN
+	ENDIF
+    
+	DECLARE test_no, i, k, num,
+		 anal, test_count, array_replicates
+        
+         i = 1
+
+	    WHILE (  i < size_of_array (array_test_data) ) DO
+
+              i = i + 1
+
+                  { Prompt for replicates, if configured }
+			{ need the first test number }
+
+			ARRAY array_replicates
+			array_test_data_sendInfo[i,1]=EMPTY
+			test_no=EMPTY
+			k = 0
+			WHILE (k<4) AND (test_no=EMPTY) DO
+
+				k=k+1
+				IF( NOT BLANK (array_test_data[i,1])) AND (array_test_data[i,1]<>EMPTY) AND
+					( NOT BLANK (array_test_data[i,k+1])) AND (array_test_data[i,k+1]<>EMPTY) THEN
+
+					split_anal_tc (array_test_data[i,k+1], anal, test_count)
+					test_no = SELECT test.test_number 
+							WHERE sample=array_test_data[i,1]
+							AND   analysis=anal
+							AND   test_count=test_count
+
+				ENDIF
+
+			ENDWHILE
+
+			IF (test_no<>EMPTY) THEN
+
+                  	get_component_specific_replicates (  
+                                    STRIP(TOUPPER( GLOBAL("OLS_CDS_INSTANCE") )),
+						test_no,
+						array_replicates ) 
+
+				k = 0
+				WHILE (k<sizeofarray(array_replicates)) DO
+
+					k = k + 1
+
+					num = array_replicates[k, 1]
+					IF (NUMTEXT(num)) THEN
+
+						num = NUMBER_TO_TEXT (num, "9999")
+					ENDIF
+
+					num=STRIP(num)
+					array_test_data_sendInfo[i,k] = num
+
+
+				ENDWHILE
+
+			ENDIF
+
+            ENDWHILE
+
+ENDROUTINE
+
+
+{ Prompts for additional samples.
+  the array parameter must be declarde array before calling this.
+}
+ROUTINE add_standalone_samples (samp_test_array)
+
+	{ Optional feature }
+	IF (NOT CONFIG_INCLUDE_STANDALONESAMPS) THEN
+
+		RETURN
+
+	ENDIF
+
+	{ add extra lines }
+	{ Select every test on these samples - the transform can remove what needs to be removed }
+
+	DECLARE i, samp , askMessage1, askMessage, rec
+
+	askMessage  = "Add additional sample ?"
+	askMessage1 = "Add another additional sample ?"
+
+	WHILE (confirmWithText(askMessage)) DO
+
+		askMessage = askMessage1
+		samp  = EMPTY
+
+		display_additional_sample_form (samp)
+
+		IF (samp  <> EMPTY) AND (NOT BLANK(samp))  THEN			
+
+			rec = SELECT test.test_number
+				WHERE sample=samp
+				AND status <> "U"
+				AND status <> "X"
+				AND status <> "R"
+				ORDER ON test_number
+
+			i = 0
+			WHILE (rec <> EMPTY) DO
+
+				i = i + 1
+
+				i = size_of_array(samp_test_array)+1
+				samp_test_array [i,1] = samp  
+				samp_test_array [i,2] = rec 
+				samp_test_array [i,3] = "" 
+				samp_test_array [i,4] = "" 
+				samp_test_array [i,5] = "" 
+
+				NEXT  test
+				rec = SELECT test.test_number
+
+			ENDWHILE
+
+		ENDIF
+
+	ENDWHILE
+
+ENDROUTINE
+
+
+ROUTINE display_additional_sample_form (selected_sample_id)
+
+	DECLARE pr, form, status , select_array
+
+     ARRAY select_array
+     status = make_browse_criteria ("SAMPLE", GLOBAL("OLS_ADD_SAMPLE_CRITERIA"), 
+							select_array)
+
+     IF (status <> EMPTY) THEN
+
+         flashmessage ("Sample criteria error: ":status, TRUE)
+
+         RETURN
+
+     ENDIF
+
+	set_up_std_prompt_list_class ( )
+ 
+	CREATE OBJECT "STD_FORM", form
+ 
+	form . height = 3
+	form . width = 50
+	form . row = 4
+	form . column = 6
+	form . border = TRUE
+	form . header = "Select Additional Sample"	
+
+     form . add_frame ( ""  ,   1, 1, form . height, form . width )
+     form . add_display ( "Sample:" , 2 , 1 , PROMPT_RENDITION_RAISED )
+ 
+	PROMPT OBJECT pr
+		ON LINE 1 FROM 14
+		BROWSE ON sample
+		WITH (  vgl_library = GLOBAL ( "CURRENT_LIBRARY" ) ,
+                 mandatory_array = select_array )
+ 
+	form . add_prompt ( pr )
+
+	ARRAY form . user_info 
+
+	form . start_prompt ( )
+	form . wait_prompt ( )
+	form . end_prompt ( )
+
+	IF (form . get_lastkey () = "EXIT" ) THEN
+             
+			flashmessage ("Exiting...", TRUE)
+
+			EXIT
+
+        ELSE
+
+           selected_sample_id = STRIP(form . prompt_objects [1] . value)
+          
+    ENDIF
+
+ENDROUTINE
+
+{*********************************************************************}
+{**********************************************************************}
+
+{ MOD1 }
+ROUTINE build_replicate_order_array (array_test_data, array_disl_times)
+
+	{ Get distinct analyses }
+	{ Get their mapping LTE runtype (which should be consistent for everything) and get its highest and lowest repliacte numbers }
+
+	DECLARE anal, complist, i, j,
+		indx, dis_cnt,  timeIndex, repCounter , number_of_loops,
+		max_number_of_timepoints
+
+
+	max_number_of_timepoints = 25
+
+	ARRAY array_disl_times
+	number_of_loops = 1
+
+	i = 0
+	WHILE (i < sizeofarray (array_test_data)) DO
+
+		i = i + 1
+
+		j=1
+		WHILE (j<5) DO
+
+			{ columns 2/3/4/5 are analsyes. Use the first one, all per injection should have same vessels }
+
+			j = j + 1
+			indx = get_test_properties_index (array_test_data[i,1],  array_test_data[i,j])
+			IF (indx>0) THEN
+				anal = g_test_properties [indx, 2]
+				complist = g_test_properties [indx, 5]
+				j=999
+			ELSE
+				anal=EMPTY
+				complist=EMPTY
+			ENDIF
+
+		ENDWHILE
+
+		{ If repCounter=0, not dissolution }
+		repCounter = get_num_vessels (anal, complist)		
+
+		IF (repCounter > 0) THEN
+
+			number_of_loops = max_number_of_timepoints
+		ENDIF
+
+		timeIndex = 0
+		WHILE (repCounter > 0) AND
+			(timeIndex < number_of_loops) DO
+
+			timeIndex = timeIndex + 1
+
+			dis_cnt = sizeofarray (array_disl_times) + 1
+			array_disl_times [dis_cnt,1] = anal
+			array_disl_times [dis_cnt,2] = complist
+			array_disl_times [dis_cnt,3] = ""
+			array_disl_times [dis_cnt,4] = repCounter*(time_index-1)+1
+			array_disl_times [dis_cnt,5] = repCounter*(time_index)
+			array_disl_times [dis_cnt,6] = timeIndex
+
+		ENDWHILE
+
+	ENDWHILE
+
+	RETURN (number_of_loops)
+
+ENDROUTINE
+
+ROUTINE is_disl_replicate_ok (array_disl_times,   
+					 array_test_data, VALUE index_test_data,   { to get the analysis }
+					 VALUE replicate,                          { the replicate number }
+					  VALUE timepoint_order_index              { loop order index, corresponding to the one in array_disl_times }
+					)
+
+	DECLARE ok, i, indx, min, max, anal, complist, is_disso_analcomp
+
+	ok = FALSE
+
+	IF (sizeofarray(array_disl_times)=0) THEN
+
+		ok = TRUE
+		RETURN (ok)
+	ENDIF
+
+	{ May be 4 tests, but for disl, all should be the same. Get the first one }
+	i = 1
+	WHILE (i < 5) DO
+
+		i = i + 1		
+		indx = get_test_properties_index ( array_test_data [index_test_data, 1],
+						array_test_data [index_test_data, i]   )
+
+		IF (indx>0) THEN
+
+			i = 999
+		ENDIF
+
+	ENDWHILE
+
+	anal = g_test_properties [indx, 2]
+	complist = g_test_properties [indx, 5]
+
+	is_disso_analcomp = FALSE
+
+	i = 0
+
+	WHILE ( i < sizeofarray (array_disl_times) ) DO
+
+		i = i + 1
+
+		IF (array_disl_times [i, 1] = anal) AND
+			(array_disl_times [i, 2] = complist) THEN
+
+			{ the analysis was configured as dissolution, if here }
+			is_disso_analcomp = TRUE
+
+		ENDIF
+
+		IF (array_disl_times [i, 1] = anal) AND
+			(array_disl_times [i, 2] = complist) AND
+			(array_disl_times [i, 6] = timepoint_order_index) THEN
+
+			min = array_disl_times [i, 4]
+			max = array_disl_times [i, 5]
+
+			IF (replicate >= min) AND
+				(replicate <= max)  THEN
+
+				ok = TRUE
+			ENDIF
+
+			i = 99999
+		ENDIF
+
+	ENDWHILE
+
+	IF (NOT is_disso_analcomp) THEN
+
+		{ here for the standards samples in a dissolution run }
+		ok = TRUE
+
+	ENDIF
+
+	RETURN (ok)
+
+ENDROUTINE
+
+ROUTINE store_test_properties
+
+	{ the test must be selected before calling this }
+
+	DECLARE i
+
+	i = sizeofarray (g_test_properties) + 1
+	g_test_properties [i,1] = SELECT test.test_number
+	g_test_properties [i,2] = SELECT test.analysis
+	g_test_properties [i,3] = SELECT test.test_count
+	g_test_properties [i,4] = STRIP(SELECT test.analysis):"/":STRIP(SELECT test.test_count)  
+	g_test_properties [i,5] = SELECT test.component_list
+	g_test_properties [i,6] = SELECT test.sample
+
+ENDROUTINE
+
+ROUTINE get_test_properties_index (VALUE sample,  VALUE test)
+
+	{ returns an index }
+	DECLARE i, indx
+
+	indx=-1
+
+	i = 0
+
+	WHILE (indx<0) AND
+		(i<sizeofarray (g_test_properties)) DO
+
+		i = i + 1
+		IF (sample = g_test_properties[i,6]) AND
+		    (test = g_test_properties[i,4]) THEN
+
+			indx = i
+		ENDIF
+
+	ENDWHILE
+
+	RETURN (indx)
+
+ENDROUTINE
+
+ROUTINE get_num_vessels (VALUE anal, VALUE complist)
+
+	DECLARE answer, phrase6, phrase12, phr, num
+
+	answer = 0
+
+	{ Phrases for stage1/2, and stage 3 vessels}
+	{ There is comma-separated list of component list names in the phrase_text, or blank for any }
+
+	phrase6   = "ORVESSEL6"
+	phrase12  = "ORVESSEL12"
+
+	phr = phrase6
+	num = 6
+
+	IF (answer = 0) THEN
+
+		answer = 
+			get_num_vessels_check (anal, complist, phr, num)
+
+	ENDIF
+
+	phr = phrase12
+	num = 12
+
+	IF (answer = 0) THEN
+
+		answer = 
+			get_num_vessels_check (anal, complist, phr, num)
+
+	ENDIF
+
+	RETURN (answer)
+
+ENDROUTINE
+
+ROUTINE get_num_vessels_check (VALUE anal, VALUE complist, VALUE phrase, VALUE numVessels)
+
+	DECLARE answer, txt, delim, search 
+
+	answer = 0
+	delim = ","  { cannot be a valid character in a component list or breaks this code }
+
+	txt = SELECT phrase.phrase_text
+		WHERE phrase_type=phrase
+		AND phrase_id=anal
+
+	IF (txt <> EMPTY) THEN
+
+		txt = SUBSTITUTE (txt, " ", "")
+
+		IF (txt="") OR (TOUPPER(txt)="N/A") THEN
+
+			{ any component list if phrase_test is blank or n/a (new lte doesnt allow blank) }
+			answer = numVessels
+		ELSE
+
+			{ Look for the component list in csv list }
+			txt = delim:TOUPPER(txt):delim
+			search = delim:TOUPPER(complist):delim
+
+			IF (INDEX(txt,search) > 0) THEN
+
+				answer = numVessels
+			ENDIF
+
+		ENDIF
+
+	ENDIF
+
+	RETURN (answer)
+
+ENDROUTINE
+

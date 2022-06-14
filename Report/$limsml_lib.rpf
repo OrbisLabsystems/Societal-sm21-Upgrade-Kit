@@ -1,0 +1,685 @@
+﻿{******************************************************************************
+*
+* Module Name   : $LIMSML_LIB
+*
+* Purpose       :
+*
+*******************************************************************************
+*
+* Modification History :
+* 
+* Version   Date         By             Description
+* -------   -----------  ----------     ---------------------------------------
+* 1.0       15-Oct-2014  Liam Dawson    Added SM 11 routines
+* 2.0		13-Jun-2022	 Raphael Castro SampleManager 21 report merge
+*******************************************************************************}
+
+SET NOTPROTECTED
+SET COMPILE_OPTION DECLARE
+SET NAME "DEFER/"
+
+ENABLE WINDOWS
+
+JOIN STANDARD_LIBRARY STD_ARRAY
+JOIN STANDARD_LIBRARY STD_CLASS
+JOIN STANDARD_LIBRARY STD_GENERAL
+JOIN STANDARD_LIBRARY STD_WORKFLOW
+JOIN STANDARD_LIBRARY STD_MESSAGE
+
+JOIN LIBRARY $BL
+JOIN LIBRARY $BL_COLUMN
+JOIN LIBRARY $BL_COLUMN_COLL
+JOIN LIBRARY $BL_ITEM_DATACOLUMN
+JOIN LIBRARY $BL_ITEM_DATATABLE
+JOIN LIBRARY $EXPLORER_UTILS
+JOIN LIBRARY $LIMSML_COLUMN_DT
+
+{*******************************************************************************}
+
+GLOBAL
+
+ROUTINE get_template_fields_dataset ( tmpl_item, field_type, new_item )
+
+{
+*
+*
+* Parameters   : tmpl_item
+*                field_type
+*                new_item
+*
+* Return Value : [BL_ITEM_DATATABLE]
+*
+*******************************************************************************}
+
+	DECLARE dt, field_items, field_item, column, column_id, visible, enum,
+	        prompt_info, name
+
+	dt = new_limsml_column_datatable( )
+	dt . set_identity( field_type . get_identity( ) )
+
+	field_items = tmpl_item . get_template_fields( )
+
+	enum = field_items . get_enumerator( )
+	WHILE enum . move_next( ) DO
+
+		field_item = enum . get_current( )
+
+		prompt_info = field_item . get_prompt_info( new_item )
+
+		column_id = field_item . get_field_id( )
+
+		column = new_bl_column( column_id, prompt_info )
+
+		name = field_item . get_prompt_text( )
+		column . set_name( name )
+
+		visible = field_item . get_visible( )
+		column . set_visible( visible )
+
+		dt . get_objects( ) . add( column )
+
+	ENDWHILE
+
+	RETURN( dt )
+
+ENDROUTINE
+
+{******************************************************************************}
+
+GLOBAL
+
+ROUTINE template_fields_validate( processor, entity, action, response, VALUE entity_id, item )
+
+{
+*
+*
+* Parameters :
+*
+*******************************************************************************}
+
+	DECLARE field_id, field_val, entity_field, tmpl_fields, tmpl_field,
+	        field_num, prompt_info, response_entity, response_field,
+	        tmpl_id, tmpl_type, tmpl_item, new_error
+
+	tmpl_id = action . get_param_default ( "TEMPLATE_ID", ERROR )
+
+	tmpl_type = bl_system ( ) . get_type ( entity_id )
+
+	tmpl_item = tmpl_type . get_item( tmpl_id )
+
+	IF tmpl_item <> EMPTY THEN
+
+		response_entity = response . add_entity( entity_id )
+
+		tmpl_fields = tmpl_item . get_template_fields( )
+
+		field_num = 0
+		WHILE ( field_num < entity . fieldtotal ( ) ) DO
+
+			entity_field = entity . get_field_by_index ( field_num )
+
+			field_id  = entity_field . getname ( )
+			field_val = entity_field . getvalue ( )
+
+			tmpl_field = tmpl_fields . get_by_property( "FIELD_NAME", field_id )
+
+			IF tmpl_field <> EMPTY THEN
+
+				prompt_info = tmpl_field . get_prompt_info( item )
+
+				response_field = response_entity . field_out( field_id )
+				response_field . setvalue( prompt_info . validate_value( field_val ) )
+
+			ENDIF
+
+			field_num = field_num + 1
+
+		ENDWHILE
+
+	ELSE
+
+		new_error = bl_system( ) . error_flag( "BL_ERROR_ITEM_NOT_EXIST" )
+		new_error . add_parameter( tmpl_id )
+		new_error . add_parameter( tmpl_type . get_name( ) )
+
+	ENDIF
+
+ENDROUTINE
+
+{******************************************************************************}
+
+GLOBAL
+
+ROUTINE limsml_add_dataset_browse_columns( datatable, type )
+
+{
+*
+*
+* Parameters :
+*
+* Return Value : None
+*
+*******************************************************************************}
+
+	DECLARE table, table_id, prompt_details, new_error, columns, enum, column,
+	        datacolumn, property
+
+	datatable . add_synopsis_columns( )
+
+	IF OBJECT_CHECK_ACTION( type, "GET_TABLE" ) THEN
+
+		table = type . get_table( )
+		table_id = table . get_identity( )
+
+		prompt_details = explorer_utils_get_browse_prompt_details( table_id )
+
+		columns = new_bl_column_collection_from_prompt_details( prompt_details, table_id )
+
+		enum = columns . get_enumerator ( )
+
+		WHILE enum . move_next ( ) DO
+
+			column = enum . get_current ( )
+
+			IF NOT ( datatable . get_columns ( ) . exists ( column . get_identity ( ) ) )
+
+				property = type . get_property( column . get_identity( ) )
+
+				datacolumn = new_bl_item_datacolumn_property( column . get_identity( ), property )
+
+				datacolumn . set_name( column . get_name( ) )
+
+				datatable . add_column ( datacolumn )
+
+			ENDIF
+
+		ENDWHILE
+
+	ELSE
+
+		new_error = bl_system( ) . error_flag( "BL_ERROR_TYPE_NOT_TABLE_BASED" )
+		new_error . add_parameter( type . get_identity( ) )
+
+	ENDIF
+
+ENDROUTINE
+
+{ 1.0  SM 11 routiones }
+
+{******************************************************************************}
+
+GLOBAL
+
+ROUTINE limsml_build_response_for_tests( sample_obj, entity , response )
+
+{
+* Build response for tests
+*
+* Parameters : sample_obj,[[BL_ITEM_SAMPLE]] Current sample
+*              entity,[HELPER_ENTITY] request entity
+*              response,[HELPER_ENTITY] reponse entity
+*
+* Return Value :
+*
+*******************************************************************************}
+
+	DECLARE tests, tests_enum, test_obj, req_test_obj
+
+	req_test_obj = entity . get_child ( 0 )
+	
+	IF ( req_test_obj . gettype() = "TEST" ) THEN
+
+		tests  = sample_obj . get_added_tests ( )
+
+		tests_enum = tests . get_enumerator ( )
+		tests_enum . reset ( )
+
+		WHILE tests_enum . move_next ( ) DO
+
+			test_obj    = tests_enum . get_current ( )
+			req_test_obj . bl_update ( test_obj )
+			response . addchildxml ( req_test_obj . returnxml() )
+
+			req_test_obj . reset ()
+
+		ENDWHILE
+	
+	ENDIF
+
+ENDROUTINE
+
+
+{******************************************************************************}
+GLOBAL
+
+ROUTINE limsml_utility_create_test ( test , sample )
+
+{ Build up a New Test Object
+*
+* Parameters   : Test - LIMSML Test Entity Class
+* Return Value : Collection - Of Test Items
+*
+*******************************************************************************}
+
+	DECLARE test_items, reps, test_builder, analysis, test_type, test_item,
+		tests_enum, testxml, test_copy
+
+	test_items = EMPTY
+
+	test_type = bl_system ( ) . get_type ( "TEST" )
+
+	IF ( test . gettype() = "TEST" ) THEN
+
+		{**************************************************************}
+		{* Take a copy of the test so it can be tagged to the BL.     *}
+		{**************************************************************}
+		test_copy = test.copy( FALSE )
+		testxml = test_copy . returnxml()
+
+		test_builder = test_type . new_builder ( )
+
+		{**************************************************************}
+		{* Work out the Analysis ID and Number of Reps we wish to do. *}
+		{**************************************************************}
+
+		analysis = test . get_field_default ( "ANALYSIS", EMPTY )
+		
+		IF NOT BLANK (analysis) THEN
+		
+			test_builder . set_analysis_id ( analysis )
+
+			reps = test . get_field_default ( "TEST_COUNT", 1 )
+			test_builder . set_replicates ( reps )
+
+			{**************************************************************}
+			{* Create the Tests and then Update the appropriate fields    *}
+			{**************************************************************}
+
+			test_builder . build ( )
+
+			test_items = test_builder . get_new_items ( )
+
+			tests_enum = test_items . get_enumerator ( )
+
+			WHILE tests_enum . move_next ( ) DO
+
+				test_item = tests_enum . get_current ( )
+				test_item . set_custom_value ( "REQUEST", testxml )
+
+				test . fields_bl_get ( test_item )
+
+			ENDWHILE
+		
+		ENDIF
+
+	ENDIF
+
+	RETURN ( test_items )
+
+ENDROUTINE
+
+{******************************************************************************}
+
+GLOBAL
+
+ROUTINE limsml_sample_create_by_template ( processor, entity, action, response, 
+                                    replicates, template, job_login_name )
+
+{ 
+* Create samples by a sample template. This is called from $LIMSML_SAMPLE to just 
+* create sample and $LIMSML_JOB which creates a job and the samples under the job.
+* When called at the job level the user may not want to override tests but may still
+* want to return details from the job/sample/test
+*
+*
+* Note: The type of response class depends on what the response_type is within
+*       the request. Example if response_type is DATA, little initial xml is
+*       needed. Therefore HELPER_DOCUMENT class is used.
+*
+*       If it is SYSTEM, header xml is needed and build functionality is needed.
+*       Therefore HELPER_RICHDOCUMENT class is used.
+*       (See $limsml_process.rpf action create_system/create_data for more info)
+*
+*
+* Parameters   : Processor ,[LIMSML_PROCESS] Controls and validates xml input.
+*                Entity,[HELPER_ENTITY] Helper Entity Class
+*                Action ,[HELPER_ACTIONML] Helper Action Class
+*                Response,[HELPER_RICHDOCUMENT,HELPER_DOCUMENT] Class to help
+*                build xml response.
+*                Replicates, Number of samples to be created
+*                Template, Sample template identity
+*                Job_login_name, Job name to assign to the sample
+*	
+*
+* Return Value : [Text], (Optional)If only one return value is needed, this
+*                will override any response.
+*                Works by copying request entity information and adding
+*                a field call 'RETURN', with the return value as its value.
+*
+*******************************************************************************}
+
+
+	DECLARE samp_type, samp_builder,new_samples,
+	        new_tests, tests, item, child, sample_obj, samps_enum, tests_enum,
+	        test_num, test_count, childxml, entity_copy, test_obj,
+	        ignore_test_schedule, test_schedule_id, sample_xml
+	       
+
+	{**********************************************************************}
+	{* Create the Base Business Object                                    *}
+	{**********************************************************************}
+
+	samp_type    = bl_system ( ) . get_type ( "SAMPLE" )
+	samp_builder = samp_type . new_builder ( )
+
+
+	IF replicates <> EMPTY THEN	
+		samp_builder . set_replicates ( replicates )		
+	ENDIF
+	
+	IF template <> EMPTY THEN		
+		samp_builder . set_template_id ( template )		
+	ENDIF
+	
+	IF job_login_name <> EMPTY THEN	
+		samp_builder . set_job_id ( job_login_name )
+	ENDIF
+
+	
+	IF action <> EMPTY THEN
+	
+		ignore_test_schedule = action . get_param_default ( "IGNORE_TEST_SCHEDULE", FALSE )
+		
+	ELSE
+	
+		ignore_test_schedule = FALSE
+		
+	ENDIF
+
+	{**********************************************************************}
+	{* Add the Test Schedule Tests if appropriate                         *}
+	{**********************************************************************}
+
+	IF ignore_test_schedule THEN
+
+		samp_builder . set_test_schedule_id ( "" )
+
+	ELSE
+		test_schedule_id = entity . get_field_value( "TEST_SCHEDULE" )
+
+		IF test_schedule_id <> EMPTY THEN
+			samp_builder . set_test_schedule_id( test_schedule_id )
+		ENDIF
+
+	ENDIF
+
+	{**********************************************************************}
+	{* Add the tests to the Sample Records ready for login                *}
+	{**********************************************************************}
+
+	IF NOT bl_system ( ) . error_flagged ( ) THEN
+
+		samp_builder . build ( )
+
+		new_samples = samp_builder . get_new_items ( )
+
+		samps_enum = new_samples . get_enumerator ( )
+
+		WHILE samps_enum . move_next ( ) DO
+
+			sample_obj = samps_enum . get_current ()
+
+			entity . fields_bl_get ( sample_obj )
+
+			IF action <> EMPTY THEN
+			
+				test_num = entity . childtotal()
+				test_count = 0
+
+				WHILE ( test_count <= test_num - 1 ) DO
+
+					test_obj = entity . getchild( test_count )
+
+					new_tests = limsml_utility_create_test ( test_obj , entity )			
+
+
+					IF new_tests <> EMPTY THEN
+
+						sample_obj . add_tests ( new_tests )
+
+					ENDIF
+
+					test_count = test_count + 1
+
+					test_obj . reset ( )
+
+				ENDWHILE
+			
+			ENDIF
+
+		ENDWHILE
+
+	ENDIF
+
+	{**********************************************************************}
+	{* Create the Samples and build up the Response                       *}
+	{**********************************************************************}
+
+	IF NOT bl_system ( ) . error_flagged ( ) THEN
+
+		new_samples . update ( )
+
+		entity_copy = entity . copy ( FALSE )
+
+		samps_enum = new_samples . get_enumerator ( )
+		
+		sample_xml = entity_copy . returnxml()
+
+		WHILE samps_enum . move_next ( ) DO
+		
+			sample_obj = samps_enum . get_current ( )
+					
+							
+			IF OBJECT_GET_CLASS_NAME ( response ) = "HELPERENTITY" THEN
+
+				item = response . addchildxml ( sample_xml )
+				
+			ELSE
+
+				item = response . addentityxml ( sample_xml )
+
+			ENDIF
+			
+			item . bl_update ( sample_obj  )
+		
+		
+			IF action <> EMPTY THEN
+
+				tests  = sample_obj . get_added_tests ( )
+
+				tests_enum = tests . get_enumerator ( )
+				tests_enum . reset ( )
+
+				test_count = 0
+
+				WHILE tests_enum . move_next ( ) DO
+
+					test_obj    = tests_enum . get_current ( )
+
+		{**********************************************************************}
+		{* Only return child data which was within our request.               *}
+		{**********************************************************************}
+
+					childxml = test_obj . get_custom_value ( "REQUEST" )
+
+					IF ( childxml <> EMPTY ) THEN
+						child = item . addchildxml ( childxml )
+						child . bl_update ( test_obj )
+
+						child . reset()
+						test_count =  test_count + 1
+					ENDIF
+
+
+				ENDWHILE
+			
+			ELSE	
+			
+				limsml_build_response_for_tests ( sample_obj, entity , item )
+				
+			ENDIF
+
+		ENDWHILE
+
+
+	ENDIF
+
+
+
+ENDROUTINE
+
+
+{******************************************************************************}
+
+GLOBAL 
+
+ROUTINE limsml_sample_create_by_template_bl ( VALUE template   ,
+				                     VALUE replicates )
+                              	 
+{
+* Simple routine to login a sample through the business logic and pass back
+* the samples.
+*
+* Parameters : Sample Template Identity
+*              Number of Samples
+*              Array of sample id's
+*
+* Return Value : None
+*
+*******************************************************************************}                              	 
+                              	 
+
+	DECLARE samp_type, samp_builder, count, new_samples,
+	        samps_enum, sample_obj, samples
+	
+        ARRAY samples
+                              
+
+	samp_type    = bl_system ( ) . get_type ( "SAMPLE" )
+	samp_builder = samp_type . new_builder ( )
+
+
+	IF replicates <> EMPTY THEN	
+		samp_builder . set_replicates ( replicates )		
+	ENDIF
+	
+	IF template <> EMPTY THEN		
+		samp_builder . set_template_id ( template )		
+	ENDIF
+
+	count = 1
+	
+	IF NOT bl_system ( ) . error_flagged ( ) THEN
+
+		samp_builder . build ( )
+
+		new_samples = samp_builder . get_new_items ( )
+		
+		new_samples . update ( )
+
+		samps_enum = new_samples . get_enumerator ( )
+
+		WHILE samps_enum . move_next ( ) DO
+
+			sample_obj = samps_enum . get_current ( )
+			samples [ count ] = sample_obj . get_identity ( )
+			count = count + 1
+			
+		ENDWHILE
+			
+	ENDIF
+	
+	RETURN ( samples )
+
+ENDROUTINE
+
+{ / 1.0  SM 11 routiones }
+{******************************************************************************}
+
+GLOBAL
+
+ROUTINE run_workflow ( VALUE workflow_name, VALUE table, properties_array )
+
+{ 
+* Run a workflow and return the properties array.
+* Example array returned: 
+* 	ARRAY [ 1 , 1 ] = "SAMPLE"
+* 	ARRAY [ 1 , 2 ] = "      1642"
+* 	ARRAY [ 1 , 3 ] = "New"
+*
+* 	ARRAY [ 2 , 1 ] = "SAMPLE"
+* 	ARRAY [ 2 , 2 ] = "      1643"
+* 	ARRAY [ 2 , 3 ] = "New"
+*
+* Parameters   : workflow_name, [STRING]
+*                table ,[STRING]
+*                properties_array ,[ARRAY]
+* Return Value : Status
+*
+*******************************************************************************}
+
+	DECLARE status, workflow_id, workflow_table, err_mess
+	
+	ARRAY properties_array
+	status = EMPTY
+
+	IF workflow_name <> EMPTY THEN
+
+		workflow_id = SELECT workflow . workflow_guid
+					WHERE name = workflow_name				
+		
+				  
+		IF workflow_id <> EMPTY THEN
+		
+			workflow_table = SELECT workflow . table_name 
+			
+			IF  ( BLANK ( workflow_table ) OR ( workflow_table = table )  ) THEN
+	
+				status = workflow_run_noupdate ( workflow_id )	
+			
+				IF status = EMPTY THEN
+				
+					status = workflow_update_return ( properties_array )
+				
+				ENDIF
+				
+			ELSE
+			
+				message_fetch ( "LIMSML_WORKFLOW_INVALID_TABLE", err_mess )
+				message_add_parameter ( err_mess, workflow_name )		
+				message_add_parameter ( err_mess, workflow_table )
+				message_add_parameter ( err_mess, table )
+				status = message_get_text ( err_mess, 1 )
+			
+			ENDIF
+				
+		ENDIF
+	
+	ENDIF
+	
+	IF ( workflow_id = EMPTY ) AND ( status = EMPTY ) THEN
+	
+		message_fetch ( "LIMSML_WORKFLOW_NO_WORKFLOW", err_mess )
+		message_add_parameter ( err_mess, workflow_name )		
+		status = message_get_text ( err_mess, 1 )
+	
+	ENDIF
+
+	RETURN ( status )
+
+ENDROUTINE
+
+
+{******************************************************************************}
+{******************************************************************************}
+{******************************************************************************}

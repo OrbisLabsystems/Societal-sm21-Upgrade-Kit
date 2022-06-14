@@ -1,0 +1,2188 @@
+{******************************************************************************
+*
+* Module Name          : RETAIN_LIB
+*
+* Purpose              : Library to Support RETAIN functionality
+*
+* Portability          : Not Checked
+*
+*******************************************************************************
+*
+* Modification History :
+* 
+* Version   Date         By             Description
+* -------   -----------  ----------     ---------------------------------------
+* 1.0       05-Aug-2005  J. O'Neill     Release Version 
+*
+* 1.1       11-Jul-2013  L. Dawson      Update to receive_retain for balance 
+*                                       integration.
+* 1.2       14-Feb-2014  A. Finnerty    Balance integration enhancements
+*
+* 1.3       07-Apr-2014  M. Allen	    Add retain until to Receive option
+*
+* 1.4       14-Mar-2016  M. Allen	    Remove inpsect_due_date from receive option
+*
+* 1.5       05-May-2016  M. Allen       Update fields on review action
+*******************************************************************************}
+
+SET NOTPROTECTED
+SET NAME "DEFER/"
+SET COMPILEOPTION DECLARE
+ENABLE WINDOWS
+
+JOIN STANDARD_LIBRARY STD_PROMPT
+JOIN STANDARD_LIBRARY STD_CLIENT
+JOIN STANDARD_LIBRARY STD_ARRAY
+JOIN STANDARD_LIBRARY STD_TRANSFER
+JOIN STANDARD_LIBRARY STD_DATABASE
+JOIN STANDARD_LIBRARY STD_CLASS
+
+JOIN LIBRARY $lib_utils
+JOIN LIBRARY $prompt_imprint
+
+JOIN LIBRARY $LIB_MLPS
+JOIN LIBRARY BALANCE_LIB    {1.1}
+
+DECLARE g_instrument_used   { 1.2 }
+
+GLOBAL 
+ROUTINE create_retain (VALUE table, 
+                       VALUE record_id,
+                       VALUE base_date)
+
+{
+*               
+*
+*******************************************************************************}
+
+    DECLARE retain_object
+
+    define_retain_class ()
+
+    CREATE OBJECT "RETAIN", retain_object
+
+    retain_object . table      = table	
+    retain_object . record_id  = record_id
+
+    IF base_date <> "" THEN
+    
+        retain_object . base_date  = base_date
+    
+    ENDIF
+    
+    retain_object . get_article_details()
+
+    IF (retain_object . do_retain = TRUE) THEN
+
+        retain_object . generate_identity()
+
+        retain_object . get_retain_date()
+
+        retain_object . create_record()
+
+    ENDIF
+        
+    retain_object = EMPTY
+
+
+ENDROUTINE {create_retain}
+
+
+ROUTINE define_retain_class
+
+{
+*    Defines the RETAIN Class Properties and Actions.           
+*
+*******************************************************************************}
+
+	DEFINE CLASS "RETAIN"
+
+		INITIALISATION
+		PROPERTIES
+		    "identity"                  ,  { Retain ID                          }
+		    "table"                     ,  { Table Name                         }
+                    "record_id"                 ,  { Record ID                          }
+                    "article_code"              ,  { Article Code                       }
+                    "do_retain"                 ,  { Should Retain be Taken             }
+                    "retain_interval"           ,  { Length to Retain                   }
+		    "quantity"	 	        ,  { Quantity                           } 
+		    "created_on"                ,  { Date Record Created                }
+		    "created_by"                ,  { Operator who created record        }
+		    "retain_until"              ,  { Retained until this date           }
+		    "location"                  ,  { Location                           }		    
+		    "disposed_on"               ,  { When disposed                      }
+		    "disposed_by"               ,  { Operator who disposed              }
+		    "group_id"                  ,  { Group Security                     }
+		    "text_comment"              ,  { Comment                            }
+		    "retain_units"              ,  { Retain units                       }
+		    "base_date"                 ,  { Date to form base for calc.        }
+		    "analysis_units"            ,  { Units for analysis e.g. tablet     }
+		    "anal_unit_per_retain_unit" ,  { e.g. How many tablets in a box     }
+		    "min_retain_quantity"       ,  { Minimun amount of tablets required }
+		    "status"                    ,  { Status                             }
+		    "article"                   ,  { Article ID                         }
+		    "material_description"      ,  { Material Description               }
+		    "inspect_due_date_1"           {Inspection due date  }
+
+		ACTIONS
+        
+		    "get_article_details"       ,  { Get Article Info                   }
+		    "get_retain_date"           ,  { Calculates RETAIN_UNTIL Date       }
+		    "generate_identity"         ,  { Create Identity for the record     }
+                    "create_record"
+
+ 
+	END CLASS
+
+ENDROUTINE {define_retain_class}
+
+
+ROUTINE retain_class_initialisation ( self ) 
+
+{
+*    RETAIN Class initialisation routine.                     
+*
+*******************************************************************************}
+
+		    self . table                     = ""
+		    self . record_id                 = ""
+		    self . article_code              = ""
+                    self . do_retain                 = ""
+                    self . retain_interval           = ""
+                    self . quantity                  = ""
+                    self . created_on                = NOW
+                    self . created_by                = GLOBAL("OPERATOR") 
+                    self . retain_until              = ""
+		    self . location                  = ""
+		    self . disposed_on               = ""
+		    self . disposed_by               = ""
+		    self . group_id                  = ""
+		    self . text_comment              = ""
+		    self . retain_units              = ""
+		    self . base_date                 = NOW
+		    self . analysis_units            = ""
+		    self . anal_unit_per_retain_unit = ""
+		    self . min_retain_quantity       = ""
+		    self . status                    = "U"
+		    self . article                   = ""
+		    self . material_description	     = ""
+		    self . inspect_due_date_1         = ""
+
+ENDROUTINE {retain_class_initialisation}
+
+
+ROUTINE retain_action_get_article_details( self)
+
+{
+*    Get Product Details
+*
+*******************************************************************************}
+
+
+    IF (STRIP(self . table) = "SAMPLE") THEN
+
+        self . article_code = SELECT 'self . table' . material WHERE
+                                     id_numeric = self . record_id               
+            
+    ELSEIF (STRIP(self . table) = "JOB_HEADER") 
+
+        self . article_code = SELECT 'self . table' . material WHERE
+                                     job_name = self . record_id               
+
+    ENDIF          
+
+    IF (self . article_code <> EMPTY) THEN
+
+
+        self . do_retain  = SELECT materials . retain WHERE 
+                                   article_code = self . article_code 
+    
+        self . article                   = SELECT materials . article_code
+        self . retain_interval           = SELECT materials . retain_interval
+        self . retain_units              = SELECT materials . retain_units        
+        self . analysis_units            = SELECT materials . analysis_units
+        self . anal_unit_per_retain_unit = SELECT materials . anal_unit_per_retain_unit
+        self . min_retain_quantity       = SELECT materials . min_retain_quantity
+        self . group_id                  = SELECT materials . group_id
+	self . material_description             = SELECT materials . description
+
+    ENDIF    
+     
+
+      
+ENDROUTINE {retain_action_get_article_details}
+
+
+ROUTINE retain_action_generate_identity ( self)
+
+{
+*    Generate ID for Retain
+*
+*******************************************************************************}
+
+
+    { Decide on a syntax }
+
+    self . identity = RIGHTSTRING("000000" : STRIP(increment ("RETAIN", "RETAIN")), 6)    
+
+      
+ENDROUTINE {retain_action_generate_identity}
+
+
+
+ROUTINE retain_action_get_retain_date ( self)
+
+{
+*    Get Retain Date
+*
+*******************************************************************************}
+SET DATE FORMAT "MM-DD-YYYY"
+
+
+    IF (( STRIP(self . retain_interval) = "") OR (self . retain_interval < 0)) THEN 
+
+        self . retain_until = ""
+
+    ELSE
+
+        self . retain_until = self . base_date + self . retain_interval
+
+    ENDIF
+
+ RESTORE DATE FORMAT
+     
+ENDROUTINE {retain_action_get_retain_date}
+
+
+ROUTINE retain_action_create_record ( self)
+
+{
+*    Create the Retain Record
+*
+*******************************************************************************}
+
+
+    DECLARE check_ok, retained
+
+    retained = SELECT retains . record_id 
+			WHERE record_id = self . record_id
+
+    RESERVE ENTRY retains, self . identity, check_ok
+
+    IF ((check_ok = EMPTY)AND (retained = EMPTY)) THEN
+
+        ASSIGN retains . table_name                = self . table
+        ASSIGN retains . record_id              = self . record_id
+        ASSIGN retains . quantity                  = self . quantity
+        ASSIGN retains . created_on                = self . created_on
+        ASSIGN retains . created_by                = self . created_by
+        ASSIGN retains . retain_until              = self . retain_until
+        ASSIGN retains . location                  = self . location
+        ASSIGN retains . original_location         = self . location
+        ASSIGN retains . disposed_on               = self . disposed_on
+        ASSIGN retains . disposed_by               = self . disposed_by
+        ASSIGN retains . group_id                  = self . group_id
+        ASSIGN retains . text_comment              = self . text_comment
+        ASSIGN retains . status                    = self . status
+        ASSIGN retains . retain_units              = self . retain_units
+        ASSIGN retains . units                     = self . analysis_units
+        ASSIGN retains . min_retain_quantity       = self . min_retain_quantity 
+        ASSIGN retains . anal_unit_per_retain_unit = self . anal_unit_per_retain_unit
+        ASSIGN retains . article_code              = self . article
+	ASSIGN retains . material_description      = self . material_description
+	ASSIGN retains . inspect_due_date_1        = self . inspect_due_date_1
+
+
+
+      IF NOT transaction_is_write() THEN
+	   
+           START WRITE TRANSACTION "Create Retain Record"		   
+
+           UPDATE retains
+        
+           retain_history (self.identity, "LOGIN", self.quantity, self.text_comment, self . record_id, self . article_code, self . material_description, self . inspect_due_date_1, self . retain_units)		
+		   
+		  COMMIT
+		   
+        ELSE
+
+           UPDATE retains
+        
+           retain_history (self.identity, "LOGIN", self.quantity, self.text_comment, self . record_id, self . article_code, self . material_description, self . inspect_due_date_1, self . retain_units)
+
+   
+	   		
+	ENDIF
+    
+    ELSE
+
+        {Write to Log File }
+
+    ENDIF
+
+
+      
+ENDROUTINE {retain_action_create_record}
+
+
+{*******************************************************************************
+*
+*  Retain Processing - Explorer Handling
+*
+********************************************************************************}
+
+ROUTINE dispose_retain_rmb (rmb_object, 
+                            object, 
+                            data)
+
+{
+*  RMB option for disposal of Retain.
+*
+*******************************************************************************}
+
+    DECLARE the_record, 
+            no_records, 
+            retain_record,
+            the_table
+
+    no_records = data . size()
+
+    the_table = data . table
+
+    data . set_first ()
+
+    WHILE ((data . current_position <= no_records) AND ( data . current_position > 0 )) DO
+
+        the_record = data . get_by_number (data . current_position)
+
+        retain_record = SELECT 'the_table' . identity IN OBJECT the_record
+
+        dispose_retain (retain_record)
+
+        data . set_next()
+    
+    ENDWHILE
+ 
+
+
+ENDROUTINE {dispose_retain_rmb}
+
+{******************************************************************************}
+
+
+ROUTINE move_retain_rmb (rmb_object, 
+                         object, 
+                         data)
+
+{
+*  RMB option for Chaging Retain Location
+*
+*******************************************************************************}
+
+    DECLARE the_record, 
+            no_records, 
+            retain_record,
+            the_table,
+            new_location,
+            ok
+
+    ok = GET_IDENTITY (new_location,
+                       GET_USER_MESSAGE("RETAIN_LIB_SELECT_LOCATION", 1),
+                       GET_USER_MESSAGE("RETAIN_LIB_CHANGE_LOCATION", 1),
+                       "LOCATION", 
+                       "")
+    
+    IF ok THEN
+
+        the_table = data . table
+
+        no_records = data . size()
+
+        data . set_first ()
+
+        WHILE ((data . current_position <= no_records) AND ( data . current_position > 0 )) DO
+
+            the_record = data . get_by_number (data . current_position)
+
+            retain_record = SELECT 'the_table' . identity IN OBJECT the_record
+
+            move_retain (retain_record, new_location)
+
+            data . set_next()
+    
+        ENDWHILE
+ 
+
+
+    ENDIF
+
+ENDROUTINE {move_retain_rmb}
+
+
+
+ROUTINE move_retain (VALUE retain_id, 
+                     VALUE location_id)
+
+
+    DECLARE retain_record
+
+    retain_record = SELECT retains . identity FOR UPDATE WHERE
+                           identity = retain_id
+
+    IF (retain_record <> EMPTY ) THEN
+
+        IF NOT transaction_is_write() THEN
+
+
+            START WRITE TRANSACTION "Move Retain"
+
+            ASSIGN retains . location = location_id
+
+            UPDATE retains
+
+            COMMIT
+
+        ELSE
+
+
+            ASSIGN retains . location = location_id
+
+            UPDATE retains
+
+        ENDIF
+
+    ENDIF
+
+ENDROUTINE {move_routine}
+
+
+ROUTINE remove_retain_rmb (rmb_object, 
+                            object, 
+                            data)
+
+{
+*  RMB option for removal of a portion of the retain
+*
+*******************************************************************************}
+
+   DECLARE the_record, 
+            no_records, 
+            retain_record,
+            the_table
+
+    the_table = data . table
+
+    no_records = data . size()
+
+    data . set_first ()
+
+    WHILE ((data . current_position <= no_records) AND ( data . current_position > 0 )) DO
+
+        the_record = data . get_by_number (data . current_position)
+
+        retain_record = SELECT 'the_table' . identity IN OBJECT the_record
+
+        remove_retain (retain_record)
+
+        data . set_next()
+    
+    ENDWHILE
+ 
+ 
+
+
+ENDROUTINE {remove_retain_rmb}
+
+{******************************************************************************}
+
+ROUTINE receive_retain_rmb (rmb_object, 
+                            object, 
+                            data)
+
+{
+*  RMB option for receiving of Retain.
+*
+*******************************************************************************}
+
+    DECLARE the_record, 
+            no_records, 
+            retain_record,
+            the_table
+
+    the_table = data . table
+
+    no_records = data . size()
+
+    data . set_first ()
+
+    WHILE ((data . current_position <= no_records) AND ( data . current_position > 0 )) DO
+
+        the_record = data . get_by_number (data . current_position)
+
+        retain_record = SELECT 'the_table' . identity IN OBJECT the_record
+
+        receive_retain (retain_record)
+
+        data . set_next()
+    
+    ENDWHILE
+
+
+
+ENDROUTINE {receive_retain_rmb}
+
+{******************************************************************************}
+
+{*******************************************************************************
+*
+*  Retain Processing - Main
+*
+********************************************************************************}
+
+GLOBAL ROUTINE retain_history (VALUE the_identity, VALUE the_action_type, 
+                               VALUE the_qty_removed, VALUE the_comment ,
+					 VALUE the_record_id, VALUE the_material,
+                               VALUE the_description, VALUE the_date, VALUE the_units )
+
+{
+*  Writes a retain history record to the database
+*
+*******************************************************************************}
+
+    DECLARE the_action_no,
+            check_ok,
+            field_length
+    
+    {Get next sequence number for the retain record}
+
+    the_action_no = SELECT MAX retain_history . action_no WHERE
+                              identity = the_identity
+                      
+    IF (the_action_no = EMPTY) THEN                     
+
+        the_action_no = 1
+
+    ELSE
+
+        the_action_no = PACKED_DECIMAL(the_action_no + 1)
+
+    ENDIF
+
+
+	
+
+    
+    {Write history entry to the database} 
+
+
+    GET_FIELD_DETAILS retain_history.identity, "FIELD_SIZE", field_length   
+    
+    RESERVE ENTRY retain_history, PAD(the_identity," ",field_length):the_action_no, check_ok
+                
+    IF (check_ok = EMPTY) THEN
+
+        ASSIGN retain_history . action_type  = the_action_type
+        ASSIGN retain_history . qty_removed  = the_qty_removed
+        ASSIGN retain_history . text_comment = the_comment
+	  ASSIGN retain_history . ret_material_code = the_material
+	  ASSIGN retain_history . material_description = the_description
+	  ASSIGN retain_history . ret_batch_no = the_record_id
+	  ASSIGN retain_history . inspect_due_date = the_date
+	  ASSIGN retain_history . ret_units    = the_units
+        ASSIGN retain_history . action_on    = NOW
+        ASSIGN retain_history . action_by    = GLOBAL("OPERATOR")
+    
+        UPDATE retain_history
+                    
+    ELSE
+		         
+        flashmessage(check_ok, TRUE)        
+		         
+    ENDIF
+        
+ENDROUTINE {retain_history}
+
+{********************************************************************************}
+
+GLOBAL ROUTINE retain_history_loc (VALUE the_identity, VALUE the_action_type, 
+                               VALUE the_location, VALUE the_comment,
+					 VALUE the_record_id, VALUE the_material,
+					  VALUE the_description, VALUE the_units)
+
+{
+*  Writes a retain history record to the database
+*
+*******************************************************************************}
+
+    DECLARE the_action_no,
+            check_ok,
+            field_length
+
+    
+    {Get next sequence number for the retain record}
+
+    the_action_no = SELECT MAX retain_history . action_no WHERE
+                              identity = the_identity
+                      
+    IF (the_action_no = EMPTY) THEN                     
+
+        the_action_no = 1
+
+    ELSE
+
+        the_action_no = PACKED_DECIMAL(the_action_no + 1)
+
+    ENDIF
+
+ 
+    
+    {Write history entry to the database}    
+
+    GET_FIELD_DETAILS retain_history.identity, "FIELD_SIZE", field_length   
+    
+    RESERVE ENTRY retain_history, PAD(the_identity," ",field_length):the_action_no, check_ok
+                
+    IF (check_ok = EMPTY) THEN
+
+        ASSIGN retain_history . action_type  = the_action_type
+        ASSIGN retain_history . old_location  = the_location
+        ASSIGN retain_history . text_comment = the_comment
+	  ASSIGN retain_history . ret_material_code = the_material
+	  ASSIGN retain_history . material_description = the_description
+	  ASSIGN retain_history . ret_batch_no = the_record_id
+	  ASSIGN retain_history . ret_units    = the_units
+        ASSIGN retain_history . action_on    = NOW
+        ASSIGN retain_history . action_by    = GLOBAL("OPERATOR")
+    
+        UPDATE retain_history
+                    
+    ELSE
+		         
+        flashmessage(check_ok, TRUE)        
+		         
+    ENDIF
+        
+ENDROUTINE {retain_history_loc}
+
+{********************************************************************************}
+
+
+ROUTINE receive_retain (VALUE retain_record)
+
+{
+*  Changes the status of retain from U (Unreceived) to V (Available) and
+*  prompts for,
+*
+*      1. Quantity retained
+*      2. Storage location
+*
+*******************************************************************************}
+
+    DECLARE status,
+            quantity,
+            text_comment,
+            receive_form,
+            quantity_prompt,
+            location_prompt,
+            box_prompt,
+            location,
+            box_no,
+            unit,
+            conversion_factor,
+            params,              {1.1}
+			retain_until,         {1.3}
+		record_id,
+		article_code,
+		material_description,
+		inspect_date
+    
+    g_instrument_used = ERROR { 1.2 }
+        
+    status = SELECT retains . status WHERE 
+                    identity = retain_record 
+
+    record_id = SELECT retains . record_id
+
+    article_code = SELECT retains . article_code
+
+    material_description = SELECT retains . material_description
+                    
+    unit   = STRIP(SELECT retains . retain_units)
+
+    conversion_factor = SELECT retains . anal_unit_per_retain_unit
+
+    inspect_date = NULL
+
+    IF (STRIP(status) = "U") THEN
+    
+        CREATE OBJECT PROMPT_CLASS_FORM, receive_form
+	  
+	receive_form . height = 8
+	receive_form . width = 60
+	receive_form . row = 4
+	receive_form . column = 2
+	receive_form . border = TRUE
+	receive_form . header = GET_USER_MESSAGE("RETAIN_LIB_RECEIVE_RETAIN", 1)
+	receive_form . active_prompt = 1
+        receive_form . return_behaviour = FORM_RETURN_STAY
+	
+{1.1}
+      IF GLOBAL("ORBIS_RR_BALANCE_INTEGRATED") THEN
+
+          ARRAY params  ARRAYSIZE(0)
+          params[1] = "999.99999"                        { Text format string }
+          params[2] = GLOBAL("ORBIS_BALANCE_CRITERIA")   { Saved criteria     }
+          params[3] = STRIP(SELECT retains . retain_units)
+
+          PROMPT OBJECT quantity_prompt 
+	    BROWSE ON REAL
+          ON LINE 1 FROM 25 TO 50 
+	    WITH (display_only= GLOBAL("ORBIS_RETAIN_READ_ONLY_BALANCE")  , 
+	          always_validate=TRUE,
+		    browse_routine="read_inst_browse",
+                user_info = params )
+      
+      ELSE
+
+          PROMPT OBJECT quantity_prompt
+	    FORMAT REAL
+	    WITH (minimum=0.001)
+	    ON LINE 1 FROM 25 TO 50 
+
+      ENDIF
+{/1.1}
+	  	  
+	PROMPT OBJECT location_prompt
+	BROWSE ON LOCATION
+	ON LINE 2 FROM 25 TO 50 
+
+	PROMPT OBJECT box_prompt
+	CLASS "STD_PROMPT_TEXT_PHRASE"
+	ON LINE 3 FROM 25 TO 50 
+	WITH ( phrase = "RET_BOX_NO" )
+
+
+	PROMPT OBJECT retain_until
+	FORMAT DATE
+	ON LINE 4 FROM 25 TO 50
+	  
+	receive_form . add_prompt(quantity_prompt)
+	receive_form . add_prompt(location_prompt)
+	receive_form . add_prompt(box_prompt)
+	receive_form  . add_prompt(retain_until)
+	  
+	receive_form . add_display(GET_USER_MESSAGE("RETAIN_LIB_QUANTITY", 1) , 1 , 1, PROMPT_RENDITION_BOLD)
+	receive_form . add_display( unit                                      , 50, 1, PROMPT_RENDITION_BOLD)
+	receive_form . add_display(GET_USER_MESSAGE("RETAIN_LIB_LOCATION", 1) , 1 , 2, PROMPT_RENDITION_BOLD)
+	receive_form . add_display(GET_USER_MESSAGE("RETAIN_LIB_BOX_NO"  , 1)  ,1 , 3, PROMPT_RENDITION_BOLD)
+	receive_form . add_display(GET_USER_MESSAGE("RETAIN_LIB_RETAIN_UNTIL" , 1) ,1 , 4, PROMPT_RENDITION_BOLD)
+
+	  
+	receive_form . start_prompt()
+	receive_form . wait_prompt()
+	receive_form . end_prompt()
+	  
+	IF receive_form . get_lastkey () = "DO" THEN
+	  	  
+	    quantity     = receive_form . prompt_objects[1] . text
+	    location     = receive_form . prompt_objects[2] . text
+	    box_no       = receive_form . prompt_objects[3] . text
+	    retain_until       = receive_form . prompt_objects[4] . text
+
+	    text_comment = ""
+	    
+            IF (conversion_factor = 0) THEN
+
+                quantity = quantity
+
+            ELSE
+
+                quantity = ( conversion_factor * quantity )
+
+            ENDIF
+
+            status = SELECT retains . status FOR UPDATE WHERE 
+                            identity = retain_record 
+
+            IF ( status <> EMPTY ) THEN
+ 
+                ASSIGN retains . status             = "V"
+                ASSIGN retains . quantity_retained  = quantity
+                ASSIGN retains . quantity           = quantity 
+                ASSIGN retains . location           = location
+		    ASSIGN retains . original_location  = location
+                ASSIGN retains . box_no             = box_no
+               ASSIGN retains . retain_until             = retain_until
+                ASSIGN retains . received_on        = NOW
+                ASSIGN retains . received_by        = GLOBAL("OPERATOR")
+
+                IF (g_instrument_used <> ERROR) THEN
+
+                    ASSIGN retains . qty_ret_instrument = g_instrument_used    { 1.2 }
+                    ASSIGN retains . qty_instrument     = g_instrument_used    { 1.2  because quantity also set }
+                ENDIF
+
+                START WRITE TRANSACTION "Update Retain Record"
+ 
+                UPDATE retains
+            
+                retain_history (retain_record, "RECEIVE", quantity, text_comment, record_id, article_code, material_description, inspect_date, unit)
+            
+                COMMIT 
+ 
+            ELSE
+
+                flash_message(GET_USER_MESSAGE("RETAIN_LIB_ERROR_UPDATING", 1), true)
+
+            ENDIF                    
+        
+        ENDIF
+
+    ELSE
+       
+        flash_message(GET_USER_MESSAGE("RETAIN_LIB_INCORRECT_STATUS", 1), true)
+
+    ENDIF
+
+ENDROUTINE {receive_retain}
+
+{******************************************************************************}
+
+ROUTINE dispose_retain (VALUE retain_record)
+
+{
+*  Changes retain status to D (Disposed) and updates the disposed_on and 
+*  disposed_by fields. Also sets the quantity to 0
+*
+*******************************************************************************}
+
+    DECLARE quantity,
+            text_comment,
+            status,
+		record_id,
+		article_code,
+		material_description,
+		units
+
+    status = SELECT retains . status 
+                  WHERE identity = retain_record
+                  
+    quantity = SELECT retains . quantity
+
+    record_id = SELECT retains . record_id
+
+    article_code = SELECT retains . article_code
+
+    material_description = SELECT retains . material_description
+
+    units = SELECT retains . retain_units
+
+
+    
+    IF (strip(status) = "F") THEN
+
+        status = SELECT retains . status FOR UPDATE
+                 WHERE identity = retain_record 
+
+        IF ( status <> EMPTY ) THEN
+                    
+            text_comment = ""
+
+            ASSIGN retains . status       = "D"
+            ASSIGN retains . quantity     = 0
+            ASSIGN retains . disposed_on  = NOW
+            ASSIGN retains . disposed_by  = GLOBAL("OPERATOR")
+   
+            START WRITE TRANSACTION "Update Retain Record"
+
+            UPDATE retains
+            
+            retain_history (retain_record, "DISPOSE", quantity, text_comment,  record_id, article_code, material_description, NULL, units)
+            
+            COMMIT 
+
+        ELSE
+
+            flash_message(GET_USER_MESSAGE("RETAIN_LIB_ERROR_UPDATING", 1), true)
+
+        ENDIF
+
+    ELSE
+
+        flash_message(GET_USER_MESSAGE("RETAIN_LIB_INCORRECT_STATUS", 1), true)
+
+    ENDIF
+
+ENDROUTINE {dispose_retain}
+
+
+{******************************************************************************}
+
+ROUTINE remove_retain (VALUE retain_record)
+
+{
+*  Decrements the quantity field by amount prompted
+*  
+*
+*******************************************************************************}
+
+    DECLARE quantity,
+            text_comment,
+            remove_form,
+            new_quantity,
+            status,
+            quantity_prompt,
+            comment_prompt,
+            remove_quantity,
+            min_retain_quantity,
+            unit,
+		record_id,
+		article_code,
+		material_description,
+		units
+            
+
+    status    = SELECT retains . status WHERE 
+                       identity = retain_record 
+               
+    quantity  = SELECT retains . quantity     
+                 
+    unit      = STRIP (SELECT retains . units)
+    
+    min_retain_quantity = SELECT retains . min_retain_quantity
+
+    record_id = SELECT retains . record_id
+
+    article_code = SELECT retains . article_code
+
+    material_description = SELECT retains . material_description
+
+    units = SELECT retains . retain_units
+
+    
+    IF (strip(status) = "V") THEN    
+    
+        CREATE OBJECT PROMPT_CLASS_FORM, remove_form
+    	  
+    	remove_form . height = 2
+    	remove_form . width = 50
+    	remove_form . row = 4
+    	remove_form . column = 2
+    	remove_form . border = TRUE
+    	remove_form . header = GET_USER_MESSAGE("RETAIN_LIB_REMOVE_RETAIN", 1)
+    	remove_form . active_prompt = 1
+        remove_form . return_behaviour = FORM_RETURN_STAY
+    	  
+    	PROMPT OBJECT quantity_prompt
+    	FORMAT REAL
+    	WITH (minimum=0.001)
+    	ON LINE 1 FROM 13 TO 45
+    	  	  
+    	PROMPT OBJECT comment_prompt
+    	FORMAT TEXT	  
+	WITH (length= 150)
+    	ON LINE 2 FROM 13 TO 255
+    	  
+    	remove_form . add_prompt(quantity_prompt)
+    	remove_form . add_prompt(comment_prompt)
+    	  
+    	remove_form . add_display(GET_USER_MESSAGE("RETAIN_LIB_QUANTITY", 1), 1 , 1, PROMPT_RENDITION_BOLD)
+        remove_form . add_display(unit                                      , 30, 1, PROMPT_RENDITION_BOLD)
+    	remove_form . add_display(GET_USER_MESSAGE("RETAIN_LIB_COMMENT" , 1), 1 , 2, PROMPT_RENDITION_BOLD)
+    	 
+    	remove_form . start_prompt()
+    	remove_form . wait_prompt()
+    	remove_form . end_prompt()
+    	 
+    	IF ( remove_form . get_lastkey () = "DO") THEN
+    	  	  
+    	    remove_quantity = remove_form . prompt_objects[1] . text    	      
+	    text_comment    = remove_form . prompt_objects[2] . text
+
+            status = SELECT retains . status FOR UPDATE WHERE 
+                            identity = retain_record 
+
+            IF ( status <> EMPTY ) THEN                        
+            
+                IF (quantity < remove_quantity) THEN
+            
+                    flash_message(GET_USER_MESSAGE("RETAIN_LIB_QUANTITY_EXCEEDED", 1), true)
+            
+                ELSE
+   
+                    new_quantity = (quantity - remove_quantity)
+                    
+                    {Warn if below min limit}
+                    
+                    IF (new_quantity < min_retain_quantity) THEN
+		    
+		            flash_message(GET_USER_MESSAGE("RETAIN_LIB_MIN_QUANTITY_EXCEEDED", 1), true)
+		            
+		            ASSIGN retains . min_qty = FALSE
+		    
+                    ENDIF
+                    
+                    {If the retain quantity goes to 0 mark as disposed}
+
+                    IF (new_quantity = 0) THEN
+
+                        flash_message (GET_USER_MESSAGE("RETAIN_LIB_AUTO_DISPOSED_MESSAGE", 1), true)
+
+                        ASSIGN retains . status = "D"
+                        ASSIGN retains . disposed_on  = NOW
+                        ASSIGN retains . disposed_by  = GLOBAL("OPERATOR")
+
+                    ENDIF
+                    
+                    ASSIGN retains . quantity     = new_quantity
+   
+                    START WRITE TRANSACTION "Update Retain Record"
+
+                    UPDATE retains
+            
+                    retain_history (retain_record, "REMOVE", remove_quantity, text_comment, record_id, article_code, material_description, NULL, units)
+            
+                    COMMIT
+                
+                ENDIF
+
+            ELSE
+
+                flash_message(GET_USER_MESSAGE("RETAIN_LIB_ERROR_UPDATING", 1), true)
+
+            ENDIF
+            
+        ENDIF
+        
+    ELSE
+
+        flash_message(GET_USER_MESSAGE("RETAIN_LIB_INCORRECT_STATUS", 1), true)
+
+    ENDIF
+
+ENDROUTINE {remove_retain}
+
+
+{*****************************************************************************}
+
+ROUTINE retain ( batch_login )
+{
+*
+*   Called by the RETAIN rule in the sample plan
+*
+******************************************************************************}
+
+    DECLARE the_job,
+            the_table,
+            the_login_date
+
+
+
+    the_job = SELECT job_header . job_name
+
+    the_login_date = SELECT job_header . date_created
+
+
+
+
+    IF (STRIP(the_job) <> "") THEN
+
+        the_table = "JOB_HEADER"
+
+        CALL_ROUTINE "create_retain" 
+        USING the_table, 
+              the_job,
+              the_login_date 
+        IN LIBRARY "RETAIN_LIB" 
+	 NEW TRANSACTION
+
+    ENDIF
+
+
+    RETURN ( FALSE )  {Never Assigns any Analysis}
+
+ENDROUTINE
+
+{1.1, 1.2 enhancements }
+{*****************************************************************************}
+ROUTINE read_inst_browse (self)
+
+{
+*
+*  Read value from balance 
+*
+******************************************************************************}
+
+	g_instrument_used = or_balance_browse1 (self)
+	
+ENDROUTINE { read_inst_browse }
+
+{/1.1}
+{/1.2}
+
+{*****************************************************************************}
+ROUTINE inspect_retain (VALUE retain_record)
+
+{
+*  Adds inspection record for the retain record
+*  
+*
+*******************************************************************************}
+
+    DECLARE text_comment,
+            inspect_form,
+            status,
+            result_prompt,
+            comment_prompt,
+		lir_prompt,
+		tested_by_prompt,
+		tested_by,
+		lir,
+		result,
+		result_array,
+		record_id,
+		article_code,
+		material_description,
+		units
+		            
+    ARRAY result_array 
+	result_array [ 1 , 1 ] = " "
+	result_array [ 2 , 1 ] = "Does not Comply" 
+	result_array [ 3 , 1 ] = "Complies"
+
+
+    status    = SELECT retains . status WHERE 
+                       identity = retain_record 
+               
+    record_id = SELECT retains . record_id
+
+    article_code = SELECT retains . article_code 
+
+    material_description = SELECT retains . material_description
+
+    units = SELECT retains . retain_units
+ 
+  
+    IF (strip(status) = "V") THEN    
+    
+        CREATE OBJECT PROMPT_CLASS_FORM, inspect_form
+    	  
+    	inspect_form . height = 8
+    	inspect_form . width = 60
+    	inspect_form . row = 5
+    	inspect_form . column = 2
+    	inspect_form . border = TRUE
+    	inspect_form . header = GET_USER_MESSAGE("RETAIN_LIB_RETAIN_INSPECT", 1)
+    	inspect_form . active_prompt = 1
+      inspect_form . return_behaviour = FORM_RETURN_STAY
+    	  
+    	PROMPT OBJECT result_prompt
+    	CHOOSE OUTOF result_array
+    	WITH (length=50)
+    	ON LINE 1 FROM 35 TO 100
+    	  	  
+    	PROMPT OBJECT comment_prompt
+    	FORMAT TEXT	  
+	WITH (length=150)
+    	ON LINE 2 FROM 35 TO 255
+    	  
+    	PROMPT OBJECT lir_prompt
+    	FORMAT TEXT	  
+	WITH (length=50)
+    	ON LINE 3 FROM 35 TO 255
+
+
+    	PROMPT OBJECT tested_by_prompt
+      BROWSE ON PERSONNEL
+    	ON LINE 4 FROM 35 TO 255
+
+
+    	inspect_form . add_prompt(result_prompt)
+    	inspect_form . add_prompt(comment_prompt)
+    	inspect_form . add_prompt(lir_prompt)
+    	inspect_form . add_prompt(tested_by_prompt)	  
+
+    	inspect_form . add_display(GET_USER_MESSAGE("RETAIN_LIB_RESULT" , 1), 1 , 1, PROMPT_RENDITION_BOLD)
+    	inspect_form . add_display(GET_USER_MESSAGE("RETAIN_LIB_COMMENT", 1), 1 , 2, PROMPT_RENDITION_BOLD)
+    	inspect_form . add_display(GET_USER_MESSAGE("RETAIN_LIB_LIR" , 1), 1 , 3, PROMPT_RENDITION_BOLD)
+    	inspect_form . add_display(GET_USER_MESSAGE("RETAIN_LIB_TESTED_BY", 1), 1 ,4 , PROMPT_RENDITION_BOLD)    	 
+    	
+	inspect_form . start_prompt()
+    	inspect_form . wait_prompt()
+    	inspect_form . end_prompt()
+    	 
+    	IF ( inspect_form . get_lastkey () = "DO") THEN
+    	  	  
+    	      
+	    result    	  = inspect_form . prompt_objects[1] . text
+    	    text_comment 	  = inspect_form . prompt_objects[2] . text    	      
+	    lir    		  = inspect_form . prompt_objects[3] . text
+    	    tested_by 	  = inspect_form . prompt_objects[4] . text
+
+            status = SELECT retains . status FOR UPDATE WHERE 
+                            identity = retain_record 
+
+            IF ( status <> EMPTY ) THEN                        
+            
+                
+                    
+                      
+                    START WRITE TRANSACTION "Update Retain Record"
+
+                    UPDATE retains
+            
+                    retain_inspect_history (retain_record, "INSPECTION", result, tested_by, lir, text_comment, record_id, article_code, material_description,  units)
+            
+                    COMMIT
+                
+                
+
+            ELSE
+
+                flash_message(GET_USER_MESSAGE("RETAIN_LIB_ERROR_UPDATING", 1), true)
+
+            ENDIF
+            
+        ENDIF
+        
+    ELSE
+
+        flash_message(GET_USER_MESSAGE("RETAIN_LIB_INCORRECT_STATUS", 1), true)
+
+    ENDIF
+
+ENDROUTINE {inspect_retain}
+
+{********************************************************************************}
+
+ROUTINE retain_inspect_history (VALUE the_identity, VALUE the_action_type, 
+                               VALUE the_result, VALUE the_tester, VALUE the_lir, VALUE the_comment,
+					 VALUE the_record_id, VALUE the_material,
+					 VALUE the_description, VALUE the_units)
+
+{
+*  Writes a retain history record to the database
+*
+*******************************************************************************}
+
+    DECLARE the_action_no,
+            check_ok,
+            field_length
+    
+    {Get next sequence number for the retain record}
+
+    the_action_no = SELECT MAX retain_history . action_no WHERE
+                              identity = the_identity
+                      
+    IF (the_action_no = EMPTY) THEN                     
+
+        the_action_no = 1
+
+    ELSE
+
+        the_action_no = PACKED_DECIMAL(the_action_no + 1)
+
+    ENDIF
+    
+    {Write history entry to the database}    
+
+    GET_FIELD_DETAILS retain_history.identity, "FIELD_SIZE", field_length   
+    
+    RESERVE ENTRY retain_history, PAD(the_identity," ",field_length):the_action_no, check_ok
+                
+    IF (check_ok = EMPTY) THEN
+
+        ASSIGN retain_history . action_type  = the_action_type
+        ASSIGN retain_history . tested_by    = the_tester
+        ASSIGN retain_history . result       = the_result
+        ASSIGN retain_history . lir          = the_lir
+        ASSIGN retain_history . text_comment = the_comment
+	  ASSIGN retain_history . ret_material_code = the_material
+	  ASSIGN retain_history . material_description = the_description
+	  ASSIGN retain_history . ret_batch_no = the_record_id
+	  ASSIGN retain_history . ret_units    = the_units
+        ASSIGN retain_history . action_on    = NOW
+        ASSIGN retain_history . action_by    = GLOBAL("OPERATOR")
+
+	IF (STRIP(the_action_type) = "INSPECTION") THEN
+
+		ASSIGN retain_history . inspected_on = NOW
+
+	ELSE
+		{no date required}
+	ENDIF
+    
+        UPDATE retain_history
+                    
+    ELSE
+		         
+        flashmessage(check_ok, TRUE)        
+		         
+    ENDIF
+        
+ENDROUTINE {retain_inspect_history}
+ 
+{*****************************************************************************} 
+ROUTINE inspect_retain_rmb (rmb_object, 
+                            object, 
+                            data)
+
+{
+*  RMB option for inspecting Retain.
+*
+*******************************************************************************}
+
+    DECLARE the_record, 
+            no_records, 
+            retain_record,
+            the_table
+
+    the_table = data . table
+
+    no_records = data . size()
+
+    data . set_first ()
+
+    WHILE ((data . current_position <= no_records) AND ( data . current_position > 0 )) DO
+
+        the_record = data . get_by_number (data . current_position)
+
+        retain_record = SELECT 'the_table' . identity IN OBJECT the_record
+
+        inspect_retain (retain_record)
+
+        data . set_next()
+    
+    ENDWHILE
+
+
+
+ENDROUTINE {inspect_retain_rmb}
+
+{******************************************************************************}   
+ROUTINE review_retain_rmb (rmb_object, 
+                            object, 
+                            data)
+
+{
+*  RMB option for inspecting Retain.
+*
+*******************************************************************************}
+
+    DECLARE the_record, 
+            no_records, 
+            retain_record,
+            the_table,
+		action_num,
+		the_comment
+
+    the_comment = display_comment_form ()
+
+
+    IF the_comment <> "" THEN
+    	the_table = data . table
+
+    	no_records = data . size()
+
+    	data . set_first ()
+
+    	WHILE ((data . current_position <= no_records) AND ( data . current_position > 0 )) DO
+
+        	the_record = data . get_by_number (data . current_position)
+
+        	retain_record = SELECT 'the_table' . identity IN OBJECT the_record
+
+	  	action_num = SELECT 'the_table' . action_no IN OBJECT the_record
+
+        	review_retain (retain_record, action_num, the_comment)
+
+        	data . set_next()
+    
+    	ENDWHILE
+    ELSE
+	{do nothing}
+    ENDIF
+
+
+ENDROUTINE {review_retain_rmb}
+
+{******************************************************************************} 
+ROUTINE review_retain (VALUE retain_record, VALUE the_action_num, VALUE the_comment)
+
+{
+*  Review record for the retain record
+*  
+*
+*******************************************************************************}
+
+    DECLARE text_comment,
+            the_tester,
+		reviewed_by,
+		action		            
+
+
+
+
+	the_tester = SELECT retain_history . tested_by WHERE 
+                       identity = retain_record and
+				action_no = the_action_num
+               
+ 
+  
+    IF (strip(the_tester)<> STRIP(GLOBAL("OPERATOR"))) THEN    
+    
+          	  	  
+    	      
+
+    	    text_comment 	  = the_comment
+    	    reviewed_by 	  = STRIP(GLOBAL("OPERATOR"))
+
+    action    = SELECT retain_history . action_no FOR UPDATE WHERE 
+                       identity = retain_record and
+				action_no = the_action_num
+
+            IF ( action <> EMPTY ) THEN                        
+            
+
+   { GET_FIELD_DETAILS retain_history.identity, "FIELD_SIZE", field_length   
+    
+    RESERVE ENTRY retain_history, PAD(the_identity," ",field_length):the_action_num, check_ok}
+                
+    {IF (check_ok = EMPTY) THEN}
+
+        ASSIGN retain_history . review_comment = text_comment
+        ASSIGN retain_history . reviewed_on    = NOW
+        ASSIGN retain_history . inspec_review    = reviewed_by
+	  ASSIGN retain_history . action_type = "REVIEWED"
+
+        START WRITE TRANSACTION "Update Retain Record"
+    
+        UPDATE retain_history
+
+
+                    COMMIT
+                    
+   { ELSE
+		         
+        flashmessage(check_ok, TRUE)        
+		         
+    ENDIF}
+ 
+               
+
+            
+        ENDIF
+        
+
+
+ELSE
+
+	flash_message ("You can not review your own testing", true)  
+                    
+   
+
+ENDIF
+
+ENDROUTINE {review_retain}
+
+{******************************************************************************} 
+ROUTINE review_retain_2 (VALUE retain_record, VALUE the_action_num)
+
+{
+*  Review record for the retain record
+*  
+*
+*******************************************************************************}
+
+    DECLARE text_comment,
+            review_form,
+            the_tester,
+            comment_prompt,
+		reviewed_by_prompt,
+		reviewed_by,
+		action		            
+
+
+
+
+	the_tester = SELECT retain_history . tested_by WHERE 
+                       identity = retain_record and
+				action_no = the_action_num
+               
+ 
+  
+    IF (strip(the_tester)<> STRIP(GLOBAL("OPERATOR"))) THEN    
+    
+        CREATE OBJECT PROMPT_CLASS_FORM, review_form
+    	  
+    	review_form . height = 6
+    	review_form  . width = 60
+    	review_form  . row = 4
+    	review_form  . column = 2
+    	review_form  . border = TRUE
+    	review_form  . header = "Review Retain Inspection"
+    	review_form  . active_prompt = 1
+      review_form  . return_behaviour = FORM_RETURN_STAY
+    	  
+
+    	  	  
+    	PROMPT OBJECT comment_prompt
+    	FORMAT TEXT	  
+	WITH (length=150)
+    	ON LINE 1 FROM 22 TO 255
+
+    	PROMPT OBJECT reviewed_by_prompt
+           FORMAT TEXT 
+            WITH (  width = 40, 
+                   lowered= True,
+                   value = GLOBAL("OPERATOR"),
+                   display_only = TRUE 
+		)
+    	ON LINE 2 FROM 22 TO 255
+
+
+
+
+    	review_form  . add_prompt(comment_prompt)
+    	review_form  . add_prompt(reviewed_by_prompt)    	  
+
+	review_form  . add_display(GET_USER_MESSAGE("RETAIN_LIB_COMMENT", 1), 1 , 1, PROMPT_RENDITION_BOLD)
+    	review_form  . add_display( "Reviewed By" , 1 , 2, PROMPT_RENDITION_BOLD)	 
+    	
+	review_form  . start_prompt()
+    	review_form  . wait_prompt()
+    	review_form  . end_prompt()
+    	 
+    	IF ( review_form  . get_lastkey () = "DO") THEN
+    	  	  
+    	      
+
+    	    text_comment 	  = review_form  . prompt_objects[1] . text 
+    	    reviewed_by 	  = review_form  . prompt_objects[2] . text
+
+    action    = SELECT retain_history . action_no FOR UPDATE WHERE 
+                       identity = retain_record and
+				action_no = the_action_num
+
+            IF ( action <> EMPTY ) THEN                        
+            
+
+   { GET_FIELD_DETAILS retain_history.identity, "FIELD_SIZE", field_length   
+    
+    RESERVE ENTRY retain_history, PAD(the_identity," ",field_length):the_action_num, check_ok}
+                
+    {IF (check_ok = EMPTY) THEN}
+
+        ASSIGN retain_history . text_comment = text_comment
+        ASSIGN retain_history . reviewed_on    = NOW
+        ASSIGN retain_history . inspec_review    = reviewed_by
+
+        START WRITE TRANSACTION "Update Retain Record"
+    
+        UPDATE retain_history
+
+
+                    COMMIT
+                    
+   { ELSE
+		         
+        flashmessage(check_ok, TRUE)        
+		         
+    ENDIF}
+ 
+               
+
+            
+        ENDIF
+        
+    ELSE
+
+               flash_message(GET_USER_MESSAGE("RETAIN_LIB_INCORRECT_STATUS", 1), true)
+
+    ENDIF
+
+ELSE
+
+	flash_message ("You can not review your own testing", true)  
+                    
+   
+
+ENDIF
+
+ENDROUTINE {review_retain}
+
+ROUTINE add_to__retain_rmb (rmb_object, 
+                            object, 
+                            data)
+
+{
+*  RMB option fo to add a portion of the retain
+*
+*******************************************************************************}
+
+   DECLARE the_record, 
+            no_records, 
+            retain_record,
+            the_table
+
+    the_table = data . table
+
+    no_records = data . size()
+
+    data . set_first ()
+
+    WHILE ((data . current_position <= no_records) AND ( data . current_position > 0 )) DO
+
+        the_record = data . get_by_number (data . current_position)
+
+        retain_record = SELECT 'the_table' . identity IN OBJECT the_record
+
+        add_to_retain (retain_record)
+
+        data . set_next()
+    
+    ENDWHILE
+ 
+ 
+
+
+ENDROUTINE {add_to__retain_rmb}
+
+{******************************************************************************}
+
+ROUTINE add_to_retain (VALUE retain_record)
+
+{
+*  Increments the quantity field by amount prompted
+*  
+*
+*******************************************************************************}
+
+    DECLARE quantity,
+            text_comment,
+            add_form,
+            new_quantity,
+            status,
+            quantity_prompt,
+            comment_prompt,
+            add_quantity,
+            unit,
+		record_id,
+		article_code,
+		material_description,
+		units
+            
+
+    status    = SELECT retains . status WHERE 
+                       identity = retain_record 
+               
+    quantity  = SELECT retains . quantity     
+                 
+    unit      = STRIP (SELECT retains . units)
+    
+    record_id = SELECT retains . record_id
+
+    article_code = SELECT retains . article_code
+
+    material_description = SELECT retains . material_description
+
+    units = SELECT retains . retain_units
+
+    
+    IF (strip(status) = "V") THEN    
+    
+        CREATE OBJECT PROMPT_CLASS_FORM, add_form
+    	  
+    	add_form . height = 2
+    	add_form . width = 50
+    	add_form . row = 4
+    	add_form . column = 2
+    	add_form . border = TRUE
+    	add_form . header = "Add to Retain"
+    	add_form . active_prompt = 1
+      add_form . return_behaviour = FORM_RETURN_STAY
+    	  
+    	PROMPT OBJECT quantity_prompt
+    	FORMAT REAL
+    	WITH (minimum=0.001)
+    	ON LINE 1 FROM 13 TO 45
+    	  	  
+    	PROMPT OBJECT comment_prompt
+    	FORMAT TEXT	  
+	WITH (length=150)
+    	ON LINE 2 FROM 13 TO 255
+    	  
+    	add_form . add_prompt(quantity_prompt)
+    	add_form . add_prompt(comment_prompt)
+    	  
+    	add_form . add_display(GET_USER_MESSAGE("RETAIN_LIB_QUANTITY", 1), 1 , 1, PROMPT_RENDITION_BOLD)
+      add_form . add_display(unit                                      , 30, 1, PROMPT_RENDITION_BOLD)
+    	add_form . add_display(GET_USER_MESSAGE("RETAIN_LIB_COMMENT" , 1), 1 , 2, PROMPT_RENDITION_BOLD)
+    	 
+    	add_form . start_prompt()
+    	add_form . wait_prompt()
+    	add_form . end_prompt()
+    	 
+    	IF ( add_form . get_lastkey () = "DO") THEN
+    	  	  
+    	    add_quantity = add_form . prompt_objects[1] . text    	      
+	    text_comment    = add_form . prompt_objects[2] . text
+
+            status = SELECT retains . status FOR UPDATE WHERE 
+                            identity = retain_record 
+
+            IF ( status <> EMPTY ) THEN                        
+            
+         
+   
+                    new_quantity = (quantity + add_quantity)
+                    
+ 
+                    
+                    ASSIGN retains . quantity     = new_quantity
+   
+                    START WRITE TRANSACTION "Update Retain Record"
+
+                    UPDATE retains
+            
+                    retain_history (retain_record, "ADD", add_quantity, text_comment, record_id, article_code, material_description, NULL, units)
+            
+                    COMMIT
+                
+                
+
+            ELSE
+
+                flash_message(GET_USER_MESSAGE("RETAIN_LIB_ERROR_UPDATING", 1), true)
+
+            ENDIF
+            
+        ENDIF
+        
+    ELSE
+
+        flash_message(GET_USER_MESSAGE("RETAIN_LIB_INCORRECT_STATUS", 1), true)
+
+    ENDIF
+
+ENDROUTINE {add_to_retain}
+
+
+{********************************************************************************}  
+
+ROUTINE move_retain__2_rmb (rmb_object, 
+                         object, 
+                         data)
+
+{
+*  RMB option for Chaging Retain Location
+*
+*******************************************************************************}
+
+    DECLARE the_record, 
+            no_records, 
+            retain_record,
+            the_table
+
+
+
+        the_table = data . table
+
+        no_records = data . size()
+
+        data . set_first ()
+
+        WHILE ((data . current_position <= no_records) AND ( data . current_position > 0 )) DO
+
+            the_record = data . get_by_number (data . current_position)
+
+            retain_record = SELECT 'the_table' . identity IN OBJECT the_record
+
+            move_retain_2 (retain_record)
+
+            data . set_next()
+    
+        ENDWHILE
+ 
+
+
+
+
+ENDROUTINE {move_retain_rmb}
+ 
+ROUTINE move_retain_2 (VALUE retain_id)
+
+{
+*  Changes the location of retain and prompts for,
+*  
+*
+*      1. Storage location
+*      2. Comment
+*
+*******************************************************************************}
+
+    DECLARE status,
+            text_comment,
+            move_form,
+            location_prompt,
+            box_prompt,
+		comment_prompt,				
+            location,
+		old_location,
+            box_no,
+		record_id,
+		article_code,
+	      material_description,
+		units
+    
+         
+    status = SELECT retains . status WHERE 
+                    identity = retain_id
+
+    old_location = SELECT retains . location WHERE
+				  identity = retain_id
+                    
+    record_id = SELECT retains . record_id
+
+    article_code = SELECT retains . article_code
+
+    material_description = SELECT retains . material_description
+
+    units = SELECT retains . retain_units
+
+    
+        CREATE OBJECT PROMPT_CLASS_FORM, move_form
+	  
+	move_form . height = 7
+	move_form . width = 60
+	move_form . row = 5
+	move_form . column = 2
+	move_form . border = TRUE
+	move_form . header = "Move Retain Location"
+	move_form . active_prompt = 1
+      move_form . return_behaviour = FORM_RETURN_STAY
+	
+
+      
+  	  
+	PROMPT OBJECT location_prompt
+	BROWSE ON LOCATION
+	ON LINE 1 FROM 25 TO 50 
+
+	PROMPT OBJECT box_prompt
+	CLASS "STD_PROMPT_TEXT_PHRASE"
+	ON LINE 2 FROM 25 TO 50 
+	WITH ( phrase = "RET_BOX_NO" )
+
+
+	PROMPT OBJECT comment_prompt
+	FORMAT TEXT
+	ON LINE 3 FROM 25 TO 50 
+	  
+
+	move_form . add_prompt(location_prompt)
+	move_form . add_prompt(box_prompt)
+	move_form . add_prompt(comment_prompt)
+	  
+	move_form . add_display(GET_USER_MESSAGE("RETAIN_LIB_LOCATION", 1) , 1 , 1, PROMPT_RENDITION_BOLD)
+	move_form . add_display(GET_USER_MESSAGE("RETAIN_LIB_BOX_NO"  , 1)  ,1 , 2, PROMPT_RENDITION_BOLD)
+	move_form . add_display("Comment:"  ,1 , 3, PROMPT_RENDITION_BOLD)
+
+	  
+	move_form . start_prompt()
+	move_form . wait_prompt()
+	move_form . end_prompt()
+	  
+	IF move_form . get_lastkey () = "DO" THEN
+	  	  
+
+	    location     = move_form . prompt_objects[1] . text
+	    box_no       = move_form . prompt_objects[2] . text
+	    text_comment = move_form . prompt_objects[3] . text
+
+
+
+            status = SELECT retains . status FOR UPDATE WHERE 
+                            identity = retain_id 
+
+            IF ( status <> EMPTY ) THEN
+                ASSIGN retains . location           = location
+                ASSIGN retains . box_no             = box_no
+                ASSIGN retains . text_comment  	    = text_comment
+                ASSIGN retains . modified_on        = NOW
+                ASSIGN retains . modified_by        = GLOBAL("OPERATOR")
+
+ 
+
+                START WRITE TRANSACTION "Update Retain Record"
+ 
+                UPDATE retains
+            
+                retain_history_loc (retain_id, "MOVE", old_location, text_comment, record_id, article_code, material_description, units)
+            
+                COMMIT 
+ 
+            ELSE
+
+                flash_message(GET_USER_MESSAGE("RETAIN_LIB_ERROR_UPDATING", 1), true)
+
+            ENDIF                    
+        
+        ENDIF
+
+   
+ENDROUTINE {move_retain_2} 
+ROUTINE move_retain_history (VALUE retain_id)
+
+{
+*  Changes the location of retain and prompts for,
+*  
+*
+*      1. Storage location
+*      2. Comment
+*
+*******************************************************************************}
+
+    DECLARE status,
+            text_comment,			
+            location,
+		record_id,
+		article_code,
+	      material_description,
+		units
+    
+         
+    status = SELECT retains . status WHERE 
+                    identity = retain_id
+
+    location = SELECT retains . location WHERE
+				  identity = retain_id
+                    
+    record_id = SELECT retains . record_id
+
+    article_code = SELECT retains . article_code
+
+    material_description = SELECT retains . material_description
+
+    text_comment = SELECT retains . comments_1
+
+    units = SELECT retains . retain_units
+
+    
+ 
+
+
+
+
+            status = SELECT retains . status FOR UPDATE WHERE 
+                            identity = retain_id 
+
+            IF ( status <> EMPTY ) THEN
+
+
+ 
+
+                START WRITE TRANSACTION "Update Retain Record"
+ 
+                UPDATE retains
+            
+                retain_history_loc (retain_id, "MOVE", location, text_comment, record_id, article_code, material_description, units)
+            
+                COMMIT 
+ 
+            ELSE
+
+                flash_message(GET_USER_MESSAGE("RETAIN_LIB_ERROR_UPDATING", 1), true)
+
+            ENDIF                    
+        
+
+   
+ENDROUTINE {move_retain_history}    
+ROUTINE move_retain_post_commit (self, data)
+
+{
+*  Changes the location of retain and prompts for,
+*  
+*
+*      1. Storage location
+*      2. Comment
+*
+*******************************************************************************}
+    DECLARE retain_id
+
+    data . set_first ( )
+
+    WHILE self . data . current <> EMPTY DO
+
+        retain_id = SELECT 'self . table' . identity 
+                    IN OBJECT data . current
+
+	
+        CALL_ROUTINE "move_retain_history" 
+             IN LIBRARY "RETAIN_LIB" USING retain_id
+
+        data . set_next ( )
+
+    ENDWHILE
+
+
+   
+ENDROUTINE {move_retain_2}    
+
+ROUTINE read_only_operator ( prompt_object ,
+				   prompt_value  )
+
+{
+*    Returns a readonly prompt with the current Operator ID
+*
+*******************************************************************************}
+    
+    PROMPT OBJECT prompt_object 
+           FORMAT TEXT 
+
+ 	prompt_object . prompt_id = "Reviewed By"
+   prompt_value =  GLOBAL("OPERATOR")
+
+ENDROUTINE {read_only_operator}
+
+ROUTINE check_operator ( self ,
+				   parameters  )
+
+{
+*    Checks the current Operator ID
+*
+*******************************************************************************}
+    
+    	DECLARE is_ok, tested_by
+
+
+
+	tested_by = SELECT 'self . table'. tested_by
+
+
+
+
+	is_ok = FALSE
+
+	IF ( GLOBAL("OPERATOR") <> tested_by ) THEN
+
+		is_ok = TRUE
+
+	ELSE
+
+		is_ok = FALSE
+		flash_message ("Can not review your own testing", true)
+
+	ENDIF
+
+	return (is_ok)
+ 
+ENDROUTINE {check_operator}
+
+ROUTINE display_comment_form
+
+{
+*  Prompt form for location
+*
+*******************************************************************************}
+    
+    DECLARE form,
+	        comment_prompt,
+			the_comment
+
+    CREATE OBJECT "std_form", form
+    
+    form . height = 3
+    form . width  = 30
+    form . header = "Review Inspection"
+    form . active_prompt = 1
+    form . return_behaviour = FORM_RETURN_STAY
+     
+    PROMPT OBJECT comment_prompt
+    FORMAT TEXT
+	on line 1 from 15 TO 30
+		
+    form . add_prompt( comment_prompt )
+            
+	form . add_display( "Review Comment", 1, 1, PROMPT_RENDITION_BOLD )
+    
+    form . start_prompt()
+    form . wait_prompt()
+    form . end_prompt()
+    	  
+    IF form . get_lastkey () = "DO" THEN            
+        the_comment = form . prompt_objects[1] . text     
+	ELSE	
+		the_comment = ""
+	ENDIF
+
+    RETURN ( the_comment )
+    
+ENDROUTINE { display_comment_form }
+
+ROUTINE mark_retain_for_disposal (VALUE retain_id)
+
+{
+*  Updates who marked it for disposal and when
+*
+*******************************************************************************}
+	DECLARE status
+
+
+            status = SELECT retains . status FOR UPDATE WHERE 
+                            identity = retain_id 
+
+            IF ( status <> EMPTY ) THEN
+
+	          ASSIGN retains . flag_for_disposal_on        = NOW
+                ASSIGN retains . flag_for_disposal_by        = GLOBAL("OPERATOR")
+
+ 
+
+                START WRITE TRANSACTION "Update Retain Record"
+ 
+                UPDATE retains
+            
+                COMMIT 
+ 
+            ELSE
+
+                flash_message(GET_USER_MESSAGE("RETAIN_LIB_ERROR_UPDATING", 1), true)
+
+            ENDIF                    
+        
+
+   
+ENDROUTINE {mark_retain_for_disposal}    
+
+ROUTINE mark_for_disposal_post_commit (self, data)
+
+{
+*  Changes the location of retain and prompts for,
+*  
+*
+*      1. Storage location
+*      2. Comment
+*
+*******************************************************************************}
+    DECLARE retain_id
+
+    data . set_first ( )
+
+    WHILE self . data . current <> EMPTY DO
+
+        retain_id = SELECT 'self . table' . identity 
+                    IN OBJECT data . current
+
+	
+        CALL_ROUTINE "mark_retain_for_disposal" 
+             IN LIBRARY "RETAIN_LIB" USING retain_id
+
+        data . set_next ( )
+
+    ENDWHILE
+
+
+   
+ENDROUTINE {mark_retain_for_disposal_post_commit} 

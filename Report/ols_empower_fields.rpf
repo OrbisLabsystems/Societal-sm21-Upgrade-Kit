@@ -1,0 +1,557 @@
+{******************************************************************************
+*
+* Module Name	: OLS_EMPOWER_FIELDS
+* Purpose	: Get fields for sample/test/batch etc
+*
+* Version	: 1.3
+*
+*******************************************************************************}
+{
+MOD1 : component naming
+}
+
+SET COMPILE_OPTION DECLARE
+SET NAME "DEFER/"
+ENABLE WINDOWS
+SET NOTPROTECTED
+
+JOIN STANDARD_LIBRARY STD_ARRAY
+JOIN STANDARD_LIBRARY STD_GENERAL
+JOIN STANDARD_LIBRARY STD_DATABASE
+JOIN STANDARD_LIBRARY STD_ARRAY_SELECT
+JOIN STANDARD_LIBRARY STD_STRUCTURE
+JOIN STANDARD_LIBRARY STD_UTILS
+JOIN STANDARD_LIBRARY STD_PROMPT
+JOIN STANDARD_LIBRARY STD_CLASS
+JOIN STANDARD_LIBRARY STD_CLIENT
+JOIN LIBRARY $LIB_UTILS
+JOIN LIBRARY OLS_EMPOWER_CUST
+
+CONSTANT CON_PLACEHOLDER_LTE_CHARS = "..orbis.chr"
+
+GLOBAL ROUTINE flds_get_sample_data (VALUE sample, field_array)
+
+	DECLARE rec, i
+
+	rec = SELECT sample . id_numeric
+			WHERE id_numeric = sample
+
+	IF (rec <> EMPTY) THEN
+
+		i = 0
+
+		WHILE (i < SIZE_OF_ARRAY (field_array)) DO
+
+			i = i + 1
+			field_array [i,2] = SELECT sample . 'field_array [i,1]'
+
+		ENDWHILE
+
+	ENDIF
+
+ENDROUTINE 
+
+
+GLOBAL ROUTINE flds_get_batch_data (VALUE batch_id, field_array)
+
+	DECLARE rec, i
+
+	rec = SELECT batch_header . identity
+			WHERE identity = batch_id
+
+	IF (rec <> EMPTY) THEN
+
+		i = 0
+
+		WHILE (i < SIZE_OF_ARRAY (field_array)) DO
+
+			i = i + 1
+			field_array [i,2] = SELECT batch_header . 'field_array [i,1]'
+
+		ENDWHILE
+
+	ENDIF
+
+ENDROUTINE 
+
+GLOBAL ROUTINE flds_get_analysis_data (VALUE test1, VALUE test2, 
+								VALUE test3, VALUE test4, field_array)
+
+	DECLARE rec, i, anal, analver, complist
+
+	{ Because variable no. of components, blank [i,1] and fill later }
+	i = 0
+
+	WHILE (i < SIZE_OF_ARRAY (field_array)) DO
+
+		i = i + 1
+		field_array [i,1] = ""
+
+	ENDWHILE
+
+
+	rec = SELECT test.test_number
+			WHERE  ( test_number = test1
+				OR test_number = test2
+				OR test_number = test3
+				OR test_number = test4 )
+			ORDER ON test_number
+
+	{ Just take values from first test }
+
+	IF (rec <> EMPTY) THEN
+
+		anal = SELECT test.analysis
+		analver = SELECT test.analysis_version
+		complist = SELECT test.component_list
+
+		IF (STRIP(complist) = "") THEN
+
+			rec = SELECT versioned_component . name
+				WHERE analysis=anal
+				AND  analysis_version = analver
+				ORDER ON order_number
+
+			i = 0
+
+			WHILE (rec <> EMPTY) AND (i < SIZE_OF_ARRAY (field_array)) DO
+
+				i = i + 1
+				field_array [i,1] = "COMPONENT-":STRIP( NUMBER_TO_TEXT(i,"9999") )
+				field_array [i,2] = SELECT versioned_component . name
+
+				NEXT versioned_component 
+				rec = SELECT versioned_component . name
+
+			ENDWHILE
+
+		ELSE
+
+			rec = SELECT versioned_c_l_entry . name
+				WHERE analysis=anal
+				AND  analysis_version = analver
+				AND  comp_list = comp_list
+				ORDER ON order_number
+
+			i = 0
+
+			WHILE (rec <> EMPTY) AND (i < SIZE_OF_ARRAY (field_array)) DO
+
+				i = i + 1
+				field_array [i,1] = "COMPONENT-":STRIP( NUMBER_TO_TEXT(i,"9999") )
+				field_array [i,2] = SELECT versioned_c_l_entry . name
+
+				NEXT versioned_c_l_entry 
+				rec = SELECT versioned_c_l_entry . name
+
+			ENDWHILE
+
+		ENDIF
+
+	ENDIF
+
+ENDROUTINE 
+
+GLOBAL ROUTINE flds_get_result_data (VALUE test1, VALUE test2, VALUE test3, VALUE test4, field_array)
+
+	DECLARE i, val, comp
+
+	i = 0
+
+	WHILE (i < size_of_array (field_array) ) DO
+
+		i = i + 1
+		comp = field_array [i, 1] 
+
+		val = SELECT result . text
+				WHERE name = comp
+				AND status <> "X"
+				AND status <> "R"
+				AND ( test_number = test1
+				OR test_number = test2
+				OR test_number = test3
+				OR test_number = test4 )
+			ORDER ON test_number
+
+		{ just get last one - highest test no }
+
+		WHILE (val <> EMPTY) DO
+
+			field_array [i, 2] = val
+
+			NEXT result  
+			val = SELECT result . text
+
+		ENDWHILE
+
+	ENDWHILE
+
+
+ENDROUTINE 
+
+GLOBAL ROUTINE flds_get_sample_result_data (VALUE sample, field_array)
+
+	DECLARE i, val, comp
+
+	i = 0
+
+	WHILE (i < size_of_array (field_array) ) DO
+
+		i = i + 1
+		comp = field_array [i, 1] 
+
+		val = SELECT samp_test_result . result_text
+				WHERE component_name = comp
+				AND result_status <> "X"
+				AND result_status <> "R"
+				AND id_numeric = sample
+			ORDER ON test_number
+
+		{ just get last one - highest test no }
+
+		WHILE (val <> EMPTY) DO
+
+			field_array [i, 2] = val
+
+			NEXT samp_test_result
+			val = SELECT samp_test_result . result_text
+
+		ENDWHILE
+
+	ENDWHILE
+
+
+ENDROUTINE 
+
+
+GLOBAL ROUTINE flds_get_test_data (VALUE test1, VALUE test2, 
+							VALUE test3, VALUE test4, field_array)
+
+	DECLARE i, val, fld
+
+	i = 0
+
+	WHILE (i < size_of_array (field_array) ) DO
+
+		i = i + 1
+		fld = field_array [i, 1] 
+
+		val = SELECT test . 'fld'
+				WHERE test_number=test1
+
+		IF (val <> EMPTY) THEN
+			field_array [i, 2] = val
+		ELSE
+
+			val = SELECT test . 'fld'
+				WHERE test_number=test2
+
+			IF (val <> EMPTY) THEN
+				field_array [i, 2] = val
+			ELSE
+
+				val = SELECT test . 'fld'
+					WHERE test_number=test3
+
+			IF (val <> EMPTY) THEN
+				field_array [i, 2] = val
+			ELSE
+
+				val = SELECT test . 'fld'
+					WHERE test_number=test4
+				IF (val <> EMPTY) THEN
+					field_array [i, 2] = val
+				ENDIF
+
+			ENDIF
+
+			ENDIF
+
+		ENDIF
+
+	ENDWHILE
+
+ENDROUTINE 
+
+
+GLOBAL ROUTINE flds_get_vgl_data (VALUE sample, 
+						VALUE test1, VALUE test2, 
+						VALUE test3, VALUE test4, field_array)
+
+
+	DECLARE test_array, i
+
+	ARRAY test_array  ARRAYSIZE (0)
+
+	i = 1
+	test_array [i] = test1
+	i = i + 1
+	test_array [i] = test2
+	i = i + 1
+	test_array [i] = test3
+	i = i + 1
+	test_array [i] = test4
+
+	CALL_ROUTINE "imcust_additional_field"
+	IN LIBRARY "OLS_EMPOWER_CUST"
+	USING sample, test_array, field_array
+
+ENDROUTINE 
+
+GLOBAL ROUTINE flds_get_lte_result_data (VALUE sample_id,
+							VALUE test1, VALUE test2, VALUE test3, VALUE test4, 
+							field_array,
+							VALUE lte_record)
+
+	DECLARE i, rec, array_comps_test, array_comps_sample, start_index
+
+	start_index = sizeofarray(field_array) + 1
+
+	ARRAY array_comps_test
+	ARRAY array_comps_sample
+
+	rec = SELECT mill_run_resl.identity
+		WHERE identity=lte_record
+		ORDER ON order_number
+
+	WHILE (rec <> EMPTY) DO
+
+		IF (SELECT mill_run_resl.all_tests) THEN
+
+			i = sizeofarray (array_comps_sample) + 1
+			array_comps_sample [i,1] = SELECT mill_run_resl.analysis
+			array_comps_sample [i,2] = SELECT mill_run_resl.component
+			array_comps_sample [i,3] = SELECT mill_run_resl.interface_name
+			array_comps_sample [i,4] = SELECT mill_run_resl.replicate
+			array_comps_sample [i,5] = cds_component_name_edit (SELECT mill_run_resl.cds_component)
+			array_comps_sample [i,6] = STRIP (SELECT mill_run_resl.sample_type)
+			array_comps_sample [i,7] = STRIP (SELECT mill_run_resl.sample_name)
+		ELSE
+
+			i = sizeofarray (array_comps_test) + 1
+			array_comps_test [i,1] = SELECT mill_run_resl.analysis
+			array_comps_test [i,2] = SELECT mill_run_resl.component
+			array_comps_test [i,3] = SELECT mill_run_resl.interface_name
+			array_comps_test [i,4] = SELECT mill_run_resl.replicate
+			array_comps_test [i,5] = cds_component_name_edit (SELECT mill_run_resl.cds_component)
+			array_comps_test [i,6] = STRIP (SELECT mill_run_resl.sample_type)
+			array_comps_test [i,7] = STRIP (SELECT mill_run_resl.sample_name)
+		
+		ENDIF
+
+		NEXT mill_run_resl
+		rec = SELECT mill_run_resl.identity
+
+	ENDWHILE
+
+	i = 0
+	WHILE (i < sizeofarray(array_comps_sample)) DO
+
+		i = i + 1
+		get_result_sample_or_test(TRUE,
+					sample_id,
+					array_comps_sample[i,1],
+					array_comps_sample[i,2],
+					array_comps_sample[i,3],
+					array_comps_sample[i,4],
+					array_comps_sample[i,5],
+					array_comps_sample[i,6],
+					array_comps_sample[i,7],
+					field_array)
+
+
+	ENDWHILE
+
+
+	i = 0
+	WHILE (i < sizeofarray(array_comps_test)) DO
+
+		i = i + 1
+
+		{ do for each test }
+
+		rec = SELECT test.test_number
+			WHERE  ( test_number = test1
+				OR test_number = test2
+				OR test_number = test3
+				OR test_number = test4 )
+			ORDER ON test_number
+
+		WHILE (rec <> EMPTY) DO
+
+			get_result_sample_or_test(FALSE,
+					rec,
+					array_comps_test[i,1],
+					array_comps_test[i,2],
+					array_comps_test[i,3],
+					array_comps_test[i,4],
+					array_comps_test[i,5],
+					array_comps_test[i,6],
+					array_comps_test[i,7],
+					field_array)
+
+
+			NEXT test 
+			rec = SELECT test.test_number
+
+		ENDWHILE
+
+	ENDWHILE
+
+	imcust_runsetup_lte_data (field_array, start_index)
+
+ENDROUTINE 
+
+ROUTINE cds_component_name_edit (VALUE name)
+
+	name = STRIP(name)
+ 
+	RETURN (name)
+
+ENDROUTINE
+
+ROUTINE get_result_sample_or_test(VALUE is_sample,
+					VALUE sample_or_test_id, 
+					VALUE anal, VALUE comp, 
+					VALUE interface_name,
+					VALUE replicate, VALUE cds_component,
+					VALUE required_samp_type,
+					VALUE required_samp_name,
+					field_array  )
+
+	DECLARE i, val, ok
+
+	i = 0
+		
+	IF (is_sample) AND (BLANK(anal)) THEN
+
+			val = SELECT samp_test_result . result_text
+				WHERE component_name = comp
+				AND result_status <> "X"
+				AND result_status <> "R"
+				AND result_status <> "U"
+				AND id_numeric = sample_or_test_id
+			ORDER ON test_number
+
+	ELSEIF (is_sample)
+
+			val = SELECT samp_test_result . result_text
+				WHERE component_name = comp
+				AND  analysis=anal
+				AND result_status <> "X"
+				AND result_status <> "R"
+				AND result_status <> "U"
+				AND id_numeric = sample_or_test_id
+			ORDER ON test_number
+
+	ELSEIF (NOT is_sample) AND (BLANK(anal)) THEN
+
+			val = SELECT samp_test_result . result_text
+				WHERE component_name = comp
+				AND result_status <> "X"
+				AND result_status <> "R"
+				AND result_status <> "U"
+				AND test_number = sample_or_test_id
+			ORDER ON test_number
+
+	ELSEIF (NOT is_sample)
+
+			val = SELECT samp_test_result . result_text
+				WHERE component_name = comp
+				AND  analysis=anal
+				AND result_status <> "X"
+				AND result_status <> "R"
+				AND result_status <> "U"
+				AND test_number = sample_or_test_id
+			ORDER ON test_number
+
+	ENDIF
+
+	WHILE (val <> EMPTY) DO
+
+		{ Need a place for analysis and component }
+		{ But array/xml structire has no place }
+		{ So use == as a delimiter }
+
+		ok = TRUE
+		IF (is_sample) THEN
+
+			IF (NOT BLANK(required_samp_type)) AND
+			  (CONFIG_RUN_RESLTESAMPTYPE) THEN
+
+				
+				IF (required_samp_type <> CONFIG_RUN_RESLTESAMPTYPE_DEFAULT) AND
+					(STRIP(SELECT samp_test_result.sample_type) <> STRIP(required_samp_type)) THEN
+
+					ok=FALSE
+				ENDIF
+			ENDIF
+
+			IF (NOT BLANK(required_samp_name)) THEN
+
+				IF (STRIP(SELECT samp_test_result.sample_name) <> STRIP(required_samp_name)) THEN
+
+					ok=FALSE
+				ENDIF
+			ENDIF
+
+		ENDIF
+
+		IF (ok) THEN
+
+			i = sizeofarray (field_array) + 1
+			field_array [i, 1] = STRIP(interface_name)
+
+			{ cds replicate numbers and component names are automatically added }
+			{ Allows IM transform to use these dynamically    }
+			{ Uses - as a delimiter, so cannot use it in rest of string  (xml element so restricted choice) }
+
+			field_array [i, 1] = SUBSTITUTE (field_array [i, 1],"-","_")
+			IF (NUMTEXT(replicate)) THEN
+
+				replicate = NUMBERTOTEXT(replicate, "9999")
+			ENDIF
+			field_array [i, 1] = field_array [i, 1]:"-":STRIP(replicate)
+			field_array [i, 1] = field_array [i, 1]:"-":STRIP(cds_component)
+			field_array [i, 2] = STRIP(SELECT samp_test_result . analysis):"/":
+						 STRIP( NUMBERTOTEXT (SELECT samp_test_result . test_count, "999") ):
+							"//":STRIP(comp):
+							"==":val
+		ENDIF
+
+		NEXT samp_test_result
+		val = SELECT samp_test_result . result_text
+
+	ENDWHILE
+
+ENDROUTINE 
+
+
+{ For L types, gets the component replicate number and resets the one in the element name to 1 
+  Returns replicate no, and resets the replicate no in element_name to 0
+}
+GLOBAL ROUTINE flds_modify_l_type_replicates (element_name)
+
+	DECLARE indx, delim, replicate, tmp_element_name,
+		newL, newR
+	delim="-"
+
+	replicate=0
+	element_name = STRIP(element_name)
+	indx = INDEX (element_name,delim)
+	tmp_element_name = RIGHTSTRING (element_name, STRINGLENGTH(element_name)-indx)
+	newL = LEFTSTRING (element_name,indx)
+	indx = INDEX (tmp_element_name,delim)
+	newR = RIGHTSTRING (tmp_element_name, STRINGLENGTH(tmp_element_name)-indx)
+	tmp_element_name = LEFTSTRING (tmp_element_name,indx-1)
+	IF (NUMTEXT(tmp_element_name)) THEN
+
+		replicate = NUMERIC(tmp_element_name)
+		element_name = newL:"0":delim:newR
+	ENDIF
+ 
+	RETURN (replicate)
+
+ENDROUTINE
+
+

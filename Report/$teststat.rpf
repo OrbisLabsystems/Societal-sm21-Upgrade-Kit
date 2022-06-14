@@ -1,0 +1,138 @@
+{******************************************************************************
+*
+* Module Name   : $TESTSTAT
+*
+* Purpose       : SMP report for user defined routines which are called when a
+*                 test changes status
+*
+* Document Ref. : SE/T/TVGL-WORK-REPORTS/1/3
+*
+* Specification : 
+*
+* Portability   : Not Checked
+*
+* Re-entrant    : 
+*
+*******************************************************************************
+*
+* Modification History :
+* 
+* Version   Date         By             Description
+* -------   -----------  ----------     ---------------------------------------
+* 1.0       09-Nov-2012  Maria Allen    Release Version 
+* 2.0       23-JAN-2013  Maria Allen    PR 23696
+* 3.0       11-APR-2013  Maria Allen    CC-GVL-2013-0423  Task 37
+* 4.0       16-OCT-2014  L. Dawson      SLIM integration updates      
+*
+*******************************************************************************}
+SET NOTPROTECTED {2.0 PR 23696 Added "SET NOTPROTECTED"}
+
+JOIN LIBRARY $LIB_UTILS
+JOIN LIBRARY LIB_SLIM
+
+
+ROUTINE set_status_a
+
+{4.0}
+    Declare test_num, samp_num, from_slim
+
+    test_num = SELECT test.test_number
+    samp_num = SELECT test.sample
+    from_slim = SELECT sample.from_slim WHERE id_numeric = samp_num
+
+    IF ( ( GLOBAL("ORBIS_SLIM_SITE") = "GVL" ) AND  (from_slim) )THEN
+
+        slim_download_update( test_num )
+
+    ENDIF
+{/4.0}
+
+ENDROUTINE
+
+
+ROUTINE set_status_i
+
+ENDROUTINE
+
+
+ROUTINE set_status_c
+
+DECLARE actual_weight, num_caps, test_num, sample
+
+	test_num = SELECT test.test_number
+
+	analysis = SELECT test.analysis
+			{WHERE test.test_number = test_num}
+
+	sample = SELECT test.sample
+			{WHERE test.test_number = test_num}
+
+	actual_weight = SELECT result.value 
+				WHERE result.test_number = test_num AND
+					result.name = "Weight After (g)"
+
+	num_caps = 	SELECT result.value 
+				WHERE result.test_number = test_num AND
+					result.name = "Count After"
+
+
+IF analysis = "WT_CHECK" THEN
+
+	sample = SELECT sample.id_numeric FOR UPDATE 
+		WHERE sample.id_numeric = sample
+
+	
+
+	ASSIGN sample.current_gross_weight = actual_weight
+
+ELSEIF analysis = "COUNT_CHK" THEN
+
+	sample = SELECT sample.id_numeric FOR UPDATE 
+		WHERE sample.id_numeric = sample
+
+	
+
+	ASSIGN sample.current_no_capsules = num_caps
+
+ELSE
+
+	{do nothing}
+ENDIF
+
+ENDROUTINE
+
+
+ROUTINE set_status_p
+
+ENDROUTINE
+
+
+ROUTINE set_status_r
+
+ENDROUTINE
+
+
+ROUTINE set_status_u
+
+ENDROUTINE
+
+
+ROUTINE set_status_v
+
+ENDROUTINE
+
+
+ROUTINE set_status_w
+
+ENDROUTINE
+
+
+ROUTINE set_status_x
+
+ENDROUTINE
+
+
+ROUTINE set_status_s
+
+ENDROUTINE
+

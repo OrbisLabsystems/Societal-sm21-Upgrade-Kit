@@ -1,0 +1,2932 @@
+{==============================================================================}
+{                                                                              }
+{  Orbis Labsystems                                                            }
+{                                                                              }
+{  Filename         : OLS_CDS_COMP_MAP.RPF                                   }
+{  Description      : Report for SMP Component Result Mapping with             }
+{                     Empower data.                                            }
+{                                                                              }
+{==============================================================================}
+{
+MOD1:   allow LTE be used to map worksheet header data, based on instance name
+}
+
+SET NAME "DEFER/"
+ENABLE WINDOWS
+
+SET NOTPROTECTED
+
+SET COMPILE_OPTION DECLARE
+
+JOIN STANDARD_LIBRARY STD_CLASS
+JOIN STANDARD_LIBRARY STD_ARRAY_SELECT
+JOIN STANDARD_LIBRARY STD_PROMPT
+JOIN STANDARD_LIBRARY STD_ARRAY
+JOIN STANDARD_LIBRARY STD_WINDOW
+JOIN STANDARD_LIBRARY STD_UTILS
+JOIN STANDARD_LIBRARY STD_CLIENT
+JOIN STANDARD_LIBRARY STD_GENERAL
+JOIN STANDARD_LIBRARY STD_MESSAGE
+JOIN STANDARD_LIBRARY STD_STRUCTURE
+JOIN STANDARD_LIBRARY STD_WINDOW
+JOIN LIBRARY $LIB_UTILS
+JOIN LIBRARY $LIST_GRID
+JOIN LIBRARY $PROMPT_TAB
+
+
+
+CONSTANT FORM_WIDTH       = 100
+CONSTANT FORM_HEIGHT_GUI  = 21
+CONSTANT FORM_HEIGHT_TERM = 17
+CONSTANT VERS_ANALY_APPROV_FLAG = "A"
+CONSTANT BLANK_CELL = ""
+
+CONSTANT BUTTON_WIDTH   = 16
+CONSTANT BUTTON_SPACE   = 10
+
+CONSTANT TAB_HEIGHT        = 13
+CONSTANT TAB_ROW           = 6
+CONSTANT TAB_COLUMN        = 2
+CONSTANT TAB_BUTTON_WIDTH  = 8
+
+                                   {============================================}
+                                   { Setup Form Prompt Constants                }    
+                                   {============================================}
+
+
+CONSTANT FORM_DB_LINK      = 1
+CONSTANT FORM_PROJ         = 2
+CONSTANT FORM_ANAL         = 3
+CONSTANT FORM_VER          = 4
+CONSTANT FORM_METH         = 5
+CONSTANT FORM_GRID         = 7
+CONSTANT FORM_OK           = 8
+CONSTANT FORM_CANC         = 9
+CONSTANT FORM_HELP         = 10
+CONSTANT FORM_TAB          = 11
+CONSTANT FORM_RUNTYPE      = 6
+ 
+
+                                   {============================================}
+                                   { Setup Grid Column Constants                }    
+                                   {============================================}
+
+CONSTANT ENABLED           = 2
+CONSTANT SMP_COMP          = 1
+CONSTANT MILL_RES_TYPE     = 5 
+CONSTANT INJECT            = 4
+CONSTANT INJECT_COMM       = 6
+CONSTANT COMP_TYPE         = 8
+CONSTANT MILL_COMP         = 3
+CONSTANT PROJECT_COL       = 10
+CONSTANT DELETE_COL        = 9
+CONSTANT RUN_TYPE          = 7
+
+
+CONSTANT CON_ENT_TYPE_PROJECT = "PROJECT"
+CONSTANT CON_ENT_TYPE_GROUP   = "GROUP"
+CONSTANT DELETED_TEXT            = "SAMPLEMANAGER COMPONENT DELETED"
+
+
+
+DECLARE select_array, do_commit
+ARRAY select_array ARRAYSIZE (10)
+
+
+do_commit= FALSE
+
+add_interface ( 1 )
+
+modify_interface ( 1 )
+
+display_interface ( 1 )
+
+copy_interface ( 1 )
+
+ 
+ROUTINE main ( VALUE option )
+
+    interface_assignment ( option )
+
+ENDROUTINE
+
+
+ROUTINE define_grid_class
+
+    DEFINE CLASS "SMMILL_MAP_GRID"
+
+	INITIALISATION
+
+	INHERIT "STD_GRID_EDITOR"
+	
+	PROPERTIES
+		"prev_array"
+
+    END CLASS
+
+ENDROUTINE
+
+
+ROUTINE SMMILL_MAP_GRID_CLASS_INITIALISATION (self)
+
+	ARRAY self . prev_array
+
+ENDROUTINE
+
+
+ROUTINE add_interface ( VALUE option )
+
+    main ( "ADD" )
+
+ENDROUTINE
+
+
+ROUTINE modify_interface ( VALUE option )
+
+    main ( "MODIFY" )
+
+ENDROUTINE
+
+
+ROUTINE display_interface ( VALUE option )
+
+    main ( "DISPLAY" )
+
+ENDROUTINE
+
+
+ROUTINE copy_interface ( VALUE option )
+
+{    copy_project ( "COPY" )
+moved to ned file
+}
+
+ENDROUTINE
+
+
+ROUTINE archive_project ( VALUE option )
+
+{ moved
+    copy_project ( "ARCHIVE" )
+}
+
+ENDROUTINE
+
+
+ROUTINE interface_assignment ( VALUE option )
+
+    DECLARE main_form, keep_prompting, is_display, the_mess
+
+    do_commit= FALSE
+
+    is_display = FALSE
+
+    IF option = "DISPLAY" THEN
+
+        is_display = TRUE
+
+    ENDIF
+
+    keep_prompting = TRUE
+
+    setup_form ( main_form, option )
+
+    main_form . start_prompt ()
+
+    WHILE keep_prompting DO 
+
+        main_form . wait_prompt ()
+ 
+        IF ( main_form . get_lastkey () = "DO" ) AND NOT (is_display) THEN
+
+           do_db_transactions ( main_form,
+                                option  )
+
+           { Handle the header record }
+           { This EXITS if unable to modify, as it is critical that the header is updated }
+           { Partially handles locking, as cannot reserve_entry twice                     }
+
+           handle_header_record (main_form, option, TRUE)
+
+
+           IF do_commit THEN
+
+               COMMIT
+
+               
+               IF option = "ADD" THEN
+
+                   the_mess = GET_USER_MESSAGE ("MILL_LTR_MAP_CREATE_SUCESS",1)
+
+               ELSE
+
+                   the_mess = GET_USER_MESSAGE ("MILL_LTR_MAP_UPDATE_SUCESS",1)
+
+               ENDIF
+
+               update_mod_details_disp_now (main_form) 
+
+               flashmessage(the_mess, TRUE)
+               do_commit = FALSE
+
+           ELSE
+
+               do_commit = FALSE
+
+           ENDIF
+
+        ELSE
+
+           keep_prompting = FALSE
+
+        ENDIF
+
+    ENDWHILE
+
+    main_form . end_prompt ()
+
+ENDROUTINE
+
+
+ROUTINE setup_form ( main_form, VALUE option )
+
+    DECLARE the_header, anal_id, anal_ver, mod_on, mod_by, the_routine,
+            tab, each_tab, the_proj, ok_button, inst_button,
+            exit_button, proj_prompt, anal_enabled, smp_version, db_link,
+            db_prompt, meth_prompt , runtype_prompt, is_disp
+
+
+    db_link = STRIP(TOUPPER(  GLOBAL("OLS_CDS_INSTANCE")   ))
+
+    IF option = "DISPLAY" THEN
+
+        the_header = GET_USER_MESSAGE ("MILL_LTR_HEADER_DISP",1)
+
+        the_routine = "enable_get_components_dis"
+
+    ELSEIF option = "MODIFY" THEN
+
+        the_header = GET_USER_MESSAGE ("MILL_LTR_HEADER_MOD",1)
+
+        the_routine = "enable_get_components_mod"
+
+    ELSEIF option = "ADD" THEN
+
+        the_header = GET_USER_MESSAGE ("MILL_LTR_HEADER_ADD",1)
+
+        the_routine = "enable_get_components_add"
+
+    ENDIF
+
+    PROMPT OBJECT main_form
+        CLASS PROMPT_CLASS_FORM
+        WITH ( width  = FORM_WIDTH                          ,
+               row    = 10                                  ,
+               column = 10                                  ,
+               header = the_header                          ,
+               footer = "<DO> to Continue, <EXIT> to Cancel",
+               proportional = TRUE                          ,
+               button_style = FORM_BUTTON_NONE              ,
+               return_behaviour = FORM_RETURN_WRAP          )
+
+    main_form . add_frame ("", 1, 1, 4, FORM_WIDTH -2 )
+    main_form . add_frame ("", 1, 6, 13, FORM_WIDTH -2 )
+
+
+                                   {============================================}
+                                   { Add the prompt objects to the form.        }    
+                                   {============================================}
+
+
+    IF option = "ADD" THEN
+
+            PROMPT OBJECT db_prompt
+                        ON LINE 1 FROM 18 TO 43
+				BROWSE ON mill_instance . identity
+                        WITH ( LOWERED = TRUE,
+                               ALWAYS_VALIDATE = TRUE ,
+                               VALUE = db_link)
+
+    ELSE
+
+            PROMPT OBJECT db_prompt
+                        ON LINE 1 FROM 18 TO 43
+                        BROWSE ON MILL_COMPONENT_MAP . database_link
+                        WITH ( LOWERED = TRUE,
+                               ALWAYS_VALIDATE = TRUE ,
+                               VALUE = db_link)
+
+    ENDIF 
+
+    main_form . add_display ( GET_USER_MESSAGE ("MILL_LTR_LBL_CDS_LINK",1),
+                              2         ,
+                              1           ,
+                              PROMPT_RENDITION_BOLD + PROMPT_RENDITION_RAISED)
+
+    IF option = "ADD" THEN
+
+        PROMPT OBJECT proj_prompt
+                ON LINE 2 FROM 18 TO 43
+                WITH ( LOWERED = TRUE,
+                       ALWAYS_VALIDATE = TRUE ,
+                       browse_routine = "select_project_data"  ,
+                       leave_prompt_routine = "add_proj_leave" )
+
+        anal_enabled = FALSE
+
+    ELSE
+
+        PROMPT OBJECT proj_prompt
+                ON LINE 2 FROM 18 TO 43
+                WITH ( LOWERED = TRUE,
+                       ALWAYS_VALIDATE = TRUE ,
+                       browse_routine = "select_exist_project_data"    ,
+                       leave_prompt_routine = "enable_analysis" )
+
+        anal_enabled = TRUE
+
+    ENDIF
+
+    main_form . add_display ( GET_USER_MESSAGE ("MILL_LTR_LBL_ENTITY",1),
+                               2         ,
+                               2           ,
+                               PROMPT_RENDITION_BOLD + PROMPT_RENDITION_RAISED)
+
+    { Run Type }
+
+    is_disp = FALSE
+    IF option = "DISPLAY" THEN
+        is_disp = TRUE
+    ENDIF
+
+    PROMPT OBJECT runtype_prompt
+                ON LINE 4 FROM 75 TO 96
+                WITH ( LOWERED = TRUE,
+                       ALWAYS_VALIDATE = TRUE,
+                       BROWSE_ROUTINE = "browse_runtypes",
+                       DISPLAY_ONLY = is_disp)
+
+
+    main_form . add_display ( GET_USER_MESSAGE ("MILL_LTR_LBL_RUNTYPE",1),
+                               63        ,
+                               4         ,
+                               PROMPT_RENDITION_BOLD + PROMPT_RENDITION_RAISED)
+
+     { Method set }
+
+    IF option = "ADD" THEN
+
+        PROMPT OBJECT meth_prompt
+                BROWSE ON TEXT
+                ON LINE 3 FROM 75 TO 96
+                WITH ( LOWERED = TRUE,
+                       ALWAYS_VALIDATE = TRUE ,
+                       BROWSE_ROUTINE = "select_cds_methods",
+                       FOREGROUND_COLOUR = PROMPT_COLOUR_BLUE)
+
+        anal_enabled = FALSE
+
+    ELSEIF option = "MODIFY" THEN
+
+        PROMPT OBJECT meth_prompt
+                ON LINE 3 FROM 75 TO 96
+                WITH ( LOWERED = TRUE,
+                       ALWAYS_VALIDATE = TRUE,
+                       BROWSE_ROUTINE = "select_cds_methods",
+                       FOREGROUND_COLOUR = PROMPT_COLOUR_BLUE)
+
+        anal_enabled = TRUE
+
+    ELSEIF option = "DISPLAY" THEN
+
+        PROMPT OBJECT meth_prompt
+                ON LINE 3 FROM 75 TO 96
+                WITH ( LOWERED = TRUE,
+                       ALWAYS_VALIDATE = TRUE,
+                       DISPLAY_ONLY = TRUE,
+                       FOREGROUND_COLOUR = PROMPT_COLOUR_BLUE)
+
+        anal_enabled = TRUE
+
+    ENDIF
+
+
+    main_form . add_display (  "Method",
+                               63        ,
+                               3         ,
+                               PROMPT_RENDITION_BOLD + PROMPT_RENDITION_RAISED)
+
+
+    { Analysis }
+
+    IF option = "ADD" THEN
+
+        PROMPT OBJECT anal_id
+                    BROWSE ON VERSIONED_ANALYSIS . identity
+                    ON LINE 3 FROM 18
+                    WITH ( ALWAYS_VALIDATE = TRUE,
+                           VGL_LIBRARY = GLOBAL( "CURRENT_LIBRARY" ),
+                           LOWERED = TRUE, 
+                           LEAVE_PROMPT_ROUTINE = "GET_ANAL_VERSIONS",
+                           enabled = anal_enabled)
+
+    ELSE
+
+        PROMPT OBJECT anal_id
+                    ON LINE 3 FROM 18 TO 28
+                    WITH ( ALWAYS_VALIDATE = TRUE,
+                           VGL_LIBRARY = GLOBAL( "CURRENT_LIBRARY" ),
+                           LOWERED = TRUE, 
+                           enabled = TRUE,
+                           BROWSE_ROUTINE = "browse_exist_anals",
+                           LEAVE_PROMPT_ROUTINE = "GET_ANAL_VERSIONS")
+
+    ENDIF
+
+    main_form . add_display ( GET_USER_MESSAGE ("MILL_LTR_LBL_ANAL",1),
+                              2         ,
+                              3         ,
+                              PROMPT_RENDITION_BOLD + PROMPT_RENDITION_RAISED)
+
+
+    IF option = "ADD" THEN
+
+        PROMPT OBJECT anal_ver
+                    ON LINE 3 FROM 39 TO 43
+                    WITH ( LOWERED = TRUE,
+                           ALWAYS_VALIDATE = TRUE,
+                           LEAVE_PROMPT_ROUTINE = the_routine,
+                           BROWSE_ROUTINE       = "browse_anal_vers",
+                           enabled = FALSE )
+
+    ELSE
+
+        PROMPT OBJECT anal_ver
+                    ON LINE 3 FROM 39 TO 43
+                    WITH ( LOWERED = TRUE,
+                           ALWAYS_VALIDATE = TRUE,
+                           LEAVE_PROMPT_ROUTINE = the_routine,
+                           BROWSE_ROUTINE       = "browse_anal_vers_mapped",
+                           enabled = TRUE )
+
+    ENDIF
+
+    smp_version = STRIP(smp_version_number ( ))
+
+
+    IF LEFTSTRING(smp_version, 4) >= "2001" THEN
+
+        main_form . add_display ( GET_USER_MESSAGE ("MILL_LTR_LBL_VER",1),
+                                  31       ,
+                                  3        ,
+                                  PROMPT_RENDITION_BOLD)
+
+
+    ELSE
+
+        main_form . add_display ( GET_USER_MESSAGE ("MILL_LTR_LBL_VER",1),
+                                  31       ,
+                                  3        ,
+                                  PROMPT_RENDITION_BOLD + PROMPT_RENDITION_RAISED)
+
+    ENDIF
+
+
+    PROMPT OBJECT mod_on
+                ON LINE 1 FROM 75 TO 96
+		FORMAT TEXT
+		WITH ( lowered = TRUE ,
+                       DISPLAY_ONLY = TRUE )
+
+
+    main_form . add_display ( GET_USER_MESSAGE ("MILL_LTR_LBL_MOD_ON",1),
+                              63         ,
+                              1          ,
+                              PROMPT_RENDITION_BOLD + PROMPT_RENDITION_RAISED)
+
+    PROMPT OBJECT mod_by
+                ON LINE 2 FROM 75 TO 96
+		FORMAT TEXT
+		WITH ( lowered = TRUE ,
+                       DISPLAY_ONLY = TRUE )
+
+    main_form . add_display ( GET_USER_MESSAGE ("MILL_LTR_LBL_MOD_BY",1),
+                              63        ,
+                              2          ,
+                              PROMPT_RENDITION_BOLD + PROMPT_RENDITION_RAISED)
+
+
+
+
+
+    main_form . add_prompt ( db_prompt   )    {Prompt 1}
+    main_form . add_prompt ( proj_prompt )    {Prompt 2}
+    main_form . add_prompt ( anal_id     )    {Prompt 3}
+    main_form . add_prompt ( anal_ver    )    {Prompt 4}
+    main_form . add_prompt ( meth_prompt )    {Prompt 5}
+    main_form . add_prompt ( runtype_prompt ) {Prompt 6}
+
+
+    main_form . add_display ( mod_on   )
+    main_form . add_display ( mod_by   )
+
+    IF ( GLOBAL ( "TERMTYPE" ) = "GUI" ) THEN
+
+        main_form . height = FORM_HEIGHT_GUI
+
+    ELSE
+
+        main_form . height = FORM_HEIGHT_TERM
+
+    ENDIF
+
+
+    PROMPT OBJECT ok_button
+        CLASS "STD_PROMPT_BUTTON"
+        WITH ( row                 = main_form  . height - 1,
+               width               = BUTTON_WIDTH          ,
+               column              = BUTTON_WIDTH/2        ,
+               caption             = GET_USER_MESSAGE ("MILL_LTR_BTN_OK",1)           ,
+               send_lastkey        = "DO"                  )
+
+    main_form . add_prompt ( ok_button ) {Prompt 7}
+
+
+    PROMPT OBJECT exit_button
+            CLASS "STD_PROMPT_BUTTON"
+            WITH ( row                 = main_form  . height - 1,
+                   width               = BUTTON_WIDTH          ,
+                   column              = BUTTON_WIDTH + BUTTON_SPACE,
+                   caption             = GET_USER_MESSAGE ("MILL_LTR_BTN_CANCEL",1)       ,
+                   send_lastkey        = "EXIT"                ,
+                   enabled             = TRUE                  )
+
+
+
+    main_form . add_prompt ( exit_button ) {Prompt 8}
+
+
+    PROMPT OBJECT inst_button
+            CLASS "STD_PROMPT_BUTTON"
+            WITH ( row                 = main_form .  height - 1 ,
+                   width               = BUTTON_WIDTH          ,
+                   column              = (BUTTON_SPACE*5) + BUTTON_WIDTH + BUTTON_SPACE,
+                   caption             = GET_USER_MESSAGE ("MILL_LTR_BTN_HELP",1)   ,
+                   mouse_click_routine = "execute_help_file" ,     
+                   vgl_library         = "$SMMILL_HELP"      ,
+                   enabled             = TRUE                  )
+
+
+
+    main_form . add_prompt ( inst_button ) {Prompt 9}  
+
+    set_up_std_prompt_tab_class ()
+
+    CREATE OBJECT PROMPT_TAB_CLASS , tab
+
+    tab . height = TAB_HEIGHT
+    tab . width  = ( main_form . width ) - 3
+    tab . row    = TAB_ROW
+    tab . column = TAB_COLUMN
+
+    the_proj = GET_USER_MESSAGE ("MILL_LTR_COMP_MAP",1)
+    
+    add_proj_tab ( tab , 
+                   each_tab,
+                   the_proj,
+                   main_form,
+                   option  )
+     
+
+
+    main_form . add_prompt ( tab ) {Prompt 10}
+
+ENDROUTINE
+
+
+ROUTINE get_anal_versions ( anal_prompt )
+
+    DECLARE sel_array
+
+    ARRAY sel_array
+
+    array_select_add ( sel_array,
+                       ARRAY_SELECT_EQ,
+                       "IDENTITY",
+                       anal_prompt . value )
+
+    array_select_add ( sel_array,
+                       ARRAY_SELECT_ORDER,
+                       "ANALYSIS_VERSION",
+                       ARRAY_SELECT_DESCENDING )
+
+    anal_prompt . parent_prompt . prompt_objects[FORM_VER] . user_info = sel_array
+
+    IF anal_prompt . parent_prompt . prompt_objects[FORM_ANAL] . value <> "" THEN
+
+        anal_prompt . parent_prompt . prompt_objects[FORM_VER] . value = 1
+      
+        IF (anal_prompt . parent_prompt . prompt_objects[FORM_VER] . value <> EMPTY) THEN
+
+             anal_prompt . parent_prompt . prompt_objects[FORM_VER] . value = 
+             STRIP(anal_prompt . parent_prompt . prompt_objects[FORM_VER] . value)
+
+        ENDIF
+
+
+    ENDIF
+
+    anal_prompt . parent_prompt . prompt_objects [FORM_VER] . set_enabled ( TRUE )
+
+    RETURN ( TRUE )
+
+ENDROUTINE
+
+
+ROUTINE enable_analysis (proj_prompt)
+
+    proj_prompt . parent_prompt . prompt_objects [FORM_ANAL] . set_enabled ( TRUE )    
+
+ENDROUTINE     {  enable_analysis  }
+
+
+ROUTINE add_proj_leave (proj_prompt)
+
+    DECLARE sel_proj, new_name 
+
+    proj_prompt . parent_prompt . prompt_objects [FORM_ANAL] . set_enabled ( TRUE )
+
+    sel_proj = STRIP(proj_prompt . text)
+
+    new_name = sel_proj
+
+    proj_prompt . text  = new_name
+    proj_prompt . value = new_name
+
+ENDROUTINE      {  add_proj_leave  }
+
+ROUTINE setup_grid ( main_form, VALUE option )
+
+    DECLARE the_prompt_routine, interface_grid
+    DECLARE col_title, col_sizes, smp_version
+
+    ARRAY col_title
+    ARRAY col_sizes
+
+                                   {============================================}
+                                   { Setup the Interface grid.                  }    
+                                   {============================================}
+
+    col_title [ ENABLED      , 1 ] = GET_USER_MESSAGE ("MILL_LTR_COL_ENABLE",1)
+    col_title [ SMP_COMP     , 1 ] = GET_USER_MESSAGE ("MILL_LTR_COL_SMCOMP",1)
+    col_title [ MILL_RES_TYPE, 1 ] = GET_USER_MESSAGE ("MILL_LTR_COL_CDSFIELD",1)
+    col_title [ MILL_COMP    , 1 ] = GET_USER_MESSAGE ("MILL_LTR_COL_CDSRES",1)
+    col_title [ INJECT       , 1 ] = GET_USER_MESSAGE ("MILL_LTR_COL_INJORDER1",1)
+    col_title [ INJECT       , 2 ] = GET_USER_MESSAGE ("MILL_LTR_COL_INJORDER2",1)
+    col_title [ INJECT_COMM  , 1 ] = GET_USER_MESSAGE ("MILL_LTR_COL_COMMENT",1)
+    col_title [ COMP_TYPE    , 1 ] = GET_USER_MESSAGE ("MILL_LTR_COL_COMPTYPE1",1)
+    col_title [ COMP_TYPE    , 2 ] = GET_USER_MESSAGE ("MILL_LTR_COL_COMPTYPE2",1)
+
+    col_title [ RUN_TYPE  , 1 ] = GET_USER_MESSAGE ("MILL_LTR_COL_RUN",1)
+
+
+
+    smp_version = STRIP(smp_version_number ( ))
+
+
+    IF LEFTSTRING(smp_version, 4) >= "2001" THEN
+        col_sizes [ ENABLED       ]  = 6
+        col_sizes [ INJECT        ]  = 7
+    ELSE
+        col_sizes [ ENABLED       ]  = 5
+        col_sizes [ INJECT        ]  = 6
+    ENDIF
+
+
+    col_sizes [ SMP_COMP      ]  = 24
+    col_sizes [ MILL_RES_TYPE ]  = 11
+    col_sizes [ MILL_COMP     ]  = 30
+
+    col_sizes [ INJECT_COMM   ]  = 10
+    col_sizes [ RUN_TYPE   ]     = 20        
+
+
+    col_sizes [ COMP_TYPE      ]  = 8
+
+    define_grid_class ( )
+
+    IF option = "DISPLAY"
+
+        the_prompt_routine = "DISP_ONLY_INTERFACE_CELL"
+
+    ELSE
+
+        the_prompt_routine = "PROMPT_INTERFACE_CELL"
+
+    ENDIF
+
+
+    PROMPT OBJECT interface_grid
+        CLASS "SMMILL_MAP_GRID"
+        WITH ( width  = FORM_WIDTH-8                          ,
+               height = 8                                     ,
+               border = TRUE                                  ,
+               column = 2                                     ,
+               row    = 1                                     ,
+               return_behaviour     = GRID_RETURN_RIGHT       ,
+               cell_columns         = 8                       ,
+               title_rendition_top  = PROMPT_RENDITION_BOLD   ,
+               title_separator_top  = GRID_SEPARATOR_BOTH     ,
+               title_size_top       = 2                       ,
+               title_text_top       = col_title               ,
+               column_size          = col_sizes               ,
+               display_cell_routine = "DISPLAY_INTERFACE_CELL",
+               prompt_cell_routine  = the_prompt_routine      ,
+               enter_cell_routine   = "UPDATE_DISPLAY_FIELDS" )
+
+
+    interface_grid . title_rendition_top  = GRID_SEPARATOR_BOTH
+       
+    interface_grid . column_separator [ENABLED      ] = GRID_SEPARATOR_BOTH
+    interface_grid . column_separator [SMP_COMP     ] = GRID_SEPARATOR_BOTH
+    interface_grid . column_separator [MILL_RES_TYPE] = GRID_SEPARATOR_BOTH
+    interface_grid . column_separator [MILL_COMP    ] = GRID_SEPARATOR_BOTH
+    interface_grid . column_separator [INJECT       ] = GRID_SEPARATOR_BOTH
+    interface_grid . column_separator [INJECT_COMM  ] = GRID_SEPARATOR_BOTH
+    interface_grid . column_separator [COMP_TYPE    ] = GRID_SEPARATOR_BOTH
+
+    interface_grid . column_separator [RUN_TYPE     ] = GRID_SEPARATOR_BOTH        
+
+	ARRAY interface_grid . user_info ARRAYSIZE(0,8) = ""
+
+    interface_grid . cell_rows = size_of_array(interface_grid . user_info)
+
+    main_form . add_prompt ( interface_grid ) {Prompt 6}
+
+
+ENDROUTINE
+
+
+ROUTINE populate_modify_grid ( the_form,
+                               the_grid,
+                               VALUE the_proj,
+                               VALUE is_modify)
+
+    DECLARE mod_on, mod_by, is_enabled, row_count, the_anal, prev_array,
+            the_anal_ver, grid_array, rec_count, db_link,  
+            the_message,   the_meth, the_runtype
+
+ 
+    rec_count = 1
+
+
+    the_anal     = the_form . prompt_objects [FORM_ANAL]
+    the_anal_ver = the_form . prompt_objects [FORM_VER]
+    db_link      = the_form . prompt_objects [FORM_DB_LINK]
+    mod_on       = the_form . display_objects [1]
+    mod_by       = the_form . display_objects [2]  
+    the_meth     = the_form . prompt_objects  [FORM_METH]                 
+    the_runtype  = the_form . prompt_objects  [FORM_RUNTYPE]                 
+
+
+   {=====================================================================}
+   { Modification details are from header table (mill_component_map_hdr) }
+   { If modify, hould select it for update here, which will lock it      }
+   {=====================================================================}
+
+    IF (is_modify) THEN
+
+        mod_on . text = SELECT mill_component_map_hdr . modified_on  FOR UPDATE
+                         WHERE database_link    = db_link . text      AND
+                               analysis         = the_anal . text     AND
+                               analysis_version = the_anal_ver . text AND
+                               mill_entity      = the_proj      
+                               AND removeflag = FALSE      
+
+
+        IF (mod_on . text = LOCKED) THEN
+
+            flashmessage ("Record locked",TRUE)
+
+            EXIT
+  
+        ELSEIF (mod_on . text = EMPTY) THEN
+
+            flashmessage ("Record doesnt exist",TRUE)
+   
+            EXIT
+
+        ENDIF
+
+    ELSE
+
+        mod_on . text = SELECT mill_component_map_hdr . modified_on   
+                         WHERE database_link    = db_link . text      AND
+                               analysis         = the_anal . text     AND
+                               analysis_version = the_anal_ver . text AND
+                               mill_entity      = the_proj
+                               AND removeflag = FALSE      
+
+    ENDIF
+
+
+    mod_by . text      = SELECT mill_component_map_hdr . modified_by
+    the_meth . text    = SELECT mill_component_map_hdr . mill_method_set
+    the_runtype . text = SELECT mill_component_map_hdr . run_type
+                   
+    mod_on . repaste()
+    mod_by . repaste()
+
+    the_meth . value     = the_meth . text 
+    the_meth . user_info = the_meth . value
+    the_meth . repaste() 
+
+    the_runtype . value     = the_runtype . text 
+    the_runtype . user_info = the_runtype . value
+    the_runtype . repaste() 
+
+
+    { Clear Arrays }
+
+    WHILE rec_count <= SIZE_OF_ARRAY(the_grid . user_info)
+
+        the_grid . user_info [ rec_count , 1] = ""
+        the_grid . user_info [ rec_count , 2] = ""
+        the_grid . user_info [ rec_count , 3] = ""
+        the_grid . user_info [ rec_count , 4] = ""
+        the_grid . user_info [ rec_count , 5] = ""
+        the_grid . user_info [ rec_count , 6] = ""
+        the_grid . user_info [ rec_count , 7] = ""
+
+        rec_count = rec_count + 1
+
+    ENDWHILE
+
+    rec_count = 1
+
+    WHILE rec_count <= SIZE_OF_ARRAY(the_grid . prev_array)
+
+        the_grid . prev_array [ rec_count , 1] = ""
+        the_grid . prev_array [ rec_count , 2] = ""
+        the_grid . prev_array [ rec_count , 3] = ""
+        the_grid . prev_array [ rec_count , 4] = ""
+        the_grid . prev_array [ rec_count , 5] = ""
+        the_grid . prev_array [ rec_count , 6] = ""
+        the_grid . prev_array [ rec_count , 7] = ""
+        the_grid . prev_array [ rec_count , 8] = ""
+        the_grid . prev_array [ rec_count , 9] = ""
+        the_grid . prev_array [ rec_count , 10] = ""
+        the_grid . prev_array [ rec_count , 11] = ""
+
+        rec_count = rec_count + 1
+
+    ENDWHILE
+
+    empty_the_array (the_grid . user_info)
+    empty_the_array (the_grid . prev_array)
+
+    grid_array = the_grid . user_info
+    prev_array = the_grid . prev_array
+
+    row_count = 1
+
+    is_enabled  = SELECT MILL_COMPONENT_MAP . enable
+                   WHERE database_link    = db_link . text      
+                     AND analysis         = the_anal . text  
+                     AND analysis_version = the_anal_ver . text
+                     AND mill_entity      = the_proj
+                  ORDER ON order_num
+
+    IF is_enabled <> EMPTY THEN
+
+        IF is_enabled = TRUE THEN
+
+           is_enabled = "*" 
+
+        ELSE
+
+            is_enabled = "-"
+
+        ENDIF
+
+
+        WHILE is_enabled <> EMPTY DO
+
+                                   {============================================}
+                                   { Populate the grid with the relevant data   }
+                                   { for the analysis, analysis version         }
+                                   { and component combination. Make two copies }
+                                   { of the grid array before it is modified to }
+                                   { use in database transactions later.        }
+                                   {============================================}
+
+
+
+            grid_array [row_count , ENABLED       ] = is_enabled
+            grid_array [row_count , SMP_COMP      ] = SELECT MILL_COMPONENT_MAP . component
+            grid_array [row_count , MILL_RES_TYPE ] = SELECT MILL_COMPONENT_MAP . mill_type
+            grid_array [row_count , MILL_COMP     ] = SELECT MILL_COMPONENT_MAP . mill_analyte
+            grid_array [row_count , INJECT        ] = SELECT MILL_COMPONENT_MAP . injection
+            grid_array [row_count , INJECT_COMM   ] = SELECT MILL_COMPONENT_MAP . inject_comment
+            grid_array [row_count , COMP_TYPE     ] = SELECT MILL_COMPONENT_MAP . sm_comp_type
+
+            grid_array [row_count , RUN_TYPE   ] = SELECT MILL_COMPONENT_MAP . run_type   
+
+
+            prev_array [row_count , ENABLED       ] = grid_array [row_count , ENABLED       ]
+            prev_array [row_count , SMP_COMP      ] = grid_array [row_count , SMP_COMP      ]
+            prev_array [row_count , MILL_RES_TYPE ] = grid_array [row_count , MILL_RES_TYPE ]
+            prev_array [row_count , MILL_COMP     ] = grid_array [row_count , MILL_COMP     ]
+            prev_array [row_count , INJECT        ] = grid_array [row_count , INJECT        ]
+            prev_array [row_count , INJECT_COMM   ] = grid_array [row_count , INJECT_COMM   ]
+            prev_array [row_count , COMP_TYPE      ] = grid_array [row_count , COMP_TYPE      ]
+
+            prev_array [row_count , RUN_TYPE  ] = grid_array [row_count , RUN_TYPE   ]
+
+            row_count = row_count + 1
+
+            NEXT MILL_COMPONENT_MAP
+            is_enabled  = SELECT MILL_COMPONENT_MAP . enable
+
+            IF is_enabled = TRUE THEN
+
+               is_enabled = "*" 
+
+            ELSEIF is_enabled = FALSE THEN
+
+                is_enabled = "-"
+
+            ENDIF
+
+        ENDWHILE
+
+
+     update_mill_mapped_complist  (  grid_array, db_link.text,
+       	                           the_anal.text, the_anal_ver.text, 
+                                   the_proj, FALSE )
+
+     update_mill_mapped_complist  ( prev_array, db_link.text,
+   	                            the_anal.text, the_anal_ver.text, 
+                                    the_proj,  TRUE  )
+
+      { The +1 is just so no code further down has to be changed }
+      { Old loop above increments row_count at row end, so it is 1 bigger than it should be}
+      row_count = size_of_array (grid_array) + 1
+
+
+        the_grid . cell_rows = row_count - 1
+
+        the_grid . rebuild ()
+
+        the_form . prompt_objects [FORM_OK] . set_enabled ( TRUE )
+        the_form . prompt_objects [FORM_CANC] . set_enabled ( TRUE )
+ 
+
+    ELSE
+
+        the_message = GET_USER_MESSAGE ("MILL_LTR_NOMAP_PRJ1",1):STRIP(the_proj):
+                   GET_USER_MESSAGE ("MILL_LTR_NOMAP_PRJ2",1):STRIP(db_link . text )  
+
+        flashmessage( the_message, TRUE)
+
+        the_grid . parent_prompt . bounding_object . remove_form( 1)
+        the_grid . remove()
+
+
+    ENDIF
+
+    the_grid.redisplay_contents ()
+
+
+ENDROUTINE     { populate_modify_grid  }
+
+
+ROUTINE populate_the_grid ( the_form,
+                            the_grid,
+                            the_proj)
+
+    DECLARE mod_on , mod_by, row_count, the_anal, the_anal_ver, grid_array,
+            exists, prev_array, rec_count, db_link, peak_value
+
+    rec_count = 1
+
+      
+    the_anal     = the_form . prompt_objects [FORM_ANAL]
+    the_anal_ver = the_form . prompt_objects [FORM_VER]
+    db_link      = the_form . prompt_objects [FORM_DB_LINK] 
+
+    peak_value = ""
+
+    mod_on = the_form . display_objects [1]
+    mod_by = the_form . display_objects [2]                 
+
+    mod_on . text = SELECT mill_component_map . modified_on 
+                     WHERE database_link    = db_link . text      AND
+                           analysis         = the_anal . text     AND
+                           analysis_version = the_anal_ver . text AND
+                           mill_entity      = the_proj        
+                         
+    IF mod_on . text = EMPTY THEN
+
+        mod_on .text = ""
+
+    ENDIF
+  
+    mod_on . repaste()
+
+    mod_by . text = SELECT mill_component_map . modified_by
+                     WHERE database_link    = db_link . text      AND
+                           analysis         = the_anal . text     AND
+                           analysis_version = the_anal_ver . text AND
+                           mill_entity      = the_proj          
+
+    IF mod_by . text = EMPTY THEN
+
+        mod_by .text = ""
+
+    ENDIF
+
+    mod_by . repaste()
+
+    { Check if the record exists. If it does, stop }
+
+    exists = SELECT mill_component_map_hdr . analysis
+                  WHERE database_link    = db_link . text 
+                    AND analysis = the_anal . text 
+                    AND analysis_version = the_anal_ver . text
+                    AND mill_entity = the_proj
+
+    IF (exists <> EMPTY) THEN
+
+        flashmessage ("The record already exists !", TRUE)
+
+        EXIT
+
+    ENDIF
+
+
+    { Clear Arrays }
+
+    WHILE rec_count <= SIZE_OF_ARRAY(the_grid . user_info)
+
+        the_grid . user_info [ rec_count , 1] = ""
+        the_grid . user_info [ rec_count , 2] = ""
+        the_grid . user_info [ rec_count , 3] = ""
+        the_grid . user_info [ rec_count , 4] = ""
+        the_grid . user_info [ rec_count , 5] = ""
+        the_grid . user_info [ rec_count , 6] = ""
+        the_grid . user_info [ rec_count , 7] = ""
+
+
+        rec_count = rec_count + 1
+
+    ENDWHILE
+
+    rec_count = 1
+
+    WHILE rec_count <= SIZE_OF_ARRAY(the_grid . prev_array)
+
+        the_grid . prev_array [ rec_count , 1] = ""
+        the_grid . prev_array [ rec_count , 2] = ""
+        the_grid . prev_array [ rec_count , 3] = ""
+        the_grid . prev_array [ rec_count , 4] = ""
+        the_grid . prev_array [ rec_count , 5] = ""
+        the_grid . prev_array [ rec_count , 6] = ""
+        the_grid . prev_array [ rec_count , 7] = ""
+        the_grid . prev_array [ rec_count , 8] = ""
+        the_grid . prev_array [ rec_count , 9] = ""
+        the_grid . prev_array [ rec_count , 10] = ""
+        the_grid . prev_array [ rec_count , 11] = ""
+
+        rec_count = rec_count + 1
+
+    ENDWHILE
+
+    grid_array = the_grid . user_info
+    prev_array = the_grid . prev_array
+
+    row_count = 1
+
+    { Updated from old SM-E to use an array here }
+    DECLARE thisanal_comp_array, thisanal_comp_index
+    ARRAY thisanal_comp_array
+    get_sm_anal_comps (thisanal_comp_array, the_anal . text , 
+				db_link . text)
+    thisanal_comp_index = 0
+
+    WHILE (thisanal_comp_index < size_of_array(thisanal_comp_array) ) DO
+
+        thisanal_comp_index = thisanal_comp_index + 1
+
+                                   {============================================}
+                                   { Populate the grid with the relevant data   }
+                                   { for the analysis, analysis version         }
+                                   { and component combination. Make two copies }
+                                   { of the grid array before it is modified to }
+                                   { use in database transactions later.        }
+                                   {============================================}
+
+        exists = SELECT mill_component_map . component
+                  WHERE database_link    = db_link . text 
+                    AND analysis = the_anal . text 
+                    AND analysis_version = the_anal_ver . text
+                    AND component = thisanal_comp_array [ thisanal_comp_index, 1]
+                    AND mill_entity = the_proj
+             
+
+
+        IF exists = EMPTY THEN
+
+            grid_array [row_count , ENABLED       ] = "-"
+            grid_array [row_count , SMP_COMP      ] = thisanal_comp_array [ thisanal_comp_index, 1]
+            grid_array [row_count , MILL_RES_TYPE ] = peak_value
+            grid_array [row_count , MILL_COMP     ] = ""
+            grid_array [row_count , INJECT        ] = "1"
+            grid_array [row_count , INJECT_COMM   ] = ""
+            grid_array [row_count , COMP_TYPE     ] = thisanal_comp_array [ thisanal_comp_index, 2]
+            grid_array [row_count , RUN_TYPE      ] = ""
+
+
+            prev_array [row_count , ENABLED       ] = grid_array [row_count , ENABLED       ]
+            prev_array [row_count , SMP_COMP      ] = grid_array [row_count , SMP_COMP      ]
+            prev_array [row_count , MILL_RES_TYPE ] = grid_array [row_count , MILL_RES_TYPE ]
+            prev_array [row_count , MILL_COMP     ] = grid_array [row_count , MILL_COMP     ]
+            prev_array [row_count , INJECT        ] = grid_array [row_count , INJECT        ]
+            prev_array [row_count , INJECT_COMM   ] = grid_array [row_count , INJECT_COMM   ]
+            prev_array [row_count , COMP_TYPE     ] = grid_array [row_count , COMP_TYPE     ]
+            prev_array [row_count ,  RUN_TYPE     ] = grid_array [row_count ,  RUN_TYPE     ]
+
+            row_count = row_count + 1
+
+        ENDIF
+
+    ENDWHILE
+
+
+    the_grid . cell_rows = row_count - 1
+
+    the_grid . rebuild ()
+
+    IF SIZE_OF_ARRAY(the_grid. user_info) = 0 THEN
+ 
+        flashmessage(GET_USER_MESSAGE ("MILL_LTR_ANAL_ALREADY_MAP",1), TRUE)
+
+    ELSE
+
+        the_form . prompt_objects [FORM_OK] . set_enabled ( TRUE )
+        the_form . prompt_objects [FORM_CANC] . set_enabled ( TRUE )
+
+    ENDIF
+
+ENDROUTINE
+
+
+ROUTINE prompt_interface_cell ( grid        ,
+                          VALUE cell_column ,
+                          VALUE cell_row    ,
+                                window      ,
+                          VALUE column      ,
+                          VALUE row         ,
+                          VALUE cell_width  ,
+                          VALUE cell_height )
+
+                                   {============================================}
+                                   { Setup prompts to appear in the grid cells  }    
+                                   {============================================} 
+    DECLARE tmp, the_colour,  peak_value
+
+
+    tmp = grid . user_info [cell_row, cell_column]
+
+    IF ( cell_column = ENABLED)
+
+
+        IF  ( ( grid . user_info [ cell_row, cell_column] = TRUE )     OR 
+            ( grid . user_info [ cell_row, cell_column] = "*"  ) ) THEN
+
+            grid . user_info [ cell_row, cell_column] = "*"
+            the_colour = PROMPT_COLOUR_BLUE
+
+        ELSE
+
+            grid . user_info [ cell_row, cell_column] = "-"
+            the_colour = PROMPT_COLOUR_GREY
+
+        ENDIF
+
+        PROMPT FOR grid . user_info [ cell_row, cell_column]
+            AT column, row
+            IN WINDOW window
+            TO column + cell_width - 1
+            BROWSE ON BOOLEAN
+	    WITH ( IS_CHECK = TRUE ,
+		   TRUE_WORD = "*" ,
+		   FALSE_WORD = "-",
+                   PARENT_PROMPT = grid, 
+                   TOGGLED_ROUTINE = "switch_colour",
+                   FOREGROUND_COLOUR = the_colour   ,
+                   justification = PROMPT_JUSTIFY_LEFT)
+
+        IF grid . user_info[cell_row, cell_column] <> tmp THEN
+
+            grid . redisplay_row (cell_row)
+
+        ENDIF
+
+    ELSEIF ( cell_column = SMP_COMP ) OR (cell_column = COMP_TYPE) THEN
+
+        IF  ( ( grid . user_info [ cell_row, ENABLED] = TRUE )     OR 
+            ( grid . user_info [ cell_row, ENABLED] = "*"  ) ) THEN
+
+            the_colour = PROMPT_COLOUR_BLUE
+
+        ELSE
+
+            the_colour = PROMPT_COLOUR_GREY
+
+        ENDIF
+
+
+        PROMPT FOR grid . user_info [ cell_row, cell_column]
+            AT column, row
+            IN WINDOW window
+            TO column + cell_width - 1
+            WITH (DISPLAY_ONLY = TRUE,
+                  FOREGROUND_COLOUR = the_colour,
+                  justification = PROMPT_JUSTIFY_LEFT)
+
+
+    ELSEIF ( cell_column = MILL_RES_TYPE)
+
+        peak_value = ""
+
+
+        IF  ( ( grid . user_info [ cell_row, ENABLED] = TRUE )     OR 
+            ( grid . user_info [ cell_row, ENABLED] = "*"  ) ) THEN
+
+            the_colour = PROMPT_COLOUR_BLUE
+
+        ELSE
+
+            the_colour = PROMPT_COLOUR_GREY
+
+        ENDIF
+
+
+        PROMPT FOR grid . user_info [ cell_row, cell_column]
+            AT column, row
+            IN WINDOW window
+            TO column + cell_width - 1
+            BROWSE ON PHRASE . MILL_PEAK
+            WITH ( foreground_colour = the_colour,
+                   VALUE = peak_value,
+                   justification = PROMPT_JUSTIFY_LEFT )
+
+
+
+    ELSEIF ( cell_column = MILL_COMP)
+
+        IF  ( ( grid . user_info [ cell_row, ENABLED] = TRUE )     OR 
+            ( grid . user_info [ cell_row, ENABLED] = "*"  ) ) THEN
+
+            the_colour = PROMPT_COLOUR_BLUE
+
+        ELSE
+
+            the_colour = PROMPT_COLOUR_GREY
+
+        ENDIF
+
+        IF (grid . user_info [ cell_row, MILL_COMP] = DELETED_TEXT ) THEN
+
+            the_colour = PROMPT_COLOUR_BLUE           
+ 
+        ENDIF    
+        
+            PROMPT FOR grid . user_info [ cell_row, cell_column]
+                BROWSE ON TEXT
+                AT column, row
+                IN WINDOW window
+                TO column + cell_width - 1
+                WITH (foreground_colour = the_colour,
+                      browse_routine = "select_component_names_all",
+                      PARENT_PROMPT = grid,
+                      justification = PROMPT_JUSTIFY_LEFT )
+
+
+    ELSEIF ( cell_column = INJECT )
+
+        IF  ( ( grid . user_info [ cell_row, ENABLED] = TRUE )     OR 
+            ( grid . user_info [ cell_row, ENABLED] = "*"  ) ) THEN
+
+            the_colour = PROMPT_COLOUR_MAGENTA
+
+        ELSE
+
+            the_colour = PROMPT_COLOUR_GREY
+
+        ENDIF
+
+
+        PROMPT FOR grid . user_info [ cell_row, cell_column]
+            AT column, row
+            IN WINDOW window
+            TO column + cell_width - 1
+            BROWSE ON INTEGER
+            WITH ( VALUE = "1",
+                   MINIMUM = 1,
+                   foreground_colour = the_colour,
+                   justification = PROMPT_JUSTIFY_LEFT )
+
+    ELSEIF ( cell_column = INJECT_COMM )
+
+        IF  ( ( grid . user_info [ cell_row, ENABLED] = TRUE )     OR 
+            ( grid . user_info [ cell_row, ENABLED] = "*"  ) ) THEN
+
+            the_colour = PROMPT_COLOUR_BLUE
+
+        ELSE
+
+            the_colour = PROMPT_COLOUR_GREY
+
+        ENDIF
+
+
+        PROMPT FOR grid . user_info [ cell_row, cell_column]
+            AT column, row
+            IN WINDOW window
+            TO column + cell_width - 1
+            BROWSE ON TEXT40
+            WITH ( foreground_colour = the_colour,
+                   justification = PROMPT_JUSTIFY_LEFT )
+
+    ELSEIF ( cell_column = RUN_TYPE )
+
+        IF  ( ( grid . user_info [ cell_row, ENABLED] = TRUE )     OR 
+            ( grid . user_info [ cell_row, ENABLED] = "*"  ) ) THEN
+
+            the_colour = PROMPT_COLOUR_BLUE
+
+        ELSE
+
+            the_colour = PROMPT_COLOUR_GREY
+
+        ENDIF
+
+        PROMPT FOR grid . user_info [ cell_row, cell_column]
+            AT column, row
+            IN WINDOW window
+            TO column + cell_width - 1
+            BROWSE ON PHRASE_ID.MILL_RUNTP
+            WITH ( foreground_colour = the_colour,
+                   justification = PROMPT_JUSTIFY_LEFT )
+
+    ELSEIF ( cell_column = COMP_TYPE )
+
+        IF  ( ( grid . user_info [ cell_row, ENABLED] = TRUE )     OR 
+            ( grid . user_info [ cell_row, ENABLED] = "*"  ) ) THEN
+
+            the_colour = PROMPT_COLOUR_RED
+
+        ELSE
+
+            the_colour = PROMPT_COLOUR_GREY
+
+        ENDIF
+
+
+        PROMPT FOR grid . user_info [ cell_row, cell_column]
+            AT column, row
+            IN WINDOW window
+            TO column + cell_width - 1
+            BROWSE ON INTEGER
+            WITH ( minimum = "",
+                   value = "",
+                   text = "",
+                   foreground_colour = the_colour,
+                   justification = PROMPT_JUSTIFY_LEFT )
+
+    ELSE 
+
+    ENDIF
+
+
+ENDROUTINE
+
+
+ROUTINE get_select_array ( anal_ver )
+
+    DECLARE select_array
+
+    ARRAY select_array
+
+    array_select_add (  select_array         ,
+                        ARRAY_SELECT_EQ      ,
+                        "VERSIONED_ANALYSIS" ,
+                        anal_ver              )
+
+    anal_ver . select_array = select_array
+
+    RETURN ( TRUE )
+
+ENDROUTINE 
+
+
+ROUTINE disp_only_interface_cell (     self ,
+                          VALUE cell_column ,
+                          VALUE cell_row    ,
+                                window      ,
+                          VALUE column      ,
+                          VALUE row         ,
+                          VALUE cell_width  ,
+                          VALUE cell_height )
+
+
+    DECLARE the_grid, the_colour
+
+    the_colour = PROMPT_COLOUR_GREY
+
+    the_grid = self
+        
+    IF ( cell_column = ENABLED) THEN
+
+        IF ( ( the_grid . user_info [ cell_row, cell_column] = TRUE )     OR 
+             ( the_grid . user_info [ cell_row, cell_column] = "*"  ) ) THEN
+
+            the_grid . user_info [ cell_row, cell_column] = "*"
+            the_colour = PROMPT_COLOUR_BLUE
+
+        ELSE
+
+            the_grid . user_info [ cell_row, cell_column] = "-"
+            the_colour = PROMPT_COLOUR_GREY
+
+        ENDIF
+
+	PROMPT FOR self . user_info [ cell_row , cell_column ]
+	AT column , row
+	IN WINDOW window
+	TO column + cell_width - 1
+	FORMAT BOOLEAN
+	WITH ( IS_CHECK = TRUE ,
+	       TRUE_WORD = "*" ,
+	       FALSE_WORD = "-" ,
+               foreground_colour = the_colour,
+               DISPLAY_ONLY = TRUE,
+               justification = PROMPT_JUSTIFY_LEFT)
+ 
+
+    ELSEIF ( cell_column = INJECT) THEN
+
+        the_colour = PROMPT_COLOUR_MAGENTA
+
+    	PROMPT FOR the_grid . user_info [ cell_row, cell_column]
+        AT column, row
+        IN WINDOW window
+        TO column + cell_width - 1
+        WITH ( display_only = TRUE,
+               foreground_colour = the_colour,
+               justification = PROMPT_JUSTIFY_LEFT)
+
+    ELSEIF ( cell_column = COMP_TYPE) THEN
+
+        IF ( ( the_grid . user_info [ cell_row, ENABLED] = TRUE )     OR 
+             ( the_grid . user_info [ cell_row, ENABLED] = "*"  ) ) THEN
+
+            the_colour = PROMPT_COLOUR_RED
+
+        ELSE
+
+            the_colour = PROMPT_COLOUR_GREY
+
+        ENDIF
+
+        PROMPT FOR the_grid . user_info [ cell_row, cell_column]
+              AT column, row
+              IN WINDOW window
+              TO column + cell_width - 1
+              WITH( FOREGROUNDCOLOUR = the_colour,
+                    justification = PROMPT_JUSTIFY_LEFT )
+
+    ELSE
+ 
+        IF ( the_grid . user_info [ cell_row, ENABLED] = "*") OR
+           ( the_grid . user_info [ cell_row, ENABLED] = TRUE ) THEN
+
+            the_colour = PROMPT_COLOUR_BLUE
+
+        ENDIF
+
+    	PROMPT FOR the_grid . user_info [ cell_row, cell_column]
+        AT column, row
+        IN WINDOW window
+        TO column + cell_width - 1
+        WITH ( display_only = TRUE,
+               foreground_colour = the_colour,
+               justification = PROMPT_JUSTIFY_LEFT )
+
+   ENDIF
+
+
+ENDROUTINE
+
+
+ROUTINE display_interface_cell (   self        ,
+                             VALUE cell_column ,
+                             VALUE cell_row    ,
+                             window      ,
+                             VALUE column      ,
+                             VALUE row         ,
+                             VALUE cell_width  ,
+                             VALUE cell_height )
+
+    DECLARE the_grid, the_colour
+
+    the_colour = PROMPT_COLOUR_GREY
+
+    the_grid = self
+
+    IF ( cell_column = ENABLED) THEN
+
+
+        IF ( ( the_grid . user_info [ cell_row, cell_column] = TRUE )     OR 
+             ( the_grid . user_info [ cell_row, cell_column] = "*"  ) ) THEN
+
+            the_grid . user_info [ cell_row, cell_column] = "*"
+            the_colour = PROMPT_COLOUR_BLUE
+
+        ELSE
+
+            the_grid . user_info [ cell_row, cell_column] = "-"
+            the_colour = PROMPT_COLOUR_GREY
+
+        ENDIF
+
+	DISPLAY self . user_info [ cell_row , cell_column ]
+	AT column , row
+	IN WINDOW window
+	TO column + cell_width - 1
+	FORMAT BOOLEAN
+	WITH ( IS_CHECK = TRUE ,
+	       TRUE_WORD = "*" ,
+	       FALSE_WORD = "-",
+               foreground_colour = the_colour,
+               justification = PROMPT_JUSTIFY_LEFT )
+
+
+    ELSEIF ( cell_column = MILL_COMP) THEN
+
+        IF (the_grid . user_info [ cell_row, MILL_COMP] = DELETED_TEXT ) THEN
+
+            the_colour = PROMPT_COLOUR_BLUE           
+ 
+        ENDIF
+
+        IF ( the_grid . user_info [ cell_row, ENABLED] = "*") OR
+           ( the_grid . user_info [ cell_row, ENABLED] = TRUE ) THEN
+
+            the_colour = PROMPT_COLOUR_BLUE
+
+        ENDIF
+
+        DISPLAY self . user_info [cell_row, cell_column]
+              AT column, row
+              IN WINDOW window
+              TO column + cell_width - 1
+              WITH( FOREGROUNDCOLOUR = the_colour,
+                    justification = PROMPT_JUSTIFY_LEFT )
+
+    ELSEIF ( cell_column = INJECT) THEN
+
+        the_colour = PROMPT_COLOUR_MAGENTA
+
+
+        DISPLAY self . user_info [cell_row, cell_column]
+              AT column, row
+              IN WINDOW window
+              TO column + cell_width - 1
+              WITH( FOREGROUNDCOLOUR = the_colour,
+                    justification = PROMPT_JUSTIFY_LEFT )
+
+    ELSEIF ( cell_column = COMP_TYPE) THEN
+
+        IF ( ( the_grid . user_info [ cell_row, ENABLED] = TRUE )     OR 
+             ( the_grid . user_info [ cell_row, ENABLED] = "*"  ) ) THEN
+
+            the_colour = PROMPT_COLOUR_RED
+
+        ELSE
+
+            the_colour = PROMPT_COLOUR_GREY
+
+        ENDIF
+
+
+        DISPLAY self . user_info [cell_row, cell_column]
+              AT column, row
+              IN WINDOW window
+              TO column + cell_width - 1
+              WITH( FOREGROUNDCOLOUR = the_colour,
+                    justification = PROMPT_JUSTIFY_LEFT )
+
+    ELSE
+
+        IF ( the_grid . user_info [ cell_row, ENABLED] = "*") OR
+           ( the_grid . user_info [ cell_row, ENABLED] = TRUE ) THEN
+
+            the_colour = PROMPT_COLOUR_BLUE
+
+        ENDIF
+
+        DISPLAY self . user_info [cell_row, cell_column]
+              AT column, row
+              IN WINDOW window
+              TO column + cell_width - 1
+              WITH( FOREGROUNDCOLOUR = the_colour,
+                    justification = PROMPT_JUSTIFY_LEFT )
+		
+
+    ENDIF
+
+
+ENDROUTINE
+
+ROUTINE do_db_transactions ( the_form,
+                             VALUE option)
+
+    DECLARE grid_array, i,  the_anal, the_anal_ver, new_rec, the_key, grid_row,
+            the_proj, proj_count, prev_array, proj_tab, db_link ,
+            anal_width
+
+    ARRAY grid_array
+    ARRAY prev_array
+
+    i = 1
+    grid_row = 1
+    proj_count = 1
+    
+    GET_FIELD_DETAILS versioned_analysis . identity, "FIELD_SIZE", anal_width
+
+    db_link      = the_form . prompt_objects [FORM_DB_LINK] . text
+    the_anal     = the_form . prompt_objects [FORM_ANAL]
+    the_anal_ver = the_form . prompt_objects [FORM_VER]
+
+    the_anal = the_anal . text
+    the_anal_ver = STRIP(the_anal_ver . text)
+
+    proj_tab = the_form.prompt_objects[FORM_TAB].bounding_object.forms[proj_count]
+
+    IF proj_tab <> EMPTY THEN
+
+        the_proj = STRIP(the_form.prompt_objects[FORM_TAB].bounding_object.forms[proj_count].header)
+
+        grid_array = the_form.prompt_objects[FORM_TAB].bounding_object.forms[proj_count] . prompt_objects[1].user_info
+        prev_array = the_form.prompt_objects[FORM_TAB].bounding_object.forms[proj_count] . prompt_objects[1].prev_array
+
+        the_anal_ver = PAD(the_anal_ver, " ", 10)
+        the_anal_ver = JUSTIFY(the_anal_ver, "RIGHT")
+
+        IF option = "ADD" THEN
+
+            WHILE i <= SIZE_OF_ARRAY(grid_array) DO
+
+                new_rec = SELECT mill_component_map . component
+                           WHERE database_link = db_link AND
+                                 analysis = the_anal AND
+                                 analysis_version = the_anal_ver AND
+                                 component      = grid_array[ i, SMP_COMP      ] AND
+                                 mill_analyte   = grid_array[ i, MILL_COMP     ] AND
+                                 injection      = grid_array[ i, INJECT        ] AND
+                                 mill_type      = grid_array[ i, MILL_RES_TYPE ] AND
+                                 inject_comment = grid_array[ i, INJECT_COMM   ] AND
+                                 run_type       = grid_array[ i, RUN_TYPE   ] AND
+                                 sm_comp_type   = grid_array[ i, COMP_TYPE      ] AND
+                                 mill_entity    = the_proj
+ 
+
+                IF new_rec = EMPTY THEN
+
+                    the_key = PAD(STRIP(db_link)," ",30):
+                              PAD(STRIP(the_anal)," ",anal_width):the_anal_ver:
+                              PAD(STRIP(grid_array[ i, SMP_COMP      ])," ",40):
+                              PAD(STRIP(grid_array[ i, MILL_COMP     ])," ",40):
+                              PAD(STRIP(the_proj)                      ," ",50):
+                              PAD(STRIP(grid_array[ i, MILL_RES_TYPE ])," ",30):
+                              PAD(STRIP(grid_array[ i, INJECT        ])," ",10)
+
+
+                    add_new_records ( the_key, 
+                                      grid_array,
+                                      i,
+                                      the_form )
+
+               ENDIF
+
+               i = i + 1
+
+           ENDWHILE
+
+
+        ELSEIF option = "MODIFY" THEN
+
+                                   {============================================}
+                                   { Now do any record modifications.           }
+                                   {============================================}
+
+            WHILE i <= size_of_array ( prev_array ) DO
+
+
+                IF (prev_array[ i, ENABLED       ] <> grid_array[ grid_row, ENABLED       ]) OR           
+                   (prev_array[ i, MILL_RES_TYPE ] <> grid_array[ grid_row, MILL_RES_TYPE ]) OR
+                   (prev_array[ i, INJECT        ] <> grid_array[ grid_row, INJECT        ]) OR 
+                   (prev_array[ i, INJECT_COMM   ] <> grid_array[ grid_row, INJECT_COMM   ]) OR
+                   (prev_array[ i, RUN_TYPE      ] <> grid_array[ grid_row, RUN_TYPE      ]) OR
+                   (prev_array[ i, SMP_COMP      ] <> grid_array[ grid_row, SMP_COMP      ]) OR  
+                   (prev_array[ i, COMP_TYPE      ] <> grid_array[ grid_row, COMP_TYPE      ]) OR     
+                   (prev_array[ i, MILL_COMP     ] <> grid_array[ grid_row, MILL_COMP     ]) THEN     
+      
+
+                     update_interface_rec ( db_link,
+                                            the_anal, 
+                                            the_anal_ver, 
+                                            i, 
+                                            grid_row,
+                                            grid_array,
+                                            prev_array,
+                                            the_proj,
+                                            the_form)
+                     
+
+                ENDIF
+
+
+                IF prev_array[i, DELETE_COL ] = "DELETE" THEN
+
+                    grid_row = grid_row - 1  { Re-match prev_grid with smaller grid array }
+
+                ENDIF
+
+                i = i + 1
+                grid_row = grid_row + 1
+
+            ENDWHILE
+   
+         ENDIF
+
+     ENDIF
+
+ENDROUTINE
+
+
+ROUTINE add_new_records ( VALUE the_key,
+                                grid_array,
+                                the_row,
+                                the_form )
+
+
+    DECLARE check_ok, is_enabled
+
+    
+    IF grid_array [ the_row, ENABLED ] = "*" THEN
+  
+        is_enabled = TRUE
+
+    ELSE
+
+        is_enabled = FALSE
+
+    ENDIF
+
+    RESERVE ENTRY MILL_COMPONENT_MAP, the_key, check_ok
+
+    IF (check_ok <> EMPTY) THEN
+
+        flashmessage(check_ok, TRUE)
+        ROLLBACK
+
+    ELSE
+
+        check_write_transaction()
+
+        ASSIGN mill_component_map . enable           = is_enabled
+        ASSIGN mill_component_map . inject_comment   = grid_array [ the_row, INJECT_COMM   ]
+        ASSIGN mill_component_map . run_type         = grid_array [ the_row, RUN_TYPE   ]
+        ASSIGN mill_component_map . order_num        = the_row
+        ASSIGN mill_component_map . mill_method_set  = STRIP(the_form . prompt_objects[FORM_METH].text)
+        ASSIGN mill_component_map . sm_comp_type     = grid_array [ the_row, COMP_TYPE      ]
+         
+
+        UPDATE mill_component_map
+
+        do_commit = TRUE
+
+
+    ENDIF
+
+ENDROUTINE
+
+
+ROUTINE update_interface_rec ( VALUE db_link,
+                               VALUE analysis, 
+                               VALUE analysis_version,
+                               VALUE prev_row,
+                                     grid_row,
+                                     grid_array,
+                                     prev_array,
+                                     the_proj,
+                                     the_form)
+
+    DECLARE the_rec, check_ok, the_key, anal_width
+
+    check_ok = EMPTY
+
+    GET_FIELD_DETAILS versioned_analysis . identity, "FIELD_SIZE", anal_width
+
+    IF prev_array [prev_row, DELETE_COL ] <> "INSERT" THEN
+
+        the_rec = SELECT mill_component_map . analysis FOR UPDATE
+                   WHERE ( database_link    = db_link          ) AND
+                         ( analysis_version = analysis_version ) AND
+                         ( analysis         = analysis         ) AND
+                         ( component        = prev_array [ prev_row, SMP_COMP      ] ) AND
+                         ( mill_analyte     = prev_array [ prev_row, MILL_COMP     ] ) AND
+                         ( injection        = prev_array [ prev_row, INJECT        ] ) AND
+                         ( mill_type        = prev_array [ prev_row, MILL_RES_TYPE ] ) AND
+                         ( inject_comment   = prev_array [ prev_row, INJECT_COMM   ] ) AND
+                         ( run_type         = prev_array [ prev_row, RUN_TYPE   ] ) AND
+                         ( sm_comp_type     = prev_array [ prev_row, COMP_TYPE      ] ) AND
+                         ( mill_entity     = the_proj )
+
+ 
+
+        IF the_rec <> EMPTY
+
+            check_write_transaction()
+
+            DELETE MILL_COMPONENT_MAP, check_ok
+
+            IF check_ok = EMPTY THEN
+
+                do_commit = TRUE
+
+            ENDIF
+
+            IF prev_array[prev_row, DELETE_COL ] <> "DELETE" THEN {Updated Records only }
+
+                the_key = PAD(STRIP(db_link)," ",30):
+                          PAD(STRIP(analysis)," ",anal_width):analysis_version:
+                          PAD(STRIP(grid_array[ grid_row, SMP_COMP      ])," ",40):
+                          PAD(STRIP(grid_array[ grid_row, MILL_COMP     ])," ",40):
+                          PAD(STRIP(the_proj)                             ," ",50):
+                          PAD(STRIP(grid_array[ grid_row, MILL_RES_TYPE ])," ",30):
+                          PAD(STRIP(grid_array[ grid_row, INJECT        ])," ",10)
+
+                add_new_records ( the_key,
+                                  grid_array,
+                                  grid_row,
+                                  the_form )
+
+            ENDIF
+
+        ELSE
+
+            flash_message(GET_USER_MESSAGE ("MILL_LTR_CANT_UPDATE_REC",1), TRUE)
+
+        ENDIF
+
+    ELSE { INSERT RECORD }
+
+        the_key = PAD(STRIP(db_link)," ",30):
+                  PAD(STRIP(analysis)," ",anal_width):analysis_version:
+                  PAD(STRIP(grid_array[ grid_row, SMP_COMP      ])," ",40):
+                  PAD(STRIP(grid_array[ grid_row, MILL_COMP     ])," ",40):
+                  PAD(STRIP(the_proj)                             ," ",50):
+                  PAD(STRIP(grid_array[ grid_row, MILL_RES_TYPE ])," ",30):
+                  PAD(STRIP(grid_array[ grid_row, INJECT        ])," ",10)
+
+
+        add_new_records ( the_key,
+                          grid_array,
+                          grid_row,
+                          the_form)
+
+
+    ENDIF
+
+ENDROUTINE
+
+
+ROUTINE check_write_transaction
+
+    IF NOT transaction_is_write() THEN
+
+       START WRITE TRANSACTION "update record"
+
+    ENDIF
+
+ENDROUTINE
+
+
+ROUTINE update_display_fields( self,
+                               VALUE cell_column,
+                               VALUE cell_row )
+
+{ This is the enter cell handler for the grid }
+     
+ENDROUTINE
+
+
+ROUTINE switch_colour (grid)
+
+    IF  ( grid . text = "*" ) THEN
+
+        grid . foregroundcolour = PROMPT_COLOUR_BLUE
+
+    ELSE
+
+        grid . foregroundcolour = PROMPT_COLOUR_GREY
+
+    ENDIF
+
+
+    RETURN (EMPTY)
+
+ENDROUTINE
+
+
+ROUTINE insert_row (self)
+
+    DECLARE the_row, i, the_grid, the_value,  peak_value
+
+    peak_value = ""
+
+    the_grid = self . parent_prompt . prompt_objects [1]
+    the_row  = the_grid . current_row
+
+    the_value = the_grid . user_info[ the_row, SMP_COMP ]
+
+    array_insert_slice ( the_grid . user_info, 1, the_row )
+    array_insert_slice ( the_grid . prev_array, 1, the_row )
+
+    the_grid . prev_array [ the_row, DELETE_COL] = "INSERT"  
+
+    the_grid . insert_row ( the_row, 1, GRID_SEPARATOR_NONE )
+
+    IF the_row = 0 THEN
+
+        the_row = 1
+        the_grid . set_position ( 1, the_row  )
+
+    ELSE
+
+        the_grid . set_position ( 1, the_row  )        
+
+    ENDIF
+
+    i = 1
+
+    WHILE ( i <= the_grid . cell_columns ) DO
+
+        IF i = SMP_COMP THEN
+
+            the_grid . user_info  [the_row, i] = the_value
+            the_grid . prev_array [the_row, i] = the_value 
+
+        ELSEIF i = ENABLED THEN
+
+            the_grid . user_info[the_row, i] = "*"
+
+        ELSEIF i = MILL_COMP THEN
+
+            the_grid . user_info  [the_row, i] = BLANK_CELL
+            the_grid . prev_array [the_row, i] = BLANK_CELL 
+
+
+        ELSEIF i = INJECT THEN
+
+            the_grid . user_info[the_row, i] = "1"
+            the_grid . prev_array [the_row, i] = "1"
+
+
+        ELSEIF i = MILL_RES_TYPE THEN
+
+            the_grid . user_info[the_row, i] = peak_value
+            the_grid . prev_array [the_row, i] = peak_value
+
+        ELSEIF i = INJECT_COMM
+
+            the_grid . user_info[the_row, i] = BLANK_CELL
+            the_grid . prev_array [the_row, i] = BLANK_CELL
+
+
+        ELSEIF i = RUN_TYPE
+
+            the_grid . user_info[the_row, i] = BLANK_CELL
+            the_grid . prev_array [the_row, i] = BLANK_CELL
+
+
+        ELSE
+
+            the_grid . user_info[the_row, i] = BLANK_CELL
+            the_grid . prev_array [the_row, i] = BLANK_CELL
+
+        ENDIF
+
+        i = i + 1
+
+    ENDWHILE
+
+    the_grid . redisplay_row ( the_grid . current_row )
+    the_grid . rebuild()
+
+
+ENDROUTINE
+
+
+ROUTINE delete_row ( self )
+
+    DECLARE the_row, grid_array, the_grid, the_value, row_count,
+            comp_count, the_comp
+
+    row_count = 1
+
+    comp_count = 0
+
+    the_grid = self . parent_prompt . prompt_objects [1]
+
+    the_row = the_grid . current_row
+
+    grid_array = the_grid . user_info
+
+    the_value = the_grid . user_info[ the_row, SMP_COMP ]
+
+    WHILE row_count <= SIZE_OF_ARRAY ( grid_array) DO
+
+        the_comp = grid_array [ row_count , SMP_COMP ]
+
+        IF ( the_comp = the_value ) THEN
+
+            comp_count = comp_count + 1
+
+        ENDIF
+
+        row_count = row_count + 1
+
+    ENDWHILE
+
+    row_count = 1
+
+    IF comp_count  > 1 THEN
+
+        the_grid . remove_row ( the_row )
+
+        array_remove_slice ( the_grid . user_info, 1, the_row )
+
+        { Find equivalent row in the prev array }
+
+
+        IF the_grid . prev_array[the_row , DELETE_COL ] = "INSERT" THEN
+
+            array_remove_slice ( the_grid . prev_array, 1, the_row) 
+
+        ELSE
+
+            IF the_grid . prev_array[the_row , DELETE_COL ] = "DELETE" THEN
+
+                REPEAT
+
+                    row_count = row_count + 1
+
+                UNTIL the_grid . prev_array [ row_count, DELETE_COL] <> "DELETE" 
+
+                the_grid . prev_array [ row_count, DELETE_COL] = "DELETE"  
+
+            ELSE
+
+                the_grid . prev_array [ the_row, DELETE_COL] = "DELETE"  
+
+            ENDIF
+ 
+        ENDIF
+
+
+    ELSE
+
+        flashmessage(GET_USER_MESSAGE ("MILL_LTR_CANT_REMOVE_NONDUP_ROW",1), TRUE)
+
+    ENDIF
+
+   
+ENDROUTINE
+
+
+
+ROUTINE select_project_data ( self )
+
+    DECLARE arr
+
+    ARRAY arr
+    arr[1]="All Projects"
+    arr[2]="All Projects"
+
+    browse_on_array ( 80 , self . text , arr)
+
+
+    self . repaste ( )
+    
+
+ENDROUTINE
+
+ 
+ROUTINE select_component_names ( self )
+
+    { No browse }
+    { A browse should be on the processing methods, not the result table }
+
+ENDROUTINE
+
+
+ROUTINE select_component_names_all ( self )
+
+    { Manual entry, no browse }
+
+ENDROUTINE
+
+
+ROUTINE add_proj_tab ( tab , 
+                       each_tab,
+                       the_proj,
+                       main_form,
+                       VALUE option  )
+
+    DECLARE delete_button, insert_button
+
+    CREATE OBJECT "STD_FORM" , each_tab
+        
+    tab . set_size ( each_tab )
+
+    each_tab . header = STRIP(the_proj)
+
+    tab . add_form ( each_tab )
+
+    setup_grid ( each_tab, option )
+
+    each_tab . add_frame ("", 1, 10, 1, FORM_WIDTH -8 )
+
+
+    PROMPT OBJECT insert_button
+            CLASS "STD_PROMPT_BUTTON"
+            WITH ( row                 = 10                         ,
+                   width               = BUTTON_WIDTH + 7           ,
+                   column              = 12                          ,
+                   caption             = GET_USER_MESSAGE ("MILL_LTR_INSERT_DUP_COMP",1),
+                   mouse_click_routine = "insert_row"       ,
+                   vgl_library         = GLOBAL( "CURRENT_LIBRARY" ) ,
+                   enabled             = FALSE                         )
+
+    each_tab . add_prompt ( insert_button ) {Prompt 6}
+
+    PROMPT OBJECT delete_button
+            CLASS "STD_PROMPT_BUTTON"
+            WITH ( row                 = 10                           ,
+                   width               = BUTTON_WIDTH + 7           ,
+                   column              = 59                         ,
+                   caption             = GET_USER_MESSAGE ("MILL_LTR_DEL_DUP_COMP",1),
+                   mouse_click_routine = "delete_row"       ,
+                   vgl_library         = GLOBAL( "CURRENT_LIBRARY" ) ,
+                   enabled             = FALSE                         )
+
+    each_tab . add_prompt ( delete_button ) {Prompt 7}
+
+
+ENDROUTINE
+
+ROUTINE enable_get_components_add ( anal_ver_prompt )
+
+    DECLARE each_tab, the_proj, the_main_form, tab_form, each_grid,
+              the_anal, the_anal_ver
+
+    the_main_form = anal_ver_prompt . parent_prompt
+
+    { Check that the selected analysis is valid first }
+
+    the_anal     = the_main_form . prompt_objects [FORM_ANAL] . value
+    the_anal_ver = SELECT MAX versioned_analysis . analysis_version
+                    WHERE identity = the_anal
+                      AND removeflag = FALSE
+                      AND approval_status = VERS_ANALY_APPROV_FLAG
+
+    IF (the_anal_ver = EMPTY) THEN
+
+        the_anal_ver = 0
+
+    ENDIF
+
+    the_anal = SELECT versioned_analysis . identity
+                  WHERE identity = the_anal
+                    AND analysis_version = the_anal_ver
+                    AND removeflag = FALSE
+                    AND approval_status = VERS_ANALY_APPROV_FLAG
+
+    IF (the_anal = EMPTY) THEN
+
+        the_main_form . prompt_objects [FORM_VER].value = EMPTY
+        the_main_form . prompt_objects [FORM_VER].repaste ()
+
+        flashmessage (GET_USER_MESSAGE ("MILL_LTR_INVAL_ANAL_OR_VER_SEL",1),TRUE)
+
+        RETURN
+
+    ENDIF
+
+    the_proj = STRIP(anal_ver_prompt . parent_prompt . prompt_objects[FORM_PROJ] . text)
+
+    IF STRIP(the_proj) <> "" THEN
+
+        tab_form  = the_main_form . prompt_objects[FORM_TAB]
+        each_tab  = tab_form . bounding_object . forms[1]
+
+        each_tab . change_header(STRIP(the_proj))
+
+        each_grid = each_tab. prompt_objects[1]
+
+        each_tab . header =STRIP(the_proj)
+
+        populate_the_grid ( the_main_form,
+                            each_grid,
+                            the_proj)
+
+        IF each_grid . user_info[1,1] <> "" THEN
+
+            each_tab . prompt_objects[2] . set_enabled ( TRUE )
+            each_tab . prompt_objects[3] . set_enabled ( TRUE )
+
+        ENDIF
+
+    ELSE
+
+        flashmessage(GET_USER_MESSAGE ("MILL_LTR_NO_PRJ_SEL",1), TRUE)
+
+    ENDIF
+
+ENDROUTINE 
+
+
+ROUTINE enable_get_components_mod ( anal_ver_prompt )
+
+
+    DECLARE each_tab, the_proj, the_main_form, tab_form, each_grid
+
+    the_proj = STRIP(anal_ver_prompt . parent_prompt . prompt_objects[FORM_PROJ] . text)
+
+    IF STRIP(the_proj) <> "" THEN
+
+        the_main_form = anal_ver_prompt . parent_prompt
+        tab_form  = the_main_form . prompt_objects[FORM_TAB]
+        each_tab  = tab_form . bounding_object . forms[1]
+
+        each_tab . change_header(STRIP(the_proj))
+        each_tab . re_paste()
+
+
+        each_grid = each_tab. prompt_objects[1]
+
+
+        populate_modify_grid ( the_main_form,
+                               each_grid,
+                               the_proj,
+                               TRUE)
+
+        IF each_grid . user_info[1,1] <> "" THEN
+
+            each_tab . prompt_objects[2] . set_enabled ( TRUE )
+            each_tab . prompt_objects[3] . set_enabled ( TRUE )
+
+        ENDIF
+
+    ELSE
+
+        flashmessage(GET_USER_MESSAGE ("MILL_LTR_NO_PRJ_SEL",1), TRUE)
+
+    ENDIF
+
+
+ENDROUTINE 
+
+
+ROUTINE enable_get_components_dis ( anal_ver_prompt )
+
+
+    DECLARE each_tab, the_proj, the_main_form, tab_form, each_grid
+
+
+    the_proj = STRIP(anal_ver_prompt . parent_prompt . prompt_objects[FORM_PROJ] . text)
+
+    IF STRIP(the_proj) <> "" THEN
+
+        the_main_form = anal_ver_prompt . parent_prompt
+        tab_form  = the_main_form . prompt_objects[FORM_TAB]
+        each_tab  = tab_form . bounding_object . forms[1]
+
+        each_tab . change_header(STRIP(the_proj))
+        each_tab . re_paste()
+
+        each_grid = each_tab. prompt_objects[1]
+
+        populate_modify_grid ( the_main_form,
+                               each_grid,
+                               the_proj,
+                               FALSE)
+
+        IF each_grid . user_info[1,1] <> "" THEN
+
+            each_tab . prompt_objects[2] . set_enabled ( FALSE )
+            each_tab . prompt_objects[3] . set_enabled ( FALSE )
+
+        ENDIF
+
+    ELSE
+
+        flashmessage(GET_USER_MESSAGE ("MILL_LTR_NO_PRJ_SEL",1), TRUE)
+
+    ENDIF
+
+ENDROUTINE 
+
+ROUTINE select_exist_project_data ( self )
+
+    DECLARE count, ss_name, record_count, ss_array, dynamic_sql, sql_string, 
+            db_link 
+
+    ARRAY ss_array
+   
+    count = 1
+
+    db_link = STRIP(self.parent_prompt.prompt_objects[1].text)
+ 
+
+    sql_string = "SELECT DISTINCT MILL_ENTITY FROM mill_component_map_hdr WHERE DATABASE_LINK = '":
+                          STRIP(db_link):"' and removeflag='F'"
+        
+
+    CREATE OBJECT "STD_DYNAMIC_SQL" , dynamic_sql
+
+    dynamic_sql . add_to_sql_statement ( sql_string )
+    record_count = dynamic_sql . add_select_string ( 50 )
+    dynamic_sql . execute ()
+
+    ss_name = dynamic_sql . select (record_count)
+
+    WHILE ss_name <> EMPTY DO
+
+        ss_array[count,1] = ss_name
+
+        dynamic_sql . next ()
+        ss_name = dynamic_sql . select (record_count)
+
+       count = count + 1
+
+    ENDWHILE
+
+    browse_on_array ( 80 , self.text , ss_array )
+
+    self.repaste()
+
+ENDROUTINE
+
+
+ROUTINE browse_exist_anals( self )
+
+    DECLARE count, ss_name, record_count, ss_array, dynamic_sql, sql_string,
+            db_link 
+
+    ARRAY ss_array
+   
+    count = 1
+
+    db_link = STRIP(self.parent_prompt.prompt_objects[1].text)
+    
+     sql_string = "SELECT DISTINCT ANALYSIS FROM mill_component_map_hdr WHERE DATABASE_LINK = '":
+                          STRIP(db_link):"' and removeflag='F'"
+         
+
+    CREATE OBJECT "STD_DYNAMIC_SQL" , dynamic_sql
+
+    dynamic_sql . add_to_sql_statement ( sql_string )
+    record_count = dynamic_sql . add_select_string ( 50 )
+    dynamic_sql . execute ()
+
+    ss_name = dynamic_sql . select (record_count)
+
+    WHILE ss_name <> EMPTY DO
+
+        ss_array[count,1] = ss_name
+
+        dynamic_sql . next ()
+        ss_name = dynamic_sql . select (record_count)
+
+       count = count + 1
+
+    ENDWHILE
+
+    browse_on_array ( 80 , self.text , ss_array )
+
+    self.repaste()
+
+ENDROUTINE
+
+
+ROUTINE browse_runtypes   (self)
+
+
+    DECLARE  i, val, browse_array
+
+
+    ARRAY browse_array
+
+    val = SELECT phrase . phrase_id
+            WHERE phrase_type = "MILL_RUN"
+
+    i = 0
+
+    WHILE (val <> EMPTY) DO
+
+        i = i + 1
+
+        browse_array [i, 1] = val
+        browse_array [i, 2] = val
+
+        NEXT phrase
+        val = SELECT phrase . phrase_id
+
+    ENDWHILE
+   
+
+    browse_on_array ( 80 , self.text , browse_array )
+
+    self.repaste()
+
+ENDROUTINE    { browse_runtypes }
+
+
+
+ROUTINE select_cds_methods ( self )
+
+   { No browse }
+
+ENDROUTINE
+
+
+ROUTINE get_sm_anal_comps (comp_array, VALUE the_anal, 
+					 VALUE db_link)
+
+    DECLARE comp, i, the_anal_ver
+    
+    { MOD1  
+      Based on a certain naming convention of the database_link field (prefix W_),
+      get the values instead from the worksheet header.
+      Each analysis may link to 1 worksheet header, so show the fields from that.
+    }
+    DECLARE wsheet_tmpl, is_wsheet, wsheet_prefix    
+    wsheet_prefix = "W_"
+    db_link = STRIP(db_link)
+    is_wsheet = (INDEX (db_link,wsheet_prefix)=1)
+
+    the_anal_ver = SELECT MAX versioned_analysis . analysis_version
+                    WHERE identity = the_anal
+                      AND removeflag = FALSE
+                      AND approval_status = VERS_ANALY_APPROV_FLAG
+
+    IF (the_anal_ver = EMPTY)
+
+	 the_anal_ver = 0
+
+    ENDIF
+
+    { end MOD1 except for the IF(is_wsheet) (=true) below  }
+
+    IF (is_wsheet) THEN
+
+        wsheet_tmpl = SELECT versioned_analysis . wsheet_header
+                         WHERE identity         = the_anal
+                         AND analysis_version   = the_anal_ver
+
+       IF (STRIP(wsheet_tmpl)<> "") THEN
+
+           comp  = SELECT wsheet_tmpl_entry . identity
+                     WHERE wsheet_identity = wsheet_tmpl
+                     ORDER ON order_number
+
+            i = 0
+            WHILE comp <> EMPTY DO
+   
+                i = i + 1
+                comp_array [i, 1] = comp
+                comp_array [i, 2] = "T"
+
+                NEXT wsheet_tmpl_entry
+                comp  = SELECT wsheet_tmpl_entry . identity
+
+            ENDWHILE
+
+       ELSE
+
+            flashmessage ("No worksheet defined for this analysis, Exiting....", TRUE)
+
+            EXIT
+
+	 ENDIF
+
+    ELSE
+        comp  = SELECT VERSIONED_COMPONENT . name
+                 WHERE analysis         = the_anal
+                 AND analysis_version   = the_anal_ver
+                 AND result_type <> "K"
+                 ORDER ON order_number
+
+        i = 0
+        WHILE comp <> EMPTY DO
+
+            i = i + 1
+            comp_array [i, 1] = comp
+            comp_array [i, 2] = SELECT versioned_component . result_type
+
+            NEXT VERSIONED_COMPONENT
+            comp  = SELECT VERSIONED_COMPONENT . name
+
+        ENDWHILE
+
+    ENDIF
+
+ENDROUTINE   {   get_sm_anal_comps   }
+
+
+ROUTINE update_mill_mapped_complist  (   grid_array  ,
+					 VALUE db_link,
+	                                 VALUE the_anal, 
+                            		 VALUE the_anal_ver, 
+                            		 VALUE the_ent,
+                                         VALUE is_prev_array )
+
+
+    DECLARE comp_array, iGrid, iComp, the_comp, found, do_commit,
+            iGridMax, peak_value, mod_database
+
+    ARRAY comp_array 
+
+    do_commit = FALSE
+    db_link = TOUPPER(STRIP(db_link))
+    the_anal = STRIP (the_anal)
+
+    peak_value = ""
+
+    get_sm_anal_comps (comp_array, the_anal, db_link)
+
+    { Go through grid array, if it includeds non-existant components, remove them }
+    { Comparison is case in-sensitive and ignores lead/trailing white spaces }
+
+    iGrid = size_of_array (grid_array)
+    WHILE ( iGrid > 0  ) DO
+
+        the_comp = grid_array [ iGrid, SMP_COMP]
+
+        found = FALSE
+        iComp = 0
+        WHILE ( iComp < size_of_array (comp_array) ) AND
+                (found = FALSE) DO
+
+            iComp = iComp + 1
+
+            IF ( STRIP(TOLOWER(comp_array [iComp, 1])) = STRIP(TOLOWER(the_comp)) ) THEN
+
+                found = TRUE
+
+            ENDIF
+
+        ENDWHILE
+
+        IF (found = FALSE) THEN
+
+            {
+              Dont remove it from the display  
+              ( the following would: array_remove_slice (grid_array, 1, iGrid))
+               Instead update the display as disabled and with a comment
+               If disabled, dont change comment, in case user wants that comment
+               Note that *,- used for TRUE,FALSE
+             }
+             mod_database = FALSE
+             IF (grid_array [iGrid , ENABLED       ] = "*") THEN
+
+                mod_database = TRUE
+		grid_array [iGrid , ENABLED       ] = "-"
+                grid_array [iGrid , INJECT_COMM   ] = GET_USER_MESSAGE ("MILL_LTR_SM_COMP_REMOVED",1)
+
+             ENDIF
+
+
+             IF (NOT is_prev_array) AND (mod_database) THEN
+
+               { Update the obselete component in interface mapping table }
+               { Make it disabled and having a "removed" comment    }
+               REPEAT
+
+                  the_comp = SELECT mill_component_map . component FOR UPDATE
+                               WHERE database_link    = db_link      AND
+                                analysis         = the_anal        AND
+                                analysis_version = the_anal_ver    AND
+                                mill_entity      = the_ent         AND
+                                component = the_comp
+
+                  IF the_comp = LOCKED THEN
+
+                       SLEEP FOR "0 00:00:02"	
+
+                   ENDIF
+
+                UNTIL the_comp <> LOCKED
+
+                IF (the_comp <> EMPTY) THEN
+
+                   check_write_transaction ()
+
+                   ASSIGN mill_component_map.enable = FALSE
+                   ASSIGN mill_component_map.inject_comment = GET_USER_MESSAGE ("MILL_LTR_SM_COMP_REMOVED",1)
+
+                   UPDATE mill_component_map
+
+                   do_commit = TRUE
+
+                ENDIF
+
+            ENDIF    { IF (do_delete) }
+
+	ENDIF    {  IF (found = FALSE)  }
+
+        iGrid = iGrid - 1
+
+    ENDWHILE   {  iGrid > 0 }
+
+
+    IF (do_commit) THEN
+
+        COMMIT
+
+    ENDIF
+
+
+    { See if any components are missing from the grid }
+
+    iComp = 0
+    WHILE ( iComp < size_of_array (comp_array) )  DO
+
+        iComp = iComp + 1
+
+        found = FALSE
+        iGrid = 0
+        WHILE (iGrid < size_of_array (grid_array)) DO
+
+            iGrid = iGrid + 1
+
+            the_comp = grid_array [ iGrid, SMP_COMP]
+	    IF ( STRIP(TOLOWER(comp_array [iComp, 1])) = STRIP(TOLOWER(the_comp)) ) THEN
+
+                found = TRUE
+
+            ENDIF
+
+        ENDWHILE
+
+        IF (found = FALSE) THEN
+
+            iGridMax = size_of_array (grid_array) + 1
+            array_insert_slice (grid_array, 1 , iGridMax)
+
+            grid_array [iGridMax , ENABLED       ] = "-"
+            grid_array [iGridMax , SMP_COMP      ] = comp_array [iComp, 1]
+            grid_array [iGridMax , MILL_RES_TYPE ] = peak_value
+            grid_array [iGridMax , MILL_COMP     ] = ""
+            grid_array [iGridMax , INJECT        ] = "1"
+            grid_array [iGridMax , INJECT_COMM   ] = ""
+            grid_array [iGridMax , COMP_TYPE      ] = ""
+
+            grid_array [iGridMax , RUN_TYPE   ] = ""
+
+            { this will make the row be added }
+            IF (is_prev_array) THEN
+
+                grid_array [iGridMax , DELETE_COL ] = "INSERT"
+
+            ENDIF
+
+        ENDIF
+
+    ENDWHILE    { iComp loop }
+    
+
+     
+ENDROUTINE   {   update_mill_mapped_complist   }
+
+
+
+ROUTINE empty_the_array  (the_array)
+
+   DECLARE i
+
+   i = size_of_array (the_array)
+   WHILE (i > 0) DO
+
+      array_remove_slice (the_array, 1, i)   
+      i = i - 1
+
+   ENDWHILE
+
+ENDROUTINE     { empty_the_array  }
+
+
+
+ROUTINE update_mod_details_disp_now (the_form) 
+
+    { modified on }
+    the_form . display_objects [1] . text = NOW
+               
+    { modified by }
+    the_form . display_objects [2] . text = GLOBAL ("operator")
+
+    the_form . display_objects [1] . re_paste ()
+    the_form . display_objects [2] . re_paste ()
+
+ENDROUTINE     {  update_mod_details_disp_now }
+
+
+ROUTINE browse_anal_vers  (self)
+
+    DECLARE  the_ver,i, browse_array
+
+    ARRAY browse_array
+
+    { Only allow the highest version of the record. Currently only 1 }
+    { Old SM-Empower customers will need a small change to handle for them, where it uses the analysis version }
+
+    the_ver="         1"    
+
+    i = 1
+    browse_array [i,1] = STRIP(the_ver)
+    browse_array [i,2] = SELECT versioned_analysis . description
+
+    browse_on_array (10, self.text, browse_array)
+    self.repaste()
+
+ENDROUTINE     {  browse_anal_vers  }
+
+
+ROUTINE browse_anal_vers_mapped  (self)
+
+    DECLARE the_anal, the_entity, the_cds, the_ver, i, browse_array
+
+    ARRAY browse_array
+
+    the_anal   = self . parent_prompt . prompt_objects [FORM_ANAL] . value 
+    the_cds    = self . parent_prompt . prompt_objects [FORM_DB_LINK] . value 
+    the_entity = self . parent_prompt . prompt_objects [FORM_PROJ] . value 
+
+
+    the_ver = SELECT DISTINCT mill_component_map . analysis_version
+                WHERE database_link = the_cds
+                 AND mill_entity = the_entity
+                 AND analysis = the_anal
+
+
+   i = 0
+
+   WHILE (the_ver <> EMPTY) DO
+
+        i = i + 1
+        browse_array [i,1] = STRIP(the_ver)
+        browse_array [i,2] = ""
+
+        NEXT mill_component_map
+        the_ver = SELECT mill_component_map . analysis_version
+
+   ENDWHILE
+
+  browse_on_array (10, self.text, browse_array)
+  self.repaste()
+
+ENDROUTINE     {  browse_anal_vers_mapped  }
+
+
+ROUTINE handle_header_record (the_form, VALUE option, VALUE is_initial)
+
+    DECLARE db_link, the_anal, the_anal_ver, proj_tab, the_proj,
+               the_key, ok, proj_count,  prev, curr, do_update,
+                anal_width
+
+    proj_count = 1
+    do_update = FALSE
+
+    GET_FIELD_DETAILS versioned_analysis . identity, "FIELD_SIZE", anal_width
+
+    db_link      = the_form . prompt_objects [FORM_DB_LINK] . text
+    the_anal     = the_form . prompt_objects [FORM_ANAL]
+    the_anal_ver = the_form . prompt_objects [FORM_VER]
+
+    the_anal = the_anal . text
+    the_anal_ver = STRIP(the_anal_ver . text)
+
+    proj_tab = the_form.prompt_objects[FORM_TAB].bounding_object.forms[proj_count]
+
+    IF proj_tab <> EMPTY THEN
+
+        the_proj = STRIP(the_form.prompt_objects[FORM_TAB].bounding_object.forms[proj_count].header)
+
+    ELSE
+
+        { If here, its a problem }
+
+        EXIT
+
+    ENDIF
+
+
+    the_key = PAD(STRIP(db_link)," ",30):
+              PAD(STRIP(the_proj)                      ," ",50):
+              PAD(STRIP(the_anal)," ",anal_width):the_anal_ver
+
+
+    { If a change made, then update the header record }
+
+    IF (option = "ADD") THEN
+
+        do_commit = TRUE
+
+        check_write_transaction ()
+
+        { Add the header record, initially }
+
+        RESERVE ENTRY mill_component_map_hdr, the_key, ok
+
+        IF (ok = FALSE) THEN
+
+            flashmessage ("Unable to writer header entry. Record not saved",TRUE)
+
+            EXIT
+
+        ENDIF
+
+        ASSIGN mill_component_map_hdr . mill_entity_type = CON_ENT_TYPE_PROJECT
+        UPDATE mill_component_map_hdr
+
+
+        do_update = TRUE
+
+    ELSEIF option = "MODIFY" THEN
+
+
+        { If the header stuff changed, its a commit }
+         prev = STRIP(the_form . prompt_objects [FORM_METH] . user_info)
+         curr = STRIP(the_form . prompt_objects [FORM_METH] . text)
+          
+
+         IF prev <> curr THEN
+
+             do_commit = TRUE
+
+         ENDIF
+
+         prev = STRIP(the_form . prompt_objects [FORM_RUNTYPE] . user_info)
+         curr = STRIP(the_form . prompt_objects [FORM_RUNTYPE] . text)
+          
+
+         IF prev <> curr THEN
+
+             do_commit = TRUE
+
+         ENDIF
+
+ 
+        IF (do_commit) THEN
+ 
+           check_write_transaction ()           
+
+           do_update = TRUE
+
+        ENDIF
+
+    ENDIF
+
+
+
+    IF (do_update) THEN
+
+           ASSIGN mill_component_map_hdr . mill_method_set = STRIP(the_form . prompt_objects [FORM_METH] . text)
+           ASSIGN mill_component_map_hdr . run_type = STRIP(the_form . prompt_objects [FORM_RUNTYPE] . text)
+
+           ASSIGN mill_component_map_hdr . modified_on = NOW
+           ASSIGN mill_component_map_hdr . modified_by = GLOBAL ("operator")
+
+           UPDATE mill_component_map_hdr
+
+    ENDIF
+
+
+ENDROUTINE     {  handle_header_record  }

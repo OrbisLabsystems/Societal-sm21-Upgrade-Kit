@@ -1,0 +1,400 @@
+
+{
+
+    Module Name   : DATABASE_EXPORT_CSV
+
+    Purpose       : Export all tables to CSV is sub folder of smp$textreports
+    
+                    Define tables to exlude in defineExcludedTables
+                    Define criteria to select sub-set of records in defineCriteria
+
+                    Best run as a batch process in case lots of errors
+                    
+    Document Ref. : 
+
+    Specification : 
+
+
+MODIFICATION HISTORY
+====================
+
+SM      Ref.    Change  Date        Name                Description
+------- ------- ------- ----------- ------------------- -------------------------------------------------------
+9.2.1   1       FB31    22-NOV-2009 Ken Jacobs          Original
+2001-R1 2       KJ1     04-AUG-2010 Ken Jacobs          Helsinn upgrade
+
+}
+
+{ ----------------------------------------------------------------------------------------------- }
+
+SET COMPILE_OPTION DECLARE
+
+{ENABLE WINDOWS}
+
+SET NAME "defer/"
+SET NOTPROTECTED
+
+JOIN STANDARD_LIBRARY std_array
+JOIN STANDARD_LIBRARY std_array_select
+JOIN STANDARD_LIBRARY std_structure
+
+JOIN LIBRARY $table_load_save_lib
+JOIN LIBRARY $lib_utils
+JOIN LIBRARY cs_lib_log
+
+CONSTANT DATABASE_EXPORT_CSV = "DATABASE_EXPORT_CSV"
+CONSTANT Q = ASCII(34)
+
+{ ----------------------------------------------------------------------------------------------- }
+
+DECLARE export
+DECLARE message
+
+defineClass()
+
+CREATE OBJECT DATABASE_EXPORT_CSV, export
+
+export.logfile.transaction( "Started" )
+
+export.readAllTables()
+export.defineExcludedTables()
+export.removeExcludedTables()
+export.exportTables()
+
+message = "Completed with " : STRIP( NUMBER_TO_TEXT( export.errors, "9999" ) ) : " errors"
+export.logfile.transaction( message )
+flash_message( message, TRUE )
+
+EXIT
+
+{ ----------------------------------------------------------------------------------------------- }
+
+ROUTINE defineClass
+
+    {
+    Description :
+    }
+    
+    cs_lib_log_define_class()
+    
+    DEFINE CLASS DATABASE_EXPORT_CSV
+        INITIALISATION
+        PROPERTIES
+            "errors",
+            "logfile",
+            "tables",
+            "excludedTables",
+            "dummy"
+        ACTIONS
+            "readAllTables",
+            "defineExcludedTables",
+            "defineCriteria",
+            "removeExcludedTables",
+            "exportTables",
+            "orderByKey0",
+            "dummy"
+        END CLASS
+        
+    RETURN
+    
+ENDROUTINE
+
+{ ----------------------------------------------------------------------------------------------- }
+
+ROUTINE DATABASE_EXPORT_CSV_classInitialisation
+    (
+            self
+    )            
+    {
+    Description :
+    }
+    
+    self.errors = 0
+
+    CREATE OBJECT LOG_FILE_CLASS, self.logfile
+    self.logfile.module = STRIP( GLOBAL( "current_library" ) )
+    self.logfile.flash_error = NOT ( GLOBAL( "mode" ) = "INTERACTIVE" )
+    
+    ARRAY self.tables           ARRAY_SIZE(0,2)
+    ARRAY self.excludedTables   ARRAY_SIZE(0)
+    
+    RETURN
+    
+ENDROUTINE
+
+{ ----------------------------------------------------------------------------------------------- }
+
+ROUTINE DATABASE_EXPORT_CSV_action_readAllTables
+    (
+            self
+    )            
+    {
+    Description :
+    }
+    
+    DECLARE i
+    DECLARE isView
+    
+    get_table_names( self.tables )
+    
+    i = 1
+    WHILE ( i <= size_of_array( self.tables ) )
+    
+        GET_TABLE_DETAILS 'self.tables[i,1]', "is_view", isView     
+        
+        IF ( isView )
+        
+            array_remove_slice( self.tables, 1, i )
+            
+        ELSE
+        
+            i = i + 1
+        
+        ENDIF
+        
+    ENDWHILE
+    
+    RETURN
+    
+ENDROUTINE
+
+{ ----------------------------------------------------------------------------------------------- }
+
+ROUTINE DATABASE_EXPORT_CSV_action_defineExcludedTables
+    (
+            self
+    )            
+    {
+    Description :
+    }
+
+    
+    DECLARE i
+    
+    i = 0
+
+    i = i + 1   self.excludedTables[i] = ""
+    i = i + 1   self.excludedTables[i] = "ACCESS_LOG"
+  {  i = i + 1   self.excludedTables[i] = "ANAL_WORKS_TEMPL"
+    i = i + 1   self.excludedTables[i] = "APPROVAL"
+    i = i + 1   self.excludedTables[i] = "ARCHIVE_AUDIT_DATA"
+    i = i + 1   self.excludedTables[i] = "ARCHIVE_AUDIT_EVENT"
+    i = i + 1   self.excludedTables[i] = "ARCHIVE_AUDIT_TRANS"
+    i = i + 1   self.excludedTables[i] = "ARCHIVE_BATCH_ENTRY"
+    i = i + 1   self.excludedTables[i] = "ARCHIVE_BATCH_HEADER"
+    i = i + 1   self.excludedTables[i] = "ARCHIVE_ESIG_DATA"
+    i = i + 1   self.excludedTables[i] = "ARCHIVE_ESIG_EVENT"
+    i = i + 1   self.excludedTables[i] = "ARCHIVE_JOB_HEADER"
+    i = i + 1   self.excludedTables[i] = "ARCHIVE_RESULT"
+    i = i + 1   self.excludedTables[i] = "ARCHIVE_SAMPLE"
+    i = i + 1   self.excludedTables[i] = "ARCHIVE_TEST"
+    i = i + 1   self.excludedTables[i] = "AUDIT_DATA"
+    i = i + 1   self.excludedTables[i] = "AUDIT_EVENT"
+    i = i + 1   self.excludedTables[i] = "AUDIT_TRANSACTION"
+    i = i + 1   self.excludedTables[i] = "BARMENU"
+    i = i + 1   self.excludedTables[i] = "BATCH_ENTRY"
+    i = i + 1   self.excludedTables[i] = "BATCH_HEADER"
+    i = i + 1   self.excludedTables[i] = "BATCH_SQC_HEADER"
+    i = i + 1   self.excludedTables[i] = "BATCH_TMPL_ENTRY"
+    i = i + 1   self.excludedTables[i] = "BATCH_TMPL_HEADER"
+    i = i + 1   self.excludedTables[i] = "BATCH_TMPL_SQC"
+    i = i + 1   self.excludedTables[i] = "BL_RELATIONSHIP"
+    i = i + 1   self.excludedTables[i] = "BL_RELATIONSHIP_CLAUSE"
+    i = i + 1   self.excludedTables[i] = "BL_TYPE"
+    i = i + 1   self.excludedTables[i] = "BLOB_VALUES"
+    i = i + 1   self.excludedTables[i] = "C_AUDIT_DATA"
+    i = i + 1   self.excludedTables[i] = "C_AUDIT_EVENT"
+    i = i + 1   self.excludedTables[i] = "C_AUDIT_TRANSACTION"
+    i = i + 1   self.excludedTables[i] = "C_BATCH_ENTRY"
+    i = i + 1   self.excludedTables[i] = "C_BATCH_HEADER"
+    i = i + 1   self.excludedTables[i] = "C_ESIG_DATA"
+    i = i + 1   self.excludedTables[i] = "C_ESIG_EVENT"
+    i = i + 1   self.excludedTables[i] = "C_FACTOR"
+    i = i + 1   self.excludedTables[i] = "C_JOB_HEADER"
+    i = i + 1   self.excludedTables[i] = "C_RESULT"
+    i = i + 1   self.excludedTables[i] = "C_SAMPLE"
+    i = i + 1   self.excludedTables[i] = "C_TEST"
+    i = i + 1   self.excludedTables[i] = "CALC_FUNCTION"
+    i = i + 1   self.excludedTables[i] = "CALC_FUNCTION_PARAMETER"
+    i = i + 1   self.excludedTables[i] = "CALCULATION"
+    i = i + 1   self.excludedTables[i] = "CERT_DESTINATION"
+    i = i + 1   self.excludedTables[i] = "CERT_SECTION"
+    i = i + 1   self.excludedTables[i] = "CERT_SECTION_DATA"
+    i = i + 1   self.excludedTables[i] = "CERT_SECTION_PROMPT"
+    i = i + 1   self.excludedTables[i] = "CERT_SECTION_RESULT"
+    i = i + 1   self.excludedTables[i] = "CERTIFICATE_ENTRY"
+    i = i + 1   self.excludedTables[i] = "CERTIFICATE_TEMPLATE"
+    i = i + 1   self.excludedTables[i] = "CGI_SCRIPT"
+    i = i + 1   self.excludedTables[i] = "CHAPTER"
+    i = i + 1   self.excludedTables[i] = "CHARGE_ENTRY"
+    i = i + 1   self.excludedTables[i] = "CHARGE_HEADER"
+    i = i + 1   self.excludedTables[i] = "CLIENT_ACCESS"
+    i = i + 1   self.excludedTables[i] = "COA_DETAIL"
+    i = i + 1   self.excludedTables[i] = "COA_HEADER"
+    i = i + 1   self.excludedTables[i] = "COA_TEMPLATE"
+    i = i + 1   self.excludedTables[i] = "COA_TEMPLATE_PARAMETERS"
+    i = i + 1   self.excludedTables[i] = "COA_TEMPLATE_RESULTS"
+  }  
+
+    RETURN
+    
+ENDROUTINE
+
+{ ----------------------------------------------------------------------------------------------- }
+
+ROUTINE DATABASE_EXPORT_CSV_action_defineCriteria
+    (
+            self,
+    VALUE   table,
+            criteria
+    )            
+    {
+    Description :
+
+    e.g.
+    IF ( table = "JOB_HEADER" )
+    
+        array_select_add( criteria, ARRAY_SELECT_GE, "date_created", TODAY - INTERVAL( "365" ) )
+
+    ENDIF
+    
+    }
+
+    RETURN
+    
+ENDROUTINE
+
+{ ----------------------------------------------------------------------------------------------- }
+
+ROUTINE DATABASE_EXPORT_CSV_action_orderByKey0
+    (
+            self,
+    VALUE   table,
+            criteria
+    )            
+    {
+    Description :
+    }
+  
+    DECLARE i
+    DECLARE key0Fields      ARRAY key0Fields    ARRAY_SIZE(0)
+    
+    GET_TABLE_DETAILS 'table', "key0_field", key0Fields
+    
+    i = 1
+    WHILE ( i <= size_of_array( key0Fields ) )
+    
+        array_select_add( criteria, ARRAY_SELECT_ORDER, key0Fields[i], ARRAY_SELECT_ASCENDING )
+        
+        i = i + 1
+
+    ENDWHILE
+    
+    RETURN
+    
+ENDROUTINE
+
+{ ----------------------------------------------------------------------------------------------- }
+
+ROUTINE DATABASE_EXPORT_CSV_action_removeExcludedTables
+    (
+            self
+    )            
+    {
+    Description :
+    }
+    
+    DECLARE i
+    DECLARE j
+    
+    i = 1
+    WHILE ( i <= size_of_array( self.excludedTables ) )
+
+        j = 1
+        WHILE ( j <= size_of_array( self.tables ) )
+        AND   ( self.tables[j,1] <= self.excludedTables[i] )
+        
+            IF ( self.tables[j,1] = self.excludedTables[i] )
+            
+                array_remove_slice( self.tables, 1, j )
+                
+            ENDIF
+            
+            j = j + 1
+            
+        ENDWHILE
+        
+        i = i + 1
+        
+    ENDWHILE
+    
+    RETURN
+    
+ENDROUTINE
+
+{ ----------------------------------------------------------------------------------------------- }
+
+ROUTINE DATABASE_EXPORT_CSV_action_exportTables
+    (
+            self
+    )            
+    {
+    Description :
+    }
+    
+    DECLARE i
+    DECLARE folder
+    DECLARE filename
+    DECLARE fields      ARRAY fields        ARRAY_SIZE(0)
+    DECLARE criteria    ARRAY criteria      ARRAY_SIZE(0,3)
+    DECLARE message
+    DECLARE information
+    
+    SET DATE FORMAT "YYYZMZDZH24MISS"
+    folder = lib_utils_logical_to_string( "smp$textreports" ) : "\" : "DataExport-" : NOW : "\"
+    RESTORE DATE FORMAT
+    
+    SPAWN "mkdir " : Q : folder : Q QUIETLY
+    
+    i = 1
+    WHILE ( i <= size_of_array( self.tables ) )
+
+        information = "Table " : NUMBER_TO_TEXT( i, "9999" ) : " of " : NUMBER_TO_TEXT( size_of_array( self.tables ), "9999" ) : " " : self.tables[i,1]
+        
+        IF ( GLOBAL( "mode" ) = "INTERACTIVE" )
+        
+            DISPLAY information ON LINE 10 FROM 10 TO 80
+        
+        ELSE
+        
+            flash_message( information, TRUE )
+            
+        ENDIF
+        
+        ARRAY fields        ARRAY_SIZE(0)
+        ARRAY criteria      ARRAY_SIZE(0,3)
+        
+        filename = folder : self.tables[i,1] : ".csv"
+        get_field_names_without_aliases( self.tables[i,1], fields )
+
+        self.defineCriteria( self.tables[i,1], criteria )
+        self.orderByKey0( self.tables[i,1], criteria )
+        
+        IF ( output_csv_file( filename, self.tables[i,1], fields, criteria, FALSE, message ) )
+        
+            self.logfile.transaction( "Exported " : PAD( self.tables[i,1], " ", 30 ) : " to " : filename )
+
+        ELSE
+
+            self.errors = self.errors + 1
+            self.logfile.error( "Export failed, " : self.tables[i,1] : ", " : message )
+        
+        ENDIF
+        
+        i = i + 1
+        
+    ENDWHILE
+    
+    RETURN
+    
+ENDROUTINE

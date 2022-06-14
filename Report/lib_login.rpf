@@ -1,0 +1,292 @@
+{******************************************************************************
+*
+* Module Name          : LOGIN_LIB
+*
+* Purpose              : Library of routines to support sample login functions.
+*                        New routines can be added to this library as required
+*                        to support other automatic template completion requirements
+*
+* Portability          : Not Checked
+*
+*******************************************************************************
+*
+* Modification History :
+* 
+* Version   Date         By             	Description
+* -------   -----------  ----------    	--------------------------------------
+* 1.0       21-Aug-2012  Stuart Patchell 	Release Version 
+*
+* 2.0 	14-Sep-2012	 M. Allen		Added routine for weight check
+*
+*******************************************************************************}
+
+
+
+SET NOTPROTECTED
+SET NAME "DEFER/"
+SET COMPILEOPTION DECLARE
+ENABLE WINDOWS
+
+JOIN STANDARD_LIBRARY STD_PROMPT
+JOIN STANDARD_LIBRARY STD_ARRAY_SELECT
+JOIN STANDARD_LIBRARY STD_CLIENT
+JOIN STANDARD_LIBRARY STD_ARRAY
+JOIN STANDARD_LIBRARY STD_TRANSFER
+JOIN STANDARD_LIBRARY STD_DATABASE
+JOIN STANDARD_LIBRARY STD_BROWSE
+
+JOIN LIBRARY $lib_utils
+JOIN LIBRARY $prompt_imprint
+
+
+
+ROUTINE loc_browse_personnel	( 	VALUE column_num ,         { form column }
+                             			VALUE line_num,            { form row    }
+                             			display_id,                { form window }
+                             			VALUE is_display )         { display T/F }
+
+{
+*    Limit location browse to type Personnel
+*
+*******************************************************************************}
+    DECLARE select_array, location
+
+    ARRAY select_array
+
+    array_select_add (select_array, 
+                      ARRAY_SELECT_EQ, 
+                      "location_type",
+                      "PERSONNEL")
+
+
+
+
+    IF ( column_num <> 0 ) AND ( line_num <> 0 ) THEN
+	
+        IF is_display THEN
+
+            DISPLAY location
+                IN WINDOW display_id
+                ON LINE   line_num
+                FROM   column_num
+                FORMAT sample . em_sampled_by
+        ELSE
+
+            PROMPT FOR location
+                IN WINDOW display_id
+                ON LINE   line_num
+                FROM   column_num
+                BROWSE ON location
+                WITH ( display_only  = FALSE, select_array = select_array )
+
+        ENDIF
+    
+	ENDIF
+
+ENDROUTINE {loc_browse_personnel}
+
+ROUTINE prompt_em_sampled_by 	( 	 VALUE column_num ,         { form column }
+                             			VALUE line_num,            { form row    }
+                             			display_id,                { form window }
+                             			VALUE is_display )         { display T/F }
+
+{
+*   Prompts for em_sampled_by, limit location browse to type personnel
+*
+*******************************************************************************}
+    DECLARE select_array, em_sampler
+
+    ARRAY select_array
+
+    em_sampler = SELECT sample . em_sampled_by
+
+    array_select_add (select_array, 
+                      ARRAY_SELECT_EQ, 
+                      "location_type",
+                      "PERSONNEL")
+
+
+	    array_select ("LOCATION", 
+                   FALSE, 
+                   select_array)
+
+
+    IF ( column_num <> 0 ) AND ( line_num <> 0 ) THEN
+	
+        IF is_display THEN
+
+            DISPLAY em_sampler
+                IN WINDOW display_id
+                ON LINE   line_num
+                FROM   column_num
+                FORMAT sample . em_sampled_by
+        ELSE
+
+ 
+
+            PROMPT FOR em_sampler 
+                IN WINDOW display_id
+		    ON LINE line_num
+		    FROM column_num
+                BROWSE ON location . identity 
+                WITH ( display_only  = FALSE, select_array = select_array )
+
+
+        ENDIF
+    
+	ENDIF
+
+		ASSIGN sample .em_sampled_by = em_sampler
+
+
+
+
+
+ENDROUTINE {}
+
+ROUTINE calc_net_weight	( 	VALUE column_num ,         { form column }
+                             			VALUE line_num,            { form row    }
+                             			display_id,                { form window }
+                             			VALUE is_display )         { display T/F }
+
+{
+*    Calculate net weight
+*
+*******************************************************************************}
+    DECLARE gross_wgt, tare_wgt, net_wgt
+
+    gross_wgt = SELECT sample . sample_weight
+
+
+
+    tare_wgt = SELECT sample . tare_weight
+
+    net_wgt = NULL
+
+     IF ((gross_wgt <> 0) AND (gross_wgt <> NULL) AND (tare_wgt <> 0) AND (tare_wgt <> NULL)) THEN
+
+		net_wgt = gross_wgt - tare_wgt
+
+
+	ENDIF 
+
+   IF ( column_num <> 0 ) AND ( line_num <> 0 ) THEN        
+	
+        IF is_display THEN
+
+            DISPLAY net_wgt
+                IN WINDOW display_id
+                ON LINE   line_num
+                FROM   column_num
+                FORMAT sample. net_weight
+
+        ELSE
+
+            PROMPT FOR net_wgt
+                IN WINDOW display_id
+                ON LINE   line_num
+                FROM   column_num
+                FORMAT sample. net_weight
+                WITH ( display_only  = FALSE )
+
+        ENDIF
+	
+    ENDIF
+	
+
+		ASSIGN sample .net_weight = net_wgt
+
+
+
+
+
+ENDROUTINE {}
+
+ROUTINE date_res_req_from_login ( 	VALUE column_num ,         { form column }
+                            		VALUE line_num,            { form row    }
+                            		display_id,                { form window }
+                            		VALUE is_display )         { display T/F }
+
+{
+*    Calculates date results required from Login Date. 
+*
+*******************************************************************************}
+
+    DECLARE context,
+            material,
+            chem_turnaround,
+		micro_turnaround,
+            resreq_date,
+            login_date,
+		samp_type
+
+    login_date  	= SELECT sample . login_date
+    material 	= SELECT sample . material
+    samp_type   	= SELECT sample . sample_type
+    resreqdate 	= NOW
+
+    push_file_descriptor ("SAMPLE", context)
+
+    chem_turnaround  = SELECT materials . chem_turnaround WHERE
+                             article_code = material
+
+    micro_turnaround = SELECT materials . micro_turnaround WHERE
+                             article_code = material
+
+
+    pop_file_descriptor (context)
+
+
+    IF (BLANK(samp_type) OR (STRIP(samp_type) = "")) OR (samp_type = "CHEM") THEN
+
+        IF ( chem_turnaround <> EMPTY ) THEN
+
+            resreq_date = login_date + chem_turnaround
+
+        ELSEIF
+
+            resreq_date = ""
+
+        ENDIF
+
+    ELSEIF (samp_type = "MICRO") THEN
+
+	IF ( micro_turnaround <> EMPTY ) THEN
+
+            resreq_date = login_date + micro_turnaround
+
+        ELSEIF
+
+            resreq_date = ""
+
+        ENDIF
+
+    ENDIF	
+
+    IF ( column_num <> 0 ) AND ( line_num <> 0 ) THEN
+	
+	    IF is_display THEN
+
+            DISPLAY resreq_date
+                IN WINDOW display_id
+                ON LINE   line_num
+                FROM   column_num
+                FORMAT sample . dateresreq
+
+        ELSE
+
+            PROMPT FOR resreq_date
+                IN WINDOW display_id
+                ON LINE   line_num
+                FROM   column_num
+                FORMAT sample . dateresreq
+                WITH ( display_only  = FALSE )
+
+        ENDIF
+	
+	ENDIF
+
+    ASSIGN sample . dateresreq = resreq_date
+
+ENDROUTINE {date_res_req_from_login}
+
