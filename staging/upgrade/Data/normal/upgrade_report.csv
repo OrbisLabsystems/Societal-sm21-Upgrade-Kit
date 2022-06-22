@@ -9,7 +9,7 @@ IDENTITY,GROUP_ID,TITLE,MODIFIABLE,REMOVEFLAG,NAME
 "$UPGRADE1123",,"Upgrade report","TRUE","FALSE","$upgrade1123"
 "$UPGRADE121",,"Upgrade report","TRUE","FALSE","$upgrade121"
 "$UPGRADE122",,"Upgrade report","TRUE","FALSE","$upgrade122"
-"$UPGRADE_DATA_122",,"Upgrade report","TRUE","FALSE","$upgrade_data_122"
+"$UPGRADE_DATA",,"Upgrade report","TRUE","FALSE","$upgrade_data"
 "$LOAD_WORKFLOW_OLD",,,"TRUE","FALSE","$LOAD_WORKFLOW_OLD"
 "ORL_DB_UPDATES_SM12",,,"TRUE","FALSE","ORL_DB_UPDATES_SM12"
 "UPDATE_DATE",,,"TRUE","FALSE","UPDATE_DATE"
