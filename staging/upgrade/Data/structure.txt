@@ -13206,7 +13206,8 @@ view r_sample_worksheet ;
 		links_to worksheet . assigned_operator ;
 	field text
 		links_to result . text ;
-		
+            
+select_clause		
 	SELECT 
 		WORKSHEET.[IDENTITY],
 		TEST.SAMPLE,
