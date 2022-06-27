@@ -13206,7 +13206,7 @@ view r_sample_worksheet ;
 		links_to worksheet . assigned_operator ;
 	field text
 		links_to result . text ;
-            
+
 select_clause		
 	SELECT 
 		WORKSHEET.[IDENTITY],
@@ -27833,7 +27833,7 @@ select_clause
         result_status,
         result_text,
         result_value,
-        units,
+       units COLLATE Latin1_General_CS_AS_WS ,
         minimum,
         maximum,
         out_of_range,
