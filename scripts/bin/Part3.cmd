@@ -59,6 +59,9 @@ ECHO ***************************************************************************
 
 time /t
 
+ECHO **** 10.2 to 11   ****
+%SMP% -batch -instance %SM_INSTANCE% -report $upgrade11 10.2
+
 ECHO **** 11.0 to 11.2   ****
 %SMP% -batch -instance %SM_INSTANCE% -report $upgrade112 11.0
 
